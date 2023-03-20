@@ -30,7 +30,7 @@ Usage
 
 ex) cmdYoutube fannel  
 cmdYoutube.js, cmdYoutubeDir  
-  - `cmdYoutubeDir` incliude some files.
+  - `cmdYoutubeDir` incliude some files. [detail](https://github.com/puutaro/commandclick-repository/tree/master/fannel)
   
 
 ### Description
