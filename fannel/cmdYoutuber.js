@@ -1,6 +1,27 @@
 
 
 /// LABELING_SECTION_START
+// youtube background play fannel
+// 	install -> install require package
+// 	play -> youtube play list edit site
+//		- recent visit youtube url show in "Save title"
+//		- change item  order by drag and drop 
+//		- delete item  by doragging to another area(no item area).
+// 	tubePlayListName 
+//		- Input or select play list file name
+//		- prefix must be "tube" ex) "tubePlayList"
+// 	tubePlay 
+//		- select shuffle or ordinaly and press
+//		- press "Exec" and execute play list
+// 	numberPlay 
+//		- Input or inc/dec number
+//		- press "Exec" and play number
+//	volume control enable when CommandClick hide
+// 	STOP
+//		- play stop (recommend: notification bar swip out)
+// --
+// --
+// bellow setting variable main line up
 // * terminalSizeType is cmdclick terminal size option
 //  - OFF: no adjust (default)
 //  - LONG: LongSize
@@ -18,34 +39,9 @@
 //  - INHERIT: inherit config setting
 //  - ON: on
 //  - OFF: off
-// * execJsOrHtmlPath: execute javascript or html file path
-//   - disable, when onUrlLaunchMacro is not OFF
 // * terminalFontZoom adjust terminal font size (percentage)
 // * terminalFontColor adjust terminal font color
 // * terminalColor adjust terminal background color
-// * setVariableType is cmdsection gui edit mini program, reference to github for detail (like gtk yad)
-//  - ex) spinner: {cmdVariable}:CB=ON!OFF  
-//  - ex) num crementer: {cmdVariable}:NUM=1!1..100!1 (({init})!{min}..{max}!{step})
-//  - ex) file selector: {cmdVariable}:FL=
-//  - ex) button: {cmdVariable}:BTN=
-//    - button execute command 
-//      ex) echo $0  
-//             ("$0" is current shell path
-//      ex) ::BackStack:: ls
-//             ("::BackStack::" is backstack, only work when prefix
-//      ex) ::BackStack:: ls
-//             ("::BackStack::" enable terminal output
-//      ex) top -n 1 > /dev/null  
-//             (when suffix is "> /dev/null" or "> /dev/null 2>&1", no output
-//  - ex) dir selector: {cmdVariable}:DIR=
-//  - ex) read only: {cmdVariable}:RO=
-//  - ex) password: {cmdVariable}:H=
-//  - enable multiple specification
-//  - ex) 
-//  setVariableType="{cmdVar1}:CB=ON!OFF"
-//  setVariableType="{cmdVar2}:FL="
-//  setVariableType="..."
-// * scriptFileName is your shell file name
 /// LABELING_SECTION_END
 
 
@@ -54,8 +50,6 @@ editExecute="ALWAYS"
 terminalSizeType="OFF"
 terminalOutputMode="NORMAL"
 onUpdateLastModify="ON"
-onAdBlock="INHERIT"
-execJsOrHtmlPath=""
 terminalFontZoom="0"
 terminalColor=""
 terminalFontColor=""
@@ -89,7 +83,7 @@ function exit(){
 let args = jsArgs.get().split("\t");
 const DEFAULT_TERM_OUTPUT = "NORMAL";
 const FIRST_ARGS = args.at(0);
-const EXEC_SHELL_PATH = "${01}/cmdYoutuberLib/cmdYoutuber.sh";
+const EXEC_SHELL_PATH = "${01}/cmdYoutuberDir/cmdYoutuber.sh";
 const EDIT_FILE_PATH = "${01}/" + tubePlayListName;
 const APP_URL_HISTORY_PATH="${01}/system/url/cmdclickUrlHistory";
 const INSTALL_MODE = "install";
@@ -123,7 +117,7 @@ switch(FIRST_ARGS){
 		);
 		exit();
 		break;
-	case SHUFFLE_MODE:
+	case SHUFFLE_MODE: 
 		cmdIntent.run(
 			"bash \"" + EXEC_SHELL_PATH + 
 			"\" " + SHUFFLE_MODE +
