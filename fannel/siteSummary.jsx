@@ -1,5 +1,10 @@
 
 
+/// LABELING_SECTION_START
+// Display summary for current site @puutaro
+/// LABELING_SECTION_END
+
+
 const LEAST_STRING_NUM = 300;
 
 function makeTocArr(list){

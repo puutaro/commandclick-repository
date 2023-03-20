@@ -1,25 +1,52 @@
 
 
 /// LABELING_SECTION_START
-// update
+// advanced search twitter client @puutaro
+// BearerToken: you get developer page this
+// play button: start search
+// minRetweetCount: minimum retweet
+// minLikeCount: minimum retweet
+// minImpressionCount: minimum impression
+// operator: and or search operator
+// getTwLimit: get tweet limit
+// max_Imp_ReTweet: semiautomaticaly retweet max impression tweet
+// bellow setting variable main line up
+// * EditExecute is edit mode change
+//	- NO is normal edit
+//	- ONCE is one time edit and execute
+//	- ALWAYD is always edit and execute
+// * terminalSizeType is cmdclick terminal size option
+//  - OFF: no adjust (default)
+//  - LONG: LongSize
+//  - SHORT: ShortSize
+// * terminalOutputMode decide output mode in cmdclick terminal
+//  - NORMAL: normal terminal output (default)
+//  - REFLASH: Before terminal output, screen resflesh
+//  - REFLASH_AND_FIRST_ROW: Before terminal output, screen resflesh and focus first row
+//  - DEBUG: stdr + stderr
+//  - NO: no output (bacground exec)
+// * terminalFontZoom adjust terminal font size (percentage)
+// * terminalFontColor adjust terminal font color
+// * terminalColor adjust terminal background color
 /// LABELING_SECTION_END
 
 
 /// SETTING_SECTION_START
-terminalDo="ON"
 editExecute="ALWAYS"
 terminalSizeType="LONG"
-historySwitch="ON"
 terminalOutputMode="REFLASH"
 setVariableType="minRetweetCount:NUM=!0..10000!1"
-setVariableType="impressionCount:NUM=!0..10000!1"
+setVariableType="minImpressionCount:NUM=!0..10000!1"
 setVariableType="appealHour:NUM=!1..10000!1"
 setVariableType="minLikeCount:NUM=!0..10000!1"
 setVariableType="operator:CB=or!and"
-setVariableType="terminalFontZoom:NUM=1..10000!1"
+setVariableType="terminalFontZoom:NUM=!1..10000!1"
+setVariableType="getTwLimit:NUM=!1..100!1"
 setVariableType="max_Imp_ReTweet:BTN="
-beforeCommand="echo before"
-afterCommand="echo after"
+setVariableType="BearerToken:H="
+terminalFontZoom="0"
+terminalFontColor=""
+terminalColor=""
 scriptFileName="cmdTwitter.js"
 /// SETTING_SECTION_END
 
@@ -28,10 +55,12 @@ scriptFileName="cmdTwitter.js"
 searchWord="減税"
 minRetweetCount="0"
 minLikeCount="0"
-impressionCount="1000"
+minImpressionCount="1000"
 appealHour="6"
 max_Imp_ReTweet="::NoJsTermOut:: jsf '${0}' re "
 operator="and"
+getTwLimit="30"
+BearerToken="";
 /// CMD_VARIABLE_SECTION_END
 
 
@@ -83,7 +112,6 @@ const editFilePath = parentDirPath + '/' + "tubePlayList";
 const srcFilePath = parentDirPath + '/system/url/' + "cmdclickUrlHistory";
 
 const targetUrl = "https://api.twitter.com/2/tweets/search/recent";
-const token = 'AAAAAAAAAAAAAAAAAAAAAFijlQEAAAAAHGC8DSURO9SXWq61zaY5DzEJF3Q%3Dup7ocC4heLB6L3hMw0IvZKWOoNcpMp4eYTSDIQ689JiBSzFfXL';
 const twStatus = "tweet.fields=attachments,author_id,created_at,public_metrics,source";
 const searchQuery = "query=" + searchWord.replace("　", " ") + " -is:retweet";
 const max_results="max_results=100";
@@ -116,7 +144,7 @@ function execGetTweet(){
 		var twJson = jsCurl.get(
 			targetUrl,
 			requestBody,
-			 "Authorization\t" + "Bearer " + token,
+			 "Authorization\t" + "Bearer " + BearerToken,
 			100000
 		);
 		if(
@@ -131,16 +159,16 @@ function execGetTweet(){
 					return twEl.public_metrics.retweet_count >= minRetweetCount
 					&& twEl.public_metrics.retweet_count >= minRetweetCount
 					&& twEl.public_metrics.like_count >= minLikeCount
-					&& twEl.public_metrics.impression_count >= impressionCount
+					&& twEl.public_metrics.impression_count >= minImpressionCount
 				} else {
 					return twEl.public_metrics.retweet_count >= minRetweetCount
 					|| twEl.public_metrics.retweet_count >= minRetweetCount
 					|| twEl.public_metrics.like_count >= minLikeCount
-					|| twEl.public_metrics.impression_count >= impressionCount
+					|| twEl.public_metrics.impression_count >= minImpressionCount
 				}
 			})
 		);
-		if(twDataList.length > 100) break;
+		if(twDataList.length > getTwLimit) break;
 		pagination_token = twJsonObj.meta.next_token;
 		if(pagination_token == undefined) break;
 	};
