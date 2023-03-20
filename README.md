@@ -35,8 +35,10 @@ cmdYoutube.js, cmdYoutubeDir
 
 ### Description
 
-By `setting` -> `install_fannel`, Script's `CommandClick description` first line is displayed.  
- - description [detail](https://github.com/puutaro/CommandClick#description)
+By `setting` -> `install_fannel`, Script's `CommandClick description` first line is displayed.    
+ - install [detail](https://github.com/puutaro/CommandClick/blob/master/README.md#install-fannel)  
+ - description [detail](https://github.com/puutaro/CommandClick#description)  
+
 
 ![image](https://user-images.githubusercontent.com/55217593/226406483-b1744f1e-13c5-497b-af26-7457d87c90ca.png)
 
