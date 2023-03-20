@@ -60,7 +60,7 @@ appealHour="6"
 max_Imp_ReTweet="::NoJsTermOut:: jsf '${0}' re "
 operator="and"
 getTwLimit="30"
-BearerToken="";
+BearerToken=""
 /// CMD_VARIABLE_SECTION_END
 
 

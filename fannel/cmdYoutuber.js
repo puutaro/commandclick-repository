@@ -64,7 +64,7 @@ scriptFileName="cmdYoutuber.js"
 
 
 /// CMD_VARIABLE_SECTION_START
-tubePlayListName=""
+tubePlayListName="tubePlayList"
 tubePlay="shuffle"
 numberPlay="4"
 STOP=""
