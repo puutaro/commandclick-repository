@@ -47,5 +47,5 @@ jsIntent.launchEditSite(
 	EDIT_FILE_PATH,
 	APP_URL_HISTORY_PATH,
 	"true",
-	"true"
+	"urlString.startsWith('http');"
 );
