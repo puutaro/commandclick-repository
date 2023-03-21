@@ -39,7 +39,7 @@ bookmarkName="bookSites"
 /// Please write bellow with javascript
 
 
-const EDIT_FILE_PATH = "${01}/" + tubePlayListName;
+const EDIT_FILE_PATH = "${01}/" + bookmarkName;
 const APP_URL_HISTORY_PATH="${01}/system/url/cmdclickUrlHistory";
 
 
