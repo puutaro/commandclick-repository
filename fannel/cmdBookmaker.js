@@ -23,7 +23,7 @@
 
 
 /// SETTING_SECTION_START
-editExecute="ALWAYS"
+editExecute="NO"
 onUpdateLastModify="ON"
 setVariableType="bookmarkName:EFCB=book"
 setVariableType=""
