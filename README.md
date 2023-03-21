@@ -40,5 +40,5 @@ By `setting` -> `install_fannel`, Script's `CommandClick description` first line
  - description [detail](https://github.com/puutaro/CommandClick#description)  
 
 
-![image](https://user-images.githubusercontent.com/55217593/226406483-b1744f1e-13c5-497b-af26-7457d87c90ca.png)
+![image](https://user-images.githubusercontent.com/55217593/226502301-2481112f-438a-4a29-a3bd-1e46babc138a.png)
 
