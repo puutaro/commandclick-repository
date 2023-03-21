@@ -8,9 +8,14 @@ For instance, your click script in `CommandClick`. One thing I can say that `Com
 
 
 
-* [Desire](#Desire)
+
+Table of Contents
+-----------------
+
+* [Desire](#desire)
 * [Usage](#usage)
   * [Configuration](#configuration)
+  * [Description](#description)
 
 
 Desire
