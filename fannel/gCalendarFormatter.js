@@ -1,7 +1,7 @@
 
 
 /// LABELING_SECTION_START
-// Set format Google Calendar
+// Set format Google Calendar @puutaro
 // sourceUrl: schedule mail url etc..
 // --
 // --
