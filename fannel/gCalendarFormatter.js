@@ -44,7 +44,7 @@ email=""
 
 let scheduleDateList = scheduleDate.split("-");
 const year = scheduleDate.at(0);
-const month = scheduleDate.at(1);
+const month = scheduleDate.at(1) - 1;
 const day = scheduleDate.at(2);
 const correctScheduleDate = year + "-" + month + "-" + day;
 const beginDateTime = scheduleDate + "T" + biginTime;
