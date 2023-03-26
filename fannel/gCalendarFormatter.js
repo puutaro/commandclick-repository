@@ -43,9 +43,9 @@ email=""
 
 
 let scheduleDateList = scheduleDate.split("-");
-const year = scheduleDate.at(0);
-const month = scheduleDate.at(1) - 1;
-const day = scheduleDate.at(2);
+const year = scheduleDateList.at(0);
+const month = scheduleDateList.at(1) - 1;
+const day = scheduleDateList.at(2);
 const correctScheduleDate = year + "-" + month + "-" + day;
 const beginDateTime = correctScheduleDate + "T" + biginTime;
 const endDateTime = correctScheduleDate + "T" + endTime;
@@ -69,7 +69,6 @@ const extraLong = "beginTime=" + beginMiliTime +
 
 const intentType = "android.intent.action.INSERT";
 const actionType = "content://com.android.calendar/events";
-
 
 jsIntent.launchApp(
 	intentType,
