@@ -3,6 +3,7 @@
 /// LABELING_SECTION_START
 // Set format Google Calendar @puutaro
 // sourceUrl: schedule mail url etc..
+// LAUNCH_GMAIL: Launch mail url, set gmail or etc url 
 // --
 // --
 // bellow setting variable main line up
