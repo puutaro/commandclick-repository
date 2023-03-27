@@ -38,7 +38,7 @@ otherUrl=""
 memo=""
 eventLocation=""
 email=""
-LAUNCH_GMAIL="https://mail.google.com/mail/mu/mp/683/#tl/%E5%8F%97%E4%BF%A1%E3%83%88%E3%83%AC%E3%82%A4"
+LAUNCH_GMAIL=""
 /// CMD_VARIABLE_SECTION_END
 
 
