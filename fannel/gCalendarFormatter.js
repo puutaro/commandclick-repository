@@ -56,16 +56,15 @@ const description = "webMeetUrl:\n" + webMeetUrl +
 	"\n" + "otherUrl:\n" + otherUrl +
 	"\n" + "memo:\n" + memo;	
 
-
 const extraString = "title=" + title + 
 	"\tdescription=" + description + 
 	"\teventLocation=" + eventLocation +
 	"\tandroid.intent.extra.EMAIL=" + email;
 
 const extraInt = "";
-
 const extraLong = "beginTime=" + beginMiliTime + 
 	"\tendTime=" + endMiliTime;
+const extraFloat = "";
 
 const intentType = "android.intent.action.INSERT";
 const actionType = "content://com.android.calendar/events";
@@ -75,5 +74,6 @@ jsIntent.launchApp(
 	actionType,
 	extraString,
 	extraInt,
-	extraLong
+	extraLong,
+	extraFloat,
 );
