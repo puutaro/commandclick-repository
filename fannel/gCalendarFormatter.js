@@ -3,7 +3,7 @@
 /// LABELING_SECTION_START
 // Set format Google Calendar @puutaro
 // sourceUrl: schedule mail url etc..
-// LAUNCH_GMAIL: Launch mail url, set gmail or etc url 
+// LAUNCH_URL: Launch url
 // --
 // --
 // bellow setting variable main line up
@@ -22,7 +22,7 @@ terminalOutputMode="NORMAL"
 setVariableType="scheduleDate:DT="
 setVariableType="biginTime:TM="
 setVariableType="endTime:TM="
-setVariableType="LAUNCH_GMAIL:EBTN=jsf '${0}' url"
+setVariableType="LAUNCH_URL:EB=jsf '${0}' url"
 scriptFileName="gCalendarFormatter.js"
 /// SETTING_SECTION_END
 
@@ -38,7 +38,7 @@ otherUrl=""
 memo=""
 eventLocation=""
 email=""
-LAUNCH_GMAIL=""
+LAUNCH_URL=""
 /// CMD_VARIABLE_SECTION_END
 
 
@@ -92,7 +92,7 @@ function execRegistCurrendar(){
 
 
 function gmailLaunchMode(){
-	window.location.href = LAUNCH_GMAIL;
+	window.location.href = LAUNCH_URL;
 };
 
 
