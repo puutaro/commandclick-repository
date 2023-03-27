@@ -22,7 +22,7 @@ terminalOutputMode="NORMAL"
 setVariableType="scheduleDate:DT="
 setVariableType="biginTime:TM="
 setVariableType="endTime:TM="
-setVariableType="LAUNCH_GMAIL:BTN=jsf '${0}' url"
+setVariableType="LAUNCH_GMAIL:EBTN=jsf '${0}' url"
 scriptFileName="gCalendarFormatter.js"
 /// SETTING_SECTION_END
 
