@@ -52,7 +52,7 @@ scriptFileName="cmdTwitter.js"
 
 
 /// CMD_VARIABLE_SECTION_START
-searchWord="減税"
+searchWord=""
 minRetweetCount="0"
 minLikeCount="0"
 minImpressionCount="1000"
