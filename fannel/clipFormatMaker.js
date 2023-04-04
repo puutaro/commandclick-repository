@@ -46,7 +46,6 @@ const CLIP_MAKER_TARGET_JS_PATH = "CLIP_MAKER_TARGET_JS_PATH";
 
 try {
 	const creatorJSPath = makeCreatorJSPath(creatorJSName);
-	jsToast.short(creatorJSPath);
 	const jsFannelContents = jsFileSystem.readLocalFile(
 		clipHtmlPath
 	).replace(CLIP_MAKER_TARGET_JS_PATH, creatorJSPath);
