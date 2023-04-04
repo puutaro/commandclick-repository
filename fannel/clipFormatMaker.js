@@ -33,13 +33,6 @@ createJSName=""
 
 let args = jsArgs.get().split("\t");
 const firstArgs = args.at(0);
-if(!createJSName.endsWith(".js")){
-	createJSName = createJSName + ".js";
-};
-const createJSPrefix = "clip";
-if(!createJSName.startsWith(createJSPrefix)){
-	createJSName = createJSPrefix + createJSName;
-};
 const currentAppDirPath = "${01}";
 const createJSPath = [currentAppDirPath, createJSName].join('/');
 const clipFileName = "${02}".replace(/\.js$/, "");
@@ -53,9 +46,20 @@ const clipEditHtmlPath = [clipEditHtmlDirPath, clipHtmlName].join('/');
 const CLIP_MAKER_TARGET_JS_PATH = "CLIP_MAKER_TARGET_JS_PATH";
 
 try {
+	if(!createJSName){
+		alert("createJSName must be written");
+		throw new Error('exit');
+	};
 	if(createJSName == "${02}") {
 		alert("${02} cannot edit");
-		throw new Error('終了します');
+		throw new Error('exit');
+	};
+	if(!createJSName.endsWith(".js")){
+		createJSName = createJSName + ".js";
+	};
+	const createJSPrefix = "clip";
+	if(!createJSName.startsWith(createJSPrefix)){
+		createJSName = createJSPrefix + createJSName;
 	};
 	const jsFannelContents = jsFileSystem.readLocalFile(
 		clipHtmlPath
