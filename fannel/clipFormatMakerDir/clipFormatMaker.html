@@ -239,7 +239,7 @@ const N=5;
 const zenkakuSimbolRegex = /[^a-zA-Z0-9_]/;
 const prefixNumRegex = /^[0-9]/;
 const setVariableTypeName = 'setVariableType'
-const cbMark = "CB"
+const cbMark = "ECB"
 const ebMark = "EB"
 let INPUT_CLASS_TYPE = {
     cbFormFieldClass: 'cb-form-field',
@@ -278,11 +278,11 @@ let SET_VAL_TYPE_JANRE = {
 };
 
 let READ_VAL_TYPE = {
-	CB: 'CB',
-    TXT: 'TXT',
-    EB: 'EB',
-    LTXT: 'LTXT',
-    NEWLINE: 'NEWLINE'
+	ECB: 'ECB',
+  TXT: 'TXT',
+  EB: 'EB',
+  LTXT: 'LTXT',
+  NEWLINE: 'NEWLINE'
 };
 
 $(document).ready(function() {
@@ -607,21 +607,21 @@ function execAddClipParts(
 		const supVal = mapObj.get(SET_VAL_TYPE_JANRE.supVal)
 		const valType = mapObj.get(SET_VAL_TYPE_JANRE.valType)
 	  	switch (valType){
-	  		case READ_VAL_TYPE.CB:
-				appendCbBox(name, supVal)
-				break;
-			case READ_VAL_TYPE.TXT:
-				appendTextField(name, value);
-				break;
-			case READ_VAL_TYPE.LTXT:
-				appendTextWithLabelField(name, value)
-				break;
-			case READ_VAL_TYPE.EB:
-				appendUrlLaunchButton(name, value)
-				break;
-			case READ_VAL_TYPE.NEWLINE:
-				appendNewLineField()
-				break;
+				case READ_VAL_TYPE.ECB:
+					appendCbBox(name, supVal)
+					break;
+				case READ_VAL_TYPE.TXT:
+					appendTextField(name, value);
+					break;
+				case READ_VAL_TYPE.LTXT:
+					appendTextWithLabelField(name, value)
+					break;
+				case READ_VAL_TYPE.EB:
+					appendUrlLaunchButton(name, value)
+					break;
+				case READ_VAL_TYPE.NEWLINE:
+					appendNewLineField()
+					break;
 		}
 	});
 }
