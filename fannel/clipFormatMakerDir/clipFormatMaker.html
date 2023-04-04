@@ -4,8 +4,7 @@
 	<title>Clip Fomatter Creater</title>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/themes/smoothness/jquery-ui.css">
-
+	<link rel="stylesheet" href="file:///android_asset/css/jquery-ui.css">
 	<style>
 
   	* {
@@ -73,7 +72,6 @@
 	.bottom-btn-box {
 		display: flex;
 		position: fixed;
-/*		padding-bottom: 10px;*/
 		width: 95%;
 		bottom: 0;
 		z-index: 10;
@@ -225,10 +223,10 @@
 	  <div class="dialogForm">
 	</div>
 </div>
-<script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
-<script type="text/javascript" src="https://code.jquery.com/ui/1.12.0/jquery-ui.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/sortablejs@1.15.0/Sortable.min.js"></script>
-<script src="file:///android_asset/js/long-press-event.min.js"></script>
+<script type="text/javascript" src="file:///android_asset/js/jquery-3.6.3.min.js"></script>
+<script type="text/javascript" src="file:///android_asset/js/jquery-ui.min.js"></script>
+<script type="text/javascript" src="file:///android_asset/js/Sortable.js"></script>
+<script type="text/javascript" src="file:///android_asset/js/long-press-event.min.js"></script>
 <script>
 
 const createClipPath = 'CLIP_MAKER_TARGET_JS_PATH';
@@ -1142,6 +1140,7 @@ function closeDialog() {
 
 function sortableJsWrapper(selectorId){
   var el = document.getElementById(selectorId);
+  var oldInnerHtml = "";
   var sortable = new Sortable(el, {
      delay: 100,
      removeOnSpill: true,
@@ -1167,16 +1166,9 @@ function makeRandomValName() {
 
 function removeConfirmForSort(evt){
 	const confirmBool = confirm("delete ok?")
-	if(!confirmBool) {
-		var tagName = evt.item.tagName;
-	    var items = evt.from.getElementsByTagName(tagName);
-	    if (evt.oldIndex > evt.newIndex) {
-	        evt.from.insertBefore(evt.item, items[evt.oldIndex+1]);
-	    }
-	    else {
-	        evt.from.insertBefore(evt.item, items[evt.oldIndex]);
-	    }
-	}
+	if(confirmBool) return
+  var items = evt.from.getElementsByClassName("list-box");
+  evt.from.insertBefore(evt.item, items[evt.oldIndex]);
 }
 </script>
 

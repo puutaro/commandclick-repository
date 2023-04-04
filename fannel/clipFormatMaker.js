@@ -13,8 +13,8 @@
 //  - DEBUG: stdr + stderr
 //  - NO: no output (bacground exec)
 // * onUrlHistoryRegister is url history update signal
-//  - ON: register
-//  - OFF: unregister
+//  - ON: update
+//  - OFF: no update
 /// LABELING_SECTION_END
 
 
