@@ -75,16 +75,11 @@ Install="install"
 /// Please write bellow with javascript
 
 
-
-function exit(){
-	throw new Error('exit');
-};
-
 let args = jsArgs.get().split("\t");
 const DEFAULT_TERM_OUTPUT = "NORMAL";
 const FIRST_ARGS = args.at(0);
 const EXEC_SHELL_PATH = "${01}/cmdYoutuberDir/cmdYoutuber.sh";
-const EDIT_FILE_PATH = "${01}/" + tubePlayListName;
+const EDIT_FILE_PATH = makeCreatorJSPath(tubePlayListName);
 const APP_URL_HISTORY_PATH="${01}/system/url/cmdclickUrlHistory";
 const INSTALL_MODE = "install";
 const SHUFFLE_MODE = "shuffle";
@@ -142,4 +137,23 @@ switch(FIRST_ARGS){
 		);
 		exit();
 		break;
+};
+
+
+function exit(){
+	throw new Error('exit');
+};
+
+
+function makeCreatorJSPath(tubePlayListName){
+	if(!tubePlayListName){
+		alert("tubePlayListName must be written");
+		throw new Error('exit');
+		exitZero();
+	};
+	const tubePrefix = "tube";
+	if(!tubePlayListName.startsWith(tubePrefix)){
+		tubePlayListName = tubePrefix + tubePlayListName;
+	};
+	return ["${01}", tubePlayListName].join('/');
 };
