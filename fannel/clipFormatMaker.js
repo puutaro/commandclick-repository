@@ -12,12 +12,16 @@
 //  - REFLASH_AND_FIRST_ROW: Before terminal output, screen resflesh and focus first row
 //  - DEBUG: stdr + stderr
 //  - NO: no output (bacground exec)
+// * onUrlHistoryRegister is url history update signal
+//  - ON: register
+//  - OFF: unregister
 /// LABELING_SECTION_END
 
 
 /// SETTING_SECTION_START
 editExecute="ALWAYS"
 terminalOutputMode="NORMAL"
+onUrlHistoryRegister="OFF"
 setVariableType="creatorJSName:EFCB=clip&js"
 scriptFileName="clipFormatMaker.js"
 /// SETTING_SECTION_END
