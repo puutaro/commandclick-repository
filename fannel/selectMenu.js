@@ -71,4 +71,4 @@ const selectedMenu = jsDialog.listDialog(
 const selectedJsPath = [parentDirPath, selectedMenu].join("/");
 
 const jsUrlString = jsUrl.makeJsUrl(selectedJsPath);
-window.location.href = jsUrlString;
+jsUrl.loadUrl(jsUrlString);
