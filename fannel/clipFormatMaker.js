@@ -33,8 +33,12 @@ createJSName=""
 
 let args = jsArgs.get().split("\t");
 const firstArgs = args.at(0);
-if(!clipFileName.endsWith(".js")){
+if(!createJSName.endsWith(".js")){
 	createJSName = createJSName + ".js";
+};
+const createJSPrefix = "clip";
+if(!createJSName.startsWith(createJSPrefix)){
+	createJSName = createJSPrefix + createJSName;
 };
 const currentAppDirPath = "${01}";
 const createJSPath = [currentAppDirPath, createJSName].join('/');
@@ -46,7 +50,6 @@ const clipHtmlPath = [clipDirPath, clipHtmlName].join('/');
 const clipEditHtmlDirName = "edit";
 const clipEditHtmlDirPath = [clipDirPath, clipEditHtmlDirName].join('/');
 const clipEditHtmlPath = [clipEditHtmlDirPath, clipHtmlName].join('/');
-const CLIP_MAKER_LOCATION_DIR = "CLIP_MAKER_LOCATION_DIR_PATH";
 const CLIP_MAKER_TARGET_JS_PATH = "CLIP_MAKER_TARGET_JS_PATH";
 
 try {
@@ -56,8 +59,7 @@ try {
 	};
 	const jsFannelContents = jsFileSystem.readLocalFile(
 		clipHtmlPath
-	).replace("CLIP_MAKER_LOCATION_DIR", currentAppDirPath)
-	.replace("CLIP_MAKER_TARGET_JS_PATH", createJSPath);
+	).replace(CLIP_MAKER_TARGET_JS_PATH, createJSPath);
 
 	jsFileSystem.createDir(clipEditHtmlDirPath);
 	jsFileSystem.writeLocalFile(

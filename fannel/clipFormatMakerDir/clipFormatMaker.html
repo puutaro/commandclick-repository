@@ -231,9 +231,8 @@
 <script src="file:///android_asset/js/long-press-event.min.js"></script>
 <script>
 
-const currentAppDirPath = "/storage/emulated/0/Documents/cmdclick/AppDir/default";
-const createClipName = `clipText.js`
-const createClipPath = `${currentAppDirPath}/${createClipName}`
+const createClipPath = 'CLIP_MAKER_TARGET_JS_PATH';
+const createClipName = createClipPath.split("/").at(-1);
 const siteTitlePrefix = "Clip Fomatter Creater For"
 const targetFileName = createClipName.replace(/\.js/, '');
 const siteTitle = [siteTitlePrefix, targetFileName].join(' ');
@@ -460,8 +459,7 @@ $('#createFannel').click(function() {
 	jsFileSystem.writeLocalFile(
         createClipPath,
         jsFileContents
-    );
-    jsToast.short(`\n${currentAppDirPath}/clipText.js`);
+  );
 	jsToast.short("create ok");
   });
 	
