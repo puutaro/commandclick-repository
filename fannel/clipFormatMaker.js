@@ -2,7 +2,7 @@
 
 /// LABELING_SECTION_START
 // Create clipboard format by drag & drop @puutaro
-// createJSName: you wont to create jsFileName
+// creatorJSName: you wont to create jsFileName
 // --
 // --
 // bellow setting variable main line up
@@ -18,13 +18,13 @@
 /// SETTING_SECTION_START
 editExecute="ALWAYS"
 terminalOutputMode="NORMAL"
-setVariableType="createJSName:EFCB=clip&js"
+setVariableType="creatorJSName:EFCB=clip&js"
 scriptFileName="clipFormatMaker.js"
 /// SETTING_SECTION_END
 
 
 /// CMD_VARIABLE_SECTION_START
-createJSName=""
+creatorJSName=""
 /// CMD_VARIABLE_SECTION_END
 
 
@@ -34,7 +34,6 @@ createJSName=""
 let args = jsArgs.get().split("\t");
 const firstArgs = args.at(0);
 const currentAppDirPath = "${01}";
-const createJSPath = [currentAppDirPath, createJSName].join('/');
 const clipFileName = "${02}".replace(/\.js$/, "");
 const clipDirName = [clipFileName, "Dir"].join('');
 const clipDirPath = [currentAppDirPath, clipDirName].join('/');
@@ -46,24 +45,11 @@ const clipEditHtmlPath = [clipEditHtmlDirPath, clipHtmlName].join('/');
 const CLIP_MAKER_TARGET_JS_PATH = "CLIP_MAKER_TARGET_JS_PATH";
 
 try {
-	if(!createJSName){
-		alert("createJSName must be written");
-		throw new Error('exit');
-	};
-	if(createJSName == "${02}") {
-		alert("${02} cannot edit");
-		throw new Error('exit');
-	};
-	if(!createJSName.endsWith(".js")){
-		createJSName = createJSName + ".js";
-	};
-	const createJSPrefix = "clip";
-	if(!createJSName.startsWith(createJSPrefix)){
-		createJSName = createJSPrefix + createJSName;
-	};
+	const creatorJSPath = makeCreatorJSPath(creatorJSName);
+	jsToast.short(creatorJSPath);
 	const jsFannelContents = jsFileSystem.readLocalFile(
 		clipHtmlPath
-	).replace(CLIP_MAKER_TARGET_JS_PATH, createJSPath);
+	).replace(CLIP_MAKER_TARGET_JS_PATH, creatorJSPath);
 
 	jsFileSystem.createDir(clipEditHtmlDirPath);
 	jsFileSystem.writeLocalFile(
@@ -74,3 +60,22 @@ try {
 } catch (e) {
 	console.log(e.message);
 };
+
+function makeCreatorJSPath(creatorJSName){
+	if(!creatorJSName){
+		alert("creatorJSName must be written");
+		throw new Error('exit');
+	};
+	if(creatorJSName == "${02}") {
+		alert("${02} cannot edit");
+		throw new Error('exit');
+	};
+	if(!creatorJSName.endsWith(".js")){
+		creatorJSName = creatorJSName + ".js";
+	};
+	const creatorJSPrefix = "clip";
+	if(!creatorJSName.startsWith(creatorJSPrefix)){
+		creatorJSName = creatorJSPrefix + creatorJSName;
+	};
+	return [currentAppDirPath, creatorJSName].join('/');
+}
