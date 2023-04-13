@@ -18,9 +18,9 @@
 // 	STOP
 //		- Play stop (recommend: notification bar swip out)
 // 	startNum 
-//		- Start number
+//		- Start number, 0: firstNumber
 // 	endNum
-//		- End number
+//		- End number, 0: lastNumber
 // --
 // --
 // Bellow setting variable main line up
