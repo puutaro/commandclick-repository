@@ -70,10 +70,10 @@ scriptFileName="cmdMusicPlayer.js"
 
 
 /// CMD_VARIABLE_SECTION_START
-musicDir="/storage/emulated/0/Music/duo/DUO 復習用"
+musicDir=""
 musicPlayListName="musicPlayList"
 musicPlay="ordinaly"
-numberPlay="4"
+numberPlay="1"
 STOP=""
 startNum="0"
 endNum="0"
