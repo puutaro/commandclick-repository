@@ -103,6 +103,8 @@ switch(FIRST_ARGS){
 			EDIT_FILE_PATH,
 			APP_URL_HISTORY_PATH,
 			"false",
+			"true",
+			"true",
 			"urlString.startsWith('http') && urlString.includes(\"youtube\");"
 		);
 		break;

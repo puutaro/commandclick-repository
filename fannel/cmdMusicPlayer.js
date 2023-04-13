@@ -113,6 +113,8 @@ switch(FIRST_ARGS){
 			EDIT_FILE_PATH,
 			"",
 			"false",
+			"false",
+			"false",
 			"true"
 		);
 		break;
