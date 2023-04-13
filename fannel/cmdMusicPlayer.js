@@ -1,27 +1,29 @@
 
 
 /// LABELING_SECTION_START
-// youtube background play fannel @puutaro
+// music player @puutaro
 // 	install -> install require package
-// 	play -> youtube play list edit site
-//		- recent visit youtube url show in "Save title"
-//		- change item  order by drag and drop 
-//		- delete item  by doragging to another area(no item area).
-// 	tubePlayListName 
+// 	play -> music play list site
+// musicDir -> Target music file saved directory path
+// 	musicPlayListName 
 //		- Input or select play list file name
-//		- prefix must be "tube" ex) "tubePlayList"
-// 	tubePlay 
-//		- select shuffle or ordinaly and press
-//		- press "Exec" and execute play list
+//		- Prefix must be "music" ex) "musicPlayList"
+// 	musicPlay 
+//		- Select shuffle or ordinaly and press
+//		- Press "Exec" and execute play list
 // 	numberPlay 
 //		- Input or inc/dec number
-//		- press "Exec" and play number
+//		- Press "Exec" and play number
 //	volume control enable when CommandClick hide
 // 	STOP
-//		- play stop (recommend: notification bar swip out)
+//		- Play stop (recommend: notification bar swip out)
+// 	startNum 
+//		- Start number
+// 	endNum
+//		- End number
 // --
 // --
-// bellow setting variable main line up
+// Bellow setting variable main line up
 // * terminalSizeType is cmdclick terminal size option
 //  - OFF: no adjust (default)
 //  - LONG: LongSize
@@ -47,28 +49,34 @@
 
 /// SETTING_SECTION_START
 editExecute="ALWAYS"
-terminalSizeType="OFF"
-terminalOutputMode="LONG"
+terminalSizeType="LONG"
+terminalOutputMode="NORMAL"
 onUpdateLastModify="ON"
 terminalFontZoom="0"
 terminalColor=""
 terminalFontColor=""
-setVariableType="tubePlayListName:EFCB=tube&NoExtend"
-setVariableType="tubePlay:CBB=shuffle!ordinaly|::TermOut::jsf '${0}'"
+setVariableType="musicDir:DIR="
+setVariableType="musicPlayListName:EFCB=music&NoExtend"
+setVariableType="musicPlay:CBB=ordinaly!shuffle!reverse|::TermOut::jsf '${0}'"
 setVariableType="numberPlay:NUMB=!1..1000!1|::TermOut::jsf '${0}' number"
+setVariableType="startNum:NUM=!0..10000!1"
+setVariableType="endNum:NUM=!0..10000!1"
 setVariableType="STOP:BTN=pkill -9 mpv"
 setVariableType="Install:BTN=jsf '${0}'"
-setVariableType="deleteTubePlayList:EFCBB=tube&NoExtend|jsf '${0}' delete"
-scriptFileName="cmdYoutuber.js"
+setVariableType="deleteMusicPlayList:EFCBB=music&NoExtend|jsf '${0}' delete"
+scriptFileName="cmdMusicPlayer.js"
 /// SETTING_SECTION_END
 
 
 /// CMD_VARIABLE_SECTION_START
-tubePlayListName="tubePlayList"
-tubePlay="shuffle"
+musicDir="/storage/emulated/0/Music/duo/DUO 復習用"
+musicPlayListName="musicPlayList"
+musicPlay="ordinaly"
 numberPlay="4"
 STOP=""
-deleteTubePlayList=""
+startNum="0"
+endNum="0"
+deleteMusicPlayList=""
 Install="install"
 /// CMD_VARIABLE_SECTION_END
 
@@ -79,12 +87,12 @@ Install="install"
 let args = jsArgs.get().split("\t");
 const DEFAULT_TERM_OUTPUT = "NORMAL";
 const FIRST_ARGS = args.at(0);
-const EXEC_SHELL_PATH = "${01}/cmdYoutuberDir/cmdYoutuber.sh";
-const EDIT_FILE_PATH = makeCreatorJSPath(tubePlayListName);
-const APP_URL_HISTORY_PATH="${01}/system/url/cmdclickUrlHistory";
+const EXEC_SHELL_PATH = "${01}/cmdMusicPlayerDir/cmdMusicPlayer.sh";
+const EDIT_FILE_PATH = makeCreatorJSPath(musicPlayListName);
 const INSTALL_MODE = "install";
 const SHUFFLE_MODE = "shuffle";
 const ORDINALY_MODE = "ordinaly";
+const REVERSE_MODE = "reverse";
 const NUMBER_MODE = "number";
 const DELETE_MODE = "delete";
 
@@ -94,16 +102,17 @@ if(FIRST_ARGS){
 		scriptFileName,
 		terminalOutputMode,
 	);
-}
+};
 
 
 switch(FIRST_ARGS){
 	case "":
+		initFileList();
 		jsIntent.launchEditSite(
 			EDIT_FILE_PATH,
-			APP_URL_HISTORY_PATH,
+			"",
 			"false",
-			"urlString.startsWith('http') && urlString.includes(\"youtube\");"
+			"true"
 		);
 		break;
 	case INSTALL_MODE:
@@ -120,6 +129,7 @@ switch(FIRST_ARGS){
 		);
 		break;
 	case ORDINALY_MODE:
+	case REVERSE_MODE:
 		cmdIntent.run(
 			"bash \"" + EXEC_SHELL_PATH + 
 			"\" " + ORDINALY_MODE + 
@@ -135,25 +145,69 @@ switch(FIRST_ARGS){
 		);
 		break;
 	case DELETE_MODE:
-		execDeleteTubePlayList();
+		execDeleteMusicPlayList();
 		break;
 };
 
 
-function makeCreatorJSPath(tubePlayListName){
-	if(!tubePlayListName){
-		alert("tubePlayListName must be written");
+function makeCreatorJSPath(musicPlayListName){
+	if(!musicPlayListName){
+		alert("musicPlayListName must be written");
 		throw new Error('exit');
 		exitZero();
 	};
-	const tubePrefix = "tube";
-	if(!tubePlayListName.startsWith(tubePrefix)){
-		tubePlayListName = tubePrefix + tubePlayListName;
+	const musicPrefix = "music";
+	if(
+		!musicPlayListName.startsWith(musicPrefix)
+	){
+		musicPlayListName = musicPrefix + musicPlayListName;
 	};
-	return ["${01}", tubePlayListName].join('/');
+	return ["${01}", musicPlayListName].join('/');
 };
 
-function execDeleteTubePlayList(){
+function initFileList(){
+	let fileList = jsFileSystem.showFileList(
+		musicDir
+	).split("\t").map(function(file){
+		const title = file.split('/').at(-1);
+		return `${title}\t${musicDir}/${file}`;
+	}).sort();
+	if(musicPlay == REVERSE_MODE){
+		fileList = fileList.reverse();
+	};
+
+	const fileListLimitNum = fileList.length - 1;
+
+	if(startNum != 0) startNum--;
+	if(
+		startNum > fileListLimitNum
+	) startNum = fileListLimitNum;
+
+	if(endNum == 0) endNum = fileListLimitNum;
+	else endNum--;
+	if(
+		endNum > fileListLimitNum
+	) endNum = fileListLimitNum;
+	if(startNum > endNum) {
+		jsFileSystem.writeLocalFile(
+			EDIT_FILE_PATH,
+			[""].join("\n")
+		);
+		return;
+	};
+	let filterFileList = fileList.filter(
+		function(file, index){
+			return startNum <= index 
+						&& index <= endNum;
+		}
+	);
+	jsFileSystem.writeLocalFile(
+		EDIT_FILE_PATH,
+		filterFileList.join("\n")
+	);
+};
+
+function execDeleteMusicPlayList(){
 	jsFileSystem.jsEcho(
 		terminalOutputMode,
 		`remove: ${EDIT_FILE_PATH}`

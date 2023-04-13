@@ -69,7 +69,7 @@ play_temp_list(){
 	local play_mode="${1:-}"
 	termuxmpv \
 			--no-video \
-			"${play_mode}"  \
+			${play_mode}  \
 			--loop-playlist=inf \
 			--playlist="${TMP_PLAY_LIST_PATH}"
 }
