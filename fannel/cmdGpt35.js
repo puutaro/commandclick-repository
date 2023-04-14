@@ -21,14 +21,32 @@ terminalSizeType="LONG"
 onUrlHistoryRegister="OFF"
 terminalFontZoom="130"
 setVariableType="LAUNCH_GPT35:RO="
-setVariableType="PASTE_TXT:EB=jsf '${0}' paste"
+setVariableType="PASTE_TXT1:EB=jsf '${0}'"
+setVariableType="PASTE_TXT2:EB=jsf '${0}'"
+setVariableType="PASTE_TXT3:EB=jsf '${0}'"
+setVariableType="PASTE_TXT4:EB=jsf '${0}'"
+setVariableType="PASTE_TXT5:EB=jsf '${0}'"
+setVariableType="PASTE_TXT6:EB=jsf '${0}'"
+setVariableType="PASTE_TXT7:EB=jsf '${0}'"
+setVariableType="PASTE_TXT8:EB=jsf '${0}'"
+setVariableType="PASTE_TXT9:EB=jsf '${0}'"
+setVariableType="PASTE_TXT10:EB=jsf '${0}'"
 scriptFileName="cmdGpt35.js"
 /// SETTING_SECTION_END
 
 
 /// CMD_VARIABLE_SECTION_START
 LAUNCH_GPT35="https://huggingface.co/spaces/kunishou/Rapid-GPT"
-PASTE_TXT=""
+PASTE_TXT1="PASTE_TXT1"
+PASTE_TXT2="PASTE_TXT2"
+PASTE_TXT3="PASTE_TXT3"
+PASTE_TXT4="PASTE_TXT4"
+PASTE_TXT5="PASTE_TXT5"
+PASTE_TXT6="PASTE_TXT6"
+PASTE_TXT7="PASTE_TXT7"
+PASTE_TXT8="PASTE_TXT8"
+PASTE_TXT9="PASTE_TXT9"
+PASTE_TXT10="PASTE_TXT10"
 /// CMD_VARIABLE_SECTION_END
 
 
@@ -46,8 +64,8 @@ switch(firstArgs){
 	case launchGpt35Arg:
 		execLaunchGpt35();
 		break;
-	case pasteArg:
-		pasteText(PASTE_TXT);
+	case firstArgs.includes("PASTE_TXT"):
+		pasteText(eval(firstArgs));
 		break;
 };
 
@@ -58,6 +76,5 @@ function execLaunchGpt35(){
 
 function pasteText(text){
 	jsUtil.copyToClipboard(text, 10);
+	jsToast.short("copy ok");
 };
-
-
