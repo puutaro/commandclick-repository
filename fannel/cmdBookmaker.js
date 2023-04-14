@@ -24,8 +24,9 @@
 
 /// SETTING_SECTION_START
 editExecute="NO"
+terminalSizeType="LONG"
 onUpdateLastModify="ON"
-setVariableType="bookmarkName:EFCB=book"
+setVariableType="bookmarkName:EFCB=${01}/cmdBookmakerDir/edit&book&NoExtend"
 setVariableType=""
 scriptFileName="cmdBookmaker.js"
 /// SETTING_SECTION_END
@@ -39,7 +40,9 @@ bookmarkName="bookSites"
 /// Please write bellow with javascript
 
 
-const EDIT_FILE_PATH = "${01}/" + bookmarkName;
+const CMD_BOOKMAKER_DIR_PATH = "${01}/cmdBookmakerDir";
+const CMD_BOOKMAKER_EDIT_DIR_PATH = `${CMD_BOOKMAKER_DIR_PATH}/edit`;
+const EDIT_FILE_PATH = `${CMD_BOOKMAKER_EDIT_DIR_PATH}/${bookmarkName}`;
 const APP_URL_HISTORY_PATH="${01}/system/url/cmdclickUrlHistory";
 
 
