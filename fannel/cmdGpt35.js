@@ -21,16 +21,16 @@ terminalSizeType="LONG"
 onUrlHistoryRegister="OFF"
 terminalFontZoom="130"
 setVariableType="LAUNCH_GPT35:RO="
-setVariableType="PASTE_TXT1:EB=jsf '${0}' PASTE_TXT1"
-setVariableType="PASTE_TXT2:EB=jsf '${0}' PASTE_TXT2"
-setVariableType="PASTE_TXT3:EB=jsf '${0}' PASTE_TXT3"
-setVariableType="PASTE_TXT4:EB=jsf '${0}' PASTE_TXT4"
-setVariableType="PASTE_TXT5:EB=jsf '${0}' PASTE_TXT5"
-setVariableType="PASTE_TXT6:EB=jsf '${0}' PASTE_TXT6"
-setVariableType="PASTE_TXT7:EB=jsf '${0}' PASTE_TXT7"
-setVariableType="PASTE_TXT8:EB=jsf '${0}' PASTE_TXT8"
-setVariableType="PASTE_TXT9:EB=jsf '${0}' PASTE_TXT9"
-setVariableType="PASTE_TXT10:EB=jsf '${0}' PASTE_TXT10"
+setVariableType="PASTE_TXT1:EB=::TermLong::jsf '${0}' PASTE_TXT1"
+setVariableType="PASTE_TXT2:EB=::TermLong::jsf '${0}' PASTE_TXT2"
+setVariableType="PASTE_TXT3:EB=::TermLong::jsf '${0}' PASTE_TXT3"
+setVariableType="PASTE_TXT4:EB=::TermLong::jsf '${0}' PASTE_TXT4"
+setVariableType="PASTE_TXT5:EB=::TermLong::jsf '${0}' PASTE_TXT5"
+setVariableType="PASTE_TXT6:EB=::TermLong::jsf '${0}' PASTE_TXT6"
+setVariableType="PASTE_TXT7:EB=::TermLong::jsf '${0}' PASTE_TXT7"
+setVariableType="PASTE_TXT8:EB=::TermLong::jsf '${0}' PASTE_TXT8"
+setVariableType="PASTE_TXT9:EB=::TermLong::jsf '${0}' PASTE_TXT9"
+setVariableType="PASTE_TXT10:EB=::TermLong::jsf '${0}' PASTE_TXT10"
 scriptFileName="cmdGpt35.js"
 /// SETTING_SECTION_END
 
@@ -60,8 +60,8 @@ const launchGpt35Arg = "";
 const pasteArg = "paste";
 
 
-switch(firstArgs){
-	case launchGpt35Arg:
+switch(true){
+	case firstArgs == "":
 		execLaunchGpt35();
 		break;
 	case firstArgs.includes("PASTE_TXT"):
@@ -77,4 +77,5 @@ function execLaunchGpt35(){
 function pasteText(text){
 	jsUtil.copyToClipboard(text, 10);
 	jsToast.short("copy ok");
+	execLaunchGpt35();
 };
