@@ -5,8 +5,9 @@ set -eu
 
 PARENT_DIR_PATH="$(dirname "$0")"
 APP_URL_HISTORY_PATH="${PARENT_DIR_PATH}/system/url/cmdclickUrlHistory"
+PLAY_PROCESS_DIR_PATH="${PARENT_DIR_PATH}/process"
 TMP_PLAY_LIST_NAME="tmp_play_list"
-TMP_PLAY_LIST_PATH="${PARENT_DIR_PATH}/${TMP_PLAY_LIST_NAME}"
+TMP_PLAY_LIST_PATH="${PLAY_PROCESS_DIR_PATH}/${TMP_PLAY_LIST_NAME}"
 SHUFFLE_MODE="shuffle"
 ORDINALY_MODE="ordinaly"
 NUMBER_MODE="number"
@@ -102,6 +103,9 @@ play_mode_handler(){
 	local play_mode="${1}"
 	local tubePlayListPath="${2}"
 	local playNumber="${3:-}"
+	if [ ! -d "${PLAY_PROCESS_DIR_PATH}" ]; then
+		mkdir -p "${PLAY_PROCESS_DIR_PATH}";
+	fi
 	echo "play_mode: ${play_mode}"
 	echo "playListPath: ${tubePlayListPath}"
 	echo "playNumber: ${playNumber}"
