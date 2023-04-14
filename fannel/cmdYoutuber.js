@@ -47,8 +47,8 @@
 
 /// SETTING_SECTION_START
 editExecute="ALWAYS"
-terminalSizeType="OFF"
-terminalOutputMode="LONG"
+terminalSizeType="LONG"
+terminalOutputMode="NORMAL"
 onUpdateLastModify="ON"
 terminalFontZoom="0"
 terminalColor=""
