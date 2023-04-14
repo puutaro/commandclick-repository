@@ -2,6 +2,7 @@
 
 /// LABELING_SECTION_START
 // GPT3.5 free client @puutaro
+// * TXT_TO_CLIP -> copy text to clipboard and launch gpt35 site
 // bellow setting variable main line up
 // * EditExecute is edit mode change
 //	- NO is normal edit
@@ -21,32 +22,32 @@ terminalSizeType="LONG"
 onUrlHistoryRegister="OFF"
 terminalFontZoom="130"
 setVariableType="LAUNCH_GPT35:RO="
-setVariableType="PASTE_TXT1:EB=::TermLong::jsf '${0}' PASTE_TXT1"
-setVariableType="PASTE_TXT2:EB=::TermLong::jsf '${0}' PASTE_TXT2"
-setVariableType="PASTE_TXT3:EB=::TermLong::jsf '${0}' PASTE_TXT3"
-setVariableType="PASTE_TXT4:EB=::TermLong::jsf '${0}' PASTE_TXT4"
-setVariableType="PASTE_TXT5:EB=::TermLong::jsf '${0}' PASTE_TXT5"
-setVariableType="PASTE_TXT6:EB=::TermLong::jsf '${0}' PASTE_TXT6"
-setVariableType="PASTE_TXT7:EB=::TermLong::jsf '${0}' PASTE_TXT7"
-setVariableType="PASTE_TXT8:EB=::TermLong::jsf '${0}' PASTE_TXT8"
-setVariableType="PASTE_TXT9:EB=::TermLong::jsf '${0}' PASTE_TXT9"
-setVariableType="PASTE_TXT10:EB=::TermLong::jsf '${0}' PASTE_TXT10"
+setVariableType="TXT_TO_CLIP1:EB=::TermLong::jsf '${0}' TXT_TO_CLIP1"
+setVariableType="TXT_TO_CLIP2:EB=::TermLong::jsf '${0}' TXT_TO_CLIP2"
+setVariableType="TXT_TO_CLIP3:EB=::TermLong::jsf '${0}' TXT_TO_CLIP3"
+setVariableType="TXT_TO_CLIP4:EB=::TermLong::jsf '${0}' TXT_TO_CLIP4"
+setVariableType="TXT_TO_CLIP5:EB=::TermLong::jsf '${0}' TXT_TO_CLIP5"
+setVariableType="TXT_TO_CLIP6:EB=::TermLong::jsf '${0}' TXT_TO_CLIP6"
+setVariableType="TXT_TO_CLIP7:EB=::TermLong::jsf '${0}' TXT_TO_CLIP7"
+setVariableType="TXT_TO_CLIP8:EB=::TermLong::jsf '${0}' TXT_TO_CLIP8"
+setVariableType="TXT_TO_CLIP9:EB=::TermLong::jsf '${0}' TXT_TO_CLIP9"
+setVariableType="TXT_TO_CLIP10:EB=::TermLong::jsf '${0}' TXT_TO_CLIP10"
 scriptFileName="cmdGpt35.js"
 /// SETTING_SECTION_END
 
 
 /// CMD_VARIABLE_SECTION_START
 LAUNCH_GPT35="https://huggingface.co/spaces/kunishou/Rapid-GPT"
-PASTE_TXT1=""
-PASTE_TXT2=""
-PASTE_TXT3=""
-PASTE_TXT4=""
-PASTE_TXT5=""
-PASTE_TXT6=""
-PASTE_TXT7=""
-PASTE_TXT8=""
-PASTE_TXT9=""
-PASTE_TXT10=""
+TXT_TO_CLIP1=""
+TXT_TO_CLIP2=""
+TXT_TO_CLIP3=""
+TXT_TO_CLIP4=""
+TXT_TO_CLIP5=""
+TXT_TO_CLIP6=""
+TXT_TO_CLIP7=""
+TXT_TO_CLIP8=""
+TXT_TO_CLIP9=""
+TXT_TO_CLIP10=""
 /// CMD_VARIABLE_SECTION_END
 
 
@@ -64,7 +65,7 @@ switch(true){
 	case firstArgs == "":
 		execLaunchGpt35();
 		break;
-	case firstArgs.includes("PASTE_TXT"):
+	case firstArgs.includes("TXT_TO_CLIP"):
 		pasteText(eval(firstArgs));
 		break;
 };
