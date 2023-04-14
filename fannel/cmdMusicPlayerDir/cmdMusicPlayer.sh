@@ -76,6 +76,7 @@ cut_music_history_limit_over(){
 	local music_history_con="$(\
 		cat "${MUSIC_HISTORY_PATH}" \
 		| grep "${grep_prefix}" \
+		| sed '/^$/d' \
 		| tail -"${history_limit_num}" \
 	)"
 	sleep 0.1
