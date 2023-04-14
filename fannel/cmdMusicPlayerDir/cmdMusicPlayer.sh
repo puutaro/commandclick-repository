@@ -6,6 +6,7 @@ set -eu
 PARENT_DIR_PATH="$(dirname "$0")"
 APP_URL_HISTORY_PATH="${PARENT_DIR_PATH}/system/url/cmdclickUrlHistory"
 PLAY_PROCESS_DIR_PATH="${PARENT_DIR_PATH}/process"
+MUSIC_HISTORY_PATH=${PLAY_PROCESS_DIR_PATH}/musicHistory
 TMP_PLAY_LIST_NAME="tmp_play_list"
 TMP_PLAY_LIST_PATH="${PLAY_PROCESS_DIR_PATH}/${TMP_PLAY_LIST_NAME}"
 SHUFFLE_MODE="shuffle"
@@ -65,14 +66,34 @@ termux_mpv_package_installer(){
 	pip install "git+https://github.com/Neo-Oli/Termux-Mpv"
 }
 
+cut_music_history_limit_over(){
+	local history_limit_num=1000
+	if [ ! -f "${MUSIC_HISTORY_PATH}" ];then
+		touch "${MUSIC_HISTORY_PATH}"
+		return
+	fi
+	local music_history_con="$(\
+		tail \
+			-"${history_limit_num}" \
+			"${MUSIC_HISTORY_PATH}"\
+	)"
+	sleep 0.1
+	echo \
+		"${music_history_con}" \
+		| sed '/^$/d' \
+		> "${MUSIC_HISTORY_PATH}"
+}
+
 
 play_temp_list(){
 	local play_mode="${1:-}"
+	cut_music_history_limit_over
 	termuxmpv \
 			--no-video \
 			${play_mode}  \
 			--loop-playlist=inf \
-			--playlist="${TMP_PLAY_LIST_PATH}"
+			--playlist="${TMP_PLAY_LIST_PATH}" \
+	| tee  -a "${MUSIC_HISTORY_PATH}"
 }
 
 
@@ -102,7 +123,8 @@ number_playing(){
 play_mode_handler(){
 	local play_mode="${1}"
 	local tubePlayListPath="${2}"
-	local playNumber="${3:-}"
+	local musicDir="${3:-}"
+	local playNumber="${4:-}"
 	if [ ! -d "${PLAY_PROCESS_DIR_PATH}" ]; then
 		mkdir -p "${PLAY_PROCESS_DIR_PATH}";
 	fi
@@ -144,4 +166,4 @@ play_mode_handler(){
 }
 
 play_mode_handler \
-	"${1:-}" "${2:-}" "${3:-}"
+	"${1:-}" "${2:-}" "${3:-}" "${4:-}"

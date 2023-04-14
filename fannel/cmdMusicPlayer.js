@@ -65,6 +65,7 @@ setVariableType="endNum:NUM=!0..10000!1"
 setVariableType="STOP:BTN=pkill -9 mpv"
 setVariableType="Install:BTN=jsf '${0}'"
 setVariableType="deleteMusicPlayList:EFCBB=music&NoExtend|jsf '${0}' delete"
+setVariableType="onResumePlay:CB=ON!OFF"
 scriptFileName="cmdMusicPlayer.js"
 /// SETTING_SECTION_END
 
@@ -78,6 +79,7 @@ STOP=""
 startNum="0"
 endNum="0"
 deleteMusicPlayList=""
+onResumePlay="ON"
 Install="install"
 /// CMD_VARIABLE_SECTION_END
 
@@ -88,7 +90,10 @@ Install="install"
 let args = jsArgs.get().split("\t");
 const DEFAULT_TERM_OUTPUT = "NORMAL";
 const FIRST_ARGS = args.at(0);
-const EXEC_SHELL_PATH = "${01}/cmdMusicPlayerDir/cmdMusicPlayer.sh";
+const cmdMusicPlayerDirPath = "${01}/cmdMusicPlayerDir";
+const EXEC_SHELL_PATH = `${cmdMusicPlayerDirPath}/cmdMusicPlayer.sh`;
+const PLAY_PROCESS_DIR_PATH = `${cmdMusicPlayerDirPath}/process`;
+const MUSIC_HISTORY_PATH = `${PLAY_PROCESS_DIR_PATH}/musicHistory`;
 const EDIT_FILE_PATH = makeCreatorJSPath(musicPlayListName);
 const INSTALL_MODE = "install";
 const SHUFFLE_MODE = "shuffle";
@@ -105,53 +110,62 @@ if(FIRST_ARGS){
 	);
 };
 
+switchByArgs();
 
-switch(FIRST_ARGS){
-	case "":
-		initFileList();
-		jsIntent.launchEditSite(
-			EDIT_FILE_PATH,
-			"",
-			"false",
-			"false",
-			"false",
-			"true"
-		);
-		break;
-	case INSTALL_MODE:
-		cmdIntent.run(
-			"bash \"" + EXEC_SHELL_PATH + 
-			"\" "  + INSTALL_MODE
-		);
-		break;
-	case SHUFFLE_MODE: 
-		cmdIntent.run(
-			"bash \"" + EXEC_SHELL_PATH + 
-			"\" " + SHUFFLE_MODE +
-			" " + EDIT_FILE_PATH
-		);
-		break;
-	case ORDINALY_MODE:
-	case REVERSE_MODE:
-		cmdIntent.run(
-			"bash \"" + EXEC_SHELL_PATH + 
-			"\" " + ORDINALY_MODE + 
-			" " + EDIT_FILE_PATH
-		);
-		break;
-	case NUMBER_MODE:
-		cmdIntent.run(
-			"bash \"" + EXEC_SHELL_PATH + 
-			"\" " + NUMBER_MODE + 
-			" " + EDIT_FILE_PATH +
-			" " + numberPlay
-		);
-		break;
-	case DELETE_MODE:
-		execDeleteMusicPlayList();
-		break;
+
+function switchByArgs(){
+	switch(FIRST_ARGS){
+		case "":
+			initFileList();
+			jsIntent.launchEditSite(
+				EDIT_FILE_PATH,
+				"",
+				"false",
+				"false",
+				"false",
+				"true"
+			);
+			break;
+		case INSTALL_MODE:
+			cmdIntent.run(
+				"bash \"" + EXEC_SHELL_PATH + 
+				"\" \""  + INSTALL_MODE + "\""
+			);
+			break;
+		case SHUFFLE_MODE:
+			initFileList();
+			cmdIntent.run(
+				"bash \"" + EXEC_SHELL_PATH + 
+				"\" \"" + SHUFFLE_MODE + "\"" +
+				" \"" + EDIT_FILE_PATH + "\"" + 
+				" \"" + musicDir + "\""
+			);
+			break;
+		case ORDINALY_MODE:
+		case REVERSE_MODE:
+			initFileList();
+			cmdIntent.run(
+				"bash \"" + EXEC_SHELL_PATH + 
+				"\" \"" + ORDINALY_MODE + "\"" + 
+				" \"" + EDIT_FILE_PATH + "\"" + 
+				" \"" + musicDir + "\""
+			);
+			break;
+		case NUMBER_MODE:
+			initFileList();
+			cmdIntent.run(
+				"bash \"" + EXEC_SHELL_PATH + 
+				"\" \"" + NUMBER_MODE + "\"" + 
+				" \"" + EDIT_FILE_PATH + "\"" + 
+				" \"" + musicDir + "\"" + 
+				" \"" + numberPlay + "\""
+			);
+			break;
+		case DELETE_MODE:
+			execDeleteMusicPlayList();
+			break;
+	};
 };
-
 
 function makeCreatorJSPath(musicPlayListName){
 	if(!musicPlayListName){
@@ -180,6 +194,7 @@ function initFileList(){
 	};
 
 	const fileListLimitNum = fileList.length - 1;
+	fileList = sortByLastMusic(fileList);
 
 	if(startNum != 0) startNum--;
 	if(
@@ -208,6 +223,34 @@ function initFileList(){
 		EDIT_FILE_PATH,
 		filterFileList.join("\n")
 	);
+};
+
+function sortByLastMusic(fileList){
+	if(
+		onResumePlay === "OFF"
+	) return fileList;
+	jsFileSystem.createDir(
+		PLAY_PROCESS_DIR_PATH
+	);
+	const grepPrefix = "Playing: ";
+	const removePrefixRegex = new RegExp(`^${grepPrefix}`, ''); 
+	let lastMusic = jsFileSystem.readLocalFile(
+		MUSIC_HISTORY_PATH
+	).split("\n").filter(function(line){
+		return line.includes(musicDir) 
+			&& line.startsWith(grepPrefix);
+	}).map(function(line){
+		return line.replace(removePrefixRegex, '');
+	}).at(-1);
+	if(!lastMusic){
+		return fileList
+	}
+	const lastMusicIndex = fileList.findIndex(function(element){
+		return element.includes(lastMusic);
+	});
+	let fileListBeforeLastMusicIndex = fileList.slice(0, lastMusicIndex);
+	let fileListAfterLastMusicIndex = fileList.slice(lastMusicIndex);
+	return fileListAfterLastMusicIndex.concat(fileListBeforeLastMusicIndex);
 };
 
 function execDeleteMusicPlayList(){
