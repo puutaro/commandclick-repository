@@ -72,10 +72,11 @@ cut_music_history_limit_over(){
 		touch "${MUSIC_HISTORY_PATH}"
 		return
 	fi
+	local grep_prefix="Playing: "
 	local music_history_con="$(\
-		tail \
-			-"${history_limit_num}" \
-			"${MUSIC_HISTORY_PATH}"\
+		cat "${MUSIC_HISTORY_PATH}" \
+		| grep "${grep_prefix}" \
+		| tail -"${history_limit_num}" \
 	)"
 	sleep 0.1
 	echo \
