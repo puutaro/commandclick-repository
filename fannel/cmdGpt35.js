@@ -21,12 +21,14 @@ terminalSizeType="LONG"
 onUrlHistoryRegister="OFF"
 terminalFontZoom="130"
 setVariableType="LAUNCH_GPT35:RO="
+setVariableType="PASTE_TXT:EB=jsf '${0}' paste"
 scriptFileName="cmdGpt35.js"
 /// SETTING_SECTION_END
 
 
 /// CMD_VARIABLE_SECTION_START
 LAUNCH_GPT35="https://huggingface.co/spaces/kunishou/Rapid-GPT"
+PASTE_TXT=""
 /// CMD_VARIABLE_SECTION_END
 
 
@@ -36,18 +38,26 @@ LAUNCH_GPT35="https://huggingface.co/spaces/kunishou/Rapid-GPT"
 
 let args = jsArgs.get().split("\t");
 const firstArgs = args.at(0);
-const launchGpt35Args = "";
+const launchGpt35Arg = "";
+const pasteArg = "paste";
 
 
 switch(firstArgs){
-	case launchGpt35Args:
+	case launchGpt35Arg:
 		execLaunchGpt35();
+		break;
+	case pasteArg:
+		pasteText(PASTE_TXT);
 		break;
 };
 
 
 function execLaunchGpt35(){
 	jsUrl.loadUrl(LAUNCH_GPT35);
+};
+
+function pasteText(text){
+	jsUtil.copyToClipboard(text, 10);
 };
 
 
