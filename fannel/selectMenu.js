@@ -6,14 +6,14 @@
 
 
 /// SETTING_SECTION_START
-setVariableType="menu1:EFCB="
-setVariableType="menu2:EFCB="
-setVariableType="menu3:EFCB="
-setVariableType="menu4:EFCB="
-setVariableType="menu5:EFCB="
-setVariableType="menu6:EFCB="
-setVariableType="menu7:EFCB="
-setVariableType="menu8:EFCB="
+setVariableType="menu1:EFCB=${01}"
+setVariableType="menu2:EFCB=${01}"
+setVariableType="menu3:EFCB=${01}"
+setVariableType="menu4:EFCB=${01}"
+setVariableType="menu5:EFCB=${01}"
+setVariableType="menu6:EFCB=${01}"
+setVariableType="menu7:EFCB=${01}"
+setVariableType="menu8:EFCB=${01}"
 scriptFileName="selectMenu.js"
 /// SETTING_SECTION_END
 
