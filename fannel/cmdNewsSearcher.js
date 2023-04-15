@@ -122,14 +122,13 @@ function updateListFileCon(
 	searchListFilePath,
 	searchText
 ){
-	jsFileSystem.createDir(
-		searchListDirPath
+	let currentListCons = readWithHyphenCheck(
+		searchListDirPath,
+		searchListFilePath,
+		searchText
 	);
-	let currentListCons = jsFileSystem.readLocalFile(
-			searchListFilePath
-		).split("\n");
 	if(
-		searchText === escapeCharHyphen
+		currentListCons.length === 0
 	) return;
 	const inInclude = currentListCons.find(
 		function(req){
@@ -162,18 +161,15 @@ function removeFromList(
 	searchListFilePath,
 	searchText
 ){
-	jsFileSystem.createDir(
-		searchListDirPath
+	let currentListCons = readWithHyphenCheck(
+		searchListDirPath,
+		searchListFilePath,
+		searchText
 	);
-	let currentListCons = jsFileSystem.readLocalFile(
-			searchListFilePath
-		).split("\n");
-	const trimRequest = searchText.trim();
 	if(
-		trimRequest == escapeCharHyphen
-	) {
-		return;
-	};
+		currentListCons.length === 0
+	) return;
+	const trimRequest = searchText.trim();
 	const inInclude = currentListCons.find(
 		function(req){
 			return req.trim() === trimRequest;
@@ -203,4 +199,25 @@ function removeFromList(
         "${01}",
         "${02}"
     );
+};
+
+
+function readWithHyphenCheck(
+	searchListDirPath,
+	searchListFilePath,
+	searchText
+){
+	jsFileSystem.createDir(
+		searchListDirPath
+	);
+	let currentListCons = jsFileSystem.readLocalFile(
+			searchListFilePath
+		).split("\n");
+	const trimSearchText = searchText.trim();
+	if(
+		trimSearchText == escapeCharHyphen
+	) {
+		return [];
+	};
+	return currentListCons;
 };
