@@ -69,8 +69,12 @@ function execLaunchGpt35(){
 
 function clipText(text){
 	const clipText = text.trim();
-	jsUtil.copyToClipboard(clipText, 10);
-	jsToast.short("copy ok");
+	if(
+		clipText
+	) {
+		jsUtil.copyToClipboard(clipText, 10);
+		jsToast.short("copy ok");
+	};
 	updateListFileCon(clipText);
 	execLaunchGpt35();
 };
