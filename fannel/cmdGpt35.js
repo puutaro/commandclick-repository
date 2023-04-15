@@ -22,9 +22,8 @@ editExecute="ALWAYS"
 terminalSizeType="LONG"
 onUrlHistoryRegister="OFF"
 terminalFontZoom="130"
-setVariableType="TXT_TO_CLIP:LCBB=${01}/cmdGpt35Dir/reqList|::TermLong::jsf '${0}' clip"
+setVariableType="TXT_TO_CLIP:LCB=${01}/cmdGpt35Dir/reqList|::TermLong::jsf '${0}' clip"
 setVariableType="REMOVE_TEXT:LCBB=${01}/cmdGpt35Dir/reqList|jsf '${0}' remove"
-setVariableType="LIST_DETAIL:BTN=jsf '${0}' detail"
 scriptFileName="cmdGpt35.js"
 /// SETTING_SECTION_END
 
@@ -32,7 +31,6 @@ scriptFileName="cmdGpt35.js"
 /// CMD_VARIABLE_SECTION_START
 TXT_TO_CLIP=""
 REMOVE_TEXT=""
-LIST_DETAIL=""
 /// CMD_VARIABLE_SECTION_END
 
 
@@ -42,28 +40,24 @@ LIST_DETAIL=""
 
 let args = jsArgs.get().split("\t");
 const firstArgs = args.at(0);
-LAUNCH_GPT35="https://huggingface.co/spaces/kunishou/Rapid-GPT";
+const LAUNCH_GPT35="https://huggingface.co/spaces/kunishou/Rapid-GPT";
 const REQ_LIST_DIR_PATH = "${01}/cmdGpt35Dir";
 const REQ_LIST_FILE_PATH = `${REQ_LIST_DIR_PATH}/reqList`;
 const launchGpt35Arg = "";
 const clipArg = "clip";
 const removeArg = "remove";
-const detailArg = "detail";
 const escapeCharHyphen = "-";
 
 
 switch(firstArgs){
 	case launchGpt35Arg:
+		clipText(TXT_TO_CLIP);
 		execLaunchGpt35();
 		break;
 	case clipArg:
-		clipText(TXT_TO_CLIP);
 		break;
 	case removeArg:
 		removeFromList(REMOVE_TEXT);
-		break;
-	case detailArg:
-		showDetail();
 		break;
 };
 
@@ -156,9 +150,3 @@ function removeFromList(reqText){
     );
 };
 
-function showDetail(){
-	const updateListCon = jsFileSystem.readLocalFile(
-		REQ_LIST_FILE_PATH
-	);
-	alert(updateListCon);
-};
