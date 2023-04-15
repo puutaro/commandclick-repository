@@ -56,15 +56,17 @@ onUrlHistoryRegister="OFF"
 terminalFontZoom="0"
 terminalColor=""
 terminalFontColor=""
+setReplaceVariable="cmdMusicPlayerDirPath=${01}/cmdMusicPlayerDir"
+setReplaceVariable="cmdMusicPlayerEditDirPath=${cmdMusicPlayerDirPath}/edit"
 setVariableType="musicDir:DIR="
-setVariableType="musicPlayListName:EFCB=${01}/cmdMusicPlayerDir/edit&music&NoExtend"
+setVariableType="musicPlayListName:EFCB=${cmdMusicPlayerEditDirPath}&music&NoExtend"
 setVariableType="musicPlay:CBB=ordinaly!shuffle!reverse|::TermOut::jsf '${0}'"
 setVariableType="numberPlay:NUMB=!1..1000!1|::TermOut::jsf '${0}' number"
 setVariableType="startNum:NUM=!0..10000!1"
 setVariableType="endNum:NUM=!0..10000!1"
 setVariableType="STOP:BTN=pkill -9 mpv"
 setVariableType="Install:BTN=jsf '${0}'"
-setVariableType="deleteMusicPlayList:EFCBB=${01}/cmdMusicPlayerDir/edit&music&NoExtend|jsf '${0}' delete"
+setVariableType="deleteMusicPlayList:EFCBB=${cmdMusicPlayerEditDirPath}&music&NoExtend|jsf '${0}' delete"
 setVariableType="onResumePlay:CB=ON!OFF"
 scriptFileName="cmdMusicPlayer.js"
 /// SETTING_SECTION_END
@@ -90,8 +92,8 @@ Install="install"
 let args = jsArgs.get().split("\t");
 const DEFAULT_TERM_OUTPUT = "NORMAL";
 const FIRST_ARGS = args.at(0);
-const cmdMusicPlayerDirPath = "${01}/cmdMusicPlayerDir";
-const cmdMusicPlayerEditDirPath = `${cmdMusicPlayerDirPath}/edit`;
+const cmdMusicPlayerDirPath = "${cmdMusicPlayerDirPath}";
+const cmdMusicPlayerEditDirPath = "${cmdMusicPlayerEditDirPath}";
 const EXEC_SHELL_PATH = `${cmdMusicPlayerDirPath}/cmdMusicPlayer.sh`;
 const PLAY_PROCESS_DIR_PATH = `${cmdMusicPlayerDirPath}/process`;
 const MUSIC_HISTORY_PATH = `${PLAY_PROCESS_DIR_PATH}/musicHistory`;

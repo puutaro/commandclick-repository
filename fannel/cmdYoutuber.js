@@ -53,12 +53,14 @@ onUpdateLastModify="ON"
 terminalFontZoom="0"
 terminalColor=""
 terminalFontColor=""
-setVariableType="tubePlayListName:EFCB=${01}/cmdYoutuberDir/edit&tube&NoExtend"
+setReplaceVariable="cmdTubePlayerDirPath=${01}/cmdYoutuberDir"
+setReplaceVariable="cmdTubePlayerEditDirPath=${cmdTubePlayerDirPath}/edit"
+setVariableType="tubePlayListName:EFCB=${cmdTubePlayerEditDirPath}&tube&NoExtend"
 setVariableType="tubePlay:CBB=shuffle!ordinaly|::TermOut::jsf '${0}'"
 setVariableType="numberPlay:NUMB=!1..1000!1|::TermOut::jsf '${0}' number"
 setVariableType="STOP:BTN=pkill -9 mpv"
 setVariableType="Install:BTN=jsf '${0}'"
-setVariableType="deleteTubePlayList:EFCBB=${01}/cmdYoutuberDir/edit&tube&NoExtend|jsf '${0}' delete"
+setVariableType="deleteTubePlayList:EFCBB=${cmdTubePlayerEditDirPath}&tube&NoExtend|jsf '${0}' delete"
 scriptFileName="cmdYoutuber.js"
 /// SETTING_SECTION_END
 
@@ -79,8 +81,8 @@ Install="install"
 let args = jsArgs.get().split("\t");
 const DEFAULT_TERM_OUTPUT = "NORMAL";
 const FIRST_ARGS = args.at(0);
-const cmdTubePlayerDirPath = "${01}/cmdYoutuberDir";
-const cmdTubePlayerEditDirPath = `${cmdTubePlayerDirPath}/edit`;
+const cmdTubePlayerDirPath = "${cmdTubePlayerDirPath}";
+const cmdTubePlayerEditDirPath = "${cmdTubePlayerEditDirPath}";
 const EXEC_SHELL_PATH = `${cmdTubePlayerDirPath}/cmdYoutuber.sh`;
 const EDIT_FILE_PATH = makeCreatorJSPath(tubePlayListName);
 const APP_URL_HISTORY_PATH="${01}/system/url/cmdclickUrlHistory";

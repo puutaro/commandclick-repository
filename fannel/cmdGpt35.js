@@ -22,8 +22,10 @@ editExecute="ALWAYS"
 terminalSizeType="LONG"
 onUrlHistoryRegister="OFF"
 terminalFontZoom="130"
-setVariableType="TXT_TO_CLIP:LCB=${01}/cmdGpt35Dir/reqList|::TermLong::jsf '${0}' clip"
-setVariableType="REMOVE_TEXT:LCBB=${01}/cmdGpt35Dir/reqList|jsf '${0}' remove"
+setReplaceVariable="REQ_LIST_DIR_PATH=${01}/cmdGpt35Dir"
+setReplaceVariable="REQ_LIST_FILE_PATH=${REQ_LIST_DIR_PATH}/reqList"
+setVariableType="TXT_TO_CLIP:LCB=${REQ_LIST_FILE_PATH}|::TermLong::jsf '${0}' clip"
+setVariableType="REMOVE_TEXT:LCBB=${REQ_LIST_FILE_PATH}|jsf '${0}' remove"
 scriptFileName="cmdGpt35.js"
 /// SETTING_SECTION_END
 
@@ -41,8 +43,8 @@ REMOVE_TEXT=""
 let args = jsArgs.get().split("\t");
 const firstArgs = args.at(0);
 const LAUNCH_GPT35="https://huggingface.co/spaces/kunishou/Rapid-GPT";
-const REQ_LIST_DIR_PATH = "${01}/cmdGpt35Dir";
-const REQ_LIST_FILE_PATH = `${REQ_LIST_DIR_PATH}/reqList`;
+const REQ_LIST_DIR_PATH = "${REQ_LIST_DIR_PATH}";
+const REQ_LIST_FILE_PATH = "${REQ_LIST_FILE_PATH}";
 const launchGpt35Arg = "";
 const clipArg = "clip";
 const removeArg = "remove";

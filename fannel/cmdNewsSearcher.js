@@ -24,10 +24,13 @@ editExecute="ALWAYS"
 terminalSizeType="LONG"
 onUrlHistoryRegister="OFF"
 terminalFontZoom="130"
-setVariableType="WEB_SEARCH_PREFIX:LCB=${01}/cmdNewsSearcherDir/webSearchPrefixList"
-setVariableType="REMOVE_WEB_SEARCH_PREFIX:LCBB=${01}/cmdNewsSearcherDir/webSearchPrefixList|jsf '${0}' remove_web_search_prefix"
-setVariableType="SEARCH_TEXT:LCB=${01}/cmdNewsSearcherDir/searchList"
-setVariableType="REMOVE_SEARCH_TEXT:LCBB=${01}/cmdNewsSearcherDir/searchList|jsf '${0}' remove_search_text"
+setReplaceVariable="NEWS_APP_DIR_PATH=${01}/cmdNewsSearcherDir"
+setReplaceVariable="WEB_SEARCH_PREFIX_FILE_PATH=${NEWS_APP_DIR_PATH}/webSearchPrefixList"
+setReplaceVariable="SEARCH_LIST_FILE_PATH=${NEWS_APP_DIR_PATH}/searchList"
+setVariableType="WEB_SEARCH_PREFIX:LCB=${WEB_SEARCH_PREFIX_FILE_PATH}"
+setVariableType="REMOVE_WEB_SEARCH_PREFIX:LCBB=${WEB_SEARCH_PREFIX_FILE_PATH}|jsf '${0}' remove_web_search_prefix"
+setVariableType="SEARCH_TEXT:LCB=${SEARCH_LIST_FILE_PATH}"
+setVariableType="REMOVE_SEARCH_TEXT:LCBB=${SEARCH_LIST_FILE_PATH}|jsf '${0}' remove_search_text"
 scriptFileName="cmdNewsSearcher.js"
 /// SETTING_SECTION_END
 
@@ -46,9 +49,9 @@ REMOVE_WEB_SEARCH_PREFIX=""
 
 let args = jsArgs.get().split("\t");
 const firstArgs = args.at(0);
-const NEWS_APP_DIR_PATH = "${01}/cmdNewsSearcherDir";
-const WEB_SEARCH_PREFIX_FILE_PATH = `${NEWS_APP_DIR_PATH}/webSearchPrefixList`;
-const SEARCH_LIST_FILE_PATH = `${NEWS_APP_DIR_PATH}/searchList`;
+const NEWS_APP_DIR_PATH = "${NEWS_APP_DIR_PATH}";
+const WEB_SEARCH_PREFIX_FILE_PATH = "${WEB_SEARCH_PREFIX_FILE_PATH}";
+const SEARCH_LIST_FILE_PATH = "${SEARCH_LIST_FILE_PATH}";
 const normalSearchArg = "";
 const removeWebSearchPrefixArg = "remove_web_search_prefix";
 const removeSearchTextArg = "remove_search_text";

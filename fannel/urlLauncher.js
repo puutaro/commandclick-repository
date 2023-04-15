@@ -20,8 +20,11 @@ editExecute="ALWAYS"
 terminalSizeType="LONG"
 onUrlHistoryRegister="OFF"
 terminalFontZoom="130"
-setVariableType="LAUNCH_URL:LCB=${01}/urlLauncherDir/launchUrlList"
-setVariableType="REMOVE_LAUNCH_URL:LCBB=${01}/urlLauncherDir/launchUrlList|jsf '${0}' REMOVE_LAUNCH_URL"
+setReplaceVariable="URL_LIST_DIR_PATH=${01}/urlLauncherDir"
+setReplaceVariable="URL_LIST_FILE_PATH=${URL_LIST_DIR_PATH}/launchUrlList"
+setReplaceVariable=""
+setVariableType="LAUNCH_URL:LCB=${URL_LIST_FILE_PATH}"
+setVariableType="REMOVE_LAUNCH_URL:LCBB=${URL_LIST_FILE_PATH}|jsf '${0}' REMOVE_LAUNCH_URL"
 scriptFileName="cmdGpt35.js"
 /// SETTING_SECTION_END
 
@@ -38,9 +41,8 @@ REMOVE_LAUNCH_URL=""
 
 let args = jsArgs.get().split("\t");
 const firstArgs = args.at(0);
-const REQ_LIST_DIR_PATH = "${01}/urlLauncherDir";
-const LAUNCH_URL_LIST_FILE_PATH = `${REQ_LIST_DIR_PATH}/launchUrlList`;
-const REQ_LIST_FILE_PATH = `${REQ_LIST_DIR_PATH}/reqList`;
+const URL_LIST_DIR_PATH = "${URL_LIST_DIR_PATH}";
+const LAUNCH_URL_LIST_FILE_PATH = "${URL_LIST_FILE_PATH}";
 const normalArg = "";
 const removeLaunchUrlArg = "REMOVE_LAUNCH_URL";
 const escapeCharHyphen = "-";
@@ -49,7 +51,7 @@ const escapeCharHyphen = "-";
 switch(firstArgs){
 	case normalArg:
 		updateListFileCon(
-			REQ_LIST_DIR_PATH,
+			URL_LIST_DIR_PATH,
 			LAUNCH_URL_LIST_FILE_PATH,
 			LAUNCH_URL
 		);
@@ -57,7 +59,7 @@ switch(firstArgs){
 		break;
 	case removeLaunchUrlArg:
 		removeFromList(
-			REQ_LIST_DIR_PATH,
+			URL_LIST_DIR_PATH,
 			LAUNCH_URL_LIST_FILE_PATH,
 			LAUNCH_URL
 		);

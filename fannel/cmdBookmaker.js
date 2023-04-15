@@ -26,7 +26,9 @@
 editExecute="NO"
 terminalSizeType="LONG"
 onUpdateLastModify="ON"
-setVariableType="bookmarkName:EFCB=${01}/cmdBookmakerDir/edit&book&NoExtend"
+setReplaceVariable="CMD_BOOKMAKER_DIR_PATH=${01}/cmdBookmakerDir"
+setReplaceVariable="CMD_BOOKMAKER_EDIT_DIR_PATH=${CMD_BOOKMAKER_DIR_PATH}/edit"
+setVariableType="bookmarkName:EFCB=${CMD_BOOKMAKER_EDIT_DIR_PATH}&book&NoExtend"
 setVariableType=""
 scriptFileName="cmdBookmaker.js"
 /// SETTING_SECTION_END
@@ -40,8 +42,8 @@ bookmarkName="bookSites"
 /// Please write bellow with javascript
 
 
-const CMD_BOOKMAKER_DIR_PATH = "${01}/cmdBookmakerDir";
-const CMD_BOOKMAKER_EDIT_DIR_PATH = `${CMD_BOOKMAKER_DIR_PATH}/edit`;
+const CMD_BOOKMAKER_DIR_PATH = "${CMD_BOOKMAKER_DIR_PATH}";
+const CMD_BOOKMAKER_EDIT_DIR_PATH = "${CMD_BOOKMAKER_EDIT_DIR_PATH}";
 const EDIT_FILE_PATH = `${CMD_BOOKMAKER_EDIT_DIR_PATH}/${bookmarkName}`;
 const APP_URL_HISTORY_PATH="${01}/system/url/cmdclickUrlHistory";
 

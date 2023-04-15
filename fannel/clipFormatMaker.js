@@ -22,7 +22,7 @@
 editExecute="ALWAYS"
 terminalOutputMode="NORMAL"
 onUrlHistoryRegister="OFF"
-setVariableType="creatorJSName:EFCB=clip&js"
+setVariableType="creatorJSName:EFCB=${01}&clip&js"
 scriptFileName="clipFormatMaker.js"
 /// SETTING_SECTION_END
 
