@@ -19,6 +19,7 @@
 editExecute="ALWAYS"
 terminalSizeType="LONG"
 onUrlHistoryRegister="OFF"
+onAdBlock="INHERIT"
 terminalFontZoom="130"
 setReplaceVariable="URL_LIST_DIR_PATH=${01}/urlLauncherDir"
 setReplaceVariable="URL_LIST_FILE_PATH=${URL_LIST_DIR_PATH}/launchUrlList"

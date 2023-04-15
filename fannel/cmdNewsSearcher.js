@@ -23,6 +23,7 @@
 editExecute="ALWAYS"
 terminalSizeType="LONG"
 onUrlHistoryRegister="OFF"
+onAdBlock="INHERIT"
 terminalFontZoom="130"
 setReplaceVariable="NEWS_APP_DIR_PATH=${01}/cmdNewsSearcherDir"
 setReplaceVariable="WEB_SEARCH_PREFIX_FILE_PATH=${NEWS_APP_DIR_PATH}/webSearchPrefixList"
