@@ -26,8 +26,9 @@ onUrlHistoryRegister="OFF"
 onAdBlock="INHERIT"
 terminalFontZoom="130"
 setReplaceVariable="NEWS_APP_DIR_PATH=${01}/cmdNewsSearcherDir"
-setReplaceVariable="WEB_SEARCH_PREFIX_FILE_PATH=${NEWS_APP_DIR_PATH}/webSearchPrefixList"
-setReplaceVariable="SEARCH_LIST_FILE_PATH=${NEWS_APP_DIR_PATH}/searchList"
+setReplaceVariable="NEWS_APP_LIST_DIR_PATH=${NEWS_APP_DIR_PATH}/list"
+setReplaceVariable="WEB_SEARCH_PREFIX_FILE_PATH=${NEWS_APP_LIST_DIR_PATH}/webSearchPrefixList"
+setReplaceVariable="SEARCH_LIST_FILE_PATH=${NEWS_APP_LIST_DIR_PATH}/searchList"
 setVariableType="WEB_SEARCH_PREFIX:ELCB=${WEB_SEARCH_PREFIX_FILE_PATH}"
 setVariableType="REMOVE_WEB_SEARCH_PREFIX:ELCBB=${WEB_SEARCH_PREFIX_FILE_PATH}|jsf '${0}' remove_web_search_prefix"
 setVariableType="SEARCH_TEXT:ELCB=${SEARCH_LIST_FILE_PATH}"
@@ -51,6 +52,7 @@ REMOVE_WEB_SEARCH_PREFIX=""
 let args = jsArgs.get().split("\t");
 const firstArgs = args.at(0);
 const NEWS_APP_DIR_PATH = "${NEWS_APP_DIR_PATH}";
+const NEWS_APP_LIST_DIR_PATH = "${NEWS_APP_LIST_DIR_PATH}";
 const WEB_SEARCH_PREFIX_FILE_PATH = "${WEB_SEARCH_PREFIX_FILE_PATH}";
 const SEARCH_LIST_FILE_PATH = "${SEARCH_LIST_FILE_PATH}";
 const normalSearchArg = "";
@@ -67,12 +69,12 @@ function switchHandler(){
 			const searchTextSource = SEARCH_TEXT;
 			const searchText = searchTextSource.trim();
 			updateListFileCon(
-				NEWS_APP_DIR_PATH,
+				NEWS_APP_LIST_DIR_PATH,
 				WEB_SEARCH_PREFIX_FILE_PATH,
 				WEB_SEARCH_PREFIX
 			);
 			updateListFileCon(
-				NEWS_APP_DIR_PATH,
+				NEWS_APP_LIST_DIR_PATH,
 				SEARCH_LIST_FILE_PATH,
 				searchText
 			);
@@ -80,13 +82,13 @@ function switchHandler(){
 			break;
 		case removeWebSearchPrefixArg:
 			removeFromList(
-				NEWS_APP_DIR_PATH,
+				NEWS_APP_LIST_DIR_PATH,
 				SEARCH_LIST_FILE_PATH,
 				REMOVE_SEARCH_TEXT
 			);
 		case removeSearchTextArg:
 			removeFromList(
-				NEWS_APP_DIR_PATH,
+				NEWS_APP_LIST_DIR_PATH,
 				SEARCH_LIST_FILE_PATH,
 				REMOVE_SEARCH_TEXT
 			);

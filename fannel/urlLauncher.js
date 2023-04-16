@@ -21,9 +21,9 @@ terminalSizeType="LONG"
 onUrlHistoryRegister="OFF"
 onAdBlock="INHERIT"
 terminalFontZoom="130"
-setReplaceVariable="URL_LIST_DIR_PATH=${01}/urlLauncherDir"
+setReplaceVariable="APP_DIR_PATH=${01}/urlLauncherDir"
+setReplaceVariable="URL_LIST_DIR_PATH=${APP_DIR_PATH}/list"
 setReplaceVariable="URL_LIST_FILE_PATH=${URL_LIST_DIR_PATH}/launchUrlList"
-setReplaceVariable=""
 setVariableType="LAUNCH_URL:ELCB=${URL_LIST_FILE_PATH}"
 setVariableType="REMOVE_LAUNCH_URL:ELCBB=${URL_LIST_FILE_PATH}|jsf '${0}' REMOVE_LAUNCH_URL"
 scriptFileName="cmdGpt35.js"
@@ -42,6 +42,7 @@ REMOVE_LAUNCH_URL=""
 
 let args = jsArgs.get().split("\t");
 const firstArgs = args.at(0);
+const APP_DIR_PATH = "${APP_DIR_PATH}";
 const URL_LIST_DIR_PATH = "${URL_LIST_DIR_PATH}";
 const LAUNCH_URL_LIST_FILE_PATH = "${URL_LIST_FILE_PATH}";
 const normalArg = "";

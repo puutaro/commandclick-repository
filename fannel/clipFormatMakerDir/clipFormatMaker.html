@@ -239,6 +239,7 @@
 		var parentDirPath = createClipPathList.slice(0, createClipPathList.length - 1).join("/");
 	} else var parentDirPath = "";
 	const targetAppDirPath = `${parentDirPath}/${targetFileName}Dir`
+	const targetAppListDirPath = `${targetAppDirPath}/list`
 	const siteTitle = [siteTitlePrefix, targetFileName].join(' ');
 	const S="abcdefghijklmnopqrstuvwxyz";
 	const N=5;
@@ -503,7 +504,7 @@
 
 	function readVariables(){
 		jsFileSystem.createDir(
-			targetAppDirPath
+			targetAppListDirPath
 		);
 		const jsFannelContents = jsFileSystem.readLocalFile(createClipPath
 		);
@@ -666,7 +667,7 @@
 	}
 
 	function appendElcbBox(label){
-			const listFilePath = `${targetAppDirPath}/${label}List`;
+			const listFilePath = `${targetAppListDirPath}/${label}List`;
 			let optionList = jsFileSystem.readLocalFile(
 				listFilePath
 			).split("\n");
@@ -894,7 +895,7 @@
 				const listContents = options.map(function() {
 			    	return $(this).text()
 			  	}).get().join('\n');
-				const listFilePath = `${targetAppDirPath}/${elcbVariableName}List`;
+				const listFilePath = `${targetAppListDirPath}/${elcbVariableName}List`;
 		  	setVariableTypeList.push(
 		  		`${setVariableTypeName}="${elcbVariableName}:${elcbMark}=${listFilePath}"`
 		  	)
