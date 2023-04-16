@@ -1,1177 +1,1203 @@
-<!DOCTYPE html>
-<html>
-<head>
-	<title>Clip Fomatter Creater</title>
-	<meta charset="UTF-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<link rel="stylesheet" href="file:///android_asset/css/jquery-ui.css">
-	<style>
+	<!DOCTYPE html>
+	<html>
+	<head>
+		<title>Clip Fomatter Creater</title>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<link rel="stylesheet" href="file:///android_asset/css/jquery-ui.css">
+		<style>
 
-  	* {
-  		font-size: 20px;
-  		color: #525252;
-  	}
+	  	* {
+	  		font-size: 20px;
+	  		color: #525252;
+	  	}
 
-  	.container {
-  		height: 100%;
-		overflow-x: hidden;
-		position: relative;
-		padding-bottom: 50px;
-  	}
+	  	.container {
+	  		height: 100%;
+			overflow-x: hidden;
+			position: relative;
+			padding-bottom: 50px;
+	  	}
 
-  	.overlay {
-		content: "";
-		display: block;
-		width: 0;
-		position: fixed;
-		height: 0;
-/*		background-color: rgba(0, 0, 0, 0.5);*/
-		position: absolute;
-		top: 0;
-		left: 0;
-		bottom: 0;
-		z-index: 2;
-		opacity: 0;
-		transition: opacity .5s;
-	}
-
-	.overlay.open {
-		width: 100%;
-		height: 100%;
-		opacity: 1;
-	}
-
-	.menu-trigger {
-		display: block;
-		cursor: pointer;
-		transform: translateX(0);
-		transition: transform .5s;
-	}
-
-	nav {
-		width: 150px;
-		height: 100%;
-		padding-top: 100px;
-		background-color: rgb(245, 245, 245, 0.8);
-		position: fixed;
-		top: 0;
-		right: 0;
-		z-index: 10;
-		transform: translate(150px);
-		transition: all .5s;
-	}
-	nav.open {
-		transform: translateZ(0);
-	}
-
-	nav ul {
-		list-style: none;
-		padding-left: 0;
-	}
-
-	.bottom-btn-box {
-		display: flex;
-		position: fixed;
-		width: 95%;
-		bottom: 0;
-		z-index: 10;
-		background-color: white;
-	}
-
-	.btn-success {
-		display: block;
-		width: 80%;
-		margin: 10px;
-		padding: 10px;
-		background-color: #cef0f5;
-		border: none;
-		user-select: none;
-	}
-
-	.sortable {
-		display: block;
-		width: 95%;
-		margin: 0 auto;
-		padding: 10px;
-	}
-	.sortable .list-box {
-		margin-top: 10px;
-		margin-bottom: 10px;
-		padding: 12px;
-		cursor: move;
-	}
- 	.sortable .list-box:hover {
-		box-shadow: 2px 2px 2px rgba(189, 189, 189, .7);
-	}
-
-	.cb-dialog-item {
-		display: block;
-		padding: 10px;
-		background-color: #cef0f5;
-		margin: 2px auto;
-		width: 90%;
-	}
-
-	.edit-cb-input {
-		display: block;
-		width: 80%;
-		margin:2px auto;
-	}
-
-	.btn-primary {
-		display: block;
-		width: 80%;
-		margin: 10px auto;
-		padding: 10px;
-		background-color: #cef0f5;
-		border: none;
-		user-select: none;
-	}
-
-	.editLabel {
-		display: block;
-		width: 95%;
-	}
-
-	select {
-		user-select: none;
-	}
-
-	.edit-field {
-		user-select: none;
-	}
-
-	label {
-		user-select: none;
-		margin-left: 10px;
-	}
-
-	.sotable-btn-valname-box {
-		display: block;
-		margin-left: auto;
-		margin-right: auto;
-		width: 90%;
-	}
-
-	.sotable-input {
-		display: block;
-		margin: 5px auto;
-		width: 90%;
-	}
-
-	.url-launch {
-		background-color: #FBF8BD;
-	}
-
-	.new-line {
-		background-color: #ededed;
-	}
-
-	.plain-text {
-		background-color: #C3FEA3;
-	}
-
- 	.label-text {
-		background-color: #b3fcc7;
- 	}
-
-	.cb-item {
-		background-color: #cffafc;
-	}
-
-	.disabled {
-		pointer-events: none;
-		color: #C5C5C5;
-	}
-
-	</style>
-</head>
-<body>
-
-<div class="container">
-
-	<div class="sortable" id="sortable-fields">
-	</div>
-
- 	<br>
-	<div class="bottom-btn-box">
-	  <button class="btn btn-success menu-trigger" id="addItems">add</button>
-	  <button class="btn btn-success" id="createFannel">create</button>
-	</div>
-
-	<nav>
-		<ul>
-			<li>
-				<button class="btn btn-primary url-launch" id="addUrlLaunchField">urlBtn</button>
-			</li>
-			<li>
-				<button class="btn btn-primary label-text" id="addTextWithLabelField">lTxt</button>
-			</li>
-			<li>
-				<button class="btn btn-primary new-line" id="addNewlineField">wrap</button>
-			</li>
-			<li>
-				<button class="btn btn-primary plain-text" id="addTextField">text</button>
-			</li>
-			<li>
-				<button class="btn btn-primary cb-item" id="addField">select</button>
-			</li>
-		</ul>
- 	</nav>
-	<div class="overlay"></div>
-
-	<div class="dialog" style="display:none;">
-	  <div class="dialogForm">
-	</div>
-</div>
-<script type="text/javascript" src="file:///android_asset/js/jquery-3.6.3.min.js"></script>
-<script type="text/javascript" src="file:///android_asset/js/jquery-ui.min.js"></script>
-<script type="text/javascript" src="file:///android_asset/js/Sortable.js"></script>
-<script type="text/javascript" src="file:///android_asset/js/long-press-event.min.js"></script>
-<script>
-
-const createClipPath = 'CLIP_MAKER_TARGET_JS_PATH';
-const createClipName = createClipPath.split("/").at(-1);
-const siteTitlePrefix = "Clip Fomatter Creater For"
-const targetFileName = createClipName.replace(/\.js/, '');
-const siteTitle = [siteTitlePrefix, targetFileName].join(' ');
-const S="abcdefghijklmnopqrstuvwxyz";
-const N=5;
-const zenkakuSimbolRegex = /[^a-zA-Z0-9_]/;
-const prefixNumRegex = /^[0-9]/;
-const setVariableTypeName = 'setVariableType'
-const cbMark = "ECB"
-const ebMark = "EB"
-let INPUT_CLASS_TYPE = {
-    cbFormFieldClass: 'cb-form-field',
-    textFormFieldClass: 'text-form-field',
-    textWithLabelFormFieldClass: 'text-with-label-form-field',
-    urlFormFieldClass: 'url-form-field',
-    newLineFieldclass: 'newLine-field'
-};
-const newlineVariableValue = "cmdclickNewline";
-const newlineVariableValueEscape = "// " + newlineVariableValue
-const scriptFirst = `let args = jsArgs.get().split("\\t");
-	|const firstArgs = args.at(0);
-	|
-	|let currentFilePathList = "\${0}".replace(/^file:\\/\\//, '').split('/');
-	|const parentDirPath = currentFilePathList.slice(0, currentFilePathList.length - 1).join('/');
-	|
-	|const clipMode = "";
-	|const urlLaunchMode = "url";\n\n`
-	.split('\n')
-	.map(function(line){
-		return line.trim().replace(/^\|/, '');
-	}).join("\n");
-const launchUrlFunction = `
-	|function UrlLauncher(LAUNCH_URL){
-	|	window.location.href = LAUNCH_URL;
-	|};\n\n`.split('\n')
-	.map(function(line){
-		return line.trim().replace(/^\|/, '');
-	}).join("\n");
-
-let SET_VAL_TYPE_JANRE = {
-	name: 'name',
-    value : 'value',
-    supVal : 'supVal',
-    valType : 'valType',
-};
-
-let READ_VAL_TYPE = {
-	ECB: 'ECB',
-  TXT: 'TXT',
-  EB: 'EB',
-  LTXT: 'LTXT',
-  NEWLINE: 'NEWLINE'
-};
-
-$(document).ready(function() {
-	document.title = siteTitle;
-	readVariables();
-
-	$('.menu-trigger').on('click',function(){
-		if($(this).hasClass('active')){
-		  $(this).removeClass('active');
-		  $('nav').removeClass('open');
-		  $('#addItems').text("add");
-		  $('#createFannel').removeClass('disabled');
-		  $('.overlay').removeClass('open');
-		} else {
-		  $(this).addClass('active');
-		  $('nav').addClass('open');
-		  $('	#addItems').text("close");
-		  $('#createFannel').addClass('disabled');
-		  $('.overlay').addClass('open');
+	  	.overlay {
+			content: "";
+			display: block;
+			width: 0;
+			position: fixed;
+			height: 0;
+	/*		background-color: rgba(0, 0, 0, 0.5);*/
+			position: absolute;
+			top: 0;
+			left: 0;
+			bottom: 0;
+			z-index: 2;
+			opacity: 0;
+			transition: opacity .5s;
 		}
+
+		.overlay.open {
+			width: 100%;
+			height: 100%;
+			opacity: 1;
+		}
+
+		.menu-trigger {
+			display: block;
+			cursor: pointer;
+			transform: translateX(0);
+			transition: transform .5s;
+		}
+
+		nav {
+			width: 150px;
+			height: 100%;
+			padding-top: 100px;
+			background-color: rgb(245, 245, 245, 0.8);
+			position: fixed;
+			top: 0;
+			right: 0;
+			z-index: 10;
+			transform: translate(150px);
+			transition: all .5s;
+		}
+		nav.open {
+			transform: translateZ(0);
+		}
+
+		nav ul {
+			list-style: none;
+			padding-left: 0;
+		}
+
+		.bottom-btn-box {
+			display: flex;
+			position: fixed;
+			width: 95%;
+			bottom: 0;
+			z-index: 10;
+			background-color: white;
+		}
+
+		.btn-success {
+			display: block;
+			width: 80%;
+			margin: 10px;
+			padding: 10px;
+			background-color: #cef0f5;
+			border: none;
+			user-select: none;
+		}
+
+		.sortable {
+			display: block;
+			width: 95%;
+			margin: 0 auto;
+			padding: 10px;
+		}
+		.sortable .list-box {
+			margin-top: 10px;
+			margin-bottom: 10px;
+			padding: 12px;
+			cursor: move;
+		}
+	 	.sortable .list-box:hover {
+			box-shadow: 2px 2px 2px rgba(189, 189, 189, .7);
+		}
+
+		.cb-dialog-item {
+			display: block;
+			padding: 10px;
+			background-color: #cef0f5;
+			margin: 2px auto;
+			width: 90%;
+		}
+
+		.edit-cb-input {
+			display: block;
+			width: 80%;
+			margin:2px auto;
+		}
+
+		.btn-primary {
+			display: block;
+			width: 80%;
+			margin: 10px auto;
+			padding: 10px;
+			background-color: #cef0f5;
+			border: none;
+			user-select: none;
+		}
+
+		.editLabel {
+			display: block;
+			width: 95%;
+		}
+
+		select {
+			user-select: none;
+		}
+
+		.edit-field {
+			user-select: none;
+		}
+
+		label {
+			user-select: none;
+			margin-left: 10px;
+		}
+
+		.sotable-btn-valname-box {
+			display: block;
+			margin-left: auto;
+			margin-right: auto;
+			width: 90%;
+		}
+
+		.sotable-input {
+			display: block;
+			margin: 5px auto;
+			width: 90%;
+		}
+
+		.url-launch {
+			background-color: #FBF8BD;
+		}
+
+		.new-line {
+			background-color: #ededed;
+		}
+
+		.plain-text {
+			background-color: #C3FEA3;
+		}
+
+	 	.label-text {
+			background-color: #b3fcc7;
+	 	}
+
+		.cb-item {
+			background-color: #cffafc;
+		}
+
+		.disabled {
+			pointer-events: none;
+			color: #C5C5C5;
+		}
+
+		</style>
+	</head>
+	<body>
+
+	<div class="container">
+
+		<div class="sortable" id="sortable-fields">
+		</div>
+
+	 	<br>
+		<div class="bottom-btn-box">
+		  <button class="btn btn-success menu-trigger" id="addItems">add</button>
+		  <button class="btn btn-success" id="createFannel">create</button>
+		</div>
+
+		<nav>
+			<ul>
+				<li>
+					<button class="btn btn-primary url-launch" id="addUrlLaunchField">urlBtn</button>
+				</li>
+				<li>
+					<button class="btn btn-primary label-text" id="addTextWithLabelField">lTxt</button>
+				</li>
+				<li>
+					<button class="btn btn-primary new-line" id="addNewlineField">wrap</button>
+				</li>
+				<li>
+					<button class="btn btn-primary plain-text" id="addTextField">text</button>
+				</li>
+				<li>
+					<button class="btn btn-primary cb-item" id="addField">select</button>
+				</li>
+			</ul>
+	 	</nav>
+		<div class="overlay"></div>
+
+		<div class="dialog" style="display:none;">
+		  <div class="dialogForm">
+		</div>
+	</div>
+	<script type="text/javascript" src="file:///android_asset/js/jquery-3.6.3.min.js"></script>
+	<script type="text/javascript" src="file:///android_asset/js/jquery-ui.min.js"></script>
+	<script type="text/javascript" src="file:///android_asset/js/Sortable.js"></script>
+	<script type="text/javascript" src="file:///android_asset/js/long-press-event.min.js"></script>
+	<script>
+
+	const createClipPath = 'CLIP_MAKER_TARGET_JS_PATH';
+	const createClipName = createClipPath.split("/").at(-1);
+	const siteTitlePrefix = "Clip Fomatter Creater For"
+	const targetFileName = createClipName.replace(/\.js$/, '');
+	const createClipPathList = createClipPath.split("/");
+	if(createClipPathList.length > 2){
+		var parentDirPath = createClipPathList.slice(0, createClipPathList.length - 1).join("/");
+	} else var parentDirPath = "";
+	const targetAppDirPath = `${parentDirPath}/${targetFileName}Dir`
+	const siteTitle = [siteTitlePrefix, targetFileName].join(' ');
+	const S="abcdefghijklmnopqrstuvwxyz";
+	const N=5;
+	const zenkakuSimbolRegex = /[^a-zA-Z0-9_]/;
+	const prefixNumRegex = /^[0-9]/;
+	const setVariableTypeName = 'setVariableType'
+	const elcbMark = "ELCB"
+	const ebMark = "EB"
+	let INPUT_CLASS_TYPE = {
+	    cbFormFieldClass: 'cb-form-field',
+	    textFormFieldClass: 'text-form-field',
+	    textWithLabelFormFieldClass: 'text-with-label-form-field',
+	    urlFormFieldClass: 'url-form-field',
+	    newLineFieldclass: 'newLine-field'
+	};
+	const newlineVariableValue = "cmdclickNewline";
+	const newlineVariableValueEscape = "// " + newlineVariableValue
+	const scriptFirst = `let args = jsArgs.get().split("\\t");
+		|const firstArgs = args.at(0);
+		|
+		|let currentFilePathList = "\${0}".replace(/^file:\\/\\//, '').split('/');
+		|const parentDirPath = currentFilePathList.slice(0, currentFilePathList.length - 1).join('/');
+		|
+		|const clipMode = "";
+		|const urlLaunchMode = "url";\n\n`
+		.split('\n')
+		.map(function(line){
+			return line.trim().replace(/^\|/, '');
+		}).join("\n");
+	const launchUrlFunction = `
+		|function UrlLauncher(LAUNCH_URL){
+		|	window.location.href = LAUNCH_URL;
+		|};\n\n`.split('\n')
+		.map(function(line){
+			return line.trim().replace(/^\|/, '');
+		}).join("\n");
+
+	let SET_VAL_TYPE_JANRE = {
+		name: 'name',
+	    value : 'value',
+	    supVal : 'supVal',
+	    valType : 'valType',
+	};
+
+	let READ_VAL_TYPE = {
+		ELCB: 'ELCB',
+	  TXT: 'TXT',
+	  EB: 'EB',
+	  LTXT: 'LTXT',
+	  NEWLINE: 'NEWLINE'
+	};
+
+	$(document).ready(function() {
+		document.title = siteTitle;
+		readVariables();
+
+		$('.menu-trigger').on('click',function(){
+			if($(this).hasClass('active')){
+			  $(this).removeClass('active');
+			  $('nav').removeClass('open');
+			  $('#addItems').text("add");
+			  $('#createFannel').removeClass('disabled');
+			  $('.overlay').removeClass('open');
+			} else {
+			  $(this).addClass('active');
+			  $('nav').addClass('open');
+			  $('	#addItems').text("close");
+			  $('#createFannel').addClass('disabled');
+			  $('.overlay').addClass('open');
+			}
+			});
+			$('.overlay').on('click',function(){
+			if($(this).hasClass('open')){
+			  $(this).removeClass('open');
+			  $('#addItems').text("add");
+			  $('#createFannel').removeClass('disabled');
+			  $('.menu-trigger').removeClass('active');
+			  $('nav').removeClass('open');      
+			}
 		});
-		$('.overlay').on('click',function(){
-		if($(this).hasClass('open')){
-		  $(this).removeClass('open');
-		  $('#addItems').text("add");
-		  $('#createFannel').removeClass('disabled');
-		  $('.menu-trigger').removeClass('active');
-		  $('nav').removeClass('open');      
-		}
-	});
 
-  
-  // フィールドの追加
-  $('#addField').click(function() {
-	const rundomStr = makeRandomValName()
-	appendCbBox(rundomStr, "option 1");
-  });
+	  
+	  // フィールドの追加
+	  $('#addField').click(function() {
+			const rundomStr = makeRandomValName()
+			appendElcbBox(rundomStr);
+	  });
 
-  $('#addTextField').click(function() {
-  	const rundomStr = makeRandomValName()
-    appendTextField(rundomStr, "");
-  });
+	  $('#addTextField').click(function() {
+	  	const rundomStr = makeRandomValName()
+	    appendTextField(rundomStr, "");
+	  });
 
-  $('#addTextWithLabelField').click(function() {
-  	const rundomStr = makeRandomValName()
-    appendTextWithLabelField(rundomStr, "");
-  });
+	  $('#addTextWithLabelField').click(function() {
+	  	const rundomStr = makeRandomValName()
+	    appendTextWithLabelField(rundomStr, "");
+	  });
 
-  $('#addNewlineField').click(function() {
-    appendNewLineField();
-  });
+	  $('#addNewlineField').click(function() {
+	    appendNewLineField();
+	  });
 
-  $('#addUrlLaunchField').click(function() {
-  	const rundomStr = makeRandomValName()
-    appendUrlLaunchButton(`launchUrl_${rundomStr}`, "");
-  });
-  
-  // フィールドのedit
-  $('#sortable-fields').on(
-  	'click', 
-  	'.edit-field', 
-  	function() {
-	    let sotableBtnValnameBox = $(this).parent();
-	    let listBlock = sotableBtnValnameBox.parent();
-	    editSelect(
-	    	listBlock,
-	    	sotableBtnValnameBox
+	  $('#addUrlLaunchField').click(function() {
+	  	const rundomStr = makeRandomValName()
+	    appendUrlLaunchButton(`launchUrl_${rundomStr}`, "");
+	  });
+	  
+	  // フィールドのedit
+	  $('#sortable-fields').on(
+	  	'click', 
+	  	'.edit-field', 
+	  	function() {
+		    let sotableBtnValnameBox = $(this).parent();
+		    let listBlock = sotableBtnValnameBox.parent();
+		    editSelect(
+		    	listBlock,
+		    	sotableBtnValnameBox
+		    );
+	  });
+
+	  // フィールドの並び替え
+	  $(function() {
+	  	sortableJsWrapper('sortable-fields');
+	  });
+	  
+
+	$('#createFannel').click(function() {
+		let cmdVariableList = [];
+		let setVariableTypeList = [];
+		let variableListForTextWithLabel = [];
+		let clipVariablesList = [];
+		let launchVariableList = [];
+
+	  let soutableFields = $('#sortable-fields')
+	  let inputParts = soutableFields.children()
+	  inputParts.each(function() {
+	  		let currentInputForm = $(this);
+	  		const className = currentInputForm.attr('class');
+	  		switch (true){
+					case className.includes(
+						INPUT_CLASS_TYPE.cbFormFieldClass
+					):
+						getFromElcbForm(
+							currentInputForm,
+							cmdVariableList,
+							clipVariablesList,
+							setVariableTypeList
+						)
+						break;
+					case className.includes(
+						INPUT_CLASS_TYPE.textFormFieldClass
+					):
+						getFromTextForm(
+							currentInputForm,
+							cmdVariableList,
+							clipVariablesList,
+							setVariableTypeList
+						)
+						break;
+					case className.includes(
+						INPUT_CLASS_TYPE.textWithLabelFormFieldClass
+					):
+						getFromTextWithLabelForm(
+							currentInputForm,
+							cmdVariableList,
+							clipVariablesList,
+							setVariableTypeList,
+							variableListForTextWithLabel
+						)
+						break;
+					case className.includes(
+						INPUT_CLASS_TYPE.urlFormFieldClass
+					):
+						 getFromUrlLaunchForm(
+							currentInputForm,
+							cmdVariableList,
+							setVariableTypeList,
+							launchVariableList,
+						)
+						break;
+					case className.includes(
+						INPUT_CLASS_TYPE.newLineFieldclass
+					):
+						cmdVariableList.push(
+							newlineVariableValueEscape
+						)
+						clipVariablesList.push(
+							newlineVariableValueEscape
+						)
+				}
+	  	});
+
+	  	const descriptionSections = createDescriptionSection(
+			variableListForTextWithLabel,
+			launchVariableList,
+		);
+
+	  	const settingVariableSections = createSettingVariableSection(
+			setVariableTypeList
+		);
+
+		const commandVariableSections = createCommandVariableSection(
+			cmdVariableList,
+		);
+		
+	  	const jsBodyScript = createJsBodyScript(
+			clipVariablesList,
+			launchVariableList,
+			variableListForTextWithLabel
+		);
+
+		const jsFileContents = [
+			descriptionSections,
+			"\n",
+			settingVariableSections,
+			"\n",
+			commandVariableSections,
+			"\n",
+			"/// Please write bellow with shell script",
+			"\n\n",
+			jsBodyScript,
+		].join("\n")
+		
+		jsFileSystem.writeLocalFile(
+	        createClipPath,
+	        jsFileContents
+	  );
+		const jumpConfirm = confirm(
+			`create ok,  jump ${targetFileName}.js ?`
+		);
+		if(jumpConfirm){
+			jsIntent.launchShortcut(
+	        parentDirPath,
+	        `${targetFileName}.js`
 	    );
-  });
-
-  // フィールドの並び替え
-  $(function() {
-  	sortableJsWrapper('sortable-fields');
-  });
-  
-
-$('#createFannel').click(function() {
-	let cmdVariableList = [];
-  	let setVariableTypeList = [];
-  	let variableListForTextWithLabel = [];
-  	let clipVariablesList = [];
-	let launchVariableList = [];
-
-  	let soutableFields = $('#sortable-fields')
-  	let inputParts = soutableFields.children()
-  	inputParts.each(function() {
-  		let currentInputForm = $(this);
-  		const className = currentInputForm.attr('class');
-  		switch (true){
-			case className.includes(
-				INPUT_CLASS_TYPE.cbFormFieldClass
-			):
-				getFromCbForm(
-					currentInputForm,
-					cmdVariableList,
-					clipVariablesList,
-					setVariableTypeList
-				)
-				break;
-			case className.includes(
-				INPUT_CLASS_TYPE.textFormFieldClass
-			):
-				getFromTextForm(
-					currentInputForm,
-					cmdVariableList,
-					clipVariablesList,
-					setVariableTypeList
-				)
-				break;
-			case className.includes(
-				INPUT_CLASS_TYPE.textWithLabelFormFieldClass
-			):
-				getFromTextWithLabelForm(
-					currentInputForm,
-					cmdVariableList,
-					clipVariablesList,
-					setVariableTypeList,
-					variableListForTextWithLabel
-				)
-				break;
-			case className.includes(
-				INPUT_CLASS_TYPE.urlFormFieldClass
-			):
-				 getFromUrlLaunchForm(
-					currentInputForm,
-					cmdVariableList,
-					setVariableTypeList,
-					launchVariableList,
-				)
-				break;
-			case className.includes(
-				INPUT_CLASS_TYPE.newLineFieldclass
-			):
-				cmdVariableList.push(newlineVariableValueEscape
-				)
-				clipVariablesList.push(newlineVariableValueEscape
-				)
 		}
-  	});
+	});
+		
+		$('#addItems').on('long-press',function(){
+			jsToast.long("Add item");
+		});
+		$('#createFannel').on('long-press',function(){
+			jsToast.long("Create clip formater fannel");
+		});
+		$('.plain-text').on('long-press',function(){
+			jsToast.long("Add plain text field");
+		});
+		$('.label-text').on('long-press',function(){
+			jsToast.long("Add plain text with label(variable name) field");
+		});
+		$('.url-launch').on('long-press',function(){
+			jsToast.long("Add url launch button");
+		});
+		$('.cb-item').on('long-press',function(){
+			jsToast.long("Add select box field");
+		});
+		$('.new-line').on('long-press',function(){
+			jsToast.long("Add new line");
+		});
+	});
 
-  	const descriptionSections = createDescriptionSection(
-		variableListForTextWithLabel,
-		launchVariableList,
-	);
 
-  	const settingVariableSections = createSettingVariableSection(
+	function readVariables(){
+		jsFileSystem.createDir(
+			targetAppDirPath
+		);
+		const jsFannelContents = jsFileSystem.readLocalFile(createClipPath
+		);
+		if(!jsFannelContents) return
+		const settingVals = jsScript.subSettingVars(
+			jsFannelContents
+		);
+		let setVariableTypeList = jsScript.subValOnlyValue(
+			setVariableTypeName,
+			settingVals,
+		).replaceAll("\n", ",").split(",");
+		let setValTypeMap = makeSetValTypeMap(
+			setVariableTypeList
+		)
+		let cmdValMapList = makeCmdMapList(
+			jsFannelContents,
+			setValTypeMap
+		)
+		execAddClipParts(
+			cmdValMapList,
+		);
+	}
+
+	function makeSetValTypeMap(
 		setVariableTypeList
-	);
-
-	const commandVariableSections = createCommandVariableSection(
-		cmdVariableList,
-	);
-	
-  	const jsBodyScript = createJsBodyScript(
-		clipVariablesList,
-		launchVariableList,
-		variableListForTextWithLabel
-	);
-
-	const jsFileContents = [
-		descriptionSections,
-		"\n",
-		settingVariableSections,
-		"\n",
-		commandVariableSections,
-		"\n",
-		"/// Please write bellow with shell script",
-		"\n\n",
-		jsBodyScript,
-	].join("\n")
-	
-	jsFileSystem.writeLocalFile(
-        createClipPath,
-        jsFileContents
-  );
-	jsToast.short("create ok");
-  });
-	
-	$('#addItems').on('long-press',function(){
-		jsToast.long("Add item");
-	});
-	$('#createFannel').on('long-press',function(){
-		jsToast.long("Create clip formater fannel");
-	});
-	$('.plain-text').on('long-press',function(){
-		jsToast.long("Add plain text field");
-	});
-	$('.label-text').on('long-press',function(){
-		jsToast.long("Add plain text with label(variable name) field");
-	});
-	$('.url-launch').on('long-press',function(){
-		jsToast.long("Add url launch button");
-	});
-	$('.cb-item').on('long-press',function(){
-		jsToast.long("Add select box field");
-	});
-	$('.new-line').on('long-press',function(){
-		jsToast.long("Add new line");
-	});
-});
+	){
+		const setVariableTypeMapList = setVariableTypeList.map(
+			function (line) {
+				let lineList = line.split('=')
+				const keySourceList = lineList.at(0).split(":");
+				const key = keySourceList.at(0);
+				if(keySourceList.length > 1){
+					var valType = keySourceList.at(1);
+				} else {
+					var valType = "";
+				}
+				if(lineList.length > 1){
+					var supValue = lineList.slice(1).join('=');
+				} else {
+					var supValue = "";
+				}
+				var map = new Map(
+					[
+						[SET_VAL_TYPE_JANRE.valType, valType], 
+						[SET_VAL_TYPE_JANRE.supVal, supValue]
+					]
+				);
+				return [key, map]
+			}
+		)
+		return new Map(
+			setVariableTypeMapList
+		)
+	}
 
 
-function readVariables(){
-	const jsFannelContents = jsFileSystem.readLocalFile(createClipPath
-	);
-	if(!jsFannelContents) return
-	const settingVals = jsScript.subSettingVars(
-		jsFannelContents
-	);
-	let setVariableTypeList = jsScript.subValOnlyValue(
-		setVariableTypeName,
-		settingVals,
-	).replaceAll("\n", ",").split(",");
-	let setValTypeMap = makeSetValTypeMap(
-		setVariableTypeList
-	)
-	let cmdValMapList = makeCmdMapList(
+	function makeCmdMapList(
 		jsFannelContents,
 		setValTypeMap
-	)
-	execAddClipParts(
-		cmdValMapList,
-	);
-}
-
-function makeSetValTypeMap(
-	setVariableTypeList
-){
-	const setVariableTypeMapList = setVariableTypeList.map(
-		function (line) {
-			let lineList = line.split('=')
-			const keySourceList = lineList.at(0).split(":");
-			const key = keySourceList.at(0);
-			if(keySourceList.length > 1){
-				var valType = keySourceList.at(1);
-			} else {
-				var valType = "";
-			}
-			if(lineList.length > 1){
-				var supValue = lineList.slice(1).join('=');
-			} else {
-				var supValue = "";
-			}
-			var map = new Map(
-				[
-					[SET_VAL_TYPE_JANRE.valType, valType], 
-					[SET_VAL_TYPE_JANRE.supVal, supValue]
-				]
-			);
-			return [key, map]
-		}
-	)
-	return new Map(
-		setVariableTypeMapList
-	)
-}
-
-
-function makeCmdMapList(
-	jsFannelContents,
-	setValTypeMap
-){
-	return jsScript.subCmdVars(
-		jsFannelContents
-	).split("\n").map(
-		function(line){
-			const nameValList = line.split("=");
-			const name = nameValList.at(0);
-			if(nameValList.length > 1){
-				const valueSource = nameValList.slice(1).join("=");
-				var value = jsScript.bothQuoteTrim(valueSource);
-			} else {
-				var value = "";
-			}
-			if(
-				value === undefined 
-				|| value == '\"\"'
-			) value = "";
-			let currentValMap = setValTypeMap.get(name)
-			if(currentValMap === undefined){
+	){
+		return jsScript.subCmdVars(
+			jsFannelContents
+		).split("\n").map(
+			function(line){
+				const nameValList = line.split("=");
+				const name = nameValList.at(0);
+				if(nameValList.length > 1){
+					const valueSource = nameValList.slice(1).join("=");
+					var value = jsScript.bothQuoteTrim(valueSource);
+				} else {
+					var value = "";
+				}
+				if(
+					value === undefined 
+					|| value == '\"\"'
+				) value = "";
+				let currentValMap = setValTypeMap.get(name)
+				if(currentValMap === undefined){
+					const valType = decideValType(
+								name,
+								currentValMap,
+								jsFannelContents,
+							)
+					return new Map(
+						[
+							[SET_VAL_TYPE_JANRE.name, name],
+							[SET_VAL_TYPE_JANRE.value, value],
+							[SET_VAL_TYPE_JANRE.valType, valType], 
+							[SET_VAL_TYPE_JANRE.supVal, ""]
+						]
+					);
+				}
+				var supVal = "";
+				if(
+					currentValMap.has(SET_VAL_TYPE_JANRE.supVal)
+				) supVal = currentValMap.get(SET_VAL_TYPE_JANRE.supVal);
+				else supVal = "";
 				const valType = decideValType(
-							name,
-							currentValMap,
-							jsFannelContents,
-						)
+					name,
+					currentValMap,
+					jsFannelContents,
+				)
 				return new Map(
 					[
 						[SET_VAL_TYPE_JANRE.name, name],
-						[SET_VAL_TYPE_JANRE.value, value],
+						[SET_VAL_TYPE_JANRE.value, value], 
 						[SET_VAL_TYPE_JANRE.valType, valType], 
-						[SET_VAL_TYPE_JANRE.supVal, ""]
+						[SET_VAL_TYPE_JANRE.supVal, supVal]
 					]
 				);
+		})
+	}
+
+	function execAddClipParts(
+		cmdValMapList
+	){
+		cmdValMapList.forEach((mapObj, index) => { // ★
+			const name = mapObj.get(SET_VAL_TYPE_JANRE.name)
+			const value = mapObj.get(SET_VAL_TYPE_JANRE.value)
+			const supVal = mapObj.get(SET_VAL_TYPE_JANRE.supVal)
+			const valType = mapObj.get(SET_VAL_TYPE_JANRE.valType)
+		  	switch (valType){
+					case READ_VAL_TYPE.ELCB:
+						appendElcbBox(name)
+						break;
+					case READ_VAL_TYPE.TXT:
+						appendTextField(name, value);
+						break;
+					case READ_VAL_TYPE.LTXT:
+						appendTextWithLabelField(name, value)
+						break;
+					case READ_VAL_TYPE.EB:
+						appendUrlLaunchButton(name, value)
+						break;
+					case READ_VAL_TYPE.NEWLINE:
+						appendNewLineField()
+						break;
 			}
-			var supVal = "";
-			if(
-				currentValMap.has(SET_VAL_TYPE_JANRE.supVal)
-			) supVal = currentValMap.get(SET_VAL_TYPE_JANRE.supVal);
-			else supVal = "";
-			const valType = decideValType(
-				name,
-				currentValMap,
-				jsFannelContents,
-			)
-			return new Map(
-				[
-					[SET_VAL_TYPE_JANRE.name, name],
-					[SET_VAL_TYPE_JANRE.value, value], 
-					[SET_VAL_TYPE_JANRE.valType, valType], 
-					[SET_VAL_TYPE_JANRE.supVal, supVal]
-				]
-			);
-	})
-}
+		});
+	}
 
-function execAddClipParts(
-	cmdValMapList
-){
-	cmdValMapList.forEach((mapObj, index) => { // ★
-		const name = mapObj.get(SET_VAL_TYPE_JANRE.name)
-		const value = mapObj.get(SET_VAL_TYPE_JANRE.value)
-		const supVal = mapObj.get(SET_VAL_TYPE_JANRE.supVal)
-		const valType = mapObj.get(SET_VAL_TYPE_JANRE.valType)
-	  	switch (valType){
-				case READ_VAL_TYPE.ECB:
-					appendCbBox(name, supVal)
-					break;
-				case READ_VAL_TYPE.TXT:
-					appendTextField(name, value);
-					break;
-				case READ_VAL_TYPE.LTXT:
-					appendTextWithLabelField(name, value)
-					break;
-				case READ_VAL_TYPE.EB:
-					appendUrlLaunchButton(name, value)
-					break;
-				case READ_VAL_TYPE.NEWLINE:
-					appendNewLineField()
-					break;
-		}
-	});
-}
+	function decideValType(
+		name,
+		currentValMap,
+		jsFannelContents,
+	){
+		var valType = "";
+		if(
+			currentValMap != undefined
+			&& currentValMap.has(SET_VAL_TYPE_JANRE.valType)
+		) valType = currentValMap.get(SET_VAL_TYPE_JANRE.valType);
+		if(valType) return valType;
+		if(
+			name == newlineVariableValueEscape
+		) return READ_VAL_TYPE.NEWLINE;
+		if(
+			jsFannelContents.includes(`${name}: `)
+		) return READ_VAL_TYPE.LTXT;
+		return READ_VAL_TYPE.TXT;
+	}
 
-function decideValType(
-	name,
-	currentValMap,
-	jsFannelContents,
-){
-	var valType = "";
-	if(
-		currentValMap != undefined
-		&& currentValMap.has(SET_VAL_TYPE_JANRE.valType)
-	) valType = currentValMap.get(SET_VAL_TYPE_JANRE.valType);
-	if(valType) return valType;
-	if(
-		name == newlineVariableValueEscape
-	) return READ_VAL_TYPE.NEWLINE;
-	if(
-		jsFannelContents.includes(`${name}: `)
-	) return READ_VAL_TYPE.LTXT;
-	return READ_VAL_TYPE.TXT;
-}
+	function appendElcbBox(label){
+			const listFilePath = `${targetAppDirPath}/${label}List`;
+			let optionList = jsFileSystem.readLocalFile(
+				listFilePath
+			).split("\n");
+	  	const optionTags = optionList.map(
+	  		function(option, index){
+	  			const value = index + 1
+	  			return `<option value="${value}">${option}</option>`
+	  		}
+	  	).join('');
+	  	$('#sortable-fields').append(`<div class="${INPUT_CLASS_TYPE.cbFormFieldClass} cb-item list-box"><div class="sotable-btn-valname-box"><button class="btn btn-danger -field edit-field">edit</button><label for="select">${label}</label></div><select id="select" class="sotable-input">${optionTags}</select></div>`);
+	  }
 
-function appendCbBox(label, optionStr){
-  	let optionList = optionStr.split('!');
-  	const optionTags = optionList.map(
-  		function(option, index){
-  			const value = index + 1
-  			return `<option value="${value}">${option}</option>`
-  		}
-  	).join('');
-  	$('#sortable-fields').append(`<div class="${INPUT_CLASS_TYPE.cbFormFieldClass} cb-item list-box"><div class="sotable-btn-valname-box"><button class="btn btn-danger -field edit-field">edit</button><label for="select">${label}</label></div><select id="select" class="sotable-input">${optionTags}</select></div>`);
-  }
+	  function appendTextField(label, text){
+	  	$('#sortable-fields').append(`<div class="${INPUT_CLASS_TYPE.textFormFieldClass} plain-text list-box"><div class="sotable-btn-valname-box"><button class="btn btn-danger edit-field">edit</button><label for="text">${label}</label></div><input id="text" class="sotable-input" type="text" value="${text}" /></div>`);
+	  }
 
-  function appendTextField(label, text){
-  	$('#sortable-fields').append(`<div class="${INPUT_CLASS_TYPE.textFormFieldClass} plain-text list-box"><div class="sotable-btn-valname-box"><button class="btn btn-danger edit-field">edit</button><label for="text">${label}</label></div><input id="text" class="sotable-input" type="text" value="${text}" /></div>`);
-  }
+	function appendTextWithLabelField(label, text){
+		$('#sortable-fields').append(`<div class="${INPUT_CLASS_TYPE.textWithLabelFormFieldClass} label-text list-box"><div class="sotable-btn-valname-box"><button class="btn btn-danger edit-field">edit</button><label for="text">${label}</label></div><input id="text"  class="sotable-input" type="text" value="${text}" /></div>`);
+	}
 
-function appendTextWithLabelField(label, text){
-	$('#sortable-fields').append(`<div class="${INPUT_CLASS_TYPE.textWithLabelFormFieldClass} label-text list-box"><div class="sotable-btn-valname-box"><button class="btn btn-danger edit-field">edit</button><label for="text">${label}</label></div><input id="text"  class="sotable-input" type="text" value="${text}" /></div>`);
-}
+	function appendNewLineField(){
+		$('#sortable-fields').append(`<div class="${INPUT_CLASS_TYPE.newLineFieldclass} new-line list-box"><div class="sotable-btn-valname-box"><label for="text">wrap</label></div></div>`);
+	};
 
-function appendNewLineField(){
-	$('#sortable-fields').append(`<div class="${INPUT_CLASS_TYPE.newLineFieldclass} new-line list-box"><div class="sotable-btn-valname-box"><label for="text">wrap</label></div></div>`);
-};
+	function appendUrlLaunchButton(valName, urlStr){
+		$('#sortable-fields').append(`<div class="${INPUT_CLASS_TYPE.urlFormFieldClass} url-launch list-box"><div class="sotable-btn-valname-box"><button class="btn btn-danger edit-field">edit</button><label for="text">${valName}</label></div><input id="urllaunch"  class="sotable-input" type="text" value="${urlStr}" /></div>`);
+	}
 
-function appendUrlLaunchButton(valName, urlStr){
-	$('#sortable-fields').append(`<div class="${INPUT_CLASS_TYPE.urlFormFieldClass} url-launch list-box"><div class="sotable-btn-valname-box"><button class="btn btn-danger edit-field">edit</button><label for="text">${valName}</label></div><input id="urllaunch"  class="sotable-input" type="text" value="${urlStr}" /></div>`);
-}
-
-function createDescriptionSection(
-	variableListForTextWithLabel,
-	launchVariableList,
-) {
-	const firstDescriptinHolder = "/// LABELING_SECTION_START";
-	const endDescriptionHolder = "/// LABELING_SECTION_END";
-	const firstSection = `\n\n${firstDescriptinHolder}
-		|// clipboad formatter @maker`.split('\n')
-	.map(function(line){
-		return line.trim().replace(/^\|/, '');
-	}).join("\n");
-	const descForTextWithLable = variableListForTextWithLabel.map(
-		function(variable){
-			return `// ${variable}: text input with label`
+	function createDescriptionSection(
+		variableListForTextWithLabel,
+		launchVariableList,
+	) {
+		const firstDescriptinHolder = "/// LABELING_SECTION_START";
+		const endDescriptionHolder = "/// LABELING_SECTION_END";
+		const firstSection = `\n\n${firstDescriptinHolder}
+			|// clipboad formatter @maker`.split('\n')
+		.map(function(line){
+			return line.trim().replace(/^\|/, '');
 		}).join("\n");
-	const descForLaunch = launchVariableList.map(
-		function(variable){
-			return `// ${variable}: Launch url`
+		const descForTextWithLable = variableListForTextWithLabel.map(
+			function(variable){
+				return `// ${variable}: text input with label`
+			}).join("\n");
+		const descForLaunch = launchVariableList.map(
+			function(variable){
+				return `// ${variable}: Launch url`
+			}).join("\n");
+		const endDescContents = `|// --
+			|// --
+			|// bellow setting variable main line up
+			|// * EditExecute is edit mode change
+			|//	- NO is normal edit
+			|//	- ONCE is one time edit and execute
+			|//	- ALWAYS is always edit and execute
+			|// * terminalOutputMode decide output mode in cmdclick terminal
+			|//  - NORMAL: normal terminal output (default)
+			|//  - REFLASH: Before terminal output, screen resflesh
+			|//  - REFLASH_AND_FIRST_ROW: Before terminal output, screen resflesh and focus first row
+			|//  - DEBUG: stdr + stderr
+			|//  - NO: no output (bacground exec)
+			|${endDescriptionHolder}`.split('\n')
+		.map(function(line){
+			return line.trim().replace(/^\|/, '');
 		}).join("\n");
-	const endDescContents = `|// --
-		|// --
-		|// bellow setting variable main line up
-		|// * EditExecute is edit mode change
-		|//	- NO is normal edit
-		|//	- ONCE is one time edit and execute
-		|//	- ALWAYS is always edit and execute
-		|// * terminalOutputMode decide output mode in cmdclick terminal
-		|//  - NORMAL: normal terminal output (default)
-		|//  - REFLASH: Before terminal output, screen resflesh
-		|//  - REFLASH_AND_FIRST_ROW: Before terminal output, screen resflesh and focus first row
-		|//  - DEBUG: stdr + stderr
-		|//  - NO: no output (bacground exec)
-		|${endDescriptionHolder}`.split('\n')
-	.map(function(line){
-		return line.trim().replace(/^\|/, '');
-	}).join("\n");
-	return [
-		firstSection,
-		descForTextWithLable,
-		descForLaunch,
-		endDescContents
-	].join("\n");
-};
+		return [
+			firstSection,
+			descForTextWithLable,
+			descForLaunch,
+			endDescContents
+		].join("\n");
+	};
 
-function createSettingVariableSection(
-	setVariableTypeList
-){
-	const firstSettings = `/// SETTING_SECTION_START
-	|editExecute="ALWAYS"
-	|terminalOutputMode="NORMAL"`.split('\n')
-	.map(function(line){
-		return line.trim().replace(/^\|/, '');
-	}).join("\n");
+	function createSettingVariableSection(
+		setVariableTypeList
+	){
+		const firstSettings = `/// SETTING_SECTION_START
+		|editExecute="ALWAYS"
+		|terminalOutputMode="NORMAL"`.split('\n')
+		.map(function(line){
+			return line.trim().replace(/^\|/, '');
+		}).join("\n");
 
-	const setVariableSettings = setVariableTypeList.join("\n")
-	const endSettings = `scriptFileName="clipFormatter.js"
-	|/// SETTING_SECTION_END`.split('\n')
-	.map(function(line){
-		return line.trim().replace(/^\|/, '');
-	}).join("\n");
-	return [
-		firstSettings, 
-		setVariableSettings, 
-		endSettings
-	].join("\n")
-};
+		const setVariableSettings = setVariableTypeList.join("\n")
+		const endSettings = `scriptFileName="clipFormatter.js"
+		|/// SETTING_SECTION_END`.split('\n')
+		.map(function(line){
+			return line.trim().replace(/^\|/, '');
+		}).join("\n");
+		return [
+			firstSettings, 
+			setVariableSettings, 
+			endSettings
+		].join("\n")
+	};
 
-function createCommandVariableSection(
-	cmdVariableList,
-){
-	const firstSettings = '/// CMD_VARIABLE_SECTION_START';
-	const setVariableSettings = cmdVariableList.join("\n");
-	const endSettings = '/// CMD_VARIABLE_SECTION_END';
-	return [
-		firstSettings, 
-		setVariableSettings, 
-		endSettings
-	].join("\n")
-}
+	function createCommandVariableSection(
+		cmdVariableList,
+	){
+		const firstSettings = '/// CMD_VARIABLE_SECTION_START';
+		const setVariableSettings = cmdVariableList.join("\n");
+		const endSettings = '/// CMD_VARIABLE_SECTION_END';
+		return [
+			firstSettings, 
+			setVariableSettings, 
+			endSettings
+		].join("\n")
+	}
 
 
-function createJsBodyScript(
-	clipVariablesList,
-	launchVariableList,
-	variableListForTextWithLabel
-){
-	const concatClipFunction = clipFunctionConcatter(
+	function createJsBodyScript(
 		clipVariablesList,
+		launchVariableList,
 		variableListForTextWithLabel
-	)
+	){
+		const concatClipFunction = clipFunctionConcatter(
+			clipVariablesList,
+			variableListForTextWithLabel
+		)
 
-	const switchFunction = switchFunctionConcatter(
+		const switchFunction = switchFunctionConcatter(
+			launchVariableList
+		)
+		
+		return scriptFirst + 
+			"\n" + concatClipFunction +
+			"\n" + launchUrlFunction +
+			"\n" + switchFunction +
+			"\n";
+	}
+
+	function switchFunctionConcatter(
 		launchVariableList
-	)
-	
-	return scriptFirst + 
-		"\n" + concatClipFunction +
-		"\n" + launchUrlFunction +
-		"\n" + switchFunction +
-		"\n";
-}
-
-function switchFunctionConcatter(
-	launchVariableList
-){
-	var switchFunction = `switch(firstArgs){
-	|	case clipMode:
-	|		execClipMode();
-	|		break;\n`.split('\n')
-	.map(function(line){
-		return line.trim().replace(/^\|/, '');
-	}).join("\n");
-
-	launchVariableList.forEach(function(variable){
-		switchFunction += `|	case "${variable}":
-		|		UrlLauncher(${variable});
+	){
+		var switchFunction = `switch(firstArgs){
+		|	case clipMode:
+		|		execClipMode();
 		|		break;\n`.split('\n')
 		.map(function(line){
 			return line.trim().replace(/^\|/, '');
 		}).join("\n");
-	});
-	switchFunction += "};"
-	return switchFunction
-};
 
-function clipFunctionConcatter(
-	clipVariablesList,
-	variableListForTextWithLabel
-){
-	var concatClipFunction = `function execClipMode(){
-	|	var clipBody = "";
-	|	var newlines = "";\n`.split('\n')
-	.map(function(line){
-		return line.trim().replace(/^\|/, '');
-	}).join("\n");
-	clipVariablesList.forEach(function(variable){
-		if(
-			variable == newlineVariableValueEscape
-		) {
-			concatClipFunction += `\n\tnewlines += "\\n";`;
-			return
-		}
-		var insertVarable = insertVariableForClip(
-			variableListForTextWithLabel,
-			variable,
-		)
-		concatClipFunction += `
-		|	if(${variable}){
-		|		clipBody += newlines + ${insertVarable} + "\\n";
-		|	} else {
-		|		newlines = "";
-		|	};\n`.split('\n')
+		launchVariableList.forEach(function(variable){
+			switchFunction += `|	case "${variable}":
+			|		UrlLauncher(${variable});
+			|		break;\n`.split('\n')
+			.map(function(line){
+				return line.trim().replace(/^\|/, '');
+			}).join("\n");
+		});
+		switchFunction += "};"
+		return switchFunction
+	};
+
+	function clipFunctionConcatter(
+		clipVariablesList,
+		variableListForTextWithLabel
+	){
+		var concatClipFunction = `function execClipMode(){
+		|	var clipBody = "";
+		|	var newlines = "";\n`.split('\n')
 		.map(function(line){
 			return line.trim().replace(/^\|/, '');
 		}).join("\n");
-	});
-	concatClipFunction += `
-	|	jsUtil.copyToClipboard(clipBody, 10);
-	|	jsToast.short("copy to clipboard");
-	|};`.split('\n')
-	.map(function(line){
-		return line.trim().replace(/^\|/, '');
-	}).join("\n");
-	return concatClipFunction
-}
+		clipVariablesList.forEach(function(variable){
+			if(
+				variable == newlineVariableValueEscape
+			) {
+				concatClipFunction += `\n\tnewlines += "\\n";`;
+				return
+			}
+			var insertVarable = insertVariableForClip(
+				variableListForTextWithLabel,
+				variable,
+			)
+			concatClipFunction += `
+			|	if(${variable}){
+			|		clipBody += newlines + ${insertVarable} + "\\n";
+			|	} else {
+			|		newlines = "";
+			|	};\n`.split('\n')
+			.map(function(line){
+				return line.trim().replace(/^\|/, '');
+			}).join("\n");
+		});
+		concatClipFunction += `
+		|	jsUtil.copyToClipboard(clipBody, 10);
+		|	jsToast.short("copy to clipboard");
+		|};`.split('\n')
+		.map(function(line){
+			return line.trim().replace(/^\|/, '');
+		}).join("\n");
+		return concatClipFunction
+	}
 
-function insertVariableForClip(
-	variableListForTextWithLabel,
-	variable,
-){
-	if(
-		variableListForTextWithLabel.includes(variable)
+	function insertVariableForClip(
+		variableListForTextWithLabel,
+		variable,
 	){
-		return [
-			`"${variable}: "`,
-			variable
-		].join(" + ");
+		if(
+			variableListForTextWithLabel.includes(variable)
+		){
+			return [
+				`"${variable}: "`,
+				variable
+			].join(" + ");
+		}
+		return variable;
 	}
-	return variable;
-}
 
 
-function getFromCbForm(
-	cbFormFields,
-	cmdVariableList,
-	clipVariablesList,
-	setVariableTypeList
-){
-  	cbFormFields.each(function() {
-  		let listBlock = $(this);
-  		let sotableBtnValnameBox = listBlock.children('.sotable-btn-valname-box')
-  		const cbVariableName = sotableBtnValnameBox.children('label').text();
-  		cmdVariableList.push(`${cbVariableName}=""`)
-  		clipVariablesList.push(cbVariableName);
-  		let selectTag = listBlock.children('select');
-  		let options = selectTag.children();
-		const typeValue = options.map(function() {
-	    	return $(this).text()
-	  	}).get().join('!');
-	  	setVariableTypeList.push(
-	  		`${setVariableTypeName}="${cbVariableName}:${cbMark}=${typeValue}"`
-	  	)
-    });
-}
-
-
-function getFromTextWithLabelForm(
-	textFormFields,
-	cmdVariableList,
-	clipVariablesList,
-	setVariableTypeList,
-	variableListForTextWithLabel
-){
-	textFormFields.each(function() {
-  		let listBlock = $(this);
-  		let sotableBtnValnameBox = listBlock.children('.sotable-btn-valname-box')
-  		const cbVariableName = sotableBtnValnameBox.children('label').text();
-  		variableListForTextWithLabel.push(cbVariableName)
-  		let plainText = listBlock.children('input:text').val();
-  		cmdVariableList.push(`${cbVariableName}="${plainText}"`)
-  		clipVariablesList.push(cbVariableName);
-    });
-}
-
-function getFromTextForm(
-	textFormFields,
-	cmdVariableList,
-	clipVariablesList,
-	setVariableTypeList
-){
-	textFormFields.each(function() {
-  		let listBlock = $(this);
-  		let sotableBtnValnameBox = listBlock.children('.sotable-btn-valname-box')
-  		const cbVariableName = sotableBtnValnameBox.children('label').text();
-  		let plainText = listBlock.children('input:text').val();
-  		cmdVariableList.push(`${cbVariableName}="${plainText}"`)
-  		clipVariablesList.push(cbVariableName);
-    });
-}
-
-function getFromUrlLaunchForm(
-	urlFormFields,
-	cmdVariableList,
-	setVariableTypeList,
-	launchVariableList
-){
-	urlFormFields.each(function() {
-  		let listBlock = $(this);
-  		let sotableBtnValnameBox = listBlock.children('.sotable-btn-valname-box')
-  		const cbVariableName = sotableBtnValnameBox.children('label').text();
-  		let urlText = listBlock.children('input:text').val();
-  		cmdVariableList.push(`${cbVariableName}="${urlText}"`)
-  		launchVariableList.push(cbVariableName)
-	  	setVariableTypeList.push(
-	  		`${setVariableTypeName}="${cbVariableName}:${ebMark}=jsf '\${0}' ${cbVariableName}"`
-	  	)
-    });
-}
-
-
-let EDIT_TYPE = {
-    txt : 'text',
-    sl : 'select',
-};
-	
-function editSelect(
-	listBlock,
-	sotableBtnValnameBox
-) {
-	const getedType = getType(listBlock);
-	switch (getedType){
-		case EDIT_TYPE.txt:
-			textBoxEdit(
-				listBlock,
-				sotableBtnValnameBox
-			);
-			break;
-		case EDIT_TYPE.sl:
-			checkBoxEdit(
-				listBlock,
-				sotableBtnValnameBox
-			);
-			break;
+	function getFromElcbForm(
+		elcbFormFields,
+		cmdVariableList,
+		clipVariablesList,
+		setVariableTypeList
+	){
+	  	elcbFormFields.each(function() {
+	  		let listBlock = $(this);
+	  		let sotableBtnValnameBox = listBlock.children('.sotable-btn-valname-box')
+	  		const elcbVariableName = sotableBtnValnameBox.children('label').text();
+	  		cmdVariableList.push(`${elcbVariableName}=""`)
+	  		clipVariablesList.push(elcbVariableName);
+	  		let selectTag = listBlock.children('select');
+	  		let options = selectTag.children();
+				const listContents = options.map(function() {
+			    	return $(this).text()
+			  	}).get().join('\n');
+				const listFilePath = `${targetAppDirPath}/${elcbVariableName}List`;
+		  	setVariableTypeList.push(
+		  		`${setVariableTypeName}="${elcbVariableName}:${elcbMark}=${listFilePath}"`
+		  	)
+		  	jsFileSystem.writeLocalFile(
+		  		listFilePath,
+					listContents
+		  	);
+		  });
 	}
-}
 
 
-function textBoxEdit(
-	listBlock,
-	sotableBtnValnameBox
-){
-	var dialog = $(".dialog");
-    let dialogForm = dialog.children('.dialogForm')
-    dialogForm.empty();
-	dialogForm.append(`<form ></form>`)
-    let formBody = dialogForm.children('form')
-	formBody.append(`<label for="editLabel">edit variable:</label>`)
-	let labelTag = sotableBtnValnameBox.children('label');
-	formBody.append(`<input type="text" class="editLabel" value="${labelTag.text()}" style="margin: 5px;"><br>`)
-    // ダイアログを表示
-	dialog.css("display", "block") 
-	$(".dialog").dialog({
-		modal:true, //モーダル表示
-		title:"edit dialog", //タイトル
-		buttons: { //ボタン
-			"cancel": function() {
-				$(this).dialog("close");
-			},
-			"ok": function() {
-		      	execReflectForText(
-					formBody,
+	function getFromTextWithLabelForm(
+		textFormFields,
+		cmdVariableList,
+		clipVariablesList,
+		setVariableTypeList,
+		variableListForTextWithLabel
+	){
+		textFormFields.each(function() {
+	  		let listBlock = $(this);
+	  		let sotableBtnValnameBox = listBlock.children('.sotable-btn-valname-box')
+	  		const currentVariableName = sotableBtnValnameBox.children('label').text();
+	  		variableListForTextWithLabel.push(currentVariableName)
+	  		let plainText = listBlock.children('input:text').val();
+	  		cmdVariableList.push(`${currentVariableName}="${plainText}"`)
+	  		clipVariablesList.push(currentVariableName);
+	    });
+	}
+
+	function getFromTextForm(
+		textFormFields,
+		cmdVariableList,
+		clipVariablesList,
+		setVariableTypeList
+	){
+		textFormFields.each(function() {
+	  		let listBlock = $(this);
+	  		let sotableBtnValnameBox = listBlock.children('.sotable-btn-valname-box')
+	  		const currentVariableName = sotableBtnValnameBox.children('label').text();
+	  		let plainText = listBlock.children('input:text').val();
+	  		cmdVariableList.push(`${currentVariableName}="${plainText}"`)
+	  		clipVariablesList.push(currentVariableName);
+	    });
+	}
+
+	function getFromUrlLaunchForm(
+		urlFormFields,
+		cmdVariableList,
+		setVariableTypeList,
+		launchVariableList
+	){
+		urlFormFields.each(function() {
+	  		let listBlock = $(this);
+	  		let sotableBtnValnameBox = listBlock.children('.sotable-btn-valname-box')
+	  		const currentVariableName = sotableBtnValnameBox.children('label').text();
+	  		let urlText = listBlock.children('input:text').val();
+	  		cmdVariableList.push(`${currentVariableName}="${urlText}"`)
+	  		launchVariableList.push(currentVariableName)
+		  	setVariableTypeList.push(
+		  		`${setVariableTypeName}="${currentVariableName}:${ebMark}=jsf '\${0}' ${currentVariableName}"`
+		  	)
+	    });
+	}
+
+
+	let EDIT_TYPE = {
+	    txt : 'text',
+	    sl : 'select',
+	};
+		
+	function editSelect(
+		listBlock,
+		sotableBtnValnameBox
+	) {
+		const getedType = getType(listBlock);
+		switch (getedType){
+			case EDIT_TYPE.txt:
+				textBoxEdit(
 					listBlock,
 					sotableBtnValnameBox
-				)
-		      	$(this).dialog("close");
-			}
-		}
-	});
-}
-
-
-function execReflectForText(
-	formBody,
-	listBlock,
-	sotableBtnValnameBox,
-){
-	let inputTexts = formBody.children("input:text");
-	let inputTextList = inputTexts.map(
-		function(){
-			return $(this).val();
-		}
-	).get();
-	const labelValue = inputTextList.at(0)
-	const checkResult = numberZenkakuSimbolCheck(labelValue);
-	if(!checkResult) return
-  	const labelTag = sotableBtnValnameBox.children("label")
-  	labelTag.text(labelValue)
-}
-
-
-
-function checkBoxEdit(
-	listBlock,
-	sotableBtnValnameBox,
-){
-	var dialog = $(".dialog");
-    let dialogForm = dialog.children('.dialogForm')
-    dialogForm.empty();
-	dialogForm.append(`<form ></form>`)
-    let formBody = dialogForm.children('form')
-	formBody.append(`<label for="editLabel">edit variable:</label>`)
-	let labelTag = sotableBtnValnameBox.children('label');
-	formBody.append(`<input type="text" class="editLabel" value="${labelTag.text()}"><br>`)
-    formBody.append(`<label for="newOption">edit Option:</label>`)
-    formBody.append('<div id="check_box_inputs"></div>')
-    let checkBoxInputs = formBody.children('#check_box_inputs');
-    let selectTag = listBlock.children('select');
-	addOpToDialog(
-  		checkBoxInputs,
-  		selectTag
-  	);
-    dialogForm.append(`<br><br><input type="button" class="add_button" onClick="addInput(this)" value="Add">`
-    )
-	sortableJsWrapper('check_box_inputs');
-	// ダイアログを表示
-	dialog.css("display", "block") 
-	$(".dialog").dialog({
-		modal:true, //モーダル表示
-		title:"edit dialog", //タイトル
-		buttons: { //ボタン
-			"cancel": function() {
-				$(this).dialog("close");
-			},
-			"ok": function() {
-		      	execReflectForCb(
-					formBody,
+				);
+				break;
+			case EDIT_TYPE.sl:
+				checkBoxEdit(
 					listBlock,
-					sotableBtnValnameBox,
-					selectTag,
-					checkBoxInputs,
-				)
-		      	$(this).dialog("close");
+					sotableBtnValnameBox
+				);
+				break;
+		}
+	}
+
+
+	function textBoxEdit(
+		listBlock,
+		sotableBtnValnameBox
+	){
+		var dialog = $(".dialog");
+	    let dialogForm = dialog.children('.dialogForm')
+	    dialogForm.empty();
+		dialogForm.append(`<form ></form>`)
+	    let formBody = dialogForm.children('form')
+		formBody.append(`<label for="editLabel">edit variable:</label>`)
+		let labelTag = sotableBtnValnameBox.children('label');
+		formBody.append(`<input type="text" class="editLabel" value="${labelTag.text()}" style="margin: 5px;"><br>`)
+	    // ダイアログを表示
+		dialog.css("display", "block") 
+		$(".dialog").dialog({
+			modal:true, //モーダル表示
+			title:"edit dialog", //タイトル
+			buttons: { //ボタン
+				"cancel": function() {
+					$(this).dialog("close");
+				},
+				"ok": function() {
+			      	execReflectForText(
+						formBody,
+						listBlock,
+						sotableBtnValnameBox
+					)
+			      	$(this).dialog("close");
+				}
 			}
-		}
-	});
-}
-
-function addOpToDialog(
-	checkBoxInputs,
-	selectTag
-){
-	let options = selectTag.children();
-	var roopTimes = 0;
-	options.each(function() {
-    	const v = $(this).val();
-    	const t = $(this).text()
-    	checkBoxInputs.append(
-	    	`<div class="cb-dialog-item"><input type="text" id="editOption${roopTimes}" class="edit-cb-input" value="${t}"></div>`
-      	)
-      	roopTimes++
-  	});
-}
-
-function execReflectForCb(
-	formBody,
-	listBlock,
-	sotableBtnValnameBox,
-	selectTag,
-	checkBoxInputs,
-){
-	let inputTexts = formBody.children("input:text");
-	let inputTextList = inputTexts.map(
-		function(){
-			return $(this).val();
-		}
-	).get();
-	const labelValue = inputTextList.at(0)
-	const checkResult = numberZenkakuSimbolCheck(labelValue);
-	if(!checkResult) return
-  	const labelTag = sotableBtnValnameBox.children("label")
-  	labelTag.text(labelValue)
-  	let optionList = checkBoxInputs.children().map(
-		function(){
-			return $(this).children("input:text").val()
-		}
-	).get();
-  	selectTag.empty()
-  	var optionInsertTimes = 0;
-  	optionList.forEach(function(element) {
-  		if(!element) return
-  		selectTag.append(`<option value="${optionInsertTimes}">${element}</option>`)
-  	});
-}
-
-function numberZenkakuSimbolCheck(
-	labelValue
-){
-	if(prefixNumRegex.test(labelValue)) {
-		alert("no number prefix")
-		return false
+		});
 	}
-	if(zenkakuSimbolRegex.test(labelValue)) {
-		alert("no zenkaku or simbol")
-		return false
+
+
+	function execReflectForText(
+		formBody,
+		listBlock,
+		sotableBtnValnameBox,
+	){
+		let inputTexts = formBody.children("input:text");
+		let inputTextList = inputTexts.map(
+			function(){
+				return $(this).val();
+			}
+		).get();
+		const labelValue = inputTextList.at(0)
+		const checkResult = numberZenkakuSimbolCheck(labelValue);
+		if(!checkResult) return
+	  	const labelTag = sotableBtnValnameBox.children("label")
+	  	labelTag.text(labelValue)
 	}
-	return true
-}
 
-function addInput(button){
-	let checkBoxInputs = $('#check_box_inputs')
-	checkBoxInputs.append(`<div class="cb-dialog-item"><input type="text" class="edit-cb-input" value=""><div>`)
 
-}
 
-function getType(element) {
-	const type = element.children("input").prop('type');
-	if(type != undefined) return type
-    return element.children("select").attr("id");
-}
+	function checkBoxEdit(
+		listBlock,
+		sotableBtnValnameBox,
+	){
+		var dialog = $(".dialog");
+	    let dialogForm = dialog.children('.dialogForm')
+	    dialogForm.empty();
+		dialogForm.append(`<form ></form>`)
+	    let formBody = dialogForm.children('form')
+		formBody.append(`<label for="editLabel">edit variable:</label>`)
+		let labelTag = sotableBtnValnameBox.children('label');
+		formBody.append(`<input type="text" class="editLabel" value="${labelTag.text()}"><br>`)
+	    formBody.append(`<label for="newOption">edit Option:</label>`)
+	    formBody.append('<div id="check_box_inputs"></div>')
+	    let checkBoxInputs = formBody.children('#check_box_inputs');
+	    let selectTag = listBlock.children('select');
+		addOpToDialog(
+	  		checkBoxInputs,
+	  		selectTag
+	  	);
+	    dialogForm.append(`<br><br><input type="button" class="add_button" onClick="addInput(this)" value="Add">`
+	    )
+		sortableJsWrapper('check_box_inputs');
+		// ダイアログを表示
+		dialog.css("display", "block") 
+		$(".dialog").dialog({
+			modal:true, //モーダル表示
+			title:"edit dialog", //タイトル
+			buttons: { //ボタン
+				"cancel": function() {
+					$(this).dialog("close");
+				},
+				"ok": function() {
+			      	execReflectForCb(
+						formBody,
+						listBlock,
+						sotableBtnValnameBox,
+						selectTag,
+						checkBoxInputs,
+					)
+			      	$(this).dialog("close");
+				}
+			}
+		});
+	}
 
-function closeDialog() {
-	var dialog = $(".dialog");
-	dialog.css('display','none')
-}
+	function addOpToDialog(
+		checkBoxInputs,
+		selectTag
+	){
+		let options = selectTag.children();
+		var roopTimes = 0;
+		options.each(function() {
+	    	const v = $(this).val();
+	    	const t = $(this).text()
+	    	checkBoxInputs.append(
+		    	`<div class="cb-dialog-item"><input type="text" id="editOption${roopTimes}" class="edit-cb-input" value="${t}"></div>`
+	      	)
+	      	roopTimes++
+	  	});
+	}
 
-function sortableJsWrapper(selectorId){
-  var el = document.getElementById(selectorId);
-  var oldInnerHtml = "";
-  var sortable = new Sortable(el, {
-     delay: 100,
-     removeOnSpill: true,
-     onEnd: function (/**Event*/evt) {
-	    var target = evt.originalEvent.target;
-        if (
-        	el === target || el.contains(target)
-        ) return false
-        removeConfirmForSort(evt)
-        return false
-      },
-  });
-}
+	function execReflectForCb(
+		formBody,
+		listBlock,
+		sotableBtnValnameBox,
+		selectTag,
+		checkBoxInputs,
+	){
+		let inputTexts = formBody.children("input:text");
+		let inputTextList = inputTexts.map(
+			function(){
+				return $(this).val();
+			}
+		).get();
+		const labelValue = inputTextList.at(0)
+		const checkResult = numberZenkakuSimbolCheck(labelValue);
+		if(!checkResult) return
+	  	const labelTag = sotableBtnValnameBox.children("label")
+	  	labelTag.text(labelValue)
+	  	let optionList = checkBoxInputs.children().map(
+			function(){
+				return $(this).children("input:text").val()
+			}
+		).get();
+	  	selectTag.empty()
+	  	var optionInsertTimes = 0;
+	  	optionList.forEach(function(element) {
+	  		if(!element) return
+	  		selectTag.append(`<option value="${optionInsertTimes}">${element}</option>`)
+	  	});
+	}
 
-function makeRandomValName() {
-	return Array.from(
-		crypto.getRandomValues(
-			new Uint8Array(N))
-		).map(
-		(n) => S[n%S.length]
-	).join('')
-}
+	function numberZenkakuSimbolCheck(
+		labelValue
+	){
+		if(prefixNumRegex.test(labelValue)) {
+			alert("no number prefix")
+			return false
+		}
+		if(zenkakuSimbolRegex.test(labelValue)) {
+			alert("no zenkaku or simbol")
+			return false
+		}
+		return true
+	}
 
-function removeConfirmForSort(evt){
-	const confirmBool = confirm("delete ok?")
-	if(confirmBool) return
-  var items = evt.from.getElementsByClassName("list-box");
-  evt.from.insertBefore(evt.item, items[evt.oldIndex]);
-}
-</script>
+	function addInput(button){
+		let checkBoxInputs = $('#check_box_inputs')
+		checkBoxInputs.append(`<div class="cb-dialog-item"><input type="text" class="edit-cb-input" value=""><div>`)
 
-</body>
-</html>
+	}
+
+	function getType(element) {
+		const type = element.children("input").prop('type');
+		if(type != undefined) return type
+	    return element.children("select").attr("id");
+	}
+
+	function closeDialog() {
+		var dialog = $(".dialog");
+		dialog.css('display','none')
+	}
+
+	function sortableJsWrapper(selectorId){
+	  var el = document.getElementById(selectorId);
+	  var oldInnerHtml = "";
+	  var sortable = new Sortable(el, {
+	     delay: 100,
+	     removeOnSpill: true,
+	     onEnd: function (/**Event*/evt) {
+		    var target = evt.originalEvent.target;
+	        if (
+	        	el === target || el.contains(target)
+	        ) return false
+	        removeConfirmForSort(evt)
+	        return false
+	      },
+	  });
+	}
+
+	function makeRandomValName() {
+		return Array.from(
+			crypto.getRandomValues(
+				new Uint8Array(N))
+			).map(
+			(n) => S[n%S.length]
+		).join('')
+	}
+
+	function removeConfirmForSort(evt){
+		const confirmBool = confirm("delete ok?")
+		if(confirmBool) return
+	  var items = evt.from.getElementsByClassName("list-box");
+	  evt.from.insertBefore(evt.item, items[evt.oldIndex]);
+	}
+	</script>
+
+	</body>
+	</html>

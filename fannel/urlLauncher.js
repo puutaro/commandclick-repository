@@ -24,8 +24,8 @@ terminalFontZoom="130"
 setReplaceVariable="URL_LIST_DIR_PATH=${01}/urlLauncherDir"
 setReplaceVariable="URL_LIST_FILE_PATH=${URL_LIST_DIR_PATH}/launchUrlList"
 setReplaceVariable=""
-setVariableType="LAUNCH_URL:LCB=${URL_LIST_FILE_PATH}"
-setVariableType="REMOVE_LAUNCH_URL:LCBB=${URL_LIST_FILE_PATH}|jsf '${0}' REMOVE_LAUNCH_URL"
+setVariableType="LAUNCH_URL:ELCB=${URL_LIST_FILE_PATH}"
+setVariableType="REMOVE_LAUNCH_URL:ELCBB=${URL_LIST_FILE_PATH}|jsf '${0}' REMOVE_LAUNCH_URL"
 scriptFileName="cmdGpt35.js"
 /// SETTING_SECTION_END
 
