@@ -48,8 +48,8 @@ scriptFileName="sendClipToGmail.js"
 /// CMD_VARIABLE_SECTION_START
 gmailDraftUrl=""
 gmailDraftListURL=""
-DISPLAY_DRAFT_LIST=""
 CLIP_TEXT=""
+DISPLAY_DRAFT_LIST=""
 /// CMD_VARIABLE_SECTION_END
 
 
