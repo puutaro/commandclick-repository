@@ -95,9 +95,19 @@ function pasteOrSave(){
 	let gmailContents = document.getElementsByClassName("Nl")[0].textContent;
 	if(!gmailContents){
 		const clipString = jsUtil.echoFromClipboard();
-		const subjString = clipString.replaceAll("\n", "").substring(0, 20);
-		document.getElementById("cmcsubj").value = clipString;
-		document.getElementsByClassName("Nl")[0].textContent = clipString;
+		const subjString = clipString.substring(0, 20);
+		document.getElementById("cmcsubj").value = subjString;
+		let draftBody = document.getElementsByClassName("Nl")[0];
+		let clipStringList = clipString.split("\n");
+		const firstLine = clipStringList.at(0);
+		let clipStringListFromSecond = clipStringList.slice(1);
+		draftBody.textContent = firstLine;
+		let insertClipString = [...clipStringListFromSecond].map(
+			function(line){
+				return `<div>${line}</div>`
+			}
+		).join("");
+		draftBody.innerHTML += insertClipString;
 		return
 	};
 	let glList = document.getElementsByClassName("Gl");
