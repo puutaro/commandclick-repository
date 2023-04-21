@@ -24,7 +24,7 @@ onUrlHistoryRegister="OFF"
 terminalFontZoom="130"
 setReplaceVariable="REQ_LIST_DIR_PATH=${01}/cmdGpt35Dir"
 setReplaceVariable="REQ_LIST_FILE_PATH=${REQ_LIST_DIR_PATH}/reqList"
-setVariableType="TXT_TO_CLIP:LCB=${REQ_LIST_FILE_PATH}|::TermLong::jsf '${0}' clip"
+setVariableType="TXT_TO_CLIP:ELCB=${REQ_LIST_FILE_PATH}&30|::TermLong::jsf '${0}' clip"
 setVariableType="REMOVE_TEXT:LCBB=${REQ_LIST_FILE_PATH}|jsf '${0}' remove"
 scriptFileName="cmdGpt35.js"
 /// SETTING_SECTION_END
@@ -59,7 +59,10 @@ switch(firstArgs){
 	case clipArg:
 		break;
 	case removeArg:
-		removeFromList(REMOVE_TEXT);
+		removeItemInListFileCon(
+			REQ_LIST_FILE_PATH,
+			REMOVE_TEXT
+		);
 		break;
 };
 
@@ -77,82 +80,26 @@ function clipText(text){
 		jsUtil.copyToClipboard(clipText, 10);
 		jsToast.short("copy ok");
 	};
-	updateListFileCon(clipText);
+	jsListSelect.updateListFileCon(
+		REQ_LIST_FILE_PATH,
+		clipText
+	);
 	execLaunchGpt35();
 };
 
-function updateListFileCon(clipText){
-	jsFileSystem.createDir(
-		REQ_LIST_DIR_PATH
-	);
-	let currentListCons = jsFileSystem.readLocalFile(
-			REQ_LIST_FILE_PATH
-		).split("\n");
-	if(
-		clipText === escapeCharHyphen
-	) return;
-	const inInclude = currentListCons.find(
-		function(req){
-			return req.trim() === clipText;
-		}
-	);
-	if(inInclude) return;
-	const updateListConSource = clipText + 
-		"\n" + 
-		jsFileSystem.readLocalFile(
-			REQ_LIST_FILE_PATH
-		);
-	const updateListCon = updateListConSource
-		.split("\n")
-		.filter(
-			function(req){
-				const trimReq = req.trim();
-				return trimReq !== "" 
-					&& trimReq !== escapeCharHyphen;
-			}
-		).join("\n");
-	jsFileSystem.writeLocalFile(
-        REQ_LIST_FILE_PATH,
-        updateListCon
-	);
-};
 
-function removeFromList(reqText){
-	jsFileSystem.createDir(
-		REQ_LIST_DIR_PATH
-	);
-	let currentListCons = jsFileSystem.readLocalFile(
-			REQ_LIST_FILE_PATH
-		).split("\n");
-	const trimRequest = reqText.trim();
-	if(
-		trimRequest == escapeCharHyphen
-	) return;
-	const inInclude = currentListCons.find(
-		function(req){
-			return req.trim() === trimRequest;
-		}
-	);
-	if(!inInclude) return;
-	const updateListCon = jsFileSystem.readLocalFile(
-		REQ_LIST_FILE_PATH
-	)
-		.split("\n")
-		.filter(
-			function(req){
-				const trimReq = req.trim();
-				return trimReq !== "" 
-					&& trimReq !== escapeCharHyphen
-					&& trimReq !== trimRequest;
-			}
-		).join("\n");
-	jsFileSystem.writeLocalFile(
-        REQ_LIST_FILE_PATH,
-        updateListCon
+function removeItemInListFileCon(
+	reqListFilePath,
+	reqText
+){
+	jsListSelect.removeItemInListFileCon(
+		reqListFilePath,
+		reqText
 	);
 	jsIntent.launchShortcut(
         "${01}",
         "${02}"
     );
 };
+
 
