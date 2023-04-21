@@ -39,8 +39,8 @@ onUrlHistoryRegister="OFF"
 terminalFontZoom="0"
 terminalColor=""
 terminalFontColor=""
-setVariableType="DISPLAY_DRAFT_LIST:BTN=jsf '${0}' DRAFT_LIST"
-setVariableType="CLIP_TEXT:EB=jsf '${0}' CLIP_TEXT"
+setVariableType="DISPLAY_DRAFT_LIST:BTN=::TermLong::jsf '${0}' DRAFT_LIST"
+setVariableType="CLIP_TEXT:EB=::TermLong::jsf '${0}' CLIP_TEXT"
 scriptFileName="sendClipToGmail.js"
 /// SETTING_SECTION_END
 
@@ -95,7 +95,9 @@ function pasteOrSave(){
 	let gmailContents = document.getElementsByClassName("Nl")[0].textContent;
 	if(!gmailContents){
 		const clipString = jsUtil.echoFromClipboard();
-		const subjString = clipString.substring(0, 20);
+		const subjString = clipString
+				.replaceAll("\n", "")
+				.substring(0, 20);
 		document.getElementById("cmcsubj").value = subjString;
 		let draftBody = document.getElementsByClassName("Nl")[0];
 		let clipStringList = clipString.split("\n");
@@ -120,7 +122,7 @@ function pasteOrSave(){
 			let saveButton = saveButtonParent.children[0];
 			saveButton.children[0].click();
 		}, 
-		400
+		600
 	);
 	jsToast.short("send ok");
 	jsFileSystem.fileEcho(
