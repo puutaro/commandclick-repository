@@ -29,9 +29,9 @@ setReplaceVariable="NEWS_APP_DIR_PATH=${01}/cmdNewsSearcherDir"
 setReplaceVariable="NEWS_APP_LIST_DIR_PATH=${NEWS_APP_DIR_PATH}/list"
 setReplaceVariable="WEB_SEARCH_PREFIX_FILE_PATH=${NEWS_APP_LIST_DIR_PATH}/webSearchPrefixList"
 setReplaceVariable="SEARCH_LIST_FILE_PATH=${NEWS_APP_LIST_DIR_PATH}/searchList"
-setVariableType="WEB_SEARCH_PREFIX:ELCB=${WEB_SEARCH_PREFIX_FILE_PATH}"
+setVariableType="WEB_SEARCH_PREFIX:ELCB=${WEB_SEARCH_PREFIX_FILE_PATH}&30"
 setVariableType="REMOVE_WEB_SEARCH_PREFIX:ELCBB=${WEB_SEARCH_PREFIX_FILE_PATH}|jsf '${0}' remove_web_search_prefix"
-setVariableType="SEARCH_TEXT:ELCB=${SEARCH_LIST_FILE_PATH}"
+setVariableType="SEARCH_TEXT:ELCB=${SEARCH_LIST_FILE_PATH}&30"
 setVariableType="REMOVE_SEARCH_TEXT:ELCBB=${SEARCH_LIST_FILE_PATH}|jsf '${0}' remove_search_text"
 scriptFileName="cmdNewsSearcher.js"
 /// SETTING_SECTION_END
@@ -68,27 +68,23 @@ function switchHandler(){
 		case normalSearchArg:
 			const searchTextSource = SEARCH_TEXT;
 			const searchText = searchTextSource.trim();
-			updateListFileCon(
-				NEWS_APP_LIST_DIR_PATH,
+			jsListSelect.updateListFileCon(
 				WEB_SEARCH_PREFIX_FILE_PATH,
 				WEB_SEARCH_PREFIX
 			);
-			updateListFileCon(
-				NEWS_APP_LIST_DIR_PATH,
+			jsListSelect.updateListFileCon(
 				SEARCH_LIST_FILE_PATH,
 				searchText
 			);
 			execNewsSearch(SEARCH_TEXT);
 			break;
 		case removeWebSearchPrefixArg:
-			removeFromList(
-				NEWS_APP_LIST_DIR_PATH,
-				SEARCH_LIST_FILE_PATH,
-				REMOVE_SEARCH_TEXT
+			removeItemInListFileCon(
+				WEB_SEARCH_PREFIX_FILE_PATH,
+				WEB_SEARCH_PREFIX
 			);
 		case removeSearchTextArg:
-			removeFromList(
-				NEWS_APP_LIST_DIR_PATH,
+			removeItemInListFileCon(
 				SEARCH_LIST_FILE_PATH,
 				REMOVE_SEARCH_TEXT
 			);
@@ -103,9 +99,8 @@ function execNewsSearch(text){
 };
 
 
-function wrapExecNewsSearch(text){
-	const searchText = text.trim();
-	updateListFileCon(
+function wrapExecNewsSearch(searchText){
+	jsListSelect.updateListFileCon(
 		NEWS_APP_DIR_PATH,
 		SEARCH_LIST_FILE_PATH,
 		searchText
@@ -113,117 +108,17 @@ function wrapExecNewsSearch(text){
 	execNewsSearch(searchText);
 };
 
-function wrapExecNewsSearch(text){
-	const searchText = text.trim();
-	updateListFileCon(
-		NEWS_APP_DIR_PATH,
-		SEARCH_LIST_FILE_PATH,
-		searchText
-	);
-	execNewsSearch(searchText);
-};
 
-function updateListFileCon(
-	searchListDirPath,
+function removeItemInListFileCon(
 	searchListFilePath,
 	searchText
 ){
-	let currentListCons = readWithHyphenCheck(
-		searchListDirPath,
+	jsListSelect.removeItemInListFileCon(
 		searchListFilePath,
 		searchText
-	);
-	if(
-		currentListCons.length === 0
-	) return;
-	const inInclude = currentListCons.find(
-		function(req){
-			return req.trim() === searchText;
-		}
-	);
-	if(inInclude) return;
-	const updateListConSource = searchText + 
-		"\n" + 
-		jsFileSystem.readLocalFile(
-			searchListFilePath
-		);
-	const updateListCon = updateListConSource
-		.split("\n")
-		.filter(
-			function(req){
-				const trimReq = req.trim();
-				return trimReq !== "" 
-					&& trimReq !== escapeCharHyphen;
-			}
-		).join("\n");
-	jsFileSystem.writeLocalFile(
-        searchListFilePath,
-        updateListCon
-	);
-};
-
-function removeFromList(
-	searchListDirPath,
-	searchListFilePath,
-	searchText
-){
-	let currentListCons = readWithHyphenCheck(
-		searchListDirPath,
-		searchListFilePath,
-		searchText
-	);
-	if(
-		currentListCons.length === 0
-	) return;
-	const trimRequest = searchText.trim();
-	const inInclude = currentListCons.find(
-		function(req){
-			return req.trim() === trimRequest;
-		}
-	);
-	if(!inInclude) {
-		jsToast.short(`no exist: ${searchText}`);
-		return;
-	};
-	const updateListCon = jsFileSystem.readLocalFile(
-		searchListFilePath
-	)
-		.split("\n")
-		.filter(
-			function(req){
-				const trimReq = req.trim();
-				return trimReq !== "" 
-					&& trimReq !== escapeCharHyphen
-					&& trimReq !== trimRequest;
-			}
-		).join("\n");
-	jsFileSystem.writeLocalFile(
-        searchListFilePath,
-        updateListCon
 	);
 	jsIntent.launchShortcut(
         "${01}",
         "${02}"
     );
-};
-
-
-function readWithHyphenCheck(
-	searchListDirPath,
-	searchListFilePath,
-	searchText
-){
-	jsFileSystem.createDir(
-		searchListDirPath
-	);
-	let currentListCons = jsFileSystem.readLocalFile(
-			searchListFilePath
-		).split("\n");
-	const trimSearchText = searchText.trim();
-	if(
-		trimSearchText == escapeCharHyphen
-	) {
-		return [];
-	};
-	return currentListCons;
 };

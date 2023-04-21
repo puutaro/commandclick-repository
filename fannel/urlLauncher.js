@@ -52,16 +52,14 @@ const escapeCharHyphen = "-";
 
 switch(firstArgs){
 	case normalArg:
-		updateListFileCon(
-			URL_LIST_DIR_PATH,
+		jsListSelect.updateListFileCon(
 			LAUNCH_URL_LIST_FILE_PATH,
 			LAUNCH_URL
 		);
 		execUrlLaunch();
 		break;
 	case removeLaunchUrlArg:
-		removeFromList(
-			URL_LIST_DIR_PATH,
+		removeItemInListFileCon(
 			LAUNCH_URL_LIST_FILE_PATH,
 			LAUNCH_URL
 		);
@@ -74,107 +72,16 @@ function execUrlLaunch(){
 };
 
 
-function updateListFileCon(
-	searchListDirPath,
+function removeItemInListFileCon(
 	searchListFilePath,
 	searchText
 ){
-	let currentListCons = readWithHyphenCheck(
-		searchListDirPath,
+	jsListSelect.removeItemInListFileCon(
 		searchListFilePath,
 		searchText
-	);
-	if(
-		currentListCons.length === 0
-	) return;
-	const inInclude = currentListCons.find(
-		function(req){
-			return req.trim() === searchText;
-		}
-	);
-	if(inInclude) return;
-	const updateListConSource = searchText + 
-		"\n" + 
-		jsFileSystem.readLocalFile(
-			searchListFilePath
-		);
-	const updateListCon = updateListConSource
-		.split("\n")
-		.filter(
-			function(req){
-				const trimReq = req.trim();
-				return trimReq !== "" 
-					&& trimReq !== escapeCharHyphen;
-			}
-		).join("\n");
-	jsFileSystem.writeLocalFile(
-        searchListFilePath,
-        updateListCon
-	);
-};
-
-function removeFromList(
-	searchListDirPath,
-	searchListFilePath,
-	searchText
-){
-	let currentListCons = readWithHyphenCheck(
-		searchListDirPath,
-		searchListFilePath,
-		searchText
-	);
-	if(
-		currentListCons.length === 0
-	) return;
-	const trimRequest = searchText.trim();
-	const inInclude = currentListCons.find(
-		function(req){
-			return req.trim() === trimRequest;
-		}
-	);
-	if(!inInclude) {
-		jsToast.short(`no exist: ${searchText}`);
-		return;
-	};
-	const updateListCon = jsFileSystem.readLocalFile(
-		searchListFilePath
-	)
-		.split("\n")
-		.filter(
-			function(req){
-				const trimReq = req.trim();
-				return trimReq !== "" 
-					&& trimReq !== escapeCharHyphen
-					&& trimReq !== trimRequest;
-			}
-		).join("\n");
-	jsFileSystem.writeLocalFile(
-        searchListFilePath,
-        updateListCon
 	);
 	jsIntent.launchShortcut(
         "${01}",
         "${02}"
     );
-};
-
-
-function readWithHyphenCheck(
-	searchListDirPath,
-	searchListFilePath,
-	searchText
-){
-	jsFileSystem.createDir(
-		searchListDirPath
-	);
-	let currentListCons = jsFileSystem.readLocalFile(
-			searchListFilePath
-		).split("\n");
-	const trimSearchText = searchText.trim();
-	if(
-		trimSearchText == escapeCharHyphen
-	) {
-		return [];
-	};
-	return currentListCons;
 };

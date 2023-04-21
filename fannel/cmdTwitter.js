@@ -35,6 +35,10 @@
 editExecute="ALWAYS"
 terminalSizeType="LONG"
 terminalOutputMode="REFLASH"
+setReplaceVariable="CMD_TWITTER_DIR=${01}/cmdTwitterDir"
+setReplaceVariable="SEARCH_WORD_LIST_DIR=${CMD_TWITTER_DIR}/list"
+setReplaceVariable="SEARCH_WORD_LIST_PATH=${CMD_TWITTER_DIR}/list/searchWordList"
+setVariableType="searchWord:ELCB=${SEARCH_WORD_LIST_PATH}"
 setVariableType="minRetweetCount:NUM=!0..10000!1"
 setVariableType="minImpressionCount:NUM=!0..10000!1"
 setVariableType="appealHour:NUM=!1..10000!1"
@@ -53,33 +57,79 @@ scriptFileName="cmdTwitter.js"
 
 /// CMD_VARIABLE_SECTION_START
 searchWord=""
+max_Imp_ReTweet="::NoJsTermOut:: jsf '${0}' re "
 minRetweetCount="0"
 minLikeCount="0"
 minImpressionCount="5"
 appealHour="6"
-max_Imp_ReTweet="::NoJsTermOut:: jsf '${0}' re "
 operator="and"
 getTwLimit="30"
 BearerToken=""
 /// CMD_VARIABLE_SECTION_END
 
 
-
 /// Please write bellow with shell script
 
-function exit(){
-	throw new Error('終了します');
-}
 
 let args = jsArgs.get().split("\t");
 const firstArgs = args.at(0);
+const TWEET_BASE_URL="https://twitter.com/TwitterJP/status/";
+const defaultTermOutput = "NORMAL";
+const CMD_TWITTER_DIR = "${CMD_TWITTER_DIR}";
+const SEARCH_WORD_LIST_DIR = "${SEARCH_WORD_LIST_DIR}";
+const SEARCH_WORD_LIST_PATH = "${SEARCH_WORD_LIST_PATH}";
 
+const targetUrl = "https://api.twitter.com/2/tweets/search/recent";
+const twStatus = "tweet.fields=attachments,author_id,created_at,public_metrics,source";
+const searchQuery = "query=" + searchWord.replace("　", " ") + " -is:retweet";
+const max_results="max_results=100";
+
+const start_time = "start_time=" + getDatetime();
 
 
 jsFileSystem.fileEcho(
 	scriptFileName,
 	terminalOutputMode,
 );
+
+var twDataList = [];
+var pagination_token = undefined;
+var seedMark = "";
+twDataList = execGetTweet();
+twDataList = sortTwDataList(
+	twDataList
+);
+jsListSelect.updateListFileCon(
+	SEARCH_WORD_LIST_PATH,
+	searchWord
+);
+switch(firstArgs){
+	case "re":
+		maxImpReteet();
+		exit();
+		break;
+};
+
+let displayTwContentsSourceList = makeTwContentsSourceList(
+	twDataList
+);
+
+jsFileSystem.jsEcho(
+	defaultTermOutput,
+	displayTwContentsSourceList
+);
+
+jsFileSystem.jsEcho(
+	defaultTermOutput,
+	"total: " + twDataList.length
+);
+
+
+
+function exit(){
+	throw new Error('終了します');
+};
+
 
 function digitForm(
 	targetDigit
@@ -104,23 +154,6 @@ function getDatetime(){
 	return datetimeStr
 };
 
-const TWEET_BASE_URL="https://twitter.com/TwitterJP/status/";
-const defaultTermOutput = "NORMAL";
-let currentFilePathList = "${0}".replace(/^file:\/\//, '').split('/');
-const parentDirPath = currentFilePathList.slice(0, currentFilePathList.length - 1).join('/');
-const editFilePath = parentDirPath + '/' + "tubePlayList";
-const srcFilePath = parentDirPath + '/system/url/' + "cmdclickUrlHistory";
-
-const targetUrl = "https://api.twitter.com/2/tweets/search/recent";
-const twStatus = "tweet.fields=attachments,author_id,created_at,public_metrics,source";
-const searchQuery = "query=" + searchWord.replace("　", " ") + " -is:retweet";
-const max_results="max_results=100";
-
-const start_time = "start_time=" + getDatetime();
-
-var twDataList = [];
-var pagination_token = undefined;
-var seedMark = "";
 
 function execGetTweet(){
 	var curlTimes = 0;
@@ -172,26 +205,12 @@ function execGetTweet(){
 		pagination_token = twJsonObj.meta.next_token;
 		if(pagination_token == undefined) break;
 	};
+	return twDataList
 };
-
-execGetTweet();
-
-
-twDataList = twDataList.sort(function(a, b) {
-  if (
-  	a.public_metrics.impression_count > b.public_metrics.impression_count
-  	) {
-    return 1;
-  } else {
-    return -1;
-  };
-});
-
-
 
 
 function maxImpReteet(){
-	const execShellPath = "${01}/cmdTwitterDir/cmdTwitter.sh";
+	const execShellPath = "${CMD_TWITTER_DIR}/cmdTwitter.sh";
 	cmdIntent.run(
 		"bash \"" + execShellPath + "\"  > /dev/null"
 	);
@@ -199,35 +218,31 @@ function maxImpReteet(){
 	location.href = maxImpUrl;
 };
 
-
-switch(firstArgs){
-	case "re":
-		maxImpReteet();
-		exit();
-		break;
+function sortTwDataList(
+	twDataList
+){
+	return twDataList.sort(function(a, b) {
+	  if (
+	  	a.public_metrics.impression_count > b.public_metrics.impression_count
+	  	) {
+	    return 1;
+	  } else {
+	    return -1;
+	  };
+	});
 };
 
-
-let displayTwContentsSourceList = twDataList.map(function( twData ) {
-	var public_metrics = twData.public_metrics;
-	var twText = twData.text.replaceAll("\n", "");
-	var remakeTw = twText + " ";
-	remakeTw = remakeTw + "imp: " + public_metrics.impression_count + " ";
-	remakeTw = remakeTw + "like: " + public_metrics.like_count + " ";
-	remakeTw = remakeTw + "re: " + public_metrics.retweet_count + " ";
-	remakeTw = remakeTw + "cmdclickLeastTaga href=\"" + TWEET_BASE_URL + twData.id + "\"cmdclickGreatTagurlcmdclickLeastTag/acmdclickGreatTag\n";
-    return remakeTw;
-}).join("\n");
-
-
-
-jsFileSystem.jsEcho(
-	defaultTermOutput,
-	displayTwContentsSourceList
-);
-
-
-jsFileSystem.jsEcho(
-	defaultTermOutput,
-	"total: " + twDataList.length
-);
+function makeTwContentsSourceList(
+	twDataList
+){
+	return twDataList.map(function( twData ) {
+		var public_metrics = twData.public_metrics;
+		var twText = twData.text.replaceAll("\n", "");
+		var remakeTw = twText + " ";
+		remakeTw = remakeTw + "imp: " + public_metrics.impression_count + " ";
+		remakeTw = remakeTw + "like: " + public_metrics.like_count + " ";
+		remakeTw = remakeTw + "re: " + public_metrics.retweet_count + " ";
+		remakeTw = remakeTw + "cmdclickLeastTaga href=\"" + TWEET_BASE_URL + twData.id + "\"cmdclickGreatTagurlcmdclickLeastTag/acmdclickGreatTag\n";
+	    return remakeTw;
+	}).join("\n");
+};
