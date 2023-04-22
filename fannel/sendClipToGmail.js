@@ -125,9 +125,14 @@ function pasteOrSave(){
 		600
 	);
 	jsToast.short("send ok");
-	jsFileSystem.fileEcho(
-		scriptFileName,
-		terminalOutputMode,
+	setTimeout(
+		function(){
+				jsFileSystem.fileEcho(
+				scriptFileName,
+				terminalOutputMode,
+			);
+		}, 
+		1000
 	);
 };
 
