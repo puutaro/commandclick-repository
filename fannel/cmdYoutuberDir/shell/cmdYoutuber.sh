@@ -170,7 +170,11 @@ play_mode_handler(){
 	echo "play_mode: ${play_mode}"
 	echo "playListPath: ${tubePlayListPath}"
 	echo "playNumber: ${playNumber}"
-	echo "webSearchArgs: ${webSearchArgs}"
+	local displayWebSearchArgs=$(\
+		echo "${webSearchArgs}" \
+		| tr '\t' ', '\
+	)
+	echo "webSearchArgs: ${displayWebSearchArgs}"
 	case "${play_mode}" in
 		"${SHUFFLE_MODE}")
 			updateWebSearchPlayList \

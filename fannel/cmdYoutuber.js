@@ -282,7 +282,9 @@ function registerWebSearchWord(){
 function tubeListNameCheck(
 	tubePlayListName
 ){
-	if(ENABLE_UPDATE_WEB_SEARCH_LIST) return;
+	if(
+		onWebSearch != "OFF"
+	) return;
 	if(tubePlayListName == webPlayListName){
 		alert(`tubePlayListName must not be "${webPlayListName}"`);
 		throw new Error('exit');
