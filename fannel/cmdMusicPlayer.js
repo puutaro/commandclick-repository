@@ -2,25 +2,28 @@
 
 /// LABELING_SECTION_START
 // music player @puutaro
-// 	install -> install require package
-// 	play -> music play list site
-// musicDir -> Target music file saved directory path
-// 	musicPlayListName 
-//		- Input or select play list file name
+//	* install 
+// 		-> install require package
+//	* play 
+// 		-> music play list site
+//	* musicDir 
+// 		-> Target music file saved directory path
+// 	* musicPlayListName 
+//		-> Input or select play list file name
 //		- Prefix must be "music" ex) "musicPlayList"
-// 	musicPlay 
-//		- Select shuffle or ordinaly and press
+// 	* musicPlay 
+//		-> Select shuffle or ordinaly and press
 //		- Press "Exec" and execute play list
-// 	numberPlay 
-//		- Input or inc/dec number
+// 	* numberPlay 
+//		-> Input or inc/dec number
 //		- Press "Exec" and play number
-//	volume control enable when CommandClick hide
-// 	STOP
-//		- Play stop (recommend: notification bar swip out)
-// 	startNum 
-//		- Start number, 0: firstNumber
-// 	endNum
-//		- End number, 0: lastNumber
+//	* Volume control enable when CommandClick hide
+// 	* STOP
+//		-> Play stop (recommend: notification bar swip out)
+// 	* startNum 
+//		-> Start number, 0: firstNumber
+// 	* endNum
+//		-> End number, 0: lastNumber
 // --
 // --
 // Bellow setting variable main line up

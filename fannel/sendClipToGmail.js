@@ -2,9 +2,11 @@
 
 /// LABELING_SECTION_START
 // Send clipboard contents to Gmail draft @puutaro
-// 	gmailDraftUrl -> paste gmail draft url
-//  gmailDraftListURL -> paste gmail draft list url
-// 	play -> 
+// 	* gmailDraftUrl 
+// 		-> paste gmail draft url
+//  * gmailDraftListURL 
+// 		-> paste gmail draft list url
+// 	* play -> 
 //		if gmailDraftUrl doesn't launch, launch it.
 //		if gmailDraftUrl launch and gmail content blank, paste it's content 
 //		if gmailDraftUrl launch and gmail content has been written, save contents. 

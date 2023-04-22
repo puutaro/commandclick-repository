@@ -2,14 +2,24 @@
 
 /// LABELING_SECTION_START
 // advanced search twitter client @puutaro
-// BearerToken: you get developer page this
-// play button: start search
-// minRetweetCount: minimum retweet
-// minLikeCount: minimum retweet
-// minImpressionCount: minimum impression
-// operator: and or search operator
-// getTwLimit: get tweet limit
-// max_Imp_ReTweet: semiautomaticaly retweet max impression tweet
+// * BearerToken
+// 		-> you get developer page this
+// * play button
+// 		-> start search
+// * minRetweetCount
+// 		-> minimum retweet
+// * minLikeCount
+// 		-> minimum retweet
+// * minImpressionCount
+// 		-> minimum impression
+// * operator
+// 		-> and or search operator
+// * getTwLimit
+// 		-> get tweet limit
+// * max_Imp_ReTweet
+// 		-> semiautomaticaly retweet max impression tweet
+// --
+// --
 // bellow setting variable main line up
 // * EditExecute is edit mode change
 //	- NO is normal edit

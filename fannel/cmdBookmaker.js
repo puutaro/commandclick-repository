@@ -2,12 +2,13 @@
 
 /// LABELING_SECTION_START
 // Bookmark fannel @puutaro
-// 	play -> launch bookmark site
+// 	* play 
+// 		-> launch bookmark site
 //		- recent visit site url show in "Save title"
 //		- change item  order by drag and drop 
 //		- delete item  by doragging to another area(no item area).
-// 	bookmarkName 
-//		- Input or select bookmark list file name
+// 	* bookmarkName 
+//		-> Input or select bookmark list file name
 //		- prefix must be "book" ex) "bookSites"
 // --
 // --

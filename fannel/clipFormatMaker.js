@@ -2,7 +2,8 @@
 
 /// LABELING_SECTION_START
 // Create clipboard format by drag & drop @puutaro
-// creatorJSName: you wont to create jsFileName
+// * creatorJSName
+// 		-> you wont to create jsFileName
 // --
 // --
 // bellow setting variable main line up

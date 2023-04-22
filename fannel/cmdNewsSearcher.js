@@ -2,10 +2,15 @@
 
 /// LABELING_SECTION_START
 // News site searcher @puutaro
-// * WEB_SEARCH_PREFIX -> search target site url
+// 	* WEB_SEARCH_PREFIX 
+// 		-> search target site url
 //		ex) https://www.google.com/search?q=
-// * REMOVE_WEB_SEARCH_PREFIX -> remove web search prefix from list
-// * REMOVE_SEARCH_TEXT -> remove search text from list
+//	* REMOVE_WEB_SEARCH_PREFIX
+// 		-> remove web search prefix from list
+//	* REMOVE_SEARCH_TEXT
+// 		-> remove search text from list
+// --
+// --
 // bellow setting variable main line up
 // * EditExecute is edit mode change
 //	- NO is normal edit
@@ -101,7 +106,6 @@ function execNewsSearch(text){
 
 function wrapExecNewsSearch(searchText){
 	jsListSelect.updateListFileCon(
-		NEWS_APP_DIR_PATH,
 		SEARCH_LIST_FILE_PATH,
 		searchText
 	);

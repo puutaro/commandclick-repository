@@ -2,8 +2,8 @@
 
 /// LABELING_SECTION_START
 // Set format Google Calendar @puutaro
-// sourceUrl: schedule mail url etc..
-// LAUNCH_URL: Launch url
+// 	* sourceUrl -> schedule mail url etc..
+// 	* LAUNCH_URL-> Launch url
 // --
 // --
 // bellow setting variable main line up

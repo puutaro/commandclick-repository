@@ -2,8 +2,12 @@
 
 /// LABELING_SECTION_START
 // GPT3.5 free client @puutaro
-// * TXT_TO_CLIP -> copy text to clipboard and launch gpt35 site
-// * REMOVE_TEXT -> remove request from list
+//	* TXT_TO_CLIP
+// 		-> copy text to clipboard and launch gpt35 site
+//	* REMOVE_TEXT
+// 		-> remove request from list
+// --
+// --
 // bellow setting variable main line up
 // * EditExecute is edit mode change
 //	- NO is normal edit
