@@ -1,7 +1,7 @@
 
 
 /// LABELING_SECTION_START
-// display select menu from jsFile @puutaro
+// Display select menu from jsFile @puutaro
 /// LABELING_SECTION_END
 
 

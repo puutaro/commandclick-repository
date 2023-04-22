@@ -1,7 +1,7 @@
 
 
 /// LABELING_SECTION_START
-// youtube background play fannel @puutaro
+// Youtube background play fannel @puutaro
 // 	* install 
 // 		-> install require package
 // 	* play 

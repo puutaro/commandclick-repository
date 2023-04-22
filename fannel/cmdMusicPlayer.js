@@ -1,7 +1,7 @@
 
 
 /// LABELING_SECTION_START
-// music player @puutaro
+// Music player @puutaro
 //	* install 
 // 		-> install require package
 //	* play 
