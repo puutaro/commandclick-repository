@@ -83,11 +83,11 @@ scriptFileName="cmdYoutuber.js"
 
 /// CMD_VARIABLE_SECTION_START
 tubePlayListName="tubePlayList"
-tubePlay="shuffle"
 searchWord=""
+tubePlay="shuffle"
+onWebSearch="OFF"
 STOP=""
 numberPlay="3"
-onWebSearch="OFF"
 deleteTubePlayList=""
 Install="install"
 /// CMD_VARIABLE_SECTION_END
