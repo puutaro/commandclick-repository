@@ -114,6 +114,21 @@ play_temp_list(){
 	 | tee -a "${PLAY_LOG_FILE_PATH}"
 }
 
+echo_temp_play_list(){
+	tubePlayListPath="${1}"
+	cat "${tubePlayListPath}" \
+		| cut -f 2 \
+		| awk '
+			{
+				if($0 !~ "&list="){
+					print $0
+					next
+				}
+				sub(/watch\?v=[^&]*/, "playlist", $0); 
+				print $0
+			}'
+}
+
 
 number_playing(){
 	local tubePlayListPath="${1}"
@@ -122,7 +137,8 @@ number_playing(){
 		return 
 	fi
 	local playUrl=$(\
-		cat "${tubePlayListPath}" \
+		echo_temp_play_list \
+			"${tubePlayListPath}" \
 		| sed \
 			-n ''${number}'p' \
 		| cut -f 2 \
@@ -217,8 +233,9 @@ play_mode_handler(){
 		"${SHUFFLE_MODE}")
 			updateWebSearchPlayList \
 				"${webSearchArgs}"
-			cat "${tubePlayListPath}" \
-				| cut -f 2 > "${TMP_PLAY_LIST_PATH}"
+			echo_temp_play_list \
+				"${tubePlayListPath}" \
+				 > "${TMP_PLAY_LIST_PATH}"
 			wait
 			play_temp_list \
 				"--shuffle"
@@ -227,8 +244,9 @@ play_mode_handler(){
 		"${ORDINALY_MODE}")
 			updateWebSearchPlayList \
 				"${webSearchArgs}"
-			cat "${tubePlayListPath}" \
-				| cut -f 2 > "${TMP_PLAY_LIST_PATH}"
+			echo_temp_play_list \
+				"${tubePlayListPath}" \
+				 > "${TMP_PLAY_LIST_PATH}"
 			wait
 			play_temp_list
 			exit 0
@@ -236,8 +254,8 @@ play_mode_handler(){
 		"${REVERSE_MODE}")
 			updateWebSearchPlayList \
 				"${webSearchArgs}"
-			cat "${tubePlayListPath}" \
-				| cut -f 2 \
+			echo_temp_play_list \
+				"${tubePlayListPath}" \
 				| tac > "${TMP_PLAY_LIST_PATH}"
 			wait
 			play_temp_list
