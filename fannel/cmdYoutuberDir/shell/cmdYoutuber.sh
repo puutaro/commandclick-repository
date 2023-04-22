@@ -6,6 +6,9 @@ set -eu
 PARENT_DIR_PATH="$(dirname "$0")"
 YTFZF_SHELL_PATH="${PARENT_DIR_PATH}/ytfzfForFannel.sh"
 PLAY_PROCESS_DIR_PATH="${PARENT_DIR_PATH}/process"
+APP_DIR_PATH="$(dirname "${PARENT_DIR_PATH}")"
+PLAY_LOG_DIR_PATH="${APP_DIR_PATH}/log"
+PLAY_LOG_FILE_PATH="${PLAY_LOG_DIR_PATH}/playLog"
 TMP_PLAY_LIST_NAME="tmp_play_list"
 TMP_PLAY_LIST_PATH="${PLAY_PROCESS_DIR_PATH}/${TMP_PLAY_LIST_NAME}"
 SHUFFLE_MODE="shuffle"
@@ -71,14 +74,44 @@ termux_mpv_package_installer(){
 }
 
 
+cut_play_url_history_limit_over(){
+	local history_limit_num=1000
+	if [ ! -f "${PLAY_LOG_FILE_PATH}" ];then
+		touch "${PLAY_LOG_FILE_PATH}"
+		return
+	fi
+	local grep_prefix="Playing:"
+	local play_url_history_con="$(\
+		cat "${PLAY_LOG_FILE_PATH}" \
+		| grep -E \
+			-e "${grep_prefix}" \
+			-e  "^## [0-9]{4}-[0-9]{2}-[0-9]{2} [0-9]{2}:[0-9]{2}:[0-9]{2}"\
+		| sed '/^$/d' \
+		| tail -"${history_limit_num}" \
+	)"
+	local datetime="$(date '+%Y-%m-%d %H:%M:%S')"
+	local log_contents=$(
+		cat \
+			<(echo "${play_url_history_con}")\
+			<(echo "## ${datetime}")\
+	)
+	sleep 0.1
+	echo \
+		"${log_contents}" \
+		| sed '/^$/d' \
+		> "${PLAY_LOG_FILE_PATH}" 
+}
+
 play_temp_list(){
 	local play_mode="${1:-}"
+	cut_play_url_history_limit_over
 	sleep 0.1
 	termuxmpv \
 		--no-video \
 		"${play_mode}"  \
 		--loop-playlist=inf \
-		--playlist="${TMP_PLAY_LIST_PATH}"
+		--playlist="${TMP_PLAY_LIST_PATH}" \
+	 | tee -a "${PLAY_LOG_FILE_PATH}"
 }
 
 
@@ -167,12 +200,17 @@ play_mode_handler(){
 	if [ ! -d "${PLAY_PROCESS_DIR_PATH}" ]; then
 		mkdir -p "${PLAY_PROCESS_DIR_PATH}";
 	fi
+	echo --
+	if [ ! -f "${PLAY_LOG_FILE_PATH}" ];then
+		touch "${PLAY_LOG_FILE_PATH}"
+	fi
+	echo 0011
 	echo "play_mode: ${play_mode}"
 	echo "playListPath: ${tubePlayListPath}"
 	echo "playNumber: ${playNumber}"
 	local displayWebSearchArgs=$(\
 		echo "${webSearchArgs}" \
-		| tr '\t' ', '\
+		 | sed 's/\t/, /g'\
 	)
 	echo "webSearchArgs: ${displayWebSearchArgs}"
 	case "${play_mode}" in

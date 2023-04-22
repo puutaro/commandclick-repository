@@ -28,6 +28,8 @@
 // 		- OFF -> no web search
 // 		- SHORT -> sort by shortest
 // 		- RECENT -> sort by latest
+//  * playLogOut
+// 		-> output play log
 // - This Fannel is used to bellow repo as core library.
 // 		https://github.com/pystardust/ytfzf
 // --
@@ -69,6 +71,8 @@ setReplaceVariable="cmdTubePlayerDirPath=${01}/cmdYoutuberDir"
 setReplaceVariable="cmdTubePlayerEditDirPath=${cmdTubePlayerDirPath}/edit"
 setReplaceVariable="cmdTubePlayerListDirPath=${cmdTubePlayerDirPath}/list"
 setReplaceVariable="cmdTubePlayerListFilePath=${cmdTubePlayerListDirPath}/searchWordList"
+setReplaceVariable="PLAY_LOG_DIR_PATH=${cmdTubePlayerDirPath}/log"
+setReplaceVariable="PLAY_LOG_FILE_PATH=${PLAY_LOG_DIR_PATH}/playLog"
 setVariableType="tubePlayListName:EFCB=${cmdTubePlayerEditDirPath}&tube&NoExtend"
 setVariableType="tubePlay:CBB=shuffle!ordinaly!reverse|::TermOut::jsf '${0}'"
 setVariableType="searchWord:ELCB=${cmdTubePlayerListFilePath}&20"
@@ -76,6 +80,7 @@ setVariableType="numberPlay:NUMB=!1..1000!1|::TermOut::jsf '${0}' number"
 setVariableType="STOP:BTN=pkill -9 mpv"
 setVariableType="Install:BTN=jsf '${0}'"
 setVariableType="onWebSearch:CB=OFF!SHORT!RECENT"
+setVariableType="playLogOut:BTN=::TermOut::jsf '${0}' playLogOut"
 setVariableType="deleteTubePlayList:EFCBB=${cmdTubePlayerEditDirPath}&tube&NoExtend|jsf '${0}' delete"
 scriptFileName="cmdYoutuber.js"
 /// SETTING_SECTION_END
@@ -89,6 +94,7 @@ onWebSearch="OFF"
 STOP=""
 numberPlay="3"
 deleteTubePlayList=""
+playLogOut=""
 Install="install"
 /// CMD_VARIABLE_SECTION_END
 
@@ -101,6 +107,8 @@ const DEFAULT_TERM_OUTPUT = "NORMAL";
 const FIRST_ARGS = args.at(0);
 searchWord = searchWord.trim();
 const cmdTubePlayerDirPath = "${cmdTubePlayerDirPath}";
+const PLAY_LOG_DIR_PATH = "${PLAY_LOG_DIR_PATH}";
+const PLAY_LOG_FILE_PATH = "${PLAY_LOG_FILE_PATH}";
 const cmdTubePlayerEditDirPath = "${cmdTubePlayerEditDirPath}";
 const cmdTubePlayerShellDirPath = `${cmdTubePlayerDirPath}/shell`;
 const EXEC_SHELL_PATH = `${cmdTubePlayerShellDirPath}/cmdYoutuber.sh`;
@@ -123,6 +131,7 @@ const NUMBER_MODE = "number";
 const DELETE_MODE = "delete";
 const REVERSE_MODE = "reverse";
 const EDIT_SITE_WEB_MODE = "edit_site_web";
+const PLAY_LOG_MODE = "playLogOut";
 const ENABLE_UPDATE_WEB_SEARCH_LIST = judgeUpdateWebSearchList();
 const WEB_SEARCH_ARGS = `${onWebSearch}\t${searchWord}\t${ENABLE_UPDATE_WEB_SEARCH_LIST}`;
 
@@ -137,6 +146,9 @@ function argSwitcher() {
 	jsFileSystem.createDir(
 		cmdTubePlayerTmpDirPath
 	);
+	jsFileSystem.createDir(
+		PLAY_LOG_DIR_PATH
+	);
 	registerWebSearchWord();
 	updateSeachWordList();
 	switch(FIRST_ARGS){
@@ -149,7 +161,7 @@ function argSwitcher() {
 				` \"${INSTALL_MODE}\"`
 			);
 			break;
-		case SHUFFLE_MODE: 
+		case SHUFFLE_MODE:
 			cmdIntent.run(
 				"bash " + ` \"${EXEC_SHELL_PATH}\"` + 
 				` \"${SHUFFLE_MODE}\"` +
@@ -185,6 +197,8 @@ function argSwitcher() {
 		case DELETE_MODE:
 			execDeleteTubePlayList();
 			break;
+		case PLAY_LOG_MODE:
+			catPlayLog();
 	};
 };
 
@@ -298,4 +312,30 @@ function tubeListNameCheck(
 		throw new Error('exit');
 		exitZero();
 	};
+};
+
+function catPlayLog(){
+	const outputMode = "NORMAL";
+	const grepPrefix = "Playing:";
+	const datetimeRegex = new RegExp("^## [0-9]{4}-[0-9]{2}-[0-9]{2} [0-9]{2}:[0-9]{2}:[0-9]{2}"); 
+	const playLogContents = jsFileSystem.readLocalFile(
+		PLAY_LOG_FILE_PATH,
+	).split("\n").filter(function(line){
+		return line.includes(grepPrefix) 
+			|| line.match(datetimeRegex);
+	}).map(function(line){
+		if(
+			line.match(datetimeRegex)
+		) return line;
+		const lineBody = line.replace(grepPrefix, "");
+		return ` ${grepPrefix}\n  ${lineBody}`;
+	}).join("\n");
+	jsFileSystem.fileEcho(
+		scriptFileName,
+		outputMode,
+	);
+	jsFileSystem.jsEcho(
+		outputMode,
+		playLogContents
+	);
 };
