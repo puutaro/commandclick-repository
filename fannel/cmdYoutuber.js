@@ -28,6 +28,8 @@
 // 		- OFF -> no web search
 // 		- SHORT -> sort by shortest
 // 		- RECENT -> sort by latest
+// - This Fannel is used to bellow repo as core library.
+// 		https://github.com/pystardust/ytfzf
 // --
 // --
 // bellow setting variable main line up
