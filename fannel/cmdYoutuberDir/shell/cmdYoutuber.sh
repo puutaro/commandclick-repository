@@ -20,6 +20,7 @@ WEB_SEARCH_SHORT_MODE="SHORT"
 WEB_SEARCH_OFF_MODE="OFF"
 EDIT_SITE_WEB_MODE="edit_site_web"
 URL_LAUNCH_ACTION_NAME="com.puutaro.commandclick.url.launch"
+readonly CONST_MAX_MINITS=100000
 
 
 readonly INSTALL_MODE="install"
@@ -185,10 +186,11 @@ echoWebSearchPlayList(){
 			| awk -F '\t'\
 			-v minMinutes="${minMinutes}" \
 			-v maxMinutes="${maxMinutes}" \
+			-v CONST_MAX_MINITS="${CONST_MAX_MINITS}" \
 		'BEGIN {
 			minMinutes = minMinutes * 100
 			maxMinutes = maxMinutes * 100
-			if(maxMinutes == 0) maxMinutes = 100000
+			if(maxMinutes == 0) maxMinutes = CONST_MAX_MINITS
 		}
 		{
 			timeSpan = $1
@@ -242,7 +244,10 @@ play_mode_handler(){
 	echo "playNumber: ${playNumber}"
 	local displayWebSearchArgs=$(\
 		echo "${webSearchArgs}" \
-		| awk -F '\t' '{
+		| awk \
+			-F '\t' \
+			-v CONST_MAX_MINITS="${CONST_MAX_MINITS}" \
+		'{
 			if($1 == "OFF") {
 				print ""
 				next
@@ -252,7 +257,9 @@ play_mode_handler(){
 			print " searchWord: "$2
 			print " searchListUpdate: "$3
 			print " minMinutes: "minutesSpanList[1]
-			print " maxMinutes: "minutesSpanList[2]
+			maxMinutes = minutesSpanList[2]
+			if(maxMinutes == 0) maxMinutes = CONST_MAX_MINITS
+			print " maxMinutes: "maxMinutes
 		}' \
 	)
 	echo "webSearchArgs: ${displayWebSearchArgs}"
