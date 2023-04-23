@@ -164,7 +164,7 @@ updateWebSearchPlayList(){
 		*) return;;
 	esac
 	echoWebSearchPlayList \
-		"${webSearchArgs}" \
+		"${webSearchArgs}"  \
 		> "${tubePlayListPath}"
 	wait
 }
@@ -173,11 +173,31 @@ echoWebSearchPlayList(){
 	local webSearchArgs="${1}"
 	local onWebSearch="$(echo "${webSearchArgs}" | cut -f1)"
 	local searchWord="$(echo "${webSearchArgs}" | cut -f2)"
+	local movieTimeList="$(echo "${webSearchArgs}" | cut -f4)"
+	local minMinutes="$(echo "${movieTimeList}" | cut -d ',' -f1)"
+	local maxMinutes="$(echo "${movieTimeList}" | cut -d ',' -f2)"
+
 	termux-toast \
 		-g "bottom" "editing.."
 	local searchRawList=$(\
 		bash "${YTFZF_SHELL_PATH}" \
 			"${searchWord}" \
+			| awk -F '\t'\
+			-v minMinutes="${minMinutes}" \
+			-v maxMinutes="${maxMinutes}" \
+		'BEGIN {
+			minMinutes = minMinutes * 100
+			maxMinutes = maxMinutes * 100
+			if(maxMinutes == 0) maxMinutes = 100000
+		}
+		{
+			timeSpan = $1
+			if(\
+				timeSpan < minMinutes \
+				|| timeSpan > maxMinutes \
+			) next
+			print $2"\t"$3"\t"$4
+		}' \
 	)
 	case "${onWebSearch}" in
 		"${WEB_SEARCH_SHORT_MODE}") 
@@ -211,22 +231,29 @@ play_mode_handler(){
 	local tubePlayListPath="${2}"
 	local webSearchArgs="${3:-}"
 	local playNumber="${4:-}"
-	local onWebSearch=$(echo "${webSearchArgs}" | cut -f1)
-	local searchWord=$(echo "${webSearchArgs}" | cut -f2)
 	if [ ! -d "${PLAY_PROCESS_DIR_PATH}" ]; then
 		mkdir -p "${PLAY_PROCESS_DIR_PATH}";
 	fi
-	echo --
 	if [ ! -f "${PLAY_LOG_FILE_PATH}" ];then
 		touch "${PLAY_LOG_FILE_PATH}"
 	fi
-	echo 0011
 	echo "play_mode: ${play_mode}"
 	echo "playListPath: ${tubePlayListPath}"
 	echo "playNumber: ${playNumber}"
 	local displayWebSearchArgs=$(\
 		echo "${webSearchArgs}" \
-		 | sed 's/\t/, /g'\
+		| awk -F '\t' '{
+			if($1 == "OFF") {
+				print ""
+				next
+			}
+			split($4, minutesSpanList, ",")
+			print ""
+			print " searchWord: "$2
+			print " searchListUpdate: "$3
+			print " minMinutes: "minutesSpanList[1]
+			print " maxMinutes: "minutesSpanList[2]
+		}' \
 	)
 	echo "webSearchArgs: ${displayWebSearchArgs}"
 	case "${play_mode}" in

@@ -30,6 +30,10 @@
 // 		- RECENT -> sort by latest
 //  * playLogOut
 // 		-> output play log
+//  * minMinutes
+// 		-> filter movie by minimum play minutes
+//  * maxMinutes
+// 		-> filter movie  by maximum play minutes
 // - This Fannel is used to bellow repo as core library.
 // 		https://github.com/pystardust/ytfzf
 // --
@@ -74,14 +78,16 @@ setReplaceVariable="cmdTubePlayerListFilePath=${cmdTubePlayerListDirPath}/search
 setReplaceVariable="PLAY_LOG_DIR_PATH=${cmdTubePlayerDirPath}/log"
 setReplaceVariable="PLAY_LOG_FILE_PATH=${PLAY_LOG_DIR_PATH}/playLog"
 setVariableType="tubePlayListName:EFCB=${cmdTubePlayerEditDirPath}&tube&NoExtend"
-setVariableType="tubePlay:CBB=shuffle!ordinaly!reverse|::TermOut::jsf '${0}'"
 setVariableType="searchWord:ELCB=${cmdTubePlayerListFilePath}&20"
-setVariableType="numberPlay:NUMB=!1..1000!1|::TermOut::jsf '${0}' number"
-setVariableType="STOP:BTN=pkill -9 mpv"
-setVariableType="Install:BTN=jsf '${0}'"
+setVariableType="tubePlay:CBB=shuffle!ordinaly!reverse|::TermOut::jsf '${0}'"
 setVariableType="onWebSearch:CB=OFF!SHORT!RECENT"
-setVariableType="playLogOut:BTN=::TermOut::jsf '${0}' playLogOut"
+setVariableType="STOP:BTN=pkill -9 mpv"
+setVariableType="numberPlay:NUMB=!1..1000!1|::TermOut::jsf '${0}' number"
+setVariableType="minMinutes:NUM=!0..1000!1"
+setVariableType="maxMinutes:NUM=!0..1000!1"
 setVariableType="deleteTubePlayList:EFCBB=${cmdTubePlayerEditDirPath}&tube&NoExtend|jsf '${0}' delete"
+setVariableType="playLogOut:BTN=::TermOut::jsf '${0}' playLogOut"
+setVariableType="Install:BTN=jsf '${0}'"
 scriptFileName="cmdYoutuber.js"
 /// SETTING_SECTION_END
 
@@ -93,6 +99,8 @@ tubePlay="shuffle"
 onWebSearch="OFF"
 STOP=""
 numberPlay="3"
+minMinutes=0
+maxMinutes=0
 deleteTubePlayList=""
 playLogOut=""
 Install="install"
@@ -132,9 +140,9 @@ const DELETE_MODE = "delete";
 const REVERSE_MODE = "reverse";
 const EDIT_SITE_WEB_MODE = "edit_site_web";
 const PLAY_LOG_MODE = "playLogOut";
+const CURRENT_REGISTER_SEARCH_STRING = `${searchWord}\t${onWebSearch}\t${minMinutes},${maxMinutes}`;
 const ENABLE_UPDATE_WEB_SEARCH_LIST = judgeUpdateWebSearchList();
-const WEB_SEARCH_ARGS = `${onWebSearch}\t${searchWord}\t${ENABLE_UPDATE_WEB_SEARCH_LIST}`;
-
+const WEB_SEARCH_ARGS = `${onWebSearch}\t${searchWord}\t${ENABLE_UPDATE_WEB_SEARCH_LIST}\t${minMinutes},${maxMinutes}`;
 
 argSwitcher();
 
@@ -280,7 +288,8 @@ function judgeUpdateWebSearchList(){
 		cmdTubePlayerSearchWordFilePath
 	).trim();
 	if(
-		pastSearchWord == `${searchWord}\t${onWebSearch}`
+		pastSearchWord 
+		== CURRENT_REGISTER_SEARCH_STRING
 	) return false;
 	return true;
 };
@@ -291,7 +300,7 @@ function registerWebSearchWord(){
 	) return;
 	jsFileSystem.writeLocalFile(
   		cmdTubePlayerSearchWordFilePath,
-		`${searchWord}\t${onWebSearch}`
+		CURRENT_REGISTER_SEARCH_STRING
   	);
 };
 
@@ -328,8 +337,8 @@ function catPlayLog(){
 			line.match(datetimeRegex)
 		) return line;
 		const lineBody = line.replace(grepPrefix, "");
-		return ` ${grepPrefix}\n  ${lineBody}`;
-	}).join("\n");
+		return ` ${lineBody}`;
+	}).join("\n").replaceAll(/\n\n*/, "\n");
 	jsFileSystem.fileEcho(
 		scriptFileName,
 		outputMode,

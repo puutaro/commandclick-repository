@@ -2516,7 +2516,7 @@ interface_text () {
                     span = $3
                     gsub(":", "", span)
                     print span"\t"agoTotalHours"\t"title"|"$3"\t"$6
-                }'  | sort -n | cut -f2-
+                }'  | sort -n
 
     exit 0
 	# shellcheck disable=2015
