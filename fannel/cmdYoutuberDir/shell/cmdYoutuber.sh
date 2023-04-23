@@ -84,10 +84,25 @@ cut_play_url_history_limit_over(){
 	local grep_prefix="Playing:"
 	local play_url_history_con="$(\
 		cat "${PLAY_LOG_FILE_PATH}" \
-		| grep -E \
-			-e "${grep_prefix}" \
-			-e  "^## [0-9]{4}-[0-9]{2}-[0-9]{2} [0-9]{2}:[0-9]{2}:[0-9]{2}"\
-		| sed '/^$/d' \
+		| awk \
+			-v grep_prefix="${grep_prefix}" \
+		'{
+			sub(/^  */, "", $0)
+			if($0 == "") next
+			if(\
+				index($0, grep_prefix) > 0 \
+				&& index($0, "http") > 0 \
+			) {
+				print $0
+				next
+			}
+			if(\
+				$0 ~ /^## [0-9]{4}-[0-9]{2}-[0-9]{2} [0-9]{2}:[0-9]{2}:[0-9]{2}/ \
+			) {
+				print $0
+				next
+			}
+		}' \
 		| tail -"${history_limit_num}" \
 	)"
 	local datetime="$(date '+%Y-%m-%d %H:%M:%S')"

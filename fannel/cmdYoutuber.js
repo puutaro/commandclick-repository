@@ -86,7 +86,7 @@ setVariableType="numberPlay:NUMB=!1..1000!1|::TermOut::jsf '${0}' number"
 setVariableType="minMinutes:NUM=!0..1000!1"
 setVariableType="maxMinutes:NUM=!0..1000!1"
 setVariableType="deleteTubePlayList:EFCBB=${cmdTubePlayerEditDirPath}&tube&NoExtend|jsf '${0}' delete"
-setVariableType="playLogOut:BTN=::TermOut::jsf '${0}' playLogOut"
+setVariableType="playLogOut:BTN=::TermOut::::TermLong::jsf '${0}' playLogOut"
 setVariableType="Install:BTN=jsf '${0}'"
 scriptFileName="cmdYoutuber.js"
 /// SETTING_SECTION_END
@@ -126,9 +126,9 @@ const cmdTubePlayerSearchWordFilePath = `${cmdTubePlayerTmpDirPath}/searchWord`;
 const cmdTubePlayerListDirPath = "${cmdTubePlayerListDirPath}";
 const cmdTubePlayerListFilePath = "${cmdTubePlayerListFilePath}";
 const TUBE_PREFIX = "tube";
-const webPlayListName = "webSearchPlayList";
+const webPlayListName = "WebSearchPlayList";
 if(onWebSearch != "OFF"){
-	tubePlayListName = "webSearchPlayList"
+	tubePlayListName = webPlayListName
 };
 const EDIT_FILE_PATH = makeCreatorJSPath(tubePlayListName);
 const APP_URL_HISTORY_PATH="${01}/system/url/cmdclickUrlHistory";
@@ -330,7 +330,10 @@ function catPlayLog(){
 	const playLogContents = jsFileSystem.readLocalFile(
 		PLAY_LOG_FILE_PATH,
 	).split("\n").filter(function(line){
-		return line.includes(grepPrefix) 
+		const existPrefixAndUrl = 
+			line.includes(grepPrefix) 
+				&& line.includes("http");
+		return existPrefixAndUrl 
 			|| line.match(datetimeRegex);
 	}).map(function(line){
 		if(
@@ -338,7 +341,7 @@ function catPlayLog(){
 		) return line;
 		const lineBody = line.replace(grepPrefix, "");
 		return ` ${lineBody}`;
-	}).join("\n").replaceAll(/\n\n*/, "\n");
+	}).join("\n").replaceAll(/\n\n*/g, "\n");
 	jsFileSystem.fileEcho(
 		scriptFileName,
 		outputMode,
