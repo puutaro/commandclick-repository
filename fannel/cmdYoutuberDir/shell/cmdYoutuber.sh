@@ -88,6 +88,7 @@ cut_play_url_history_limit_over(){
 			-v grep_prefix="${grep_prefix}" \
 		'{
 			sub(/^  */, "", $0)
+			sub(/  *$/, "", $0)
 			if($0 == "") next
 			if(\
 				index($0, grep_prefix) > 0 \
