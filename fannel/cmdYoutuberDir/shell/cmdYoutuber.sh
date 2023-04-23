@@ -76,7 +76,7 @@ termux_mpv_package_installer(){
 
 
 cut_play_url_history_limit_over(){
-	local history_limit_num=1000
+	local history_limit_num=300
 	if [ ! -f "${PLAY_LOG_FILE_PATH}" ];then
 		touch "${PLAY_LOG_FILE_PATH}"
 		return
