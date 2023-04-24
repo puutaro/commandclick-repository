@@ -14,7 +14,7 @@
 //		- prefix must be "tube" ex) "tubePlayList"
 //  * searchWord
 // 		-> Web Youtube Search Word
-// 	* tubePlay 
+// 	* playMode 
 //		-> select shuffle or ordinaly and press
 //		- press "Exec" and execute play list
 //	If volume control enable when CommandClick hide
@@ -71,20 +71,21 @@ onUrlHistoryRegister="ON"
 terminalFontZoom="0"
 terminalColor=""
 terminalFontColor=""
-setReplaceVariable="cmdTubePlayerDirPath=${01}/cmdYoutuberDir"
+setReplaceVariable="cmdTubePlayerDirPath=${01}/${001}"
 setReplaceVariable="cmdTubePlayerEditDirPath=${cmdTubePlayerDirPath}/edit"
 setReplaceVariable="cmdTubePlayerListDirPath=${cmdTubePlayerDirPath}/list"
 setReplaceVariable="cmdTubePlayerListFilePath=${cmdTubePlayerListDirPath}/searchWordList"
 setReplaceVariable="PLAY_LOG_DIR_PATH=${cmdTubePlayerDirPath}/log"
 setReplaceVariable="PLAY_LOG_FILE_PATH=${PLAY_LOG_DIR_PATH}/playLog"
-setVariableType="tubePlayListName:EFCB=${cmdTubePlayerEditDirPath}&tube&NoExtend"
 setVariableType="searchWord:ELCB=${cmdTubePlayerListFilePath}&20"
-setVariableType="tubePlay:CBB=shuffle!ordinaly!reverse|::TermOut::jsf '${0}'"
+setVariableType="playMode:CB=shuffle!ordinaly!reverse"
 setVariableType="onSearchMode:CB=SHORT!RECENT!LOG_RND!LOG_FREQ!OFF"
+setVariableType="PLAY:BTN=::TermOut::jsf '${0}'"
 setVariableType="STOP:BTN=pkill -9 mpv"
 setVariableType="numberPlay:NUMB=!1..1000!1|::TermOut::jsf '${0}' number"
 setVariableType="minMinutes:NUM=!0..1000!1"
 setVariableType="maxMinutes:NUM=!0..1000!1"
+setVariableType="tubePlayListName:EFCB=${cmdTubePlayerEditDirPath}&tube&NoExtend"
 setVariableType="deleteTubePlayList:EFCBB=${cmdTubePlayerEditDirPath}&tube&NoExtend|jsf '${0}' delete"
 setVariableType="playLogOut:BTN=::TermOut::::TermLong::jsf '${0}' playLogOut"
 setVariableType="Install:BTN=jsf '${0}'"
@@ -93,14 +94,15 @@ scriptFileName="cmdYoutuber.js"
 
 
 /// CMD_VARIABLE_SECTION_START
-tubePlayListName="tubePlayList"
 searchWord=""
-tubePlay="shuffle"
+playMode="shuffle"
 onSearchMode="SHORT"
+PLAY="tubePlay"
 STOP=""
 numberPlay="3"
 minMinutes=0
 maxMinutes=0
+tubePlayListName="tubePlayList"
 deleteTubePlayList=""
 playLogOut=""
 Install="install"
@@ -112,7 +114,10 @@ Install="install"
 
 let args = jsArgs.get().split("\t");
 const DEFAULT_TERM_OUTPUT = "NORMAL";
-const FIRST_ARGS = args.at(0);
+var FIRST_ARGS = args.at(0);
+if(FIRST_ARGS == PLAY){
+	FIRST_ARGS = playMode;
+};
 searchWord = searchWord.trim();
 const cmdTubePlayerDirPath = "${cmdTubePlayerDirPath}";
 const PLAY_LOG_DIR_PATH = "${PLAY_LOG_DIR_PATH}";
@@ -409,7 +414,9 @@ function logSearchHandler(){
 				);
 			if(sliceStartNum > 1){
 				freqPlayLogListSource = freqPlayLogListSource.concat(
-					freqPlayLogListSource.slice(0, 5)
+					shuffleArray(
+						freqPlayLogListSource
+					).slice(0, 5)
 				);
 			};
 			const freqPlayLogContents = Array.from(

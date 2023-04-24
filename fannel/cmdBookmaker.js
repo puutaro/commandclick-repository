@@ -27,7 +27,7 @@
 editExecute="NO"
 terminalSizeType="LONG"
 onUpdateLastModify="ON"
-setReplaceVariable="CMD_BOOKMAKER_DIR_PATH=${01}/cmdBookmakerDir"
+setReplaceVariable="CMD_BOOKMAKER_DIR_PATH=${01}/${001}"
 setReplaceVariable="CMD_BOOKMAKER_EDIT_DIR_PATH=${CMD_BOOKMAKER_DIR_PATH}/edit"
 setVariableType="bookmarkName:EFCB=${CMD_BOOKMAKER_EDIT_DIR_PATH}&book&NoExtend"
 setVariableType=""

@@ -45,7 +45,7 @@
 editExecute="ALWAYS"
 terminalSizeType="LONG"
 terminalOutputMode="REFLASH"
-setReplaceVariable="CMD_TWITTER_DIR=${01}/cmdTwitterDir"
+setReplaceVariable="CMD_TWITTER_DIR=${01}/${001}"
 setReplaceVariable="SEARCH_WORD_LIST_DIR=${CMD_TWITTER_DIR}/list"
 setReplaceVariable="SEARCH_WORD_LIST_PATH=${CMD_TWITTER_DIR}/list/searchWordList"
 setVariableType="searchWord:ELCB=${SEARCH_WORD_LIST_PATH}"
