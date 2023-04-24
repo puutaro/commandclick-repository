@@ -332,6 +332,7 @@ play_mode_handler(){
 			;;
 		"${INSTALL_MODE}")
 			package_installer "jq"
+			package_installer "fzf"
 			package_installer "mpv"
 			package_installer "git"
 			package_installer "termux-api"
