@@ -23,7 +23,7 @@
 // 	* numberPlay 
 //		-> Input or inc/dec number
 //		- press "Exec" and play number
-//  * onWebSearch 
+//  * onSearchMode 
 // 		-> web search switch
 // 		- OFF -> no web search
 // 		- SHORT -> sort by shortest
@@ -80,7 +80,7 @@ setReplaceVariable="PLAY_LOG_FILE_PATH=${PLAY_LOG_DIR_PATH}/playLog"
 setVariableType="tubePlayListName:EFCB=${cmdTubePlayerEditDirPath}&tube&NoExtend"
 setVariableType="searchWord:ELCB=${cmdTubePlayerListFilePath}&20"
 setVariableType="tubePlay:CBB=shuffle!ordinaly!reverse|::TermOut::jsf '${0}'"
-setVariableType="onWebSearch:CB=SHORT!RECENT!OFF"
+setVariableType="onSearchMode:CB=SHORT!RECENT!LOG_RND!LOG_FREQ!OFF"
 setVariableType="STOP:BTN=pkill -9 mpv"
 setVariableType="numberPlay:NUMB=!1..1000!1|::TermOut::jsf '${0}' number"
 setVariableType="minMinutes:NUM=!0..1000!1"
@@ -96,7 +96,7 @@ scriptFileName="cmdYoutuber.js"
 tubePlayListName="tubePlayList"
 searchWord=""
 tubePlay="shuffle"
-onWebSearch="SHORT"
+onSearchMode="SHORT"
 STOP=""
 numberPlay="3"
 minMinutes=0
@@ -126,9 +126,13 @@ const cmdTubePlayerSearchWordFilePath = `${cmdTubePlayerTmpDirPath}/searchWord`;
 const cmdTubePlayerListDirPath = "${cmdTubePlayerListDirPath}";
 const cmdTubePlayerListFilePath = "${cmdTubePlayerListFilePath}";
 const TUBE_PREFIX = "tube";
-const webPlayListName = "WebSearchPlayList";
-if(onWebSearch != "OFF"){
-	tubePlayListName = webPlayListName
+const searchPlayListName = "SearchPlayList";
+const LOG_RUNDOM = "LOG_RND";
+const LOG_FREQUENT = "LOG_FREQ";
+let lOG_SEARCH_LIST = [LOG_RUNDOM, LOG_FREQUENT];
+let noWebSearchModeList = ["OFF"].concat(lOG_SEARCH_LIST);
+if(onSearchMode != "OFF"){
+	tubePlayListName = searchPlayListName
 };
 const EDIT_FILE_PATH = makeCreatorJSPath(tubePlayListName);
 const APP_URL_HISTORY_PATH="${01}/system/url/cmdclickUrlHistory";
@@ -140,9 +144,9 @@ const DELETE_MODE = "delete";
 const REVERSE_MODE = "reverse";
 const EDIT_SITE_WEB_MODE = "edit_site_web";
 const PLAY_LOG_MODE = "playLogOut";
-const CURRENT_REGISTER_SEARCH_STRING = `${searchWord}\t${onWebSearch}\t${minMinutes},${maxMinutes}`;
+const cURRENT_REGISTER_SEARCH_STRING = `${searchWord}\t${onSearchMode}\t${minMinutes},${maxMinutes}`;
 const ENABLE_UPDATE_WEB_SEARCH_LIST = judgeUpdateWebSearchList();
-const WEB_SEARCH_ARGS = `${onWebSearch}\t${searchWord}\t${ENABLE_UPDATE_WEB_SEARCH_LIST}\t${minMinutes},${maxMinutes}`;
+const WEB_SEARCH_ARGS = `${onSearchMode}\t${searchWord}\t${ENABLE_UPDATE_WEB_SEARCH_LIST}\t${minMinutes},${maxMinutes}`;
 
 argSwitcher();
 
@@ -159,6 +163,7 @@ function argSwitcher() {
 	);
 	registerWebSearchWord();
 	updateSeachWordList();
+	logSearchHandler();
 	switch(FIRST_ARGS){
 		case "":
 			editSiteHandler();
@@ -211,7 +216,9 @@ function argSwitcher() {
 };
 
 function editSiteHandler(){
-	if(onWebSearch == "OFF"){
+	if(
+		noWebSearchModeList.includes(onSearchMode)
+	){
 		jsIntent.launchEditSite(
 			EDIT_FILE_PATH,
 			APP_URL_HISTORY_PATH,
@@ -266,7 +273,9 @@ function execDeleteTubePlayList(){
 
 
 function updateSeachWordList(){
-	if(onWebSearch == "OFF") return
+	if(
+		onSearchMode == "OFF"
+	) return
 	jsFileSystem.createDir(
 		cmdTubePlayerListDirPath
 	);
@@ -279,17 +288,18 @@ function updateSeachWordList(){
 
 function judgeUpdateWebSearchList(){
 	if(
-		onWebSearch == "OFF"
+		onSearchMode == "OFF"
 	) return false;
 	if(
 		!searchWord
+		&& !lOG_SEARCH_LIST.includes(onSearchMode)
 	) return false;
 	const pastSearchWord = jsFileSystem.readLocalFile(
 		cmdTubePlayerSearchWordFilePath
 	).trim();
 	if(
-		pastSearchWord 
-		== CURRENT_REGISTER_SEARCH_STRING
+		pastSearchWord.trim() 
+		== cURRENT_REGISTER_SEARCH_STRING.trim()
 	) return false;
 	return true;
 };
@@ -300,7 +310,7 @@ function registerWebSearchWord(){
 	) return;
 	jsFileSystem.writeLocalFile(
   		cmdTubePlayerSearchWordFilePath,
-		CURRENT_REGISTER_SEARCH_STRING
+		cURRENT_REGISTER_SEARCH_STRING
   	);
 };
 
@@ -309,15 +319,15 @@ function tubeListNameCheck(
 	tubePlayListName
 ){
 	if(
-		onWebSearch != "OFF"
+		onSearchMode != "OFF"
 	) return;
-	if(tubePlayListName == webPlayListName){
-		alert(`tubePlayListName must not be "${webPlayListName}"`);
+	if(tubePlayListName == searchPlayListName){
+		alert(`tubePlayListName must not be "${searchPlayListName}"`);
 		throw new Error('exit');
 		exitZero();
 	};
-	if(tubePlayListName == `${TUBE_PREFIX}${webPlayListName}`){
-		alert(`tubePlayListName must not be "${TUBE_PREFIX}${webPlayListName}"`);
+	if(tubePlayListName == `${TUBE_PREFIX}${searchPlayListName}`){
+		alert(`tubePlayListName must not be "${TUBE_PREFIX}${searchPlayListName}"`);
 		throw new Error('exit');
 		exitZero();
 	};
@@ -351,3 +361,97 @@ function catPlayLog(){
 		playLogContents
 	);
 };
+
+
+function logSearchHandler(){
+	if(
+		!ENABLE_UPDATE_WEB_SEARCH_LIST
+	) return;
+	if(
+		!lOG_SEARCH_LIST.includes(onSearchMode)
+	) return;
+	const grepPrefix = "Playing:";
+	const playListLengthLimit = 30;
+	const playLogList = jsFileSystem.readLocalFile(
+		PLAY_LOG_FILE_PATH,
+	).split("\n").filter(function(line){
+		return  line.includes(grepPrefix) 
+			&& line.includes("http");
+	}).map(function(line){
+		const movieUrl = line.replace(grepPrefix, "").trim();
+		return `${movieUrl}\t${movieUrl}`;
+	});
+	const playListLength = playLogList.length - 1;
+	if(playListLength - playListLengthLimit > 0) {
+		var sliceStartNum = playListLength - playListLengthLimit;
+	} else if(playListLength <= 0) {
+		editZero();
+	} else {
+		var sliceStartNum = 1;
+	};
+	switch(onSearchMode){
+		case LOG_RUNDOM:
+			var shuffflePlayLogContents = shuffleArray(
+				playLogList
+			).slice(sliceStartNum).join("\n");
+			jsFileSystem.writeLocalFile(
+				EDIT_FILE_PATH,
+				shuffflePlayLogContents
+			);
+			break;
+		case LOG_FREQUENT:
+			var freqPlayLogListSourceBeforeSlice = sortByFrequency(
+				playLogList.sort()
+			);
+			var freqPlayLogListSource = 
+				freqPlayLogListSourceBeforeSlice.slice(
+					sliceStartNum
+				);
+			if(sliceStartNum > 1){
+				freqPlayLogListSource = freqPlayLogListSource.concat(
+					freqPlayLogListSource.slice(0, 5)
+				);
+			};
+			const freqPlayLogContents = Array.from(
+				new Set(freqPlayLogListSource)
+			).join("\n");
+			jsFileSystem.writeLocalFile(
+				EDIT_FILE_PATH,
+				freqPlayLogContents
+			);
+			break;
+	};
+};
+
+function shuffleArray(array) {
+    for (let i = array.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [array[i], array[j]] = [array[j], array[i]];
+    };
+    return array;
+};
+
+
+function sortByFrequency(data) {
+  const freq = data.reduce((r, e) => {
+    if (!r[e]) r[e] = 1;
+    else r[e]++;
+    return r;
+  }, {});
+
+  return [...data].sort((a, b) => {
+    return freq[b] - freq[a] || a - b
+  });
+};
+
+
+// function sortByFrequency(array) {
+//     var frequency = {};
+//     array.forEach(function(value) { frequency[value] = 0; });
+//     var uniques = array.filter(function(value) {
+//         return ++frequency[value] == 1;
+//     });
+//     return uniques.sort(function(a, b) {
+//         return frequency[b] - frequency[a];
+//     });
+// };

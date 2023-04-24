@@ -20,6 +20,7 @@ WEB_SEARCH_SHORT_MODE="SHORT"
 WEB_SEARCH_OFF_MODE="OFF"
 EDIT_SITE_WEB_MODE="edit_site_web"
 URL_LAUNCH_ACTION_NAME="com.puutaro.commandclick.url.launch"
+NO_WEB_SEARCH_MODE_CONTENTS="LOG_RND|LOG_FREQ|OFF"
 readonly CONST_MAX_MINITS=100000
 
 
@@ -173,11 +174,18 @@ number_playing(){
 
 updateWebSearchPlayList(){
 	local webSearchArgs="${1}"
-	local onWebSearch="$(echo "${webSearchArgs}" | cut -f1)"
+	local onSearchMode="$(echo "${webSearchArgs}" | cut -f1)"
 	local searchWord="$(echo "${webSearchArgs}" | cut -f2)"
 	local enableUpdateWebSearchList="$(echo "${webSearchArgs}" | cut -f3)"
 	case "${enableUpdateWebSearchList}" in
 		"true") ;;
+		*) return;;
+	esac
+	case "$(\
+			echo "${NO_WEB_SEARCH_MODE_CONTENTS}" \
+			| grep "${onSearchMode}"\
+		)" in
+		"") ;;
 		*) return;;
 	esac
 	echoWebSearchPlayList \
@@ -188,7 +196,7 @@ updateWebSearchPlayList(){
 
 echoWebSearchPlayList(){
 	local webSearchArgs="${1}"
-	local onWebSearch="$(echo "${webSearchArgs}" | cut -f1)"
+	local onSearchMode="$(echo "${webSearchArgs}" | cut -f1)"
 	local searchWord="$(echo "${webSearchArgs}" | cut -f2)"
 	local movieTimeList="$(echo "${webSearchArgs}" | cut -f4)"
 	local minMinutes="$(echo "${movieTimeList}" | cut -d ',' -f1)"
@@ -217,7 +225,7 @@ echoWebSearchPlayList(){
 			print $2"\t"$3"\t"$4
 		}' \
 	)
-	case "${onWebSearch}" in
+	case "${onSearchMode}" in
 		"${WEB_SEARCH_SHORT_MODE}") 
 			echo "${searchRawList}" \
 				| cut -f2-
@@ -262,9 +270,12 @@ play_mode_handler(){
 		echo "${webSearchArgs}" \
 		| awk \
 			-F '\t' \
+			-v NO_WEB_SEARCH_MODE_CONTENTS="${NO_WEB_SEARCH_MODE_CONTENTS}" \
 			-v CONST_MAX_MINITS="${CONST_MAX_MINITS}" \
 		'{
-			if($1 == "OFF") {
+			if(\
+				index(NO_WEB_SEARCH_MODE_CONTENTS, $1) > 0\
+			) {
 				print ""
 				next
 			}
