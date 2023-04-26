@@ -97,9 +97,9 @@ function pasteOrSave(){
 	let gmailContents = document.getElementsByClassName("Nl")[0].textContent;
 	if(!gmailContents){
 		const clipString = jsUtil.echoFromClipboard();
-		const subjString = clipString
-				.replaceAll("\n", "")
-				.substring(0, 20);
+		const subjString = echoTitleOrRawString(
+			clipString
+		);
 		document.getElementById("cmcsubj").value = subjString;
 		let draftBody = document.getElementsByClassName("Nl")[0];
 		let clipStringList = clipString.split("\n");
@@ -123,18 +123,41 @@ function pasteOrSave(){
 			let saveButtonParent = nqList[1];
 			let saveButton = saveButtonParent.children[0];
 			saveButton.children[0].click();
+			jsFileSystem.outputSwitch("on");
 		}, 
 		600
 	);
 	jsToast.short("send ok");
-	setTimeout(
-		function(){
-				jsFileSystem.fileEcho(
-				scriptFileName,
-				terminalOutputMode,
-			);
-		}, 
-		1000
-	);
 };
 
+function echoTitleOrRawString(
+	clipString
+){
+	const httpString = "http";
+	if(
+		!clipString.trim().startsWith(
+			httpString
+		)
+	) {
+		return clipString
+			.replaceAll("\n", "")
+			.substring(0, 50);
+	};
+	return jsCurl.get(
+		clipString,
+		"",
+		"",
+		1000,
+	).match(/<title[^>]*>([^<]+)<\/title>/)[1];
+};
+
+function makeRandomValName() {
+	const S="abcdefghijklmnopqrstuvwxyz";
+	const N=4;
+	return Array.from(
+		crypto.getRandomValues(
+			new Uint8Array(N))
+		).map(
+		(n) => S[n%S.length]
+	).join('')
+}
