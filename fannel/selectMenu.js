@@ -6,6 +6,7 @@
 
 
 /// SETTING_SECTION_START
+setVariableType="title:RO="
 setVariableType="menu1:EFCB="
 setVariableType="menu2:EFCB="
 setVariableType="menu3:EFCB="
@@ -70,5 +71,34 @@ const selectedMenu = jsDialog.listDialog(
 
 const selectedJsPath = [parentDirPath, selectedMenu].join("/");
 
-const jsUrlString = jsUrl.makeJsUrl(selectedJsPath);
-jsUrl.loadUrl(jsUrlString);
+launchJsFile(
+	selectedJsPath,
+);
+
+
+function launchJsFile(
+	selectedJsPath
+){
+	const jsFannelContents = jsFileSystem.readLocalFile(
+			selectedJsPath
+		);
+	const settingVariables = jsScript.subSettingVars(
+		jsFannelContents
+	);
+	const editExecuteValue = jsScript.subValOnlyValue(
+		"editExecute",
+		settingVariables
+	);
+	if(editExecuteValue == "ALWAYS"){
+		const jsFileName = selectedJsPath.split("/").at(-1);
+		jsIntent.launchShortcut(
+	        "${01}",
+	        jsFileName
+	    );
+	    return;
+	};
+	const jsUrlString = jsUrl.makeJsUrl(
+		selectedJsPath
+	);
+	jsUrl.loadUrl(jsUrlString);	
+};

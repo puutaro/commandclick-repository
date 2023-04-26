@@ -123,8 +123,7 @@ function pasteOrSave(){
 			let saveButtonParent = nqList[1];
 			let saveButton = saveButtonParent.children[0];
 			saveButton.children[0].click();
-			jsFileSystem.outputSwitch("on");
-		}, 
+		},
 		600
 	);
 	jsToast.short("send ok");
