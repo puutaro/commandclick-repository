@@ -76,7 +76,6 @@ setReplaceVariable="cmdTubePlayerEditDirPath=${cmdTubePlayerDirPath}/edit"
 setReplaceVariable="cmdTubePlayerListDirPath=${cmdTubePlayerDirPath}/list"
 setReplaceVariable="cmdTubePlayerListFilePath=${cmdTubePlayerListDirPath}/searchWordList"
 setReplaceVariable="PLAY_LOG_DIR_PATH=${cmdTubePlayerDirPath}/log"
-setReplaceVariable="PLAY_LOG_FILE_PATH=${PLAY_LOG_DIR_PATH}/playLog"
 setVariableType="searchWord:ELCB=${cmdTubePlayerListFilePath}&20"
 setVariableType="playMode:CB=shuffle!ordinaly!reverse"
 setVariableType="onSearchMode:CB=SHORT!RECENT!LOG_RND!LOG_FREQ!OFF"
@@ -86,8 +85,10 @@ setVariableType="numberPlay:NUMB=!1..1000!1|::TermOut::jsf '${0}' number"
 setVariableType="minMinutes:NUM=!0..1000!1"
 setVariableType="maxMinutes:NUM=!0..1000!1"
 setVariableType="tubePlayListName:EFCB=${cmdTubePlayerEditDirPath}&tube&NoExtend"
-setVariableType="deleteTubePlayList:EFCBB=${cmdTubePlayerEditDirPath}&tube&NoExtend|jsf '${0}' delete"
+setVariableType="playLogName:EFCB=${PLAY_LOG_DIR_PATH}&playLog&NoExtend"
 setVariableType="playLogOut:BTN=::TermOut::::TermLong::jsf '${0}' playLogOut"
+setVariableType="deleteTubePlayList:EFCBB=${cmdTubePlayerEditDirPath}&tube&NoExtend|jsf '${0}' delete"
+setVariableType="deletePlayLog:EFCBB=${PLAY_LOG_DIR_PATH}&playLog&NoExtend|jsf '${0}' deletePlayLog"
 setVariableType="Install:BTN=jsf '${0}'"
 scriptFileName="cmdYoutuber.js"
 /// SETTING_SECTION_END
@@ -103,8 +104,10 @@ STOP=""
 minMinutes=0
 maxMinutes=0
 tubePlayListName="tubePlayList"
-deleteTubePlayList=""
+playLogName="playLogDefault"
 playLogOut=""
+deleteTubePlayList=""
+deletePlayLog=
 Install="install"
 /// CMD_VARIABLE_SECTION_END
 
@@ -121,7 +124,12 @@ if(FIRST_ARGS == PLAY){
 searchWord = searchWord.trim();
 const cmdTubePlayerDirPath = "${cmdTubePlayerDirPath}";
 const PLAY_LOG_DIR_PATH = "${PLAY_LOG_DIR_PATH}";
-const PLAY_LOG_FILE_PATH = "${PLAY_LOG_FILE_PATH}";
+const LOG_PREFIX = "playLog";
+const PLAY_LOG_FILE_PATH = makeCreatorJSPath(
+	PLAY_LOG_DIR_PATH,
+	playLogName,
+	LOG_PREFIX
+);
 const cmdTubePlayerEditDirPath = "${cmdTubePlayerEditDirPath}";
 const cmdTubePlayerShellDirPath = `${cmdTubePlayerDirPath}/shell`;
 const EXEC_SHELL_PATH = `${cmdTubePlayerShellDirPath}/cmdYoutuber.sh`;
@@ -137,21 +145,26 @@ const LOG_FREQUENT = "LOG_FREQ";
 let lOG_SEARCH_LIST = [LOG_RUNDOM, LOG_FREQUENT];
 let noWebSearchModeList = ["OFF"].concat(lOG_SEARCH_LIST);
 if(onSearchMode != "OFF"){
-	tubePlayListName = searchPlayListName
+	tubePlayListName = searchPlayListName;
 };
-const EDIT_FILE_PATH = makeCreatorJSPath(tubePlayListName);
+const EDIT_FILE_PATH = makeCreatorJSPath(
+	cmdTubePlayerEditDirPath,
+	tubePlayListName,
+	TUBE_PREFIX
+);
 const APP_URL_HISTORY_PATH="${01}/system/url/cmdclickUrlHistory";
 const INSTALL_MODE = "install";
 const SHUFFLE_MODE = "shuffle";
 const ORDINALY_MODE = "ordinaly";
 const NUMBER_MODE = "number";
 const DELETE_MODE = "delete";
+const DELETE_PLAY_LOG_MODE = "deletePlayLog";
 const REVERSE_MODE = "reverse";
 const EDIT_SITE_WEB_MODE = "edit_site_web";
 const PLAY_LOG_MODE = "playLogOut";
 const cURRENT_REGISTER_SEARCH_STRING = `${searchWord}\t${onSearchMode}\t${minMinutes},${maxMinutes}`;
 const ENABLE_UPDATE_WEB_SEARCH_LIST = judgeUpdateWebSearchList();
-const WEB_SEARCH_ARGS = `${onSearchMode}\t${searchWord}\t${ENABLE_UPDATE_WEB_SEARCH_LIST}\t${minMinutes},${maxMinutes}`;
+const WEB_SEARCH_ARGS = `${onSearchMode}\t${searchWord}\t${ENABLE_UPDATE_WEB_SEARCH_LIST}\t${minMinutes},${maxMinutes}\t${PLAY_LOG_FILE_PATH}`;
 
 argSwitcher();
 
@@ -213,10 +226,18 @@ function argSwitcher() {
 			);
 			break;
 		case DELETE_MODE:
-			execDeleteTubePlayList();
+			execDeleteTubePlayList(
+				EDIT_FILE_PATH
+			);
 			break;
 		case PLAY_LOG_MODE:
 			catPlayLog();
+			break;
+		case DELETE_PLAY_LOG_MODE:
+			execDeleteTubePlayList(
+				PLAY_LOG_FILE_PATH
+			);
+			break
 	};
 };
 
@@ -254,26 +275,36 @@ function editSiteHandler(){
 	);
 };
 
-function makeCreatorJSPath(tubePlayListName){
+function makeCreatorJSPath(
+	dirPath,
+	tubePlayListName,
+	prefix,
+){
 	if(!tubePlayListName){
 		alert("tubePlayListName must be written");
 		throw new Error('exit');
 		exitZero();
 	};
-	if(!tubePlayListName.startsWith(TUBE_PREFIX)){
-		tubePlayListName = TUBE_PREFIX + tubePlayListName;
+	if(!tubePlayListName.startsWith(prefix)){
+		tubePlayListName = prefix + tubePlayListName;
 	};
-	return [cmdTubePlayerEditDirPath, tubePlayListName].join('/');
+	return [dirPath, tubePlayListName].join('/');
 };
 
-function execDeleteTubePlayList(){
+function execDeleteTubePlayList(
+		removeFilePath
+	){
 	jsFileSystem.jsEcho(
 		terminalOutputMode,
-		`remove: ${EDIT_FILE_PATH}`
+		`remove: ${removeFilePath}`
 	);
 	jsFileSystem.removeFile(
-		EDIT_FILE_PATH
+		removeFilePath
 	);
+	jsIntent.launchShortcut(
+        "${01}",
+        "${02}"
+    );
 };
 
 
@@ -390,6 +421,9 @@ function logSearchHandler(){
 	if(playListLength - playListLengthLimit > 0) {
 		var sliceStartNum = playListLength - playListLengthLimit;
 	} else if(playListLength <= 0) {
+		jsToast.short(
+			`not exist log`
+		);
 		editZero();
 	} else {
 		var sliceStartNum = 1;
@@ -450,15 +484,3 @@ function sortByFrequency(data) {
     return freq[b] - freq[a] || a - b
   });
 };
-
-
-// function sortByFrequency(array) {
-//     var frequency = {};
-//     array.forEach(function(value) { frequency[value] = 0; });
-//     var uniques = array.filter(function(value) {
-//         return ++frequency[value] == 1;
-//     });
-//     return uniques.sort(function(a, b) {
-//         return frequency[b] - frequency[a];
-//     });
-// };

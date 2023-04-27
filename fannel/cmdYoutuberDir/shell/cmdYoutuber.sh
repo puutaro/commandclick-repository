@@ -7,8 +7,6 @@ PARENT_DIR_PATH="$(dirname "$0")"
 YTFZF_SHELL_PATH="${PARENT_DIR_PATH}/ytfzfForFannel.sh"
 PLAY_PROCESS_DIR_PATH="${PARENT_DIR_PATH}/process"
 APP_DIR_PATH="$(dirname "${PARENT_DIR_PATH}")"
-PLAY_LOG_DIR_PATH="${APP_DIR_PATH}/log"
-PLAY_LOG_FILE_PATH="${PLAY_LOG_DIR_PATH}/playLog"
 TMP_PLAY_LIST_NAME="tmp_play_list"
 TMP_PLAY_LIST_PATH="${PLAY_PROCESS_DIR_PATH}/${TMP_PLAY_LIST_NAME}"
 SHUFFLE_MODE="shuffle"
@@ -77,14 +75,15 @@ termux_mpv_package_installer(){
 
 
 cut_play_url_history_limit_over(){
+	local play_log_file_path="${1}"
 	local history_limit_num=300
-	if [ ! -f "${PLAY_LOG_FILE_PATH}" ];then
-		touch "${PLAY_LOG_FILE_PATH}"
+	if [ ! -f "${play_log_file_path}" ];then
+		touch "${play_log_file_path}"
 		return
 	fi
 	local grep_prefix="Playing:"
 	local play_url_history_con="$(\
-		cat "${PLAY_LOG_FILE_PATH}" \
+		cat "${play_log_file_path}" \
 		| awk \
 			-v grep_prefix="${grep_prefix}" \
 		'{
@@ -117,19 +116,21 @@ cut_play_url_history_limit_over(){
 	echo \
 		"${log_contents}" \
 		| sed '/^$/d' \
-		> "${PLAY_LOG_FILE_PATH}" 
+		> "${play_log_file_path}" 
 }
 
 play_temp_list(){
 	local play_mode="${1:-}"
-	cut_play_url_history_limit_over
+	local play_log_file_path="${2}"
+	cut_play_url_history_limit_over \
+		"${play_log_file_path}"
 	sleep 0.1
 	termuxmpv \
 		--no-video \
 		"${play_mode}"  \
 		--loop-playlist=inf \
 		--playlist="${TMP_PLAY_LIST_PATH}" \
-	 | tee -a "${PLAY_LOG_FILE_PATH}"
+	 | tee -a "${play_log_file_path}"
 }
 
 echo_temp_play_list(){
@@ -151,6 +152,7 @@ echo_temp_play_list(){
 number_playing(){
 	local tubePlayListPath="${1}"
 	local number="${2}"
+	local play_log_file_path="${3}"
 	if [[ ! ${number} =~ ^[0-9]+(\.[0-9]+)?$ ]] then
 		return 
 	fi
@@ -168,7 +170,9 @@ number_playing(){
 				print playUrl
 			}
 		}' > "${TMP_PLAY_LIST_PATH}"
-	play_temp_list
+	play_temp_list \
+		"" \
+		"${play_log_file_path}"
 	exit 0
 }
 
@@ -260,8 +264,12 @@ play_mode_handler(){
 	if [ ! -d "${PLAY_PROCESS_DIR_PATH}" ]; then
 		mkdir -p "${PLAY_PROCESS_DIR_PATH}";
 	fi
-	if [ ! -f "${PLAY_LOG_FILE_PATH}" ];then
-		touch "${PLAY_LOG_FILE_PATH}"
+	local play_log_file_path="$(\
+		echo "${webSearchArgs}" \
+		| cut -f5\
+	)"
+	if [ ! -f "${play_log_file_path}" ];then
+		touch "${play_log_file_path}"
 	fi
 	echo "play_mode: ${play_mode}"
 	echo "playListPath: ${tubePlayListPath}"
@@ -299,7 +307,8 @@ play_mode_handler(){
 				 > "${TMP_PLAY_LIST_PATH}"
 			wait
 			play_temp_list \
-				"--shuffle"
+				"--shuffle" \
+				"${play_log_file_path}"
 			exit 0
 			;;
 		"${ORDINALY_MODE}")
@@ -309,7 +318,9 @@ play_mode_handler(){
 				"${tubePlayListPath}" \
 				 > "${TMP_PLAY_LIST_PATH}"
 			wait
-			play_temp_list
+			play_temp_list \
+				"" \
+				"${play_log_file_path}"
 			exit 0
 			;;
 		"${REVERSE_MODE}")
@@ -319,7 +330,9 @@ play_mode_handler(){
 				"${tubePlayListPath}" \
 				| tac > "${TMP_PLAY_LIST_PATH}"
 			wait
-			play_temp_list
+			play_temp_list \
+				"" \
+				"${play_log_file_path}"
 			exit 0
 			;;
 		"${NUMBER_MODE}")
@@ -327,7 +340,8 @@ play_mode_handler(){
 				"${webSearchArgs}"
 			number_playing \
 				"${tubePlayListPath}" \
-				"${playNumber}"
+				"${playNumber}" \
+				"${play_log_file_path}"
 			exit 0
 			;;
 		"${INSTALL_MODE}")
