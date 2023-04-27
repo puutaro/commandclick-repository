@@ -9,14 +9,17 @@
 //		- recent visit youtube url show in "Save title"
 //		- change item  order by drag and drop 
 //		- delete item  by doragging to another area(no item area).
-// 	* tubePlayListName 
-//		-> Input or select play list file name
-//		- prefix must be "tube" ex) "tubePlayList"
 //  * searchWord
 // 		-> Web Youtube Search Word
 // 	* playMode 
 //		-> select shuffle or ordinaly and press
 //		- press "Exec" and execute play list
+// 	* tubePlayListName 
+//		-> Input or select play list file name
+//		- prefix must be "tube" ex) "tubePlayList"
+// 	* playLogName 
+//		-> Input or select play list file name
+//		- prefix must be "tube" ex) "tubePlayList"
 //	If volume control enable when CommandClick hide
 // 	* STOP
 //		-> play stop (recommend: notification bar swip out)
@@ -28,12 +31,12 @@
 // 		- OFF -> no web search
 // 		- SHORT -> sort by shortest
 // 		- RECENT -> sort by latest
-//  * playLogOut
-// 		-> output play log
 //  * minMinutes
 // 		-> filter movie by minimum play minutes
 //  * maxMinutes
 // 		-> filter movie  by maximum play minutes
+//  * playLogOut
+// 		-> output play log
 // - This Fannel is used to bellow repo as core library.
 // 		https://github.com/pystardust/ytfzf
 // --
