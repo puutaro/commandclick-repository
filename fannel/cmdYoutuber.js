@@ -120,6 +120,7 @@ Install="install"
 
 let args = jsArgs.get().split("\t");
 const DEFAULT_TERM_OUTPUT = "NORMAL";
+const NoExtend = "NoExtend";
 var FIRST_ARGS = args.at(0);
 if(FIRST_ARGS == PLAY){
 	FIRST_ARGS = playMode;
@@ -233,9 +234,10 @@ function argSwitcher() {
 		        "tubePlayListName",
 				"renameTubePlayListName",
 				cmdTubePlayerEditDirPath,
-				"tubePlayListName:EFCB=${cmdTubePlayerEditDirPath}&tube&NoExtend",
+				`tubePlayListName:EFCB=${cmdTubePlayerEditDirPath}&tube&${NoExtend}`,
 				`tubePlayListName=${tubePlayListName}\trenameTubePlayListName=`,
 				TUBE_PREFIX,
+				NoExtend,
 		        "${01}/${02}"
 		    );
 			break;
@@ -247,9 +249,10 @@ function argSwitcher() {
 		        "playLogName",
 		        "renamePlayLogName",
 				"${PLAY_LOG_DIR_PATH}",
-				"playLogName:EFCB=${PLAY_LOG_DIR_PATH}&playLog&NoExtend",
+				`playLogName:EFCB=${PLAY_LOG_DIR_PATH}&playLog&${NoExtend}`,
 				`playLogName=${playLogName}\trenamePlayLogName=`,
 				LOG_PREFIX,
+				NoExtend,
 		        "${01}/${02}"
 		    );
 			break;
