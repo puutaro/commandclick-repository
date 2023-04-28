@@ -229,114 +229,32 @@ function argSwitcher() {
 			);
 			break;
 		case EDIT_TUBE_PLAY_LIST_MODE:
-			execEditTargetFileName(
-				"tubePlayListName",
+			jsFileSelect.execEditTargetFileName(
+		        "tubePlayListName",
 				"renameTubePlayListName",
 				cmdTubePlayerEditDirPath,
 				"tubePlayListName:EFCB=${cmdTubePlayerEditDirPath}&tube&NoExtend",
 				`tubePlayListName=${tubePlayListName}\trenameTubePlayListName=`,
 				TUBE_PREFIX,
-			);
+		        "${01}/${02}"
+		    );
 			break;
 		case PLAY_LOG_MODE:
 			catPlayLog();
 			break;
 		case EDIT_PLAY_LOG_NAME_MODE:
-			execEditTargetFileName(
-				"playLogName",
-				"renamePlayLogName",
+			jsFileSelect.execEditTargetFileName(
+		        "playLogName",
+		        "renamePlayLogName",
 				"${PLAY_LOG_DIR_PATH}",
 				"playLogName:EFCB=${PLAY_LOG_DIR_PATH}&playLog&NoExtend",
 				`playLogName=${playLogName}\trenamePlayLogName=`,
 				LOG_PREFIX,
-			);
+		        "${01}/${02}"
+		    );
 			break;
 	};
 };
-
-function execEditTargetFileName(
-	targetVariable,
-	renameVariable,
-	taergetDirPath,
-	settingVariables,
-	commandVariables,
-	prefix,
-){
-	const replaceContents = jsDialog.formDialog(
-		settingVariables,
-		commandVariables,
-	);
-	let replaceContentsList = replaceContents.split("\n");
-	const editFileNameForDialog = replaceContentsList.filter(
-		function(line){
-			return line.includes(targetVariable);
-	}).at(0).split("=").at(-1).replaceAll("\"", "");
-	const renameFileNameKeyValue = replaceContentsList.filter(
-		function(line){
-			return line.includes(renameVariable);
-	}).at(0);
-	if(renameFileNameKeyValue === "") return;
-	const renameFileNameForDialog = renameFileNameKeyValue.split("=").at(-1).replaceAll("\"", "");
-	const scriptContents = jsFileSystem.readLocalFile(
-		"${01}/${02}"
-	);
-	if(renameFileNameForDialog === ""){
-		const onDelete = confirm(
-			`delete ok? ${editFileNameForDialog}`
-		);
-		if(!onDelete) return;
-		jsFileSystem.removeFile(
-			`${taergetDirPath}/${editFileNameForDialog}`
-		);
-		const recentLogFile = jsFileSystem.showFileList(
-			`${taergetDirPath}`
-		).split("\t").filter(function(line){
-			return !/\.[a-zA-Z0-9]*$/.test(line)
-		}).at(-1);
-		updateScriptFile(
-			`${targetVariable}="${recentLogFile}"`
-		);
-		return;
-	};
-	const renamePlayLogPath = makeCreatorJSPath(
-		taergetDirPath,
-		renameFileNameForDialog,
-		prefix
-	);
-	const renameOkPlayLogName = renamePlayLogPath.split('/').at(-1);
-	jsFileSystem.copyFile(
-		`${taergetDirPath}/${editFileNameForDialog}`,
-		renamePlayLogPath
-	);
-	jsFileSystem.removeFile(
-		`${taergetDirPath}/${editFileNameForDialog}`
-	);
-	updateScriptFile(
-		`${targetVariable}="${renameOkPlayLogName}"`
-	);
-};
-
-function updateScriptFile(
-	replaceString
-){
-	const scriptContents = jsFileSystem.readLocalFile(
-		"${01}/${02}"
-	);
-	const replaceContents = jsScript.replaceComamndVariable(
-        scriptContents,
-        replaceString,
-    );
-    jsFileSystem.writeLocalFile(
-    	"${01}/${02}",
-    	replaceContents
-    );
-	jsIntent.launchShortcut(
-        "${01}",
-        "${02}"
-    );
-};
-
-
 
 function editSiteHandler(){
 	if(
