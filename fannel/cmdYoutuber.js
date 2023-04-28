@@ -90,8 +90,8 @@ setVariableType="maxMinutes:NUM=!0..1000!1"
 setVariableType="tubePlayListName:EFCB=${cmdTubePlayerEditDirPath}&tube&NoExtend"
 setVariableType="playLogName:EFCB=${PLAY_LOG_DIR_PATH}&playLog&NoExtend"
 setVariableType="playLogOut:BTN=::TermOut::::TermLong::jsf '${0}' playLogOut"
-setVariableType="deleteTubePlayList:EFCBB=${cmdTubePlayerEditDirPath}&tube&NoExtend|jsf '${0}' delete"
-setVariableType="deletePlayLog:EFCBB=${PLAY_LOG_DIR_PATH}&playLog&NoExtend|jsf '${0}' deletePlayLog"
+setVariableType="EDIT_TUBE_PLAY_LIST:BTN=jsf '${0}' EDIT_TUBE_PLAY_LIST"
+setVariableType="EDIT_PLAY_LOG_NAME:BTN=jsf '${0}' EDIT_PLAY_LOG_NAME"
 setVariableType="Install:BTN=jsf '${0}'"
 scriptFileName="cmdYoutuber.js"
 /// SETTING_SECTION_END
@@ -109,8 +109,8 @@ maxMinutes=0
 tubePlayListName="tubePlayList"
 playLogName="playLogDefault"
 playLogOut=""
-deleteTubePlayList=""
-deletePlayLog=
+EDIT_TUBE_PLAY_LIST=""
+EDIT_PLAY_LOG_NAME=
 Install="install"
 /// CMD_VARIABLE_SECTION_END
 
@@ -160,8 +160,8 @@ const INSTALL_MODE = "install";
 const SHUFFLE_MODE = "shuffle";
 const ORDINALY_MODE = "ordinaly";
 const NUMBER_MODE = "number";
-const DELETE_MODE = "delete";
-const DELETE_PLAY_LOG_MODE = "deletePlayLog";
+const EDIT_TUBE_PLAY_LIST_MODE = "EDIT_TUBE_PLAY_LIST";
+const EDIT_PLAY_LOG_NAME_MODE = "EDIT_PLAY_LOG_NAME";
 const REVERSE_MODE = "reverse";
 const EDIT_SITE_WEB_MODE = "edit_site_web";
 const PLAY_LOG_MODE = "playLogOut";
@@ -228,21 +228,115 @@ function argSwitcher() {
 				` \"${numberPlay}\"`
 			);
 			break;
-		case DELETE_MODE:
-			execDeleteTubePlayList(
-				EDIT_FILE_PATH
+		case EDIT_TUBE_PLAY_LIST_MODE:
+			execEditTargetFileName(
+				"tubePlayListName",
+				"renameTubePlayListName",
+				cmdTubePlayerEditDirPath,
+				"tubePlayListName:EFCB=${cmdTubePlayerEditDirPath}&tube&NoExtend",
+				`tubePlayListName=${tubePlayListName}\trenameTubePlayListName=`,
+				TUBE_PREFIX,
 			);
 			break;
 		case PLAY_LOG_MODE:
 			catPlayLog();
 			break;
-		case DELETE_PLAY_LOG_MODE:
-			execDeleteTubePlayList(
-				PLAY_LOG_FILE_PATH
+		case EDIT_PLAY_LOG_NAME_MODE:
+			execEditTargetFileName(
+				"playLogName",
+				"renamePlayLogName",
+				"${PLAY_LOG_DIR_PATH}",
+				"playLogName:EFCB=${PLAY_LOG_DIR_PATH}&playLog&NoExtend",
+				`playLogName=${playLogName}\trenamePlayLogName=`,
+				LOG_PREFIX,
 			);
-			break
+			break;
 	};
 };
+
+function execEditTargetFileName(
+	targetVariable,
+	renameVariable,
+	taergetDirPath,
+	settingVariables,
+	commandVariables,
+	prefix,
+){
+	const replaceContents = jsDialog.formDialog(
+		settingVariables,
+		commandVariables,
+	);
+	let replaceContentsList = replaceContents.split("\n");
+	const editFileNameForDialog = replaceContentsList.filter(
+		function(line){
+			return line.includes(targetVariable);
+	}).at(0).split("=").at(-1).replaceAll("\"", "");
+	const renameFileNameKeyValue = replaceContentsList.filter(
+		function(line){
+			return line.includes(renameVariable);
+	}).at(0);
+	if(renameFileNameKeyValue === "") return;
+	const renameFileNameForDialog = renameFileNameKeyValue.split("=").at(-1).replaceAll("\"", "");
+	const scriptContents = jsFileSystem.readLocalFile(
+		"${01}/${02}"
+	);
+	if(renameFileNameForDialog === ""){
+		const onDelete = confirm(
+			`delete ok? ${editFileNameForDialog}`
+		);
+		if(!onDelete) return;
+		jsFileSystem.removeFile(
+			`${taergetDirPath}/${editFileNameForDialog}`
+		);
+		const recentLogFile = jsFileSystem.showFileList(
+			`${taergetDirPath}`
+		).split("\t").filter(function(line){
+			return !/\.[a-zA-Z0-9]*$/.test(line)
+		}).at(-1);
+		updateScriptFile(
+			`${targetVariable}="${recentLogFile}"`
+		);
+		return;
+	};
+	const renamePlayLogPath = makeCreatorJSPath(
+		taergetDirPath,
+		renameFileNameForDialog,
+		prefix
+	);
+	const renameOkPlayLogName = renamePlayLogPath.split('/').at(-1);
+	jsFileSystem.copyFile(
+		`${taergetDirPath}/${editFileNameForDialog}`,
+		renamePlayLogPath
+	);
+	jsFileSystem.removeFile(
+		`${taergetDirPath}/${editFileNameForDialog}`
+	);
+	updateScriptFile(
+		`${targetVariable}="${renameOkPlayLogName}"`
+	);
+};
+
+function updateScriptFile(
+	replaceString
+){
+	const scriptContents = jsFileSystem.readLocalFile(
+		"${01}/${02}"
+	);
+	const replaceContents = jsScript.replaceComamndVariable(
+        scriptContents,
+        replaceString,
+    );
+    jsFileSystem.writeLocalFile(
+    	"${01}/${02}",
+    	replaceContents
+    );
+	jsIntent.launchShortcut(
+        "${01}",
+        "${02}"
+    );
+};
+
+
 
 function editSiteHandler(){
 	if(
@@ -292,22 +386,6 @@ function makeCreatorJSPath(
 		tubePlayListName = prefix + tubePlayListName;
 	};
 	return [dirPath, tubePlayListName].join('/');
-};
-
-function execDeleteTubePlayList(
-		removeFilePath
-	){
-	jsFileSystem.jsEcho(
-		terminalOutputMode,
-		`remove: ${removeFilePath}`
-	);
-	jsFileSystem.removeFile(
-		removeFilePath
-	);
-	jsIntent.launchShortcut(
-        "${01}",
-        "${02}"
-    );
 };
 
 
