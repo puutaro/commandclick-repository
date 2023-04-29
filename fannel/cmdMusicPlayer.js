@@ -70,7 +70,8 @@ setVariableType="startNum:NUM=!0..10000!1"
 setVariableType="endNum:NUM=!0..10000!1"
 setVariableType="STOP:BTN=pkill -9 mpv"
 setVariableType="Install:BTN=jsf '${0}'"
-setVariableType="deleteMusicPlayList:EFCBB=${cmdMusicPlayerEditDirPath}&music&NoExtend|jsf '${0}' delete"
+setVariableType="EDIT_MUSIC_PLAY_LIST:BTN=jsf '${0}' delete"
+// "deleteMusicPlayList:EFCBB=${cmdMusicPlayerEditDirPath}&music&NoExtend|jsf '${0}' delete"
 setVariableType="onResumePlay:CB=ON!OFF"
 scriptFileName="cmdMusicPlayer.js"
 /// SETTING_SECTION_END
@@ -85,7 +86,7 @@ numberPlay="1"
 STOP=""
 startNum="0"
 endNum="0"
-deleteMusicPlayList=""
+EDIT_MUSIC_PLAY_LIST=""
 onResumePlay="ON"
 Install="install"
 /// CMD_VARIABLE_SECTION_END
@@ -95,7 +96,7 @@ Install="install"
 
 
 let args = jsArgs.get().split("\t");
-const DEFAULT_TERM_OUTPUT = "NORMAL";
+const NoExtend = "NoExtend";
 var FIRST_ARGS = args.at(0);
 if(FIRST_ARGS == PLAY){
 	FIRST_ARGS = musicPlay;
@@ -105,6 +106,7 @@ const cmdMusicPlayerEditDirPath = "${cmdMusicPlayerEditDirPath}";
 const EXEC_SHELL_PATH = `${cmdMusicPlayerDirPath}/cmdMusicPlayer.sh`;
 const PLAY_PROCESS_DIR_PATH = `${cmdMusicPlayerDirPath}/process`;
 const MUSIC_HISTORY_PATH = `${PLAY_PROCESS_DIR_PATH}/musicHistory`;
+const MUSIC_PREFIX = "music";
 const EDIT_FILE_PATH = makeCreatorJSPath(musicPlayListName);
 const INSTALL_MODE = "install";
 const SHUFFLE_MODE = "shuffle";
@@ -173,7 +175,17 @@ function switchByArgs(){
 			);
 			break;
 		case DELETE_MODE:
-			execDeleteMusicPlayList();
+			jsFileSelect.execEditTargetFileName(
+		        "musicPlayListName",
+				"renameMusicPlayListName",
+				cmdMusicPlayerEditDirPath,
+				`musicPlayListName:EFCB=${cmdMusicPlayerEditDirPath}&tube&${NoExtend}`,
+				`musicPlayListName=${musicPlayListName}\trenameMusicPlayListName=`,
+				MUSIC_PREFIX,
+				NoExtend,
+		        "${01}/${02}",
+		        "Edit musicPlayListName"
+		    );
 			break;
 	};
 };
@@ -184,11 +196,10 @@ function makeCreatorJSPath(musicPlayListName){
 		throw new Error('exit');
 		exitZero();
 	};
-	const musicPrefix = "music";
 	if(
-		!musicPlayListName.startsWith(musicPrefix)
+		!musicPlayListName.startsWith(MUSIC_PREFIX)
 	){
-		musicPlayListName = musicPrefix + musicPlayListName;
+		musicPlayListName = MUSIC_PREFIX + musicPlayListName;
 	};
 	return [cmdMusicPlayerEditDirPath, musicPlayListName].join('/');
 };
@@ -264,12 +275,3 @@ function sortByLastMusic(fileList){
 	return fileListAfterLastMusicIndex.concat(fileListBeforeLastMusicIndex);
 };
 
-function execDeleteMusicPlayList(){
-	jsFileSystem.jsEcho(
-		terminalOutputMode,
-		`remove: ${EDIT_FILE_PATH}`
-	);
-	jsFileSystem.removeFile(
-		EDIT_FILE_PATH
-	);
-};

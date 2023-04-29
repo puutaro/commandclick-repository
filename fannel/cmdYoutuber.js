@@ -240,7 +240,8 @@ function argSwitcher() {
 				`tubePlayListName=${tubePlayListName}\trenameTubePlayListName=`,
 				TUBE_PREFIX,
 				NoExtend,
-		        "${01}/${02}"
+		        "${01}/${02}",
+		        "Edit tubePlayListName"
 		    );
 			break;
 		case PLAY_LOG_MODE:
@@ -255,7 +256,8 @@ function argSwitcher() {
 				`playLogName=${playLogName}\trenamePlayLogName=`,
 				LOG_PREFIX,
 				NoExtend,
-		        "${01}/${02}"
+		        "${01}/${02}",
+		        "Edit playLogName"
 		    );
 			break;
 	};
