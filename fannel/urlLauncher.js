@@ -61,9 +61,12 @@ switch(firstArgs){
 		execUrlLaunch();
 		break;
 	case removeLaunchUrlArg:
-		removeItemInListFileCon(
+		jsListSelect.wrapRemoveItemInListFileCon(
 			LAUNCH_URL_LIST_FILE_PATH,
-			LAUNCH_URL
+			REMOVE_LAUNCH_URL,
+			"${01}/${02}",
+			"LAUNCH_URL",
+			"REMOVE_LAUNCH_URL",
 		);
 		break;
 };
@@ -71,19 +74,4 @@ switch(firstArgs){
 
 function execUrlLaunch(){
 	jsUrl.loadUrl(LAUNCH_URL);
-};
-
-
-function removeItemInListFileCon(
-	searchListFilePath,
-	searchText
-){
-	jsListSelect.removeItemInListFileCon(
-		searchListFilePath,
-		searchText
-	);
-	jsIntent.launchShortcut(
-        "${01}",
-        "${02}"
-    );
 };

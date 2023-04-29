@@ -29,7 +29,7 @@ terminalFontZoom="130"
 setReplaceVariable="REQ_LIST_DIR_PATH=${01}/${001}"
 setReplaceVariable="REQ_LIST_FILE_PATH=${REQ_LIST_DIR_PATH}/reqList"
 setVariableType="TXT_TO_CLIP:ELCB=${REQ_LIST_FILE_PATH}&30|::TermLong::jsf '${0}' clip"
-setVariableType="REMOVE_TEXT:LCBB=${REQ_LIST_FILE_PATH}|jsf '${0}' remove"
+setVariableType="REMOVE_TEXT:ELCBB=${REQ_LIST_FILE_PATH}|jsf '${0}' remove"
 scriptFileName="cmdGpt35.js"
 /// SETTING_SECTION_END
 
@@ -63,9 +63,12 @@ switch(firstArgs){
 	case clipArg:
 		break;
 	case removeArg:
-		removeItemInListFileCon(
+		jsListSelect.wrapRemoveItemInListFileCon(
 			REQ_LIST_FILE_PATH,
-			REMOVE_TEXT
+			REMOVE_TEXT,
+			"${01}/${02}",
+			"TXT_TO_CLIP",
+			"REMOVE_TEXT",
 		);
 		break;
 };
@@ -90,20 +93,4 @@ function clipText(text){
 	);
 	execLaunchGpt35();
 };
-
-
-function removeItemInListFileCon(
-	reqListFilePath,
-	reqText
-){
-	jsListSelect.removeItemInListFileCon(
-		reqListFilePath,
-		reqText
-	);
-	jsIntent.launchShortcut(
-        "${01}",
-        "${02}"
-    );
-};
-
 

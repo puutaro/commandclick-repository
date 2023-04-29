@@ -84,14 +84,21 @@ function switchHandler(){
 			execNewsSearch(SEARCH_TEXT);
 			break;
 		case removeWebSearchPrefixArg:
-			removeItemInListFileCon(
+			jsListSelect.wrapRemoveItemInListFileCon(
 				WEB_SEARCH_PREFIX_FILE_PATH,
-				WEB_SEARCH_PREFIX
+				REMOVE_WEB_SEARCH_PREFIX,
+				"${01}/${02}",
+    			"WEB_SEARCH_PREFIX",
+    			"REMOVE_WEB_SEARCH_PREFIX"
 			);
+			break;
 		case removeSearchTextArg:
-			removeItemInListFileCon(
+			jsListSelect.wrapRemoveItemInListFileCon(
 				SEARCH_LIST_FILE_PATH,
-				REMOVE_SEARCH_TEXT
+				REMOVE_SEARCH_TEXT,
+				"${01}/${02}",
+				"SEARCH_TEXT",
+    			"REMOVE_SEARCH_TEXT",
 			);
 			break;
 	};
@@ -112,17 +119,3 @@ function wrapExecNewsSearch(searchText){
 	execNewsSearch(searchText);
 };
 
-
-function removeItemInListFileCon(
-	searchListFilePath,
-	searchText
-){
-	jsListSelect.removeItemInListFileCon(
-		searchListFilePath,
-		searchText
-	);
-	jsIntent.launchShortcut(
-        "${01}",
-        "${02}"
-    );
-};
