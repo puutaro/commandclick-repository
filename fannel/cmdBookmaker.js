@@ -30,6 +30,7 @@ onUpdateLastModify="ON"
 setReplaceVariable="CMD_BOOKMAKER_DIR_PATH=${01}/${001}"
 setReplaceVariable="CMD_BOOKMAKER_EDIT_DIR_PATH=${CMD_BOOKMAKER_DIR_PATH}/edit"
 setVariableType="bookmarkName:EFCB=${CMD_BOOKMAKER_EDIT_DIR_PATH}&book&NoExtend"
+setVariableType="EDIT_BOOKMARK_NAME:BTN=jsf '${0}' EDIT_BOOKMARK_NAME"
 setVariableType=""
 scriptFileName="cmdBookmaker.js"
 /// SETTING_SECTION_END
@@ -37,6 +38,7 @@ scriptFileName="cmdBookmaker.js"
 
 /// CMD_VARIABLE_SECTION_START
 bookmarkName="bookSites"
+EDIT_BOOKMARK_NAME=""
 /// CMD_VARIABLE_SECTION_END
 
 
@@ -46,14 +48,41 @@ bookmarkName="bookSites"
 const CMD_BOOKMAKER_DIR_PATH = "${CMD_BOOKMAKER_DIR_PATH}";
 const CMD_BOOKMAKER_EDIT_DIR_PATH = "${CMD_BOOKMAKER_EDIT_DIR_PATH}";
 const EDIT_FILE_PATH = `${CMD_BOOKMAKER_EDIT_DIR_PATH}/${bookmarkName}`;
-const APP_URL_HISTORY_PATH="${01}/system/url/cmdclickUrlHistory";
+const APP_URL_HISTORY_PATH = "${01}/system/url/cmdclickUrlHistory";
+const EDIT_BOOKMARK_NAME_MODE = "EDIT_BOOKMARK_NAME";
+const NoExtend = "NoExtend";
+const BOOK_PREFIX = "book";
+let args = jsArgs.get().split("\t");
+var FIRST_ARGS = args.at(0);
 
 
-jsIntent.launchEditSite(
-	EDIT_FILE_PATH,
-	APP_URL_HISTORY_PATH,
-	"true",
-	"false",
-	"true",
-	"urlString.startsWith('http');"
-);
+switchByArgs();
+
+
+function switchByArgs(){
+	switch(FIRST_ARGS){
+		case "":
+			jsIntent.launchEditSite(
+				EDIT_FILE_PATH,
+				APP_URL_HISTORY_PATH,
+				"true",
+				"false",
+				"true",
+				"urlString.startsWith('http');"
+			);
+			break;
+		case EDIT_BOOKMARK_NAME_MODE:
+			jsFileSelect.execEditTargetFileName(
+		        "bookmarkName",
+				"renameBookmarkName",
+				CMD_BOOKMAKER_EDIT_DIR_PATH,
+				`bookmarkName:EFCB=${CMD_BOOKMAKER_EDIT_DIR_PATH}&${BOOK_PREFIX}&${NoExtend}`,
+				`bookmarkName=${bookmarkName}\trenameBookmarkName=`,
+				BOOK_PREFIX,
+				NoExtend,
+		        "${01}/${02}",
+		        "Edit bookmarkName"
+		    );
+			break;
+	};
+};

@@ -70,8 +70,7 @@ setVariableType="startNum:NUM=!0..10000!1"
 setVariableType="endNum:NUM=!0..10000!1"
 setVariableType="STOP:BTN=pkill -9 mpv"
 setVariableType="Install:BTN=jsf '${0}'"
-setVariableType="EDIT_MUSIC_PLAY_LIST:BTN=jsf '${0}' delete"
-// "deleteMusicPlayList:EFCBB=${cmdMusicPlayerEditDirPath}&music&NoExtend|jsf '${0}' delete"
+setVariableType="EDIT_MUSIC_PLAY_LIST:BTN=jsf '${0}' EDIT_MUSIC_PLAY_LIST"
 setVariableType="onResumePlay:CB=ON!OFF"
 scriptFileName="cmdMusicPlayer.js"
 /// SETTING_SECTION_END
@@ -113,7 +112,7 @@ const SHUFFLE_MODE = "shuffle";
 const ORDINALY_MODE = "ordinaly";
 const REVERSE_MODE = "reverse";
 const NUMBER_MODE = "number";
-const DELETE_MODE = "delete";
+const EDIT_MUSIC_PLAY_LIST_MODE = "EDIT_MUSIC_PLAY_LIST";
 
 
 if(FIRST_ARGS){
@@ -174,7 +173,7 @@ function switchByArgs(){
 				" \"" + numberPlay + "\""
 			);
 			break;
-		case DELETE_MODE:
+		case EDIT_MUSIC_PLAY_LIST_MODE:
 			jsFileSelect.execEditTargetFileName(
 		        "musicPlayListName",
 				"renameMusicPlayListName",
