@@ -88,10 +88,10 @@ setVariableType="numberPlay:NUMB=!1..1000!1|::TermOut::jsf '${0}' number"
 setVariableType="minMinutes:NUM=!0..1000!1"
 setVariableType="maxMinutes:NUM=!0..1000!1"
 setVariableType="tubePlayListName:EFCB=${cmdTubePlayerEditDirPath}&tube&NoExtend"
-setVariableType="playLogName:EFCB=${PLAY_LOG_DIR_PATH}&playLog&NoExtend"
-setVariableType="playLogOut:BTN=::TermOut::::TermLong::jsf '${0}' playLogOut"
 setVariableType="EDIT_TUBE_PLAY_LIST:BTN=jsf '${0}' EDIT_TUBE_PLAY_LIST"
+setVariableType="playLogName:EFCB=${PLAY_LOG_DIR_PATH}&playLog&NoExtend"
 setVariableType="EDIT_PLAY_LOG_NAME:BTN=jsf '${0}' EDIT_PLAY_LOG_NAME"
+setVariableType="playLogOut:BTN=::TermOut::::TermLong::jsf '${0}' playLogOut"
 setVariableType="Install:BTN=jsf '${0}'"
 scriptFileName="cmdYoutuber.js"
 /// SETTING_SECTION_END
@@ -107,10 +107,10 @@ STOP=""
 minMinutes=0
 maxMinutes=0
 tubePlayListName="tubePlayList"
-playLogName="playLogDefault"
-playLogOut=""
 EDIT_TUBE_PLAY_LIST=""
+playLogName="playLogDefault"
 EDIT_PLAY_LOG_NAME=
+playLogOut=""
 Install="install"
 /// CMD_VARIABLE_SECTION_END
 
