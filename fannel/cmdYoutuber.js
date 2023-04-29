@@ -119,7 +119,16 @@ Install="install"
 
 
 let args = jsArgs.get().split("\t");
-const DEFAULT_TERM_OUTPUT = "NORMAL";
+const APP_URL_HISTORY_PATH="${01}/system/url/cmdclickUrlHistory";
+const INSTALL_MODE = "install";
+const SHUFFLE_MODE = "shuffle";
+const ORDINALY_MODE = "ordinaly";
+const NUMBER_MODE = "number";
+const EDIT_TUBE_PLAY_LIST_MODE = "EDIT_TUBE_PLAY_LIST";
+const EDIT_PLAY_LOG_NAME_MODE = "EDIT_PLAY_LOG_NAME";
+const REVERSE_MODE = "reverse";
+const EDIT_SITE_WEB_MODE = "edit_site_web";
+const PLAY_LOG_MODE = "playLogOut";
 const NoExtend = "NoExtend";
 var FIRST_ARGS = args.at(0);
 if(FIRST_ARGS == PLAY){
@@ -148,7 +157,10 @@ const LOG_RUNDOM = "LOG_RND";
 const LOG_FREQUENT = "LOG_FREQ";
 let lOG_SEARCH_LIST = [LOG_RUNDOM, LOG_FREQUENT];
 let noWebSearchModeList = ["OFF"].concat(lOG_SEARCH_LIST);
-if(onSearchMode != "OFF"){
+if(
+	onSearchMode != "OFF" 
+	&& !["EDIT_TUBE_PLAY_LIST", "EDIT_PLAY_LOG_NAME"].includes(FIRST_ARGS)
+){
 	tubePlayListName = searchPlayListName;
 };
 const EDIT_FILE_PATH = makeCreatorJSPath(
@@ -156,16 +168,6 @@ const EDIT_FILE_PATH = makeCreatorJSPath(
 	tubePlayListName,
 	TUBE_PREFIX
 );
-const APP_URL_HISTORY_PATH="${01}/system/url/cmdclickUrlHistory";
-const INSTALL_MODE = "install";
-const SHUFFLE_MODE = "shuffle";
-const ORDINALY_MODE = "ordinaly";
-const NUMBER_MODE = "number";
-const EDIT_TUBE_PLAY_LIST_MODE = "EDIT_TUBE_PLAY_LIST";
-const EDIT_PLAY_LOG_NAME_MODE = "EDIT_PLAY_LOG_NAME";
-const REVERSE_MODE = "reverse";
-const EDIT_SITE_WEB_MODE = "edit_site_web";
-const PLAY_LOG_MODE = "playLogOut";
 const cURRENT_REGISTER_SEARCH_STRING = `${searchWord}\t${onSearchMode}\t${minMinutes},${maxMinutes}`;
 const ENABLE_UPDATE_WEB_SEARCH_LIST = judgeUpdateWebSearchList();
 const WEB_SEARCH_ARGS = `${onSearchMode}\t${searchWord}\t${ENABLE_UPDATE_WEB_SEARCH_LIST}\t${minMinutes},${maxMinutes}\t${PLAY_LOG_FILE_PATH}`;
