@@ -94,35 +94,44 @@ function launchOrPaste(){
 
 
 function pasteOrSave(){
-	let gmailContents = document.getElementsByClassName("Nl")[0].textContent;
+	let draftBox = document.getElementById("cmcbodyc");
+	let draftBody = draftBox.children[0];
+	let gmailContents = draftBody.textContent;
 	if(!gmailContents){
 		const clipString = jsUtil.echoFromClipboard();
 		const subjString = echoTitleOrRawString(
 			clipString
 		);
 		document.getElementById("cmcsubj").value = subjString;
-		let draftBody = document.getElementsByClassName("Nl")[0];
 		let clipStringList = clipString.split("\n");
 		const firstLine = clipStringList.at(0);
 		let clipStringListFromSecond = clipStringList.slice(1);
 		draftBody.textContent = firstLine;
 		let insertClipString = [...clipStringListFromSecond].map(
 			function(line){
-				return `<div>${line}</div>`
+				const insertLine = line
+					.replaceAll("\&", "\&amp;")
+					.replaceAll("\<", "\&lt;")
+					.replaceAll("\>", "\&gt;")
+					.replaceAll("\"", "\&quot;")
+					.replaceAll("\"", "\&quot;")
+					.replaceAll("\ ", "\&nbsp;");
+				return `<div>${insertLine}</div>`
 			}
 		).join("");
 		draftBody.innerHTML += insertClipString;
 		return
 	};
-	let glList = document.getElementsByClassName("Gl");
+	let glList = document.getElementsByClassName("Jl");
 	let closeButton = glList[0];
 	closeButton.click();
+
 	setTimeout(
 		function(){
-			let nqList = document.getElementsByClassName("Nq");
-			let saveButtonParent = nqList[1];
+			let closeButtonList = document.getElementsByClassName("fr");
+			let saveButtonParent = closeButtonList[1];
 			let saveButton = saveButtonParent.children[0];
-			saveButton.children[0].click();
+			saveButton.click();
 		},
 		600
 	);
