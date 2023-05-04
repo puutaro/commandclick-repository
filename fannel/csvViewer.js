@@ -1304,7 +1304,7 @@ function checkInputPath(
 	);
 	if(checkOk) return;
 	alert(
-		`permission extend ${permittionExtends.join(", ")}\n\n ${inputPath}`
+		`Extend must be ${permittionExtends.join(", ")}\n\n ${inputPath}`
 	);
 	exitZero();
 };
