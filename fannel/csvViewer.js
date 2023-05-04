@@ -727,12 +727,12 @@ function makeSrcAndAggregateHtml(
 				var centerIndex = freqCols.length / 2;
 				var avarageStr = cols.at(centerIndex);
 				if(!avarageStr) avarageStr = "null";
-				aggregateRow.push(`${descStyle}avr</span></br>` + avarageStr);
+				aggregateRow.push(`${descStyle}avrW</span></br>` + avarageStr);
 				var sumAvr = countFreqWord(
 					freqCols,
 					avarageStr,
 				);
-				aggregateRow.push(`${descStyle}sumAvr</span></br>` + sumAvr);
+				aggregateRow.push(`${descStyle}sumAvrW</span></br>` + sumAvr);
 				chartAgSumAvrList.push(sumAvr);
 				aggregateRow.push(`${descStyle}max</span></br>` + max);
 				aggregateRow.push(`${descStyle}min</span></br>` + min);
@@ -744,7 +744,7 @@ function makeSrcAndAggregateHtml(
 					cols,
 					average,
 				);
-				aggregateRow.push(`${descStyle}sumAvr</span></br>` + sumAvr);
+				aggregateRow.push(`${descStyle}sumAvrW</span></br>` + sumAvr);
 				chartAgSumAvrList.push(sumAvr);
 				max = cols.reduce((a,b)=>Math.max(a,b));
 				if(!max) max = 0;
