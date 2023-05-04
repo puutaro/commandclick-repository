@@ -168,6 +168,7 @@ const HTML_LAUNCH_FILE_PATH = `${HTML_LAUNCH_DIR_PATH}/csvViewer.html`;
 const TEMP_DIR_PATH = `${CURRENT_APP_DIR_PATH}/tmp`;
 jsFileSystem.createDir(TEMP_DIR_PATH);
 const SEARCH_INFO_FILE_PATH = `${TEMP_DIR_PATH}/search_info`;
+const HTML_TITLE_TEMP_FILE_PATH = `${TEMP_DIR_PATH}/html_title`;
 const SELECT_FIRST_READ_TEMP_FILE_PATH = `${TEMP_DIR_PATH}/first_read`;
 const SELECT_COLUMN_TEMP_FILE_PATH = `${TEMP_DIR_PATH}/select_colunm`;
 const FILTER_COLUMN_TEMP_FILE_PATH = `${TEMP_DIR_PATH}/filter_csv`;
@@ -575,14 +576,24 @@ function execFilterColumns(){
 function switchStartNumByScrollType(){
 	const CURRENT_SEARCH_INFO = makeSearchInfo();
 	const CURRENT_START_NUM_STR = makeStartNumStr();
+	const PAST_TITLE = jsFileSystem.readLocalFile(
+		HTML_TITLE_TEMP_FILE_PATH,
+	);
+	const CURRENT_TITLE = document.title;
+	const onRestoreHtml = !CURRENT_TITLE && PAST_TITLE != CURRENT_TITLE;
 	const onZeroStan = judgeStanbyStartNum(
 		CURRENT_START_NUM_STR
 	);
 	writeSearchInfo(CURRENT_SEARCH_INFO);
 	writeStartNumStr(CURRENT_START_NUM_STR);
+	jsFileSystem.writeLocalFile(
+		HTML_TITLE_TEMP_FILE_PATH,
+		CURRENT_TITLE
+	);
 	if(onZeroStan) return;
 	if( 
 		CURRENT_SEARCH_INFO != PAST_SEARCH_INFO
+		|| onRestoreHtml
 	) return;
 	switch(autoScrollType){
 		case AUTO_SCROLL_TYPE_NAME.horizon:
