@@ -131,6 +131,7 @@ scrollBoost = Number(scrollBoost);
 colRange = Number(colRange);
 rowRange = Number(rowRange);
 rowLimit = Number(rowLimit);
+cancelerAutoScrollTypeByRange();
 const srcTagName = "csv";
 const selectColmunTagName = "selectColmunCsv";
 const filteredTagName = "filteredCsv";
@@ -280,6 +281,21 @@ let sliceHeaderList =
 	sliceHeaderRow.split("\t");
 
 switchByArgs();
+
+
+function cancelerAutoScrollTypeByRange(){
+	switch(autoScrollType){
+		case AUTO_SCROLL_TYPE_NAME.horizon:
+		case AUTO_SCROLL_TYPE_NAME.rHorizon:
+			if(colRange == 0) autoScrollType = AUTO_SCROLL_TYPE_NAME.no;
+			break;
+		case AUTO_SCROLL_TYPE_NAME.vartical:
+		case AUTO_SCROLL_TYPE_NAME.rVartical:
+			if(rowRange == 0) autoScrollType = AUTO_SCROLL_TYPE_NAME.no;
+			break;
+	};
+}
+
 
 function firstRead(
 	isRead
