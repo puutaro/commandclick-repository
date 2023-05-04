@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>CMDCLICK_CSV_FINDER_TITLE</title>
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<!-- <script
+  src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.2.0/chart.min.js"
+  integrity="sha512-VMsZqo0ar06BMtg0tPsdgRADvl0kDHpTbugCBBrL55KmucH6hP9zWdLIWY//OTfMnzz6xWQRxQqsUFefwHuHyg=="
+  crossorigin="anonymous"></script> -->
+  <script src="file:///android_asset/js/chart.min.js" ></script>
+  <script src="file:///android_asset/js/chartjs-adapter-date-fns.bundle.min.js"></script>
+<!-- <script
+  src="https://cdn.jsdelivr.net/npm/chartjs-adapter-date-fns@next/dist/chartjs-adapter-date-fns.bundle.min.js"></script> -->
+</head>
+<style>
+
+  #chart_field {
+    width:100%;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  .chart {
+    margin-top: 20px;
+  }
+
+  .bottom-btn-box {
+    display: flex;
+    position: fixed;
+    width: 95%;
+    bottom: 0;
+    z-index: 10;
+    background-color: white;
+  }
+
+
+  .change-btn {
+    display: block;
+    width: 80%;
+    font-size: 20px;
+    color: #585858;
+    margin: 10px;
+    padding: 10px;
+    background-color: #cef0f5;
+    border: none;
+    user-select: none;
+  }
+
+  .change-btn:first-child {
+    margin-left: 0px;
+  }
+
+  .change-btn:last-child {
+    margin-right: 0px;
+  }
+    #pageNation {
+    color: #666666;
+    margin-top: 25px;
+    margin-left: 0px;
+    text-align: left;
+  }
+</style>
+<body>
+<div id="chart_field">
+  <canvas id="mychart1" class="chart"></canvas>
+  <canvas id="mychart2" class="chart"></canvas>
+</div>
+<div id="pageNation">
+  CMDCLICK_CSV_FINDER_PAGE_NATION
+</div>
+<div class="bottom-btn-box">
+  <button 
+    class="change-btn" id="agg-csv" 
+    onclick="launchAggCsv()">agg</button>
+  <button class="change-btn" id="chart-csv"
+    onclick="launchChartCsv()">chart</button>
+  <button class="change-btn" id="src-csv"
+    onclick="launchSrcCsv()">src</button>
+</div>
+<script>
+
+
+const FANNEL_SCRIPT_PATH = "CMDCLICK_FANNEL_SCRIPT_PATH";
+let VIEW_TYPE_NAME = {
+  AGGRE: 'AGGRE',
+  CHART : 'CHART',
+  SRC : 'SRC',
+};
+const viewTypeName = "viewType";
+const FROM_HTML = "FROM_HTML";
+
+Chart.defaults.font.size = 19;
+const labelFontSize = 19;
+const xAxsislabelFontSize = 12;
+const yAxsislabelFontSize = 16;
+const GRAPH_TYPE = 'bar';
+let labelsList1 = CMDLICK_LABEL_LIST1;
+let labelsList2 = CMDLICK_LABEL_LIST2;
+const UNIQ_LABEL = 'uniq';
+let uniqList1 = CMDLICK_UNIQ_LIST1;
+let uniqList2 = CMDLICK_UNIQ_LIST2;
+const SUM_MAX_W_LABEL = "sumMaxW";
+let sumMaxWList1 = CMDLICK_SUM_MAX_W_LIST1;
+let sumMaxWList2 = CMDLICK_SUM_MAX_W_LIST2;
+const SUM_MIN_W_LABEL = 'sumMinW';
+let sumMinWList1 = CMDLICK_SUM_MIN_W_LIST1;
+let sumMinWList2 = CMDLICK_SUM_MIN_W_LIST2;
+const SUM_AVR_LABEL = 'sumAvr';
+let sumAvrList1 = CMDLICK_SUM_AVR_LIST1;
+let sumAvrList2 = CMDLICK_SUM_AVR_LIST2;
+
+var myChart1 = makeChart(
+  "mychart1",
+  labelsList1,
+  uniqList1,
+  sumMaxWList1,
+  sumMinWList1,
+  sumAvrList1
+)
+
+var myChart2 = makeChart(
+  "mychart2",
+  labelsList2,
+  uniqList2,
+  sumMaxWList2,
+  sumMinWList2,
+  sumAvrList2
+)
+
+function launchAggCsv() {
+  const viewTypeAggre = VIEW_TYPE_NAME.AGGRE;
+  const launcherContents = jsUrl.makeJsUrl(FANNEL_SCRIPT_PATH);
+  jsArgs.set(`${FROM_HTML}\t${viewTypeAggre}`);
+  jsUrl.loadUrl(launcherContents);
+};
+
+function launchChartCsv() {
+  const viewTypeChart = VIEW_TYPE_NAME.CHART;
+  const launcherContents = jsUrl.makeJsUrl(FANNEL_SCRIPT_PATH);
+  jsArgs.set(`${FROM_HTML}\t${viewTypeChart}`);
+  jsUrl.loadUrl(launcherContents);
+};
+
+function launchSrcCsv() {
+  const viewTypeSrc = VIEW_TYPE_NAME.SRC;
+  const launcherContents = jsUrl.makeJsUrl(FANNEL_SCRIPT_PATH);
+  jsArgs.set(`${FROM_HTML}\t${viewTypeSrc}`);
+  jsUrl.loadUrl(launcherContents);
+};
+
+function makeChart(
+  id,
+  labelsList,
+  uniqList,
+  sumMaxWList,
+  sumMinWList,
+  sumAvrList
+){
+  let ctx = document.getElementById(id);
+  return new Chart(ctx, {
+    type: GRAPH_TYPE,
+    data: {
+      labels: labelsList,
+      datasets: [{
+        label: UNIQ_LABEL,
+        data: uniqList,
+        backgroundColor: '#DB8F16',
+        stack: 'stack-1',
+      }, {
+        label: SUM_MAX_W_LABEL,
+        data: sumMaxWList,
+        backgroundColor: '#484',
+        stack: 'stack-1',
+      },{
+        label: SUM_MIN_W_LABEL,
+        data: sumMinWList,
+        backgroundColor: '#48f',
+        stack: 'stack-1',
+      },{
+        label: SUM_AVR_LABEL,
+        data: sumAvrList,
+        backgroundColor: '#E8EA0D',
+        stack: 'stack-1',
+      }],
+    },
+    options: {
+          scales: {
+            x: {
+              ticks: {
+                font: {
+                  size: xAxsislabelFontSize,
+                }
+              }
+            },
+            y: {
+              ticks: {
+                font: {
+                  size: yAxsislabelFontSize,
+                  }
+              }
+            }
+          },
+      }
+  });
+};
+</script>
+</div>
+</body>
+</html>
