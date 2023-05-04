@@ -408,12 +408,27 @@ function makeUpdateFilters(
 	return filteringColumnList.map(
     	function(colName){
     		const opeGainMap = filtersMap.get(colName);
-    		const operator = opeGainMap.get(filterMapKey.operator);
-    		const filterGain = opeGainMap.get(filterMapKey.filterGain);
-    		let noFocusOperatorList = operatorList.filter(function(op){
-    			return op != operator;
-    		});
-    		let updateOperatorList = [operator].concat(noFocusOperatorList);
+    		try{
+    		    var operator = opeGainMap.get(
+    		    	filterMapKey.operator
+    		    );
+    		} catch(e){
+    			var operator = operatorList[0];
+    		};
+    		try {
+    			var filterGain = opeGainMap.get(
+    				filterMapKey.filterGain
+    			);
+    		} catch(e) {
+    			var filterGain = "";
+    		}
+    		let noFocusOperatorList = operatorList.filter(
+    			function(op){
+	    			return op != operator;
+	    		});
+    		let updateOperatorList = [operator].concat(
+    			noFocusOperatorList
+    		);
     		return jsDialog.formDialog(
 				`Edit "${colName}" filter`,
 				`colName:RO=\toperator:CB=${updateOperatorList.join("!")}\tfilterGain:ELCB=${CURRENT_FILTER_GAIN_LIST_FILE_PATH}&30`,
