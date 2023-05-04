@@ -38,6 +38,20 @@
 // 		<=: by equal smaller
 // 		>: by smaller
 // 		=: by equal
+//	* html description 
+//   maxW 
+// 		-> maximum frequent word
+//   sumMaxW
+// 		-> count maximum frequent word
+//   minW
+// 		-> minimum frequent word
+//   sumMinW
+//   	-> count minimum frequent word
+//   avrW
+// 		-> middle frequent word
+//   sumAvrW
+// 		-> count middle frequent word
+// 
 // - This Fannel is used to bellow repo.
 // 		https://github.com/chartjs/Chart.js
 // --
