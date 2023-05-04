@@ -314,15 +314,16 @@ function cancelerAutoScrollTypeByRange(){
 function firstRead(
 	isRead
 ){
-	const pastInputPath = jsFileSystem.readLocalFile(
+	const pastInputPathRowLimit = jsFileSystem.readLocalFile(
 		SELECT_FIRST_READ_TEMP_FILE_PATH
 	);
 	jsFileSystem.writeLocalFile(
 		SELECT_FIRST_READ_TEMP_FILE_PATH,
-		inputCsvPath,
+		`${inputCsvPath}${rowLimit}`,
 	);
+	const currentInputPathRowLimit = `${inputCsvPath}${rowLimit}`;
 	const onChangeInputPath = 
-		pastInputPath != inputCsvPath;
+		pastInputPathRowLimit != currentInputPathRowLimit;
 	if(
 		isRead
 		&& !onChangeInputPath
@@ -1088,7 +1089,7 @@ function writeSearchInfo(
 };
 function makeSearchInfo(){
 	const searchInfoSource = `${colRange}${rowRange}`
- 		+ `${autoScrollType}${inputCsvPath}`;
+ 		+ `${autoScrollType}${inputCsvPath}${rowLimit}`;
 	switch(autoScrollType){
 		case AUTO_SCROLL_TYPE_NAME.horizon:
 		case AUTO_SCROLL_TYPE_NAME.rHorizon:
@@ -1334,7 +1335,7 @@ function csvCheckAndRegister(
 	);
 	jsListSelect.updateListFileCon(
 		"${CURRENT_INUPT_CSV_LIST_FILE_PATH}",
-		inputPath
+		`${inputPath}`
 	);
 };
 
