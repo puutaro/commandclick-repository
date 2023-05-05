@@ -7,7 +7,7 @@
 //		- recent visit site url show in "Save title"
 //		- change item  order by drag and drop 
 //		- delete item  by doragging to another area(no item area).
-// 	* bookmarkName 
+// 	* bookmarkListName 
 //		-> Input or select bookmark list file name
 //		- prefix must be "book" ex) "bookSites"
 // --
@@ -29,7 +29,7 @@ terminalSizeType="LONG"
 onUpdateLastModify="ON"
 setReplaceVariable="CMD_BOOKMAKER_DIR_PATH=${01}/${001}"
 setReplaceVariable="CMD_BOOKMAKER_EDIT_DIR_PATH=${CMD_BOOKMAKER_DIR_PATH}/edit"
-setVariableType="bookmarkName:EFCB=${CMD_BOOKMAKER_EDIT_DIR_PATH}&book&NoExtend"
+setVariableType="bookmarkListName:EFCB=${CMD_BOOKMAKER_EDIT_DIR_PATH}!book!.tsv"
 setVariableType="EDIT_BOOKMARK_NAME:BTN=jsf '${0}' EDIT_BOOKMARK_NAME"
 setVariableType=""
 scriptFileName="cmdBookmaker.js"
@@ -37,7 +37,7 @@ scriptFileName="cmdBookmaker.js"
 
 
 /// CMD_VARIABLE_SECTION_START
-bookmarkName="bookSites"
+bookmarkListName="bookSites.tsv"
 EDIT_BOOKMARK_NAME=""
 /// CMD_VARIABLE_SECTION_END
 
@@ -47,10 +47,10 @@ EDIT_BOOKMARK_NAME=""
 
 const CMD_BOOKMAKER_DIR_PATH = "${CMD_BOOKMAKER_DIR_PATH}";
 const CMD_BOOKMAKER_EDIT_DIR_PATH = "${CMD_BOOKMAKER_EDIT_DIR_PATH}";
-const EDIT_FILE_PATH = `${CMD_BOOKMAKER_EDIT_DIR_PATH}/${bookmarkName}`;
-const APP_URL_HISTORY_PATH = "${01}/system/url/cmdclickUrlHistory";
+const EDIT_FILE_PATH = `${CMD_BOOKMAKER_EDIT_DIR_PATH}/${bookmarkListName}`;
+const APP_URL_HISTORY_PATH = "${01}/system/url/cmdclickUrlHistory.tsv";
 const EDIT_BOOKMARK_NAME_MODE = "EDIT_BOOKMARK_NAME";
-const NoExtend = "NoExtend";
+const TsvExtend = ".tsv";
 const BOOK_PREFIX = "book";
 let args = jsArgs.get().split("\t");
 var FIRST_ARGS = args.at(0);
@@ -60,6 +60,12 @@ switchByArgs();
 
 
 function switchByArgs(){
+	makeCreatorTsvPath(
+		CMD_BOOKMAKER_EDIT_DIR_PATH,
+		bookmarkListName,
+		BOOK_PREFIX,
+		TsvExtend
+	);
 	switch(FIRST_ARGS){
 		case "":
 			jsIntent.launchEditSite(
@@ -73,16 +79,39 @@ function switchByArgs(){
 			break;
 		case EDIT_BOOKMARK_NAME_MODE:
 			jsFileSelect.execEditTargetFileName(
-		        "bookmarkName",
-				"renameBookmarkName",
+		        "bookmarkListName",
+				"renamebookmarkListName",
 				CMD_BOOKMAKER_EDIT_DIR_PATH,
-				`bookmarkName:EFCB=${CMD_BOOKMAKER_EDIT_DIR_PATH}&${BOOK_PREFIX}&${NoExtend}`,
-				`bookmarkName=${bookmarkName}\trenameBookmarkName=`,
+				`bookmarkListName:EFCB=${CMD_BOOKMAKER_EDIT_DIR_PATH}!${BOOK_PREFIX}!${TsvExtend}`,
+				`bookmarkListName=${bookmarkListName}\trenamebookmarkListName=`,
 				BOOK_PREFIX,
-				NoExtend,
+				TsvExtend,
 		        "${01}/${02}",
-		        "Edit bookmarkName"
+		        "Edit bookmarkListName"
 		    );
 			break;
 	};
+};
+
+
+function makeCreatorTsvPath(
+	dirPath,
+	bookmarkListName,
+	prefix,
+	suffix
+){
+	if(!bookmarkListName){
+		alert("bookmarkListName must be written");
+		throw new Error('exit');
+		exitZero();
+	};
+	bookmarkListName = jsPath.compPrefix(
+		bookmarkListName,
+		prefix
+	);
+	bookmarkListName = jsPath.compExtend(
+		bookmarkListName,
+		suffix
+	);
+	return [dirPath, bookmarkListName].join('/');
 };

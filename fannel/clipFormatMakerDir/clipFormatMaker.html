@@ -247,7 +247,7 @@
 	const prefixNumRegex = /^[0-9]/;
 	const setVariableTypeName = 'setVariableType'
 	const elcbMark = "ELCB"
-	const ebMark = "EB"
+	const elcbbMark = "ELCBB"
 	let INPUT_CLASS_TYPE = {
 	    cbFormFieldClass: 'cb-form-field',
 	    textFormFieldClass: 'text-form-field',
@@ -286,10 +286,10 @@
 
 	let READ_VAL_TYPE = {
 		ELCB: 'ELCB',
-	  TXT: 'TXT',
-	  EB: 'EB',
-	  LTXT: 'LTXT',
-	  NEWLINE: 'NEWLINE'
+	 	TXT: 'TXT',
+	 	ELCBB: 'ELCBB',
+	 	LTXT: 'LTXT',
+	 	NEWLINE: 'NEWLINE'
 	};
 
 	$(document).ready(function() {
@@ -636,7 +636,7 @@
 					case READ_VAL_TYPE.LTXT:
 						appendTextWithLabelField(name, value)
 						break;
-					case READ_VAL_TYPE.EB:
+					case READ_VAL_TYPE.ELCBB:
 						appendUrlLaunchButton(name, value)
 						break;
 					case READ_VAL_TYPE.NEWLINE:
@@ -667,10 +667,10 @@
 	}
 
 	function appendElcbBox(label){
-			const listFilePath = `${targetAppListDirPath}/${label}List`;
-			let optionList = jsFileSystem.readLocalFile(
-				listFilePath
-			).split("\n");
+		const listFilePath = `${targetAppListDirPath}/${label}List`;
+		let optionList = jsFileSystem.readLocalFile(
+			listFilePath
+		).split("\n");
 	  	const optionTags = optionList.map(
 	  		function(option, index){
 	  			const value = index + 1
@@ -811,6 +811,10 @@
 
 		launchVariableList.forEach(function(variable){
 			switchFunction += `|	case "${variable}":
+			|		jsListSelect.updateListFileCon(
+			|		\`${targetAppListDirPath}/${variable}List\`,
+			|			${variable}
+			|		);
 			|		UrlLauncher(${variable});
 			|		break;\n`.split('\n')
 			.map(function(line){
@@ -954,8 +958,9 @@
 	  		let urlText = listBlock.children('input:text').val();
 	  		cmdVariableList.push(`${currentVariableName}="${urlText}"`)
 	  		launchVariableList.push(currentVariableName)
+	  		const listFilePath = `${targetAppListDirPath}/${currentVariableName}List`;
 		  	setVariableTypeList.push(
-		  		`${setVariableTypeName}="${currentVariableName}:${ebMark}=jsf '\${0}' ${currentVariableName}"`
+		  		`${setVariableTypeName}="${currentVariableName}:${elcbbMark}=${listFilePath}!10|jsf '\${0}' ${currentVariableName}"`
 		  	)
 	    });
 	}

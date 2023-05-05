@@ -4,9 +4,9 @@ set -eu
 
 
 PARENT_DIR_PATH="$(dirname "$0")"
-APP_URL_HISTORY_PATH="${PARENT_DIR_PATH}/system/url/cmdclickUrlHistory"
 PLAY_PROCESS_DIR_PATH="${PARENT_DIR_PATH}/process"
-MUSIC_HISTORY_PATH=${PLAY_PROCESS_DIR_PATH}/musicHistory
+MUSIC_HISTORY_PATH="${PLAY_PROCESS_DIR_PATH}/musicHistory.txt"
+MUSIC_HISTORY_TSV_PATH="${PLAY_PROCESS_DIR_PATH}/musicHistory.tsv"
 TMP_PLAY_LIST_NAME="tmp_play_list"
 TMP_PLAY_LIST_PATH="${PLAY_PROCESS_DIR_PATH}/${TMP_PLAY_LIST_NAME}"
 SHUFFLE_MODE="shuffle"
@@ -72,6 +72,9 @@ cut_music_history_limit_over(){
 		touch "${MUSIC_HISTORY_PATH}"
 		return
 	fi
+	if [ ! -f "${MUSIC_HISTORY_TSV_PATH}" ];then
+		touch "${MUSIC_HISTORY_TSV_PATH}"
+	fi
 	local grep_prefix="Playing: "
 	local music_history_con="$(\
 		cat "${MUSIC_HISTORY_PATH}" \
@@ -84,8 +87,17 @@ cut_music_history_limit_over(){
 		"${music_history_con}" \
 		| sed '/^$/d' \
 		> "${MUSIC_HISTORY_PATH}"
+	cat \
+		<(\
+			echo "track"\
+		) \
+		<(\
+			echo \
+				"${music_history_con}" \
+		) \
+		| sed '/^$/d' \
+		> "${MUSIC_HISTORY_TSV_PATH}"
 }
-
 
 play_temp_list(){
 	local play_mode="${1:-}"

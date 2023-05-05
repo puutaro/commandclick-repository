@@ -28,8 +28,8 @@ onUrlHistoryRegister="OFF"
 terminalFontZoom="130"
 setReplaceVariable="REQ_LIST_DIR_PATH=${01}/${001}"
 setReplaceVariable="REQ_LIST_FILE_PATH=${REQ_LIST_DIR_PATH}/reqList"
-setVariableType="TXT_TO_CLIP:ELCB=${REQ_LIST_FILE_PATH}&30|::TermLong::jsf '${0}' clip"
-setVariableType="REMOVE_TEXT:ELCBB=${REQ_LIST_FILE_PATH}|jsf '${0}' remove"
+setVariableType="TXT_TO_CLIP:ELCB=${REQ_LIST_FILE_PATH}!30|::TermLong::jsf '${0}' clip"
+setVariableType="REMOVE_TEXT:ELCBB=${REQ_LIST_FILE_PATH}|jsf '${0}' remove!DEL"
 scriptFileName="cmdGpt35.js"
 /// SETTING_SECTION_END
 

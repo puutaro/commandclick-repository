@@ -49,13 +49,12 @@ setReplaceVariable="CMD_TWITTER_DIR=${01}/${001}"
 setReplaceVariable="SEARCH_WORD_LIST_DIR=${CMD_TWITTER_DIR}/list"
 setReplaceVariable="SEARCH_WORD_LIST_PATH=${CMD_TWITTER_DIR}/list/searchWordList"
 setVariableType="searchWord:ELCB=${SEARCH_WORD_LIST_PATH}"
-setVariableType="minRetweetCount:NUM=!0..10000!1"
-setVariableType="minImpressionCount:NUM=!0..10000!1"
-setVariableType="appealHour:NUM=!1..10000!1"
-setVariableType="minLikeCount:NUM=!0..10000!1"
+setVariableType="minImpressionCount:NUMB=!0..10000!1|jsf '${0}' initMinImpressionCount!to0"
+setVariableType="minRetweetCount:NUMB=!0..10000!1|jsf '${0}' initMinRetweetCount!to0"
+setVariableType="minLikeCount:NUMB=!0..10000!1|jsf '${0}' initMinLikeCount!to0"
+setVariableType="appealHour:NUMB=!1..10000!1|jsf '${0}' initAppealHour!init"
 setVariableType="operator:CB=or!and"
-setVariableType="terminalFontZoom:NUM=!1..10000!1"
-setVariableType="getTwLimit:NUM=!1..100!1"
+setVariableType="getTwLimit:NUMB=!1..100!1|jsf '${0}' initGetTwLimit!init"
 setVariableType="max_Imp_ReTweet:BTN="
 setVariableType="BearerToken:H="
 terminalFontZoom="130"
@@ -82,11 +81,15 @@ BearerToken=""
 
 
 let args = jsArgs.get().split("\t");
-const firstArgs = args.at(0);
+const FIRST_ARGS = args.at(0);
+const FANNEL_SCRIPT_PATH = "${01}/${02}";
+initNumVariable();
+initNumVariableNoZero();
 const TWEET_BASE_URL="https://twitter.com/TwitterJP/status/";
 const defaultTermOutput = "NORMAL";
 const CMD_TWITTER_DIR = "${CMD_TWITTER_DIR}";
 const SEARCH_WORD_LIST_DIR = "${SEARCH_WORD_LIST_DIR}";
+jsFileSystem.createDir(SEARCH_WORD_LIST_DIR);
 const SEARCH_WORD_LIST_PATH = "${SEARCH_WORD_LIST_PATH}";
 
 const targetUrl = "https://api.twitter.com/2/tweets/search/recent";
@@ -113,7 +116,7 @@ jsListSelect.updateListFileCon(
 	SEARCH_WORD_LIST_PATH,
 	searchWord
 );
-switch(firstArgs){
+switch(FIRST_ARGS){
 	case "re":
 		maxImpReteet();
 		exit();
@@ -255,4 +258,57 @@ function makeTwContentsSourceList(
 		remakeTw = remakeTw + "cmdclickLeastTaga href=\"" + TWEET_BASE_URL + twData.id + "\"cmdclickGreatTagurlcmdclickLeastTag/acmdclickGreatTag\n";
 	    return remakeTw;
 	}).join("\n");
+};
+
+function initNumVariable(){
+	const initPrefix = "init";
+	let initList = [
+		`${initPrefix}MinRetweetCount`,
+		`${initPrefix}MinImpressionCount`,
+		`${initPrefix}MinLikeCount`,
+	];
+	const initIndex = initList.indexOf(FIRST_ARGS);
+	if(initIndex < 0) return;
+	const initPrefixRegex = new RegExp(`^${initPrefix}`);
+	const updateVariableName = 
+		initList[initIndex].replace(initPrefixRegex, '');
+	jsEdit.updateByVariable(
+		FANNEL_SCRIPT_PATH,
+        capitalize(updateVariableName),
+        "0"
+    );
+	exitZero();
+};
+
+function initNumVariableNoZero(){
+	const initPrefix = "init";
+	const initAppealHour = initPrefix + "AppealHour";
+	const initGetTwLimit = initPrefix + "GetTwLimit";
+	switch(FIRST_ARGS){
+		case initAppealHour:
+			jsEdit.updateByVariable(
+				FANNEL_SCRIPT_PATH,
+		        "appealHour",
+		        "6"
+		    );
+		    exitZero();
+		    break;
+		case initGetTwLimit:
+			jsEdit.updateByVariable(
+				FANNEL_SCRIPT_PATH,
+		        "getTwLimit",
+		        "30"
+		    );
+		    exitZero();
+		    break;
+	}
+};
+
+function capitalize(str) {
+	if (
+		typeof str !== 'string' 
+		|| !str
+	) return str;
+	return str.charAt(0).toLowerCase() 
+		+ str.slice(1);
 };

@@ -74,6 +74,30 @@ termux_mpv_package_installer(){
 }
 
 
+save_play_log_history_to_tsv(){
+	local play_log_file_path="${1}"
+	cat "${play_log_file_path}" \
+	| awk '
+	BEGIN {
+		datetimePrefix = "## "
+		datetimeColumen = ""
+		httpRegex = "^Playing:"
+		print "datetime\tyoutube url"
+	}
+	{
+		if(\
+			$0 ~ "^"datetimePrefix\
+		) datetimeColumen = $0
+		if($0 !~ httpRegex) next
+		if(!datetimeColumen) next
+		sub(httpRegex, "", $0)
+		sub("^  *", "", $0)
+		if(!$0) next
+		print datetimeColumen"\t"$0
+	}' > "${play_log_file_path}.tsv"
+}
+
+
 cut_play_url_history_limit_over(){
 	local play_log_file_path="${1}"
 	local history_limit_num=300
@@ -117,6 +141,9 @@ cut_play_url_history_limit_over(){
 		"${log_contents}" \
 		| sed '/^$/d' \
 		> "${play_log_file_path}" 
+	wait
+	save_play_log_history_to_tsv \
+		"${play_log_file_path}"
 }
 
 play_temp_list(){

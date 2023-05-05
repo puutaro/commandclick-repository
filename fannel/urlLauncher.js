@@ -28,7 +28,7 @@ setReplaceVariable="URL_LIST_DIR_PATH=${APP_DIR_PATH}/list"
 setReplaceVariable="URL_LIST_FILE_PATH=${URL_LIST_DIR_PATH}/launchUrlList"
 setVariableType="LAUNCH_URL:ELCB=${URL_LIST_FILE_PATH}"
 setVariableType="REMOVE_LAUNCH_URL:ELCBB=${URL_LIST_FILE_PATH}|jsf '${0}' REMOVE_LAUNCH_URL"
-scriptFileName="cmdGpt35.js"
+scriptFileName="urlLauncher.js"
 /// SETTING_SECTION_END
 
 

@@ -19,10 +19,15 @@
 /// SETTING_SECTION_START
 editExecute="ALWAYS"
 terminalOutputMode="NORMAL"
+setReplaceVariable="FANNEL_DIR_PATH=${01}/${001}"
+setReplaceVariable="FANNEL_LIST_DIR_PATH=${FANNEL_DIR_PATH}/list"
+setReplaceVariable="LAUNCH_URL_LIST_FILE_PATH=${FANNEL_LIST_DIR_PATH}/launch_url_list"
+setReplaceVariable="EMAIL_LIST_FILE_PATH=${FANNEL_LIST_DIR_PATH}/email_list"
 setVariableType="scheduleDate:DT="
 setVariableType="biginTime:TM="
 setVariableType="endTime:TM="
-setVariableType="LAUNCH_URL:EB=jsf '${0}' url"
+setVariableType="email:ELCB=${EMAIL_LIST_FILE_PATH}!10"
+setVariableType="LAUNCH_URL:ELCBB=${LAUNCH_URL_LIST_FILE_PATH}!10|jsf '${0}' url"
 scriptFileName="gCalendarFormatter.js"
 /// SETTING_SECTION_END
 
@@ -48,11 +53,19 @@ LAUNCH_URL=""
 
 let args = jsArgs.get().split("\t");
 const firstArgs = args.at(0);
-
+const FANNEL_LIST_DIR_PATH = "${FANNEL_LIST_DIR_PATH}";
+jsFileSystem.createDir(FANNEL_LIST_DIR_PATH);
+const LAUNCH_URL_LIST_FILE_PATH = "${LAUNCH_URL_LIST_FILE_PATH}";
+const EMAIL_LIST_FILE_PATH = "${EMAIL_LIST_FILE_PATH}";
 const gCalendarMode = "";
 const urlLaunchMode = "url";
 
 function execRegistCurrendar(){
+	jsListSelect.updateListFileCon(
+		EMAIL_LIST_FILE_PATH,
+		email
+	);
+		
 	let scheduleDateList = scheduleDate.split("-");
 	const year = scheduleDateList.at(0);
 	const month = scheduleDateList.at(1) - 1;
@@ -102,6 +115,10 @@ switch(firstArgs){
 		exit();
 		break;
 	case urlLaunchMode:
+		jsListSelect.updateListFileCon(
+			LAUNCH_URL_LIST_FILE_PATH,
+			LAUNCH_URL
+		);
 		gmailLaunchMode();
 		exit();
 		break;

@@ -79,17 +79,17 @@ setReplaceVariable="cmdTubePlayerEditDirPath=${cmdTubePlayerDirPath}/edit"
 setReplaceVariable="cmdTubePlayerListDirPath=${cmdTubePlayerDirPath}/list"
 setReplaceVariable="cmdTubePlayerListFilePath=${cmdTubePlayerListDirPath}/searchWordList"
 setReplaceVariable="PLAY_LOG_DIR_PATH=${cmdTubePlayerDirPath}/log"
-setVariableType="searchWord:ELCB=${cmdTubePlayerListFilePath}&20"
+setVariableType="searchWord:ELCB=${cmdTubePlayerListFilePath}!20"
 setVariableType="playMode:CB=shuffle!ordinaly!reverse"
 setVariableType="onSearchMode:CB=SHORT!RECENT!LOG_RND!LOG_FREQ!OFF"
 setVariableType="PLAY:BTN=::TermOut::jsf '${0}'"
 setVariableType="STOP:BTN=pkill -9 mpv"
-setVariableType="numberPlay:NUMB=!1..1000!1|::TermOut::jsf '${0}' number"
-setVariableType="minMinutes:NUM=!0..1000!1"
-setVariableType="maxMinutes:NUM=!0..1000!1"
-setVariableType="tubePlayListName:EFCB=${cmdTubePlayerEditDirPath}&tube&NoExtend"
+setVariableType="numberPlay:NUMB=!1..1000!1|::TermOut::jsf '${0}' number!PLAY"
+setVariableType="minMinutes:NUMB=!0..1000!1|jsf '${0}' initMinMinutes!to0"
+setVariableType="maxMinutes:NUMB=!0..1000!1|jsf '${0}' initMaxMinutes!to0"
+setVariableType="tubePlayListName:EFCB=${cmdTubePlayerEditDirPath}!tube!.tsv"
 setVariableType="EDIT_TUBE_PLAY_LIST:BTN=jsf '${0}' EDIT_TUBE_PLAY_LIST"
-setVariableType="playLogName:EFCB=${PLAY_LOG_DIR_PATH}&playLog&NoExtend"
+setVariableType="playLogName:EFCB=${PLAY_LOG_DIR_PATH}!playLog!NoExtend"
 setVariableType="EDIT_PLAY_LOG_NAME:BTN=jsf '${0}' EDIT_PLAY_LOG_NAME"
 setVariableType="playLogOut:BTN=::TermOut::::TermLong::jsf '${0}' playLogOut"
 setVariableType="Install:BTN=jsf '${0}'"
@@ -106,7 +106,7 @@ numberPlay="3"
 STOP=""
 minMinutes=0
 maxMinutes=0
-tubePlayListName="tubePlayList"
+tubePlayListName="tubePlayList.tsv"
 EDIT_TUBE_PLAY_LIST=""
 playLogName="playLogDefault"
 EDIT_PLAY_LOG_NAME=
@@ -119,7 +119,7 @@ Install="install"
 
 
 let args = jsArgs.get().split("\t");
-const APP_URL_HISTORY_PATH="${01}/system/url/cmdclickUrlHistory";
+const APP_URL_HISTORY_PATH="${01}/system/url/cmdclickUrlHistory.tsv";
 const INSTALL_MODE = "install";
 const SHUFFLE_MODE = "shuffle";
 const ORDINALY_MODE = "ordinaly";
@@ -130,19 +130,31 @@ const REVERSE_MODE = "reverse";
 const EDIT_SITE_WEB_MODE = "edit_site_web";
 const PLAY_LOG_MODE = "playLogOut";
 const NoExtend = "NoExtend";
+const TsvSuffix = ".tsv";
 var FIRST_ARGS = args.at(0);
 if(FIRST_ARGS == PLAY){
 	FIRST_ARGS = playMode;
 };
 searchWord = searchWord.trim();
+const FANNEL_SCRIPT_PATH = "${01}/${02}";
+initNumVariable();
 const cmdTubePlayerDirPath = "${cmdTubePlayerDirPath}";
 const PLAY_LOG_DIR_PATH = "${PLAY_LOG_DIR_PATH}";
 const LOG_PREFIX = "playLog";
+const TSV_SUFFIX = ".tsv";
 const PLAY_LOG_FILE_PATH = makeCreatorJSPath(
 	PLAY_LOG_DIR_PATH,
 	playLogName,
-	LOG_PREFIX
+	LOG_PREFIX,
+	""
 );
+
+updateByVariableWhenDiff(
+	"playLogName",
+	PLAY_LOG_FILE_PATH.split("/").at(-1),
+	playLogName,
+);
+
 const cmdTubePlayerEditDirPath = "${cmdTubePlayerEditDirPath}";
 const cmdTubePlayerShellDirPath = `${cmdTubePlayerDirPath}/shell`;
 const EXEC_SHELL_PATH = `${cmdTubePlayerShellDirPath}/cmdYoutuber.sh`;
@@ -152,7 +164,7 @@ const cmdTubePlayerSearchWordFilePath = `${cmdTubePlayerTmpDirPath}/searchWord`;
 const cmdTubePlayerListDirPath = "${cmdTubePlayerListDirPath}";
 const cmdTubePlayerListFilePath = "${cmdTubePlayerListFilePath}";
 const TUBE_PREFIX = "tube";
-const searchPlayListName = "SearchPlayList";
+const searchPlayListName = "SearchPlayList.tsv";
 const LOG_RUNDOM = "LOG_RND";
 const LOG_FREQUENT = "LOG_FREQ";
 let lOG_SEARCH_LIST = [LOG_RUNDOM, LOG_FREQUENT];
@@ -166,8 +178,15 @@ if(
 const EDIT_FILE_PATH = makeCreatorJSPath(
 	cmdTubePlayerEditDirPath,
 	tubePlayListName,
-	TUBE_PREFIX
+	TUBE_PREFIX,
+	TSV_SUFFIX
 );
+updateByVariableWhenDiff(
+	"tubePlayListName",
+	EDIT_FILE_PATH.split("/").at(-1),
+	tubePlayListName,
+);
+
 const cURRENT_REGISTER_SEARCH_STRING = `${searchWord}\t${onSearchMode}\t${minMinutes},${maxMinutes}`;
 const ENABLE_UPDATE_WEB_SEARCH_LIST = judgeUpdateWebSearchList();
 const WEB_SEARCH_ARGS = `${onSearchMode}\t${searchWord}\t${ENABLE_UPDATE_WEB_SEARCH_LIST}\t${minMinutes},${maxMinutes}\t${PLAY_LOG_FILE_PATH}`;
@@ -236,10 +255,10 @@ function argSwitcher() {
 		        "tubePlayListName",
 				"renameTubePlayListName",
 				cmdTubePlayerEditDirPath,
-				`tubePlayListName:EFCB=${cmdTubePlayerEditDirPath}&tube&${NoExtend}`,
+				`tubePlayListName:EFCB=${cmdTubePlayerEditDirPath}!tube!${TsvSuffix}`,
 				`tubePlayListName=${tubePlayListName}\trenameTubePlayListName=`,
 				TUBE_PREFIX,
-				NoExtend,
+				TsvSuffix,
 		        "${01}/${02}",
 		        "Edit tubePlayListName"
 		    );
@@ -252,7 +271,7 @@ function argSwitcher() {
 		        "playLogName",
 		        "renamePlayLogName",
 				"${PLAY_LOG_DIR_PATH}",
-				`playLogName:EFCB=${PLAY_LOG_DIR_PATH}&playLog&${NoExtend}`,
+				`playLogName:EFCB=${PLAY_LOG_DIR_PATH}!playLog!${NoExtend}`,
 				`playLogName=${playLogName}\trenamePlayLogName=`,
 				LOG_PREFIX,
 				NoExtend,
@@ -301,15 +320,21 @@ function makeCreatorJSPath(
 	dirPath,
 	tubePlayListName,
 	prefix,
+	suffix
 ){
 	if(!tubePlayListName){
 		alert("tubePlayListName must be written");
 		throw new Error('exit');
 		exitZero();
 	};
-	if(!tubePlayListName.startsWith(prefix)){
-		tubePlayListName = prefix + tubePlayListName;
-	};
+	tubePlayListName = jsPath.compPrefix(
+		tubePlayListName,
+		prefix
+	);
+	tubePlayListName = jsPath.compExtend(
+		tubePlayListName,
+		suffix
+	);
 	return [dirPath, tubePlayListName].join('/');
 };
 
@@ -489,4 +514,47 @@ function sortByFrequency(data) {
   return [...data].sort((a, b) => {
     return freq[b] - freq[a] || a - b
   });
+};
+
+function updateByVariableWhenDiff(
+	tergetVariableName,
+	currentVariableValue,
+	pastVariableValue,
+){
+	if(
+		currentVariableValue == pastVariableValue
+	) return;
+	jsEdit.updateByVariable(
+		FANNEL_SCRIPT_PATH,
+        tergetVariableName,
+        currentVariableValue
+	);
+};
+
+function initNumVariable(){
+	const initPrefix = "init";
+	let initList = [
+		`${initPrefix}MinMinutes`,
+		`${initPrefix}MaxMinutes`,
+	];
+	const initIndex = initList.indexOf(FIRST_ARGS);
+	if(initIndex < 0) return;
+	const initPrefixRegex = new RegExp(`^${initPrefix}`);
+	const updateVariableName = 
+		initList[initIndex].replace(initPrefixRegex, '');
+	jsEdit.updateByVariable(
+		FANNEL_SCRIPT_PATH,
+        capitalize(updateVariableName),
+        "0"
+    );
+	exitZero();
+};
+
+function capitalize(str) {
+	if (
+		typeof str !== 'string' 
+		|| !str
+	) return str;
+	return str.charAt(0).toLowerCase() 
+		+ str.slice(1);
 };

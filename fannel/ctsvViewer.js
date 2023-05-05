@@ -1,9 +1,9 @@
 
 
 /// LABELING_SECTION_START
-// Advanced csv viewer @puutaro
-// 	* inputCsvPath 
-// 		-> set csv path
+// Advanced csv & tsv viewer @puutaro
+// 	* inputCTsvPath 
+// 		-> set csv or tsv path
 // 	* scrollBoost 
 // 		-> auto scroll boost rate
 //		- 0: one step
@@ -24,7 +24,7 @@
 //		vartical: top to bottom
 //		rVartical: bottom to top
 // 	* viewType 
-//		SRC: src csv
+//		SRC: src csv or tsv
 //		AGGRE: aggregated table
 //		CHART: aggregated chart
 //  * rowLimit 
@@ -93,17 +93,17 @@ setReplaceVariable="CURRENT_FILTERS_LIST_FILE_PATH=${CURRENT_LIST_DIR_PATH}/filt
 setReplaceVariable="CURRENT_FILTER_GAIN_LIST_FILE_PATH=${CURRENT_LIST_DIR_PATH}/filterGainList"
 setReplaceVariable="CURRENT_INUPT_CSV_LIST_FILE_PATH=${CURRENT_LIST_DIR_PATH}/inuptCsvList"
 setVariableType="selectColmuns:ELMCBB=${CURRENT_COLUMN_LIST_FILE_PATH}|jsf '${0}' selectColSync!sync"
-setVariableType="filters:ELCBB=${CURRENT_FILTERS_LIST_FILE_PATH}&10|jsf '${0}' filters!set"
+setVariableType="filters:ELCBB=${CURRENT_FILTERS_LIST_FILE_PATH}!10|jsf '${0}' filters!set"
 setVariableType="startColNum:NUMB=!0..10000!1|jsf '${0}' initStartColNum!to0"
 setVariableType="startRowNum:NUMB=!0..10000!1|jsf '${0}' initStartRowNum!to0"
 setVariableType="scrollBoost:NUMB=!0..100000!1|jsf '${0}' initScrollBoost!to0"
 setVariableType="colRange:NUMB=!0..10000!1|jsf '${0}' initColRange!to0"
 setVariableType="rowRange:NUMB=!0..10000!1|jsf '${0}' initRowRange!to0"
-setVariableType="rowLimit:NUMB=!0..10000!100|jsf '${0}' initRowLimit"
+setVariableType="rowLimit:NUMB=!0..10000!100|jsf '${0}' initRowLimit!to0"
 setVariableType="autoScrollType:CB=no!horizon!rHorizon!vartical!rVartical"
-setVariableType="inputCsvPath:ELCBFL=${CURRENT_INUPT_CSV_LIST_FILE_PATH}&10"
+setVariableType="inputCTsvPath:ELCBFL=${CURRENT_INUPT_CSV_LIST_FILE_PATH}!10"
 setVariableType="viewType:CB=SRC!AGGRE!CHART"
-scriptFileName="csvViewer.js"
+scriptFileName="ctsvViewer.js"
 /// SETTING_SECTION_END
 
 
@@ -116,7 +116,7 @@ startRowNum="0"
 autoScrollType="horizon"
 viewType="SRC"
 rowLimit=1000
-inputCsvPath=""
+inputCTsvPath=""
 selectColmuns=""
 filters=""
 /// CMD_VARIABLE_SECTION_END
@@ -124,9 +124,8 @@ filters=""
 
 /// Please write bellow with javascript
 
-
 csvCheckAndRegister(
-	inputCsvPath
+	inputCTsvPath
 );
 let args = jsArgs.get().split("\t");
 const FROM_HTML = "FROM_HTML";
@@ -160,10 +159,10 @@ const CURRENT_INUPT_CSV_LIST_FILE_PATH = "${CURRENT_INUPT_CSV_LIST_FILE_PATH}";
 const HTML_TEMPLATE_DIR_PATH = `${CURRENT_APP_DIR_PATH}/html`;
 const HTML_AG_TABLE_TEMPLATE_FILE_PATH = `${HTML_TEMPLATE_DIR_PATH}/aggre_table.html`;
 const HTML_AG_CHART_TEMPLATE_FILE_PATH = `${HTML_TEMPLATE_DIR_PATH}/bar_chart_js.html`;
-const LAUNCH_HTML_NAME = inputCsvPath.split("/").at(-1).replace(/\.[a-zA-Z0-9_-]*$/, "");
+const LAUNCH_HTML_NAME = inputCTsvPath.split("/").at(-1).replace(/\.[a-zA-Z0-9_-]*$/, "");
 const HTML_LAUNCH_DIR_PATH = `${CURRENT_APP_DIR_PATH}/launch`;
 jsFileSystem.createDir(HTML_LAUNCH_DIR_PATH);
-const HTML_LAUNCH_FILE_PATH = `${HTML_LAUNCH_DIR_PATH}/csvViewer.html`;
+const HTML_LAUNCH_FILE_PATH = `${HTML_LAUNCH_DIR_PATH}/ctsvViewer.html`;
 const TEMP_DIR_PATH = `${CURRENT_APP_DIR_PATH}/tmp`;
 jsFileSystem.createDir(TEMP_DIR_PATH);
 const SEARCH_INFO_FILE_PATH = `${TEMP_DIR_PATH}/search_info`;
@@ -330,9 +329,9 @@ function firstRead(
 	);
 	jsFileSystem.writeLocalFile(
 		SELECT_FIRST_READ_TEMP_FILE_PATH,
-		`${inputCsvPath}${rowLimit}`,
+		`${inputCTsvPath}${rowLimit}`,
 	);
-	const currentInputPathRowLimit = `${inputCsvPath}${rowLimit}`;
+	const currentInputPathRowLimit = `${inputCTsvPath}${rowLimit}`;
 	const onChangeInputPath = 
 		pastInputPathRowLimit != currentInputPathRowLimit;
 	if(
@@ -341,8 +340,7 @@ function firstRead(
 	) return;
 	jsCsv.read(
 		srcTagName,
-		inputCsvPath, 
-		"",
+		inputCTsvPath, 
 		"", 
 		rowLimit,
 	);
@@ -477,7 +475,7 @@ function makeUpdateFilters(
     		);
     		return jsDialog.formDialog(
 				`Edit "${colName}" filter`,
-				`colName:RO=\toperator:CB=${updateOperatorList.join("!")}\tfilterGain:ELCB=${CURRENT_FILTER_GAIN_LIST_FILE_PATH}&30`,
+				`colName:RO=\toperator:CB=${updateOperatorList.join("!")}\tfilterGain:ELCB=${CURRENT_FILTER_GAIN_LIST_FILE_PATH}!30`,
 				`colName=${colName}\toperator=${colName}\tfilterGain=${filterGain}`,
 			).split("\n").map(
 		    	function(query){
@@ -660,7 +658,7 @@ function switchByArgs(){
 	backStartNum();
 	switch(handlerType){
 		case VIEW_TYPE_NAME.AGGRE:
-			launchCsvViewHtml(
+			launchCTsvViewHtml(
 				aggregateCsvHtmlStr
 			);
 			break;
@@ -675,7 +673,7 @@ function switchByArgs(){
 			);
 			break;
 		case VIEW_TYPE_NAME.SRC:
-			launchCsvViewHtml(
+			launchCTsvViewHtml(
 				agSourceCsvStrHtmlStr
 			);
 			break;
@@ -711,7 +709,7 @@ function initNumVariable(){
 		FANNEL_SCRIPT_PATH,
         capitalize(updateVariableName),
         "0"
-     );
+    );
 	exitZero();
 };
 
@@ -1006,7 +1004,7 @@ function countFreqWord(
 	return sumFreqWord;
 };
 
-function launchCsvViewHtml(
+function launchCTsvViewHtml(
 	aggregateCsvHtmlStr
 ){
 	const launch_html_contents = jsFileSystem.readLocalFile(
@@ -1120,7 +1118,7 @@ function writeSearchInfo(
 };
 function makeSearchInfo(){
 	const searchInfoSource = `${colRange}${rowRange}`
- 		+ `${autoScrollType}${inputCsvPath}${rowLimit}`;
+ 		+ `${autoScrollType}${inputCTsvPath}${rowLimit}`;
 	switch(autoScrollType){
 		case AUTO_SCROLL_TYPE_NAME.horizon:
 		case AUTO_SCROLL_TYPE_NAME.rHorizon:
@@ -1373,11 +1371,10 @@ function csvCheckAndRegister(
 function checkInputPath(
 	inputPath
 ){
-	let permittionExtends = ["csv"];
-	const checkOk = permittionExtends.some (
-		function(extend){
-			return inputPath.endsWith(`\.${extend}`);
-		}
+	let permittionExtends = ["csv", "tsv"];
+	const checkOk = jsPath.checkExtend(
+		inputPath,
+		permittionExtends.join("\t")
 	);
 	if(checkOk) return;
 	alert(

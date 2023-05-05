@@ -61,13 +61,15 @@ terminalColor=""
 terminalFontColor=""
 setReplaceVariable="cmdMusicPlayerDirPath=${01}/${001}"
 setReplaceVariable="cmdMusicPlayerEditDirPath=${cmdMusicPlayerDirPath}/edit"
-setVariableType="musicDir:DIR="
-setVariableType="musicPlayListName:EFCB=${cmdMusicPlayerEditDirPath}&music&NoExtend"
+setReplaceVariable="cmdMusicPlayerListDirPath=${cmdMusicPlayerDirPath}/list"
+setReplaceVariable="cmdMusicPlayerDirListFilePath=${cmdMusicPlayerListDirPath}/music_dir_list"
+setVariableType="musicDir:ELCBDIR=${cmdMusicPlayerDirListFilePath}!10"
+setVariableType="musicPlayListName:EFCB=${cmdMusicPlayerEditDirPath}!music!.tsv"
 setVariableType="musicPlay:CB=ordinaly!shuffle!reverse"
 setVariableType="PLAY:BTN=::TermOut::jsf '${0}'"
-setVariableType="numberPlay:NUMB=!1..1000!1|::TermOut::jsf '${0}' number"
-setVariableType="startNum:NUM=!0..10000!1"
-setVariableType="endNum:NUM=!0..10000!1"
+setVariableType="numberPlay:NUMB=!1..1000!1|::TermOut::jsf '${0}' number!Play"
+setVariableType="startNum:NUMB=!0..10000!1|jsf '${0}' initStartNum!to0"
+setVariableType="endNum:NUMB=!0..10000!1|jsf '${0}' initEndNum!to0"
 setVariableType="STOP:BTN=pkill -9 mpv"
 setVariableType="Install:BTN=jsf '${0}'"
 setVariableType="EDIT_MUSIC_PLAY_LIST:BTN=jsf '${0}' EDIT_MUSIC_PLAY_LIST"
@@ -78,7 +80,7 @@ scriptFileName="cmdMusicPlayer.js"
 
 /// CMD_VARIABLE_SECTION_START
 musicDir=""
-musicPlayListName="musicPlayList"
+musicPlayListName="musicPlayList.tsv"
 musicPlay="ordinaly"
 PLAY="musicPlay"
 numberPlay="1"
@@ -95,16 +97,21 @@ Install="install"
 
 
 let args = jsArgs.get().split("\t");
-const NoExtend = "NoExtend";
 var FIRST_ARGS = args.at(0);
+const tsvExtend = ".tsv";
 if(FIRST_ARGS == PLAY){
 	FIRST_ARGS = musicPlay;
 };
+const FANNEL_SCRIPT_PATH = "${01}/${02}";
 const cmdMusicPlayerDirPath = "${cmdMusicPlayerDirPath}";
 const cmdMusicPlayerEditDirPath = "${cmdMusicPlayerEditDirPath}";
+const cmdMusicPlayerListDirPath = "${cmdMusicPlayerListDirPath}";
+initNumVariable();
+jsFileSystem.createDir(cmdMusicPlayerListDirPath);
+const cmdMusicPlayerDirListFilePath = "${cmdMusicPlayerDirListFilePath}";
 const EXEC_SHELL_PATH = `${cmdMusicPlayerDirPath}/cmdMusicPlayer.sh`;
 const PLAY_PROCESS_DIR_PATH = `${cmdMusicPlayerDirPath}/process`;
-const MUSIC_HISTORY_PATH = `${PLAY_PROCESS_DIR_PATH}/musicHistory`;
+const MUSIC_HISTORY_PATH = `${PLAY_PROCESS_DIR_PATH}/musicHistory.txt`;
 const MUSIC_PREFIX = "music";
 const EDIT_FILE_PATH = makeCreatorJSPath(musicPlayListName);
 const INSTALL_MODE = "install";
@@ -126,6 +133,15 @@ switchByArgs();
 
 
 function switchByArgs(){
+	updateByVariableWhenDiff(
+		"musicPlayListName",
+		EDIT_FILE_PATH.split("/").at(-1),
+		musicPlayListName,
+	);
+	jsListSelect.updateListFileCon(
+		cmdMusicPlayerDirListFilePath,
+		`${musicDir}`
+	);
 	switch(FIRST_ARGS){
 		case "":
 			initFileList();
@@ -178,10 +194,10 @@ function switchByArgs(){
 		        "musicPlayListName",
 				"renameMusicPlayListName",
 				cmdMusicPlayerEditDirPath,
-				`musicPlayListName:EFCB=${cmdMusicPlayerEditDirPath}&tube&${NoExtend}`,
+				`musicPlayListName:EFCB=${cmdMusicPlayerEditDirPath}!${MUSIC_PREFIX}!${tsvExtend}`,
 				`musicPlayListName=${musicPlayListName}\trenameMusicPlayListName=`,
 				MUSIC_PREFIX,
-				NoExtend,
+				tsvExtend,
 		        "${01}/${02}",
 		        "Edit musicPlayListName"
 		    );
@@ -189,17 +205,22 @@ function switchByArgs(){
 	};
 };
 
-function makeCreatorJSPath(musicPlayListName){
+function makeCreatorJSPath(
+	musicPlayListName
+){
 	if(!musicPlayListName){
 		alert("musicPlayListName must be written");
 		throw new Error('exit');
 		exitZero();
 	};
-	if(
-		!musicPlayListName.startsWith(MUSIC_PREFIX)
-	){
-		musicPlayListName = MUSIC_PREFIX + musicPlayListName;
-	};
+	musicPlayListName = jsPath.compPrefix(
+		musicPlayListName,
+		MUSIC_PREFIX
+	);
+	musicPlayListName = jsPath.compExtend(
+		musicPlayListName,
+		tsvExtend
+	);
 	return [cmdMusicPlayerEditDirPath, musicPlayListName].join('/');
 };
 
@@ -274,3 +295,46 @@ function sortByLastMusic(fileList){
 	return fileListAfterLastMusicIndex.concat(fileListBeforeLastMusicIndex);
 };
 
+function updateByVariableWhenDiff(
+	tergetVariableName,
+	currentVariableValue,
+	pastVariableValue,
+){
+	if(
+		currentVariableValue == pastVariableValue
+	) return;
+	
+	jsEdit.updateByVariable(
+		FANNEL_SCRIPT_PATH,
+        tergetVariableName,
+        currentVariableValue
+	);
+};
+
+function initNumVariable(){
+	const initPrefix = "init";
+	let initList = [
+		`${initPrefix}StartNum`,
+		`${initPrefix}EndNum`,
+	];
+	const initIndex = initList.indexOf(FIRST_ARGS);
+	if(initIndex < 0) return;
+	const initPrefixRegex = new RegExp(`^${initPrefix}`);
+	const updateVariableName = 
+		initList[initIndex].replace(initPrefixRegex, '');
+	jsEdit.updateByVariable(
+		FANNEL_SCRIPT_PATH,
+        capitalize(updateVariableName),
+        "0"
+    );
+	exitZero();
+};
+
+function capitalize(str) {
+	if (
+		typeof str !== 'string' 
+		|| !str
+	) return str;
+	return str.charAt(0).toLowerCase() 
+		+ str.slice(1);
+};

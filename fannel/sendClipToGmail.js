@@ -42,7 +42,7 @@ terminalFontZoom="0"
 terminalColor=""
 terminalFontColor=""
 setVariableType="DISPLAY_DRAFT_LIST:BTN=::TermLong::jsf '${0}' DRAFT_LIST"
-setVariableType="CLIP_TEXT:EB=::TermLong::jsf '${0}' CLIP_TEXT"
+setVariableType="CLIP_TEXT:EB=::TermLong::jsf '${0}' CLIP_TEXT!COPY"
 scriptFileName="sendClipToGmail.js"
 /// SETTING_SECTION_END
 
