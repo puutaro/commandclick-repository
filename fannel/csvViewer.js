@@ -145,7 +145,6 @@ scrollBoost = Number(scrollBoost);
 colRange = Number(colRange);
 rowRange = Number(rowRange);
 rowLimit = Number(rowLimit);
-cancelerAutoScrollTypeByRange();
 const srcTagName = "csv";
 const selectColmunTagName = "selectColmunCsv";
 const filteredTagName = "filteredCsv";
@@ -246,6 +245,10 @@ if(
 if(
 	rowRange == 0
 ) rowRange = filteredTagNameRowSize;
+cancelerAutoScrollTypeByRange(
+	filteredTagNameRowSize,
+	filterdColSize
+);
 switchStartNumByScrollType();
 
 const endColNum = makeEndNum(
@@ -298,15 +301,22 @@ let sliceHeaderList =
 switchByArgs();
 
 
-function cancelerAutoScrollTypeByRange(){
+function cancelerAutoScrollTypeByRange(
+	filteredTagNameRowSize,
+	filterdColSize
+){
 	switch(autoScrollType){
 		case AUTO_SCROLL_TYPE_NAME.horizon:
 		case AUTO_SCROLL_TYPE_NAME.rHorizon:
-			if(colRange == 0) autoScrollType = AUTO_SCROLL_TYPE_NAME.no;
+			if(
+				colRange >= filterdColSize
+			) autoScrollType = AUTO_SCROLL_TYPE_NAME.no;
 			break;
 		case AUTO_SCROLL_TYPE_NAME.vartical:
 		case AUTO_SCROLL_TYPE_NAME.rVartical:
-			if(rowRange == 0) autoScrollType = AUTO_SCROLL_TYPE_NAME.no;
+			if(
+				rowRange <= filteredTagNameRowSize
+			) autoScrollType = AUTO_SCROLL_TYPE_NAME.no;
 			break;
 	};
 }
@@ -350,6 +360,10 @@ function firstRead(
 		FILTER_COLUMN_TEMP_FILE_PATH,
 		CMDCLICK_FIRST_READ_EXEC_SIGN
 	);
+	const firstHeaderRow = jsCsv.toHeaderRow(
+		srcTagName, 0, 0
+	);
+	if(!firstHeaderRow) exitZero();
 };
 
 function syncSelectColumns(){
@@ -548,6 +562,12 @@ function execSelectColumns(
 		FILTER_COLUMN_TEMP_FILE_PATH,
 		CMDCLICK_SELECT_COLUMN_EXEC_SIGN
 	);
+	const selectSectionHeaderRow = jsCsv.toHeaderRow(
+		selectColmunTagName, 0, 0
+	);
+	if(
+		!selectSectionHeaderRow
+	) exitZero();
 };
 
 function execFilterColumns(){
