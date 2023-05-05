@@ -91,6 +91,18 @@
     onclick="launchSrcCsv()">src</button>
 </div>
 <script>
+  function URLify(innerHTML){
+  return innerHTML
+    .replaceAll(">", ">\t")
+    .replaceAll("<", "\t<")
+    .replace(
+      /(\b(https?|ftp|file):\/\/[\-A-Z0-9+&@#\/%?=~_|!:,.;]*[\-A-Z0-9+&@#\/%=~_|])/img, '<a href="$1">$1</a>'
+    ).replaceAll(">\t", ">")
+    .replaceAll("\t<", "<");
+  }
+  const div = document.querySelector("#srcTableItSelf");
+  div.innerHTML = URLify(div.innerHTML);
+  
   const FANNEL_SCRIPT_PATH = "CMDCLICK_FANNEL_SCRIPT_PATH";
   let VIEW_TYPE_NAME = {
     AGGRE: 'AGGRE',
