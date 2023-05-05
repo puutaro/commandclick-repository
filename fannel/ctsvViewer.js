@@ -124,7 +124,7 @@ filters=""
 
 /// Please write bellow with javascript
 
-csvCheckAndRegister(
+csvCheckPathAndRegister(
 	inputCTsvPath
 );
 let args = jsArgs.get().split("\t");
@@ -1356,10 +1356,13 @@ function execMotion(
 	};
 };
 
-function csvCheckAndRegister(
+function csvCheckPathAndRegister(
 	inputPath
 ){
-	checkInputPath(
+	extendCheckInputPath(
+		inputPath
+	);
+	existCheckInputPath(
 		inputPath
 	);
 	jsListSelect.updateListFileCon(
@@ -1368,7 +1371,7 @@ function csvCheckAndRegister(
 	);
 };
 
-function checkInputPath(
+function extendCheckInputPath(
 	inputPath
 ){
 	let permittionExtends = ["csv", "tsv"];
@@ -1379,6 +1382,20 @@ function checkInputPath(
 	if(checkOk) return;
 	alert(
 		`Extend must be ${permittionExtends.join(", ")}\n\n ${inputPath}`
+	);
+	exitZero();
+};
+
+function existCheckInputPath(
+	inputPath
+){
+	const existFile = jsFileSystem.isFile(
+		inputPath
+	);
+
+	if(existFile) return;
+	alert(
+		`No exist \n\n ${inputPath}`
 	);
 	exitZero();
 };
