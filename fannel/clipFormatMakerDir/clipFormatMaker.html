@@ -1072,16 +1072,24 @@
 		cmdVariableList.push(
 			newlineVariableValueEscape
 		);
-		let nextInputForm = inputParts.eq(index + 1);
-		const nextClassName = nextInputForm.attr('class');
-		const includeNextNewline = nextClassName.includes(
-			INPUT_CLASS_TYPE.newLineFieldclass
-		);
+		try{
+			var nextInputForm = inputParts.eq(index + 1);
+			const nextClassName = nextInputForm.attr('class');
+			var includeNextNewline = nextClassName.includes(
+				INPUT_CLASS_TYPE.newLineFieldclass
+			);
+		} catch(e){
+			var includeNextNewline = false
+		};
 		if(includeNextNewline) return;
-		let inputPartsRev = inputParts
-			.slice(0, index + 1)
-			.get()
-			.reverse();
+		try {
+			var inputPartsRev = inputParts
+				.slice(0, index + 1)
+				.get()
+				.reverse();
+		} catch(e) {
+			var inputPartsRev = inputParts.reverse();
+		};
 		const displayNewLineLength = inputPartsRev.findIndex(
 			function(currentInputForm, order){
 				const currentClassName = currentInputForm.className;
