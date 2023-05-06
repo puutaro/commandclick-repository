@@ -159,10 +159,6 @@
 			width: 90%;
 		}
 
-		.url-launch {
-			background-color: #FBF8BD;
-		}
-
 		.new-line {
 			background-color: #ededed;
 		}
@@ -177,6 +173,10 @@
 
 		.cb-item {
 			background-color: #cffafc;
+		}
+
+		.url-launch {
+			background-color: #FBF8BD;
 		}
 
 		.disabled {
@@ -245,7 +245,9 @@
 	const N=5;
 	const zenkakuSimbolRegex = /[^a-zA-Z0-9_]/;
 	const prefixNumRegex = /^[0-9]/;
-	const setVariableTypeName = 'setVariableType'
+	const urlLaunchVariablePrefix = "launchUrl";
+	const setVariableTypeName = 'setVariableType';
+	const newlineVariableName = "newline";
 	const elcbMark = "ELCB"
 	const elcbbMark = "ELCBB"
 	let INPUT_CLASS_TYPE = {
@@ -254,6 +256,14 @@
 	    textWithLabelFormFieldClass: 'text-with-label-form-field',
 	    urlFormFieldClass: 'url-form-field',
 	    newLineFieldclass: 'newLine-field'
+	};
+	let INPUT_BLOCK_CLASS = {
+		cbItemBlock: 'cb-item',
+	 	plainTextBlock : 'plain-text',
+	 	labelTextBlock: 'label-text',
+	 	newLineBlock: 'new-line',
+	 	urlLaunchBlock: 'url-launch',
+	 	listBoxBlock: 'list-box',
 	};
 	const newlineVariableValue = "cmdclickNewline";
 	const newlineVariableValueEscape = "// " + newlineVariableValue
@@ -277,6 +287,11 @@
 			return line.trim().replace(/^\|/, '');
 		}).join("\n");
 
+
+	let EDIT_FIELD_ID = {
+		sortableFields: 'sortable-fields',
+	}
+
 	let SET_VAL_TYPE_JANRE = {
 		name: 'name',
 	    value : 'value',
@@ -292,65 +307,91 @@
 	 	NEWLINE: 'NEWLINE'
 	};
 
+	let TORIGER_BUTTON_ID = {
+		addItems: 'addItems',
+	 	createFannel: 'createFannel',
+	};
+
+	let TORIGER_BUTTON_CLASS = {
+		menuTrigger: 'menu-trigger',
+	};
+
+	let OPEN_PARTS_NAME = {
+		nav: 'nav',
+		overlayClass: 'overlay',
+	};
+
+	let ADD_EDIT_COMPONENT_ID = {
+		addField: 'addField',
+		addTextField: 'addTextField',
+		addTextWithLabelField: 'addTextWithLabelField',
+		addNewlineField: 'addNewlineField',
+		addUrlLaunchField: 'addUrlLaunchField',
+	}
+
+	let EDIT_COMPONENT_CHILD_CLASS = {
+		editField: `edit-field`,
+	}
+
 	$(document).ready(function() {
 		document.title = siteTitle;
 		readVariables();
 
-		$('.menu-trigger').on('click',function(){
+		$(`.${TORIGER_BUTTON_CLASS.menuTrigger}`).on('click',function(){
 			if($(this).hasClass('active')){
 			  $(this).removeClass('active');
-			  $('nav').removeClass('open');
-			  $('#addItems').text("add");
-			  $('#createFannel').removeClass('disabled');
-			  $('.overlay').removeClass('open');
+			  $(OPEN_PARTS_NAME.nav).removeClass('open');
+			  $(`#${TORIGER_BUTTON_ID.addItems}`).text("add");
+			  $(`#${TORIGER_BUTTON_ID.createFannel}`).removeClass('disabled');
+			  $(`.${OPEN_PARTS_NAME.overlayClass}`).removeClass('open');
 			} else {
 			  $(this).addClass('active');
-			  $('nav').addClass('open');
-			  $('	#addItems').text("close");
-			  $('#createFannel').addClass('disabled');
-			  $('.overlay').addClass('open');
+			  $(OPEN_PARTS_NAME.nav).addClass('open');
+			  $(`#${TORIGER_BUTTON_ID.addItems}`).text("close");
+			  $(`#${TORIGER_BUTTON_ID.createFannel}`).addClass('disabled');
+			  $(`.${OPEN_PARTS_NAME.overlayClass}`).addClass('open');
 			}
 			});
-			$('.overlay').on('click',function(){
+			$(`.${OPEN_PARTS_NAME.overlayClass}`).on('click',function(){
 			if($(this).hasClass('open')){
 			  $(this).removeClass('open');
-			  $('#addItems').text("add");
-			  $('#createFannel').removeClass('disabled');
-			  $('.menu-trigger').removeClass('active');
-			  $('nav').removeClass('open');      
+			  $(`#${TORIGER_BUTTON_ID.addItems}`).text("add");
+			  $(`#${TORIGER_BUTTON_ID.createFannel}`).removeClass('disabled');
+			  $(`.${TORIGER_BUTTON_CLASS.menuTrigger}`).removeClass('active');
+			  $(OPEN_PARTS_NAME.nav).removeClass('open');      
 			}
 		});
 
 	  
 	  // フィールドの追加
-	  $('#addField').click(function() {
+	  $(`#${ADD_EDIT_COMPONENT_ID.addField}`).click(function() {
 			const rundomStr = makeRandomValName()
 			appendElcbBox(rundomStr);
 	  });
 
-	  $('#addTextField').click(function() {
+	  $(`#${ADD_EDIT_COMPONENT_ID.addTextField}`).click(function() {
 	  	const rundomStr = makeRandomValName()
 	    appendTextField(rundomStr, "");
 	  });
 
-	  $('#addTextWithLabelField').click(function() {
+	  $(`#${ADD_EDIT_COMPONENT_ID.addTextWithLabelField}`).click(function() {
 	  	const rundomStr = makeRandomValName()
 	    appendTextWithLabelField(rundomStr, "");
 	  });
 
-	  $('#addNewlineField').click(function() {
+	  $(`#${ADD_EDIT_COMPONENT_ID.addNewlineField}`).click(function() {
 	    appendNewLineField();
 	  });
 
-	  $('#addUrlLaunchField').click(function() {
+	  $(`#${ADD_EDIT_COMPONENT_ID.addUrlLaunchField}`).click(function() {
 	  	const rundomStr = makeRandomValName()
-	    appendUrlLaunchButton(`launchUrl_${rundomStr}`, "");
+    appendUrlLaunchButton(`${urlLaunchVariablePrefix}_${rundomStr}`, "");
 	  });
 	  
 	  // フィールドのedit
-	  $('#sortable-fields').on(
+	  $(`#${EDIT_FIELD_ID.sortableFields}`).on(
 	  	'click', 
-	  	'.edit-field', 
+	  	`.${EDIT_COMPONENT_CHILD_CLASS.editField}`, 
 	  	function() {
 		    let sotableBtnValnameBox = $(this).parent();
 		    let listBlock = sotableBtnValnameBox.parent();
@@ -362,20 +403,22 @@
 
 	  // フィールドの並び替え
 	  $(function() {
-	  	sortableJsWrapper('sortable-fields');
+	  	sortableJsWrapper(`${EDIT_FIELD_ID.sortableFields}`);
 	  });
 	  
 
-	$('#createFannel').click(function() {
+	$(`#${TORIGER_BUTTON_ID.createFannel}`).click(function() {
 		let cmdVariableList = [];
 		let setVariableTypeList = [];
 		let variableListForTextWithLabel = [];
 		let clipVariablesList = [];
+		let elcbVariablesList = [];
 		let launchVariableList = [];
 
-	  let soutableFields = $('#sortable-fields')
+	  let soutableFields = $(`#${EDIT_FIELD_ID.sortableFields}`)
 	  let inputParts = soutableFields.children()
-	  inputParts.each(function() {
+	  var newLineForDisplay = "";
+	  inputParts.each(function(index) {
 	  		let currentInputForm = $(this);
 	  		const className = currentInputForm.attr('class');
 	  		switch (true){
@@ -386,7 +429,8 @@
 							currentInputForm,
 							cmdVariableList,
 							clipVariablesList,
-							setVariableTypeList
+							setVariableTypeList,
+							elcbVariablesList
 						)
 						break;
 					case className.includes(
@@ -423,12 +467,14 @@
 					case className.includes(
 						INPUT_CLASS_TYPE.newLineFieldclass
 					):
-						cmdVariableList.push(
-							newlineVariableValueEscape
+						getFromNewLineForm(
+							inputParts,
+							index,
+							clipVariablesList,
+							cmdVariableList,
+							setVariableTypeList,
 						)
-						clipVariablesList.push(
-							newlineVariableValueEscape
-						)
+						break;
 				}
 	  	});
 
@@ -447,6 +493,7 @@
 		
 	  	const jsBodyScript = createJsBodyScript(
 			clipVariablesList,
+			elcbVariablesList,
 			launchVariableList,
 			variableListForTextWithLabel
 		);
@@ -478,25 +525,25 @@
 		}
 	});
 		
-		$('#addItems').on('long-press',function(){
+		$(`#${TORIGER_BUTTON_ID.addItems}`).on('long-press',function(){
 			jsToast.long("Add item");
 		});
-		$('#createFannel').on('long-press',function(){
+		$(`#${TORIGER_BUTTON_ID.createFannel}`).on('long-press',function(){
 			jsToast.long("Create clip formater fannel");
 		});
-		$('.plain-text').on('long-press',function(){
+		$(`.${INPUT_BLOCK_CLASS.plainTextBlock}`).on('long-press',function(){
 			jsToast.long("Add plain text field");
 		});
-		$('.label-text').on('long-press',function(){
+		$(`.${INPUT_BLOCK_CLASS.labelTextBlock}`).on('long-press',function(){
 			jsToast.long("Add plain text with label(variable name) field");
 		});
-		$('.url-launch').on('long-press',function(){
+		$(`.${INPUT_BLOCK_CLASS.urlLaunchBlock}`).on('long-press',function(){
 			jsToast.long("Add url launch button");
 		});
-		$('.cb-item').on('long-press',function(){
+		$(`.${INPUT_BLOCK_CLASS.cbItemBlock}`).on('long-press',function(){
 			jsToast.long("Add select box field");
 		});
-		$('.new-line').on('long-press',function(){
+		$(`.${INPUT_BLOCK_CLASS.newLineBlock}`).on('long-press',function(){
 			jsToast.long("Add new line");
 		});
 	});
@@ -677,23 +724,33 @@
 	  			return `<option value="${value}">${option}</option>`
 	  		}
 	  	).join('');
-	  	$('#sortable-fields').append(`<div class="${INPUT_CLASS_TYPE.cbFormFieldClass} cb-item list-box"><div class="sotable-btn-valname-box"><button class="btn btn-danger -field edit-field">edit</button><label for="select">${label}</label></div><select id="select" class="sotable-input">${optionTags}</select></div>`);
+	  	$(`#${EDIT_FIELD_ID.sortableFields}`).append(`<div class="${INPUT_CLASS_TYPE.cbFormFieldClass} ${INPUT_BLOCK_CLASS.cbItemBlock} ${INPUT_BLOCK_CLASS.listBoxBlock}"><div class="sotable-btn-valname-box"><button class="btn btn-danger -field ${EDIT_COMPONENT_CHILD_CLASS.editField}">edit</button><label for="select">${label}</label></div><select id="select" class="sotable-input">${optionTags}</select></div>`);
 	  }
 
 	  function appendTextField(label, text){
-	  	$('#sortable-fields').append(`<div class="${INPUT_CLASS_TYPE.textFormFieldClass} plain-text list-box"><div class="sotable-btn-valname-box"><button class="btn btn-danger edit-field">edit</button><label for="text">${label}</label></div><input id="text" class="sotable-input" type="text" value="${text}" /></div>`);
+	  	$(`#${EDIT_FIELD_ID.sortableFields}`).append(`<div class="${INPUT_CLASS_TYPE.textFormFieldClass} ${INPUT_BLOCK_CLASS.plainTextBlock} ${INPUT_BLOCK_CLASS.listBoxBlock}"><div class="sotable-btn-valname-box"><button class="btn btn-danger ${EDIT_COMPONENT_CHILD_CLASS.editField}">edit</button><label for="text">${label}</label></div><input id="text" class="sotable-input" type="text" value="${text}" /></div>`);
 	  }
 
 	function appendTextWithLabelField(label, text){
-		$('#sortable-fields').append(`<div class="${INPUT_CLASS_TYPE.textWithLabelFormFieldClass} label-text list-box"><div class="sotable-btn-valname-box"><button class="btn btn-danger edit-field">edit</button><label for="text">${label}</label></div><input id="text"  class="sotable-input" type="text" value="${text}" /></div>`);
+		$(`#${EDIT_FIELD_ID.sortableFields}`).append(`<div class="${INPUT_CLASS_TYPE.textWithLabelFormFieldClass} ${INPUT_BLOCK_CLASS.labelTextBlock} ${INPUT_BLOCK_CLASS.listBoxBlock}"><div class="sotable-btn-valname-box"><button class="btn btn-danger ${EDIT_COMPONENT_CHILD_CLASS.editField}">edit</button><label for="text">${label}</label></div><input id="text"  class="sotable-input" type="text" value="${text}" /></div>`);
 	}
 
 	function appendNewLineField(){
-		$('#sortable-fields').append(`<div class="${INPUT_CLASS_TYPE.newLineFieldclass} new-line list-box"><div class="sotable-btn-valname-box"><label for="text">wrap</label></div></div>`);
+		$(`#${EDIT_FIELD_ID.sortableFields}`).append(`<div class="${INPUT_CLASS_TYPE.newLineFieldclass} ${INPUT_BLOCK_CLASS.newLineBlock} ${INPUT_BLOCK_CLASS.listBoxBlock}"><div class="sotable-btn-valname-box"><label for="text">wrap</label></div></div>`);
 	};
 
 	function appendUrlLaunchButton(valName, urlStr){
-		$('#sortable-fields').append(`<div class="${INPUT_CLASS_TYPE.urlFormFieldClass} url-launch list-box"><div class="sotable-btn-valname-box"><button class="btn btn-danger edit-field">edit</button><label for="text">${valName}</label></div><input id="urllaunch"  class="sotable-input" type="text" value="${urlStr}" /></div>`);
+		const listFilePath = `${targetAppListDirPath}/${valName}List`;
+		let optionList = jsFileSystem.readLocalFile(
+			listFilePath
+		).split("\n");
+	  	const optionTags = optionList.map(
+	  		function(option, index){
+	  			const value = index + 1
+	  			return `<option value="${value}">${option}</option>`
+	  		}
+	  	).join('');
+	  	$(`#${EDIT_FIELD_ID.sortableFields}`).append(`<div class="${INPUT_CLASS_TYPE.urlFormFieldClass} ${INPUT_BLOCK_CLASS.urlLaunchBlock} ${INPUT_BLOCK_CLASS.listBoxBlock}"><div class="sotable-btn-valname-box"><button class="btn btn-danger -field ${EDIT_COMPONENT_CHILD_CLASS.editField}">edit</button><label for="select">${valName}</label></div><select id="select" class="sotable-input">${optionTags}</select></div>`);
 	}
 
 	function createDescriptionSection(
@@ -728,6 +785,10 @@
 			|//  - REFLASH_AND_FIRST_ROW: Before terminal output, screen resflesh and focus first row
 			|//  - DEBUG: stdr + stderr
 			|//  - NO: no output (bacground exec)
+			|// * terminalSizeType is cmdclick terminal size option
+			|//  - OFF: no adjust (default)
+			|//  - LONG: LongSize
+			|//  - SHORT: ShortSize
 			|${endDescriptionHolder}`.split('\n')
 		.map(function(line){
 			return line.trim().replace(/^\|/, '');
@@ -745,7 +806,8 @@
 	){
 		const firstSettings = `/// SETTING_SECTION_START
 		|editExecute="ALWAYS"
-		|terminalOutputMode="NORMAL"`.split('\n')
+		|terminalOutputMode="NORMAL"
+		|terminalSizeType="LONG"`.split('\n')
 		.map(function(line){
 			return line.trim().replace(/^\|/, '');
 		}).join("\n");
@@ -779,11 +841,13 @@
 
 	function createJsBodyScript(
 		clipVariablesList,
+		elcbVariablesList,
 		launchVariableList,
 		variableListForTextWithLabel
 	){
 		const concatClipFunction = clipFunctionConcatter(
 			clipVariablesList,
+			elcbVariablesList,
 			variableListForTextWithLabel
 		)
 
@@ -827,6 +891,7 @@
 
 	function clipFunctionConcatter(
 		clipVariablesList,
+		elcbVariablesList,
 		variableListForTextWithLabel
 	){
 		var concatClipFunction = `function execClipMode(){
@@ -856,8 +921,27 @@
 				return line.trim().replace(/^\|/, '');
 			}).join("\n");
 		});
+		concatClipFunction += elcbVariablesList.map(
+			function(variableName){
+				 return `				
+				|	jsListSelect.updateListFileCon(
+				|		\`${targetAppListDirPath}/${variableName}List\`,
+				|		${variableName}
+				|	);`.split('\n')
+					.map(function(line){
+						return line.trim().replace(/^\|/, '');
+					}).join("\n");
+			}).join("\n");
 		concatClipFunction += `
 		|	jsUtil.copyToClipboard(clipBody, 10);
+		|	jsFileSystem.fileEcho(
+		|		scriptFileName,
+		|		terminalOutputMode,
+		|	);
+		|	jsFileSystem.jsEcho(
+		|		terminalOutputMode,
+		|		clipBody,
+		|	);
 		|	jsToast.short("copy to clipboard");
 		|};`.split('\n')
 		.map(function(line){
@@ -886,12 +970,14 @@
 		elcbFormFields,
 		cmdVariableList,
 		clipVariablesList,
-		setVariableTypeList
+		setVariableTypeList,
+		elcbVariablesList
 	){
 	  	elcbFormFields.each(function() {
 	  		let listBlock = $(this);
 	  		let sotableBtnValnameBox = listBlock.children('.sotable-btn-valname-box')
 	  		const elcbVariableName = sotableBtnValnameBox.children('label').text();
+	  		elcbVariablesList.push(elcbVariableName);
 	  		cmdVariableList.push(`${elcbVariableName}=""`)
 	  		clipVariablesList.push(elcbVariableName);
 	  		let selectTag = listBlock.children('select');
@@ -901,7 +987,7 @@
 			  	}).get().join('\n');
 				const listFilePath = `${targetAppListDirPath}/${elcbVariableName}List`;
 		  	setVariableTypeList.push(
-		  		`${setVariableTypeName}="${elcbVariableName}:${elcbMark}=${listFilePath}"`
+		  		`${setVariableTypeName}="${elcbVariableName}:${elcbMark}=${listFilePath}!20"`
 		  	)
 		  	jsFileSystem.writeLocalFile(
 		  		listFilePath,
@@ -954,16 +1040,62 @@
 		urlFormFields.each(function() {
 	  		let listBlock = $(this);
 	  		let sotableBtnValnameBox = listBlock.children('.sotable-btn-valname-box')
-	  		const currentVariableName = sotableBtnValnameBox.children('label').text();
-	  		let urlText = listBlock.children('input:text').val();
-	  		cmdVariableList.push(`${currentVariableName}="${urlText}"`)
-	  		launchVariableList.push(currentVariableName)
-	  		const listFilePath = `${targetAppListDirPath}/${currentVariableName}List`;
+	  		const elcbbVariableName = sotableBtnValnameBox.children('label').text();
+	  		cmdVariableList.push(`${elcbbVariableName}=""`)
+	  		launchVariableList.push(elcbbVariableName)
+	  		let selectTag = listBlock.children('select');
+	  		let options = selectTag.children();
+				const listContents = options.map(function() {
+			    	return $(this).text()
+			  	}).get().join('\n');
+				const listFilePath = `${targetAppListDirPath}/${elcbbVariableName}List`;
 		  	setVariableTypeList.push(
-		  		`${setVariableTypeName}="${currentVariableName}:${elcbbMark}=${listFilePath}!10|jsf '\${0}' ${currentVariableName}"`
+		  		`${setVariableTypeName}="${elcbbVariableName}:${elcbbMark}=${listFilePath}!20|jsf '\${0}' ${elcbbVariableName}"`
 		  	)
-	    });
-	}
+		  	jsFileSystem.writeLocalFile(
+		  		listFilePath,
+					listContents
+		  	);
+		  });
+	};
+
+	function getFromNewLineForm(
+		inputParts,
+		index,
+		clipVariablesList,
+		cmdVariableList,
+		setVariableTypeList,
+	){
+		clipVariablesList.push(
+			newlineVariableValueEscape
+		);
+		cmdVariableList.push(
+			newlineVariableValueEscape
+		);
+		let nextInputForm = inputParts.eq(index + 1);
+		const nextClassName = nextInputForm.attr('class');
+		const includeNextNewline = nextClassName.includes(
+			INPUT_CLASS_TYPE.newLineFieldclass
+		);
+		if(includeNextNewline) return;
+		let inputPartsRev = inputParts
+			.slice(0, index + 1)
+			.get()
+			.reverse();
+		const displayNewLineLength = inputPartsRev.findIndex(
+			function(currentInputForm, order){
+				const currentClassName = currentInputForm.className;
+				return !currentClassName.includes(
+					INPUT_CLASS_TYPE.newLineFieldclass
+			);
+		});
+		setVariableTypeList.push(
+	  		`${setVariableTypeName}="${newlineVariableName}:RO="`
+	  	);
+	  	cmdVariableList.push(
+			`${newlineVariableName}="${"|n".repeat(displayNewLineLength)}"`
+		);
+	};
 
 
 	let EDIT_TYPE = {
@@ -1051,6 +1183,7 @@
 		listBlock,
 		sotableBtnValnameBox,
 	){
+		// .url-launch
 		var dialog = $(".dialog");
 	    let dialogForm = dialog.children('.dialogForm')
 	    dialogForm.empty();
@@ -1063,9 +1196,11 @@
 	    formBody.append('<div id="check_box_inputs"></div>')
 	    let checkBoxInputs = formBody.children('#check_box_inputs');
 	    let selectTag = listBlock.children('select');
+	    const enableUlrElcb = listBlock.attr("class").includes(INPUT_BLOCK_CLASS.urlLaunchBlock);
 		addOpToDialog(
 	  		checkBoxInputs,
-	  		selectTag
+	  		selectTag,
+	  		enableUlrElcb
 	  	);
 	    dialogForm.append(`<br><br><input type="button" class="add_button" onClick="addInput(this)" value="Add">`
 	    )
@@ -1095,15 +1230,18 @@
 
 	function addOpToDialog(
 		checkBoxInputs,
-		selectTag
+		selectTag,
+		enableUlrElcb
 	){
 		let options = selectTag.children();
 		var roopTimes = 0;
+		var addClass = "cb-dialog-item";
+		if(enableUlrElcb) addClass += ` ${INPUT_BLOCK_CLASS.urlLaunchBlock}`;
 		options.each(function() {
 	    	const v = $(this).val();
-	    	const t = $(this).text()
+	    	const t = $(this).text();
 	    	checkBoxInputs.append(
-		    	`<div class="cb-dialog-item"><input type="text" id="editOption${roopTimes}" class="edit-cb-input" value="${t}"></div>`
+		    	`<div class="${addClass}"><input type="text" id="editOption${roopTimes}" class="edit-cb-input" value="${t}"></div>`
 	      	)
 	      	roopTimes++
 	  	});
@@ -1199,7 +1337,7 @@
 	function removeConfirmForSort(evt){
 		const confirmBool = confirm("delete ok?")
 		if(confirmBool) return
-	  var items = evt.from.getElementsByClassName("list-box");
+	  var items = evt.from.getElementsByClassName(INPUT_BLOCK_CLASS.listBoxBlock);
 	  evt.from.insertBefore(evt.item, items[evt.oldIndex]);
 	}
 	</script>
