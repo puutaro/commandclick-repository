@@ -19,6 +19,10 @@
 /// SETTING_SECTION_START
 editExecute="ALWAYS"
 terminalOutputMode="NORMAL"
+setReplaceVariable="BTN_CMD=cmd"
+setReplaceVariable="BTN_LABEL=label"
+setReplaceVariable="LIST_PATH=listPath"
+setReplaceVariable="LIMIT_NUM=limitNum"
 setReplaceVariable="FANNEL_DIR_PATH=${01}/${001}"
 setReplaceVariable="FANNEL_LIST_DIR_PATH=${FANNEL_DIR_PATH}/list"
 setReplaceVariable="LAUNCH_URL_LIST_FILE_PATH=${FANNEL_LIST_DIR_PATH}/launch_url_list"
@@ -26,8 +30,8 @@ setReplaceVariable="EMAIL_LIST_FILE_PATH=${FANNEL_LIST_DIR_PATH}/email_list"
 setVariableType="scheduleDate:DT="
 setVariableType="biginTime:TM="
 setVariableType="endTime:TM="
-setVariableType="email:ELCB=${EMAIL_LIST_FILE_PATH}!10"
-setVariableType="LAUNCH_URL:ELCBB=${LAUNCH_URL_LIST_FILE_PATH}!10|jsf '${0}' url"
+setVariableType="email:ELCB=${LIST_PATH}=${EMAIL_LIST_FILE_PATH}!${LIMIT_NUM}=10"
+setVariableType="LAUNCH_URL:ELCBB=${LIST_PATH}=${LAUNCH_URL_LIST_FILE_PATH}!${LIMIT_NUM}=10|${BTN_CMD}=jsf '${0}' url"
 scriptFileName="gCalendarFormatter.js"
 /// SETTING_SECTION_END
 

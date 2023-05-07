@@ -74,25 +74,33 @@ onUrlHistoryRegister="ON"
 terminalFontZoom="0"
 terminalColor=""
 terminalFontColor=""
+setReplaceVariable="BTN_CMD=cmd"
+setReplaceVariable="BTN_LABEL=label"
+setReplaceVariable="LIST_PATH=listPath"
+setReplaceVariable="LIMIT_NUM=limitNum"
+setReplaceVariable="FCB_DIR_PATH=dirPath"
+setReplaceVariable="FCB_PREFIX=prefix"
+setReplaceVariable="FCB_SUFFIX=suffix"
+setReplaceVariable="FCB_TYPE=type"
 setReplaceVariable="cmdTubePlayerDirPath=${01}/${001}"
 setReplaceVariable="cmdTubePlayerEditDirPath=${cmdTubePlayerDirPath}/edit"
 setReplaceVariable="cmdTubePlayerListDirPath=${cmdTubePlayerDirPath}/list"
 setReplaceVariable="cmdTubePlayerListFilePath=${cmdTubePlayerListDirPath}/searchWordList"
 setReplaceVariable="PLAY_LOG_DIR_PATH=${cmdTubePlayerDirPath}/log"
-setVariableType="searchWord:ELCB=${cmdTubePlayerListFilePath}!20"
+setVariableType="searchWord:ELCB=${LIST_PATH}=${cmdTubePlayerListFilePath}!${LIMIT_NUM}=20"
 setVariableType="playMode:CB=shuffle!ordinaly!reverse"
 setVariableType="onSearchMode:CB=SHORT!RECENT!LOG_RND!LOG_FREQ!OFF"
-setVariableType="PLAY:BTN=::TermOut::jsf '${0}'"
+setVariableType="PLAY:BTN=${BTN_CMD}=::TermOut::jsf '${0}'"
 setVariableType="STOP:BTN=pkill -9 mpv"
-setVariableType="numberPlay:NUMB=!1..1000!1|::TermOut::jsf '${0}' number!PLAY"
-setVariableType="minMinutes:NUMB=!0..1000!1|jsf '${0}' initMinMinutes!to0"
-setVariableType="maxMinutes:NUMB=!0..1000!1|jsf '${0}' initMaxMinutes!to0"
-setVariableType="tubePlayListName:EFCB=${cmdTubePlayerEditDirPath}!tube!.tsv"
-setVariableType="EDIT_TUBE_PLAY_LIST:BTN=jsf '${0}' EDIT_TUBE_PLAY_LIST"
-setVariableType="playLogName:EFCB=${PLAY_LOG_DIR_PATH}!playLog!NoExtend"
-setVariableType="EDIT_PLAY_LOG_NAME:BTN=jsf '${0}' EDIT_PLAY_LOG_NAME"
-setVariableType="playLogOut:BTN=::TermOut::::TermLong::jsf '${0}' playLogOut"
-setVariableType="Install:BTN=jsf '${0}'"
+setVariableType="numberPlay:NUMB=!1..1000!1|${BTN_CMD}=::TermOut::jsf '${0}' number!${BTN_LABEL}=PLAY"
+setVariableType="minMinutes:NUMB=!0..1000!1|${BTN_CMD}=jsf '${0}' initMinMinutes!${BTN_LABEL}=to0"
+setVariableType="maxMinutes:NUMB=!0..1000!1|${BTN_CMD}=jsf '${0}' initMaxMinutes!${BTN_LABEL}=to0"
+setVariableType="tubePlayListName:EFCB=${FCB_DIR_PATH}=${cmdTubePlayerEditDirPath}!${FCB_PREFIX}=tube!${FCB_SUFFIX}=.tsv"
+setVariableType="EDIT_TUBE_PLAY_LIST:BTN=${BTN_CMD}=jsf '${0}' EDIT_TUBE_PLAY_LIST"
+setVariableType="playLogName:EFCB=${FCB_DIR_PATH}=${PLAY_LOG_DIR_PATH}!${FCB_PREFIX}=playLog!${FCB_SUFFIX}=NoExtend"
+setVariableType="EDIT_PLAY_LOG_NAME:BTN=${BTN_CMD}=jsf '${0}' EDIT_PLAY_LOG_NAME"
+setVariableType="playLogOut:BTN=${BTN_CMD}=::TermOut::::TermLong::jsf '${0}' playLogOut"
+setVariableType="Install:BTN=${BTN_CMD}=jsf '${0}'"
 scriptFileName="cmdYoutuber.js"
 /// SETTING_SECTION_END
 
@@ -255,7 +263,7 @@ function argSwitcher() {
 		        "tubePlayListName",
 				"renameTubePlayListName",
 				cmdTubePlayerEditDirPath,
-				`tubePlayListName:EFCB=${cmdTubePlayerEditDirPath}!tube!${TsvSuffix}`,
+				`tubePlayListName:EFCB=${FCB_DIR_PATH}=${cmdTubePlayerEditDirPath}!${FCB_PREFIX}=tube!${FCB_SUFFIX}=${TsvSuffix}`,
 				`tubePlayListName=${tubePlayListName}\trenameTubePlayListName=`,
 				TUBE_PREFIX,
 				TsvSuffix,
@@ -271,7 +279,7 @@ function argSwitcher() {
 		        "playLogName",
 		        "renamePlayLogName",
 				"${PLAY_LOG_DIR_PATH}",
-				`playLogName:EFCB=${PLAY_LOG_DIR_PATH}!playLog!${NoExtend}`,
+				`playLogName:EFCB=${FCB_DIR_PATH}=${PLAY_LOG_DIR_PATH}!${FCB_PREFIX}=playLog!${FCB_SUFFIX}=${NoExtend}`,
 				`playLogName=${playLogName}\trenamePlayLogName=`,
 				LOG_PREFIX,
 				NoExtend,

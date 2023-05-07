@@ -333,6 +333,16 @@
 		editField: `edit-field`,
 	}
 
+	let elcbKeys = {
+		listPath: "listPath",
+		limitNum: "limitNum",
+	};
+
+	let ButtonKeys = {
+		cmd: "cmd",
+		label: "label",
+	};
+
 	$(document).ready(function() {
 		document.title = siteTitle;
 		readVariables();
@@ -987,8 +997,8 @@
 			  	}).get().join('\n');
 				const listFilePath = `${targetAppListDirPath}/${elcbVariableName}List`;
 		  	setVariableTypeList.push(
-		  		`${setVariableTypeName}="${elcbVariableName}:${elcbMark}=${listFilePath}!20"`
-		  	)
+		  		`${setVariableTypeName}="${elcbVariableName}:${elcbMark}=${elcbKeys.listPath}=${listFilePath}!${elcbKeys.limitNum}=20"`
+		  	);
 		  	jsFileSystem.writeLocalFile(
 		  		listFilePath,
 					listContents
@@ -1050,7 +1060,7 @@
 			  	}).get().join('\n');
 				const listFilePath = `${targetAppListDirPath}/${elcbbVariableName}List`;
 		  	setVariableTypeList.push(
-		  		`${setVariableTypeName}="${elcbbVariableName}:${elcbbMark}=${listFilePath}!20|jsf '\${0}' ${elcbbVariableName}"`
+		  		`${setVariableTypeName}="${elcbbVariableName}:${elcbbMark}=${elcbKeys.listPath}=${listFilePath}!${elcbKeys.limitNum}=20|${ButtonKeys.cmd}=jsf '\${0}' ${elcbbVariableName}"`
 		  	)
 		  	jsFileSystem.writeLocalFile(
 		  		listFilePath,

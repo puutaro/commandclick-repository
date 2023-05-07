@@ -59,20 +59,28 @@ onUrlHistoryRegister="OFF"
 terminalFontZoom="0"
 terminalColor=""
 terminalFontColor=""
+setReplaceVariable="BTN_CMD=cmd"
+setReplaceVariable="BTN_LABEL=label"
+setReplaceVariable="FCB_DIR_PATH=dirPath"
+setReplaceVariable="FCB_PREFIX=prefix"
+setReplaceVariable="FCB_SUFFIX=suffix"
+setReplaceVariable="FCB_TYPE=type"
+setReplaceVariable="LIST_PATH=listPath"
+setReplaceVariable="LIMIT_NUM=limitNum"
 setReplaceVariable="cmdMusicPlayerDirPath=${01}/${001}"
 setReplaceVariable="cmdMusicPlayerEditDirPath=${cmdMusicPlayerDirPath}/edit"
 setReplaceVariable="cmdMusicPlayerListDirPath=${cmdMusicPlayerDirPath}/list"
 setReplaceVariable="cmdMusicPlayerDirListFilePath=${cmdMusicPlayerListDirPath}/music_dir_list"
-setVariableType="musicDir:ELCBDIR=${cmdMusicPlayerDirListFilePath}!10"
-setVariableType="musicPlayListName:EFCB=${cmdMusicPlayerEditDirPath}!music!.tsv"
+setVariableType="musicDir:ELCBDIR=${LIST_PATH}=${cmdMusicPlayerDirListFilePath}!${LIMIT_NUM}=10"
+setVariableType="musicPlayListName:EFCB=${FCB_DIR_PATH}=${cmdMusicPlayerEditDirPath}!${FCB_PREFIX}=music!${FCB_SUFFIX}=.tsv"
 setVariableType="musicPlay:CB=ordinaly!shuffle!reverse"
-setVariableType="PLAY:BTN=::TermOut::jsf '${0}'"
-setVariableType="numberPlay:NUMB=!1..1000!1|::TermOut::jsf '${0}' number!Play"
-setVariableType="startNum:NUMB=!0..10000!1|jsf '${0}' initStartNum!to0"
-setVariableType="endNum:NUMB=!0..10000!1|jsf '${0}' initEndNum!to0"
+setVariableType="PLAY:BTN=${BTN_CMD}=::TermOut::jsf '${0}'"
+setVariableType="numberPlay:NUMB=!1..1000!1|${BTN_CMD}=::TermOut::jsf '${0}' number!${BTN_LABEL}=Play"
+setVariableType="startNum:NUMB=!0..10000!1|${BTN_CMD}=jsf '${0}' initStartNum!${BTN_LABEL}=to0"
+setVariableType="endNum:NUMB=!0..10000!1|${BTN_CMD}=jsf '${0}' initEndNum!${BTN_LABEL}=to0"
 setVariableType="STOP:BTN=pkill -9 mpv"
-setVariableType="Install:BTN=jsf '${0}'"
-setVariableType="EDIT_MUSIC_PLAY_LIST:BTN=jsf '${0}' EDIT_MUSIC_PLAY_LIST"
+setVariableType="Install:BTN=${BTN_CMD}=jsf '${0}'"
+setVariableType="EDIT_MUSIC_PLAY_LIST:BTN=${BTN_CMD}=jsf '${0}' EDIT_MUSIC_PLAY_LIST"
 setVariableType="onResumePlay:CB=ON!OFF"
 scriptFileName="cmdMusicPlayer.js"
 /// SETTING_SECTION_END
@@ -194,7 +202,7 @@ function switchByArgs(){
 		        "musicPlayListName",
 				"renameMusicPlayListName",
 				cmdMusicPlayerEditDirPath,
-				`musicPlayListName:EFCB=${cmdMusicPlayerEditDirPath}!${MUSIC_PREFIX}!${tsvExtend}`,
+				`musicPlayListName:EFCB=${FCB_DIR_PATH}=${cmdMusicPlayerEditDirPath}!${FCB_PREFIX}=${MUSIC_PREFIX}!${FCB_SUFFIX}=${tsvExtend}`,
 				`musicPlayListName=${musicPlayListName}\trenameMusicPlayListName=`,
 				MUSIC_PREFIX,
 				tsvExtend,

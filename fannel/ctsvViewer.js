@@ -85,6 +85,10 @@ onUrlHistoryRegister="OFF"
 terminalFontZoom="0"
 terminalColor=""
 terminalFontColor=""
+setReplaceVariable="BTN_CMD=cmd"
+setReplaceVariable="BTN_LABEL=label"
+setReplaceVariable="LIST_PATH=listPath"
+setReplaceVariable="LIMIT_NUM=limitNum"
 setReplaceVariable="PARRENT_APP_DIR_PATH=${01}"
 setReplaceVariable="CURRENT_APP_DIR_PATH=${PARRENT_APP_DIR_PATH}/${001}"
 setReplaceVariable="CURRENT_LIST_DIR_PATH=${CURRENT_APP_DIR_PATH}/list"
@@ -92,16 +96,16 @@ setReplaceVariable="CURRENT_COLUMN_LIST_FILE_PATH=${CURRENT_LIST_DIR_PATH}/colum
 setReplaceVariable="CURRENT_FILTERS_LIST_FILE_PATH=${CURRENT_LIST_DIR_PATH}/filtersList"
 setReplaceVariable="CURRENT_FILTER_GAIN_LIST_FILE_PATH=${CURRENT_LIST_DIR_PATH}/filterGainList"
 setReplaceVariable="CURRENT_INUPT_CSV_LIST_FILE_PATH=${CURRENT_LIST_DIR_PATH}/inuptCsvList"
-setVariableType="selectColmuns:ELMCBB=${CURRENT_COLUMN_LIST_FILE_PATH}|jsf '${0}' selectColSync!sync"
-setVariableType="filters:ELCBB=${CURRENT_FILTERS_LIST_FILE_PATH}!10|jsf '${0}' filters!set"
-setVariableType="startColNum:NUMB=!0..10000!1|jsf '${0}' initStartColNum!to0"
-setVariableType="startRowNum:NUMB=!0..10000!1|jsf '${0}' initStartRowNum!to0"
-setVariableType="scrollBoost:NUMB=!0..100000!1|jsf '${0}' initScrollBoost!to0"
-setVariableType="colRange:NUMB=!0..10000!1|jsf '${0}' initColRange!to0"
-setVariableType="rowRange:NUMB=!0..10000!1|jsf '${0}' initRowRange!to0"
-setVariableType="rowLimit:NUMB=!0..10000!100|jsf '${0}' initRowLimit!to0"
+setVariableType="selectColmuns:ELMCBB=${LIST_PATH}=${CURRENT_COLUMN_LIST_FILE_PATH}|${BTN_CMD}=jsf '${0}' selectColSync!${BTN_LABEL}=sync"
+setVariableType="filters:ELCBB=${LIST_PATH}=${CURRENT_FILTERS_LIST_FILE_PATH}!${LIMIT_NUM}=10|${BTN_CMD}=jsf '${0}' filters!${BTN_LABEL}=set"
+setVariableType="startColNum:NUMB=!0..10000!1|${BTN_CMD}=jsf '${0}' initStartColNum!${BTN_LABEL}=to0"
+setVariableType="startRowNum:NUMB=!0..10000!1|${BTN_CMD}=jsf '${0}' initStartRowNum!${BTN_LABEL}=to0"
+setVariableType="scrollBoost:NUMB=!0..100000!1|${BTN_CMD}=jsf '${0}' initScrollBoost!${BTN_LABEL}=to0"
+setVariableType="colRange:NUMB=!0..10000!1|${BTN_CMD}=jsf '${0}' initColRange!${BTN_LABEL}=to0"
+setVariableType="rowRange:NUMB=!0..10000!1|${BTN_CMD}=jsf '${0}' initRowRange!${BTN_LABEL}=to0"
+setVariableType="rowLimit:NUMB=!0..10000!100|${BTN_CMD}=jsf '${0}' initRowLimit!${BTN_LABEL}=to0"
 setVariableType="autoScrollType:CB=no!horizon!rHorizon!vartical!rVartical"
-setVariableType="inputCTsvPath:ELCBFL=${CURRENT_INUPT_CSV_LIST_FILE_PATH}!10"
+setVariableType="inputCTsvPath:ELCBFL=${LIST_PATH}=${CURRENT_INUPT_CSV_LIST_FILE_PATH}!${LIMIT_NUM}=10"
 setVariableType="viewType:CB=SRC!AGGRE!CHART"
 scriptFileName="ctsvViewer.js"
 /// SETTING_SECTION_END
@@ -203,6 +207,7 @@ let MotionType = {
 	forward: "forward",
 	ZERO: "ZERO",
 };
+
 const CMDCLICK_FANNEL_SCRIPT_PATH = "CMDCLICK_FANNEL_SCRIPT_PATH";
 const isRead = jsCsv.isRead(srcTagName);
 firstRead(isRead);
@@ -475,7 +480,7 @@ function makeUpdateFilters(
     		);
     		return jsDialog.formDialog(
 				`Edit "${colName}" filter`,
-				`colName:RO=\toperator:CB=${updateOperatorList.join("!")}\tfilterGain:ELCB=${CURRENT_FILTER_GAIN_LIST_FILE_PATH}!30`,
+				`colName:RO=\toperator:CB=${updateOperatorList.join("!")}\tfilterGain:ELCB=${LIST_PATH}=${CURRENT_FILTER_GAIN_LIST_FILE_PATH}!${LIMIT_NUM}=30`,
 				`colName=${colName}\toperator=${colName}\tfilterGain=${filterGain}`,
 			).split("\n").map(
 		    	function(query){

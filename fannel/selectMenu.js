@@ -7,14 +7,15 @@
 
 /// SETTING_SECTION_START
 setVariableType="title:RO="
-setVariableType="menu1:EFCB="
-setVariableType="menu2:EFCB="
-setVariableType="menu3:EFCB="
-setVariableType="menu4:EFCB="
-setVariableType="menu5:EFCB="
-setVariableType="menu6:EFCB="
-setVariableType="menu7:EFCB="
-setVariableType="menu8:EFCB="
+setReplaceVariable="FCB_SUFFIX=suffix"
+setVariableType="menu1:EFCB=${FCB_SUFFIX}=.html&.js"
+setVariableType="menu2:EFCB=${FCB_SUFFIX}=.html&.js"
+setVariableType="menu3:EFCB=${FCB_SUFFIX}=.html&.js"
+setVariableType="menu4:EFCB=${FCB_SUFFIX}=.html&.js"
+setVariableType="menu5:EFCB=${FCB_SUFFIX}=.html&.js"
+setVariableType="menu6:EFCB=${FCB_SUFFIX}=.html&.js"
+setVariableType="menu7:EFCB=${FCB_SUFFIX}=.html&.js"
+setVariableType="menu8:EFCB=${FCB_SUFFIX}=.html&.js"
 scriptFileName="selectMenu.js"
 /// SETTING_SECTION_END
 
@@ -40,6 +41,7 @@ var loadTimes = 0;
 let currentFilePathList = "${0}"
 		.replace(/^file:\/\//, '')
 		.split('/');
+
 const parentDirPath = currentFilePathList
 		.slice(0, currentFilePathList.length - 1)
 		.join('/');

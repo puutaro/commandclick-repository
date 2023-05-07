@@ -27,10 +27,16 @@
 editExecute="NO"
 terminalSizeType="LONG"
 onUpdateLastModify="ON"
+setReplaceVariable="BTN_CMD=cmd"
+setReplaceVariable="BTN_LABEL=label"
+setReplaceVariable="FCB_DIR_PATH=dirPath"
+setReplaceVariable="FCB_PREFIX=prefix"
+setReplaceVariable="FCB_SUFFIX=suffix"
+setReplaceVariable="FCB_TYPE=type"
 setReplaceVariable="CMD_BOOKMAKER_DIR_PATH=${01}/${001}"
 setReplaceVariable="CMD_BOOKMAKER_EDIT_DIR_PATH=${CMD_BOOKMAKER_DIR_PATH}/edit"
-setVariableType="bookmarkListName:EFCB=${CMD_BOOKMAKER_EDIT_DIR_PATH}!book!.tsv"
-setVariableType="EDIT_BOOKMARK_NAME:BTN=jsf '${0}' EDIT_BOOKMARK_NAME"
+setVariableType="bookmarkListName:EFCB=${FCB_DIR_PATH}=${CMD_BOOKMAKER_EDIT_DIR_PATH}!${FCB_PREFIX}=book!${FCB_SUFFIX}=.tsv"
+setVariableType="EDIT_BOOKMARK_NAME:BTN=${BTN_CMD}=jsf '${0}' EDIT_BOOKMARK_NAME"
 setVariableType=""
 scriptFileName="cmdBookmaker.js"
 /// SETTING_SECTION_END
@@ -82,7 +88,7 @@ function switchByArgs(){
 		        "bookmarkListName",
 				"renamebookmarkListName",
 				CMD_BOOKMAKER_EDIT_DIR_PATH,
-				`bookmarkListName:EFCB=${CMD_BOOKMAKER_EDIT_DIR_PATH}!${BOOK_PREFIX}!${TsvExtend}`,
+				`bookmarkListName:EFCB=${FCB_DIR_PATH}=${CMD_BOOKMAKER_EDIT_DIR_PATH}!${FCB_PREFIX}=${BOOK_PREFIX}!${FCB_SUFFIX}=${TsvExtend}`,
 				`bookmarkListName=${bookmarkListName}\trenamebookmarkListName=`,
 				BOOK_PREFIX,
 				TsvExtend,
