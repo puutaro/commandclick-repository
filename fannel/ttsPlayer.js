@@ -1,7 +1,7 @@
 
 
 /// LABELING_SECTION_START
-// Music player @puutaro
+// textToSpeech player @puutaro
 //	* play 
 // 		-> tts play list site
 //	* manageText 
