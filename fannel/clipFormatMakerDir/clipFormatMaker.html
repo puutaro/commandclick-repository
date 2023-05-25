@@ -955,15 +955,7 @@
 			}).join("\n");
 		concatClipFunction += `
 		|	jsUtil.copyToClipboard(clipBody, 10);
-		|	jsFileSystem.fileEcho(
-		|		scriptFileName,
-		|		terminalOutputMode,
-		|	);
-		|	jsFileSystem.jsEcho(
-		|		terminalOutputMode,
-		|		clipBody,
-		|	);
-		|	jsToast.short("copy to clipboard");
+		|	jsToast.short(clipBody);
 		|};`.split('\n')
 		.map(function(line){
 			return line.trim().replace(/^\|/, '');
