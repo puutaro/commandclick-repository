@@ -175,7 +175,7 @@
 			background-color: #cffafc;
 		}
 
-		.url-launch {
+		.url-launch-or-copy {
 			background-color: #FBF8BD;
 		}
 
@@ -202,7 +202,7 @@
 		<nav>
 			<ul>
 				<li>
-					<button class="btn btn-primary url-launch" id="addUrlLaunchField">urlBtn</button>
+					<button class="btn btn-primary url-launch-or-copy" id="addUpUrlOrClipField">urlOrCp</button>
 				</li>
 				<li>
 					<button class="btn btn-primary label-text" id="addTextWithLabelField">lTxt</button>
@@ -245,7 +245,7 @@
 	const N=5;
 	const zenkakuSimbolRegex = /[^a-zA-Z0-9_]/;
 	const prefixNumRegex = /^[0-9]/;
-	const urlLaunchVariablePrefix = "launchUrl";
+	const urlLaunchVariablePrefix = "upUrlOrCp";
 	const setVariableTypeName = 'setVariableType';
 	const newlineVariableName = "newline";
 	const elcbMark = "ELCB"
@@ -262,7 +262,7 @@
 	 	plainTextBlock : 'plain-text',
 	 	labelTextBlock: 'label-text',
 	 	newLineBlock: 'new-line',
-	 	urlLaunchBlock: 'url-launch',
+	 	upUrlOrCopyBlock: 'url-launch-or-copy',
 	 	listBoxBlock: 'list-box',
 	};
 	const newlineVariableValue = "cmdclickNewline";
@@ -280,8 +280,18 @@
 			return line.trim().replace(/^\|/, '');
 		}).join("\n");
 	const launchUrlFunction = `
-		|function UrlLauncher(LAUNCH_URL){
-		|	window.location.href = LAUNCH_URL;
+		|function urlLaunchOrClip(LAUNCH_URL){
+		|	if(
+		|		LAUNCH_URL.startsWith("https://")
+		|		|| LAUNCH_URL.startsWith("http://")
+		|		|| LAUNCH_URL.startsWith("/")
+		|		|| LAUNCH_URL.startsWith("file://")
+		|	){
+		|		jsUrl.loadUrl(LAUNCH_URL);
+		|		return;
+		|	};
+		|	jsUtil.copyToClipboard(LAUNCH_URL, 10);
+		|	jsToast.short("text to clipboard");
 		|};\n\n`.split('\n')
 		.map(function(line){
 			return line.trim().replace(/^\|/, '');
@@ -326,7 +336,7 @@
 		addTextField: 'addTextField',
 		addTextWithLabelField: 'addTextWithLabelField',
 		addNewlineField: 'addNewlineField',
-		addUrlLaunchField: 'addUrlLaunchField',
+		addUpUrlOrClipField: 'addUpUrlOrClipField',
 	}
 
 	let EDIT_COMPONENT_CHILD_CLASS = {
@@ -393,7 +403,7 @@
 	    appendNewLineField();
 	  });
 
-	  $(`#${ADD_EDIT_COMPONENT_ID.addUrlLaunchField}`).click(function() {
+	  $(`#${ADD_EDIT_COMPONENT_ID.addUpUrlOrClipField}`).click(function() {
 	  	const rundomStr = makeRandomValName()
     appendUrlLaunchButton(`${urlLaunchVariablePrefix}_${rundomStr}`, "");
 	  });
@@ -547,8 +557,8 @@
 		$(`.${INPUT_BLOCK_CLASS.labelTextBlock}`).on('long-press',function(){
 			jsToast.long("Add plain text with label(variable name) field");
 		});
-		$(`.${INPUT_BLOCK_CLASS.urlLaunchBlock}`).on('long-press',function(){
-			jsToast.long("Add url launch button");
+		$(`.${INPUT_BLOCK_CLASS.upUrlOrCopyBlock}`).on('long-press',function(){
+			jsToast.long("Add url launch or copy button");
 		});
 		$(`.${INPUT_BLOCK_CLASS.cbItemBlock}`).on('long-press',function(){
 			jsToast.long("Add select box field");
@@ -760,7 +770,7 @@
 	  			return `<option value="${value}">${option}</option>`
 	  		}
 	  	).join('');
-	  	$(`#${EDIT_FIELD_ID.sortableFields}`).append(`<div class="${INPUT_CLASS_TYPE.urlFormFieldClass} ${INPUT_BLOCK_CLASS.urlLaunchBlock} ${INPUT_BLOCK_CLASS.listBoxBlock}"><div class="sotable-btn-valname-box"><button class="btn btn-danger -field ${EDIT_COMPONENT_CHILD_CLASS.editField}">edit</button><label for="select">${valName}</label></div><select id="select" class="sotable-input">${optionTags}</select></div>`);
+	  	$(`#${EDIT_FIELD_ID.sortableFields}`).append(`<div class="${INPUT_CLASS_TYPE.urlFormFieldClass} ${INPUT_BLOCK_CLASS.upUrlOrCopyBlock} ${INPUT_BLOCK_CLASS.listBoxBlock}"><div class="sotable-btn-valname-box"><button class="btn btn-danger -field ${EDIT_COMPONENT_CHILD_CLASS.editField}">edit</button><label for="select">${valName}</label></div><select id="select" class="sotable-input">${optionTags}</select></div>`);
 	}
 
 	function createDescriptionSection(
@@ -817,7 +827,8 @@
 		const firstSettings = `/// SETTING_SECTION_START
 		|editExecute="ALWAYS"
 		|terminalOutputMode="NORMAL"
-		|terminalSizeType="LONG"`.split('\n')
+		|terminalSizeType="LONG"
+		|onUrlHistoryRegister="OFF"`.split('\n')
 		.map(function(line){
 			return line.trim().replace(/^\|/, '');
 		}).join("\n");
@@ -889,7 +900,7 @@
 			|		\`${targetAppListDirPath}/${variable}List\`,
 			|			${variable}
 			|		);
-			|		UrlLauncher(${variable});
+			|		urlLaunchOrClip(${variable});
 			|		break;\n`.split('\n')
 			.map(function(line){
 				return line.trim().replace(/^\|/, '');
@@ -1201,7 +1212,6 @@
 		listBlock,
 		sotableBtnValnameBox,
 	){
-		// .url-launch
 		var dialog = $(".dialog");
 	    let dialogForm = dialog.children('.dialogForm')
 	    dialogForm.empty();
@@ -1214,7 +1224,7 @@
 	    formBody.append('<div id="check_box_inputs"></div>')
 	    let checkBoxInputs = formBody.children('#check_box_inputs');
 	    let selectTag = listBlock.children('select');
-	    const enableUlrElcb = listBlock.attr("class").includes(INPUT_BLOCK_CLASS.urlLaunchBlock);
+	    const enableUlrElcb = listBlock.attr("class").includes(INPUT_BLOCK_CLASS.upUrlOrCopyBlock);
 		addOpToDialog(
 	  		checkBoxInputs,
 	  		selectTag,
@@ -1254,7 +1264,7 @@
 		let options = selectTag.children();
 		var roopTimes = 0;
 		var addClass = "cb-dialog-item";
-		if(enableUlrElcb) addClass += ` ${INPUT_BLOCK_CLASS.urlLaunchBlock}`;
+		if(enableUlrElcb) addClass += ` ${INPUT_BLOCK_CLASS.upUrlOrCopyBlock}`;
 		options.each(function() {
 	    	const v = $(this).val();
 	    	const t = $(this).text();
