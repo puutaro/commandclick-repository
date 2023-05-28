@@ -93,6 +93,7 @@ setVariableType="Pitch:NUM=!1..100!1"
 setVariableType="onEnglish:CB=OFF!ON"
 setVariableType="onTrack:CB=ON!OFF"
 setVariableType="gmailToFile:ELCBB=${LIST_PATH}=${cmdTtsPlayerGmailListFilePath}!${LIMIT_NUM}=10|${BTN_CMD}=jsf '${0}' gmailToFile"
+setVariableType="STOP:BTN=${BTN_CMD}=jsf '${0}' STOP"
 /// SETTING_SECTION_END
 
 
@@ -108,6 +109,7 @@ Speed="50"
 Pitch="50"
 onEnglish="OFF"
 onTrack="ON"
+STOP=""
 /// CMD_VARIABLE_SECTION_END
 
 
@@ -131,7 +133,7 @@ if(
 if(
    onTrack == "OFF"
 ) onTrack="";
-const FANNEL_SCRIPT_PATH = "${01}/${02}";
+const FANNEL_SCRIPT_PATH = "${0}";
 const ttsPlayerDirPath = "${ttsPlayerDirPath}";
 jsFileSystem.createDir(ttsPlayerDirPath);
 const cmdTtsPlayerEditDirPath = "${cmdTtsPlayerEditDirPath}";
@@ -151,6 +153,7 @@ const REVERSE_MODE = "reverse";
 const NUMBER_MODE = "number";
 const GMAIL_TO_FILE_MODE = "gmailToFile";
 const EDIT_PLAY_LIST_MODE = "EDIT_PLAY_LIST";
+const STOP_MODE= "STOP";
 const MANAGE_TXT_MODE = "manageText";
 const onRoop = "onRoop";
 const TXT_EXTEND = ".txt";
@@ -166,7 +169,6 @@ function switchByArgs(){
 		playListName,
 	);
 	switch(FIRST_ARGS){
-		// alert(FIRST_ARGS + "--");
 		case "":
 			jsIntent.launchEditSite(
 				EDIT_FILE_PATH,
@@ -190,6 +192,10 @@ function switchByArgs(){
 				"number",
 				numberPlay
 			);
+			break;
+		case STOP_MODE:
+			jsTextToSpeech.stopService();
+			jsTextToSpeech.stop();
 			break;
 		case GMAIL_TO_FILE_MODE:
 			execGmailToFile();
@@ -301,21 +307,6 @@ function execManageText(){
 			break;
 
 	};
-	jsEdit.updateByVariable(
-		FANNEL_SCRIPT_PATH,
-        "manageText",
-		"",
-	);
-	const removePath = `${cmdTtsPlayerSaveDirPath}/${manageText}`;
-	jsFileSystem.removeFile(
-		`${cmdTtsPlayerSaveDirPath}/${manageText}`
-	);
-	jsEdit.removeFromEditHtml(
-		EDIT_FILE_PATH,
-		removePath,
-	);
-	jsTextToSpeech.stop();
-	jsToast.short("delete ok");
 };
 
 function execAdd(){
@@ -345,8 +336,13 @@ function execRemove(){
 	jsFileSystem.removeFile(
 		targetTextPath
 	);
+	jsEdit.removeFromEditHtml(
+		EDIT_FILE_PATH,
+		targetTextPath,
+	);
+	jsTextToSpeech.stopService();
 	jsToast.short("delete ok");
-}
+};
 
 function execGmailToFile(){
 	updateByVariableWhenDiff(
