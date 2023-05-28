@@ -84,16 +84,13 @@ setVariableType="playListName:EFCB=${FCB_DIR_PATH}=${cmdTtsPlayerEditDirPath}!${
 setVariableType="playMode:CB=ordinaly!shuffle!reverse"
 setVariableType="PLAY:BTN=${BTN_CMD}=::TermOut::jsf '${0}'"
 setVariableType="numberPlay:NUMB=!1..1000!1|${BTN_CMD}=::TermOut::jsf '${0}' number!${BTN_LABEL}=Play"
-setVariableType="startNum:NUMB=!0..10000!1|${BTN_CMD}=jsf '${0}' initStartNum!${BTN_LABEL}=to0"
-setVariableType="endNum:NUMB=!0..10000!1|${BTN_CMD}=jsf '${0}' initEndNum!${BTN_LABEL}=to0"
+setVariableType="STOP:BTN=${BTN_CMD}=jsf '${0}' STOP"
 setVariableType="EDIT_PLAY_LIST:BTN=${BTN_CMD}=jsf '${0}' EDIT_PLAY_LIST"
-setVariableType="onResumePlay:CB=ON!OFF"
 setVariableType="Speed:NUM=!1..100!1"
 setVariableType="Pitch:NUM=!1..100!1"
 setVariableType="onEnglish:CB=OFF!ON"
 setVariableType="onTrack:CB=ON!OFF"
 setVariableType="gmailToFile:ELCBB=${LIST_PATH}=${cmdTtsPlayerGmailListFilePath}!${LIMIT_NUM}=10|${BTN_CMD}=jsf '${0}' gmailToFile"
-setVariableType="STOP:BTN=${BTN_CMD}=jsf '${0}' STOP"
 /// SETTING_SECTION_END
 
 
@@ -102,6 +99,7 @@ playListName="ttsPlayList.tsv"
 playMode="ordinaly"
 PLAY="ttsPlay"
 numberPlay="1"
+STOP=""
 EDIT_PLAY_LIST=""
 gmailToFile=""
 manageText=""
@@ -109,7 +107,6 @@ Speed="50"
 Pitch="50"
 onEnglish="OFF"
 onTrack="ON"
-STOP=""
 /// CMD_VARIABLE_SECTION_END
 
 
