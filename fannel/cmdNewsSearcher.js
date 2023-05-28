@@ -9,6 +9,10 @@
 // 		-> remove web search prefix from list
 //	* REMOVE_SEARCH_TEXT
 // 		-> remove search text from list
+//  * Long press play button
+//   	-> apear page search bar
+//  * Long press edit button
+//   	-> apear web search bar
 // --
 // --
 // bellow setting variable main line up
