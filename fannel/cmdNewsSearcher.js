@@ -35,7 +35,7 @@
 /// SETTING_SECTION_START
 editExecute="ALWAYS"
 terminalSizeType="LONG"
-onUrlHistoryRegister="OFF"
+onUrlHistoryRegister="ON"
 onAdBlock="INHERIT"
 historySwitch="ON"
 terminalFontZoom="130"
