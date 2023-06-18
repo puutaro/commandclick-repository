@@ -78,7 +78,7 @@ function switchByArgs(){
 				EDIT_FILE_PATH,
 				APP_URL_HISTORY_PATH,
 				"true",
-				"false",
+				"true",
 				"true",
 				"urlString.startsWith('http');"
 			);
