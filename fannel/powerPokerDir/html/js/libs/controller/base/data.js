@@ -59,6 +59,8 @@ function makeData() {
             switchViewChangeType.hand,
         ],
         currentFaze: currentFazeType.hand,
+        aceTimes: 0,
+        currentAceTimes: 0,
         enemyShineTotal: 0,
         playerShineTotal: 0,
         enemyScore: 0,

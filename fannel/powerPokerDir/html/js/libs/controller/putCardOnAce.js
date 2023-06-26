@@ -11,24 +11,12 @@ function updateCardsDataHandlerOnAce(
   powerPoker.enablePut = powerPoker.enemyDisplayShrine.filter(
     function(el){
       return el.includes(putNumber)
-  }).length > 1
-  switch(true){
-    case noDuplicationPutList.includes(putNumber):
-      execPutOnAce(
-        toHandStr(putHandStr),
-        powerPoker
-      );
-      powerPoker.onPutConfirmDialog = confirmDialogType.acePutFix
-      powerPoker.enablePut = false;
-      break;
-    case true:
-      execPutOnAce(
-      	toHandStr(putHandStr),
-        powerPoker
-      );
-      powerPoker.onPutConfirmDialog = confirmDialogType.acePutFix
-      break;
-  }
+  }).length > 1;
+  execPutOnAce(
+    toHandStr(putHandStr),
+    powerPoker
+  );
+  powerPoker.onPutConfirmDialog = confirmDialogType.acePutFix
 };
 
 function execPutOnAce(
@@ -57,17 +45,44 @@ function execPutOnAce(
 function execAceFixPut(
   powerPoker
 ){
+  let currentArray = powerPoker.playerDisplayField
+  let previousArray = cardsTmpDataMap.get(
+        cardsDataMapOrderKey.playerField
+      )
+  let diffplayerField = diffArray(
+    previousArray,
+    currentArray
+  )
+  const aceCardList = diffplayerField.filter(
+    function(el){
+      return el.includes("A");
+    });
+  const aceCardListLength = aceCardList.length
+  powerPoker.currentAceTimes = aceCardListLength - 1
+  // alert(`${powerPoker.currentAceTimes} / ${aceCardListLength}\n${aceCardList.join("-")}`)
+  const tempPlayerField = powerPoker.playerDisplayField.filter(function(el){
+      return !el.includes(aceCardList[0])
+    })
+  powerPoker.playerDisplayField = currentArray.filter(
+    function(el){
+    return !aceCardList.includes(el)
+  })
+
+  const onAceContinue = aceCardList.length > 1
   powerPoker.enablePut = true
   powerPoker.spotCardNum = "";
-
-  updateTmpCardsByDisplayCards(
-    powerPoker
+  updateCardTmpDataPartByList(
+    cardsDataMapOrderKey.playerField,
+    tempPlayerField
   )
-  powerPoker.enemyDisplayShrine = []
-  alert("aa" + powerPoker.enemyDisplayShrine.join("--"))
-  updateCardsBackupDataMapByTmpMap()
-  powerPoker.displayHandMode = displayHandModeType.normal
-  powerPoker.onPutConfirmDialog = confirmDialogType.menu
+  updateCardTmpDataPartByList(
+    cardsDataMapOrderKey.enemyShrine,
+    powerPoker.enemyDisplayShrine,
+  )
+  updateCardTmpDataPartByList(
+    cardsDataMapOrderKey.enemyField,
+    powerPoker.enemyDisplayField,
+  )
   setTimeout(function() {
     powerPoker.playerEfect = "";
     powerPoker.enemyEfect = "";
@@ -77,8 +92,17 @@ function execAceFixPut(
     registerScore(
       powerPoker
     )
-    powerPoker.onPutConfirmDialog = confirmDialogType.menu
-    powerPoker.enableUserPlay = false
+    if(
+      !onAceContinue
+    ){
+        powerPoker.enemyDisplayShrine = []
+        updateDisplayCardsByTmpMap(powerPoker)
+        updateCardsBackupDataMapByTmpMap()
+        powerPoker.currentFaze = currentFazeType.hand;
+        powerPoker.displayHandMode = displayHandModeType.normal
+        powerPoker.onPutConfirmDialog = confirmDialogType.menu
+        powerPoker.enableUserPlay = false
+    }
   }, 100)
 }
 

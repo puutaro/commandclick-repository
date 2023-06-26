@@ -118,7 +118,7 @@ var cardsDataBackupMap = new Map(
     [cardsDataMapOrderKey.playerDust, []],
     [cardsDataMapOrderKey.enemyDust, []],
     [cardsDataMapOrderKey.playerShrine, []],
-    [cardsDataMapOrderKey.enemyShrine, ["♥\nA", "♥\n3", "♠\n3", "♥\n7","♥\n8", "♥\nQ"]],
+    [cardsDataMapOrderKey.enemyShrine, ["♥\nA", "♥\n4", "♠\n4", "♥\n7","♥\n8", "♥\nQ"]],
     [cardsDataMapOrderKey.dekiMountain, []],
   ]
 );
@@ -212,6 +212,16 @@ new Vue({
       index
     ){
       return execDisplayHandStyle(
+        currentPutNum,
+        index,
+        this
+      )
+    },
+    displayAceHandStyle: function(
+      currentPutNum,
+      index
+    ){
+      return execDisplayAceHandStyle(
         currentPutNum,
         index,
         this

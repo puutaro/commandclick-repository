@@ -8,6 +8,16 @@ function toNumber(cardStr){
 	  .replace(/\n$/, "")
 }
 
+function toNumberInScore(cardStr){
+	return cardStr
+	.replace(/\n$/, "")
+	.replace(/.*\n/, "")
+	.replaceAll(/ /g, "")
+    .replace(/\t/g, "")
+    .replace(/\n$/, "")
+}
+
+
 function toMark(cardStr){
 	return cardStr.replace(/\n.*$/, "")
 		.replaceAll(/ /g, "")
@@ -347,6 +357,13 @@ function updateDisplayCardPartByTmpMap(
 	      )
 	    )
 			break;
+		case cardsDataMapOrderKey.enemyShrine:
+			powerPoker.enemyDisplayShrine = deepCopyArray(
+	      cardsTmpDataMap.get(
+	      	cardsDataMapOrderKey.enemyShrine
+	      )
+	    )
+			break;
 	}
 }
 
@@ -358,6 +375,48 @@ function countNum(
 		function(num){
 			return num == targetNum
 		}).length	
+}
+
+function directTwoNumCount(
+	cardList
+){
+	let otherNumList = makeNumList(
+		cardList
+	)
+	return countNum(
+		otherNumList,
+		2
+	)
+}
+
+function makeNumList(
+	cardList
+){
+	return cardList.map(
+		function(el){
+			const numEntry = toNumberInScore(el);
+			var num = Number(numEntry)
+			if(num) return num
+			num = strNumberMap.get(numEntry)
+			if(num) return num
+			return 0
+		}).sort(
+		function (a, b) {
+		    return a - b
+		})
+}
+
+function twoBarrierJudge(
+	targetCardList,
+	otherCardList,
+){
+	const targetTwoBarrier = directTwoNumCount(
+    targetCardList
+  )
+  const otherTwoBarrier = directTwoNumCount(
+    otherCardList
+  )
+  return targetTwoBarrier >= otherTwoBarrier; 
 }
 
 function deleteEfect(

@@ -101,7 +101,7 @@
 	       		<td
 				  		class="card" 
 				  		@click="putOnAce($event)" 
-				  		v-bind:style="displayHandStyle(currentPutNum, index)"
+				  		v-bind:style="displayAceHandStyle(currentPutNum, index)"
 				  		>{{ currentPutNum }}
 				  	</td>
 	    		</template>
@@ -133,7 +133,7 @@
 			  	</div>
 		  	</div>
 			  <div id="putConfirmDialog" v-else-if="onPutConfirmDialog == 'acePutFix'">
-			  	<div id="putConfirmDialogMessage">Fix put card, ok? for ace</div>
+			  	<div id="putConfirmDialogMessage" v-bind="aceTimes">({{ currentAceTimes }}/{{ aceTimes }}) Fix put card, ok? for ace</div>
 			  	<div id="putConfirmDialogButtonBox" class="putConfirmDialogButtonBox">
 				  	<button 
 					  	class="confirmButtton" 

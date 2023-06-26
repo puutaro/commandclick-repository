@@ -13,21 +13,10 @@ function updateCardsDataHandler(
     function(el){
       return el.includes(putNumber)
   }).length > 1
-  switch(true){
-    case noDuplicationPutList.includes(putNumber):
-      normalPut(
-        toHandStr(putHandStr),
-        powerPoker
-      );
-      powerPoker.enablePut = false;
-      break;
-    case true:
-      normalPut(
-      	toHandStr(putHandStr),
-        powerPoker
-      );
-      break;
-  }
+  normalPut(
+    toHandStr(putHandStr),
+    powerPoker
+  );
 };
 
 
@@ -76,22 +65,29 @@ function execFixOrOtherHandler(
     previousArray,
     currentArray
   )
-  const enableAceInclude = diffplayerField.some(
+  const aceCardList = diffplayerField.filter(
     function(el){
       return el.includes("A");
     });
+  const aceCardListLength = aceCardList.length
+  const onTwoBarrier = twoBarrierJudge(
+    powerPoker.playerDisplayField,
+    powerPoker.enemyDisplayField,
+  )
+  const onAceTrigger = aceCardListLength > 0 && onTwoBarrier;
   switch(true){
-    case enableAceInclude:
+    case onAceTrigger:
+      powerPoker.aceTimes = aceCardListLength
+      powerPoker.currentAceTimes = aceCardListLength
       powerPoker.currentFaze = currentFazeType.pullEnemyShrine
       powerPoker.spotCardNum = ""
       powerPoker.enemyDisplayShrine = cardsTmpDataMap.get(
         cardsDataMapOrderKey.enemyShrine
       )
-      alert(powerPoker.enemyDisplayShrine.join("--"))
-      // updateCardTmpDataPartByList(
-      //   cardsDataMapOrderKey.playerField,
-      //   powerPoker.playerDisplayField
-      // )
+      updateCardTmpDataPartByList(
+        cardsDataMapOrderKey.playerHand,
+        powerPoker.playerDisplayHand
+      )
       powerPoker.enablePut = true
       powerPoker.displayHandMode = displayHandModeType.ace
       powerPoker.onPutConfirmDialog = confirmDialogType.acePutFix

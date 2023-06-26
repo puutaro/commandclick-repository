@@ -33,7 +33,7 @@ function execPlayerCountScore(
 		numList,
 		2
 	)
-	let enemyTwoSheets = otherTwoNumCount(
+	let enemyTwoSheets = directTwoNumCount(
 		otherCardList
 	)
 	if(
@@ -135,7 +135,7 @@ function execEnemyCountScore(
 		numList,
 		2
 	)
-	let playerTwoSheets = otherTwoNumCount(
+	let playerTwoSheets = directTwoNumCount(
 		otherCardList
 	)
 	if(
@@ -224,15 +224,6 @@ function execEnemyCountScore(
 }
 
 
-function toNumberInScore(cardStr){
-	return cardStr
-	.replace(/\n$/, "")
-	.replace(/.*\n/, "")
-	.replaceAll(/ /g, "")
-    .replace(/\t/g, "")
-    .replace(/\n$/, "")
-}
-
 function makeFactNumList(
 	cardList
 ){
@@ -270,36 +261,6 @@ function makeSimpleTotal(
 		  return sum + element;
 	}, 0);
 }
-
-function makeNumList(
-	cardList
-){
-	return cardList.map(
-		function(el){
-			const numEntry = toNumberInScore(el);
-			var num = Number(numEntry)
-			if(num) return num
-			num = strNumberMap.get(numEntry)
-			if(num) return num
-			return 0
-		}).sort(
-		function (a, b) {
-		    return a - b
-		})
-}
-
-function otherTwoNumCount(
-	otherCardList
-){
-	let otherNumList = makeNumList(
-		otherCardList
-	)
-	return countNum(
-		otherNumList,
-		2
-	)
-}
-
 
 function makeMarkListEntry(
 	cardList

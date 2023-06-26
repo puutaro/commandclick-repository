@@ -16,12 +16,18 @@ function registerTotal(
   		powerPoker,
   		cardsTmpDataMap.get(
 	        cardsDataMapOrderKey.enemyField
+	    ),
+	    cardsTmpDataMap.get(
+	        cardsDataMapOrderKey.playerField
 	    )
   	);
   	powerPoker.playerTotal = execCountTotalForPlayerField(
   		powerPoker,
   		cardsTmpDataMap.get(
 	        cardsDataMapOrderKey.playerField
+	    ),
+	    cardsTmpDataMap.get(
+	        cardsDataMapOrderKey.enemyField
 	    )
   	);
   	powerPoker.bothTotal = powerPoker.enemyTotal + powerPoker.playerTotal;
@@ -30,7 +36,8 @@ function registerTotal(
 
 function execCountTotalForEnemyField(
 	powerPoker,
-	cardList
+	cardList,
+	otherCardList
 ){
 	const simpleSheetsTotal = simpleSheetsCount(
 		cardList
@@ -38,13 +45,19 @@ function execCountTotalForEnemyField(
 	const fourPiece = count4Efect(
 		cardList
 	)
-	if(fourPiece > 0){
+	const onTwoBarrier = twoBarrierJudge(
+	    cardList,
+	    otherCardList,  
+	)
+	const onFour = fourPiece > 0 && onTwoBarrier
+	if(onFour){
 		powerPoker.enemyEfect += `${efectType.four}x${fourPiece}\t`
 	} else {
 		powerPoker.enemyEfect = deleteEfect(
 			powerPoker.enemyEfect,
 			new RegExp(`${efectRegexType}x[0-9]\t`)
 		)
+		return simpleSheetsTotal;
 	}
 
 	const fourTotal = fourPiece * 3
