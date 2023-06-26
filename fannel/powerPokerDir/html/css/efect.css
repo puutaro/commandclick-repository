@@ -1,0 +1,96 @@
+
+#eachTotalBox,
+#shrineBox,
+#totalBox,
+#turnBox {
+	display: flex;
+	width: 46vw;
+	text-align: center;
+}
+
+#eachScoreLabel,
+#shrineLabel {
+	width: 40%;
+	border: solid 1px #555555;
+}
+
+#bothTotalLabel {
+	width: 30%;
+	border: solid 1px #555555;
+}
+
+
+#bothTotalNum {
+	width: 30%;
+	background-color: #704612;
+	color: white;
+	border: solid 1px #555555;
+	border-left: none;
+	border-right: none;
+}
+
+#enemyScore,
+#enemyShineNum,
+#enemyTotal {
+	background-color: #03023b;
+	color: white;
+}
+
+#turnLabel {
+	width: 60%;
+	border: solid 1px #555555;
+}
+
+#turnNum {
+	width: 40%;
+	border: solid 1px #555555;
+	background-color: #704612;
+	color: white;
+	border-left: none;
+}
+
+#playerScore,
+#playerShineNum,
+#playerTotal {
+	background-color: #3bad7e;
+	color: white;
+}
+
+
+.enemyEfect {
+	display: inline-block;
+	color: white;
+	background-color: #03023b;
+	padding: 1px 10px;
+	border-radius: 10px 10px 10px 10px;
+}
+
+.playerEfect {
+	display: inline-block;
+	color: white;
+	background-color: #3bad7e;
+	padding: 1px 10px;
+	border-radius: 10px 10px 10px 10px;
+}
+
+#enemyShineNum,
+#enemyTotal {
+	display: inline-block;
+	color: white;
+	background-color: #03023b;
+	padding: 1px 10px;
+}
+
+
+#playerShineNum,
+#playerTotal {
+	display: inline-block;
+	color: white;
+	background-color: #3bad7e;
+	padding: 1px 10px;
+}
+
+#enemyShineNum,
+#playerShineNum {
+	font-weight: bold;
+}

@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.6.14"></script>
+    <title>vue.js cdn test</title>
+  </head>
+  <link href="./css/powerPoker.css" rel="stylesheet" type="text/css" media="all">
+  <link href="./css/switchView.css" rel="stylesheet" type="text/css" media="all">
+  <link href="./css/efect.css" rel="stylesheet" type="text/css" media="all">
+  <body>
+  	<div id="power_poker">
+  		<table id="currentResult" class="currentResult">
+  			<tr id="" class="">
+  				<td>
+  					<div id="eachTotalBox">
+  						<span id="eachScoreLabel">Sco</span>
+		  				<span id="playerScore" v-bind="playerScore" v-bind:style="playerScoreStyle()">
+		  				{{ playerScore }}</span>
+		  				<span id="enemyScore" v-bind="enemyScore" v-bind:style="enemyScoreStyle()">
+	  					{{ enemyScore }}</span>
+		  			</div>
+	  			</td>
+	  			<td>
+	  				<div id="shrineBox">
+	  					<span id="shrineLabel">Shr</span>
+		  				<span id="playerShineNum" v-bind="playerShineTotal" v-bind:style="playerShineStyle()">{{ playerShineTotal }}</span>
+		  				<span id="enemyShineNum" v-bind="enemyShineTotal" v-bind:style="enemyShineStyle()">{{ enemyShineTotal }}</span>
+		  			</div>
+	  			</td>
+  			</tr>
+  			<tr id="" class="">
+  				<td>
+  					<div id="totalBox">
+	  					<span id="bothTotalLabel">
+	  						Le
+	  					</span>
+	  					<span id="bothTotalNum"  v-bind="bothTotal">
+	  					{{ bothTotal }}
+	  					</span>
+	  					<div id="playerTotal" 
+		  					v-bind="playerTotal"
+		  					v-bind:style="playerTotalStyle()"
+		  					>
+		  					{{ playerTotal }}
+		  				</div>
+		  				<div id="enemyTotal" 
+		  					v-bind="enemyTotal"
+		  					v-bind:style="enemyTotalStyle()"
+		  					>
+		  					{{ enemyTotal }}
+		  				</div>
+	  				</div>
+  				</td>
+  				</td>
+  				<td>
+  					<div id="turnBox">
+		  				<span id="turnLabel">Tun</span>
+		  				<span id="turnNum" v-bind="turn">{{ turn }}</span>
+		  			</div>
+	  			</td>
+  			</tr>
+  			</table>
+  			<table id="efectTable" class="efectTable">
+	  			<tr>
+	  				<td>
+	  					<span id="efect" v-html="efect"></span>
+	  				</td>
+	  			</tr>
+	  		</table>
+  		<div 
+	  		id="currentFazeLabel" 
+	  		class="currentFazeLabel" 
+	  		v-bind:style="currentFazeStyle()"
+	  		v-bind="currentFaze">
+  			<span>{{ currentFaze }}</span>
+  		</div>
+		  <table id="enemy_display_field">
+		  	<tr>
+			  	<td
+			  		class="card"
+			  		v-for="(card, index) in enemyDisplayField"
+			  		v-bind:style="enemyDisplayFieldStyle(card, index)"
+			  		>{{ card }}
+			  	</td>
+			  </tr>
+		  </table>
+		  <table id="player_display_field">
+		  	<tr>
+			  	<td
+			  		class="card" 
+			  		v-for="(card, index) in playerDisplayField"
+			  		v-bind:style="playerDisplayFieldStyle(card, index)"
+			  		>{{ card }}
+			  	</td>
+			  </tr>
+		  </table>
+		  <table id="player_display_hand">
+		  	<tr v-if="displayHandMode == 'ace'">
+			  	<template v-for="(currentPutNum,index) in enemyDisplayShrine">
+	       		<td
+				  		class="card" 
+				  		@click="putOnAce($event)" 
+				  		v-bind:style="displayHandStyle(currentPutNum, index)"
+				  		>{{ currentPutNum }}
+				  	</td>
+	    		</template>
+    		</tr>
+    		<tr v-else>
+			  	<template v-for="(currentPutNum,index) in playerDisplayHand">
+	       		<td
+				  		class="card" 
+				  		@click="put($event)" 
+				  		v-bind:style="displayHandStyle(currentPutNum, index)"
+				  		>{{ currentPutNum }}
+				  	</td>
+	    		</template>
+    		</tr>
+		  </table>
+		  <div id="buttomButtonSeries" class="buttomButtonSeries">
+		  	<div id="putConfirmDialog" v-if="onPutConfirmDialog == 'putFix'">
+			  	<div id="putConfirmDialogMessage">Fix put card, ok?</div>
+			  	<div id="putConfirmDialogButtonBox" class="putConfirmDialogButtonBox">
+				  	<button 
+					  	class="confirmButtton" 
+					  	@click="fixOrOtherHandler($event)"
+					  	>OK</button>
+				  	<button 
+					  	class="confirmButtton" 
+					  	@click="noFixPut($event)"
+					  	>NO
+					  </button>
+			  	</div>
+		  	</div>
+			  <div id="putConfirmDialog" v-else-if="onPutConfirmDialog == 'acePutFix'">
+			  	<div id="putConfirmDialogMessage">Fix put card, ok? for ace</div>
+			  	<div id="putConfirmDialogButtonBox" class="putConfirmDialogButtonBox">
+				  	<button 
+					  	class="confirmButtton" 
+					  	@click="aceFixPut($event)"
+					  	>OK</button>
+				  	<button 
+					  	class="confirmButtton" 
+					  	@click="noAceFixPut($event)"
+					  	>NO
+					  </button>
+			  	</div>
+		  	</div>
+		  	<div 
+		  		id="menuButtonBox" 
+		  		class="menuButtonBox"
+		  		v-else
+		  	>
+	   			<button 
+	   				id="viewSwitchButton"
+			  		class="menuButton"
+			  		@click="switchButtonEvent($event)" 
+			  		>switch</button>
+			  	<button 
+			  		id="settingButton" 
+			  		class="menuButton" 
+			  		@click="openSetting($event)" 
+			  		>setting</button>
+			  </div>
+			</div>
+		  <nav id="switchViewNav" class="">
+				<template v-for="(view,index) in switchViews">
+     			<button 
+			  		class="btn-primary" 
+			  		@click="switchView($event)" 
+			  		>{{ view }}
+			  	</button>
+    		</template>
+		 	</nav>
+			<div 
+				id="overlay" 
+				class="overlay"
+				@click="closeOverlay()"
+				>
+			</div>
+		</div>
+  </body>
+  <script src="./js/libs/controller/base/jsBase.js"></script>
+  <script src="./js/libs/controller/base/data.js"></script>
+  <script src="./js/libs/controller/base/gameBase.js"></script>
+  <script src="./js/libs/controller/system/countTotalSheets.js"></script>
+  <script src="./js/libs/controller/system/countScore.js"></script>
+  <script src="./js/libs/controller/system/pullFromDeki.js"></script>
+  <script src="./js/libs/controller/system/efect.js"></script>
+  <script src="./js/libs/controller/style/style.js"></script>
+  <script src="./js/libs/controller/style/guageStyle.js"></script>
+  <script src="./js/libs/controller/init/init.js"></script>
+  <script src="./js/libs/controller/com/comPutCard.js"></script>
+  <script src="./js/libs/controller/switchView.js"></script>
+  <script src="./js/libs/controller/putCard.js"></script>
+  <script src="./js/libs/controller/putCardOnAce.js"></script>
+  <script src="./js/controller.js"></script>
+</html>

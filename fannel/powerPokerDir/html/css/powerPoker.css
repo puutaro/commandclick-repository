@@ -1,0 +1,109 @@
+
+
+#enemy_display_field,
+#player_display_field,
+#player_display {
+	display: block;
+	overflow-x: auto;
+    white-space: nowrap;
+	flex-wrap: nowrap;
+}
+
+.card {
+	display: inline-block;
+	width : 40px;
+	height : 65px;
+	background-color : white;
+	white-space: pre;
+}
+
+#enemy_display_field .card {
+	border: 1px solid #ccc;
+	border-left: none;
+}
+
+#enemy_display_field .card:nth-child(1) {
+	border: 1px solid #e3e3e3;
+}
+
+#player_display_field .card {
+	border: 1px solid #7ff59d;
+	border-left: none;
+}
+
+#player_display_field .card:nth-child(1) {
+	border: 1px solid #7ff59d;
+}
+
+#player_display .card:hover {
+	border: 2px solid #7ff59d;	
+}
+
+#player_display .card:active {
+	background: #DCFCD0;
+}
+
+#putConfirmDialog {
+	margin-bottom: 0;
+	padding-bottom: 0;
+	margin-left: 0;
+	width: 100%;
+	margin-left: auto;
+	margin-right: auto;
+	background-color: #f7faf9;
+}
+
+#putConfirmDialogMessage {
+	padding: 5px;
+	padding-left: 5px; 
+}
+
+.putConfirmDialogButtonBox {
+	display: flex;
+	width: 100%;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+.confirmButtton {
+	display: block;
+	width: 80%;
+	margin: 10px;
+	padding: 10px;
+	background-color: #cef0f5;
+	border: none;
+	user-select: none;
+}
+
+.buttomButtonSeries {
+	position: fixed;
+	width: 95%;
+	bottom: 0;
+	background-color: white;
+}
+
+.menuButtonBox {
+	display: flex;
+}
+
+.menuButton {
+	display: block;
+	width: 80%;
+	margin: 10px;
+	padding: 10px;
+	background-color: #cef0f5;
+	border: none;
+	user-select: none;
+}
+
+.efectTable {
+	display: block;
+    overflow-x: auto;
+    white-space: nowrap;
+}
+
+#currentFazeLabel {
+	border: solid 1px #555555;
+	text-align: center;	
+}
+
