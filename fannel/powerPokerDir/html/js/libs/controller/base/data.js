@@ -18,6 +18,10 @@ function makeData() {
           )
         ),
         enemyDisplayShrine: [],
+        enemyDisplayDust: [],
+        playerDisplayDust: [],
+        enemyDisplayShrine: [],
+        playerDisplayShrine: [],
         // playerField: cardSort(
         //   cardsDataBackupMap.get(
         //     cardsDataMapOrderKey.playerField
@@ -74,7 +78,6 @@ function makeData() {
         efect: "",
         displayHandMode: displayHandModeType.normal,
         onPutConfirmDialog: confirmDialogType.menu,
-        enablePut: true,
         spotCardNum: "",
         enableUserPlay: true,
 	}

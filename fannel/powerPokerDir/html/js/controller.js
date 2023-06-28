@@ -115,8 +115,8 @@ var cardsDataBackupMap = new Map(
     [cardsDataMapOrderKey.enemyField, []],
     [cardsDataMapOrderKey.playerHand, []],
     [cardsDataMapOrderKey.enemyHand, []],
-    [cardsDataMapOrderKey.playerDust, []],
-    [cardsDataMapOrderKey.enemyDust, []],
+    [cardsDataMapOrderKey.playerDust, ["♥\nA", "♥\n4", "♠\n4", "♥\n7","♥\n8", "♥\nQ"]],
+    [cardsDataMapOrderKey.enemyDust, ["♥\nA", "♥\n4", "♠\n4", "♥\n7","♥\n8", "♥\nQ"]],
     [cardsDataMapOrderKey.playerShrine, []],
     [cardsDataMapOrderKey.enemyShrine, ["♥\nA", "♥\n4", "♠\n4", "♥\n7","♥\n8", "♥\nQ"]],
     [cardsDataMapOrderKey.dekiMountain, []],
@@ -157,6 +157,46 @@ new Vue({
       )
     },
     playerDisplayFieldStyle: function(
+      card,
+      index
+    ){
+      return execDisplayFieldStyle(
+        card,
+        index,
+        this
+      )
+    },
+    playerDisplayDustStyle: function(
+      card,
+      index
+    ){
+      return execDisplayFieldStyle(
+        card,
+        index,
+        this
+      )
+    },
+    enemyDisplayDustStyle: function(
+      card,
+      index
+    ){
+      return execDisplayFieldStyle(
+        card,
+        index,
+        this
+      )
+    },
+    playerDisplayShrineStyle: function(
+      card,
+      index
+    ){
+      return execDisplayFieldStyle(
+        card,
+        index,
+        this
+      )
+    },
+    enemyDisplayShrineStyle: function(
       card,
       index
     ){

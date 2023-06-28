@@ -22,7 +22,6 @@ function execDisplayHandStyle(
       currentPutNum
     );
     const spotCardNum = powerPoker.spotCardNum;
-    const currentFaze = powerPoker.currentFaze;
     const pullEnemyShrine = currentFazeType.pullEnemyShrine;
     var borderColor = decideHandBorderColor(
       powerPoker
@@ -33,13 +32,22 @@ function execDisplayHandStyle(
       )
     if(
       !spotCardNum
-    ) return {
-        'background-color': 'white',
-        'color': cssColor,
-        'border-top': `1px solid ${borderColor}`,
-        'border-bottom': `1px solid ${borderColor}`,
-        'border-right': `1px solid ${borderColor}`,
-        'border-left': borderLeftStyle,
+    ) {
+      const pointerEvent = decidePointerEvent(
+        powerPoker.currentFaze
+      )
+      const backGraondGrayoutColor = grayoutJudge(
+        powerPoker.currentFaze
+      )
+      return {
+            'background-color': backGraondGrayoutColor,
+            'color': cssColor,
+            'pointer-events': pointerEvent,
+            'border-top': `1px solid ${borderColor}`,
+            'border-bottom': `1px solid ${borderColor}`,
+            'border-right': `1px solid ${borderColor}`,
+            'border-left': borderLeftStyle,
+        }
     }
     if(
       noDuplicationPutList.includes(spotCardNum)
@@ -84,7 +92,6 @@ function execDisplayAceHandStyle(
       currentPutNum
     );
     const spotCardNum = powerPoker.spotCardNum;
-    const currentFaze = powerPoker.currentFaze;
     const pullEnemyShrine = currentFazeType.pullEnemyShrine;
     var borderColor = decideHandBorderColor(
       powerPoker
@@ -114,17 +121,6 @@ function execDisplayAceHandStyle(
         'border-right': `1px solid ${borderColor}`,
         'border-left': borderLeftStyle,
     }
-    // if(
-    //   noDuplicationPutList.includes(spotCardNum)
-    // ) return {
-    //   'background-color': '#cfd0d1',
-    //   'pointer-events': 'none',
-    //   'color': cssColor,
-    //   'border-top': `1px solid ${borderColor}`,
-    //   'border-bottom': `1px solid ${borderColor}`,
-    //   'border-right': `1px solid ${borderColor}`,
-    //   'border-left': borderLeftStyle,
-    // }
     if(
       currentPutNum.includes(spotCardNum)
     ){
@@ -188,4 +184,25 @@ function decideBorderLeftStyle(
     index == 0
   ) return `1px solid ${borderColor}`;
   return 'none'
+}
+
+
+function decidePointerEvent(
+  currentFaze
+){
+  if(
+    currentFaze == currentFazeType.dust 
+    || currentFaze == currentFazeType.shrine
+  ) return 'none';
+  return 'auto';
+}
+
+function grayoutJudge(
+  currentFaze
+){
+  if(
+    currentFaze == currentFazeType.dust 
+    || currentFaze == currentFazeType.shrine
+  ) return '#cfd0d1';
+  return 'white';
 }

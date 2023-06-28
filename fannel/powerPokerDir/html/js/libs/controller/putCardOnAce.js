@@ -3,15 +3,8 @@ function updateCardsDataHandlerOnAce(
   putHandStr,
   powerPoker
 ){
-  if(
-    !powerPoker.enablePut
-  ) return
   const putNumber = toNumber(putHandStr)
   powerPoker.spotCardNum = putNumber;
-  powerPoker.enablePut = powerPoker.enemyDisplayShrine.filter(
-    function(el){
-      return el.includes(putNumber)
-  }).length > 1;
   execPutOnAce(
     toHandStr(putHandStr),
     powerPoker
@@ -69,7 +62,6 @@ function execAceFixPut(
   })
 
   const onAceContinue = aceCardList.length > 1
-  powerPoker.enablePut = true
   powerPoker.spotCardNum = "";
   updateCardTmpDataPartByList(
     cardsDataMapOrderKey.playerField,
@@ -109,7 +101,6 @@ function execAceFixPut(
 function execNoFixPutOnAce(
   powerPoker
 ){
-  powerPoker.enablePut = true
   powerPoker.spotCardNum = "";
   updateCardsTmpDataMapByBuckupDataMap()
   updateDisplayCardsByTmpMap(
@@ -126,9 +117,5 @@ function execNoFixPutOnAce(
   registerScore(
     powerPoker
   )
-  removeClass(
-      SWITCH_PARTS_ID.menuButtonBox,
-      CLASS_FOR_SWITCH.noDisplay
-    );
   powerPoker.onPutConfirmDialog = confirmDialogType.menu
 }

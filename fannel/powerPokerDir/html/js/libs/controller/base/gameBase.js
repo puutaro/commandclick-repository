@@ -364,6 +364,20 @@ function updateDisplayCardPartByTmpMap(
 	      )
 	    )
 			break;
+		case cardsDataMapOrderKey.enemyDust:
+			powerPoker.enemyDisplayDust = deepCopyArray(
+	      cardsTmpDataMap.get(
+	      	cardsDataMapOrderKey.enemyDust
+	      )
+	    )
+			break;
+		case cardsDataMapOrderKey.playerDust:
+			powerPoker.playerDisplayDust = deepCopyArray(
+	      cardsTmpDataMap.get(
+	      	cardsDataMapOrderKey.playerDust
+	      )
+	    )
+			break;
 	}
 }
 

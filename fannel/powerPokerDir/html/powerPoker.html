@@ -75,8 +75,25 @@
 	  		v-bind="currentFaze">
   			<span>{{ currentFaze }}</span>
   		</div>
-		  <table id="enemy_display_field">
-		  	<tr>
+		  <table 
+		  	id="enemy_display_field">
+		  	<tr v-if="currentFaze == 'shrine'">
+			  	<td
+			  		class="card"
+			  		v-for="(card, index) in enemyDisplayShrine"
+			  		v-bind:style="enemyDisplayShrineStyle(card, index)"
+			  		>{{ card }}
+			  	</td>
+			  </tr>
+		  	<tr v-else-if="currentFaze == 'dust'">
+			  	<td
+			  		class="card"
+			  		v-for="(card, index) in enemyDisplayDust"
+			  		v-bind:style="enemyDisplayDustStyle(card, index)"
+			  		>{{ card }}
+			  	</td>
+			  </tr>
+		  	<tr v-else>
 			  	<td
 			  		class="card"
 			  		v-for="(card, index) in enemyDisplayField"
@@ -85,8 +102,26 @@
 			  	</td>
 			  </tr>
 		  </table>
-		  <table id="player_display_field">
-		  	<tr>
+		  <table 
+		  	id="player_display_field"
+		  	>
+		  	<tr v-if="currentFaze == 'shrine'"> 
+			  	<td
+			  		class="card" 
+			  		v-for="(card, index) in playerDisplayShrine"
+			  		v-bind:style="playerDisplayShrineStyle(card, index)"
+			  		>{{ card }}
+			  	</td>
+			  </tr>
+		  	<tr v-if="currentFaze == 'dust'">
+			  	<td
+			  		class="card" 
+			  		v-for="(card, index) in playerDisplayDust"
+			  		v-bind:style="playerDisplayDustStyle(card, index)"
+			  		>{{ card }}
+			  	</td>
+			  </tr>
+		  	<tr  v-else>
 			  	<td
 			  		class="card" 
 			  		v-for="(card, index) in playerDisplayField"

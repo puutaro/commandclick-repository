@@ -67,37 +67,38 @@ function execDustDiplay(
 	powerPoker
 ){
 	powerPoker.currentFaze = currentFazeType.dust
-	powerPoker.enemyDisplayField = cardSort(
-		powerPoker.enemyDust
-    );
-    powerPoker.playerDisplayField = cardSort(
-		powerPoker.playerDust
-    );
-    closeSwitchBar();
-	powerPoker.enablePut = false
+	updateDisplayCardPartByTmpMap(
+    	powerPoker,
+    	cardsDataMapOrderKey.playerDust
+    )
+    updateDisplayCardPartByTmpMap(
+    	powerPoker,
+    	cardsDataMapOrderKey.enemyDust
+    )
+	closeSwitchBar();
 }
 
 function execDiplayShrine(
 	powerPoker
 ){
 	powerPoker.currentFaze = currentFazeType.shrine
-	powerPoker.enemyDisplayField = cardSort(
-		powerPoker.enemyShrine
-    );
-    powerPoker.playerDisplayField = cardSort(
-		powerPoker.playerShrine
-    );
+	updateDisplayCardPartByTmpMap(
+    	powerPoker,
+    	cardsDataMapOrderKey.playerShrine
+    )
+    updateDisplayCardPartByTmpMap(
+    	powerPoker,
+    	cardsDataMapOrderKey.enemyShrine
+    )
     closeSwitchBar();
-	powerPoker.enablePut = false
 }
 
 function execDisplayBack(
 	powerPoker
 ){	
 	powerPoker.currentFaze = currentFazeType.hand
-	updateCardBackupDataByMap(
-    	powerPoker
-    )
+	updateDisplayCardsByTmpMap(
+		powerPoker
+	)
     closeSwitchBar();
-	powerPoker.enablePut = true
 }
