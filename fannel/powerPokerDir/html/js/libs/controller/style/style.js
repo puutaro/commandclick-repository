@@ -21,7 +21,9 @@ function execDisplayHandStyle(
     const cssColor = blackOrOtherColor(
       currentPutNum
     );
-    const spotCardNum = powerPoker.spotCardNum;
+    const spotCardNum = makeSpotCardNum(
+      powerPoker
+    );
     const pullEnemyShrine = currentFazeType.pullEnemyShrine;
     var borderColor = decideHandBorderColor(
       powerPoker
@@ -91,7 +93,9 @@ function execDisplayAceHandStyle(
     const cssColor = blackOrOtherColor(
       currentPutNum
     );
-    const spotCardNum = powerPoker.spotCardNum;
+    const spotCardNum = makeSpotCardNumForAce(
+      powerPoker
+    );
     const pullEnemyShrine = currentFazeType.pullEnemyShrine;
     var borderColor = decideHandBorderColor(
       powerPoker
@@ -205,4 +209,48 @@ function grayoutJudge(
     || currentFaze == currentFazeType.shrine
   ) return '#cfd0d1';
   return 'white';
+}
+
+
+function makeSpotCardNum(
+  powerPoker
+){
+  let currentArray = powerPoker.playerDisplayField
+  let previousArray = cardsTmpDataMap.get(
+        cardsDataMapOrderKey.playerField
+      )
+  let diffplayerField = diffArray(
+    previousArray,
+    currentArray
+  )
+  if(
+    diffplayerField.length >= 1
+  ) return toNumber(
+    diffplayerField.at(0)
+  )
+  return ""
+}
+
+function makeSpotCardNumForAce(
+  powerPoker
+){
+  let currentArray = powerPoker.playerDisplayField
+  let previousArray = cardsTmpDataMap.get(
+        cardsDataMapOrderKey.playerField
+      )
+  let diffplayerFieldNumList = diffArray(
+    previousArray,
+    currentArray
+  ).map(function(el){
+    return toNumber(el)
+  }).filter(function(elNum){
+    return elNum != "A"
+  })
+  const diffplayerFieldLength = diffplayerFieldNumList.length - 1
+  if(
+    diffplayerFieldLength >= 0
+  ) return diffplayerFieldNumList.at(
+    diffplayerFieldLength
+  )
+  return ""
 }

@@ -5,7 +5,6 @@ function updateCardsDataHandler(
   powerPoker
 ){
   const putNumber = toNumber(putHandStr)
-  powerPoker.spotCardNum = putNumber;
   normalPut(
     toHandStr(putHandStr),
     powerPoker
@@ -73,7 +72,6 @@ function execFixOrOtherHandler(
       powerPoker.aceTimes = aceCardListLength
       powerPoker.currentAceTimes = aceCardListLength
       powerPoker.currentFaze = currentFazeType.pullEnemyShrine
-      powerPoker.spotCardNum = ""
       powerPoker.enemyDisplayShrine = cardsTmpDataMap.get(
         cardsDataMapOrderKey.enemyShrine
       )
@@ -95,7 +93,6 @@ function execFixOrOtherHandler(
 function execFixPut(
   powerPoker
 ){
-  powerPoker.spotCardNum = "";
   updateCardTmpDataPartByList(
     cardsDataMapOrderKey.playerField,
     powerPoker.playerDisplayField
@@ -124,7 +121,6 @@ function execFixPut(
 function execNoFixPut(
   powerPoker
 ){
-  powerPoker.spotCardNum = "";
   updateCardsTmpDataMapByBuckupDataMap()
   updateDisplayCardsByTmpMap(
     powerPoker

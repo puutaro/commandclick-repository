@@ -43,7 +43,6 @@ function makeData() {
         efect: "",
         displayHandMode: displayHandModeType.normal,
         onPutConfirmDialog: confirmDialogType.menu,
-        spotCardNum: "",
         enableUserPlay: true,
 	}
 }

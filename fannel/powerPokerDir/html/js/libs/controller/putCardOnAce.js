@@ -4,7 +4,6 @@ function updateCardsDataHandlerOnAce(
   powerPoker
 ){
   const putNumber = toNumber(putHandStr)
-  powerPoker.spotCardNum = putNumber;
   execPutOnAce(
     toHandStr(putHandStr),
     powerPoker
@@ -52,7 +51,6 @@ function execAceFixPut(
     });
   const aceCardListLength = aceCardList.length
   powerPoker.currentAceTimes = aceCardListLength - 1
-  // alert(`${powerPoker.currentAceTimes} / ${aceCardListLength}\n${aceCardList.join("-")}`)
   const tempPlayerField = powerPoker.playerDisplayField.filter(function(el){
       return !el.includes(aceCardList[0])
     })
@@ -62,7 +60,6 @@ function execAceFixPut(
   })
 
   const onAceContinue = aceCardList.length > 1
-  powerPoker.spotCardNum = "";
   updateCardTmpDataPartByList(
     cardsDataMapOrderKey.playerField,
     tempPlayerField
@@ -101,7 +98,6 @@ function execAceFixPut(
 function execNoFixPutOnAce(
   powerPoker
 ){
-  powerPoker.spotCardNum = "";
   updateCardsTmpDataMapByBuckupDataMap()
   updateDisplayCardsByTmpMap(
     powerPoker
