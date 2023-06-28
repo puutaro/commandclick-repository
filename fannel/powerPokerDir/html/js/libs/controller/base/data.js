@@ -22,41 +22,6 @@ function makeData() {
         playerDisplayDust: [],
         enemyDisplayShrine: [],
         playerDisplayShrine: [],
-        // playerField: cardSort(
-        //   cardsDataBackupMap.get(
-        //     cardsDataMapOrderKey.playerField
-        //   )
-        // ),
-        // enemyField: ["♥\n3", "♥\n7","♥\n8","♥\n9","♥\n10","♥\n10","♥\n10","♥\n10","♥\n10","♥\n10","♥\n10","♥\n10","♥\n10","♥\n10","♥\n10","♥\n10"],
-        // cardSort(
-        //   cardsDataBackupMap.get(
-        //       cardsDataMapOrderKey.enemyField
-        //     ).split("\t")
-        // ),
-        // playerHand: cardSort(
-        //   cardsDataBackupMap.get(
-        //     cardsDataMapOrderKey.playerHand
-        //   )
-        // ),
-        // enemyHand: cardsDataBackupMap.get(
-        //     cardsDataMapOrderKey.enemyHand
-        // ).split("\t"),
-        // playerDust: cardsDataBackupMap.get(
-        //     cardsDataMapOrderKey.playerDust
-        // ).split("\t"),
-        // enemyDust: cardsDataBackupMap.get(
-        //     cardsDataMapOrderKey.enemyDust
-        // ).split("\t"),
-        // playerShrine: cardsDataBackupMap.get(
-        //     cardsDataMapOrderKey.playerShrine
-        // ).split("\t"),
-        // enemyShrine: ["♥\nA", "♥\n3", "♥\n3", "♥\n7","♥\n8", "♥\nQ"],
-        // cardsDataBackupMap.get(
-        //     cardsDataMapOrderKey.enemyShrine
-        // ).split("\t"),
-        // dekiMountain: cardsDataBackupMap.get(
-        //     cardsDataMapOrderKey.dekiMountain
-        // ).split("\t"),
         switchViews: [
             switchViewChangeType.dust, 
             switchViewChangeType.shrine,
