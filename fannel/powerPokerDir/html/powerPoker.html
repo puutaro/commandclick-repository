@@ -29,7 +29,7 @@
 		  			</div>
 	  			</td>
   			</tr>
-  			<tr id="" class="">
+  			<tr>
   				<td>
   					<div id="totalBox">
 	  					<span id="bothTotalLabel">
@@ -153,29 +153,29 @@
     		</tr>
 		  </table>
 		  <div id="buttomButtonSeries" class="buttomButtonSeries">
-		  	<div id="putConfirmDialog" v-if="onPutConfirmDialog == 'putFix'">
-			  	<div id="putConfirmDialogMessage">Fix put card, ok?</div>
-			  	<div id="putConfirmDialogButtonBox" class="putConfirmDialogButtonBox">
+		  	<div class="putConfirmDialog" v-if="onPutConfirmDialog == 'putFix'">
+			  	<div class="putConfirmDialogMessage">Fix put card, ok?</div>
+			  	<div class="putConfirmDialogButtonBox">
 				  	<button 
 					  	class="confirmButtton" 
 					  	@click="fixOrOtherHandler($event)"
 					  	>OK</button>
 				  	<button 
-					  	class="confirmButtton" 
+					  	class="confirmButtton"
 					  	@click="noFixPut($event)"
 					  	>NO
 					  </button>
 			  	</div>
 		  	</div>
-			  <div id="putConfirmDialog" v-else-if="onPutConfirmDialog == 'acePutFix'">
-			  	<div id="putConfirmDialogMessage" v-bind="aceTimes">({{ currentAceTimes }}/{{ aceTimes }}) Fix put card, ok? for ace</div>
-			  	<div id="putConfirmDialogButtonBox" class="putConfirmDialogButtonBox">
-				  	<button 
-					  	class="confirmButtton" 
+			 <div class="putConfirmDialog" v-else-if="onPutConfirmDialog == 'acePutFix'">
+			  	<div class="putConfirmDialogMessage" v-bind="aceTimes">({{ currentAceTimes }}/{{ aceTimes }}) Fix put card, ok? for ace</div>
+			  	<div class="putConfirmDialogButtonBox">
+				  	<button
+					  	class="confirmButtton"
 					  	@click="aceFixPut($event)"
 					  	>OK</button>
-				  	<button 
-					  	class="confirmButtton" 
+				  	<button
+					  	class="confirmButtton"
 					  	@click="noAceFixPut($event)"
 					  	>NO
 					  </button>
@@ -227,7 +227,7 @@
   <script src="./js/libs/controller/init/init.js"></script>
   <script src="./js/libs/controller/com/comPutCard.js"></script>
   <script src="./js/libs/controller/switchView.js"></script>
-  <script src="./js/libs/controller/putCard.js"></script>
-  <script src="./js/libs/controller/putCardOnAce.js"></script>
+  <script src="js/libs/controller/put/putCard.js"></script>
+  <script src="js/libs/controller/put/putCardOnAce.js"></script>
   <script src="./js/controller.js"></script>
 </html>

@@ -42,17 +42,16 @@
 	background: #DCFCD0;
 }
 
-#putConfirmDialog {
+.putConfirmDialog {
 	margin-bottom: 0;
 	padding-bottom: 0;
-	margin-left: 0;
 	width: 100%;
 	margin-left: auto;
 	margin-right: auto;
 	background-color: #f7faf9;
 }
 
-#putConfirmDialogMessage {
+.putConfirmDialogMessage {
 	padding: 5px;
 	padding-left: 5px; 
 }

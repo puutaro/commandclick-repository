@@ -225,10 +225,8 @@ function makeSpotCardNum(
   )
   if(
     diffplayerField.length >= 1
-  ) return toNumber(
-    diffplayerField.at(0)
-  )
-  return ""
+  ) return toNumber(diffplayerField.at(0))
+    return ""
 }
 
 function makeSpotCardNumForAce(
