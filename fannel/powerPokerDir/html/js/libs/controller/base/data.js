@@ -17,7 +17,6 @@ function makeData() {
             cardsDataMapOrderKey.playerHand
           )
         ),
-        enemyDisplayShrine: [],
         enemyDisplayDust: [],
         playerDisplayDust: [],
         enemyDisplayShrine: [],
