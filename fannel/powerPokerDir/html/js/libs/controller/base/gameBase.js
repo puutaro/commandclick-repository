@@ -10,11 +10,11 @@ function toNumber(cardStr){
 
 function toNumberInScore(cardStr){
 	return cardStr
-	.replace(/\n$/, "")
-	.replace(/.*\n/, "")
-	.replaceAll(/ /g, "")
-    .replace(/\t/g, "")
-    .replace(/\n$/, "")
+		.replace(/\n$/, "")
+		.replace(/.*\n/, "")
+		.replaceAll(/ /g, "")
+		.replace(/\t/g, "")
+		.replace(/\n$/, "")
 }
 
 
