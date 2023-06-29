@@ -21,7 +21,7 @@ function normalPut(
     powerPoker
   );
   powerPoker.onPutConfirmDialog = confirmDialogType.putFix
-};
+}
 
 
 function execNormalPut(
