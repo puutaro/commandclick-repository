@@ -9,7 +9,7 @@ function updateCardsDataHandler(
     toHandStr(putHandStr),
     powerPoker
   );
-};
+}
 
 
 function normalPut(
@@ -36,8 +36,8 @@ function execNormalPut(
   powerPoker.playerDisplayField = cardSort(
     powerPoker.playerDisplayField
   );
-  powerPoker.playerEfect = "";
-  powerPoker.enemyEfect = "";
+  powerPoker.playerEffect = "";
+  powerPoker.enemyEffect = "";
   registerTotal(
     powerPoker
   )
@@ -103,8 +103,8 @@ function execFixPut(
   )
   updateCardsBackupDataMapByTmpMap()
   setTimeout(function() {
-    powerPoker.playerEfect = "";
-    powerPoker.enemyEfect = "";
+    powerPoker.playerEffect = "";
+    powerPoker.enemyEffect = "";
     registerTotal(
       powerPoker
     )
@@ -126,8 +126,8 @@ function execNoFixPut(
     powerPoker
   )
   powerPoker.currentFaze = currentFazeType.hand;
-  powerPoker.playerEfect = "";
-  powerPoker.enemyEfect = "";
+  powerPoker.playerEffect = "";
+  powerPoker.enemyEffect = "";
   registerTotal(
     powerPoker
   )

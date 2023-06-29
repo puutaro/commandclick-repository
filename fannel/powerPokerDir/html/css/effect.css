@@ -57,7 +57,7 @@
 }
 
 
-.enemyEfect {
+.enemyEffect {
 	display: inline-block;
 	color: white;
 	background-color: #03023b;
@@ -65,7 +65,7 @@
 	border-radius: 10px 10px 10px 10px;
 }
 
-.playerEfect {
+.playerEffect {
 	display: inline-block;
 	color: white;
 	background-color: #3bad7e;

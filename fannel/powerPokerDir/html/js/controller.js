@@ -311,27 +311,30 @@ new Vue({
     }
   },
   created(){
+    updateDisplayCardsByTmpMap(this)
     registerTotal(this)
     registerScore(this)
   },
   watch: {
     enableUserPlay: function(){
       if(this.enableUserPlay) return
+      updateDisplayCardsByTmpMap(this)
       execPullByPlayer(this)
       putByEnemy(this)
-      this.playerEfect = "";
-      this.enemyEfect = "";
+      this.playerEffect = "";
+      this.enemyEffect = "";
+      updateDisplayCardsByTmpMap()
       registerTotal(this)
       registerScore(this)
       execPullByEnemy(this)
       this.enableUserPlay = true
     },
-    enemyEfect: function(){
+    enemyEffect: function(){
       cardEfect(
         this
       );
     },
-    playerEfect: function(){
+    playerEffect: function(){
       cardEfect(
         this
       );

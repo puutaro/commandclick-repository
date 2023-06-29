@@ -23,8 +23,8 @@ function execPutOnAce(
   powerPoker.playerDisplayField = cardSort(
     powerPoker.playerDisplayField
   );
-  powerPoker.playerEfect = "";
-  powerPoker.enemyEfect = "";
+  powerPoker.playerEffect = "";
+  powerPoker.enemyEffect = "";
   registerTotal(
     powerPoker
   )
@@ -73,8 +73,8 @@ function execAceFixPut(
     powerPoker.enemyDisplayField,
   )
   setTimeout(function() {
-    powerPoker.playerEfect = "";
-    powerPoker.enemyEfect = "";
+    powerPoker.playerEffect = "";
+    powerPoker.enemyEffect = "";
     registerTotal(
       powerPoker
     )
@@ -105,8 +105,8 @@ function execNoFixPutOnAce(
   powerPoker.displayHandMode = displayHandModeType.normal
   powerPoker.onPutConfirmDialog = confirmDialogType.menu
   powerPoker.currentFaze = currentFazeType.hand;
-  powerPoker.playerEfect = "";
-  powerPoker.enemyEfect = "";
+  powerPoker.playerEffect = "";
+  powerPoker.enemyEffect = "";
   registerTotal(
     powerPoker
   )

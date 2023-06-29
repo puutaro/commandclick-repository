@@ -40,10 +40,10 @@ function execPlayerCountScore(
 		twoSheets < enemyTwoSheets
 	) return simpleTotal
 	if(twoSheets > 0){
-		powerPoker.playerEfect += `${efectType.two}\t`
+		powerPoker.playerEffect += `${efectType.two}\t`
 	} else {
-		powerPoker.playerEfect = deleteEfect(
-			powerPoker.playerEfect,
+		powerPoker.playerEffect = deleteEfect(
+			powerPoker.playerEffect,
 			new RegExp(`${efectRegexType.two}\t`)
 		)
 	}
@@ -52,7 +52,7 @@ function execPlayerCountScore(
 		factNumList
 	)
 	if(num4SamePieces > 0){
-		powerPoker.playerEfect += `4x${num4SamePieces}\t`
+		powerPoker.playerEffect += `4x${num4SamePieces}\t`
 	}
 	const num4SamePoint = 13 * num4SamePieces;
 	
@@ -66,10 +66,10 @@ function execPlayerCountScore(
 		markList
 	)
 	if(allMarkPiece > 0){
-		powerPoker.playerEfect += `${efectType.mark4Comp}\t`
+		powerPoker.playerEffect += `${efectType.mark4Comp}\t`
 	} else {
-		powerPoker.playerEfect = deleteEfect(
-			powerPoker.playerEfect,
+		powerPoker.playerEffect = deleteEfect(
+			powerPoker.playerEffect,
 			new RegExp(`${efectRegexType.mark4Comp}\t`)
 		)
 	}
@@ -80,10 +80,10 @@ function execPlayerCountScore(
 		markList
 	)
 	if(samMarkPiece > 0){
-		powerPoker.playerEfect += `${efectType.mark4Same}x${samMarkPiece}\t`
+		powerPoker.playerEffect += `${efectType.mark4Same}x${samMarkPiece}\t`
 	} else {
-		powerPoker.playerEfect = deleteEfect(
-			powerPoker.playerEfect,
+		powerPoker.playerEffect = deleteEfect(
+			powerPoker.playerEffect,
 			new RegExp(`${efectRegexType.mark4Same}x[0-9]\t`)
 		)
 	}
@@ -94,10 +94,10 @@ function execPlayerCountScore(
 		3
 	)
 	if(threeSheets > 0){
-		powerPoker.playerEfect += `${efectType.three}x${threeSheets}\t`
+		powerPoker.playerEffect += `${efectType.three}x${threeSheets}\t`
 	} else {
-		powerPoker.playerEfect = deleteEfect(
-			powerPoker.playerEfect,
+		powerPoker.playerEffect = deleteEfect(
+			powerPoker.playerEffect,
 			new RegExp(`${efectRegexType.three}x[0-9]`)
 		)
 	}
@@ -106,10 +106,10 @@ function execPlayerCountScore(
 		numList
 	)
 	if(continuePiece > 0){
-		powerPoker.playerEfect += `${efectType.num4Continue}x${continuePiece}\t`
+		powerPoker.playerEffect += `${efectType.num4Continue}x${continuePiece}\t`
 	} else {
-		powerPoker.playerEfect = deleteEfect(
-			powerPoker.playerEfect,
+		powerPoker.playerEffect = deleteEfect(
+			powerPoker.playerEffect,
 			new RegExp(`${efectRegexType.num4Continue}x[0-9]\t`)
 		)
 	}
@@ -142,10 +142,10 @@ function execEnemyCountScore(
 		twoSheets < playerTwoSheets
 	) return simpleTotal
 	if(twoSheets > 0){
-		powerPoker.enemyEfect += `${efectType.two}\t`
+		powerPoker.enemyEffect += `${efectType.two}\t`
 	} else {
-		powerPoker.enemyEfect = deleteEfect(
-			powerPoker.enemyEfect,
+		powerPoker.enemyEffect = deleteEfect(
+			powerPoker.enemyEffect,
 			new RegExp(`${efectRegexType.two}\t`)
 		)
 	}
@@ -153,10 +153,10 @@ function execEnemyCountScore(
 		factNumList
 	)
 	if(num4SamePieces > 0){
-		powerPoker.enemyEfect += `${efectType.num4Same}\t`
+		powerPoker.enemyEffect += `${efectType.num4Same}\t`
 	} else {
-		powerPoker.enemyEfect = deleteEfect(
-			powerPoker.enemyEfect,
+		powerPoker.enemyEffect = deleteEfect(
+			powerPoker.enemyEffect,
 			new RegExp(`${efectRegexType.num4Same}\t`)
 		)
 	}
@@ -172,10 +172,10 @@ function execEnemyCountScore(
 		markList
 	)
 	if(allMarkPiece > 0){
-		powerPoker.enemyEfect += `${efectType.mark4Comp}\t`
+		powerPoker.enemyEffect += `${efectType.mark4Comp}\t`
 	} else {
-		powerPoker.enemyEfect = deleteEfect(
-			powerPoker.enemyEfect,
+		powerPoker.enemyEffect = deleteEfect(
+			powerPoker.enemyEffect,
 			new RegExp(`${efectRegexType.mark4Comp}\t`)
 		)
 	}
@@ -186,10 +186,10 @@ function execEnemyCountScore(
 		markList
 	)
 	if(samMarkPiece > 0){
-		powerPoker.enemyEfect += `${efectType.mark4Same}x${samMarkPiece}\t`
+		powerPoker.enemyEffect += `${efectType.mark4Same}x${samMarkPiece}\t`
 	} else {
-		powerPoker.enemyEfect = deleteEfect(
-			powerPoker.enemyEfect,
+		powerPoker.enemyEffect = deleteEfect(
+			powerPoker.enemyEffect,
 			new RegExp(`${efectRegexType.mark4Same}x[0-9]\t`)
 		)
 	}
@@ -200,10 +200,10 @@ function execEnemyCountScore(
 		3
 	)
 	if(threeSheets > 0){
-		powerPoker.enemyEfect += `${efectType.three}x${threeSheets}\t`
+		powerPoker.enemyEffect += `${efectType.three}x${threeSheets}\t`
 	} else {
-		powerPoker.enemyEfect = deleteEfect(
-			powerPoker.enemyEfect,
+		powerPoker.enemyEffect = deleteEfect(
+			powerPoker.enemyEffect,
 			new RegExp(`${efectRegexType.three}x[0-9]\t`)
 		)
 	}
@@ -212,10 +212,10 @@ function execEnemyCountScore(
 		numList
 	)
 	if(continuePiece > 0){
-		powerPoker.enemyEfect += `${efectType.num4Continue}x${continuePiece}\t`
+		powerPoker.enemyEffect += `${efectType.num4Continue}x${continuePiece}\t`
 	} else {
-		powerPoker.enemyEfect = deleteEfect(
-			powerPoker.enemyEfect,
+		powerPoker.enemyEffect = deleteEfect(
+			powerPoker.enemyEffect,
 			new RegExp(`${efectRegexType.num4Continue}x[0-9]\t`)
 		)
 	}

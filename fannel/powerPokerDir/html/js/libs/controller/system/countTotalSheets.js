@@ -3,35 +3,29 @@ function registerTotal(
 	powerPoker
 ){
 	powerPoker.enemyShineTotal = execCountTotalForShrine(
-		cardsTmpDataMap.get(
-	        cardsDataMapOrderKey.enemyShrine
-	    )
-	);
+		powerPoker.enemyDisplayShrine
+		// cardsTmpDataMap.get(
+	    //     cardsDataMapOrderKey.enemyShrine
+	    // )
+	)
  	powerPoker.playerShineTotal = execCountTotalForShrine(
- 		cardsTmpDataMap.get(
-	        cardsDataMapOrderKey.playerShrine
-	    )
-  	);
+		powerPoker.enemyDisplayShrine
+ 		// cardsTmpDataMap.get(
+	    //     cardsDataMapOrderKey.playerShrine
+	    // )
+  	)
   	powerPoker.enemyTotal = execCountTotalForEnemyField(
   		powerPoker,
-  		cardsTmpDataMap.get(
-	        cardsDataMapOrderKey.enemyField
-	    ),
-	    cardsTmpDataMap.get(
-	        cardsDataMapOrderKey.playerField
-	    )
-  	);
+		powerPoker.enemyDisplayField,
+		powerPoker.playerDisplayField,
+  	)
   	powerPoker.playerTotal = execCountTotalForPlayerField(
   		powerPoker,
-  		cardsTmpDataMap.get(
-	        cardsDataMapOrderKey.playerField
-	    ),
-	    cardsTmpDataMap.get(
-	        cardsDataMapOrderKey.enemyField
-	    )
+		powerPoker.playerDisplayField,
+		powerPoker.enemyDisplayField
   	);
   	powerPoker.bothTotal = powerPoker.enemyTotal + powerPoker.playerTotal;
-};
+}
 
 
 function execCountTotalForEnemyField(
@@ -51,10 +45,10 @@ function execCountTotalForEnemyField(
 	)
 	const onFour = fourPiece > 0 && onTwoBarrier
 	if(onFour){
-		powerPoker.enemyEfect += `${efectType.four}x${fourPiece}\t`
+		powerPoker.enemyEffect += `${efectType.four}x${fourPiece}\t`
 	} else {
-		powerPoker.enemyEfect = deleteEfect(
-			powerPoker.enemyEfect,
+		powerPoker.enemyEffect = deleteEfect(
+			powerPoker.enemyEffect,
 			new RegExp(`${efectRegexType}x[0-9]\t`)
 		)
 		return simpleSheetsTotal;
@@ -66,7 +60,8 @@ function execCountTotalForEnemyField(
 
 function execCountTotalForPlayerField(
 	powerPoker,
-	cardList
+	cardList,
+	otherCardList,
 ){
 	const simpleSheetsTotal = simpleSheetsCount(
 		cardList
@@ -74,13 +69,19 @@ function execCountTotalForPlayerField(
 	const fourPiece = count4Efect(
 		cardList
 	)
-	if(fourPiece > 0){
-		powerPoker.playerEfect += `${efectType.four}x${fourPiece}\t`
+	const onTwoBarrier = twoBarrierJudge(
+		cardList,
+		otherCardList,
+	)
+	const onFour = fourPiece > 0 && onTwoBarrier
+	if(onFour){
+		powerPoker.playerEffect += `${efectType.four}x${fourPiece}\t`
 	} else {
-		powerPoker.playerEfect = deleteEfect(
-			powerPoker.playerEfect,
+		powerPoker.playerEffect = deleteEfect(
+			powerPoker.playerEffect,
 			new RegExp(`${efectRegexType.four}x[0-9]\t`)
 		)
+		return simpleSheetsTotal;
 	}
 	const fourTotal = fourPiece * 3
 	return fourTotal + simpleSheetsTotal

@@ -4,8 +4,8 @@ function toNumber(cardStr){
 	return cardStr
 		.replace(/.*\n/, "")
 		.replaceAll(/ /g, "")
-	  .replaceAll(/\t/g, "")
-	  .replace(/\n$/, "")
+		.replaceAll(/\t/g, "")
+		.replace(/\n$/, "")
 }
 
 function toNumberInScore(cardStr){
@@ -21,15 +21,15 @@ function toNumberInScore(cardStr){
 function toMark(cardStr){
 	return cardStr.replace(/\n.*$/, "")
 		.replaceAll(/ /g, "")
-    .replace(/\t/g, "")
-    .replace(/\n$/, "")
+		.replace(/\t/g, "")
+		.replace(/\n$/, "")
 }
 
 function toHandStr(handStrEntry){
 	return handStrEntry.replaceAll(/ /g, "")
     	.replace(/\t/g, "")
     	.replace(/\n$/, "")
-};
+}
 
 
 function outSortIndex(srcStr){
@@ -57,15 +57,15 @@ function cardSort(cards){
 	  }
 	  return 0;
 	});
-};
+}
 
 function shuffleArray(array) {
     for (let i = array.length - 1; i > 0; i--) {
         const j = Math.floor(Math.random() * (i + 1));
         [array[i], array[j]] = [array[j], array[i]];
-    };
+    }
     return array;
-};
+}
 
 function updateCardsBackupDataMapByTmpMap(){
 	cardsDataBackupMap.set(
@@ -141,7 +141,7 @@ function updateCardsBackupDataMapByTmpMap(){
       )
     )
   );
-};
+}
 
 function updateCardsTmpDataMapByBuckupDataMap(){
 	cardsTmpDataMap.set(
@@ -216,7 +216,7 @@ function updateCardsTmpDataMapByBuckupDataMap(){
       )
     )
   );
-};
+}
 
 
 function updateDisplayCardsByTmpMap(
@@ -234,6 +234,34 @@ function updateDisplayCardsByTmpMap(
 			cardsTmpDataMap.get(
 		    	cardsDataMapOrderKey.playerField
 		    )
+		)
+	)
+	powerPoker.enemyDisplayShrine = cardSort(
+		deepCopyArray(
+			cardsTmpDataMap.get(
+				cardsDataMapOrderKey.enemyShrine
+			)
+		)
+	)
+	powerPoker.playerDisplayShrine = cardSort(
+		deepCopyArray(
+			cardsTmpDataMap.get(
+				cardsDataMapOrderKey.playerShrine
+			)
+		)
+	)
+	powerPoker.enemyDisplayDust = cardSort(
+		deepCopyArray(
+			cardsTmpDataMap.get(
+				cardsDataMapOrderKey.enemyDust
+			)
+		)
+	)
+	powerPoker.playerDisplayDust = cardSort(
+		deepCopyArray(
+			cardsTmpDataMap.get(
+				cardsDataMapOrderKey.playerDust
+			)
 		)
 	)
 	powerPoker.playerDisplayHand = cardSort(

@@ -7,7 +7,7 @@
   </head>
   <link href="./css/powerPoker.css" rel="stylesheet" type="text/css" media="all">
   <link href="./css/switchView.css" rel="stylesheet" type="text/css" media="all">
-  <link href="./css/efect.css" rel="stylesheet" type="text/css" media="all">
+  <link href="./css/effect.css" rel="stylesheet" type="text/css" media="all">
   <body>
   	<div id="power_poker">
   		<table id="currentResult" class="currentResult">
@@ -52,7 +52,6 @@
 		  				</div>
 	  				</div>
   				</td>
-  				</td>
   				<td>
   					<div id="turnBox">
 		  				<span id="turnLabel">Tun</span>
@@ -61,7 +60,7 @@
 	  			</td>
   			</tr>
   			</table>
-  			<table id="efectTable" class="efectTable">
+  			<table id="effectTable" class="effectTable">
 	  			<tr>
 	  				<td>
 	  					<span id="efect" v-html="efect"></span>
@@ -199,7 +198,7 @@
 			  </div>
 			</div>
 		  <nav id="switchViewNav">
-				<template v-for="(view,index) in switchViews">
+			  <template v-for="(view,index) in switchViews">
      			<button 
 			  		class="btn-primary" 
 			  		@click="switchView($event)" 
