@@ -300,10 +300,16 @@ function execTxtPdf(){
 };
 
 function execClearCache(){
-	const scrollPosiDirPath = "${00}/temp/txtHtml/scrollPosi";
 	jsFileSystem.removeDir(
 		"${txtPdfViewerOldPlayDirPath}"
 	);
+	removeEachHtmlPosi();
+	jsToast.short("clear");
+};
+
+
+function removeEachHtmlPosi(){
+	const scrollPosiDirPath = "${00}/temp/txtHtml/scrollPosi";
 	let removeHtmlPosiFilePathList = jsFileSystem.showFileList(
 		scrollPosiDirPath
 	).split("\t").filter(function(htmlPosiFile){
@@ -315,15 +321,13 @@ function execClearCache(){
 	});
 	if(
 		!removeHtmlPosiFilePathList
-	) jsToast.short("clear");
+	) return;
 	removeHtmlPosiFilePathList.forEach(function(htmlPosiFilePath){
 		jsFileSystem.removeFile(
 			htmlPosiFilePath
 		);
 	});
-	jsToast.short("clear");
 };
-
 
 function rowTxtPdfFileName(){
 	const rawTxtPdfPath = jsPath.trimAllExtend(
