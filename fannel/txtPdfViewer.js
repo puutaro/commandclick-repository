@@ -42,8 +42,6 @@
 //  -> adjust terminal font size (percentage)
 // * terminalFontColor
 //  -> adjust terminal font color
-// * terminalColor
-//  -> adjust terminal background color
 // * homeFannel
 // 	-> specified fannel put always bottom in app history 
 // 	   and multiple specify enable
