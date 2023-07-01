@@ -94,9 +94,9 @@ scriptFileName="txtPdfViewer.js"
 /// CMD_VARIABLE_SECTION_START
 txtPdfPath=""
 TTS_PLAY=""
-CLEAR_CACHE=""
-Speed="50"
 Pitch="50"
+Speed="50"
+CLEAR_CACHE=""
 onEnglish="OFF"
 /// CMD_VARIABLE_SECTION_END
 
