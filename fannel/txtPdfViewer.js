@@ -19,6 +19,9 @@
 // 		- 50: normal
 // 		- 50 Up: speed up
 // 		- 50 down: speed down
+//  * onTrack
+//		ON: memory past number and step
+//		OFF: no memory past number and step
 // --
 // --
 // bellow setting variable main line up
@@ -83,6 +86,7 @@ setVariableType="TTS_PLAY:BTN=${BTN_CMD}=jsf '${0}' ${ttsPlayMode}"
 setVariableType="CLEAR_CACHE:BTN=${BTN_CMD}=jsf '${0}' ${clearCache}"
 setVariableType="Speed:NUM=!1..100!1"
 setVariableType="Pitch:NUM=!1..100!1"
+setVariableType="onTrack:CB=ON!OFF"
 setVariableType="onEnglish:CB=OFF!ON"
 scriptFileName="txtPdfViewer.js"
 /// SETTING_SECTION_END
@@ -94,6 +98,7 @@ TTS_PLAY=""
 Pitch="50"
 Speed="50"
 CLEAR_CACHE=""
+onTrack="ON"
 onEnglish="OFF"
 /// CMD_VARIABLE_SECTION_END
 
@@ -123,7 +128,9 @@ if(Pitch > 1000) Pitch = 1000;
 if(
     onEnglish != "ON"
 ) onEnglish="";
-
+if(
+   onTrack == "OFF"
+) onTrack="";
 switcher();
 
 
@@ -154,7 +161,7 @@ function execTtsPlay(){
 	    "",
 	    "",
 	    onEnglish,
-	    "",
+	    onTrack,
 	    Speed,
     	Pitch,
 	);
