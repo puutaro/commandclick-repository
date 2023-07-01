@@ -116,6 +116,10 @@ jsFileSystem.createDir(
 );
 const playListFilePath = `${playListDirPath}/playList.txt`;
 const txtSuffix = ".txt";
+const currentScriptName = "${02}";
+const currentRawScriptName = jsPath.trimAllExtend(
+	currentScriptName
+);
 const rawTxtPdfFileName = rowTxtPdfFileName();
 jsFileSystem.createDir(
 	"${txtPdfViewerOldPlayDirPath}"
@@ -135,6 +139,12 @@ switcher();
 
 
 function switcher(){
+	switch(playMode){
+		case clearCacheMode:
+			execClearCache();
+			exitZero();
+			return;
+	};
 	csvCheckPathAndRegister(txtPdfPath);
 	saveExtractTextFromPdf();
 	switch(playMode){
@@ -143,9 +153,6 @@ function switcher(){
 			break;
 		case ttsPlayMode:
 			execTtsPlay();
-			break;
-		case clearCacheMode:
-			execClearCache();
 			break;
 	}
 }
@@ -293,9 +300,27 @@ function execTxtPdf(){
 };
 
 function execClearCache(){
+	const scrollPosiDirPath = "${00}/temp/txtHtml/scrollPosi";
 	jsFileSystem.removeDir(
 		"${txtPdfViewerOldPlayDirPath}"
 	);
+	let removeHtmlPosiFilePathList = jsFileSystem.showFileList(
+		scrollPosiDirPath
+	).split("\t").filter(function(htmlPosiFile){
+		return htmlPosiFile.startsWith(
+			currentRawScriptName
+			)
+	}).map(function(htmlPosiFile){
+		return `${scrollPosiDirPath}/${htmlPosiFile}`
+	});
+	if(
+		!removeHtmlPosiFilePathList
+	) jsToast.short("clear");
+	removeHtmlPosiFilePathList.forEach(function(htmlPosiFilePath){
+		jsFileSystem.removeFile(
+			htmlPosiFilePath
+		);
+	});
 	jsToast.short("clear");
 };
 
