@@ -325,12 +325,14 @@ function judgeAlreadyExtract(){
 
 function exitWhenNoExtract(){
 	const isOldExtracted = judgeAlreadyExtract();
-	if(!isOldExtracted){
-		alert(
-			`no extracted: ${ocrViewerTtsTextFilePath}`
-		);
-		exitZero();
-	};
+	if(isOldExtracted) return;
+	const howExtract = confirm(
+		`no extracted, so extracting ok?`
+	);
+	if(!howExtract) return;
+	csvCheckPathAndRegister(ocrTargetPath);
+	saveExtractTextByOcr();
+	exitZero();
 };
 
 function blankCheck(){

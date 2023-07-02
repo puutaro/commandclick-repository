@@ -47,7 +47,6 @@ moveImage(){
 			echo "${ocrTargetPath}" \
 				| grep -vE "\.pdf$" \
 			)"
-	echo "${noPdf}"
 	case "${noPdf}" in
 		"") ;;
 		*) mv \
@@ -117,14 +116,14 @@ concatText(){
 		> "${ocrViewerOldPlayDirPath}/${ocrTargetFileRawName}.txt"
 }
 
+echo -e "\n### $(date '+%Y-%m-%d %H:%M:%S') ocr start"
 updateNotification \
-	"start" \
-	2>&1
-moveImage 2>&1 || clearNotification
-execOcr 2>&1 || clearNotification
-concatText 2>&1  || clearNotification
+	"start"
+moveImage || clearNotification
+execOcr  || clearNotification
+concatText  || clearNotification
+echo "### $(date '+%Y-%m-%d %H:%M:%S') ocr finished"
 updateNotification \
-	"extract ok" \
-	2>&1
+	"ocr finished"
 sleep 5
-clearNotification 2>&1
+clearNotification
