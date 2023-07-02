@@ -230,37 +230,6 @@ function csvCheckPathAndRegister(
 		inputPath
 	);
 	jsListSelect.updateListFileCon(
-		"${CURRENT_INUPT_CSV_LIST_FILE_PATH}",
-		`${inputPath}`
-	);
-};
-
-function extendCheckInputPath(
-	inputPath
-){
-	let permittionExtends = ["csv", "tsv"];
-	const checkOk = jsPath.checkExtend(
-		inputPath,
-		permittionExtends.join("\t")
-	);
-	if(checkOk) return;
-	alert(
-		`Extend must be ${permittionExtends.join(", ")}\n\n ${inputPath}`
-	);
-	exitZero();
-};
-
-
-function csvCheckPathAndRegister(
-	inputPath
-){
-	extendCheckInputPath(
-		inputPath
-	);
-	existCheckInputPath(
-		inputPath
-	);
-	jsListSelect.updateListFileCon(
 		"${txtPdfViewerTxtPdfListFilePath}",
 		`${inputPath}`
 	);
