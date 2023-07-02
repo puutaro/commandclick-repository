@@ -309,24 +309,8 @@ function execClearCache(){
 
 
 function removeEachHtmlPosi(){
-	const scrollPosiDirPath = "${00}/temp/txtHtml/scrollPosi";
-	let removeHtmlPosiFilePathList = jsFileSystem.showFileList(
-		scrollPosiDirPath
-	).split("\t").filter(function(htmlPosiFile){
-		return htmlPosiFile.startsWith(
-			currentRawScriptName
-			)
-	}).map(function(htmlPosiFile){
-		return `${scrollPosiDirPath}/${htmlPosiFile}`
-	});
-	if(
-		!removeHtmlPosiFilePathList
-	) return;
-	removeHtmlPosiFilePathList.forEach(function(htmlPosiFilePath){
-		jsFileSystem.removeFile(
-			htmlPosiFilePath
-		);
-	});
+	const scrollPosiDirPath = `${00}/temp/txtHtml/scrollPosi/${currentRawScriptName}`;
+	jsFileSystem.removeDir(scrollPosiDirPath);
 };
 
 function rowTxtPdfFileName(){
