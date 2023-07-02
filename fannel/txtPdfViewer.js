@@ -117,6 +117,7 @@ jsFileSystem.createDir(
 const playListFilePath = `${playListDirPath}/playList.txt`;
 const txtSuffix = ".txt";
 const currentScriptName = "${02}";
+const commandClickRootDirPath = "${00}";
 const currentRawScriptName = jsPath.trimAllExtend(
 	currentScriptName
 );
@@ -309,7 +310,7 @@ function execClearCache(){
 
 
 function removeEachHtmlPosi(){
-	const scrollPosiDirPath = `${00}/temp/txtHtml/scrollPosi/${currentRawScriptName}`;
+	const scrollPosiDirPath = `${commandClickRootDirPath}/temp/txtHtml/scrollPosi/${currentRawScriptName}`;
 	jsFileSystem.removeDir(scrollPosiDirPath);
 };
 
