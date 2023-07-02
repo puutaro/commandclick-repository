@@ -1,7 +1,7 @@
 
 
 /// LABELING_SECTION_START
-// Youtube background play fannel @puutaro
+// Youtube background play fannel (*termux) @puutaro
 // 	* install 
 // 		-> install require package
 // 	* play 

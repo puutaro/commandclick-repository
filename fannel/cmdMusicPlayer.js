@@ -1,7 +1,7 @@
 
 
 /// LABELING_SECTION_START
-// Music player @puutaro
+// Music player  (*termux) @puutaro
 //	* install 
 // 		-> install require package
 //	* play 

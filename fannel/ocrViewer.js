@@ -1,7 +1,7 @@
 
 
 /// LABELING_SECTION_START
-// OCR Viewer with tts @puutaro
+// OCR Viewer with tts (*termux) @puutaro
 // 	* ocrTargetPath 
 //		-> target image and pdf file path
 // 	* EXEC_EXTRACT 
@@ -170,6 +170,7 @@ function switcher(){
 			exitZero();
 			return;
 	};
+	blankCheck();
 	switch(playMode){
 		case "":
 			exitWhenNoExtract();
@@ -330,4 +331,14 @@ function exitWhenNoExtract(){
 		);
 		exitZero();
 	};
+};
+
+function blankCheck(){
+	if(
+		ocrTargetPath
+	) return;
+	alert(
+		`"ocrTargetPath" must be set by path`
+	);
+	exitZero();
 };
