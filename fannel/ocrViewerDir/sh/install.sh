@@ -20,9 +20,9 @@ wget_and_move(){
 	local get_url="${1}"
 	local move_dir="${2}"
 	local get_file_Name="$(basename "${get_url}")"
-	# test \
-	# 	-f "${move_dir}/${get_file_Name}" \
-	# 	&& return
+	test \
+		-f "${move_dir}/${get_file_Name}" \
+		&& return
 	wget "${get_url}" \
 		-P  "${move_dir}" \
 		-O "${get_file_Name}"
