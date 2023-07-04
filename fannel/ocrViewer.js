@@ -170,7 +170,20 @@ function switcher(){
 			exitZero();
 			return;
 	};
+	existCheckInputPath(
+		ocrTargetPath
+	);
 	blankCheck();
+	jsListSelect.updateListFileCon(
+		"${ocrViewerTxtListFilePath}",
+		`${ocrTargetPath}`
+	);
+	moveToOldForExcludePdfOrImage();
+	ocrSwitcher();
+};
+
+
+function ocrSwitcher(){
 	switch(playMode){
 		case "":
 			exitWhenNoExtract();
@@ -181,7 +194,6 @@ function switcher(){
 			execTtsPlay();
 			break;
 		case extractMode:
-			csvCheckPathAndRegister(ocrTargetPath);
 			saveExtractTextByOcr();
 			break;
 	};
@@ -226,31 +238,16 @@ function saveExtractTextByOcr(){
 };
 
 
-function csvCheckPathAndRegister(
-	inputPath
-){
-	extendCheckInputPath(
-		inputPath
-	);
-	existCheckInputPath(
-		inputPath
-	);
-	jsListSelect.updateListFileCon(
-		"${ocrViewerTxtListFilePath}",
-		`${inputPath}`
-	);
-};
-
 function extendCheckInputPath(
 	inputPath
 ){
-	let permittionExtends = ["txt", "csv", "tsv"];
-	const checkNg = jsPath.checkExtend(
+	let nopConvertExtends = ["txt", "csv", "tsv"];
+	const disableConvert = jsPath.checkExtend(
 		inputPath,
-		permittionExtends.join("\t")
+		nopConvertExtends.join("\t")
 	);
 	if(
-		!checkNg
+		!disableConvert
 	) return;
 	const existExtend = inputPath.match(
 		/\.[a-zA-Z0-9]*$/
@@ -323,6 +320,35 @@ function judgeAlreadyExtract(){
 	return isOldTxtFile;
 };
 
+function moveToOldForExcludePdfOrImage(){
+	let enableExtendList = ["txt", "csv", "tsv"];
+	const enableMove = jsPath.checkExtend(
+		ocrTargetPath,
+		enableExtendList.join("\t")
+	);
+	if(
+		enableMove
+	) {
+		jsFileSystem.copyFile(
+			ocrTargetPath,
+			ocrViewerTtsTextFilePath
+		);
+		return;
+	};
+	const noExtend = !ocrTargetPath.match(
+		/\.[a-zA-Z0-9]*$/
+	);
+	if(
+		noExtend
+	) {
+		jsFileSystem.copyFile(
+			ocrTargetPath,
+			ocrViewerTtsTextFilePath
+		);
+		return;
+	};
+};
+
 function exitWhenNoExtract(){
 	const isOldExtracted = judgeAlreadyExtract();
 	if(isOldExtracted) return;
@@ -330,7 +356,6 @@ function exitWhenNoExtract(){
 		`no extracted, so extracting ok?`
 	);
 	if(!howExtract) return;
-	csvCheckPathAndRegister(ocrTargetPath);
 	saveExtractTextByOcr();
 	exitZero();
 };
