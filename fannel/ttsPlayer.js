@@ -83,7 +83,7 @@ setReplaceVariable="cmdTtsPlayerListDirPath=${ttsPlayerDirPath}/list"
 setReplaceVariable="cmdTtsPlayerDirListFilePath=${cmdTtsPlayerListDirPath}/music_dir_list"
 setReplaceVariable="cmdTtsPlayerGmailListFilePath=${cmdTtsPlayerListDirPath}/gmail_list"
 setVariableType="manageText:EFCBB=${FCB_DIR_PATH}=${cmdTtsPlayerSaveDirPath}!${FCB_SUFFIX}=.txt|${BTN_CMD}=jsf '${0}' manageText!${BTN_LABEL}=MNG"
-setVariableType="playListName:EFCB=${FCB_DIR_PATH}=${cmdTtsPlayerEditDirPath}!${FCB_PREFIX}=${TTS_PREFIX}!${FCB_SUFFIX}=.tsv"
+setVariableType="playListName:EFGB=${FCB_DIR_PATH}=${cmdTtsPlayerEditDirPath}!${FCB_PREFIX}=${TTS_PREFIX}!${FCB_SUFFIX}=.tsv"
 setVariableType="playMode:CB=ordinaly!shuffle!reverse"
 setVariableType="PLAY:BTN=${BTN_CMD}=::TermOut::jsf '${0}'"
 setVariableType="numberPlay:NUMB=!1..1000!1|${BTN_CMD}=::TermOut::jsf '${0}' number!${BTN_LABEL}=Play"
@@ -247,9 +247,9 @@ function updateByVariableWhenDiff(
 		currentVariableValue == pastVariableValue
 	) return;
 	jsEdit.updateByVariable(
-		FANNEL_SCRIPT_PATH,
-        tergetVariableName,
-        currentVariableValue
+			FANNEL_SCRIPT_PATH,
+			tergetVariableName,
+			currentVariableValue
 	);
 };
 
