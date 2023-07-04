@@ -105,7 +105,7 @@ setVariableType="colRange:NUMB=!0..10000!1|${BTN_CMD}=jsf '${0}' initColRange!${
 setVariableType="rowRange:NUMB=!0..10000!1|${BTN_CMD}=jsf '${0}' initRowRange!${BTN_LABEL}=to0"
 setVariableType="rowLimit:NUMB=!0..10000!100|${BTN_CMD}=jsf '${0}' initRowLimit!${BTN_LABEL}=to0"
 setVariableType="autoScrollType:CB=no!horizon!rHorizon!vartical!rVartical"
-setVariableType="inputCTsvPath:ELCBFL=${LIST_PATH}=${CURRENT_INUPT_CSV_LIST_FILE_PATH}!${LIMIT_NUM}=10"
+setVariableType="inputCTsvPath:ELGBFL=${LIST_PATH}=${CURRENT_INUPT_CSV_LIST_FILE_PATH}!${LIMIT_NUM}=10"
 setVariableType="viewType:CB=SRC!AGGRE!CHART"
 scriptFileName="ctsvViewer.js"
 /// SETTING_SECTION_END

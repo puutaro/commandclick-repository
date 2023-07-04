@@ -25,7 +25,7 @@ terminalOutputMode="NORMAL"
 onUrlHistoryRegister="OFF"
 setReplaceVariable="FCB_PREFIX=prefix"
 setReplaceVariable="FCB_SUFFIX=suffix"
-setVariableType="creatorJSName:EFCB=${FCB_PREFIX}=clip!${FCB_SUFFIX}=.js"
+setVariableType="creatorJSName:EFGB=${FCB_PREFIX}=clip!${FCB_SUFFIX}=.js"
 scriptFileName="clipFormatMaker.js"
 /// SETTING_SECTION_END
 

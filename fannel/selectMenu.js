@@ -7,15 +7,15 @@
 
 /// SETTING_SECTION_START
 setVariableType="title:RO="
-setReplaceVariable="FCB_SUFFIX=suffix"
-setVariableType="menu1:EFCB=${FCB_SUFFIX}=.html&.js"
-setVariableType="menu2:EFCB=${FCB_SUFFIX}=.html&.js"
-setVariableType="menu3:EFCB=${FCB_SUFFIX}=.html&.js"
-setVariableType="menu4:EFCB=${FCB_SUFFIX}=.html&.js"
-setVariableType="menu5:EFCB=${FCB_SUFFIX}=.html&.js"
-setVariableType="menu6:EFCB=${FCB_SUFFIX}=.html&.js"
-setVariableType="menu7:EFCB=${FCB_SUFFIX}=.html&.js"
-setVariableType="menu8:EFCB=${FCB_SUFFIX}=.html&.js"
+setReplaceVariable="FGB_SUFFIX=suffix"
+setVariableType="menu1:EFGB=${FGB_SUFFIX}=.html&.js"
+setVariableType="menu2:EFGB=${FGB_SUFFIX}=.html&.js"
+setVariableType="menu3:EFGB=${FGB_SUFFIX}=.html&.js"
+setVariableType="menu4:EFGB=${FGB_SUFFIX}=.html&.js"
+setVariableType="menu5:EFGB=${FGB_SUFFIX}=.html&.js"
+setVariableType="menu6:EFGB=${FGB_SUFFIX}=.html&.js"
+setVariableType="menu7:EFGB=${FGB_SUFFIX}=.html&.js"
+setVariableType="menu8:EFGB=${FGB_SUFFIX}=.html&.js"
 scriptFileName="selectMenu.js"
 /// SETTING_SECTION_END
 

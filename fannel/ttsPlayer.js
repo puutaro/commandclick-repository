@@ -67,10 +67,10 @@ terminalFontColor=""
 scriptFileName="ttsPlayer.js"
 setReplaceVariable="BTN_CMD=cmd"
 setReplaceVariable="BTN_LABEL=label"
-setReplaceVariable="FCB_DIR_PATH=dirPath"
-setReplaceVariable="FCB_PREFIX=prefix"
-setReplaceVariable="FCB_SUFFIX=suffix"
-setReplaceVariable="FCB_TYPE=type"
+setReplaceVariable="FGB_DIR_PATH=dirPath"
+setReplaceVariable="FGB_PREFIX=prefix"
+setReplaceVariable="FGB_SUFFIX=suffix"
+setReplaceVariable="FGB_TYPE=type"
 setReplaceVariable="LIST_PATH=listPath"
 setReplaceVariable="LIMIT_NUM=limitNum"
 setReplaceVariable="TTS_PREFIX=tts"
@@ -82,8 +82,8 @@ setReplaceVariable="cmdTtsPlayerTempFilePath=${cmdTtsPlayerTempDirPath}/tempPlay
 setReplaceVariable="cmdTtsPlayerListDirPath=${ttsPlayerDirPath}/list"
 setReplaceVariable="cmdTtsPlayerDirListFilePath=${cmdTtsPlayerListDirPath}/music_dir_list"
 setReplaceVariable="cmdTtsPlayerGmailListFilePath=${cmdTtsPlayerListDirPath}/gmail_list"
-setVariableType="manageText:EFCBB=${FCB_DIR_PATH}=${cmdTtsPlayerSaveDirPath}!${FCB_SUFFIX}=.txt|${BTN_CMD}=jsf '${0}' manageText!${BTN_LABEL}=MNG"
-setVariableType="playListName:EFGB=${FCB_DIR_PATH}=${cmdTtsPlayerEditDirPath}!${FCB_PREFIX}=${TTS_PREFIX}!${FCB_SUFFIX}=.tsv"
+setVariableType="manageText:EFGBB=${FGB_DIR_PATH}=${cmdTtsPlayerSaveDirPath}!${FGB_SUFFIX}=.txt|${BTN_CMD}=jsf '${0}' manageText!${BTN_LABEL}=MNG"
+setVariableType="playListName:EFGB=${FGB_DIR_PATH}=${cmdTtsPlayerEditDirPath}!${FGB_PREFIX}=${TTS_PREFIX}!${FGB_SUFFIX}=.tsv"
 setVariableType="playMode:CB=ordinaly!shuffle!reverse"
 setVariableType="PLAY:BTN=${BTN_CMD}=::TermOut::jsf '${0}'"
 setVariableType="numberPlay:NUMB=!1..1000!1|${BTN_CMD}=::TermOut::jsf '${0}' number!${BTN_LABEL}=Play"
@@ -208,7 +208,7 @@ function switchByArgs(){
 		        "playListName",
 				"renameplayListName",
 				cmdTtsPlayerEditDirPath,
-				`playListName:EFCB=${FCB_DIR_PATH}=${cmdTtsPlayerEditDirPath}!${FCB_PREFIX}=${TTS_PREFIX}!${FCB_SUFFIX}=${tsvExtend}`,
+				`playListName:EFCB=${FGB_DIR_PATH}=${cmdTtsPlayerEditDirPath}!${FGB_PREFIX}=${TTS_PREFIX}!${FGB_SUFFIX}=${tsvExtend}`,
 				`playListName=${playListName}\trenameplayListName=`,
 				TTS_PREFIX,
 				tsvExtend,
