@@ -81,7 +81,7 @@ setReplaceVariable="txtPdfViewerDirPath=${01}/${001}"
 setReplaceVariable="txtPdfViewerListDirPath=${txtPdfViewerDirPath}/list"
 setReplaceVariable="txtPdfViewerOldPlayDirPath=${txtPdfViewerDirPath}/old"
 setReplaceVariable="txtPdfViewerTxtPdfListFilePath=${txtPdfViewerListDirPath}/txtPdf.txt"
-setVariableType="txtPdfPath:ELCBFL=${LIST_PATH}=${txtPdfViewerTxtPdfListFilePath}!${LIMIT_NUM}=10"
+setVariableType="txtPdfPath:ELGBFL=${LIST_PATH}=${txtPdfViewerTxtPdfListFilePath}!${LIMIT_NUM}=10"
 setVariableType="TTS_PLAY:BTN=${BTN_CMD}=jsf '${0}' ${ttsPlayMode}"
 setVariableType="CLEAR_CACHE:BTN=${BTN_CMD}=jsf '${0}' ${clearCache}"
 setVariableType="Speed:NUM=!1..100!1"
@@ -180,30 +180,29 @@ function saveExtractTextFromPdf(){
 	jsFileSystem.createDir(
 		"${txtPdfViewerOldPlayDirPath}"
 	);
-	const isTextFile = jsPath.checkExtend(
-		txtPdfPath,
-		txtSuffix,
-	);
-	if(
-		isTextFile
-	) {
-		jsFileSystem.writeLocalFile(
-			txtPdfViewerTtsTextFilePath,
-			jsFileSystem.readLocalFile(
-				txtPdfPath
-			),
-		);
-		return;
-	};
 	const isOldTxtFile = jsFileSystem.isFile(
 		txtPdfViewerTtsTextFilePath
 	);
 	if(
 		isOldTxtFile
-	){
-		return jsFileSystem.readLocalFile(
+	) return;
+	let noConvertExtends = ["txt", "csv", "tsv"];
+	const isNoConvertFile = jsPath.checkExtend(
+		txtPdfPath,
+		noConvertExtends.join("\t"),
+	);
+	const isNoExtend = !txtPdfPath.match(
+		/\.[a-zA-Z0-9]*$/
+	);
+	if(
+		isNoConvertFile
+		|| isNoExtend
+	) {
+		jsFileSystem.copyFile(
+			txtPdfPath,
 			txtPdfViewerTtsTextFilePath
 		);
+		return;
 	};
 	jsFileSystem.createDir(
 		"${txtPdfViewerListDirPath}"
@@ -244,6 +243,12 @@ function extendCheckInputPath(
 		permittionExtends.join("\t")
 	);
 	if(checkOk) return;
+	const existExtend = inputPath.match(
+		/\.[a-zA-Z0-9]*$/
+	);
+	if(
+		!existExtend
+	) return;
 	alert(
 		`Extend must be ${permittionExtends.join(", ")}\n\n ${inputPath}`
 	);
