@@ -1,0 +1,6 @@
+editExecute,
+terminalSizeType,
+terminalOutputMode,
+onUpdateLastModify,
+setReplaceVariables,
+setVariableTypes,

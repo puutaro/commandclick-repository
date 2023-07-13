@@ -4,18 +4,6 @@
 // Create clipboard format by drag & drop @puutaro
 // * creatorJSName
 // 		-> you wont to create jsFileName
-// --
-// --
-// bellow setting variable main line up
-// * terminalOutputMode decide output mode in cmdclick terminal
-//  - NORMAL: normal terminal output (default)
-//  - REFLASH: Before terminal output, screen resflesh
-//  - REFLASH_AND_FIRST_ROW: Before terminal output, screen resflesh and focus first row
-//  - DEBUG: stdr + stderr
-//  - NO: no output (bacground exec)
-// * onUrlHistoryRegister is url history update signal
-//  - ON: update
-//  - OFF: no update
 /// LABELING_SECTION_END
 
 
@@ -23,9 +11,11 @@
 editExecute="ALWAYS"
 terminalOutputMode="NORMAL"
 onUrlHistoryRegister="OFF"
-setReplaceVariable="FCB_PREFIX=prefix"
-setReplaceVariable="FCB_SUFFIX=suffix"
-setVariableType="creatorJSName:EFGB=${FCB_PREFIX}=clip!${FCB_SUFFIX}=.js"
+onAdBlock="OFF"
+setReplaceVariables="FCB_PREFIX=prefix"
+setReplaceVariables="FCB_SUFFIX=suffix"
+setVariableTypes="creatorJSName:TXT:FGB=${FCB_PREFIX}=clip!${FCB_SUFFIX}=.js"
+hideSettingVariables="file://${01}/${001}/settingVariables/hideSettingVariables.js"
 scriptFileName="clipFormatMaker.js"
 /// SETTING_SECTION_END
 

@@ -1,0 +1,13 @@
+
+// basic
+TXT_LABEL=label,
+BTN_CMD=cmd,
+BTN_LABEL=label,
+LIST_PATH=listPath,
+LIMIT_NUM=limitNum,
+
+// path
+FANNEL_DIR_PATH="${01}/${001}",
+FANNEL_LIST_DIR_PATH="${FANNEL_DIR_PATH}/list",
+LAUNCH_URL_LIST_FILE_PATH="${FANNEL_LIST_DIR_PATH}/launch_url_list",
+EMAIL_LIST_FILE_PATH="${FANNEL_LIST_DIR_PATH}/email_list",

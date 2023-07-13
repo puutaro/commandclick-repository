@@ -42,26 +42,16 @@
 // --
 // --
 // bellow setting variable main line up
-// * terminalSizeType is cmdclick terminal size option
-//  - OFF: no adjust (default)
-//  - LONG: LongSize
-//  - SHORT: ShortSize
-// * terminalOutputMode decide output mode in cmdclick terminal
-//  - NORMAL: normal terminal output (default)
-//  - REFLASH: Before terminal output, screen resflesh
-//  - REFLASH_AND_FIRST_ROW: Before terminal output, screen resflesh and focus first row
-//  - DEBUG: stdr + stderr
-//  - NO: no output (bacground exec)
-// * onUpdateLastModify is how updating file last modified status when executing
-//  - ON: update this (default)
-//  - OFF: no update this
-// * onAdBlock: adblock switch
-//  - INHERIT: inherit config setting
-//  - ON: on
-//  - OFF: off
-// * terminalFontZoom adjust terminal font size (percentage)
-// * terminalFontColor adjust terminal font color
-// * terminalColor adjust terminal background color
+// * onUrlHistoryRegister
+//   -> url history update signal
+//  - ON: update
+//  - OFF: no update
+// * terminalFontZoom 
+// 	-> adjust terminal font size (percentage)
+// * terminalFontColor
+// 	-> adjust terminal font color
+// * terminalColor
+// 	-> adjust terminal background color
 /// LABELING_SECTION_END
 
 
@@ -74,33 +64,9 @@ onUrlHistoryRegister="ON"
 terminalFontZoom="0"
 terminalColor=""
 terminalFontColor=""
-setReplaceVariable="BTN_CMD=cmd"
-setReplaceVariable="BTN_LABEL=label"
-setReplaceVariable="LIST_PATH=listPath"
-setReplaceVariable="LIMIT_NUM=limitNum"
-setReplaceVariable="FCB_DIR_PATH=dirPath"
-setReplaceVariable="FCB_PREFIX=prefix"
-setReplaceVariable="FCB_SUFFIX=suffix"
-setReplaceVariable="FCB_TYPE=type"
-setReplaceVariable="cmdTubePlayerDirPath=${01}/${001}"
-setReplaceVariable="cmdTubePlayerEditDirPath=${cmdTubePlayerDirPath}/edit"
-setReplaceVariable="cmdTubePlayerListDirPath=${cmdTubePlayerDirPath}/list"
-setReplaceVariable="cmdTubePlayerListFilePath=${cmdTubePlayerListDirPath}/searchWordList"
-setReplaceVariable="PLAY_LOG_DIR_PATH=${cmdTubePlayerDirPath}/log"
-setVariableType="searchWord:ELCB=${LIST_PATH}=${cmdTubePlayerListFilePath}!${LIMIT_NUM}=20"
-setVariableType="playMode:CB=shuffle!ordinaly!reverse"
-setVariableType="onSearchMode:CB=SHORT!RECENT!LOG_RND!LOG_FREQ!OFF"
-setVariableType="PLAY:BTN=${BTN_CMD}=::TermOut::jsf '${0}'"
-setVariableType="STOP:BTN=pkill -9 mpv"
-setVariableType="numberPlay:NUMB=!1..1000!1|${BTN_CMD}=::TermOut::jsf '${0}' number!${BTN_LABEL}=PLAY"
-setVariableType="minMinutes:NUMB=!0..1000!1|${BTN_CMD}=jsf '${0}' initMinMinutes!${BTN_LABEL}=to0"
-setVariableType="maxMinutes:NUMB=!0..1000!1|${BTN_CMD}=jsf '${0}' initMaxMinutes!${BTN_LABEL}=to0"
-setVariableType="tubePlayListName:EFGB=${FCB_DIR_PATH}=${cmdTubePlayerEditDirPath}!${FCB_PREFIX}=tube!${FCB_SUFFIX}=.tsv"
-setVariableType="EDIT_TUBE_PLAY_LIST:BTN=${BTN_CMD}=jsf '${0}' EDIT_TUBE_PLAY_LIST"
-setVariableType="playLogName:EFGB=${FCB_DIR_PATH}=${PLAY_LOG_DIR_PATH}!${FCB_PREFIX}=playLog!${FCB_SUFFIX}=NoExtend"
-setVariableType="EDIT_PLAY_LOG_NAME:BTN=${BTN_CMD}=jsf '${0}' EDIT_PLAY_LOG_NAME"
-setVariableType="playLogOut:BTN=${BTN_CMD}=::TermOut::::TermLong::jsf '${0}' playLogOut"
-setVariableType="Install:BTN=${BTN_CMD}=jsf '${0}'"
+setReplaceVariables="file://${01}/${001}/settingVariables/setReplaceVariables.js"
+setVariableTypes="file://${01}/${001}/settingVariables/setVariableTypes.js"
+hideSettingVariables="file://${01}/${001}/settingVariables/hideSettingVariables.js"
 scriptFileName="cmdYoutuber.js"
 /// SETTING_SECTION_END
 
@@ -260,10 +226,10 @@ function argSwitcher() {
 			break;
 		case EDIT_TUBE_PLAY_LIST_MODE:
 			jsFileSelect.execEditTargetFileName(
-		        "tubePlayListName",
+		    "tubePlayListName",
 				"renameTubePlayListName",
 				cmdTubePlayerEditDirPath,
-				`tubePlayListName:EFCB=${FCB_DIR_PATH}=${cmdTubePlayerEditDirPath}!${FCB_PREFIX}=tube!${FCB_SUFFIX}=${TsvSuffix}`,
+				`tubePlayListName:TXT:FSB=${FCB_DIR_PATH}=${cmdTubePlayerEditDirPath}!${FCB_PREFIX}=tube!${FCB_SUFFIX}=${TsvSuffix}`,
 				`tubePlayListName=${tubePlayListName}\trenameTubePlayListName=`,
 				TUBE_PREFIX,
 				TsvSuffix,
@@ -279,7 +245,7 @@ function argSwitcher() {
 		        "playLogName",
 		        "renamePlayLogName",
 				"${PLAY_LOG_DIR_PATH}",
-				`playLogName:EFCB=${FCB_DIR_PATH}=${PLAY_LOG_DIR_PATH}!${FCB_PREFIX}=playLog!${FCB_SUFFIX}=${NoExtend}`,
+				`playLogName:TXT:FSB=${FCB_DIR_PATH}=${PLAY_LOG_DIR_PATH}!${FCB_PREFIX}=playLog!${FCB_SUFFIX}=${NoExtend}`,
 				`playLogName=${playLogName}\trenamePlayLogName=`,
 				LOG_PREFIX,
 				NoExtend,

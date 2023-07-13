@@ -4,34 +4,16 @@
 // Set format Google Calendar @puutaro
 // 	* sourceUrl -> schedule mail url etc..
 // 	* LAUNCH_URL-> Launch url
-// --
-// --
-// bellow setting variable main line up
-// * terminalOutputMode decide output mode in cmdclick terminal
-//  - NORMAL: normal terminal output (default)
-//  - REFLASH: Before terminal output, screen resflesh
-//  - REFLASH_AND_FIRST_ROW: Before terminal output, screen resflesh and focus first row
-//  - DEBUG: stdr + stderr
-//  - NO: no output (bacground exec)
 /// LABELING_SECTION_END
 
 
 /// SETTING_SECTION_START
 editExecute="ALWAYS"
 terminalOutputMode="NORMAL"
-setReplaceVariable="BTN_CMD=cmd"
-setReplaceVariable="BTN_LABEL=label"
-setReplaceVariable="LIST_PATH=listPath"
-setReplaceVariable="LIMIT_NUM=limitNum"
-setReplaceVariable="FANNEL_DIR_PATH=${01}/${001}"
-setReplaceVariable="FANNEL_LIST_DIR_PATH=${FANNEL_DIR_PATH}/list"
-setReplaceVariable="LAUNCH_URL_LIST_FILE_PATH=${FANNEL_LIST_DIR_PATH}/launch_url_list"
-setReplaceVariable="EMAIL_LIST_FILE_PATH=${FANNEL_LIST_DIR_PATH}/email_list"
-setVariableType="scheduleDate:DT="
-setVariableType="biginTime:TM="
-setVariableType="endTime:TM="
-setVariableType="email:ELCB=${LIST_PATH}=${EMAIL_LIST_FILE_PATH}!${LIMIT_NUM}=10"
-setVariableType="LAUNCH_URL:ELCBB=${LIST_PATH}=${LAUNCH_URL_LIST_FILE_PATH}!${LIMIT_NUM}=10|${BTN_CMD}=jsf '${0}' url"
+onAdBlock="OFF"
+setReplaceVariables="file://${01}/${001}/settingVariables/setReplaceVariables.js"
+setVariableTypes="file://${01}/${001}/settingVariables/setVariableTypes.js"
+hideSettingVariables="file://${01}/${001}/settingVariables/hideSettingVariables.js"
 scriptFileName="gCalendarFormatter.js"
 /// SETTING_SECTION_END
 

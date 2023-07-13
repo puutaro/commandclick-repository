@@ -1,0 +1,6 @@
+editExecute,
+terminalOutputMode,
+onUrlHistoryRegister,
+onAdBlock,
+setReplaceVariables,
+setVariableTypes,

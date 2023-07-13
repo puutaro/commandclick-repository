@@ -2,6 +2,9 @@
 
 /// LABELING_SECTION_START
 // text pdf viewer with tts @puutaro
+// * Support long press menu
+//  - src anchor 
+//  - src image anchor
 // 	* txtPdfPath 
 //		-> pdf file path
 // 	* TTS_PLAY 
@@ -25,32 +28,26 @@
 // --
 // --
 // bellow setting variable main line up
-// * terminalSizeType 
-//  -> cmdclick terminal size option
-//  - OFF: no adjust (default)
-//  - LONG: LongSize
-//  - SHORT: ShortSize
-// * terminalOutputMode 
-//  -> decide output mode in cmdclick terminal
-//  - NORMAL: normal terminal output (default)
-//  - REFLASH: Before terminal output, screen resflesh
-//  - REFLASH_AND_FIRST_ROW: Before terminal output, screen resflesh and focus first row
-//  - DEBUG: stdr + stderr
-//  - NO: no output (bacground exec)
-// * onUpdateLastModify
-//  -> how updating file last modified status when executing
-//  - ON: update this (default)
-//  - OFF: no update this
 // * terminalFontZoom 
 //  -> adjust terminal font size (percentage)
 // * terminalFontColor
 //  -> adjust terminal font color
-// * homeFannel
+// * execPlayBtnLongPress
+//  -> execute when play button long press
+//    - WEB_SEARCH: apear web search bar
+//   - PAGE_SEARCH: apear page search bar
+//    - js file path: execute js file
+// * execEditBtnLongPress
+//  -> execute when edit button long press
+//    - WEB_SEARCH: apear web search bar
+//    - PAGE_SEARCH: apear page search bar
+//    - js file path: execute js file
+// * homeFannelsPath
 // 	-> specified fannel put always bottom in app history 
-// 	   and multiple specify enable
-//    ex) homeFannel=..
-//    ex) homeFannel=..
-//    ex) homeFannel=..
+//      DSL button
+//          - drag and sort home fannels list
+//      ADD button
+//          - Add fannel to home fannel list
 /// LABELING_SECTION_END
 
 
@@ -60,34 +57,15 @@ terminalSizeType="LONG"
 terminalOutputMode="NORMAL"
 onUpdateLastModify="ON"
 onUrlHistoryRegister="OFF"
+onAdBlock="OFF"
 execPlayBtnLongPress="PAGE_SEARCH"
 execEditBtnLongPress="WEB_SEARCH"
 terminalFontZoom="0"
 terminalFontColor=""
-homeFannel=""
-homeFannel=""
-homeFannel=""
-setReplaceVariable="BTN_CMD=cmd"
-setReplaceVariable="BTN_LABEL=label"
-setReplaceVariable="LIST_PATH=listPath"
-setReplaceVariable="LIMIT_NUM=limitNum"
-setReplaceVariable="FCB_DIR_PATH=dirPath"
-setReplaceVariable="FCB_PREFIX=prefix"
-setReplaceVariable="FCB_SUFFIX=suffix"
-setReplaceVariable="FCB_TYPE=type"
-setReplaceVariable="ttsPlayMode=ttsPlay"
-setReplaceVariable="clearCache=clearCache"
-setReplaceVariable="txtPdfViewerDirPath=${01}/${001}"
-setReplaceVariable="txtPdfViewerListDirPath=${txtPdfViewerDirPath}/list"
-setReplaceVariable="txtPdfViewerOldPlayDirPath=${txtPdfViewerDirPath}/old"
-setReplaceVariable="txtPdfViewerTxtPdfListFilePath=${txtPdfViewerListDirPath}/txtPdf.txt"
-setVariableType="txtPdfPath:ELGBFL=${LIST_PATH}=${txtPdfViewerTxtPdfListFilePath}!${LIMIT_NUM}=10"
-setVariableType="TTS_PLAY:BTN=${BTN_CMD}=jsf '${0}' ${ttsPlayMode}"
-setVariableType="CLEAR_CACHE:BTN=${BTN_CMD}=jsf '${0}' ${clearCache}"
-setVariableType="Speed:NUM=!1..100!1"
-setVariableType="Pitch:NUM=!1..100!1"
-setVariableType="onTrack:CB=ON!OFF"
-setVariableType="onEnglish:CB=OFF!ON"
+homeFannelsPath=""
+setReplaceVariables="file://${01}/${001}/settingVariables/setReplaceVariables.js"
+setVariableTypes="file://${01}/${001}/settingVariables/setVariableTypes.js"
+hideSettingVariables="file://${01}/${001}/settingVariables/hideSettingVariables.js"
 scriptFileName="txtPdfViewer.js"
 /// SETTING_SECTION_END
 
@@ -107,7 +85,9 @@ onEnglish="OFF"
 
 
 let args = jsArgs.get().split("\t");
-const playMode = args.at(0);
+var playMode = args.at(0);
+const menuMode = "menu";
+textPdfViewerForMenu();
 const ttsPlayMode = "${ttsPlayMode}";
 const clearCacheMode = "${clearCache}";
 const playListDirPath = `${txtPdfViewerDirPath}/playList`;
@@ -121,9 +101,12 @@ const commandClickRootDirPath = "${00}";
 const currentRawScriptName = jsPath.trimAllExtend(
 	currentScriptName
 );
-const rawTxtPdfFileName = rowTxtPdfFileName();
+var rawTxtPdfFileName = rowTxtPdfFileName();
 jsFileSystem.createDir(
 	"${txtPdfViewerOldPlayDirPath}"
+);
+jsFileSystem.createDir(
+	"${txtPdfViewerStockPlayDirPath}"
 );
 const txtPdfViewerTtsTextFilePath = `${txtPdfViewerOldPlayDirPath}/${rawTxtPdfFileName}${txtSuffix}`;
 Speed = Number(Speed) / 50;
@@ -151,6 +134,9 @@ function switcher(){
 	switch(playMode){
 		case "":
 			execTxtPdf();
+			break;
+		case menuMode:
+			execTxtPdfByDialog();
 			break;
 		case ttsPlayMode:
 			execTtsPlay();
@@ -222,9 +208,9 @@ function saveExtractTextFromPdf(){
 function csvCheckPathAndRegister(
 	inputPath
 ){
-	extendCheckInputPath(
-		inputPath
-	);
+	// extendCheckInputPath(
+	// 	inputPath
+	// );
 	existCheckInputPath(
 		inputPath
 	);
@@ -237,7 +223,7 @@ function csvCheckPathAndRegister(
 function extendCheckInputPath(
 	inputPath
 ){
-	let permittionExtends = ["pdf", "txt"];
+	let permittionExtends = ["pdf", "txt", "csv", "tsv", "js", "jsx"];
 	const checkOk = jsPath.checkExtend(
 		inputPath,
 		permittionExtends.join("\t")
@@ -274,6 +260,17 @@ function execTxtPdf(){
 	jsUrl.loadUrl(txtPdfViewerTtsTextFilePath);
 };
 
+function execTxtPdfByDialog(){
+	const txtCon = jsFileSystem.readLocalFile(
+		txtPdfViewerTtsTextFilePath
+	);
+	if(!txtCon) {
+		alert("no contents");
+		return
+	};
+	alert(txtCon);
+};
+
 function execClearCache(){
 	jsFileSystem.removeDir(
 		"${txtPdfViewerOldPlayDirPath}"
@@ -295,4 +292,37 @@ function rowTxtPdfFileName(){
 	return jsPath.basename(
 		rawTxtPdfPath
 	);
+};
+
+
+function textPdfViewerForMenu(){
+	const cmdclickLongPressLinkUrlStr = "CMDCLICK_ENCRPT_LONG_PRESS_LINK_URL".replace(
+		"_ENCRPT",
+		""
+	);
+	const cmdclickLongPressLinkUrl = 
+		"CMDCLICK_LONG_PRESS_LINK_URL";
+	if(
+		cmdclickLongPressLinkUrl == cmdclickLongPressLinkUrlStr
+	) return;
+	const cmdClickRootDir = "${00}";
+	const tempDownloadDirPath = 
+		`${cmdClickRootDir}/temp/download`;
+	jsCurl.getTextOrPdf(
+		cmdclickLongPressLinkUrl
+	);
+	const downloadFileName = jsFileSystem.showFileList(
+		tempDownloadDirPath
+	).split("\t").at(0);
+	if(!downloadFileName) {
+		alert("no exist");
+		exitZero();
+	};
+	txtPdfPath = 
+		`${txtPdfViewerStockPlayDirPath}/${downloadFileName}`;
+	jsFileSystem.copyFile(
+		`${tempDownloadDirPath}/${downloadFileName}`,
+		txtPdfPath
+	);
+	playMode = menuMode;
 };

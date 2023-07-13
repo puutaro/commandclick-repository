@@ -31,32 +31,26 @@
 // --
 // --
 // bellow setting variable main line up
-// * terminalSizeType 
-//  -> cmdclick terminal size option
-//  - OFF: no adjust (default)
-//  - LONG: LongSize
-//  - SHORT: ShortSize
-// * terminalOutputMode 
-//  -> decide output mode in cmdclick terminal
-//  - NORMAL: normal terminal output (default)
-//  - REFLASH: Before terminal output, screen resflesh
-//  - REFLASH_AND_FIRST_ROW: Before terminal output, screen resflesh and focus first row
-//  - DEBUG: stdr + stderr
-//  - NO: no output (bacground exec)
-// * onUpdateLastModify
-//  -> how updating file last modified status when executing
-//  - ON: update this (default)
-//  - OFF: no update this
 // * terminalFontZoom 
 //  -> adjust terminal font size (percentage)
 // * terminalFontColor
 //  -> adjust terminal font color
-// * homeFannel
+// * execPlayBtnLongPress
+//  -> execute when play button long press
+//    - WEB_SEARCH: apear web search bar
+//   - PAGE_SEARCH: apear page search bar
+//    - js file path: execute js file
+// * execEditBtnLongPress
+//  -> execute when edit button long press
+//    - WEB_SEARCH: apear web search bar
+//    - PAGE_SEARCH: apear page search bar
+//    - js file path: execute js file
+// * homeFannelsPath
 // 	-> specified fannel put always bottom in app history 
-// 	   and multiple specify enable
-//    ex) homeFannel=..
-//    ex) homeFannel=..
-//    ex) homeFannel=..
+//      DSL button
+//          - drag and sort home fannels list
+//      ADD button
+//          - Add fannel to home fannel list
 /// LABELING_SECTION_END
 
 
@@ -66,39 +60,15 @@ terminalSizeType="LONG"
 terminalOutputMode="NORMAL"
 onUpdateLastModify="ON"
 onUrlHistoryRegister="OFF"
+onAdBlock="OFF"
 execPlayBtnLongPress="PAGE_SEARCH"
 execEditBtnLongPress="WEB_SEARCH"
 terminalFontZoom="0"
 terminalFontColor=""
-homeFannel=""
-homeFannel=""
-homeFannel=""
-setReplaceVariable="BTN_CMD=cmd"
-setReplaceVariable="BTN_LABEL=label"
-setReplaceVariable="LIST_PATH=listPath"
-setReplaceVariable="LIMIT_NUM=limitNum"
-setReplaceVariable="FCB_DIR_PATH=dirPath"
-setReplaceVariable="FCB_PREFIX=prefix"
-setReplaceVariable="FCB_SUFFIX=suffix"
-setReplaceVariable="FCB_TYPE=type"
-setReplaceVariable="extractMode=extract"
-setReplaceVariable="ttsPlayMode=ttsPlay"
-setReplaceVariable="clearCache=clearCache"
-setReplaceVariable="installMode=install"
-setReplaceVariable="ocrViewerDirPath=${01}/${001}"
-setReplaceVariable="ocrViewerListDirPath=${ocrViewerDirPath}/list"
-setReplaceVariable="ocrViewerOldPlayDirPath=${ocrViewerDirPath}/old"
-setReplaceVariable="ocrViewerTxtListFilePath=${ocrViewerListDirPath}/extractedTxt.txt"
-setVariableType="ocrTargetPath:ELGBFL=${LIST_PATH}=${ocrViewerTxtListFilePath}!${LIMIT_NUM}=10"
-setVariableType="EXEC_EXTRACT:BTN=${BTN_CMD}=jsf '${0}' ${extractMode}"
-setVariableType="TTS_PLAY:BTN=${BTN_CMD}=jsf '${0}' ${ttsPlayMode}"
-setVariableType="CLEAR_CACHE:BTN=${BTN_CMD}=jsf '${0}' ${clearCache}"
-setVariableType="Speed:NUM=!1..100!1"
-setVariableType="Pitch:NUM=!1..100!1"
-setVariableType="onTrack:CB=ON!OFF"
-setVariableType="onEnglish:CB=OFF!ON"
-setVariableType="INSTALL:BTN=${BTN_CMD}=jsf '${0}' ${installMode}"
-setVariableType="ocrLang:CB=en!jpn"
+homeFannelsPath=""
+setReplaceVariables="file://${01}/${001}/settingVariables/setReplaceVariables.js"
+setVariableTypes="file://${01}/${001}/settingVariables/setVariableTypes.js"
+hideSettingVariables="file://${01}/${001}/settingVariables/hideSettingVariables.js"
 scriptFileName="ocrViewer.js"
 /// SETTING_SECTION_END
 
@@ -233,6 +203,7 @@ function saveExtractTextByOcr(){
 		"bash " + ` \"${ocrShellPath}\"`
 		+ ` \"${ocrTargetPath}\"`
 		+ ` \"${ocrLang}\"`
+		+ ` \"${currentScriptName}\"`
 		+ ` 2>&1`
 	);
 };
@@ -241,10 +212,10 @@ function saveExtractTextByOcr(){
 function extendCheckInputPath(
 	inputPath
 ){
-	let nopConvertExtends = ["txt", "csv", "tsv"];
+	let noConvertExtends = ["txt", "csv", "tsv"];
 	const disableConvert = jsPath.checkExtend(
 		inputPath,
-		nopConvertExtends.join("\t")
+		noConvertExtends.join("\t")
 	);
 	if(
 		!disableConvert

@@ -2,10 +2,26 @@
 
 /// LABELING_SECTION_START
 // Display summary for current site @puutaro
+// * Support long press menu
+//  - src anchor 
+//  - src image anchor 
 /// LABELING_SECTION_END
 
 
+const targetUrl = "CMDCLICK_LONG_PRESS_LINK_URL";
+const getUrlMode = "getUrlMode";
 const LEAST_STRING_NUM = 300;
+const summaryMode = decideMode();
+var doc = makeDoc();
+var list = doc.querySelectorAll("h1,h2,h3"); 
+let tocArr = makeTocArr(list);
+var summary = makeSummary(tocArr);
+
+if(summary.length < LEAST_STRING_NUM) {
+    summary = summaryComp(summary);
+};
+alert(summary);
+
 
 function makeTocArr(list){
     if(list.length <= 0) return [];
@@ -110,11 +126,38 @@ function makeSummary(tocArr){
     return summary.replace(/\n\n*/g, "\n");
 };
 
-var list = document.querySelectorAll("h1,h2,h3"); 
-let tocArr = makeTocArr(list);
-var summary = makeSummary(tocArr);
 
-if(summary.length < LEAST_STRING_NUM) {
-    summary = summaryComp(summary);
+function makeDocFormUrl(){
+    const getHtml = jsCurl.get(
+        targetUrl,
+        "",
+        "",
+        2000
+    );
+    var doc = document.createElement( 'html' );
+    doc.innerHTML = getHtml;
+    return doc;
 };
-alert(summary);
+
+function makeDoc(){
+    switch(summaryMode){
+        case "":
+            return document;
+            break;
+        case getUrlMode:
+            return makeDocFormUrl();
+            break;
+    };
+};
+
+
+function decideMode(){
+    const cmdclickLongPressLinkUrlStr = "CMDCLICK_ENCRPT_LONG_PRESS_LINK_URL".replace(
+        "_ENCRPT",
+        ""
+    );
+    if(
+        targetUrl != cmdclickLongPressLinkUrlStr
+    ) return getUrlMode;
+    return "";
+};

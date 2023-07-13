@@ -57,19 +57,6 @@
 // --
 // --
 // bellow setting variable main line up
-// * terminalSizeType is cmdclick terminal size option
-//  - OFF: no adjust (default)
-//  - LONG: LongSize
-//  - SHORT: ShortSize
-// * terminalOutputMode decide output mode in cmdclick terminal
-//  - NORMAL: normal terminal output (default)
-//  - REFLASH: Before terminal output, screen resflesh
-//  - REFLASH_AND_FIRST_ROW: Before terminal output, screen resflesh and focus first row
-//  - DEBUG: stdr + stderr
-//  - NO: no output (bacground exec)
-// * onUpdateLastModify is how updating file last modified status when executing
-//  - ON: update this (default)
-//  - OFF: no update this
 // * terminalFontZoom adjust terminal font size (percentage)
 // * terminalFontColor adjust terminal font color
 // * terminalColor adjust terminal background color
@@ -82,31 +69,13 @@ terminalSizeType="LONG"
 terminalOutputMode="NORMAL"
 onUpdateLastModify="ON"
 onUrlHistoryRegister="OFF"
+onAdBlock="OFF"
 terminalFontZoom="0"
 terminalColor=""
 terminalFontColor=""
-setReplaceVariable="BTN_CMD=cmd"
-setReplaceVariable="BTN_LABEL=label"
-setReplaceVariable="LIST_PATH=listPath"
-setReplaceVariable="LIMIT_NUM=limitNum"
-setReplaceVariable="PARRENT_APP_DIR_PATH=${01}"
-setReplaceVariable="CURRENT_APP_DIR_PATH=${PARRENT_APP_DIR_PATH}/${001}"
-setReplaceVariable="CURRENT_LIST_DIR_PATH=${CURRENT_APP_DIR_PATH}/list"
-setReplaceVariable="CURRENT_COLUMN_LIST_FILE_PATH=${CURRENT_LIST_DIR_PATH}/columnList"
-setReplaceVariable="CURRENT_FILTERS_LIST_FILE_PATH=${CURRENT_LIST_DIR_PATH}/filtersList"
-setReplaceVariable="CURRENT_FILTER_GAIN_LIST_FILE_PATH=${CURRENT_LIST_DIR_PATH}/filterGainList"
-setReplaceVariable="CURRENT_INUPT_CSV_LIST_FILE_PATH=${CURRENT_LIST_DIR_PATH}/inuptCsvList"
-setVariableType="selectColmuns:ELMCBB=${LIST_PATH}=${CURRENT_COLUMN_LIST_FILE_PATH}|${BTN_CMD}=jsf '${0}' selectColSync!${BTN_LABEL}=sync"
-setVariableType="filters:ELCBB=${LIST_PATH}=${CURRENT_FILTERS_LIST_FILE_PATH}!${LIMIT_NUM}=10|${BTN_CMD}=jsf '${0}' filters!${BTN_LABEL}=set"
-setVariableType="startColNum:NUMB=!0..10000!1|${BTN_CMD}=jsf '${0}' initStartColNum!${BTN_LABEL}=to0"
-setVariableType="startRowNum:NUMB=!0..10000!1|${BTN_CMD}=jsf '${0}' initStartRowNum!${BTN_LABEL}=to0"
-setVariableType="scrollBoost:NUMB=!0..100000!1|${BTN_CMD}=jsf '${0}' initScrollBoost!${BTN_LABEL}=to0"
-setVariableType="colRange:NUMB=!0..10000!1|${BTN_CMD}=jsf '${0}' initColRange!${BTN_LABEL}=to0"
-setVariableType="rowRange:NUMB=!0..10000!1|${BTN_CMD}=jsf '${0}' initRowRange!${BTN_LABEL}=to0"
-setVariableType="rowLimit:NUMB=!0..10000!100|${BTN_CMD}=jsf '${0}' initRowLimit!${BTN_LABEL}=to0"
-setVariableType="autoScrollType:CB=no!horizon!rHorizon!vartical!rVartical"
-setVariableType="inputCTsvPath:ELGBFL=${LIST_PATH}=${CURRENT_INUPT_CSV_LIST_FILE_PATH}!${LIMIT_NUM}=10"
-setVariableType="viewType:CB=SRC!AGGRE!CHART"
+setReplaceVariables="file://${01}/${001}/settingVariables/setReplaceVariables.js"
+setVariableTypes="file://${01}/${001}/settingVariables/setVariableTypes.js"
+hideSettingVariables="file://${01}/${001}/settingVariables/hideSettingVariables.js"
 scriptFileName="ctsvViewer.js"
 /// SETTING_SECTION_END
 
@@ -243,6 +212,7 @@ const headerRow = jsCsv.toHeaderRow(
 const filteredTagNameRowSize = jsCsv.takeRowSize(
 	filteredTagName
 );
+
 if(
 	colRange == 0
 ) colRange = filterdColSize;
@@ -253,6 +223,7 @@ cancelerAutoScrollTypeByRange(
 	filteredTagNameRowSize,
 	filterdColSize
 );
+
 switchStartNumByScrollType();
 
 const endColNum = makeEndNum(
@@ -319,7 +290,7 @@ function cancelerAutoScrollTypeByRange(
 		case AUTO_SCROLL_TYPE_NAME.vartical:
 		case AUTO_SCROLL_TYPE_NAME.rVartical:
 			if(
-				rowRange <= filteredTagNameRowSize
+				rowRange >= filteredTagNameRowSize
 			) autoScrollType = AUTO_SCROLL_TYPE_NAME.no;
 			break;
 	};

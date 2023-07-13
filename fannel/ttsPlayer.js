@@ -29,26 +29,22 @@
 // --
 // --
 // Bellow setting variable main line up
-// * terminalSizeType is cmdclick terminal size option
-//  - OFF: no adjust (default)
-//  - LONG: LongSize
-//  - SHORT: ShortSize
-// * terminalOutputMode decide output mode in cmdclick terminal
-//  - NORMAL: normal terminal output (default)
-//  - REFLASH: Before terminal output, screen resflesh
-//  - REFLASH_AND_FIRST_ROW: Before terminal output, screen resflesh and focus first row
-//  - DEBUG: stdr + stderr
-//  - NO: no output (bacground exec)
-// * onUpdateLastModify is how updating file last modified status when executing
-//  - ON: update this (default)
-//  - OFF: no update this
-// * onAdBlock: adblock switch
-//  - INHERIT: inherit config setting
-//  - ON: on
-//  - OFF: off
-// * terminalFontZoom adjust terminal font size (percentage)
-// * terminalFontColor adjust terminal font color
-// * terminalColor adjust terminal background color
+// * execPlayBtnLongPress
+//  -> execute when play button long press
+//    - WEB_SEARCH: apear web search bar
+//   - PAGE_SEARCH: apear page search bar
+//    - js file path: execute js file
+// * execEditBtnLongPress
+//  -> execute when edit button long press
+//    - WEB_SEARCH: apear web search bar
+//    - PAGE_SEARCH: apear page search bar
+//    - js file path: execute js file
+// * terminalFontZoom 
+// 	-> adjust terminal font size (percentage)
+// * terminalFontColor 
+// 	-> adjust terminal font color
+// * terminalColor 
+// 	-> adjust terminal background color
 /// LABELING_SECTION_END
 
 
@@ -57,43 +53,18 @@ editExecute="ALWAYS"
 terminalSizeType="LONG"
 terminalOutputMode="NORMAL"
 onUpdateLastModify="ON"
-ignoreHistoryPaths="${01}"
 onUrlHistoryRegister="ON"
+onAdBlock="OFF"
 execPlayBtnLongPress="WEB_SEARCH"
 execEditBtnLongPress=""
 terminalFontZoom="0"
 terminalColor=""
 terminalFontColor=""
 scriptFileName="ttsPlayer.js"
-setReplaceVariable="BTN_CMD=cmd"
-setReplaceVariable="BTN_LABEL=label"
-setReplaceVariable="FGB_DIR_PATH=dirPath"
-setReplaceVariable="FGB_PREFIX=prefix"
-setReplaceVariable="FGB_SUFFIX=suffix"
-setReplaceVariable="FGB_TYPE=type"
-setReplaceVariable="LIST_PATH=listPath"
-setReplaceVariable="LIMIT_NUM=limitNum"
-setReplaceVariable="TTS_PREFIX=tts"
-setReplaceVariable="ttsPlayerDirPath=${01}/${001}"
-setReplaceVariable="cmdTtsPlayerSaveDirPath=${ttsPlayerDirPath}/save"
-setReplaceVariable="cmdTtsPlayerEditDirPath=${ttsPlayerDirPath}/edit"
-setReplaceVariable="cmdTtsPlayerTempDirPath=${ttsPlayerDirPath}/temp"
-setReplaceVariable="cmdTtsPlayerTempFilePath=${cmdTtsPlayerTempDirPath}/tempPlay"
-setReplaceVariable="cmdTtsPlayerListDirPath=${ttsPlayerDirPath}/list"
-setReplaceVariable="cmdTtsPlayerDirListFilePath=${cmdTtsPlayerListDirPath}/music_dir_list"
-setReplaceVariable="cmdTtsPlayerGmailListFilePath=${cmdTtsPlayerListDirPath}/gmail_list"
-setVariableType="manageText:EFGBB=${FGB_DIR_PATH}=${cmdTtsPlayerSaveDirPath}!${FGB_SUFFIX}=.txt|${BTN_CMD}=jsf '${0}' manageText!${BTN_LABEL}=MNG"
-setVariableType="playListName:EFGB=${FGB_DIR_PATH}=${cmdTtsPlayerEditDirPath}!${FGB_PREFIX}=${TTS_PREFIX}!${FGB_SUFFIX}=.tsv"
-setVariableType="playMode:CB=ordinaly!shuffle!reverse"
-setVariableType="PLAY:BTN=${BTN_CMD}=::TermOut::jsf '${0}'"
-setVariableType="numberPlay:NUMB=!1..1000!1|${BTN_CMD}=::TermOut::jsf '${0}' number!${BTN_LABEL}=Play"
-setVariableType="STOP:BTN=${BTN_CMD}=jsf '${0}' STOP"
-setVariableType="EDIT_PLAY_LIST:BTN=${BTN_CMD}=jsf '${0}' EDIT_PLAY_LIST"
-setVariableType="Speed:NUM=!1..100!1"
-setVariableType="Pitch:NUM=!1..100!1"
-setVariableType="onEnglish:CB=OFF!ON"
-setVariableType="onTrack:CB=ON!OFF"
-setVariableType="gmailToFile:ELCBB=${LIST_PATH}=${cmdTtsPlayerGmailListFilePath}!${LIMIT_NUM}=10|${BTN_CMD}=jsf '${0}' gmailToFile"
+ignoreHistoryPaths="file://${01}/${001}/settingVariables/ignoreHistoryPaths.js"
+setReplaceVariables="file://${01}/${001}/settingVariables/setReplaceVariables.js"
+setVariableTypes="file://${01}/${001}/settingVariables/setVariableTypes.js"
+hideSettingVariables="file://${01}/${001}/settingVariables/hideSettingVariables.js"
 /// SETTING_SECTION_END
 
 
@@ -208,7 +179,7 @@ function switchByArgs(){
 		        "playListName",
 				"renameplayListName",
 				cmdTtsPlayerEditDirPath,
-				`playListName:EFCB=${FGB_DIR_PATH}=${cmdTtsPlayerEditDirPath}!${FGB_PREFIX}=${TTS_PREFIX}!${FGB_SUFFIX}=${tsvExtend}`,
+				`playListName:TXT:FSB=${FGB_DIR_PATH}=${cmdTtsPlayerEditDirPath}!${FGB_PREFIX}=${TTS_PREFIX}!${FGB_SUFFIX}=${tsvExtend}`,
 				`playListName=${playListName}\trenameplayListName=`,
 				TTS_PREFIX,
 				tsvExtend,

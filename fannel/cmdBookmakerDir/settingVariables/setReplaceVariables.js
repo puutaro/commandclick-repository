@@ -1,0 +1,13 @@
+
+// basic
+TXT_LABEL=label,
+BTN_CMD=cmd,
+BTN_LABEL=label,
+FCB_DIR_PATH=dirPath,
+FCB_PREFIX=prefix,
+FCB_SUFFIX=suffix,
+FCB_TYPE=type,
+
+// path
+CMD_BOOKMAKER_DIR_PATH="${01}/${001}",
+CMD_BOOKMAKER_EDIT_DIR_PATH="${CMD_BOOKMAKER_DIR_PATH}/edit",

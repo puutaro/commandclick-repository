@@ -9,15 +9,8 @@
 // --
 // --
 // bellow setting variable main line up
-// * EditExecute is edit mode change
-//	- NO is normal edit
-//	- ONCE is one time edit and execute
-//	- ALWAYD is always edit and execute
-// * terminalSizeType is cmdclick terminal size option
-//  - OFF: no adjust (default)
-//  - LONG: LongSize
-//  - SHORT: ShortSize
-// * terminalFontZoom adjust terminal font size (percentage)
+// * terminalFontZoom 
+// 	-> adjust terminal font size (percentage)
 /// LABELING_SECTION_END
 
 
@@ -25,15 +18,11 @@
 editExecute="ALWAYS"
 terminalSizeType="LONG"
 onUrlHistoryRegister="OFF"
+onAdBlock="OFF"
 terminalFontZoom="130"
-setReplaceVariable="BTN_CMD=cmd"
-setReplaceVariable="BTN_LABEL=label"
-setReplaceVariable="LIST_PATH=listPath"
-setReplaceVariable="LIMIT_NUM=limitNum"
-setReplaceVariable="REQ_LIST_DIR_PATH=${01}/${001}"
-setReplaceVariable="REQ_LIST_FILE_PATH=${REQ_LIST_DIR_PATH}/reqList"
-setVariableType="TXT_TO_CLIP:ELCB=${LIST_PATH}=${REQ_LIST_FILE_PATH}!${LIMIT_NUM}=30|${BTN_CMD}=::TermLong::jsf '${0}' clip"
-setVariableType="REMOVE_TEXT:ELCBB=${LIST_PATH}=${REQ_LIST_FILE_PATH}|${BTN_CMD}=jsf '${0}' remove!${BTN_LABEL}=DEL"
+setReplaceVariables="file://${01}/${001}/settingVariables/setReplaceVariables.js"
+setVariableTypes="file://${01}/${001}/settingVariables/setVariableTypes.js"
+hideSettingVariables="file://${01}/${001}/settingVariables/hideSettingVariables.js"
 scriptFileName="cmdGpt35.js"
 /// SETTING_SECTION_END
 

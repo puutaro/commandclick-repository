@@ -13,22 +13,12 @@
 // --
 // --
 // bellow setting variable main line up
-// * terminalSizeType is cmdclick terminal size option
-//  - OFF: no adjust (default)
-//  - LONG: LongSize
-//  - SHORT: ShortSize
-// * terminalOutputMode decide output mode in cmdclick terminal
-//  - NORMAL: normal terminal output (default)
-//  - REFLASH: Before terminal output, screen resflesh
-//  - REFLASH_AND_FIRST_ROW: Before terminal output, screen resflesh and focus first row
-//  - DEBUG: stdr + stderr
-//  - NO: no output (bacground exec)
-// * onUpdateLastModify is how updating file last modified status when executing
-//  - ON: update this (default)
-//  - OFF: no update this
-// * terminalFontZoom adjust terminal font size (percentage)
-// * terminalFontColor adjust terminal font color
-// * terminalColor adjust terminal background color
+// * terminalFontZoom
+// 	-> adjust terminal font size (percentage)
+// * terminalFontColor
+// 	-> adjust terminal font color
+// * terminalColor
+// 	-> adjust terminal background color
 /// LABELING_SECTION_END
 
 
@@ -38,13 +28,13 @@ terminalSizeType="LONG"
 terminalOutputMode="NORMAL"
 onUpdateLastModify="ON"
 onUrlHistoryRegister="OFF"
+onAdBlock="OFF"
 terminalFontZoom="0"
 terminalColor=""
 terminalFontColor=""
-setReplaceVariable="BTN_CMD=cmd"
-setReplaceVariable="BTN_LABEL=label"
-setVariableType="DISPLAY_DRAFT_LIST:BTN=${BTN_CMD}=::TermLong::jsf '${0}' DRAFT_LIST"
-setVariableType="CLIP_TEXT:EB=${BTN_CMD}=::TermLong::jsf '${0}' CLIP_TEXT!COPY"
+setReplaceVariables="file://${01}/${001}/settingVariables/setReplaceVariables.js"
+setVariableTypes="file://${01}/${001}/settingVariables/setVariableTypes.js"
+hideSettingVariables="file://${01}/${001}/settingVariables/hideSettingVariables.js"
 scriptFileName="sendClipToGmail.js"
 /// SETTING_SECTION_END
 

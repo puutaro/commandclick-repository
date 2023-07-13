@@ -246,10 +246,10 @@
 	const zenkakuSimbolRegex = /[^a-zA-Z0-9_]/;
 	const prefixNumRegex = /^[0-9]/;
 	const urlLaunchVariablePrefix = "upUrlOrCp";
-	const setVariableTypeName = 'setVariableType';
+	const setVariableTypeName = 'setVariableTypes';
 	const newlineVariableName = "newline";
-	const elcbMark = "ELCB"
-	const elcbbMark = "ELCBB"
+	const elcbMark = "TXT:ELSB"
+	const elcbbMark = "TXT:ELSB:BTN"
 	let INPUT_CLASS_TYPE = {
 	    cbFormFieldClass: 'cb-form-field',
 	    textFormFieldClass: 'text-form-field',
@@ -310,9 +310,9 @@
 	};
 
 	let READ_VAL_TYPE = {
-		ELCB: 'ELCB',
+		ELCB: 'TXT:ELSB',
 	 	TXT: 'TXT',
-	 	ELCBB: 'ELCBB',
+	 	ELCBB: 'TXT:ELSB:BTN',
 	 	LTXT: 'LTXT',
 	 	NEWLINE: 'NEWLINE'
 	};
@@ -604,7 +604,7 @@
 				const keySourceList = lineList.at(0).split(":");
 				const key = keySourceList.at(0);
 				if(keySourceList.length > 1){
-					var valType = keySourceList.at(1);
+					var valType = keySourceList.slice(1).join(":");
 				} else {
 					var valType = "";
 				}
@@ -795,20 +795,10 @@
 		const endDescContents = `|// --
 			|// --
 			|// bellow setting variable main line up
-			|// * EditExecute is edit mode change
-			|//	- NO is normal edit
-			|//	- ONCE is one time edit and execute
-			|//	- ALWAYS is always edit and execute
-			|// * terminalOutputMode decide output mode in cmdclick terminal
-			|//  - NORMAL: normal terminal output (default)
-			|//  - REFLASH: Before terminal output, screen resflesh
-			|//  - REFLASH_AND_FIRST_ROW: Before terminal output, screen resflesh and focus first row
-			|//  - DEBUG: stdr + stderr
-			|//  - NO: no output (bacground exec)
-			|// * terminalSizeType is cmdclick terminal size option
-			|//  - OFF: no adjust (default)
-			|//  - LONG: LongSize
-			|//  - SHORT: ShortSize
+			|# * onUrlHistoryRegister
+            |#   -> url history update signal
+            |#  - ON: update
+        	|#  - OFF: no update
 			|${endDescriptionHolder}`.split('\n')
 		.map(function(line){
 			return line.trim().replace(/^\|/, '');
@@ -828,7 +818,13 @@
 		|editExecute="ALWAYS"
 		|terminalOutputMode="NORMAL"
 		|terminalSizeType="LONG"
-		|onUrlHistoryRegister="OFF"`.split('\n')
+		|onUrlHistoryRegister="OFF"
+		|onAdBlock="OFF"
+		|hideSettingVariables="editExecute"
+		|hideSettingVariables="terminalOutputMode"
+		|hideSettingVariables="terminalSizeType"
+		|hideSettingVariables="onAdBlock"
+		|hideSettingVariables="setVariableTypes"`.split('\n')
 		.map(function(line){
 			return line.trim().replace(/^\|/, '');
 		}).join("\n");

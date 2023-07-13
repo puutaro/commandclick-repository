@@ -27,26 +27,12 @@
 // --
 // --
 // Bellow setting variable main line up
-// * terminalSizeType is cmdclick terminal size option
-//  - OFF: no adjust (default)
-//  - LONG: LongSize
-//  - SHORT: ShortSize
-// * terminalOutputMode decide output mode in cmdclick terminal
-//  - NORMAL: normal terminal output (default)
-//  - REFLASH: Before terminal output, screen resflesh
-//  - REFLASH_AND_FIRST_ROW: Before terminal output, screen resflesh and focus first row
-//  - DEBUG: stdr + stderr
-//  - NO: no output (bacground exec)
-// * onUpdateLastModify is how updating file last modified status when executing
-//  - ON: update this (default)
-//  - OFF: no update this
-// * onAdBlock: adblock switch
-//  - INHERIT: inherit config setting
-//  - ON: on
-//  - OFF: off
-// * terminalFontZoom adjust terminal font size (percentage)
-// * terminalFontColor adjust terminal font color
-// * terminalColor adjust terminal background color
+// * terminalFontZoom
+// -> adjust terminal font size (percentage)
+// * terminalFontColor
+// -> adjust terminal font color
+// * terminalColor
+// -> adjust terminal background color
 /// LABELING_SECTION_END
 
 
@@ -56,32 +42,13 @@ terminalSizeType="LONG"
 terminalOutputMode="NORMAL"
 onUpdateLastModify="ON"
 onUrlHistoryRegister="OFF"
+onAdBlock="OFF"
 terminalFontZoom="0"
 terminalColor=""
 terminalFontColor=""
-setReplaceVariable="BTN_CMD=cmd"
-setReplaceVariable="BTN_LABEL=label"
-setReplaceVariable="FCB_DIR_PATH=dirPath"
-setReplaceVariable="FCB_PREFIX=prefix"
-setReplaceVariable="FCB_SUFFIX=suffix"
-setReplaceVariable="FCB_TYPE=type"
-setReplaceVariable="LIST_PATH=listPath"
-setReplaceVariable="LIMIT_NUM=limitNum"
-setReplaceVariable="cmdMusicPlayerDirPath=${01}/${001}"
-setReplaceVariable="cmdMusicPlayerEditDirPath=${cmdMusicPlayerDirPath}/edit"
-setReplaceVariable="cmdMusicPlayerListDirPath=${cmdMusicPlayerDirPath}/list"
-setReplaceVariable="cmdMusicPlayerDirListFilePath=${cmdMusicPlayerListDirPath}/music_dir_list"
-setVariableType="musicDir:ELCBDIR=${LIST_PATH}=${cmdMusicPlayerDirListFilePath}!${LIMIT_NUM}=10"
-setVariableType="musicPlayListName:EFCB=${FCB_DIR_PATH}=${cmdMusicPlayerEditDirPath}!${FCB_PREFIX}=music!${FCB_SUFFIX}=.tsv"
-setVariableType="musicPlay:CB=ordinaly!shuffle!reverse"
-setVariableType="PLAY:BTN=${BTN_CMD}=::TermOut::jsf '${0}'"
-setVariableType="numberPlay:NUMB=!1..1000!1|${BTN_CMD}=::TermOut::jsf '${0}' number!${BTN_LABEL}=Play"
-setVariableType="startNum:NUMB=!0..10000!1|${BTN_CMD}=jsf '${0}' initStartNum!${BTN_LABEL}=to0"
-setVariableType="endNum:NUMB=!0..10000!1|${BTN_CMD}=jsf '${0}' initEndNum!${BTN_LABEL}=to0"
-setVariableType="STOP:BTN=pkill -9 mpv"
-setVariableType="Install:BTN=${BTN_CMD}=jsf '${0}'"
-setVariableType="EDIT_MUSIC_PLAY_LIST:BTN=${BTN_CMD}=jsf '${0}' EDIT_MUSIC_PLAY_LIST"
-setVariableType="onResumePlay:CB=ON!OFF"
+setReplaceVariables="file://${01}/${001}/settingVariables/setReplaceVariables.js"
+setVariableTypes="file://${01}/${001}/settingVariables/setVariableTypes.js"
+hideSettingVariables="file://${01}/${001}/settingVariables/hideSettingVariables.js"
 scriptFileName="cmdMusicPlayer.js"
 /// SETTING_SECTION_END
 
@@ -202,7 +169,7 @@ function switchByArgs(){
 		        "musicPlayListName",
 				"renameMusicPlayListName",
 				cmdMusicPlayerEditDirPath,
-				`musicPlayListName:EFCB=${FCB_DIR_PATH}=${cmdMusicPlayerEditDirPath}!${FCB_PREFIX}=${MUSIC_PREFIX}!${FCB_SUFFIX}=${tsvExtend}`,
+				`musicPlayListName:TXT:FSB=${FCB_DIR_PATH}=${cmdMusicPlayerEditDirPath}!${FCB_PREFIX}=${MUSIC_PREFIX}!${FCB_SUFFIX}=${tsvExtend}`,
 				`musicPlayListName=${musicPlayListName}\trenameMusicPlayListName=`,
 				MUSIC_PREFIX,
 				tsvExtend,

@@ -1,0 +1,4 @@
+editExecute,
+terminalSizeType,
+setReplaceVariables,
+setVariableTypes,

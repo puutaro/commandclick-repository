@@ -8,30 +8,19 @@
 // --
 // --
 // bellow setting variable main line up
-// * EditExecute is edit mode change
-//	- NO is normal edit
-//	- ONCE is one time edit and execute
-//	- ALWAYD is always edit and execute
 // * terminalSizeType is cmdclick terminal size option
 //  - OFF: no adjust (default)
 //  - LONG: LongSize
 //  - SHORT: ShortSize
-// * terminalFontZoom adjust terminal font size (percentage)
-// * historySwitch: switch app history with url history
-//  - ON: switch
-//  - OFF: no switch
-//  - INHERIT: inherit config setting (default)
 /// LABELING_SECTION_END
 
 
 /// SETTING_SECTION_START
 editExecute="OFF"
 terminalSizeType="LONG"
-onUrlHistoryRegister="OFF"
-onAdBlock="INHERIT"
-historySwitch="ON"
-terminalFontZoom="130"
 scriptFileName="listSearcher.js"
+hideSettingVariables="editExecute"
+hideSettingVariables="terminalSizeType"
 /// SETTING_SECTION_END
 
 
@@ -47,7 +36,8 @@ const BTN_CMD = "cmd";
 const BTN_LABEL = "label";
 const LIST_PATH = "listPath";
 const LIMIT_NUM = "limitNum";
-const ELCB_MARK = "ELCB";
+const TXT_MARK = "TXT";
+const ELSB_MARK = "ELSB";
 const SEARCH_PREFIX_VAL = "searchPrefix";
 const SEARCH_TEXT_VAL="searchText";
 const searchTextSaveLimit = 20;
@@ -86,8 +76,8 @@ function makeSearchTextAndPrefixPairByForm(){
 	if(
 		!defaultSearchPrefix
 	) defaultSearchPrefix = GGLE_URL;
-	const setVariableSearchText = `${SEARCH_TEXT_VAL}:${ELCB_MARK}=${LIST_PATH}=${SEARCH_TEXT_LIST_FILE}!${LIMIT_NUM}=${searchTextSaveLimit}`;
-	const setVariableSearchPrefix = `${SEARCH_PREFIX_VAL}:${ELCB_MARK}=${LIST_PATH}=${SEARCH_PREFIX_LIST_FILE}!${LIMIT_NUM}=${searchPrefixSaveLimit}`;
+	const setVariableSearchText = `${SEARCH_TEXT_VAL}:${TXT_MARK}:${ELSB_MARK}=${LIST_PATH}=${SEARCH_TEXT_LIST_FILE}!${LIMIT_NUM}=${searchTextSaveLimit}`;
+	const setVariableSearchPrefix = `${SEARCH_PREFIX_VAL}:${TXT_MARK}:${ELSB_MARK}=${LIST_PATH}=${SEARCH_PREFIX_LIST_FILE}!${LIMIT_NUM}=${searchPrefixSaveLimit}`;
 	const searchCmdVal = `${SEARCH_TEXT_VAL}=${defaultSearchText}`;
 	const searchPrefixCmdVal = `${SEARCH_PREFIX_VAL}=${defaultSearchPrefix}`;
 	return jsDialog.formDialog(

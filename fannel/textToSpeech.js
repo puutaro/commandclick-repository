@@ -14,10 +14,9 @@
 
 
 /// SETTING_SECTION_START
-setVariableType="speechMode:CB=All!Summary!Copy"
-setVariableType="Speed:NUM=!1..100!1"
-setVariableType="Pitch:NUM=!1..100!1"
-setVariableType="onEnglish:CB=OFF!ON"
+setReplaceVariables="file://${01}/${001}/settingVariables/setReplaceVariables.js"
+setVariableTypes="file://${01}/${001}/settingVariables/setVariableTypes.js"
+hideSettingVariables="file://${01}/${001}/settingVariables/hideSettingVariables.js"
 scriptFileName="textToSpeech.js"
 /// SETTING_SECTION_END
 

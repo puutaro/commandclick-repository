@@ -17,27 +17,17 @@
 //	- NO is normal edit
 //	- ONCE is one time edit and execute
 //	- ALWAYD is always edit and execute
-// * onUpdateLastModify is how updating file last modified status when executing
-//  - ON: update this (default)
-//  - OFF: no update this
 /// LABELING_SECTION_END
 
 
 /// SETTING_SECTION_START
-editExecute="NO"
+editExecute="ALWAYS"
 terminalSizeType="LONG"
 onUpdateLastModify="ON"
-setReplaceVariable="BTN_CMD=cmd"
-setReplaceVariable="BTN_LABEL=label"
-setReplaceVariable="FCB_DIR_PATH=dirPath"
-setReplaceVariable="FCB_PREFIX=prefix"
-setReplaceVariable="FCB_SUFFIX=suffix"
-setReplaceVariable="FCB_TYPE=type"
-setReplaceVariable="CMD_BOOKMAKER_DIR_PATH=${01}/${001}"
-setReplaceVariable="CMD_BOOKMAKER_EDIT_DIR_PATH=${CMD_BOOKMAKER_DIR_PATH}/edit"
-setVariableType="bookmarkListName:EFGB=${FCB_DIR_PATH}=${CMD_BOOKMAKER_EDIT_DIR_PATH}!${FCB_PREFIX}=book!${FCB_SUFFIX}=.tsv"
-setVariableType="EDIT_BOOKMARK_NAME:BTN=${BTN_CMD}=jsf '${0}' EDIT_BOOKMARK_NAME"
-setVariableType=""
+onAdBlock="OFF"
+setReplaceVariables="file://${01}/${001}/settingVariables/setReplaceVariables.js"
+setVariableTypes="file://${01}/${001}/settingVariables/setVariableTypes.js"
+hideSettingVariables="file://${01}/${001}/settingVariables/hideSettingVariables.js"
 scriptFileName="cmdBookmaker.js"
 /// SETTING_SECTION_END
 
@@ -88,7 +78,7 @@ function switchByArgs(){
 		        "bookmarkListName",
 				"renamebookmarkListName",
 				CMD_BOOKMAKER_EDIT_DIR_PATH,
-				`bookmarkListName:EFCB=${FCB_DIR_PATH}=${CMD_BOOKMAKER_EDIT_DIR_PATH}!${FCB_PREFIX}=${BOOK_PREFIX}!${FCB_SUFFIX}=${TsvExtend}`,
+				`bookmarkListName:TXT:EFSB=${FCB_DIR_PATH}=${CMD_BOOKMAKER_EDIT_DIR_PATH}!${FCB_PREFIX}=${BOOK_PREFIX}!${FCB_SUFFIX}=${TsvExtend}`,
 				`bookmarkListName=${bookmarkListName}\trenamebookmarkListName=`,
 				BOOK_PREFIX,
 				TsvExtend,

@@ -10,6 +10,7 @@ readonly ocrTargetFileRawName="$(\
 )"
 
 readonly ocrLang="${2}"
+readonly fannelName="${3}"
 readonly currentDirPath="$(dirname "${0}")"
 readonly notificationDirPath="${currentDirPath}/notification"
 export notificationExitShellPath="${notificationDirPath}/exit_notification.sh"
@@ -49,7 +50,7 @@ finishOpenNotification(){
 		--title "ocr finished" \
 		--id "${notificationId}" \
 		--button1 OPEN \
-		--button1-action "bash \"${notificationFinishOpenShellPath}\" \"${ocrResultOutputFilePath}\"" \
+		--button1-action "bash \"${notificationFinishOpenShellPath}\" \"${ocrResultOutputFilePath}\" \"${fannelName}\"" \
 		--on-delete "bash \"${notificationExitShellPath}\""
 }
 
