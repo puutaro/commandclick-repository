@@ -1,5 +1,6 @@
 // basic
 TXT_LABEL=label,
+TXT_LABEL=label,
 BTN_CMD=cmd,
 BTN_LABEL=label,
 LIST_PATH=listPath,

@@ -25,6 +25,9 @@
 //  * onTrack
 //		ON: memory past number and step
 //		OFF: no memory past number and step
+//  * menuTtsSwitch
+//		ON: play text to speech in long press menu
+//		OFF: text or pdf viewer in long press menu
 // --
 // --
 // bellow setting variable main line up
@@ -78,6 +81,7 @@ Speed="50"
 CLEAR_CACHE=""
 onTrack="ON"
 onEnglish="OFF"
+longPressMenuTtsSwitch="OFF"
 /// CMD_VARIABLE_SECTION_END
 
 
@@ -87,9 +91,9 @@ onEnglish="OFF"
 let args = jsArgs.get().split("\t");
 var playMode = args.at(0);
 const menuMode = "menu";
-textPdfViewerForMenu();
 const ttsPlayMode = "${ttsPlayMode}";
 const clearCacheMode = "${clearCache}";
+textPdfViewerForMenu();
 const playListDirPath = `${txtPdfViewerDirPath}/playList`;
 jsFileSystem.createDir(
 	playListDirPath
@@ -324,5 +328,8 @@ function textPdfViewerForMenu(){
 		`${tempDownloadDirPath}/${downloadFileName}`,
 		txtPdfPath
 	);
-	playMode = menuMode;
+	if(
+		longPressMenuTtsSwitch == "ON"
+	)	playMode = ttsPlayMode;
+	else playMode = menuMode;
 };

@@ -149,15 +149,27 @@ cut_play_url_history_limit_over(){
 play_temp_list(){
 	local play_mode="${1:-}"
 	local play_log_file_path="${2}"
+	local no_log_cat="${3:-}"
 	cut_play_url_history_limit_over \
 		"${play_log_file_path}"
 	sleep 0.1
+	case "${no_log_cat}" in
+		"")
+			termuxmpv \
+				--no-video \
+				"${play_mode}"  \
+				--loop-playlist=inf \
+				--playlist="${TMP_PLAY_LIST_PATH}" \
+			 | tee -a "${play_log_file_path}"
+			 return
+			 ;;
+	esac
 	termuxmpv \
 		--no-video \
 		"${play_mode}"  \
 		--loop-playlist=inf \
 		--playlist="${TMP_PLAY_LIST_PATH}" \
-	 | tee -a "${play_log_file_path}"
+	 >/dev/null 2>&1
 }
 
 echo_temp_play_list(){
@@ -288,6 +300,7 @@ play_mode_handler(){
 	local tubePlayListPath="${2}"
 	local webSearchArgs="${3:-}"
 	local playNumber="${4:-}"
+	local no_log_cat="${5:-}"
 	if [ ! -d "${PLAY_PROCESS_DIR_PATH}" ]; then
 		mkdir -p "${PLAY_PROCESS_DIR_PATH}";
 	fi
@@ -298,9 +311,6 @@ play_mode_handler(){
 	if [ ! -f "${play_log_file_path}" ];then
 		touch "${play_log_file_path}"
 	fi
-	echo "play_mode: ${play_mode}"
-	echo "playListPath: ${tubePlayListPath}"
-	echo "playNumber: ${playNumber}"
 	local displayWebSearchArgs=$(\
 		echo "${webSearchArgs}" \
 		| awk \
@@ -324,7 +334,14 @@ play_mode_handler(){
 			print " maxMinutes: "maxMinutes
 		}' \
 	)
-	echo "webSearchArgs: ${displayWebSearchArgs}"
+	case "${no_log_cat}" in
+		"")
+			echo "play_mode: ${play_mode}"
+			echo "playListPath: ${tubePlayListPath}"
+			echo "playNumber: ${playNumber}"
+			echo "webSearchArgs: ${displayWebSearchArgs}"
+			;;
+	esac
 	case "${play_mode}" in
 		"${SHUFFLE_MODE}")
 			updateWebSearchPlayList \
@@ -347,7 +364,8 @@ play_mode_handler(){
 			wait
 			play_temp_list \
 				"" \
-				"${play_log_file_path}"
+				"${play_log_file_path}" \
+				"${no_log_cat}"
 			exit 0
 			;;
 		"${REVERSE_MODE}")
@@ -395,4 +413,4 @@ play_mode_handler(){
 
 
 play_mode_handler \
-	"${1:-}" "${2:-}" "${3:-}" "${4:-}"
+	"${1:-}" "${2:-}" "${3:-}" "${4:-}" "${5:-}"

@@ -2,6 +2,9 @@
 
 /// LABELING_SECTION_START
 // Youtube background play fannel (*termux) @puutaro
+// * Support long press menu
+//  - src anchor
+//  - src image anchor
 // 	* install 
 // 		-> install require package
 // 	* play 
@@ -78,12 +81,12 @@ onSearchMode="SHORT"
 PLAY="tubePlay"
 numberPlay="3"
 STOP=""
-minMinutes=0
-maxMinutes=0
+minMinutes="0"
+maxMinutes="0"
 tubePlayListName="tubePlayList.tsv"
 EDIT_TUBE_PLAY_LIST=""
 playLogName="playLogDefault"
-EDIT_PLAY_LOG_NAME=
+EDIT_PLAY_LOG_NAME=""
 playLogOut=""
 Install="install"
 /// CMD_VARIABLE_SECTION_END
@@ -109,6 +112,8 @@ var FIRST_ARGS = args.at(0);
 if(FIRST_ARGS == PLAY){
 	FIRST_ARGS = playMode;
 };
+noLogCat = "";
+decideStremingMode();
 searchWord = searchWord.trim();
 const FANNEL_SCRIPT_PATH = "${01}/${02}";
 initNumVariable();
@@ -204,7 +209,9 @@ function argSwitcher() {
 				"bash " + ` \"${EXEC_SHELL_PATH}\"` + 
 				` \"${ORDINALY_MODE}\"` + 
 				` \"${EDIT_FILE_PATH}\"` + 
-				` \"${WEB_SEARCH_ARGS}\"`
+				` \"${WEB_SEARCH_ARGS}\"` +
+				` \"\"` +
+				` \"${noLogCat}\"`
 			);
 			break;
 		case REVERSE_MODE:
@@ -531,4 +538,39 @@ function capitalize(str) {
 	) return str;
 	return str.charAt(0).toLowerCase() 
 		+ str.slice(1);
+};
+
+
+function decideStremingMode(){
+		const targetUrl = "CMDCLICK_LONG_PRESS_LINK_URL";
+    const cmdclickLongPressLinkUrlStr = "CMDCLICK_ENCRPT_LONG_PRESS_LINK_URL".replace(
+        "_ENCRPT",
+        ""
+    );
+    if(
+        targetUrl == cmdclickLongPressLinkUrlStr
+    ) return;
+    if(
+    	!targetUrl.includes("https://")
+    	|| !targetUrl.includes("youtube")
+    ) {
+    	jsToast.short("no youtube url");
+    	exitZero();
+    	return;
+  }
+    if(!targetUrl) return;
+    jsToast.short(
+    	`streaming ${targetUrl}`
+    );
+    const tempTubePlayListName = "tubeTmpPlayList.tsv";
+    FIRST_ARGS = "ordinaly";
+    onSearchMode = "OFF";
+  	tubePlayListName = tempTubePlayListName;
+  	playLogName = "playLogDefault";
+  	noLogCat = "on";
+  	const tempEditPlayListPath = `${cmdTubePlayerEditDirPath}/${tubePlayListName}`;
+  	jsFileSystem.writeLocalFile(
+  		tempEditPlayListPath,
+  		`${targetUrl}\t${targetUrl}`
+  	);
 };

@@ -25,3 +25,8 @@ onTrack:
 onEnglish:
 	CB=
 		OFF!ON,
+longPressMenuTtsSwitch:
+	LBL:CB=
+		${TXT_LABEL}=this
+		|
+			OFF!ON,
