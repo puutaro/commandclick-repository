@@ -22,7 +22,7 @@ PLAY:
 			!${BTN_LABEL}=this,
 STOP:
 	BTN:HL=
-		${BTN_CMD}=pkill -9 mpv
+		${BTN_CMD}="jsf '${0}' stop"
 			!${BTN_LABEL}=this,
 numberPlay:
 	LBL:TXT:NUM:BTN=

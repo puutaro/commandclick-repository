@@ -101,39 +101,18 @@ const INSTALL_MODE = "install";
 const SHUFFLE_MODE = "shuffle";
 const ORDINALY_MODE = "ordinaly";
 const NUMBER_MODE = "number";
+const STOP_MODE="stop";
 const EDIT_TUBE_PLAY_LIST_MODE = "EDIT_TUBE_PLAY_LIST";
 const EDIT_PLAY_LOG_NAME_MODE = "EDIT_PLAY_LOG_NAME";
 const REVERSE_MODE = "reverse";
 const EDIT_SITE_WEB_MODE = "edit_site_web";
 const PLAY_LOG_MODE = "playLogOut";
 const NoExtend = "NoExtend";
-const TsvSuffix = ".tsv";
-var FIRST_ARGS = args.at(0);
-if(FIRST_ARGS == PLAY){
-	FIRST_ARGS = playMode;
-};
-noLogCat = "";
-decideStremingMode();
-searchWord = searchWord.trim();
+const TSV_SUFFIX = ".tsv";
+const LOG_PREFIX = "playLog";
 const FANNEL_SCRIPT_PATH = "${01}/${02}";
-initNumVariable();
 const cmdTubePlayerDirPath = "${cmdTubePlayerDirPath}";
 const PLAY_LOG_DIR_PATH = "${PLAY_LOG_DIR_PATH}";
-const LOG_PREFIX = "playLog";
-const TSV_SUFFIX = ".tsv";
-const PLAY_LOG_FILE_PATH = makeCreatorJSPath(
-	PLAY_LOG_DIR_PATH,
-	playLogName,
-	LOG_PREFIX,
-	""
-);
-
-updateByVariableWhenDiff(
-	"playLogName",
-	PLAY_LOG_FILE_PATH.split("/").at(-1),
-	playLogName,
-);
-
 const cmdTubePlayerEditDirPath = "${cmdTubePlayerEditDirPath}";
 const cmdTubePlayerShellDirPath = `${cmdTubePlayerDirPath}/shell`;
 const EXEC_SHELL_PATH = `${cmdTubePlayerShellDirPath}/cmdYoutuber.sh`;
@@ -148,6 +127,29 @@ const LOG_RUNDOM = "LOG_RND";
 const LOG_FREQUENT = "LOG_FREQ";
 let lOG_SEARCH_LIST = [LOG_RUNDOM, LOG_FREQUENT];
 let noWebSearchModeList = ["OFF"].concat(lOG_SEARCH_LIST);
+
+var FIRST_ARGS = args.at(0);
+if(FIRST_ARGS == PLAY){
+	FIRST_ARGS = playMode;
+};
+execStop();
+var noLogCat = "";
+decideStremingMode();
+searchWord = searchWord.trim();
+initNumVariable();
+const PLAY_LOG_FILE_PATH = makeCreatorJSPath(
+	PLAY_LOG_DIR_PATH,
+	playLogName,
+	LOG_PREFIX,
+	""
+);
+
+updateByVariableWhenDiff(
+	"playLogName",
+	PLAY_LOG_FILE_PATH.split("/").at(-1),
+	playLogName,
+);
+
 if(
 	onSearchMode != "OFF" 
 	&& !["EDIT_TUBE_PLAY_LIST", "EDIT_PLAY_LOG_NAME"].includes(FIRST_ARGS)
@@ -236,10 +238,10 @@ function argSwitcher() {
 		    "tubePlayListName",
 				"renameTubePlayListName",
 				cmdTubePlayerEditDirPath,
-				`tubePlayListName:TXT:FSB=${FCB_DIR_PATH}=${cmdTubePlayerEditDirPath}!${FCB_PREFIX}=tube!${FCB_SUFFIX}=${TsvSuffix}`,
+				`tubePlayListName:TXT:FSB=${FCB_DIR_PATH}=${cmdTubePlayerEditDirPath}!${FCB_PREFIX}=tube!${FCB_SUFFIX}=${TSV_SUFFIX}`,
 				`tubePlayListName=${tubePlayListName}\trenameTubePlayListName=`,
 				TUBE_PREFIX,
-				TsvSuffix,
+				TSV_SUFFIX,
 		        "${01}/${02}",
 		        "Edit tubePlayListName"
 		    );
@@ -507,8 +509,8 @@ function updateByVariableWhenDiff(
 	) return;
 	jsEdit.updateByVariable(
 		FANNEL_SCRIPT_PATH,
-        tergetVariableName,
-        currentVariableValue
+    tergetVariableName,
+    currentVariableValue
 	);
 };
 
@@ -574,3 +576,15 @@ function decideStremingMode(){
   		`${targetUrl}\t${targetUrl}`
   	);
 };
+
+
+function execStop(){
+	if(
+		FIRST_ARGS != STOP_MODE
+	) return;
+	cmdIntent.run(
+		"bash " + ` \"${EXEC_SHELL_PATH}\"` + 
+		` \"${STOP_MODE}\"`
+	);
+	exitZero();
+}

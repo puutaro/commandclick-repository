@@ -13,6 +13,7 @@ SHUFFLE_MODE="shuffle"
 ORDINALY_MODE="ordinaly"
 REVERSE_MODE="reverse"
 NUMBER_MODE="number"
+STOP_MODE="stop"
 WEB_SEARCH_RECENT_MODE="RECENT"
 WEB_SEARCH_SHORT_MODE="SHORT"
 WEB_SEARCH_OFF_MODE="OFF"
@@ -146,13 +147,49 @@ cut_play_url_history_limit_over(){
 		"${play_log_file_path}"
 }
 
+stop_termux_mpv(){
+	pkill -9 mpv || e=$?
+	local notiTag=$(\
+		termux-notification-list \
+		| awk '{
+				if(\
+					$0 !~ "tag" || $0 !~ "termuxMpv"\
+				) next
+				gsub("\x22", "", $0)
+				sub(" tag:", "", $0)
+				gsub(",", "", $0)
+				sub("^  *", "", $0)
+				print $0
+			}'\
+		)
+
+	case "${notiTag}" in
+		"") return
+		;;
+	esac
+	termux-notification-remove "${notiTag}"
+}
+
+judge_stop_by_play_mode(){
+	local play_mode="${1:-}"
+	case "${play_mode}" in
+		"${STOP_MODE}") 
+			;;
+		*) return
+			;;
+	esac
+	stop_termux_mpv
+	exit 0
+}
+
 play_temp_list(){
 	local play_mode="${1:-}"
 	local play_log_file_path="${2}"
 	local no_log_cat="${3:-}"
 	cut_play_url_history_limit_over \
 		"${play_log_file_path}"
-	sleep 0.1
+	stop_termux_mpv
+	sleep 0.5
 	case "${no_log_cat}" in
 		"")
 			termuxmpv \
@@ -297,10 +334,12 @@ launch_edit_site(){
 
 play_mode_handler(){
 	local play_mode="${1}"
-	local tubePlayListPath="${2}"
+	local tubePlayListPath="${2:-}"
 	local webSearchArgs="${3:-}"
 	local playNumber="${4:-}"
 	local no_log_cat="${5:-}"
+	judge_stop_by_play_mode \
+		"${play_mode}"
 	if [ ! -d "${PLAY_PROCESS_DIR_PATH}" ]; then
 		mkdir -p "${PLAY_PROCESS_DIR_PATH}";
 	fi
