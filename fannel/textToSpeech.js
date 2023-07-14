@@ -22,10 +22,10 @@ scriptFileName="textToSpeech.js"
 
 
 /// CMD_VARIABLE_SECTION_START
-speechMode=""
+speechMode="All"
 Speed="50"
 Pitch="50"
-onEnglish=""
+onEnglish="OFF"
 /// CMD_VARIABLE_SECTION_END
 
 Speed = Number(Speed) / 50;
