@@ -12,6 +12,7 @@ TMP_PLAY_LIST_PATH="${PLAY_PROCESS_DIR_PATH}/${TMP_PLAY_LIST_NAME}"
 SHUFFLE_MODE="shuffle"
 ORDINALY_MODE="ordinaly"
 NUMBER_MODE="number"
+STOP_MODE="stop"
 URL_LAUNCH_ACTION_NAME="com.puutaro.commandclick.url.launch"
 
 
@@ -99,9 +100,46 @@ cut_music_history_limit_over(){
 		> "${MUSIC_HISTORY_TSV_PATH}"
 }
 
+stop_termux_mpv(){
+	pkill -9 mpv || e=$?
+	local notiTag=$(\
+		termux-notification-list \
+		| awk '{
+				if(\
+					$0 !~ "tag" || $0 !~ "termuxMpv"\
+				) next
+				gsub("\x22", "", $0)
+				sub(" tag:", "", $0)
+				gsub(",", "", $0)
+				sub("^  *", "", $0)
+				print $0
+			}'\
+		)
+
+	case "${notiTag}" in
+		"") return
+		;;
+	esac
+	termux-notification-remove "${notiTag}"
+}
+
+judge_stop_by_play_mode(){
+	local play_mode="${1:-}"
+	case "${play_mode}" in
+		"${STOP_MODE}") 
+			;;
+		*) return
+			;;
+	esac
+	stop_termux_mpv
+	exit 0
+}
+
 play_temp_list(){
 	local play_mode="${1:-}"
 	cut_music_history_limit_over
+	stop_termux_mpv
+	sleep 0.5
 	termuxmpv \
 			--no-video \
 			${play_mode}  \
@@ -142,6 +180,8 @@ play_mode_handler(){
 	if [ ! -d "${PLAY_PROCESS_DIR_PATH}" ]; then
 		mkdir -p "${PLAY_PROCESS_DIR_PATH}";
 	fi
+	judge_stop_by_play_mode \
+		"${play_mode}"
 	echo "play_mode: ${play_mode}"
 	echo "playListPath: ${tubePlayListPath}"
 	echo "playNumber: ${playNumber}"

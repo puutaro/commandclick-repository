@@ -47,7 +47,7 @@ endNum:
 				!${BTN_LABEL}=to0,
 STOP:
 	BTN:HL=
-		pkill -9 mpv
+		${BTN_CMD}="jsf '${0}' stop"
 			!${BTN_LABEL}=this,
 Install:
 	BTN:HL=

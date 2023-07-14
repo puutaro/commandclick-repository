@@ -25,7 +25,7 @@
 //		- prefix must be "tube" ex) "tubePlayList"
 //	If volume control enable when CommandClick hide
 // 	* STOP
-//		-> play stop (recommend: notification bar swip out)
+//		-> play stop
 // 	* numberPlay 
 //		-> Input or inc/dec number
 //		- press "Exec" and play number

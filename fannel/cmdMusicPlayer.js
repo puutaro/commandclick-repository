@@ -19,7 +19,7 @@
 //		- Press "Exec" and play number
 //	* Volume control enable when CommandClick hide
 // 	* STOP
-//		-> Play stop (recommend: notification bar swip out)
+//		-> Play stop
 // 	* startNum 
 //		-> Start number, 0: firstNumber
 // 	* endNum
@@ -94,6 +94,7 @@ const SHUFFLE_MODE = "shuffle";
 const ORDINALY_MODE = "ordinaly";
 const REVERSE_MODE = "reverse";
 const NUMBER_MODE = "number";
+const STOP_MODE = "stop";
 const EDIT_MUSIC_PLAY_LIST_MODE = "EDIT_MUSIC_PLAY_LIST";
 
 
@@ -134,6 +135,9 @@ function switchByArgs(){
 				"bash \"" + EXEC_SHELL_PATH + 
 				"\" \""  + INSTALL_MODE + "\""
 			);
+			break;
+		case STOP_MODE:
+			execStop();
 			break;
 		case SHUFFLE_MODE:
 			initFileList();
@@ -312,4 +316,11 @@ function capitalize(str) {
 	) return str;
 	return str.charAt(0).toLowerCase() 
 		+ str.slice(1);
+};
+
+function execStop(){
+	cmdIntent.run(
+		"bash \"" + EXEC_SHELL_PATH + 
+		"\" \"" + STOP_MODE + "\""
+	);
 };
