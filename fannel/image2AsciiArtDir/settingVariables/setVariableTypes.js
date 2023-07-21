@@ -9,7 +9,7 @@ DISPLAY_GALLERY:
 			!${BTN_LABEL}=this,
 convertImageFile2Ascii:
 	LBL:TXT:GB:FL:BTN=
-		${TXT_LABEL}=this
+		${TXT_LABEL}="convert image file to ascii"
 		|
 			${LIST_PATH}="${image2AsciiArtCatchImagePathListFilePath}"
 				!${LIMIT_NUM}=10
