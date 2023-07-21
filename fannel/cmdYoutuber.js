@@ -509,8 +509,8 @@ function updateByVariableWhenDiff(
 	) return;
 	jsEdit.updateByVariable(
 		FANNEL_SCRIPT_PATH,
-    tergetVariableName,
-    currentVariableValue
+	    tergetVariableName,
+	    currentVariableValue
 	);
 };
 
