@@ -163,6 +163,10 @@ function execConvertImageFile2Ascii(){
 		alert("select image file");
 		exitZero();
 	};
+	jsListSelect.updateListFileCon(
+		"${image2AsciiArtCatchImagePathListFilePath}",
+		srcImageFilePath
+	);
 	const destiImageFileName = 
 		jsPath.basename(srcImageFilePath);
 	const destiImageFilePath = 

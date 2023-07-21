@@ -8,8 +8,11 @@ DISPLAY_GALLERY:
 			${BTN_CMD}="jsf '${0}' ${DISPLAY_GALLERY}"
 			!${BTN_LABEL}=this,
 convertImageFile2Ascii:
-	LBL:FL:BTN=
+	LBL:TXT:GB:FL:BTN=
 		${TXT_LABEL}=this
+		|
+			${LIST_PATH}="${image2AsciiArtCatchImagePathListFilePath}"
+				!${LIMIT_NUM}=10
 		|
 			${BTN_CMD}="jsf '${0}' ${convertImageFile2Ascii}"
 				!${BTN_LABEL}=TO,

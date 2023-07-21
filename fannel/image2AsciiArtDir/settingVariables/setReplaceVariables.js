@@ -30,3 +30,5 @@ image2AsciiArtListDirPath=
 	"${image2AsciiArtDirPath}/list",
 image2AsciiArtTargetDirListFilePath=
 	"${image2AsciiArtListDirPath}/targetDirList.txt",
+image2AsciiArtCatchImagePathListFilePath=
+	"${image2AsciiArtListDirPath}/catchImagePathList.txt",
