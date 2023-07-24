@@ -11,6 +11,6 @@ Speed:
 Pitch:
 	TXT:NUM=
 		!1..100!1,
-onEnglish:
+toLang:
 	CB=
-		OFF!ON,
+		-!ja!en!zh!es!ko,

@@ -7,9 +7,14 @@
 //      - All: speech site contents 
 //      - Summary: speech site sumamry 
 //      - Copy: speech copy contents
-//  * onEnglish
-//      - ON: speech by English
-//      - OFF: speech by local lang
+//  * toLang
+//  -> translate by specified language
+//      - - : default language
+//      - en: english
+//      - zh: chinese
+//      - es: spanish
+//      - ko: korean
+//      - ja: japanese
 /// LABELING_SECTION_END
 
 
@@ -25,16 +30,13 @@ scriptFileName="textToSpeech.js"
 speechMode="All"
 Speed="50"
 Pitch="50"
-onEnglish="OFF"
+toLang="-"
 /// CMD_VARIABLE_SECTION_END
 
 Speed = Number(Speed) / 50;
 if(Speed > 1000) Speed = 1000;
 Pitch = Number(Pitch) / 50;
 if(Pitch > 1000) Pitch = 1000;
-if(
-    onEnglish != "ON"
-) onEnglish="";
 const LEAST_STRING_NUM = 300;
 
 
@@ -190,7 +192,7 @@ jsTextToSpeech.speech(
     "",
     "",
     "",
-    onEnglish,
+    toLang,
     "",
     Speed,
     Pitch,

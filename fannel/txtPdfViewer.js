@@ -9,9 +9,14 @@
 //		-> pdf file path
 // 	* TTS_PLAY 
 // 		-> text to speech play
-//  * onEnglish
-//      - ON: speech by English
-//      - OFF: speech by local lang
+//  * toLang
+//  -> translate by specified language
+//      - - : default language
+//      - en: english
+//      - zh: chinese
+//      - es: spanish
+//      - ko: korean
+//      - ja: japanese
 //  * Pitch
 // 		-> text to speech pitch
 // 		- 50: normal
@@ -80,7 +85,7 @@ Pitch="50"
 Speed="50"
 CLEAR_CACHE=""
 onTrack="ON"
-onEnglish="OFF"
+toLang="-"
 longPressMenuTtsSwitch="OFF"
 /// CMD_VARIABLE_SECTION_END
 
@@ -93,6 +98,7 @@ var playMode = args.at(0);
 const menuMode = "menu";
 const ttsPlayMode = "${ttsPlayMode}";
 const clearCacheMode = "${clearCache}";
+const noTransMark = "-";
 textPdfViewerForMenu();
 const playListDirPath = `${txtPdfViewerDirPath}/playList`;
 jsFileSystem.createDir(
@@ -112,14 +118,11 @@ jsFileSystem.createDir(
 jsFileSystem.createDir(
 	"${txtPdfViewerStockPlayDirPath}"
 );
-const txtPdfViewerTtsTextFilePath = `${txtPdfViewerOldPlayDirPath}/${rawTxtPdfFileName}${txtSuffix}`;
+const txtPdfViewerTtsTextFilePath = makeTxtPdfViewerTtsTextFilePath();
 Speed = Number(Speed) / 50;
 if(Speed > 1000) Speed = 1000;
 Pitch = Number(Pitch) / 50;
 if(Pitch > 1000) Pitch = 1000;
-if(
-    onEnglish != "ON"
-) onEnglish="";
 if(
    onTrack == "OFF"
 ) onTrack="";
@@ -158,7 +161,7 @@ function execTtsPlay(){
 	    "",
 	    "",
 	    "",
-	    onEnglish,
+	    toLang,
 	    onTrack,
 	    Speed,
     	Pitch,
@@ -188,23 +191,28 @@ function saveExtractTextFromPdf(){
 		isNoConvertFile
 		|| isNoExtend
 	) {
-		jsFileSystem.copyFile(
-			txtPdfPath,
-			txtPdfViewerTtsTextFilePath
+		const txtPdfConSrc = jsFileSystem.readLocalFile(
+			txtPdfPath
+		);
+		const txtPdfCon = transByToLang(txtPdfConSrc);
+		jsFileSystem.writeLocalFile(
+			txtPdfViewerTtsTextFilePath,
+			txtPdfCon,
 		);
 		return;
 	};
 	jsFileSystem.createDir(
 		"${txtPdfViewerListDirPath}"
 	);
-	const txtPdfCon = jsPdf.extractText(txtPdfPath);
+	const txtPdfConSrc = jsPdf.extractText(txtPdfPath);
+	const txtPdfCon = transByToLang(txtPdfConSrc);
 	if(!txtPdfCon) {
 		jsToast.short("no converted test");
 		return;
 	};
 	jsFileSystem.writeLocalFile(
-		txtPdfViewerTtsTextFilePath,
-		txtPdfCon,
+			txtPdfViewerTtsTextFilePath,
+			txtPdfCon,
 	);
 };
 
@@ -212,9 +220,6 @@ function saveExtractTextFromPdf(){
 function csvCheckPathAndRegister(
 	inputPath
 ){
-	// extendCheckInputPath(
-	// 	inputPath
-	// );
 	existCheckInputPath(
 		inputPath
 	);
@@ -222,27 +227,6 @@ function csvCheckPathAndRegister(
 		"${txtPdfViewerTxtPdfListFilePath}",
 		`${inputPath}`
 	);
-};
-
-function extendCheckInputPath(
-	inputPath
-){
-	let permittionExtends = ["pdf", "txt", "csv", "tsv", "js", "jsx"];
-	const checkOk = jsPath.checkExtend(
-		inputPath,
-		permittionExtends.join("\t")
-	);
-	if(checkOk) return;
-	const existExtend = inputPath.match(
-		/\.[a-zA-Z0-9]*$/
-	);
-	if(
-		!existExtend
-	) return;
-	alert(
-		`Extend must be ${permittionExtends.join(", ")}\n\n ${inputPath}`
-	);
-	exitZero();
 };
 
 
@@ -265,13 +249,14 @@ function execTxtPdf(){
 };
 
 function execTxtPdfByDialog(){
-	const txtCon = jsFileSystem.readLocalFile(
+	const txtConSrc = jsFileSystem.readLocalFile(
 		txtPdfViewerTtsTextFilePath
 	);
-	if(!txtCon) {
+	if(!txtConSrc) {
 		alert("no contents");
 		return
 	};
+	const txtCon = transByToLang(txtConSrc);
 	alert(txtCon);
 };
 
@@ -333,3 +318,25 @@ function textPdfViewerForMenu(){
 	)	playMode = ttsPlayMode;
 	else playMode = menuMode;
 };
+
+function makeTxtPdfViewerTtsTextFilePath(){
+	if( 
+		!toLang
+		|| toLang == noTransMark
+	) return `${txtPdfViewerOldPlayDirPath}/${rawTxtPdfFileName}${txtSuffix}`;
+	return `${txtPdfViewerOldPlayDirPath}/${rawTxtPdfFileName}_${toLang}${txtSuffix}`;
+};
+
+function transByToLang(
+	txtPdfConSrc
+){
+	if(
+		!toLang
+		|| toLang == noTransMark
+	) return txtPdfConSrc;
+	return jsTrans.get(
+        txtPdfConSrc,
+        toLang
+    );
+};
+

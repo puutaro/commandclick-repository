@@ -22,9 +22,9 @@ Pitch:
 onTrack:
 	CB=
 		ON!OFF,
-onEnglish:
+toLang:
 	CB=
-		OFF!ON,
+		-!ja!en!zh!es!ko,
 longPressMenuTtsSwitch:
 	LBL:CB=
 		${TXT_LABEL}=this

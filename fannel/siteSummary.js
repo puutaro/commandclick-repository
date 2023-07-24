@@ -5,12 +5,18 @@
 // * Support long press menu
 //  - src anchor 
 //  - src image anchor 
-// toLang
-//  -> translate language
+//  * toLang
+//  -> translate by specified language
+//      - - : default language
+//      - en: english
+//      - zh: chinese
+//      - es: spanish
+//      - ko: korean
+//      - ja: japanese
 /// LABELING_SECTION_END
 
 /// SETTING_SECTION_START
-setVariableTypes="toLang:CB=-!ja!en!zh!es"
+setVariableTypes="toLang:CB=-!ja!en!zh!es!ko"
 /// SETTING_SECTION_END
 
 

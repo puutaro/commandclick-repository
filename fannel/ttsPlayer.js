@@ -19,6 +19,14 @@
 //		-> write gmail contetns to file
 //		- when no gmail launch, gmail launch
 //		- when look gmail body, write this contents to file 
+//  * toLang
+//  -> translate by specified language
+//      - - : default language
+//      - en: english
+//      - zh: chinese
+//      - es: spanish
+//      - ko: korean
+//      - ja: japanese
 // 	* manageText 
 //		-> remove text file or add one to editHtmlSite 
 //		- select text file and click "MNG" button
@@ -79,7 +87,7 @@ gmailToFile=""
 manageText=""
 Speed="50"
 Pitch="50"
-onEnglish="OFF"
+toLang="-"
 onTrack="ON"
 /// CMD_VARIABLE_SECTION_END
 
@@ -98,9 +106,6 @@ Speed = Number(Speed) / 50;
 if(Speed > 1000) Speed = 1000;
 Pitch = Number(Pitch) / 50;
 if(Pitch > 1000) Pitch = 1000;
-if(
-    onEnglish != "ON"
-) onEnglish="";
 if(
    onTrack == "OFF"
 ) onTrack="";
@@ -241,7 +246,7 @@ function execTtsPlay(
 	    playModeArg,
 	    onRoop,
 	    numberArg,
-	    onEnglish,
+	    toLang,
 	    onTrack,
 	    Speed,
 	    Pitch,
