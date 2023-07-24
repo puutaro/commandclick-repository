@@ -2,6 +2,8 @@
 
 /// LABELING_SECTION_START
 // Display select menu from jsFile @puutaro
+// * HIGHLIGHT_SCRIPT
+// 	-> trigger when hilight text is
 // * EDIT_MENU
 // 	-> edit fannel menu
 //      DSL button
@@ -10,7 +12,6 @@
 //          - Add fannel to home fannel list
 // --
 // --
-// bellow setting variable main line up
 // bellow setting variable main line up
 // * EditExecute is edit mode change
 //	- NO is normal edit
@@ -29,6 +30,7 @@ scriptFileName="selectMenu.js"
 
 
 /// CMD_VARIABLE_SECTION_START
+HIGHLIGHT_SCRIPT=""
 EDIT_MENU=""
 /// CMD_VARIABLE_SECTION_END
 
@@ -53,7 +55,7 @@ switcher();
 function switcher(){
 	switch(firstArgs){
 		case "":
-			launchMenu();
+			execLaunchMenuHandler();
 			break;
 		case menuAddMode:
 			execMenuAdd();
@@ -61,6 +63,25 @@ function switcher(){
 	};
 };
 
+
+function execLaunchMenuHandler() {
+	const highlightText = getSelectionText();
+	const highLightScriptPath = `${01}/${HIGHLIGHT_SCRIPT}`;
+	const isHighlightScript = jsFileSystem.isFile(
+		highLightScriptPath
+	);
+	if(
+		highlightText 
+		&& isHighlightScript
+	){
+		launchJsFile(
+			highLightScriptPath
+		);
+		exitZero();
+	};
+	launchMenu();
+	exitZero();
+ };
 
 function execMenuAdd(){
 	let listCon = jsFileSystem.showFileList(
@@ -141,3 +162,14 @@ function launchWhenEditExecute(
         jsFileName
     );
 };
+
+function getSelectionText() {
+    var text = "";
+    if (window.getSelection) {
+        text = window.getSelection().toString();
+    } else if (document.selection && document.selection.type != "Control") {
+        text = document.selection.createRange().text;
+    };
+    return text;
+};
+

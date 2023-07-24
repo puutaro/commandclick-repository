@@ -4,7 +4,7 @@ speechMode:
 	LBL:CB=
 		${TXT_LABEL}=this
 		|
-			All!Summary!Copy,
+			All!Summary!Highlight,
 Speed:
 	TXT:NUM=
 		!1..100!1,

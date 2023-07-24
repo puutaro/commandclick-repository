@@ -191,6 +191,7 @@ function transSummuryByToLang(
     ) return summary;
     return jsTrans.get(
         summary,
-        toLang
+        toLang,
+        false
     );
 };

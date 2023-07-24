@@ -1,6 +1,7 @@
 
 // basic
 TEXT_LABEL=label,
+FGB_DIR_PATH=dirPath,
 FGB_SUFFIX=suffix,
 BTN_CMD=cmd,
 BTN_LABEL=label,

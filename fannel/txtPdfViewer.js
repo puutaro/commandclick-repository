@@ -336,7 +336,8 @@ function transByToLang(
 	) return txtPdfConSrc;
 	return jsTrans.get(
         txtPdfConSrc,
-        toLang
+        toLang,
+        true
     );
 };
 

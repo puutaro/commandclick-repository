@@ -6,7 +6,7 @@
 //  * speechMode 
 //      - All: speech site contents 
 //      - Summary: speech site sumamry 
-//      - Copy: speech copy contents
+//      - Highlight: speech highlight text
 //  * toLang
 //  -> translate by specified language
 //      - - : default language
@@ -43,7 +43,7 @@ const LEAST_STRING_NUM = 300;
 let speechModeType = {
     All: "All",
     Summary: "Summary",
-    Copy: "Copy"
+    Highlight: "Highlight"
 };
 
 function makeTocArr(list){
@@ -169,8 +169,8 @@ switch(speechMode){
     case speechModeType.All:
         var speechText = document.body.innerText;
         break;
-    case speechModeType.Copy:
-        var speechText = jsUtil.echoFromClipboard();
+    case speechModeType.Highlight:
+        var speechText = getSelectionText();
         break;
 };
 
@@ -197,3 +197,14 @@ jsTextToSpeech.speech(
     Speed,
     Pitch,
 );
+
+
+function getSelectionText() {
+    var text = "";
+    if (window.getSelection) {
+        text = window.getSelection().toString();
+    } else if (document.selection && document.selection.type != "Control") {
+        text = document.selection.createRange().text;
+    };
+    return text;
+};
