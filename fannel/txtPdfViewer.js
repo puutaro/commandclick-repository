@@ -1,7 +1,7 @@
 
 
 /// LABELING_SECTION_START
-// text pdf viewer with tts @puutaro
+// text pdf viewer with tts and translation @puutaro
 // * Support long press menu
 //  - src anchor 
 //  - src image anchor

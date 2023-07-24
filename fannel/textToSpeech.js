@@ -1,7 +1,7 @@
 
 
 /// LABELING_SECTION_START
-// site contents to speech @puutaro
+// site contents to speech with translation @puutaro
 // ---
 //  * speechMode 
 //      - All: speech site contents 

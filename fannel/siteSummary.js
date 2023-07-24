@@ -1,7 +1,7 @@
 
 
 /// LABELING_SECTION_START
-// Display summary for current site @puutaro
+// Display summary for current site with translation @puutaro
 // * Support long press menu
 //  - src anchor 
 //  - src image anchor 
