@@ -13,6 +13,7 @@ let suffixEnum = {
 	htm: ".htm",
 };
 
+
 let prefixEnum = {
 	https: "https://",
 	http: "http://",
@@ -57,7 +58,7 @@ function execCpSearch(urlString){
 		case jsPath.checkPrefix(urlString, prefixEnum.http):
 		case jsPath.checkExtend(urlString, suffixEnum.html):
 		case jsPath.checkExtend(urlString, suffixEnum.htm):
-			jsUrl.loadUrl(urlString);
+			jsDialog.webView(urlString);
 			break;
 	};
 };
