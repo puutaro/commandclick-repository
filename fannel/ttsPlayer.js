@@ -1,7 +1,7 @@
 
 
 /// LABELING_SECTION_START
-// textToSpeech player with translation @puutaro
+// textToSpeech player @puutaro
 //	* play 
 // 		-> tts play list site
 //	* manageText 
@@ -20,7 +20,7 @@
 //		- when no gmail launch, gmail launch
 //		- when look gmail body, write this contents to file 
 //  * toLang
-//  -> translate by specified language
+//  -> text to speech language
 //      - - : default language
 //      - en: english
 //      - zh: chinese

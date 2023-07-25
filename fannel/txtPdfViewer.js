@@ -1,7 +1,7 @@
 
 
 /// LABELING_SECTION_START
-// text pdf viewer with tts and translation @puutaro
+// text pdf viewer with tts @puutaro
 // * Support long press menu
 //  - src anchor 
 //  - src image anchor
@@ -10,7 +10,7 @@
 // 	* TTS_PLAY 
 // 		-> text to speech play
 //  * toLang
-//  -> translate by specified language
+//  -> text to speech lang
 //      - - : default language
 //      - en: english
 //      - zh: chinese
@@ -191,10 +191,9 @@ function saveExtractTextFromPdf(){
 		isNoConvertFile
 		|| isNoExtend
 	) {
-		const txtPdfConSrc = jsFileSystem.readLocalFile(
+		const txtPdfCon = jsFileSystem.readLocalFile(
 			txtPdfPath
 		);
-		const txtPdfCon = transByToLang(txtPdfConSrc);
 		jsFileSystem.writeLocalFile(
 			txtPdfViewerTtsTextFilePath,
 			txtPdfCon,
@@ -204,8 +203,7 @@ function saveExtractTextFromPdf(){
 	jsFileSystem.createDir(
 		"${txtPdfViewerListDirPath}"
 	);
-	const txtPdfConSrc = jsPdf.extractText(txtPdfPath);
-	const txtPdfCon = transByToLang(txtPdfConSrc);
+	const txtPdfCon = jsPdf.extractText(txtPdfPath);
 	if(!txtPdfCon) {
 		jsToast.short("no converted test");
 		return;
@@ -249,14 +247,13 @@ function execTxtPdf(){
 };
 
 function execTxtPdfByDialog(){
-	const txtConSrc = jsFileSystem.readLocalFile(
+	const txtCon = jsFileSystem.readLocalFile(
 		txtPdfViewerTtsTextFilePath
 	);
-	if(!txtConSrc) {
+	if(!txtCon) {
 		alert("no contents");
 		return
 	};
-	const txtCon = transByToLang(txtConSrc);
 	alert(txtCon);
 };
 
@@ -327,17 +324,4 @@ function makeTxtPdfViewerTtsTextFilePath(){
 	return `${txtPdfViewerOldPlayDirPath}/${rawTxtPdfFileName}_${toLang}${txtSuffix}`;
 };
 
-function transByToLang(
-	txtPdfConSrc
-){
-	if(
-		!toLang
-		|| toLang == noTransMark
-	) return txtPdfConSrc;
-	return jsTrans.get(
-        txtPdfConSrc,
-        toLang,
-        true
-    );
-};
 

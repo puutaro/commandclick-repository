@@ -1,28 +1,11 @@
 
 
 /// LABELING_SECTION_START
-// Display summary for current site with translation @puutaro
+// Display summary for current site @puutaro
 // * Support long press menu
 //  - src anchor 
 //  - src image anchor 
-//  * toLang
-//  -> translate by specified language
-//      - - : default language
-//      - en: english
-//      - zh: chinese
-//      - es: spanish
-//      - ko: korean
-//      - ja: japanese
 /// LABELING_SECTION_END
-
-/// SETTING_SECTION_START
-setVariableTypes="toLang:CB=-!ja!en!zh!es!ko"
-/// SETTING_SECTION_END
-
-
-/// CMD_VARIABLE_SECTION_START
-toLang="-"
-/// CMD_VARIABLE_SECTION_END
 
 
 const targetUrl = "CMDCLICK_LONG_PRESS_LINK_URL";
@@ -37,10 +20,7 @@ var summary = makeSummary(tocArr);
 if(summary.length < LEAST_STRING_NUM) {
     summary = summaryComp(summary);
 };
-const transSummary = transSummuryByToLang(
-    summary,
-);
-alert(transSummary);
+alert(summary);
 
 
 function makeTocArr(list){
@@ -182,16 +162,3 @@ function decideMode(){
     return "";
 };
 
-function transSummuryByToLang(
-    summary
-){
-    if(
-        toLang == "-"
-        || !toLang
-    ) return summary;
-    return jsTrans.get(
-        summary,
-        toLang,
-        false
-    );
-};

@@ -1,14 +1,14 @@
 
 
 /// LABELING_SECTION_START
-// site contents to speech with translation @puutaro
+// site contents to speech @puutaro
 // ---
 //  * speechMode 
 //      - All: speech site contents 
 //      - Summary: speech site sumamry 
 //      - Highlight: speech highlight text
 //  * toLang
-//  -> translate by specified language
+//  -> textToSpeech language
 //      - - : default language
 //      - en: english
 //      - zh: chinese
