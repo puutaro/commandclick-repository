@@ -1,6 +1,0 @@
-editExecute,
-terminalSizeType,
-onUpdateLastModify,
-onAdBlock,
-setReplaceVariables,
-setVariableTypes,
