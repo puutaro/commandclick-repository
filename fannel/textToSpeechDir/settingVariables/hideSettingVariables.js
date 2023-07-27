@@ -1,2 +1,0 @@
-setReplaceVariables,
-setVariableTypes,
