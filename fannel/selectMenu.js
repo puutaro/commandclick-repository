@@ -43,7 +43,7 @@ scriptFileName="selectMenu.js"
 
 
 /// CMD_VARIABLE_SECTION_START
-HIGHLIGHT_SCRIPT=""
+HIGHLIGHT_SCRIPT="highlightSch.js"
 EDIT_MENU=""
 /// CMD_VARIABLE_SECTION_END
 
