@@ -35,6 +35,7 @@ scriptFileName="cmdBookmaker.js"
 /// CMD_VARIABLE_SECTION_START
 bookmarkListName="bookSites.tsv"
 EDIT_BOOKMARK_NAME=""
+ON_DIALOG="false"
 /// CMD_VARIABLE_SECTION_END
 
 
@@ -70,7 +71,8 @@ function switchByArgs(){
 				"true",
 				"true",
 				"true",
-				"urlString.startsWith('http');"
+				"urlString.startsWith('http');",
+				ON_DIALOG
 			);
 			break;
 		case EDIT_BOOKMARK_NAME_MODE:

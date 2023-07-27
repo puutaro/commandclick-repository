@@ -127,7 +127,8 @@ function switchByArgs(){
 				"false",
 				"false",
 				"false",
-				"true"
+				"true",
+				"false",
 			);
 			break;
 		case INSTALL_MODE:

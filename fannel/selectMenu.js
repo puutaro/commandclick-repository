@@ -22,9 +22,22 @@
 
 /// SETTING_SECTION_START
 editExecute="ALWAYS"
-setReplaceVariables="file://${01}/${001}/settingVariables/setReplaceVariables.js"
-setVariableTypes="file://${01}/${001}/settingVariables/setVariableTypes.js"
-hideSettingVariables="file://${01}/${001}/settingVariables/hideSettingVariables.js"
+setReplaceVariables="TEXT_LABEL=label"
+setReplaceVariables="FGB_DIR_PATH=dirPath"
+setReplaceVariables="FGB_SUFFIX=suffix"
+setReplaceVariables="BTN_CMD=cmd"
+setReplaceVariables="BTN_LABEL=label"
+setReplaceVariables="LIST_PATH=listPath"
+setReplaceVariables="LIMIT_NUM=limitNum"
+setReplaceVariables="currentAppDirPath=${01}"
+setReplaceVariables="selectMenuDirPath=${currentAppDirPath}/${001}"
+setReplaceVariables="selectMenuListDirPath=${selectMenuDirPath}/menuList"
+setReplaceVariables="selectMenuListFilePath=${selectMenuListDirPath}/menu.txt"
+setVariableTypes="EDIT_MENU:LBL:DSL:BTN=${TEXT_LABEL}=THIS|${LIST_PATH}=${selectMenuListFilePath}!${LIMIT_NUM}=20|${BTN_CMD}=jsf '${0}' menuAdd!${BTN_LABEL}=ADD"
+setVariableTypes="HIGHLIGHT_SCRIPT:TXT:FGB=${TEXT_LABEL}=THIS|${FGB_DIR_PATH}=${01}!${FGB_SUFFIX}=.js"
+hideSettingVariables="editExecute"
+hideSettingVariables="setReplaceVariables"
+hideSettingVariables="setVariableTypes"
 scriptFileName="selectMenu.js"
 /// SETTING_SECTION_END
 

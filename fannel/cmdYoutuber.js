@@ -144,6 +144,7 @@ const PLAY_LOG_FILE_PATH = makeCreatorJSPath(
 	""
 );
 
+
 updateByVariableWhenDiff(
 	"playLogName",
 	PLAY_LOG_FILE_PATH.split("/").at(-1),
@@ -275,7 +276,8 @@ function editSiteHandler(){
 			"false",
 			"true",
 			"true",
-			"urlString.startsWith('http') && urlString.includes(\"youtube\");"
+			"urlString.startsWith('http') && urlString.includes(\"youtube\");",
+			"false",
 		);
 		return;
 	};
@@ -286,7 +288,8 @@ function editSiteHandler(){
 			"false",
 			"true",
 			"true",
-			"true"
+			"true",
+			"false"
 		);
 		return;
 	};
@@ -587,4 +590,4 @@ function execStop(){
 		` \"${STOP_MODE}\"`
 	);
 	exitZero();
-}
+};

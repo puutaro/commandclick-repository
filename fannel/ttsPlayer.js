@@ -152,7 +152,8 @@ function switchByArgs(){
 				"false",
 				"true",
 				"true",
-				"urlString.startsWith('http');"
+				"urlString.startsWith('http');",
+				"false",
 			);
 			break;
 		case SHUFFLE_MODE:
@@ -394,4 +395,3 @@ function replaceSimble(
 	let exp = /[-A-Z0-9+&@#\/&#37;?=~_|!:,.;＃＄％＆（）＝〜＾｜￥｛｝。、＜＞＊]/ig;
 	return targetStr.replaceAll(exp, "");
 };
-

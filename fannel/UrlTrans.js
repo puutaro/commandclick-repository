@@ -7,11 +7,13 @@
 
 /// SETTING_SECTION_START
 setVariableTypes="toLang:CB=en!ja!ko!zh-CN!zh-TW!uk!ru!es!fr"
+setVariableTypes="onDialog:CB=false!true"
 scriptFileName="UrlTrans.js"
 /// SETTING_SECTION_END
 
 /// CMD_VARIABLE_SECTION_START
 toLang="en"
+onDialog="false"
 /// CMD_VARIABLE_SECTION_END
 
 
@@ -21,6 +23,9 @@ execTrans();
 
 
 function urlCheck(){
+	if(
+		!currentUrl
+	) exitZero();
 	if(
 		!currentUrl.startsWith("https://")
 		&& !currentUrl.startsWith("http://")
@@ -33,5 +38,9 @@ function urlCheck(){
 function execTrans(){
 	const ggTransQuery = 
 		`https://translate.google.com/translate?sl=auto&tl=${toLang}&u=${currentUrl}`;
-	jsUrl.loadUrl(ggTransQuery);
+	if(onDialog != "true"){
+		jsUrl.loadUrl(ggTransQuery);
+		exitZero();
+	};
+	jsDialog.webView(ggTransQuery);
 };

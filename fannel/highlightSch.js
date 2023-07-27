@@ -21,7 +21,7 @@ let prefixEnum = {
 
 const highlightUrlString = getSelectionText();
 if(!highlightUrlString) exitZero();
-execCpSearch(
+execHighlightSearch(
 	appendUrlPrefix(highlightUrlString)
 );
 
@@ -42,7 +42,7 @@ function appendUrlPrefix(highlightUrlString){
 };
 
 
-function execCpSearch(urlString){
+function execHighlightSearch(urlString){
 	switch(true){
 		case jsPath.checkExtend(urlString, suffixEnum.shell):
 			cmdIntent.run(
