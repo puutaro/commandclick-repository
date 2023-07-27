@@ -19,9 +19,13 @@
 
 
 /// SETTING_SECTION_START
-setReplaceVariables="file://${01}/${001}/settingVariables/setReplaceVariables.js"
-setVariableTypes="file://${01}/${001}/settingVariables/setVariableTypes.js"
-hideSettingVariables="file://${01}/${001}/settingVariables/hideSettingVariables.js"
+setReplaceVariables="TXT_LABEL=label"
+setVariableTypes="speechMode:LBL:CB=${TXT_LABEL}=this|All!Summary!Highlight"
+setVariableTypes="Speed:TXT:NUM=!1..100!1"
+setVariableTypes="Pitch:TXT:NUM=!1..100!1"
+setVariableTypes="toLang:CB=-!ja!en!zh!es!ko"
+hideSettingVariables="setReplaceVariables"
+hideSettingVariables="setVariableTypes"
 scriptFileName="textToSpeech.js"
 /// SETTING_SECTION_END
 
