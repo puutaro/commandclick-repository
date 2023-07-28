@@ -62,6 +62,7 @@
 editExecute="ALWAYS"
 terminalSizeType="LONG"
 terminalOutputMode="NORMAL"
+execPlayBtnLongPress="WEB_SEARCH"
 onUpdateLastModify="ON"
 onUrlHistoryRegister="ON"
 terminalFontZoom="0"
