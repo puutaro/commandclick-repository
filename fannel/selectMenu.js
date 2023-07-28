@@ -128,15 +128,27 @@ function execMenuAdd(){
 
 function launchMenu(){
 	const title="select from bellow";
-	const menuTabsepaString = jsFileSystem.readLocalFile(
+	let menuTabsepaStringList = jsFileSystem.readLocalFile(
 		"${selectMenuListFilePath}"
-	).split("\n").join("\t");
-	const selectedMenu = jsDialog.listDialog(
-		title,
-		"",
-		menuTabsepaString
-	);
-	const selectedJsPath = [currentAppDirPath, selectedMenu].join("/");
+	).split("\n");
+	const menuTabsepaStringListLength = 
+		menuTabsepaStringList.length;
+	if(!menuTabsepaStringList) exitZero();
+	var selectedMenu = "";
+	if(menuTabsepaStringListLength == 1){
+		selectedMenu = menuTabsepaStringList.at(0);
+	} else {
+		const menuTabsepaString = 
+			menuTabsepaStringList.join("\t");
+		selectedMenu = jsDialog.listDialog(
+			title,
+			"",
+			menuTabsepaString
+		);
+	};
+	if(!selectedMenu) exitZero();
+	const selectedJsPath = 
+		[currentAppDirPath, selectedMenu].join("/");
 	launchJsFile(
 		selectedJsPath,
 	);
