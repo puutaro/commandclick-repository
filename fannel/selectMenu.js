@@ -33,7 +33,7 @@ setReplaceVariables="currentAppDirPath=${01}"
 setReplaceVariables="selectMenuDirPath=${currentAppDirPath}/${001}"
 setReplaceVariables="selectMenuListDirPath=${selectMenuDirPath}/menuList"
 setReplaceVariables="selectMenuListFilePath=${selectMenuListDirPath}/menu.txt"
-setVariableTypes="EDIT_MENU:LBL:DSL:BTN=${TEXT_LABEL}=THIS|${LIST_PATH}=${selectMenuListFilePath}!${LIMIT_NUM}=20|${BTN_CMD}=jsf '${0}' menuAdd!${BTN_LABEL}=ADD"
+setVariableTypes="EDIT_MENU:LBL:DSL:BTN=${TEXT_LABEL}=THIS|${LIST_PATH}=${selectMenuListFilePath}|${BTN_CMD}=setf type=ListAdd suffix=.js dirPath=${01}!${BTN_LABEL}=ADD"
 setVariableTypes="HIGHLIGHT_SCRIPT:TXT:FGB=${TEXT_LABEL}=THIS|${FGB_DIR_PATH}=${01}!${FGB_SUFFIX}=.js"
 hideSettingVariables="editExecute"
 hideSettingVariables="setReplaceVariables"
@@ -44,7 +44,7 @@ scriptFileName="selectMenu.js"
 
 /// CMD_VARIABLE_SECTION_START
 HIGHLIGHT_SCRIPT="webSearcher.js"
-EDIT_MENU=""
+EDIT_MENU="${01}/${001}/menuList/menu.txt"
 /// CMD_VARIABLE_SECTION_END
 
 
@@ -70,9 +70,6 @@ function switcher(){
 		case "":
 			execLaunchMenuHandler();
 			break;
-		case menuAddMode:
-			execMenuAdd();
-			break;
 	};
 };
 
@@ -95,35 +92,6 @@ function execLaunchMenuHandler() {
 	launchMenu();
 	exitZero();
  };
-
-function execMenuAdd(){
-	let listCon = jsFileSystem.showFileList(
-		"${currentAppDirPath}"
-	).split("\t").filter(function(name){
-		return name.endsWith(".js")
-			|| name.endsWith(".sh")
-			|| name.endsWith(".html");
-	}).map(function(name){
-		return `${currentAppDirPath}/${name}`;
-	}).join("\t");
-	const selectedFannel = jsDialog.gridDialog(
-		"Select bellow fannel",
-		"",
-		listCon
-	).replace(
-		"${currentAppDirPath}/",
-		""
-	);
-	if(!selectedFannel) return;
-	const currentListCon = jsFileSystem.readLocalFile(
-		"${selectMenuListFilePath}"
-	);
-	jsFileSystem.writeLocalFile(
-		"${selectMenuListFilePath}",
-		`${selectedFannel}\n${currentListCon}`,
-	);
-};
-
 
 
 function launchMenu(){
@@ -163,30 +131,6 @@ function launchJsFile(
 	jsUrl.loadUrl(jsUrlString);	
 };
 
-
-// no use
-function launchWhenEditExecute(
-	selectedJsPath
-){
-	const jsFannelContents = jsFileSystem.readLocalFile(
-			selectedJsPath
-	);
-	const settingVariables = jsScript.subSettingVars(
-		jsFannelContents
-	);
-	const editExecuteValue = jsScript.subValOnlyValue(
-		"editExecute",
-		settingVariables
-	);
-	if(
-		editExecuteValue != "ALWAYS"
-	) return;
-	const jsFileName = selectedJsPath.split("/").at(-1);
-	jsIntent.launchShortcut(
-        "${01}",
-        jsFileName
-    );
-};
 
 function getSelectionText() {
     var text = "";
