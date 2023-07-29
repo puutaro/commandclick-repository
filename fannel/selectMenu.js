@@ -43,7 +43,7 @@ scriptFileName="selectMenu.js"
 
 
 /// CMD_VARIABLE_SECTION_START
-HIGHLIGHT_SCRIPT="highlightSch.js"
+HIGHLIGHT_SCRIPT="webSearcher.js"
 EDIT_MENU=""
 /// CMD_VARIABLE_SECTION_END
 

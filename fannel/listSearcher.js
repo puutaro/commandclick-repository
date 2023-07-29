@@ -58,6 +58,9 @@ const GGLE_URL = "https://www.google.com/search?q=";
 
 let searchTextAndPrefixPair = 
 	makeSearchTextAndPrefixPairByForm();
+if(
+	!searchTextAndPrefixPair
+) exitZero();
 registerSearchTextAndPrefix(
 	searchTextAndPrefixPair
 );
@@ -119,7 +122,9 @@ function execSearch(
 	searchTextAndPrefixPair
 ){
 	const returnSearchText = searchTextAndPrefixPair[0];
+	if(!returnSearchText) return;
 	const returnSearchPrefix = searchTextAndPrefixPair[1];
+	if(!returnSearchPrefix) return;
 	const searchUrl = `${returnSearchPrefix}${returnSearchText}`;
-	jsUrl.loadUrl(searchUrl);
+	location.href = searchUrl;
 };

@@ -39,8 +39,17 @@ function execTrans(){
 	const ggTransQuery = 
 		`https://translate.google.com/translate?sl=auto&tl=${toLang}&u=${currentUrl}`;
 	if(onDialog != "true"){
-		jsUrl.loadUrl(ggTransQuery);
+		location.href = ggTransQuery;
+		// jsUrl.loadUrl(ggTransQuery);
 		exitZero();
 	};
-	jsDialog.webView(ggTransQuery);
+	jsDialog.webView(
+		ggTransQuery,
+		    "",
+		    "",
+		    "",
+		    "",
+		    "",
+		    "",
+	);
 };
