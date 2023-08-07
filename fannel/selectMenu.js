@@ -109,7 +109,7 @@ function launchMenu(){
 		const menuTabsepaString = 
 			menuTabsepaStringList.join("\t");
 		selectedMenu = jsDialog.listDialog(
-			title,
+			"Select bellow list",
 			"",
 			menuTabsepaString
 		);
