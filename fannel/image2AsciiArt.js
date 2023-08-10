@@ -425,10 +425,13 @@ function moveOrDeleteHandler(
 		exitZero();
 		return;
 	};
+	const moveDestiDirPath = 
+	`${image2AsciiArtGalleryDirPath}/${moveDestiDirName}`;
+	jsFileSystem.createDir(moveDestiDirPath);
 	let destiItemsPathList = selectedItemsList.map(
 		function(imageFilePath){
 			const imageName = jsPath.basename(imageFilePath);
-			return `${image2AsciiArtGalleryDirPath}/${moveDestiDirName}/${imageName}`;
+			return `${moveDestiDirPath}/${imageName}`;
 		});
 	selectedItemsList.forEach(
 			function(imageFilePath, index){
