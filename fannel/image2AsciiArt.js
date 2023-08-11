@@ -137,10 +137,13 @@ function switcher(){
 			break;
 		case "${EDIT_TARGET_DIR_NAME}":
 			execEditTargetDirName();
+			break;
 		case "${MOVE_OR_DELETE_IMAGE}":
 			execMoveOrDeleteImage();
+			break;
 		case "${DISPLAY_GALLERY}":
 			execDisplayGallery();
+			break;
 	};
 };
 
