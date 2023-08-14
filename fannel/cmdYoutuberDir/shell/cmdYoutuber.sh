@@ -435,7 +435,7 @@ play_mode_handler(){
 			package_installer "git"
 			package_installer "termux-api"
 			package_installer "python"
-			pip_package_installer "yt-dlp" "2023.2.17"
+			pip_package_installer "yt-dlp"
 			termux_mpv_package_installer
 			exit 0
 			;;
