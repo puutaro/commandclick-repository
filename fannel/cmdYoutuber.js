@@ -124,6 +124,8 @@ const cmdTubePlayerListDirPath = "${cmdTubePlayerListDirPath}";
 const cmdTubePlayerListFilePath = "${cmdTubePlayerListFilePath}";
 const TUBE_PREFIX = "tube";
 const searchPlayListName = "SearchPlayList.tsv";
+const defaultTubePlayListTsvName = "tubePlayList.tsv";
+const defaultLogFileName = "playLogDefault";
 const LOG_RUNDOM = "LOG_RND";
 const LOG_FREQUENT = "LOG_FREQ";
 let lOG_SEARCH_LIST = [LOG_RUNDOM, LOG_FREQUENT];
@@ -138,11 +140,9 @@ var noLogCat = "";
 decideStremingMode();
 searchWord = searchWord.trim();
 initNumVariable();
-const PLAY_LOG_FILE_PATH = makeCreatorJSPath(
+const PLAY_LOG_FILE_PATH = makeCreatorJSPathForLog(
 	PLAY_LOG_DIR_PATH,
 	playLogName,
-	LOG_PREFIX,
-	""
 );
 
 
@@ -158,11 +158,12 @@ if(
 ){
 	tubePlayListName = searchPlayListName;
 };
-const EDIT_FILE_PATH = makeCreatorJSPath(
+tubePlayListName = checkTubeListName(
+	tubePlayListName
+);
+const EDIT_FILE_PATH = makeCreatorJSPathForTubePlayList(
 	cmdTubePlayerEditDirPath,
 	tubePlayListName,
-	TUBE_PREFIX,
-	TSV_SUFFIX
 );
 updateByVariableWhenDiff(
 	"tubePlayListName",
@@ -178,9 +179,6 @@ argSwitcher();
 
 
 function argSwitcher() {
-	tubeListNameCheck(
-		tubePlayListName
-	);
 	jsFileSystem.createDir(
 		cmdTubePlayerTmpDirPath
 	);
@@ -303,26 +301,37 @@ function editSiteHandler(){
 	);
 };
 
-function makeCreatorJSPath(
+function makeCreatorJSPathForTubePlayList(
 	dirPath,
-	tubePlayListName,
-	prefix,
-	suffix
+	tubePlayListNameSrc,
 ){
-	if(!tubePlayListName){
-		alert("tubePlayListName must be written");
-		throw new Error('exit');
-		exitZero();
+	if(!tubePlayListNameSrc){
+		tubePlayListNameSrc = defaultTubePlayListTsvName;
 	};
-	tubePlayListName = jsPath.compPrefix(
-		tubePlayListName,
-		prefix
+	tubePlayListNameSrc = jsPath.compPrefix(
+		tubePlayListNameSrc,
+		TUBE_PREFIX
 	);
 	tubePlayListName = jsPath.compExtend(
-		tubePlayListName,
-		suffix
+		tubePlayListNameSrc,
+		TSV_SUFFIX
 	);
 	return [dirPath, tubePlayListName].join('/');
+};
+
+
+function makeCreatorJSPathForLog(
+	dirPath,
+	logFileName,
+){
+	if(!logFileName){
+		logFileName = defaultLogFileName;
+	};
+	playLogName = jsPath.compPrefix(
+		logFileName,
+		LOG_PREFIX
+	);
+	return [dirPath, playLogName].join('/');
 };
 
 
@@ -369,23 +378,39 @@ function registerWebSearchWord(){
 };
 
 
-function tubeListNameCheck(
+function checkTubeListName(
 	tubePlayListName
 ){
 	if(
 		onSearchMode != "OFF"
-	) return;
-	if(tubePlayListName == searchPlayListName){
-		alert(`tubePlayListName must not be "${searchPlayListName}"`);
-		throw new Error('exit');
-		exitZero();
-	};
-	if(tubePlayListName == `${TUBE_PREFIX}${searchPlayListName}`){
-		alert(`tubePlayListName must not be "${TUBE_PREFIX}${searchPlayListName}"`);
-		throw new Error('exit');
-		exitZero();
-	};
+	) return tubePlayListName;
+	if(
+		tubePlayListName != searchPlayListName
+		&& tubePlayListName != `${TUBE_PREFIX}${searchPlayListName}`
+	) return tubePlayListName;
+	const selectedTubePlayListName = selectTubeListWhenWebSearchOff();
+	if(!selectedTubePlayListName) exitZero();
+	return selectedTubePlayListName
 };
+
+
+function selectTubeListWhenWebSearchOff(){
+	const webSearchTubeTsvName = `${TUBE_PREFIX}${searchPlayListName}`;
+	const tubePlayTsvListCon = jsFileSystem.showFileList(
+		cmdTubePlayerEditDirPath
+	).split("\t").filter(
+		function(fileName){
+			return 
+				fileName.endsWith(TSV_SUFFIX) 
+				&& fileName != webSearchTubeTsvName
+		}).join("\t");
+	return jsDialog.listDialog(
+			"Select bellow tube play list",
+			"",
+			tubePlayTsvListCon
+		);
+};
+
 
 function catPlayLog(){
 	const outputMode = "NORMAL";
