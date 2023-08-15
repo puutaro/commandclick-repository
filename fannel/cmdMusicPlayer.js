@@ -87,6 +87,7 @@ const cmdMusicPlayerDirListFilePath = "${cmdMusicPlayerDirListFilePath}";
 const EXEC_SHELL_PATH = `${cmdMusicPlayerDirPath}/cmdMusicPlayer.sh`;
 const PLAY_PROCESS_DIR_PATH = `${cmdMusicPlayerDirPath}/process`;
 const MUSIC_HISTORY_PATH = `${PLAY_PROCESS_DIR_PATH}/musicHistory.txt`;
+const defaultMusicPlayListTsvName = "musicPlayList.tsv";
 const MUSIC_PREFIX = "music";
 const EDIT_FILE_PATH = makeCreatorJSPath(musicPlayListName);
 const INSTALL_MODE = "install";
@@ -186,19 +187,17 @@ function switchByArgs(){
 };
 
 function makeCreatorJSPath(
-	musicPlayListName
+	musicPlayListNameSrc
 ){
-	if(!musicPlayListName){
-		alert("musicPlayListName must be written");
-		throw new Error('exit');
-		exitZero();
+	if(!musicPlayListNameSrc){
+		musicPlayListNameSrc = defaultMusicPlayListTsvName;
 	};
-	musicPlayListName = jsPath.compPrefix(
-		musicPlayListName,
+	musicPlayListNameSrc = jsPath.compPrefix(
+		musicPlayListNameSrc,
 		MUSIC_PREFIX
 	);
 	musicPlayListName = jsPath.compExtend(
-		musicPlayListName,
+		musicPlayListNameSrc,
 		tsvExtend
 	);
 	return [cmdMusicPlayerEditDirPath, musicPlayListName].join('/');
