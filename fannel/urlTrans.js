@@ -45,11 +45,11 @@ function execTrans(){
 	};
 	jsDialog.webView(
 		ggTransQuery,
-		    "",
-		    "",
-		    "",
-		    "",
-		    "",
-		    "",
+	    "",
+	    "",
+	    "",
+	    "",
+	    "",
+	    "",
 	);
 };

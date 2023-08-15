@@ -28,5 +28,13 @@ function launchGgleTransSite(){
 		jsUrl.loadUrl(ggleTransUrl);
 		exitZero();
 	};
-	jsDialog.webView(ggleTransUrl);
+	jsDialog.webView(
+		ggleTransUrl,
+		"",
+	    "",
+	    "",
+	    "",
+	    "",
+	    "",
+	);
 };
