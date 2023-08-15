@@ -6,7 +6,7 @@
 //  - src anchor
 //  - src image anchor
 // 	* install 
-// 		-> install require package
+// 		-> install & upgrade require package
 // 	* play 
 // 		-> youtube play list edit site
 //		- recent visit youtube url show in "Save title"
@@ -80,7 +80,7 @@ searchWord=""
 playMode="shuffle"
 onSearchMode="SHORT"
 PLAY="tubePlay"
-numberPlay="3"
+numberPlay="1"
 STOP=""
 tubePlayListName="tubePlayList.tsv"
 minMinutes="0"

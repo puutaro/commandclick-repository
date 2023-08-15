@@ -41,22 +41,48 @@ package_installer(){
 }
 
 
+pip_package_upgrade_handler(){
+	local package_name="${1:-}"
+	local version="${2:-}"
+	case "${version}" in
+		"") 
+			;;
+		*) 
+			echo "already pip installed: ${package_name}"
+			return
+			;;
+	esac
+	pip install --upgrade "${package_name}"
+}
+
+
 pip_package_installer(){
 	local package_name="${1:-}"
 	local version="${2:-}"
 	local exist_package=$(\
 		pip list \
 			| grep "${package_name}" \
-			| grep "${version}"
+			| grep "${version}" \
 	)
 	case "${exist_package}" in
 		"") ;;
 		*) 
-			echo "already pip installed: ${exist_package}"
-			return ;;
+			pip_package_upgrade_handler \
+				"${package_name}" \
+				"${version}"
+			return 
+			;;
+	esac
+	case "${version}" in
+		"") 
+			local install_package_name="${package_name}"
+			;;
+		*) 
+			local install_package_name="${package_name}==${version}"
+			;;
 	esac
 	pip uninstall -y "${package_name}"
-	pip install "${package_name}==${version}"
+	pip install "${install_package_name}"
 }
 
 
@@ -74,6 +100,18 @@ termux_mpv_package_installer(){
 	pip install "git+https://github.com/Neo-Oli/Termux-Mpv"
 }
 
+
+install_package_wrapper(){
+	package_installer "jq"
+	package_installer "fzf"
+	package_installer "mpv"
+	package_installer "git"
+	package_installer "termux-api"
+	package_installer "python"
+	pip_package_installer "yt-dlp"
+	termux_mpv_package_installer
+	echo "complete installation"
+}
 
 save_play_log_history_to_tsv(){
 	local play_log_file_path="${1}"
@@ -338,6 +376,12 @@ play_mode_handler(){
 	local webSearchArgs="${3:-}"
 	local playNumber="${4:-}"
 	local no_log_cat="${5:-}"
+	case "${play_mode}" in
+		"${INSTALL_MODE}")
+			install_package_wrapper
+			exit 0
+			;;
+	esac
 	judge_stop_by_play_mode \
 		"${play_mode}"
 	if [ ! -d "${PLAY_PROCESS_DIR_PATH}" ]; then
@@ -426,17 +470,6 @@ play_mode_handler(){
 				"${tubePlayListPath}" \
 				"${playNumber}" \
 				"${play_log_file_path}"
-			exit 0
-			;;
-		"${INSTALL_MODE}")
-			package_installer "jq"
-			package_installer "fzf"
-			package_installer "mpv"
-			package_installer "git"
-			package_installer "termux-api"
-			package_installer "python"
-			pip_package_installer "yt-dlp"
-			termux_mpv_package_installer
 			exit 0
 			;;
 		"${EDIT_SITE_WEB_MODE}")
