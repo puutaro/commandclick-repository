@@ -389,7 +389,14 @@ function checkTubeListName(
 		&& tubePlayListName != `${TUBE_PREFIX}${searchPlayListName}`
 	) return tubePlayListName;
 	const selectedTubePlayListName = selectTubeListWhenWebSearchOff();
-	if(!selectedTubePlayListName) exitZero();
+	if(
+		!selectedTubePlayListName
+	) exitZero();
+	jsEdit.updateByVariable(
+		FANNEL_SCRIPT_PATH,
+	    "tubePlayListName",
+	    selectedTubePlayListName
+	);
 	return selectedTubePlayListName
 };
 
