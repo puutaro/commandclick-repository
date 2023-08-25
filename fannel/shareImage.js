@@ -1,9 +1,16 @@
 
 
 /// LABELING_SECTION_START
-// share web image for long press menu  @puutaro
-// * Support long press menu
-//  - image
+// Share web image for long press menu  @puutaro
+// ## Support long press menu
+// ---------
+
+// | type | enable |
+// | ----- | ----- |
+// | src anchor | x |
+// | src image anchor | x |
+// | image | o |
+
 /// LABELING_SECTION_END
 
 /// SETTING_SECTION_START

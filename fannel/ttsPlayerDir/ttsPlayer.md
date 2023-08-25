@@ -1,0 +1,114 @@
+TextToSpeech player @puutaro
+
+Table of Contents
+-------
+<!-- vim-markdown-toc GFM --> 
+* [Cmd Variables](#cmd-variables)
+	* [play](#play)
+	* [playListName](#playlistname)
+	* [ttsPlay](#ttsplay)
+	* [numberPlay](#numberplay)
+	* [gmailToFile](#gmailtofile)
+	* [toLang](#tolang)
+	* [manageText](#managetext)
+	* [onTrack](#ontrack)
+	* [About Volume control](#about-volume-control)
+* [Setting variables](#setting-variables)
+	* [execPlayBtnLongPress](#execplaybtnlongpress)
+	* [execEditBtnLongPress](#execeditbtnlongpress)
+	* [terminalFontZoom](#terminalfontzoom)
+	* [terminalFontColor](#terminalfontcolor)
+	* [terminalColor](#terminalcolor)
+
+
+## Cmd Variables
+--------
+
+### play 
+Launch tts play list site
+
+### playListName 
+
+1. Input or select play list file name
+
+- Prefix must be "music" 
+	ex) "ttsPlayList"
+
+### ttsPlay 
+
+1. Select shuffle or ordinaly and press
+2. Press "Exec" 
+3. (Execute play list)
+
+### numberPlay 
+
+1. Input or inc/dec number
+2. Press "Exec"
+3. (play number)
+
+### gmailToFile 
+Launch gmail or write gmail contetns to file by state
+
+| State | Execute contents |
+| ------- | ------- |
+| No gmail launch | Gmail launch |
+| Look gmail body | Write this contents to file |
+
+### toLang
+Text to speech language
+
+| code | lang |
+| ------ | ------ |
+| - | default language |
+| `en` | english |
+| `zh` | chinese |
+| `es` | spanish |
+| `ko` | korean |
+| `ja` | japanese |
+
+### manageText 
+Remove text file or add one to editHtmlSite
+
+1. Select text file
+2. Click "MNG" button
+
+### onTrack
+
+| switch | description |
+| ------ | --------- |
+| `ON` | memory past number and step |
+| `OFF` | no memory past number and step |
+
+### About Volume control
+Enable when CommandClick hide
+
+
+## Setting variables
+---------
+
+### execPlayBtnLongPress
+Execute when play button long press
+
+| type or name | description |
+| ------- | ------- |
+| `WEB_SEARCH` | apear web search bar |
+| `PAGE_SEARCH` | apear page search bar |
+| js file path | execute js file |
+
+### execEditBtnLongPress
+Execute when edit button long press
+
+| type or name | description |
+| ------- | ------- |
+| `WEB_SEARCH` | apear web search bar |
+| `PAGE_SEARCH` | apear page search bar |
+| js file path | execute js file |
+
+### terminalFontZoom 
+Adjust terminal font size (percentage)
+
+### terminalFontColor 
+Adjust terminal font color
+
+### terminalColor 
+Adjust terminal background color

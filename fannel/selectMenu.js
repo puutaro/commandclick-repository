@@ -2,21 +2,30 @@
 
 /// LABELING_SECTION_START
 // Display select menu from jsFile @puutaro
-// * HIGHLIGHT_SCRIPT
-// 	-> trigger when hilight text is
-// * EDIT_MENU
-// 	-> edit fannel menu
-//      DSL button
-//          - drag and sort home fannels list
-//      ADD button
-//          - Add fannel to home fannel list
-// --
-// --
-// bellow setting variable main line up
-// * EditExecute is edit mode change
-//	- NO is normal edit
-//	- ONCE is one time edit and execute
-//	- ALWAYD is always edit and execute
+
+// ## Cmd Variables
+// --------
+// ### HIGHLIGHT_SCRIPT
+// Trigger when hilight text is
+// ### EDIT_MENU
+// Edit fannel menu
+
+// | Button type | usage | 
+// | --------- | --------- |
+// | DSL button | Drag and sort home fannels list |
+// | ADD button | Add fannel to home fannel list |
+
+// ## Setting variables
+// ---------
+// ### EditExecute
+// Edit mode change
+
+// | edit mode | description |
+// | -------- | -------- |
+// | `NO` | normal edit |
+// | `ONCE` | one time edit and execute |
+// | `ALWAYD` | always edit and execute |
+
 /// LABELING_SECTION_END
 
 

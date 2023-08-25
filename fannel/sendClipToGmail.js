@@ -2,23 +2,44 @@
 
 /// LABELING_SECTION_START
 // Send clipboard contents to Gmail draft @puutaro
-// 	* gmailDraftUrl 
-// 		-> paste gmail draft url
-//  * gmailDraftListURL 
-// 		-> paste gmail draft list url
-// 	* play -> 
-//		if gmailDraftUrl doesn't launch, launch it.
-//		if gmailDraftUrl launch and gmail content blank, paste it's content 
-//		if gmailDraftUrl launch and gmail content has been written, save contents. 
-// --
-// --
-// bellow setting variable main line up
-// * terminalFontZoom
-// 	-> adjust terminal font size (percentage)
-// * terminalFontColor
-// 	-> adjust terminal font color
-// * terminalColor
-// 	-> adjust terminal background color
+
+// Table of Contents
+// -------
+// <!-- vim-markdown-toc GFM --> 
+// * [Cmd Variables](#cmd-variables)
+// 	* [gmailDraftUrl](#gmaildrafturl)
+// 	* [gmailDraftListURL](#gmaildraftlisturl)
+// 	* [play](#play)
+// * [Setting variables](#setting-variables)
+// 	* [terminalFontZoom](#terminalfontzoom)
+// 	* [terminalFontColor](#terminalfontcolor)
+// 	* [terminalColor](#terminalColor)
+
+// ## Cmd Variables
+// --------
+// ### gmailDraftUrl 
+// Paste gmail draft url
+// ### gmailDraftListURL 
+// Paste gmail draft list url
+// ### play 
+// Depend on state, change execute like bellow table.
+
+// | state | execute content | 
+// | --------- | --------- |
+// | `gmailDraftUrl` doesn't launch | Launch `gmailDraftUrl` |
+// | `gmailDraftUrl` launch and gmail bocy blank | Paste clipboard |
+// | `gmailDraftUrl` launch and gmail body has been written | Save draft gmail |
+
+
+// ## Setting variables
+// ---------
+// ### terminalFontZoom
+// Adjust terminal font size (percentage)
+// ### terminalFontColor
+// Adjust terminal font color
+// ### terminalColor
+// Adjust terminal background color
+
 /// LABELING_SECTION_END
 
 

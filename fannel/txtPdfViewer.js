@@ -1,61 +1,7 @@
 
 
 /// LABELING_SECTION_START
-// text pdf viewer with tts @puutaro
-// * Support long press menu
-//  - src anchor 
-//  - src image anchor
-// 	* txtPdfPath 
-//		-> pdf file path
-// 	* TTS_PLAY 
-// 		-> text to speech play
-//  * toLang
-//  -> text to speech lang
-//      - - : default language
-//      - en: english
-//      - zh: chinese
-//      - es: spanish
-//      - ko: korean
-//      - ja: japanese
-//  * Pitch
-// 		-> text to speech pitch
-// 		- 50: normal
-// 		- 50 Up: pitch up
-// 		- 50 down: pitch down
-//  * Speed
-// 		-> text to speech speed
-// 		- 50: normal
-// 		- 50 Up: speed up
-// 		- 50 down: speed down
-//  * onTrack
-//		ON: memory past number and step
-//		OFF: no memory past number and step
-//  * menuTtsSwitch
-//		ON: play text to speech in long press menu
-//		OFF: text or pdf viewer in long press menu
-// --
-// --
-// bellow setting variable main line up
-// * terminalFontZoom 
-//  -> adjust terminal font size (percentage)
-// * terminalFontColor
-//  -> adjust terminal font color
-// * execPlayBtnLongPress
-//  -> execute when play button long press
-//    - WEB_SEARCH: apear web search bar
-//   - PAGE_SEARCH: apear page search bar
-//    - js file path: execute js file
-// * execEditBtnLongPress
-//  -> execute when edit button long press
-//    - WEB_SEARCH: apear web search bar
-//    - PAGE_SEARCH: apear page search bar
-//    - js file path: execute js file
-// * homeFannelsPath
-// 	-> specified fannel put always bottom in app history 
-//      DSL button
-//          - drag and sort home fannels list
-//      ADD button
-//          - Add fannel to home fannel list
+// file://${01}/${001}/txtPdfViewer.md
 /// LABELING_SECTION_END
 
 

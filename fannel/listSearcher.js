@@ -1,17 +1,26 @@
 
 
 /// LABELING_SECTION_START
-// web search by list @puutaro
-// 	* SEARCH_PREFIX 
-// 		-> search target site url
-//		ex) https://www.google.com/search?q=
-// --
-// --
-// bellow setting variable main line up
-// * terminalSizeType is cmdclick terminal size option
-//  - OFF: no adjust (default)
-//  - LONG: LongSize
-//  - SHORT: ShortSize
+// Web search by list @puutaro
+
+// ## Cmd Variables
+// --------
+// ### SEARCH_PREFIX 
+// search target site url
+// ex) `https://www.google.com/search?q=`
+
+// ## Setting Variables
+// --------
+
+// ### terminalSizeType
+// `cmdclick terminal` size option
+
+// | size type | description |
+// | ---------- | ---------- |
+// | OFF | no adjust (default) |
+// | LONG | LongSize |
+// | SHORT | ShortSize |
+
 /// LABELING_SECTION_END
 
 

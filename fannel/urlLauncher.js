@@ -2,20 +2,28 @@
 
 /// LABELING_SECTION_START
 // Url Launcher @puutaro
-//  --
-//  --
-// bellow setting variable main line up
-// * onUrlHistoryRegister
-//   -> url history update signal
-//  - ON: update
-//  - OFF: no update
-// * onAdBlock
-// 	 -> adblock switch
-//  - INHERIT: inherit config setting
-//  - ON: on
-//  - OFF: off
-// * terminalFontZoom 
-//  -> adjust terminal font size (percentage)
+
+// ## Setting variables
+// ---------
+// ### onUrlHistoryRegister
+// url history update signal
+
+// | switch | description |
+// | ---------- | ---------- |
+// | ON | update |
+// | OFF | no update |
+
+// ### onAdBlock
+// Adblock switch
+
+// | switch type | description |
+// | --------- | --------- |
+// | `INHERIT` | inherit config setting |
+// | `ON` | on |
+// | `OFF` | off |
+
+// ### terminalFontZoom 
+// Adjust terminal font size (percentage)
 /// LABELING_SECTION_END
 
 

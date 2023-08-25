@@ -1,10 +1,16 @@
 
 
 /// LABELING_SECTION_START
-// google search by dialog @puutaro
-// * Support long press menu
-//  - src anchor 
-//  - src image anchor 
+// Highlight search and web search by dialog @puutaro
+// ## Support long press menu table
+// ---------------
+
+// | type | enable |
+// | ----- | ----- |
+// | src anchor | o |
+// | src image anchor | o |
+// | image | x |
+
 /// LABELING_SECTION_END
 
 

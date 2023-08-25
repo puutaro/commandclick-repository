@@ -1,44 +1,7 @@
 
 
 /// LABELING_SECTION_START
-// image to ascii art by web image long press  @puutaro
-// * Support long press menu
-//  - src image anchor
-//  - image
-// * PLAY_QUIZ
-// 	-> A quiz to guess what kind of image ascii art is
-// * DISPLAY_GALLERY
-// 	-> display gallery
-// * convertImageFile2Ascii
-// 	-> convert image file to ascii art
-// 	 file: 
-// 		select image file
-// 	 To:
-// 		convert
-// * TARGET_DIR
-// 	-> src image file included dir
-// * MOVE_OR_DELETE_IMAGE
-// 	-> move or delete image file 
-// * EDIT_TARGET_DIR_NAME
-// 	-> rename or delete TARGET_DIR
-// 	
-// --
-// --
-// bellow setting variable main line up
-// * terminalFontZoom 
-//  -> adjust terminal font size (percentage)
-// * terminalFontColor
-//  -> adjust terminal font color
-// * execPlayBtnLongPress
-//  -> execute when play button long press
-//    - WEB_SEARCH: apear web search bar
-//   - PAGE_SEARCH: apear page search bar
-//    - js file path: execute js file
-// * execEditBtnLongPress
-//  -> execute when edit button long press
-//    - WEB_SEARCH: apear web search bar
-//    - PAGE_SEARCH: apear page search bar
-//    - js file path: execute js file
+// file://${01}/${001}/image2AsciiArt.md
 /// LABELING_SECTION_END
 
 

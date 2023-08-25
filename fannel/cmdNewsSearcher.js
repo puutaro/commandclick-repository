@@ -1,46 +1,7 @@
 
 
 /// LABELING_SECTION_START
-// News site searcher @puutaro
-// 	* WEB_SEARCH_PREFIX 
-// 		-> search target site url
-//		ex) https://www.google.com/search?q=
-//	* REMOVE_WEB_SEARCH_PREFIX
-// 		-> remove web search prefix from list
-//	* REMOVE_SEARCH_TEXT
-// 		-> remove search text from list
-//  * Long press play button
-//   	-> apear page search bar
-//  * Long press edit button
-//   	-> apear web search bar
-// --
-// --
-// bellow setting variable main line up
-// * terminalFontZoom 
-// 	-> adjust terminal font size (percentage)
-// * historySwitch
-// 	-> switch app history with url history
-//  - ON: switch
-//  - OFF: no switch
-//  - INHERIT: inherit config setting (default)
-// * onAdBlock
-// 	 -> adblock switch
-//  - INHERIT: inherit config setting
-//  - ON: on
-//  - OFF: off
-// * homeScriptUrlsPath
-//  -> specified script, url and html put always bottom in url history
-//     ex) homeScriptUrlsPath=$\{file_path}
-//      DSL button
-//          - drag and sort home url script List
-//      ADD button
-//          - Add fannel to home url script list
-// * homeFannelsPath
-// 	-> specified fannel put always bottom in app history 
-//      DSL button
-//          - drag and sort home fannels list
-//      ADD button
-//          - Add fannel to home fannel list
+// file://${01}/${001}/cmdNewsSearcher.md
 /// LABELING_SECTION_END
 
 

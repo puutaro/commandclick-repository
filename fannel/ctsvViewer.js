@@ -1,65 +1,7 @@
 
 
 /// LABELING_SECTION_START
-// Advanced csv & tsv viewer @puutaro
-// 	* inputCTsvPath 
-// 		-> set csv or tsv path
-// 	* scrollBoost 
-// 		-> auto scroll boost rate
-//		- 0: one step
-//		- 1: spedify direction range step
-//		- other: specifyDirectStartNum + 1 + specifyDirectRange * scrollBoost;
-// 	* colRange 
-//		-> view column range num
-//  * rowRange
-// 		-> view row range num
-// 	* startColNum 
-//		-> start column index
-// 	* startRowNum 
-//		-> start row index
-// 	* autoScrollType
-//		-> auto scroll direction
-//		horizon: left to right
-//		rHorizon: right to left
-//		vartical: top to bottom
-//		rVartical: bottom to top
-// 	* viewType 
-//		SRC: src csv or tsv
-//		AGGRE: aggregated table
-//		CHART: aggregated chart
-//  * rowLimit 
-// 		-> view row limit 
-//		(more smaller this value, more shoter reading speed up)
-//  * filters
-// 		-> filter query
-//  	in: by included word
-// 		>=: by equal larger
-// 		>: by larger
-// 		<=: by equal smaller
-// 		>: by smaller
-// 		=: by equal
-//	* html description 
-//   maxW 
-// 		-> maximum frequent word
-//   sumMaxW
-// 		-> count maximum frequent word
-//   minW
-// 		-> minimum frequent word
-//   sumMinW
-//   	-> count minimum frequent word
-//   avrW
-// 		-> middle frequent word
-//   sumAvrW
-// 		-> count middle frequent word
-// 
-// - This Fannel is used to bellow repo.
-// 		https://github.com/chartjs/Chart.js
-// --
-// --
-// bellow setting variable main line up
-// * terminalFontZoom adjust terminal font size (percentage)
-// * terminalFontColor adjust terminal font color
-// * terminalColor adjust terminal background color
+// file://${01}/${001}/ctsvViewer.md
 /// LABELING_SECTION_END
 
 

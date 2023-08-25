@@ -1,38 +1,7 @@
 
 
 /// LABELING_SECTION_START
-// Music player  (*termux) @puutaro
-//	* install 
-// 		-> install require package
-//	* play 
-// 		-> music play list site
-//	* musicDir 
-// 		-> Target music file saved directory path
-// 	* musicPlayListName 
-//		-> Input or select play list file name
-//		- Prefix must be "music" ex) "musicPlayList"
-// 	* musicPlay 
-//		-> Select shuffle or ordinaly and press
-//		- Press "Exec" and execute play list
-// 	* numberPlay 
-//		-> Input or inc/dec number
-//		- Press "Exec" and play number
-//	* Volume control enable when CommandClick hide
-// 	* STOP
-//		-> Play stop
-// 	* startNum 
-//		-> Start number, 0: firstNumber
-// 	* endNum
-//		-> End number, 0: lastNumber
-// --
-// --
-// Bellow setting variable main line up
-// * terminalFontZoom
-// -> adjust terminal font size (percentage)
-// * terminalFontColor
-// -> adjust terminal font color
-// * terminalColor
-// -> adjust terminal background color
+// file://${01}/${001}/cmdMusicPlayer.md
 /// LABELING_SECTION_END
 
 

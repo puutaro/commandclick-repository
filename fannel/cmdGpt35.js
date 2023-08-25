@@ -2,15 +2,32 @@
 
 /// LABELING_SECTION_START
 // GPT3.5 free client @puutaro
-//	* TXT_TO_CLIP
-// 		-> copy text to clipboard and launch gpt35 site
-//	* REMOVE_TEXT
-// 		-> remove request from list
-// --
-// --
-// bellow setting variable main line up
-// * terminalFontZoom 
-// 	-> adjust terminal font size (percentage)
+
+// Table of Contents
+// -------
+// <!-- vim-markdown-toc GFM -->
+// * [Cmd Variables](#cmd-variables)
+// 	* [TXT_TO_CLIP](#txt_to_clip)
+// 	* [REMOVE_TEXT](#remove_text)
+// * [Setting variables](#setting-variables)
+// 	* [terminalFontZoom](#terminalfontzoom)
+
+// ## Cmd Variables
+// --------
+// ### TXT_TO_CLIP 
+// Copy text to clipboard and launch gpt35 site
+// ### REMOVE_TEXT
+// Remove request from list
+
+// ### bookmarkListName 
+// Input or select bookmark list file name
+// - Prefix must be "book" 
+// 	ex) "bookSites"
+
+// ## Setting variables
+// ---------
+// ### terminalFontZoom
+// Adjust terminal font size (percentage)
 /// LABELING_SECTION_END
 
 

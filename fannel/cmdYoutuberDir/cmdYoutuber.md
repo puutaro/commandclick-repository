@@ -7,6 +7,7 @@ Table of Contents
 * [Cmd Variables](#cmd-variables)
 	* [Install](#install)
 	* [Play](#play)
+		* [Edit Site Usage](#edit-site-usage)
 	* [searchWord](#searchword)
 	* [playMode](#playmode)
 	* [tubePlayListName](#tubeplaylistname)
@@ -40,7 +41,9 @@ Table of Contents
 Install & upgrade require package
 
 ### Play 
-Youtube play list edit site
+Launch youtube play list edit site
+
+#### Edit Site Usage
 - Recent visit youtube url show in "Save title"
 - Change item  order by drag and drop 
 - Delete item  by doragging to another area(no item area).
@@ -72,9 +75,9 @@ Input or inc/dec number
 
 ### onSearchMode
 Web search switch
-- OFF -> no web search
-- SHORT -> sort by shortest
-- RECENT -> sort by latest
+- `OFF` -> no web search
+- `SHORT` -> sort by shortest
+- `RECENT` -> sort by latest
 
 ### minMinutes
 Filter movie by minimum play minutes
@@ -96,8 +99,8 @@ This Fannel is used to bellow repo as core library.
 ---------
 ### onUrlHistoryRegister
 Url history update signal
-- ON: update
-- OFF: no update
+- `ON`: update
+- `OFF`: no update
 
 ### terminalFontZoom
 Adjust terminal font size (percentage)

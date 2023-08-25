@@ -1,20 +1,30 @@
 
 
 /// LABELING_SECTION_START
-// site contents to speech @puutaro
-// ---
-//  * speechMode 
-//      - All: speech site contents 
-//      - Summary: speech site sumamry 
-//      - Highlight: speech highlight text
-//  * toLang
-//  -> textToSpeech language
-//      - - : default language
-//      - en: english
-//      - zh: chinese
-//      - es: spanish
-//      - ko: korean
-//      - ja: japanese
+// Speech site contents @puutaro
+
+// ## Cmd Variables
+// --------
+// ### speechMode
+
+// | speech mode | description |
+// | --------- | --------- |
+// | `All` | speech site contents |
+// | `Summary` | speech site sumamry |
+// | `Highlight` | speech highlight text |
+
+// ### toLang
+// textToSpeech language
+
+// | code | lang |
+// | ------ | ------ |
+// | - | default language |
+// | `en` | english |
+// | `zh` | chinese |
+// | `es` | spanish |
+// | `ko` | korean |
+// | `ja` | japanese |
+
 /// LABELING_SECTION_END
 
 

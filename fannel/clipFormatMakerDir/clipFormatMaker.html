@@ -780,7 +780,9 @@
 		const firstDescriptinHolder = "/// LABELING_SECTION_START";
 		const endDescriptionHolder = "/// LABELING_SECTION_END";
 		const firstSection = `\n\n${firstDescriptinHolder}
-			|// clipboad formatter @maker`.split('\n')
+			|// clipboad formatter @maker
+			|// ## Cmd Variables
+			|// --------`.split('\n')
 		.map(function(line){
 			return line.trim().replace(/^\|/, '');
 		}).join("\n");
@@ -790,15 +792,22 @@
 			}).join("\n");
 		const descForLaunch = launchVariableList.map(
 			function(variable){
-				return `// ${variable}: Launch url`
+				return `// ### ${variable}
+			|// Launch url`
+			}).join("\n").split("\n").map(function(line){
+				return line.trim().replace(/^\|/, '');
 			}).join("\n");
-		const endDescContents = `|// --
-			|// --
-			|// bellow setting variable main line up
-			|# * onUrlHistoryRegister
-            |#   -> url history update signal
-            |#  - ON: update
-        	|#  - OFF: no update
+		const endDescContents = `|//
+			|// ## Setting Variables
+			|// --------
+			|// ### onUrlHistoryRegister
+            |// Url history update signal
+            |//
+            |// | switch type | description | 
+            |// | ------- | ------- | 
+            |// | \`ON\` | update |
+        	|// | \`OFF\` | no update |
+        	|//
 			|${endDescriptionHolder}`.split('\n')
 		.map(function(line){
 			return line.trim().replace(/^\|/, '');

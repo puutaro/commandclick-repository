@@ -1,58 +1,7 @@
 
 
 /// LABELING_SECTION_START
-// textToSpeech player @puutaro
-//	* play 
-// 		-> tts play list site
-//	* manageText 
-// 		-> Target music file saved directory path
-// 	* playListName 
-//		-> Input or select play list file name
-//		- Prefix must be "music" ex) "ttsPlayList"
-// 	* ttsPlay 
-//		-> Select shuffle or ordinaly and press
-//		- Press "Exec" and execute play list
-// 	* numberPlay 
-//		-> Input or inc/dec number
-//		- Press "Exec" and play number
-// 	* gmailToFile 
-//		-> write gmail contetns to file
-//		- when no gmail launch, gmail launch
-//		- when look gmail body, write this contents to file 
-//  * toLang
-//  -> text to speech language
-//      - - : default language
-//      - en: english
-//      - zh: chinese
-//      - es: spanish
-//      - ko: korean
-//      - ja: japanese
-// 	* manageText 
-//		-> remove text file or add one to editHtmlSite 
-//		- select text file and click "MNG" button
-//  * onTrack
-//		ON: memory past number and step
-//		OFF: no memory past number and step
-//	* Volume control enable when CommandClick hide
-// --
-// --
-// Bellow setting variable main line up
-// * execPlayBtnLongPress
-//  -> execute when play button long press
-//    - WEB_SEARCH: apear web search bar
-//   - PAGE_SEARCH: apear page search bar
-//    - js file path: execute js file
-// * execEditBtnLongPress
-//  -> execute when edit button long press
-//    - WEB_SEARCH: apear web search bar
-//    - PAGE_SEARCH: apear page search bar
-//    - js file path: execute js file
-// * terminalFontZoom 
-// 	-> adjust terminal font size (percentage)
-// * terminalFontColor 
-// 	-> adjust terminal font color
-// * terminalColor 
-// 	-> adjust terminal background color
+// file://${01}/${001}/ttsPlayer.md
 /// LABELING_SECTION_END
 
 

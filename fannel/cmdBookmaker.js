@@ -2,21 +2,43 @@
 
 /// LABELING_SECTION_START
 // Bookmark fannel @puutaro
-// 	* play 
-// 		-> launch bookmark site
-//		- recent visit site url show in "Save title"
-//		- change item  order by drag and drop 
-//		- delete item  by doragging to another area(no item area).
-// 	* bookmarkListName 
-//		-> Input or select bookmark list file name
-//		- prefix must be "book" ex) "bookSites"
-// --
-// --
-// bellow setting variable main line up
-// * EditExecute is edit mode change
-//	- NO is normal edit
-//	- ONCE is one time edit and execute
-//	- ALWAYD is always edit and execute
+
+// Table of Contents
+// -------
+// <!-- vim-markdown-toc GFM -->
+// * [Cmd Variables](#cmd-variables)
+// 	* [Install](#install)
+// 	* [Play](#play)
+// 		* [Usage](#usage)
+// 	* [bookmarkListName](#bookmarklistname)
+// * [Setting variables](#setting-variables)
+// 	* [EditExecute](#editexecute)
+
+// ## Cmd Variables
+// --------
+// ### play 
+// launch bookmark site
+// #### Usage
+// - Recent visit site url show in "Save title"
+// - Change item order by drag and drop 
+// - Delete item by doragging to another area(no item area).
+
+// ### bookmarkListName 
+// Input or select bookmark list file name
+// - prefix must be "book" 
+// 	ex) "bookSites"
+
+// ## Setting variables
+// ---------
+// ### EditExecute
+// edit mode change
+// 
+// | edit mode | description |
+// | -------- | -------- |
+// | `NO` | normal edit |
+// | `ONCE` | one time edit and execute |
+// | `ALWAYD` | always edit and execute |
+// 
 /// LABELING_SECTION_END
 
 
