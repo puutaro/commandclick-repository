@@ -1,60 +1,7 @@
 
 
 /// LABELING_SECTION_START
-// Youtube background play fannel (*termux) @puutaro
-// * Support long press menu
-//  - src anchor
-//  - src image anchor
-// 	* install 
-// 		-> install & upgrade require package
-// 	* play 
-// 		-> youtube play list edit site
-//		- recent visit youtube url show in "Save title"
-//		- change item  order by drag and drop 
-//		- delete item  by doragging to another area(no item area).
-//  * searchWord
-// 		-> Web Youtube Search Word
-// 	* playMode 
-//		-> select shuffle or ordinaly and press
-//		- press "Exec" and execute play list
-// 	* tubePlayListName 
-//		-> Input or select play list file name
-//		- prefix must be "tube" ex) "tubePlayList"
-// 	* playLogName 
-//		-> Input or select play list file name
-//		- prefix must be "tube" ex) "tubePlayList"
-//	If volume control enable when CommandClick hide
-// 	* STOP
-//		-> play stop
-// 	* numberPlay 
-//		-> Input or inc/dec number
-//		- press "Exec" and play number
-//  * onSearchMode 
-// 		-> web search switch
-// 		- OFF -> no web search
-// 		- SHORT -> sort by shortest
-// 		- RECENT -> sort by latest
-//  * minMinutes
-// 		-> filter movie by minimum play minutes
-//  * maxMinutes
-// 		-> filter movie  by maximum play minutes
-//  * playLogOut
-// 		-> output play log
-// - This Fannel is used to bellow repo as core library.
-// 		https://github.com/pystardust/ytfzf
-// --
-// --
-// bellow setting variable main line up
-// * onUrlHistoryRegister
-//   -> url history update signal
-//  - ON: update
-//  - OFF: no update
-// * terminalFontZoom 
-// 	-> adjust terminal font size (percentage)
-// * terminalFontColor
-// 	-> adjust terminal font color
-// * terminalColor
-// 	-> adjust terminal background color
+// file://${01}/${001}/cmdYoutuber.md
 /// LABELING_SECTION_END
 
 
