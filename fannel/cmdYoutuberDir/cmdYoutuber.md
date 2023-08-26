@@ -53,7 +53,9 @@ Web Youtube Search Word
 
 ### playMode
 Select shuffle or ordinaly and press
-- Press "Exec" and execute play list
+
+1. Press "Exec"
+2. (Execute play list)
 
 ### tubePlayListName
 Input or select play list file name
@@ -75,9 +77,12 @@ Input or inc/dec number
 
 ### onSearchMode
 Web search switch
-- `OFF` -> no web search
-- `SHORT` -> sort by shortest
-- `RECENT` -> sort by latest
+
+| switch | description |
+| ----------- | ----------- |
+| `OFF` | no web search |
+| `SHORT` | sort by shortest |
+| `RECENT` | sort by latest |
 
 ### minMinutes
 Filter movie by minimum play minutes
@@ -99,8 +104,11 @@ This Fannel is used to bellow repo as core library.
 ---------
 ### onUrlHistoryRegister
 Url history update signal
-- `ON`: update
-- `OFF`: no update
+
+| switch | description |
+| ----------- | ----------- |
+| `ON` | update |
+| `OFF` | no update |
 
 ### terminalFontZoom
 Adjust terminal font size (percentage)

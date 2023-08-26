@@ -68,7 +68,7 @@ Auto scroll direction
 
 ### rowLimit 
 
-view row limit 
+Row limit about view 
 (more smaller this value, more shoter reading speed up)
 
 ### filters

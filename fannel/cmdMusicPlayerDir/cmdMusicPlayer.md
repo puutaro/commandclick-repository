@@ -39,11 +39,14 @@ Input or select play list file name
 
 ### musicPlay 
 Select shuffle or ordinaly and press
-- Press "Exec" and execute play list
+1. Press "Exec"
+2. (Execute play list)
 
 ### numberPlay 
 Input or inc/dec number
-- Press "Exec" and play number
+
+1. Press "Exec" 
+2. (Play number)
 
 ### About Volume Controll
 - Volume Controll enable when CommandClick hide
