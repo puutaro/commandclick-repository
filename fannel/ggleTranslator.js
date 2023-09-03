@@ -1,7 +1,7 @@
 
 
 /// LABELING_SECTION_START
-// Launch google translate site @puutaro
+// Launch google translate site by highlight text or no it @puutaro
 /// LABELING_SECTION_END
 
 
@@ -17,13 +17,31 @@ onDialog="true"
 /// CMD_VARIABLE_SECTION_END
 
 
+const highlightText = getSelectionText();
+const transUrl = makeTransUrl(highlightText);
+launchGgleTransSite(
+	transUrl
+);
 
-launchGgleTransSite();
+
+function makeTransUrl(
+	highlightText
+){
+	switch(true){
+		case !highlightText:
+			return `https://translate.google.co.jp/?sl=auto&tl=${toLang}&op=translate`;
+			break;
+		case highlightText !== "":
+			const highlightTextNoWrap = highlightText.replaceAll("\n", " ");
+			return `https://translate.google.co.jp/?sl=auto&tl=${toLang}&text=${highlightTextNoWrap}&op=translate`;
+			break;
+	};
+};
 
 
-function launchGgleTransSite(){
-	const ggleTransUrl = 
-		`https://translate.google.co.jp/?hl=ja&sl=auto&tl=${toLang}&op=translate`;
+function launchGgleTransSite(
+	ggleTransUrl
+){
 	if(onDialog != "true"){
 		jsUrl.loadUrl(ggleTransUrl);
 		exitZero();
@@ -37,4 +55,16 @@ function launchGgleTransSite(){
 	    "",
 	    "",
 	);
+};
+
+
+function getSelectionText() {
+    var text = "";
+    if (window.getSelection) {
+        text = window.getSelection().toString();
+        window.getSelection().removeAllRanges();
+    } else if (document.selection && document.selection.type != "Control") {
+        text = document.selection.createRange().text;
+    };
+    return text;
 };
