@@ -6,13 +6,13 @@
 // ## Cmd Variables
 // --------
 // ### pcIpAddress
-// pc's ip address
+// PC's ip address
 
 // ### PLAY
-//  start pluse reciever server
+//  Start pluse reciever server
 
 // ### STOP
-//  stop pluse reciever server
+//  Stop pluse reciever server
 
 /// LABELING_SECTION_END
 
