@@ -1,4 +1,3 @@
 esc
 home
 end
-shift___a
