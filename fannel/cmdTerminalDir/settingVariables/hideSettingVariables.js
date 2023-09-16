@@ -1,6 +1,5 @@
 editExecute,
-terminalSizeType,
-terminalOutputMode,
-onUpdateLastModify,
+onTermVisibleWhenKeyboard,
+onTermShortWhenLoad,
 setReplaceVariables,
 setVariableTypes,

@@ -1,18 +1,22 @@
 
 
+/// LABELING_SECTION_START
+// file://${01}/${001}/cmdTerminal.md
+/// LABELING_SECTION_END
+
+
 /// SETTING_SECTION_START
 editExecute="ALWAYS"
 onAutoExec="ON"
-onTermBackendWhenStart="ON"
+onTermBackendWhenStart="OFF"
 onTermVisibleWhenKeyboard="ON"
 onTermShortWhenLoad="ON"
-setReplaceVariables="TXT_LABEL=label"
-setReplaceVariables="BTN_CMD=cmd"
-setReplaceVariables="BTN_LABEL=label"
 setReplaceVariables="file://${01}/${001}/settingVariables/setReplaceVariables.js"
 setVariableTypes="file://${01}/${001}/settingVariables/setVariableTypes.js"
 hideSettingVariables="file://${01}/${001}/settingVariables/hideSettingVariables.js"
+scriptFileName="cmdTerminal.js"
 /// SETTING_SECTION_END
+
 
 /// CMD_VARIABLE_SECTION_START
 sendkeys1=""
