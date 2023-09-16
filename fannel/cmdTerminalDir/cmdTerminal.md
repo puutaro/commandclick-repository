@@ -39,6 +39,10 @@ Retrieve pre-registerd command.
 2. Select one from command list.
 
 - "-" is escape that you execute command in drop down.
+- If you wont to edit keys file, this is bellow.
+
+/Documents/cmdclick/AppDir/${your app dir}/cmdTerminalDir/list/cmdList.txt
+
 
 
 ### REGISTER_EXTRA_KEY
@@ -47,6 +51,11 @@ Register user difinition key.
 
 1. Type string for key.
 2. Press "RG_EX_KEY" 
+
+- If you wont to edit keys file, this is bellow.
+
+
+/Documents/cmdclick/AppDir/${your app dir}/cmdTerminalDir/list/extraKeyList.txt
 
 
 #### Modifier kind table
@@ -61,7 +70,6 @@ Register user difinition key.
 | `alt` | `alt`\+b -> alt\_\_\_b|
 
 - Modifier key conbination concat by `___`.
-
 
 ## Acknowledge
 ----------

@@ -29,10 +29,11 @@ REGISTER_EXTRA_KEY=""
 
 let args = jsArgs.get().split("\t");
 var FIRST_ARGS = args.at(0);
-terminalFocus();
+// terminalFocus();
 
 switch(FIRST_ARGS){
   case "onAutoExec":
+    const deviceIpv4 = jsNetTool.getIpv4();
     jsUrl.loadUrl(
       "http://192.168.0.4:8080/?hostname=192.168.0.4&port=10022&username=cmdclick&password=Y21kY2xpY2s="
     );
@@ -101,20 +102,6 @@ switch(FIRST_ARGS){
     );
     break;
 };
-// jsFileSystem.outputSwitch(
-// 	""
-// )
-
-// // wssh.send('echo aaa');
-// setTimeout(
-//   function(){
-//     wssh.send('echo aaa');
-//     // jsUrl.loadUrl(
-//     // 	"http://192.168.0.2:8080/?hostname=192.168.0.2&port=10022&username=cmdclick&password=Y21kY2xpY2s=&command=echo aaa"
-//     // )
-//   },
-//   100
-// );
 
 
 function terminalFocus(){

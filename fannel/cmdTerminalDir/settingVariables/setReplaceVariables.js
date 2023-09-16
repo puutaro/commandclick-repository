@@ -39,7 +39,7 @@ cmdTerminalListDirPath=
 cmdTerminalExtraKeyListFilePath=
 	"${cmdTerminalListDirPath}/extraKeyList.txt",
 cmdTerminalCmdListFilePath=
-	"${cmdTerminalListDirPath}/cmdHistoryList.txt",
+	"${cmdTerminalListDirPath}/cmdList.txt",
 cmdTerminalSelectScriptDirPath=
 	"${cmdTerminalDirPath}/select",
 cmdTerminalSelectExtraKeyScriptPath=
