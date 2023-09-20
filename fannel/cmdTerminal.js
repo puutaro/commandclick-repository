@@ -11,6 +11,9 @@ onAutoExec="ON"
 onTermBackendWhenStart="OFF"
 onTermVisibleWhenKeyboard="ON"
 onTermShortWhenLoad="ON"
+disableShowToolbarWhenHighlight="ON"
+disableWideViewPort="ON"
+onUrlHistoryRegister="OFF"
 setReplaceVariables="file://${01}/${001}/settingVariables/setReplaceVariables.js"
 setVariableTypes="file://${01}/${001}/settingVariables/setVariableTypes.js"
 hideSettingVariables="file://${01}/${001}/settingVariables/hideSettingVariables.js"
@@ -29,21 +32,17 @@ REGISTER_EXTRA_KEY=""
 
 let args = jsArgs.get().split("\t");
 var FIRST_ARGS = args.at(0);
-// terminalFocus();
 
 switch(FIRST_ARGS){
   case "onAutoExec":
-    const deviceIpv4 = jsNetTool.getIpv4();
-    jsUrl.loadUrl(
-      "http://192.168.0.4:8080/?hostname=192.168.0.4&port=10022&username=cmdclick&password=Y21kY2xpY2s="
-    );
+    launchTerminal();
     break;
   case "${CTRL_C}": 
     jsSendKey.send("${CTRL_C}");
     break;
   case "${CTRL_Z}": 
     jsSendKey.send("${CTRL_Z}");
-    break;
+    brxeak;
   case "${UP}": 
     jsSendKey.send("${UP}");
     break;
@@ -104,13 +103,6 @@ switch(FIRST_ARGS){
 };
 
 
-function terminalFocus(){
-  const terminal = document.querySelector('[aria-label="Terminal input"]');
-  if(!terminal) return;
-  terminal.focus();
-};
-
-
 function updateSeachWordList(
   registerWord,
   targetArgs,
@@ -137,3 +129,11 @@ function updateSeachWordList(
     `Register ok:\n ${registerWord}`
   );
 };
+
+
+function launchTerminal(){
+  const deviceIpv4 = jsNetTool.getIpv4();
+  const terminalUrl = `http://192.168.0.4:18080/?hostname=192.168.0.4&port=10022&username=cmdclick&password=Y21kY2xpY2s=&command=script%20-qf%20script.log`;
+  // "http://192.168.0.4:8080/?hostname=192.168.0.4&port=10022&username=cmdclick&password=Y21kY2xpY2s="
+  jsUrl.loadUrl(terminalUrl);
+}

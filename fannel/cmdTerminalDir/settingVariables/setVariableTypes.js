@@ -8,7 +8,6 @@ sendkeys1
 		|
 			${BTN_CMD}=jsf '${0}' ${PASTE} 
 				!${BTN_LABEL}=PST
-				!${IS_CONSEC}=true
 				!${DISABLE_KEYBOARD_HIDDEN}=true
 		|
 			${BTN_CMD}=jsf '${0}' ${UP} 
@@ -49,23 +48,6 @@ sendkeys2
 				!${BTN_LABEL}=P_D
 				!${DISABLE_KEYBOARD_HIDDEN}=true,
 
-
-// ${BTN_CMD}=jsf '${0}' ${ESC} 
-// 			!${BTN_LABEL}=ESC
-// 			!${DISABLE_KEYBOARD_HIDDEN}=true
-// 		|
-			
-// |
-// 	${BTN_CMD}=jsf '${0}' ${HOME} 
-// 		!${BTN_LABEL}=HM
-// 		!${DISABLE_KEYBOARD_HIDDEN}=true	
-// | 
-// 	${BTN_CMD}=jsf '${0}' ${END} 
-// 		!${BTN_LABEL}=END
-// 		!${DISABLE_KEYBOARD_HIDDEN}=true
-		
-
-
 sendkeys3
 	:BTN:BTN:ELSB:HL= 
 		${BTN_CMD}=jsf '${0}' ${CTRL_C} 
@@ -76,25 +58,15 @@ sendkeys3
 			!${BTN_LABEL}=ENTER
 	|
 		${LIST_PATH}=${cmdTerminalExtraKeyListFilePath}
-			!${LIMIT_NUM}=100
+			!${LIMIT_NUM}=50
 			!${SELECT_JS_PATH}="${cmdTerminalSelectCmdScriptPath}",
-			// !${DISABLE_KEYBOARD_HIDDEN}=true,
-		// |
-		// 	${BTN_CMD}=jsf '${0}' ${BACKSPACE}
-		// 		!${BTN_LABEL}=BACKSPACE
-		// 		!${IS_CONSEC}=true
-		// 		!${DISABLE_KEYBOARD_HIDDEN}=true
-		// |
-		// 	${BTN_CMD}=jsf '${0}' ${COPY}
-		// 		!${BTN_LABEL}=cp
-		// 		!${DISABLE_KEYBOARD_HIDDEN}=true,
 
 cmdInput
 	:LBL:TXT:ELSB:BTN=
 		${TXT_LABEL}=this
 		|
 			${LIST_PATH}=${cmdTerminalCmdListFilePath}
-				!${LIMIT_NUM}=100
+				!${LIMIT_NUM}=50
 				!${SELECT_JS_PATH}="${cmdTerminalSelectCmdScriptPath}"
 		|
 			${BTN_CMD}=jsf '${0}' ${CMD_INPUT}
