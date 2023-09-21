@@ -17,7 +17,7 @@ onDialog="true"
 /// CMD_VARIABLE_SECTION_END
 
 
-const highlightText = getSelectionText();
+const highlightText = getSelectionText().replaceAll("%", "%25");
 const transUrl = makeTransUrl(highlightText);
 launchGgleTransSite(
 	transUrl
@@ -49,10 +49,7 @@ function launchGgleTransSite(
 	jsDialog.webView(
 		ggleTransUrl,
 		"",
-	    "",
-	    "",
-	    "",
-	    "",
+	    "dismissType=click!iconName=cancel",
 	    "",
 	);
 };

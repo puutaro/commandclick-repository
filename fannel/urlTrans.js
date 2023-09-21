@@ -46,10 +46,7 @@ function execTrans(){
 	jsDialog.webView(
 		ggTransQuery,
 	    "",
-	    "",
-	    "",
-	    "",
-	    "",
+	    "dismissType=click!iconName=cancel",
 	    "",
 	);
 };

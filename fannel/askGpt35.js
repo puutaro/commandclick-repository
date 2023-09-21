@@ -14,10 +14,7 @@ const gpt35Url = `https://huggingface.co/spaces/kunishou/Rapid-GPT`;
 jsDialog.webView(
     gpt35Url,
     "",
-    "",
-    "",
-    "",
-    "",
+    "dismissType=click!iconName=cancel",
     "",
 );
 
