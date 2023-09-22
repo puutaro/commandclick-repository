@@ -33,6 +33,7 @@ REGISTER_EXTRA_KEY=""
 let args = jsArgs.get().split("\t");
 var FIRST_ARGS = args.at(0);
 
+
 switch(FIRST_ARGS){
   case "onAutoExec":
     launchTerminal();
@@ -54,6 +55,9 @@ switch(FIRST_ARGS){
     break;
   case "${RIGHT}": 
     jsSendKey.send("${RIGHT}");
+    break;
+  case "${INPUT}": 
+    termInput();
     break;
   case "${PAGE_DOWN}": 
     jsSendKey.send("${PAGE_DOWN}");
@@ -77,7 +81,8 @@ switch(FIRST_ARGS){
     jsSendKey.send("${BACKSPACE}");
     break;
   case "${COPY}": 
-    jsSendKey.send("${COPY}");
+    execCopy();
+    // jsSendKey.send("${COPY}");
     break;
   case "${PASTE}": 
     jsSendKey.send("${PASTE}");
@@ -136,4 +141,46 @@ function launchTerminal(){
   const terminalUrl = `http://192.168.0.4:18080/?hostname=192.168.0.4&port=10022&username=cmdclick&password=Y21kY2xpY2s=&command=script%20-qf%20script.log`;
   // "http://192.168.0.4:8080/?hostname=192.168.0.4&port=10022&username=cmdclick&password=Y21kY2xpY2s="
   jsUrl.loadUrl(terminalUrl);
-}
+};
+
+function execCopy() {
+  const fileDirPath = jsPath.echoPath("appFiles");
+  const scriptLogPath = `${fileDirPath}/1/rootfs/home/cmdclick/script.log`;
+  const scriptLogCon = jsFileSystem.readLocalFile(
+    scriptLogPath
+  ).replaceAll(
+      "\n",
+      "</br>"
+  ).replaceAll(
+      /[\u001b\u009b][\[()#;?]*(?:[0-9]{1,4}(?:;[0-9]{0,4})*)?[0-9A-ORZcf-nqry=><]/g,
+      ""
+  ).replaceAll(
+      /[\x00-\x1F\x7F-\xA0]+/g,
+      ""
+  ).replaceAll(
+      "\n",
+      "</br>"
+  ).replaceAll(
+      /(cmdclick@localhost)/g,
+      "</br><span style=\"color:green;font-weight: bold;\">$1</span>"
+  ).replaceAll(
+    /\]0\;\n*/g, ""
+  );
+  const txtHtmlCon = jsHtml.txtHtml(
+    scriptLogCon ,
+    true,
+  );
+  jsDialog.webView(
+    `textCon://${txtHtmlCon}`,
+    "",
+    `clickMenuFilePath=${cmdTerminalMenuListFilePath}!dismissType=click!iconName=copy!dismissDelayMiliTime=200`,
+    "",
+  );
+};
+
+
+function termInput(){
+  const inputStr = prompt();
+  if(!inputStr) exitZero();
+  jsSendKey.send(inputStr)
+};

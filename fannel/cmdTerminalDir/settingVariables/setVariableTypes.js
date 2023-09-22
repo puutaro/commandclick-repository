@@ -25,7 +25,7 @@ sendkeys1
 				!${DISABLE_KEYBOARD_HIDDEN}=true,
 
 sendkeys2
-	:BTN:BTN:BTN:BTN:BTN:HL=
+	:BTN:BTN:BTN:BTN:ELSB:HL=
 		${BTN_CMD}=jsf '${0}' ${SPACE}
 			!${BTN_LABEL}=SPC
 		| 
@@ -44,12 +44,12 @@ sendkeys2
 				!${IS_CONSEC}=true
 				!${DISABLE_KEYBOARD_HIDDEN}=true
 		|
-			${BTN_CMD}=jsf '${0}' ${PAGE_DOWN} 
-				!${BTN_LABEL}=P_D
-				!${DISABLE_KEYBOARD_HIDDEN}=true,
+		${LIST_PATH}=${cmdTerminalExtraKeyListFilePath}
+			!${LIMIT_NUM}=50
+			!${SELECT_JS_PATH}="${cmdTerminalSelectCmdScriptPath}",
 
 sendkeys3
-	:BTN:BTN:ELSB:HL= 
+	:BTN:BTN:BTN:HL= 
 		${BTN_CMD}=jsf '${0}' ${CTRL_C} 
 			!${BTN_LABEL}=C_C
 			!${DISABLE_KEYBOARD_HIDDEN}=true
@@ -57,9 +57,8 @@ sendkeys3
 		${BTN_CMD}=jsf '${0}' ${ENTER}
 			!${BTN_LABEL}=ENTER
 	|
-		${LIST_PATH}=${cmdTerminalExtraKeyListFilePath}
-			!${LIMIT_NUM}=50
-			!${SELECT_JS_PATH}="${cmdTerminalSelectCmdScriptPath}",
+			${BTN_CMD}=jsf '${0}' ${INPUT}
+				!${BTN_LABEL}=INPUT,
 
 cmdInput
 	:LBL:TXT:ELSB:BTN=

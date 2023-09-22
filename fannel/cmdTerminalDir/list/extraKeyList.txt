@@ -1,3 +1,5 @@
 esc
 home
 end
+ | 
+pageDown

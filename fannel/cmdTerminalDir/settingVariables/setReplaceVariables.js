@@ -20,6 +20,7 @@ LEFT=left,
 RIGHT=right,
 PAGE_DOWN=pageDown,
 PAGE_UP=pageUp,
+INPUT=input
 ESC=esc,
 HOME=home,
 END=end,
@@ -46,3 +47,5 @@ cmdTerminalSelectExtraKeyScriptPath=
 	"${cmdTerminalSelectScriptDirPath}/selectExtraKey.js",
 cmdTerminalSelectCmdScriptPath=
 	"${cmdTerminalSelectScriptDirPath}/selectCmd.js",
+cmdTerminalMenuListDirPath="${cmdTerminalDirPath}/menuList",
+cmdTerminalMenuListFilePath="${cmdTerminalMenuListDirPath}/clickMenu.txt",
