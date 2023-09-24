@@ -298,7 +298,7 @@ function execSaveFromGmail(){
 	);
 	const catFileName = `${title}${TXT_EXTEND}`;
 	const body = document.getElementById("views").textContent;
-	const bodyStartNum = body.indexOf(titleEntry);
+	const bodyStartNum = body.lastIndexOf(titleEntry);
 	const mailCon = body.substring(bodyStartNum);
 	const saveDir = `${cmdTtsPlayerSaveDirPath}`;
 	jsFileSystem.createDir(saveDir);
