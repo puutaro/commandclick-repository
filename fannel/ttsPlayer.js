@@ -297,13 +297,15 @@ function execSaveFromGmail(){
 		titleEntry
 	);
 	const catFileName = `${title}${TXT_EXTEND}`;
-	const body = document.body.textContent;
+	const body = document.getElementById("views").textContent;
+	const bodyStartNum = body.indexOf(titleEntry);
+	const mailCon = body.substring(bodyStartNum);
 	const saveDir = `${cmdTtsPlayerSaveDirPath}`;
 	jsFileSystem.createDir(saveDir);
 	const saveTextFile = `${saveDir}/${catFileName}`;
 	jsFileSystem.writeLocalFile(
 		saveTextFile,
-		body,
+		mailCon,
 	);
 	registerEditUrlSource(
 		saveTextFile
