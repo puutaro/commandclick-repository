@@ -138,7 +138,7 @@ function updateSeachWordList(
 
 function launchTerminal(){
   const deviceIpv4 = jsNetTool.getIpv4();
-  const terminalUrl = `http://192.168.0.4:18080/?hostname=192.168.0.4&port=10022&username=cmdclick&password=Y21kY2xpY2s=&command=script%20-qf%20script.log`;
+  const terminalUrl = `http://127.0.0.1:18080/?hostname=127.0.0.1&port=10022&username=cmdclick&password=Y21kY2xpY2s=&command=script%20-qf%20script.log`;
   // "http://192.168.0.4:8080/?hostname=192.168.0.4&port=10022&username=cmdclick&password=Y21kY2xpY2s="
   jsUrl.loadUrl(terminalUrl);
 };
@@ -146,11 +146,31 @@ function launchTerminal(){
 function execCopy() {
   const fileDirPath = jsPath.echoPath("appFiles");
   const scriptLogPath = `${fileDirPath}/1/rootfs/home/cmdclick/script.log`;
+  // const scriptLogCon = jsFileSystem.readLocalFile(
+  //   scriptLogPath
+  // ).replaceAll(
+  //     "\n",
+  //     "</br>"
+  // ).replaceAll(
+  //     /[\u001b\u009b][\[()#;?]*(?:[0-9]{1,4}(?:;[0-9]{0,4})*)?[0-9A-ORZcf-nqry=><]/g,
+  //     ""
+  // ).replaceAll(
+  //     /[\x00-\x1F\x7F-\xA0]+/g,
+  //     ""
+  // ).replaceAll(
+  //     "\n",
+  //     "</br>"
+  // ).replaceAll(
+  //     /(cmdclick@localhost)/g,
+  //     "</br><span style=\"color:green;font-weight: bold;\">$1</span>"
+  // ).replaceAll(
+  //   /\]0\;\n*/g, ""
+  // );
   const scriptLogCon = jsFileSystem.readLocalFile(
     scriptLogPath
   ).replaceAll(
       "\n",
-      "</br>"
+      "<br>"
   ).replaceAll(
       /[\u001b\u009b][\[()#;?]*(?:[0-9]{1,4}(?:;[0-9]{0,4})*)?[0-9A-ORZcf-nqry=><]/g,
       ""
@@ -158,24 +178,21 @@ function execCopy() {
       /[\x00-\x1F\x7F-\xA0]+/g,
       ""
   ).replaceAll(
-      "\n",
-      "</br>"
-  ).replaceAll(
       /(cmdclick@localhost)/g,
-      "</br><span style=\"color:green;font-weight: bold;\">$1</span>"
+      "<br><font color=\"#30992e\"><b>$1</b></font>"
   ).replaceAll(
     /\]0\;\n*/g, ""
+  ).replaceAll(
+    /\n\n*/g, "\n"
+  ).replaceAll(
+      "\n",
+      "<br>"
   );
-  const txtHtmlCon = jsHtml.txtHtml(
-    scriptLogCon ,
-    true,
-  );
-  jsDialog.webView(
-    `textCon://${txtHtmlCon}`,
-    "",
-    `clickMenuFilePath=${cmdTerminalMenuListFilePath}!dismissType=click!iconName=copy!dismissDelayMiliTime=200`,
-    "",
-  );
+  jsDialog.copyDialog(
+        "Select text",
+        scriptLogCon,
+        true
+    );
 };
 
 
