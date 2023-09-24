@@ -292,13 +292,12 @@ function execGmailToFile(){
 };
 
 function execSaveFromGmail(){
-	let titleEntry = document.getElementsByClassName("Mh");
+	let titleEntry = document.querySelector('[role="heading"]').textContent;
 	const title = replaceSimble(
-		titleEntry[0].textContent
+		titleEntry
 	);
 	const catFileName = `${title}${TXT_EXTEND}`;
-	const bodyEntry = document.getElementsByClassName('wh');
-	const body = bodyEntry[0].textContent;
+	const body = document.body.textContent;
 	const saveDir = `${cmdTtsPlayerSaveDirPath}`;
 	jsFileSystem.createDir(saveDir);
 	const saveTextFile = `${saveDir}/${catFileName}`;
