@@ -29,7 +29,6 @@ setReplaceVariables="pulseReceiverListDirPath=${pulseReceiverDirPath}/list"
 setReplaceVariables="pulseReceiverAddressListFilePath=${pulseReceiverListDirPath}/addressList.txt"
 setReplaceVariables="pulseReceiverPortListFilePath=${pulseReceiverListDirPath}/portList.txt"
 setVariableTypes="pcIpAddress:LBL:TXT:ELSB=${TXT_LABEL}=this|${LIST_PATH}=${pulseReceiverAddressListFilePath}!${LIMIT_NUM}=10"
-// setVariableTypes="serverPort:TXT:LBL:TXT:ELSB=${TXT_LABEL}=this|${LIST_PATH}=${pulseReceiverPortListFilePath}!${LIMIT_NUM}=10"
 setVariableTypes="STOP:BTN:HL=${BTN_CMD}=jsf '${0}' stop !${BTN_LABEL}=this"
 hideSettingVariables="editExecute"
 hideSettingVariables="setReplaceVariables"
@@ -45,6 +44,7 @@ STOP=""
 
 
 const stopMode = "stop";
+const serverPort = 10080;
 
 endJudge();
 jsFileSystem.createDir("${pulseReceiverListDirPath}");
@@ -75,6 +75,7 @@ function startPluseServer(){
         pcIpAddress
     );
     jsPulseAudioReceiver.start(
-        pcIpAddress
+        pcIpAddress,
+        serverPort
     );
 };

@@ -1,0 +1,26 @@
+
+intentType=notification,
+notificationType=launch,
+channelNum=CHANEL_NUMBER,
+iconName=play,
+importance=low,
+title=NOTIFICATION_TITLE,
+message=NOTIFICATION_MESSAGE,
+onDelete=
+	shellPath=EXIT_SHELL_PATH
+	!args=CHANEL_NUMBER,
+notificationStyle=
+	type=media
+	!compactActionsInts=1&2&4,
+button=
+	label=CANCEL
+		!shellPath=EXIT_SHELL_PATH
+		!args=CHANEL_NUMBER
+	|label=PREVIOUS
+		!shellPath=PREVIOUS_SHELL_PATH
+	|label=PAUSE
+		!shellPath=PUASE_SHELL_PATH
+	|label=TO
+		!shellPath=TO_SHELL_PATH
+	|label=NEXT
+		!shellPath=NEXT_SHELL_PATH

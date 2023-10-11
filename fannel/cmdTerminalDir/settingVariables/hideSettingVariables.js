@@ -1,7 +1,0 @@
-editExecute,
-onTermVisibleWhenKeyboard,
-onTermShortWhenLoad,
-onUrlHistoryRegister,
-disableShowToolbarWhenHighlight,
-setReplaceVariables,
-setVariableTypes,

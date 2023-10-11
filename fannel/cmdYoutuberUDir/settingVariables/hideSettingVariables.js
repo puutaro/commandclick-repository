@@ -1,0 +1,8 @@
+editExecute,
+onAutoExec,
+execPlayBtnLongPress,
+terminalSizeType,
+terminalOutputMode,
+onUpdateLastModify,
+setReplaceVariables,
+setVariableTypes,

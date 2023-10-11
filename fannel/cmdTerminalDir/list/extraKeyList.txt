@@ -1,5 +1,0 @@
-esc
-home
-end
- | 
-pageDown
