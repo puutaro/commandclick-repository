@@ -23,13 +23,9 @@ kill_process \
 	"${NOTI_UPDATE_SHELL_PATH}" \
 >> "${MONITOR_FILE_PATH}"
 
-echo \
-"
-intentType=notification,
-notificationType=exit,
-channelNum=${1},
-" | curl -X POST -d "$(cat)" "${INTENT_MONITOR_ADDRESS}"
-# > "${INTENT_MONITOR_PATH}" 
+noti \
+	-t exit \
+	-cn "${1}"
 
 sleep 1
 
@@ -40,5 +36,4 @@ action=com.puutaro.commandclick.ubuntu_service.background_cmd_kill,
 extra=
 	ubuntu_croutine_job_type=${FANNEL_NAME_PATH},
 " | curl -X POST -d "$(cat)" "${INTENT_MONITOR_ADDRESS}"
-# > "${INTENT_MONITOR_PATH}" 
 

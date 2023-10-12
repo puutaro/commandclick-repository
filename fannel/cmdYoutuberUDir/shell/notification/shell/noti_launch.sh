@@ -73,17 +73,19 @@ readonly message=$(\
 	| sed -r 's/([^a-zA-Z0-9])/\\\1/g'\
 )
 
-cat \
-	"${NOTI_LAUNCH_CONFIG_PATH}"  \
-	| sed \
-		-e "s/NOTIFICATION_TITLE/${title}/g" \
-		-e "s/NOTIFICATION_MESSAGE/${message}/g" \
-		-e 's/CHANEL_NUMBER/'${NOTIFICATION_CAHNEL_NUM}'/g' \
-		-e 's/EXIT_SHELL_PATH/'${NOTI_EXIT_SHELL_PATH//\//\\\/}'/g' \
-		-e 's/PREVIOUS_SHELL_PATH/'${NOTI_PRV_SHELL_PATH//\//\\\/}'/g' \
-		-e 's/PUASE_SHELL_PATH/'${NOTI_PAUSE_SHELL_PATH//\//\\\/}'/g' \
-		-e 's/TO_SHELL_PATH/'${NOTI_TO_SHELL_PATH//\//\\\/}'/g' \
-		-e 's/NEXT_SHELL_PATH/'${NOTI_NEXT_SHELL_PATH//\//\\\/}'/g' \
-	| curl -X POST -d "$(cat)" "${INTENT_MONITOR_ADDRESS}" \
-	>/dev/null 2>&1
-	# > "${INTENT_MONITOR_PATH}" 
+noti \
+	-t launch \
+	-cn ${NOTIFICATION_CAHNEL_NUM} \
+	--icon-name play \
+	--importance low \
+	--title "${title}" \
+	--message "${message}" \
+	--delete "shellPath=${NOTI_EXIT_SHELL_PATH},args=${NOTIFICATION_CAHNEL_NUM}" \
+	-s "type=media!compactActionsInts=1&2&4" \
+	--button "label=CANCEL,shellPath=${NOTI_EXIT_SHELL_PATH},args=${NOTIFICATION_CAHNEL_NUM}" \
+	--button "label=PREVIOUS,shellPath=${NOTI_PRV_SHELL_PATH}" \
+	--button "label=PAUSE,shellPath=${NOTI_PAUSE_SHELL_PATH}" \
+	--button "label=TO,shellPath=${NOTI_TO_SHELL_PATH}" \
+	--button "label=NEXT,shellPath=${NOTI_NEXT_SHELL_PATH}" \
+>/dev/null 2>&1
+

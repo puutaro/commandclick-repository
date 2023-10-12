@@ -73,12 +73,9 @@ readonly message=$(\
 	| sed -r 's/([^a-zA-Z0-9])/\\\1/g'\
 )
 
-cat \
-	"${NOTI_LAUNCH_CONFIG_PATH}"  \
-	| sed \
-		-e "s/NOTIFICATION_TITLE/${title}/g" \
-		-e "s/NOTIFICATION_MESSAGE/${message}/g" \
-		-e 's/CHANEL_NUMBER/'${NOTIFICATION_CAHNEL_NUM}'/g' \
-	| curl -X POST -d "$(cat)" "${INTENT_MONITOR_ADDRESS}" \
-	>/dev/null 2>&1
-	# > "${INTENT_MONITOR_PATH}" 
+noti \
+	-t launch \
+	-cn ${NOTIFICATION_CAHNEL_NUM} \
+	--title "${title}" \
+	--message "${message}" \
+>/dev/null 2>&1
