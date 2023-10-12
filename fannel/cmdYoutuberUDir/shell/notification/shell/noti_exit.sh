@@ -3,12 +3,10 @@
 readonly MONITOR_FILE_PATH="${MONITOR_DIR_PATH}/term_1"
 readonly CURRENT_DIR_PATH=$(dirname $0)
 readonly NOTIFICATIN_DIR_PATH=$(cd "${CURRENT_DIR_PATH}"; cd .. ; pwd)
-readonly NOTI_CONFIG_DIR_PATH="${NOTIFICATIN_DIR_PATH}/config"
 readonly NOTI_SHELL_DIR_PATH="${NOTIFICATIN_DIR_PATH}/shell"
 readonly ROOT_SHELL_PATH=$(dirname "${NOTIFICATIN_DIR_PATH}")
 readonly LIBS_DIR_PATH="${ROOT_SHELL_PATH}/libs"
 readonly KILL_PROCESS_SHELL_PATH="${LIBS_DIR_PATH}/kill_process.sh"
-readonly NOTI_EXIT_CONFIG_PATH="${NOTI_CONFIG_DIR_PATH}/noti_exit_config.js"
 readonly NOTI_UPDATE_SHELL_PATH="${NOTI_SHELL_DIR_PATH}/update_noti_title.sh"
 . "${KILL_PROCESS_SHELL_PATH}"
 readonly FANNEL_NAME_PATH=$(\

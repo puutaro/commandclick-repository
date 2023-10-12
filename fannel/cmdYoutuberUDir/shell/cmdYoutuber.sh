@@ -10,19 +10,11 @@ readonly FANNEL_DIR_PATH=$(cd "${PARENT_DIR_PATH}"; cd .. ; pwd)
 readonly SHELL_DIR_PATH="${FANNEL_DIR_PATH}/shell"
 readonly LIBS_DIR_PATH="${SHELL_DIR_PATH}/libs"
 readonly NOTIFICATION_DIR_PATH="${PARENT_DIR_PATH}/notification"
-readonly NOTI_CONFIG_DIR_PATH="${NOTIFICATION_DIR_PATH}/config"
 readonly NOTI_SHELL_DIR_PATH="${NOTIFICATION_DIR_PATH}/shell"
-readonly NOTI_LAUNCH_CONFIG_PATH="${NOTI_CONFIG_DIR_PATH}/noti_launch_config.js"
-readonly KILL_THIS_CONFIG_PATH="${NOTI_CONFIG_DIR_PATH}/kill_this_config.js"
 readonly NOTI_LAUNCH_SHELL_PATH="${NOTI_SHELL_DIR_PATH}/noti_launch.sh"
 readonly NOTI_UPDATE_SHELL_PATH="${NOTI_SHELL_DIR_PATH}/update_noti_title.sh"
 readonly NOTI_EXIT_SHELL_PATH="${NOTI_SHELL_DIR_PATH}/noti_exit.sh"
-readonly NOTI_NEXT_SHELL_PATH="${NOTI_SHELL_DIR_PATH}/next.sh"
-readonly NOTI_PRV_SHELL_PATH="${NOTI_SHELL_DIR_PATH}/prev.sh"
-readonly NOTI_PAUSE_SHELL_PATH="${NOTI_SHELL_DIR_PATH}/pause.sh"
-readonly NOTI_RESTART_SHELL_PATH="${NOTI_SHELL_DIR_PATH}/restart.sh"
 readonly TOAST_SHELL_PATH="${NOTI_SHELL_DIR_PATH}/launch_toast.sh"
-readonly KILL_THIS_SHELL_PATH="${NOTI_SHELL_DIR_PATH}/kill_this.sh"
 readonly KILL_PROCESS_SHELL_PATH="${LIBS_DIR_PATH}/kill_process.sh"
 readonly TMP_PLAY_LIST_NAME="tmp_play_list"
 readonly TMP_PLAY_LIST_PATH="${PLAY_PROCESS_DIR_PATH}/${TMP_PLAY_LIST_NAME}"
@@ -111,8 +103,7 @@ launch_notification(){
 	kill_process \
 		"${NOTI_UPDATE_SHELL_PATH}"
 	bash "${NOTI_UPDATE_SHELL_PATH}" &
-	bash "${NOTI_LAUNCH_SHELL_PATH}" \
-	 "Loading.."
+	bash "${NOTI_LAUNCH_SHELL_PATH}"
 }
 
 
