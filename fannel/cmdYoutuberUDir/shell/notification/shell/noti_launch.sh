@@ -68,7 +68,6 @@ readonly remaining_time=$(\
 )
 readonly message=$(\
 	echo "${time_pos}s/${remaining_time}s" \
-	| sed -r 's/([^a-zA-Z0-9])/\\\1/g'\
 )
 
 noti \
@@ -79,7 +78,7 @@ noti \
 	--title "${title}" \
 	--message "${message}" \
 	--delete "shellPath=${NOTI_EXIT_SHELL_PATH},args=${NOTIFICATION_CAHNEL_NUM}" \
-	-s "type=media!compactActionsInts=1&2&4" \
+	-s "type=media,compactActionsInts=1&2&4" \
 	--button "label=CANCEL,shellPath=${NOTI_EXIT_SHELL_PATH},args=${NOTIFICATION_CAHNEL_NUM}" \
 	--button "label=PREVIOUS,shellPath=${NOTI_PRV_SHELL_PATH}" \
 	--button "label=PAUSE,shellPath=${NOTI_PAUSE_SHELL_PATH}" \

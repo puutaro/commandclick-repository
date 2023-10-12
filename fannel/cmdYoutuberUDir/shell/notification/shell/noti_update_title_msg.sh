@@ -68,7 +68,6 @@ readonly remaining_time=$(\
 )
 readonly message=$(\
 	echo "${time_pos}s/${remaining_time}s" \
-	| sed -r 's/([^a-zA-Z0-9])/\\\1/g'\
 )
 
 noti \
