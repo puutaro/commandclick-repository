@@ -11,6 +11,7 @@ readonly NOTI_NEXT_SHELL_PATH="${NOTI_SHELL_DIR_PATH}/next.sh"
 readonly NOTI_PRV_SHELL_PATH="${NOTI_SHELL_DIR_PATH}/prev.sh"
 readonly NOTI_PAUSE_SHELL_PATH="${NOTI_SHELL_DIR_PATH}/pause.sh"
 readonly NOTI_TO_SHELL_PATH="${NOTI_SHELL_DIR_PATH}/to.sh"
+readonly NOTI_FROM_SHELL_PATH="${NOTI_SHELL_DIR_PATH}/from.sh"
 readonly NOTIFICATION_CAHNEL_NUM="$(\
 	bash "${LIBS_DIR_PATH}/echo_channel_num.sh"\
 )"
@@ -74,13 +75,14 @@ noti \
 	-t launch \
 	-cn ${NOTIFICATION_CAHNEL_NUM} \
 	--icon-name play \
-	--importance low \
+	--importance high \
 	--title "${title}" \
 	--message "${message}" \
+	--alert-once \
 	--delete "shellPath=${NOTI_EXIT_SHELL_PATH},args=${NOTIFICATION_CAHNEL_NUM}" \
-	-s "type=media,compactActionsInts=1&2&4" \
-	--button "label=CANCEL,shellPath=${NOTI_EXIT_SHELL_PATH},args=${NOTIFICATION_CAHNEL_NUM}" \
+	-s "type=media,compactActionsInts=0&2&4" \
 	--button "label=PREVIOUS,shellPath=${NOTI_PRV_SHELL_PATH}" \
+	--button "label=FROM,shellPath=${NOTI_FROM_SHELL_PATH}" \
 	--button "label=PAUSE,shellPath=${NOTI_PAUSE_SHELL_PATH}" \
 	--button "label=TO,shellPath=${NOTI_TO_SHELL_PATH}" \
 	--button "label=NEXT,shellPath=${NOTI_NEXT_SHELL_PATH}" \
