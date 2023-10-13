@@ -408,7 +408,7 @@ function installCheck(){
 		"${cmdTubePlayerInstallCompFilePath}"
 	);
 	if(!isFile) {
-		jsToast.short(`Press "Install" button`);
+		jsToast.short(`Done install?`);
 		exitZero();
 	};
 };

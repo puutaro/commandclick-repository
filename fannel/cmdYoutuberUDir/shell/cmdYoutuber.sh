@@ -2,16 +2,17 @@
 
 set -eu
 
-readonly ROOT_SHELL_DIR_PATH="$(get_rvar "$0" cmdTubePlayerShellDirPath)"
+readonly REPLACE_VARS_CON="$(get_rvar "${0}")"
+readonly ROOT_SHELL_DIR_PATH="$(get_rvar "${REPLACE_VARS_CON}" cmdTubePlayerShellDirPath)"
 readonly YTFZF_SHELL_PATH="${ROOT_SHELL_DIR_PATH}/ytfzfForFannel.sh"
 readonly PLAY_PROCESS_DIR_PATH="${ROOT_SHELL_DIR_PATH}/process"
-readonly FANNEL_DIR_PATH="$(get_rvar "${0}" cmdTubePlayerDirPath)"
-readonly EVIDENCE_DIR_PATH="$(get_rvar "${0}" cmdTubePlayerEvidenceDirPath)"
-readonly INSTALL_EVIDENCE_FILE_PATH="$(get_rvar "${0}" cmdTubePlayerInstallCompFilePath)"
-readonly SHELL_DIR_PATH="$(get_rvar "${0}" cmdTubePlayerShellDirPath)"
-readonly LIBS_DIR_PATH="$(get_rvar "${0}" cmdTubePlayerShellLibsDirPath)"
-readonly NOTIFICATION_DIR_PATH="$(get_rvar "${0}" cmdTubePlayerShellNotiDirPath)"
-readonly NOTI_SHELL_DIR_PATH="$(get_rvar "${0}" cmdTubePlayerShellNotiShellDirPath)"
+readonly FANNEL_DIR_PATH="$(get_rvar "${REPLACE_VARS_CON}" cmdTubePlayerDirPath)"
+readonly EVIDENCE_DIR_PATH="$(get_rvar "${REPLACE_VARS_CON}" cmdTubePlayerEvidenceDirPath)"
+readonly INSTALL_EVIDENCE_FILE_PATH="$(get_rvar "${REPLACE_VARS_CON}" cmdTubePlayerInstallCompFilePath)"
+readonly SHELL_DIR_PATH="$(get_rvar "${REPLACE_VARS_CON}" cmdTubePlayerShellDirPath)"
+readonly LIBS_DIR_PATH="$(get_rvar "${REPLACE_VARS_CON}" cmdTubePlayerShellLibsDirPath)"
+readonly NOTIFICATION_DIR_PATH="$(get_rvar "${REPLACE_VARS_CON}" cmdTubePlayerShellNotiDirPath)"
+readonly NOTI_SHELL_DIR_PATH="$(get_rvar "${REPLACE_VARS_CON}" cmdTubePlayerShellNotiShellDirPath)"
 readonly NOTI_LAUNCH_SHELL_PATH="${NOTI_SHELL_DIR_PATH}/noti_launch.sh"
 readonly NOTI_UPDATE_SHELL_PATH="${NOTI_SHELL_DIR_PATH}/update_noti_title.sh"
 readonly NOTI_EXIT_SHELL_PATH="${NOTI_SHELL_DIR_PATH}/noti_exit.sh"
@@ -33,7 +34,7 @@ readonly URL_LAUNCH_ACTION_NAME="com.puutaro.commandclick.url.launch"
 readonly NO_WEB_SEARCH_MODE_CONTENTS="OFF"
 readonly CONST_MAX_MINITS=100000
 readonly NOTIFICATION_CAHNEL_NUM="$(\
-	get_rvar "${0}" CHANNEL_NUM
+	get_rvar "${REPLACE_VARS_CON}" CHANNEL_NUM
 )"
 
 readonly MPV_TMP_SOCKET_PATH="$(\
