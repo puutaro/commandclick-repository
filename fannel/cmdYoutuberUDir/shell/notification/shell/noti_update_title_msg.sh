@@ -1,21 +1,17 @@
 #!/bin/bash
 
 readonly MONITOR_FILE_PATH="${MONITOR_DIR_PATH}/term_1"
-readonly CURRENT_DIR_PATH=$(dirname $0)
-readonly NOTIFICATIN_DIR_PATH=$(cd "${CURRENT_DIR_PATH}"; cd .. ; pwd)
-readonly NOTI_SHELL_DIR_PATH="${NOTIFICATIN_DIR_PATH}/shell"
-readonly ROOT_SHELL_PATH=$(dirname "${NOTIFICATIN_DIR_PATH}")
-readonly LIBS_DIR_PATH="${ROOT_SHELL_PATH}/libs"
+readonly NOTI_SHELL_DIR_PATH="$(get_rvar "${0}" cmdTubePlayerShellNotiShellDirPath)"
 readonly NOTI_EXIT_SHELL_PATH="${NOTI_SHELL_DIR_PATH}/noti_exit.sh"
 readonly NOTI_NEXT_SHELL_PATH="${NOTI_SHELL_DIR_PATH}/next.sh"
 readonly NOTI_PRV_SHELL_PATH="${NOTI_SHELL_DIR_PATH}/prev.sh"
 readonly NOTI_PAUSE_SHELL_PATH="${NOTI_SHELL_DIR_PATH}/pause.sh"
 readonly NOTI_TO_SHELL_PATH="${NOTI_SHELL_DIR_PATH}/to.sh"
 readonly NOTIFICATION_CAHNEL_NUM="$(\
-	bash "${LIBS_DIR_PATH}/echo_channel_num.sh"\
+	get_rvar "${0}" CHANNEL_NUM
 )"
 readonly MPV_TMP_SOCKET_PATH="$(\
-	bash "${LIBS_DIR_PATH}/echo_mpv_socket_path.sh"\
+	get_rvar "${0}" MPV_SOCKET \
 )"
 
 get_time(){

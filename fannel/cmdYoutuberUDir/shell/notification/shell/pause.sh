@@ -1,13 +1,10 @@
 #!/bin/bash
 
 
-readonly CURRENT_DIR_PATH=$(dirname $0)
-readonly NOTI_LAUNCH_SHELL_PATH="${CURRENT_DIR_PATH}/noti_update_title_msg.sh"
-readonly NOTIFICATIN_DIR_PATH=$(cd "${CURRENT_DIR_PATH}"; cd .. ; pwd)
-readonly ROOT_SHELL_PATH=$(dirname "${NOTIFICATIN_DIR_PATH}")
-readonly LIBS_DIR_PATH="${ROOT_SHELL_PATH}/libs"
+readonly NOTI_SHELL_DIR_PATH="$(get_rvar "${0}" cmdTubePlayerShellNotiShellDirPath)"
+readonly NOTI_LAUNCH_SHELL_PATH="${NOTI_SHELL_DIR_PATH}/noti_update_title_msg.sh"
 readonly MPV_TMP_SOCKET_PATH="$(\
-	bash "${LIBS_DIR_PATH}/echo_mpv_socket_path.sh"\
+	get_rvar "${0}" MPV_SOCKET \
 )"
 
 echo '{ "command": ["get_property", "pause"] }' \

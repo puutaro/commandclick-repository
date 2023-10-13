@@ -9,6 +9,10 @@ FCB_PREFIX=prefix,
 FCB_SUFFIX=suffix,
 FCB_TYPE=type,
 
+// settting
+CHANNEL_NUM=20,
+MPV_SOCKET="/tmp/mpv_socket",
+
 // path
 cmdTubePlayerDirPath=
 	"${01}/${001}",
@@ -22,5 +26,7 @@ cmdTubePlayerEvidenceDirPath=
 	"${cmdTubePlayerDirPath}/evidence",
 cmdTubePlayerInstallCompFilePath=
 	"${cmdTubePlayerEvidenceDirPath}/installComp",
-cmdTubePlayerInstallingFilePath=
-	"${cmdTubePlayerEvidenceDirPath}/installing",
+cmdTubePlayerShellDirPath="${cmdTubePlayerDirPath}/shell",
+cmdTubePlayerShellLibsDirPath="${cmdTubePlayerShellDirPath}/libs",
+cmdTubePlayerShellNotiDirPath="${cmdTubePlayerShellDirPath}/notification",
+cmdTubePlayerShellNotiShellDirPath="${cmdTubePlayerShellNotiDirPath}/shell",

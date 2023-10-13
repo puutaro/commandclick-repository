@@ -118,7 +118,6 @@ function argSwitcher() {
 	    break;
 		case INSTALL_MODE:
 			jsToast.short("Installing..");
-			installingCheck();
 			jsUbuntu.execScriptByBackground(
 				EXEC_SHELL_PATH,
 				`${INSTALL_MODE}`,
@@ -410,18 +409,6 @@ function installCheck(){
 	);
 	if(!isFile) {
 		jsToast.short(`Press "Install" button`);
-		exitZero();
-	};
-};
-
-function installingCheck(){
-	if(
-		FIRST_ARGS != INSTALL_MODE
-	) return;
-	const isFile = jsFileSystem.isFile(
-		"${cmdTubePlayerInstallingFilePath}"
-	);
-	if(isFile) {
 		exitZero();
 	};
 };
