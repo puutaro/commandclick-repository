@@ -18,3 +18,9 @@ cmdTubePlayerListDirPath=
 	"${cmdTubePlayerDirPath}/list",
 cmdTubePlayerListFilePath=
 	"${cmdTubePlayerListDirPath}/searchWordList",
+cmdTubePlayerEvidenceDirPath=
+	"${cmdTubePlayerDirPath}/evidence",
+cmdTubePlayerInstallCompFilePath=
+	"${cmdTubePlayerEvidenceDirPath}/installComp",
+cmdTubePlayerInstallingFilePath=
+	"${cmdTubePlayerEvidenceDirPath}/installing",

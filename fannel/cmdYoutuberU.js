@@ -103,6 +103,10 @@ function argSwitcher() {
 	jsFileSystem.createDir(
 		cmdTubePlayerTmpDirPath
 	);
+	jsFileSystem.createDir(
+		"${cmdTubePlayerEvidenceDirPath}"
+	);
+	installCheck();
 	registerWebSearchWord();
 	updateSeachWordList();
 	switch(FIRST_ARGS){
@@ -114,6 +118,7 @@ function argSwitcher() {
 	    break;
 		case INSTALL_MODE:
 			jsToast.short("Installing..");
+			installingCheck();
 			jsUbuntu.execScriptByBackground(
 				EXEC_SHELL_PATH,
 				`${INSTALL_MODE}`,
@@ -391,3 +396,33 @@ function execStop(){
 	);
 	exitZero();
 };
+
+function installCheck(){
+	switch(FIRST_ARGS){
+		case "":
+		case "onAutoExec":
+		case INSTALL_MODE:
+		case EDIT_TUBE_PLAY_LIST_MODE:
+			return;
+	};
+	const isFile = jsFileSystem.isFile(
+		"${cmdTubePlayerInstallCompFilePath}"
+	);
+	if(!isFile) {
+		jsToast.short(`Press "Install" button`);
+		exitZero();
+	};
+};
+
+function installingCheck(){
+	if(
+		FIRST_ARGS != INSTALL_MODE
+	) return;
+	const isFile = jsFileSystem.isFile(
+		"${cmdTubePlayerInstallingFilePath}"
+	);
+	if(isFile) {
+		exitZero();
+	};
+};
+

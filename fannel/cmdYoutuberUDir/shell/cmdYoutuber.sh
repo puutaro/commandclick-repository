@@ -7,6 +7,9 @@ readonly YTFZF_SHELL_PATH="${PARENT_DIR_PATH}/ytfzfForFannel.sh"
 readonly PLAY_PROCESS_DIR_PATH="${PARENT_DIR_PATH}/process"
 readonly APP_DIR_PATH="$(dirname "${PARENT_DIR_PATH}")"
 readonly FANNEL_DIR_PATH=$(cd "${PARENT_DIR_PATH}"; cd .. ; pwd)
+readonly EVIDENCE_DIR_PATH="${FANNEL_DIR_PATH}/evidence"
+readonly INSTALL_EVIDENCE_FILE_PATH="${EVIDENCE_DIR_PATH}/installComp"
+readonly INSTALLING_EVIDENCE_FILE_PATH="${EVIDENCE_DIR_PATH}/installing"
 readonly SHELL_DIR_PATH="${FANNEL_DIR_PATH}/shell"
 readonly LIBS_DIR_PATH="${SHELL_DIR_PATH}/libs"
 readonly NOTIFICATION_DIR_PATH="${PARENT_DIR_PATH}/notification"
@@ -42,14 +45,18 @@ readonly MPV_TMP_SOCKET_PATH="$(\
 . "${KILL_PROCESS_SHELL_PATH}"
 
 install_package_wrapper(){
+	touch "${INSTALLING_EVIDENCE_FILE_PATH}"
 	sudo apt-get install -y \
 		jq \
 		fzf \
 		mpv \
 		socat \
-		bsdmainutils
-	pip3 install -U yt-dlp
-	echo "complete installation"
+		bsdmainutils \
+	&& pip3 install -U yt-dlp \
+	&& touch "${INSTALL_EVIDENCE_FILE_PATH}" \
+	&& echo "complete installation" \
+	|| echo "Retry install"
+	rm -rf "${INSTALLING_EVIDENCE_FILE_PATH}"
 }
 
 save_play_log_history_to_tsv(){
