@@ -25,11 +25,6 @@ noti \
 
 sleep 1
 
-echo \
-"
-intentType=broadcast,
-action=com.puutaro.commandclick.ubuntu_service.background_cmd_kill,
-extra=
-	ubuntu_croutine_job_type=${FANNEL_NAME_PATH},
-" | curl -X POST -d "$(cat)" "${INTENT_MONITOR_ADDRESS}"
-
+send-broadcast \
+	-a "com.puutaro.commandclick.ubuntu_service.background_cmd_kill" \
+	-e "ubuntu_croutine_job_type=${FANNEL_NAME_PATH}"

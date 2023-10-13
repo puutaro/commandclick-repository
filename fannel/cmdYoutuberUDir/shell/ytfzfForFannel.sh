@@ -1,11 +1,5 @@
 #!/bin/bash
 
-readonly PARENT_DIR_PATH="$(dirname "$0")"
-readonly FANNEL_DIR_PATH=$(cd "${PARENT_DIR_PATH}"; cd .. ; pwd)
-readonly NOTIFICATION_DIR_PATH="${PARENT_DIR_PATH}/notification"
-readonly NOTI_SHELL_DIR_PATH="${NOTIFICATION_DIR_PATH}/shell"
-readonly TOAST_SHELL_PATH="${NOTI_SHELL_DIR_PATH}/launch_toast.sh"
-. "${TOAST_SHELL_PATH}"
 # state variables
 : "${__is_submenu:=0}" "${__is_fzf_preview:=0}"
 
@@ -951,8 +945,7 @@ video_info_text () {
      jq -r '[.title, .channel, .duration, .views, .date, .viewed, .url, .scraper]|join("\t|")' | while IFS="$tab_space" read -r title channel duration views date viewed url scraper; do
         case "$((search_times % 7))" in
             "0")
-                launch_toast \
-                    "${search_desc}"
+                toast "${search_desc}"
                 ;;
         esac
         scraper="${scraper#"|"}"

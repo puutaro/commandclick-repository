@@ -16,7 +16,6 @@ readonly NOTI_SHELL_DIR_PATH="$(get_rvar "${REPLACE_VARS_CON}" cmdTubePlayerShel
 readonly NOTI_LAUNCH_SHELL_PATH="${NOTI_SHELL_DIR_PATH}/noti_launch.sh"
 readonly NOTI_UPDATE_SHELL_PATH="${NOTI_SHELL_DIR_PATH}/update_noti_title.sh"
 readonly NOTI_EXIT_SHELL_PATH="${NOTI_SHELL_DIR_PATH}/noti_exit.sh"
-readonly TOAST_SHELL_PATH="${NOTI_SHELL_DIR_PATH}/launch_toast.sh"
 readonly KILL_PROCESS_SHELL_PATH="${LIBS_DIR_PATH}/kill_process.sh"
 readonly TMP_PLAY_LIST_NAME="tmp_play_list"
 readonly TMP_PLAY_LIST_PATH="${PLAY_PROCESS_DIR_PATH}/${TMP_PLAY_LIST_NAME}"
@@ -40,7 +39,6 @@ readonly NOTIFICATION_CAHNEL_NUM="$(\
 readonly MPV_TMP_SOCKET_PATH="$(\
 	bash "${LIBS_DIR_PATH}/echo_mpv_socket_path.sh"\
 )"
-. "${TOAST_SHELL_PATH}"
 . "${KILL_PROCESS_SHELL_PATH}"
 
 install_package_wrapper(){
@@ -190,8 +188,7 @@ echoWebSearchPlayList(){
 	local onWebSearchMode="$(echo "${webSearchArgs}" | cut -f1)"
 	local searchWord="$(echo "${webSearchArgs}" | cut -f2)"
 	
-	launch_toast \
-		"editing.."
+	toast "editing.."
 	local searchRawList=$(\
 		bash "${YTFZF_SHELL_PATH}" \
 			"${searchWord}" \
@@ -208,20 +205,15 @@ echoWebSearchPlayList(){
 
 launch_edit_site(){
 	local tubePlayListPath="${1}"
-
-	echo \
-	"
-	intentType=broadcast,
-	action=com.puutaro.commandclick.html.launch,
-	extra=
-		edit_path=${tubePlayListPath}
-		!src_path=
-		!on_click_sort=false
-		!on_sortable_js=true
-		!on_click_url=true
-		!filter_code=true
-	" | curl -X POST -d "$(cat)" "${INTENT_MONITOR_ADDRESS}" \
-	>/dev/null 2>&1
+	send-broadcast \
+		-a "com.puutaro.commandclick.html.launch" \
+		-e "edit_path=${tubePlayListPath}" \
+		-e "src_path=" \
+		-e "on_click_sort=false" \
+		-e "on_sortable_js=true" \
+		-e "on_click_url=true" \
+		-e "filter_code=true" \
+		>/dev/null 2>&1
 }
 
 
@@ -276,8 +268,7 @@ play_mode_handler(){
 			exit 0
 			;;
 		"${ORDINALY_MODE}")
-			launch_toast \
-                    "${tubePlayListPath}.."
+			toast "${tubePlayListPath}.."
 			updateWebSearchPlayList \
 				"${webSearchArgs}"
 			echo_temp_play_list \
