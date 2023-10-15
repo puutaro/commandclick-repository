@@ -15,9 +15,9 @@ onAdBlock="OFF"
 terminalFontZoom="0"
 terminalColor=""
 terminalFontColor=""
-setReplaceVariables="file://${01}/${001}/settingVariables/setReplaceVariables.js"
-setVariableTypes="file://${01}/${001}/settingVariables/setVariableTypes.js"
-hideSettingVariables="file://${01}/${001}/settingVariables/hideSettingVariables.js"
+setReplaceVariables="file://"
+setVariableTypes="file://"
+hideSettingVariables="file://"
 scriptFileName="ctsvViewer.js"
 /// SETTING_SECTION_END
 

@@ -33,11 +33,11 @@ readonly URL_LAUNCH_ACTION_NAME="com.puutaro.commandclick.url.launch"
 readonly NO_WEB_SEARCH_MODE_CONTENTS="OFF"
 readonly CONST_MAX_MINITS=100000
 readonly NOTIFICATION_CAHNEL_NUM="$(\
-	get_rvar "${REPLACE_VARS_CON}" CHANNEL_NUM
+	get_rvar "${REPLACE_VARS_CON}" CHANNEL_NUM \
 )"
 
 readonly MPV_TMP_SOCKET_PATH="$(\
-	bash "${LIBS_DIR_PATH}/echo_mpv_socket_path.sh"\
+	get_rvar "${REPLACE_VARS_CON}" MPV_SOCKET \
 )"
 . "${KILL_PROCESS_SHELL_PATH}"
 

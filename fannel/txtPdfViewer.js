@@ -17,9 +17,9 @@ execEditBtnLongPress="WEB_SEARCH"
 terminalFontZoom="0"
 terminalFontColor=""
 homeFannelsPath=""
-setReplaceVariables="file://${01}/${001}/settingVariables/setReplaceVariables.js"
-setVariableTypes="file://${01}/${001}/settingVariables/setVariableTypes.js"
-hideSettingVariables="file://${01}/${001}/settingVariables/hideSettingVariables.js"
+setReplaceVariables="file://"
+setVariableTypes="file://"
+hideSettingVariables="file://"
 scriptFileName="txtPdfViewer.js"
 /// SETTING_SECTION_END
 

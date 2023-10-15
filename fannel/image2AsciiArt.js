@@ -16,9 +16,9 @@ execPlayBtnLongPress="PAGE_SEARCH"
 execEditBtnLongPress="WEB_SEARCH"
 terminalFontZoom="0"
 terminalFontColor=""
-setReplaceVariables="file://${01}/${001}/settingVariables/setReplaceVariables.js"
-setVariableTypes="file://${01}/${001}/settingVariables/setVariableTypes.js"
-hideSettingVariables="file://${01}/${001}/settingVariables/hideSettingVariables.js"
+setReplaceVariables="file://"
+setVariableTypes="file://"
+hideSettingVariables="file://"
 scriptFileName="image2AsciiArt.js"
 /// SETTING_SECTION_END
 

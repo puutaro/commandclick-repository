@@ -34,9 +34,9 @@ onUrlHistoryRegister="OFF"
 onAdBlock="INHERIT"
 terminalFontZoom="130"
 noScrollSaveUrls="${01}/${001}/settings/noScrollSaveUrls.txt"
-setReplaceVariables="file://${01}/${001}/settingVariables/setReplaceVariables.js"
-setVariableTypes="file://${01}/${001}/settingVariables/setVariableTypes.js"
-hideSettingVariables="file://${01}/${001}/settingVariables/hideSettingVariables.js"
+setReplaceVariables="file://"
+setVariableTypes="file://"
+hideSettingVariables="file://"
 scriptFileName="urlLauncher.js"
 /// SETTING_SECTION_END
 

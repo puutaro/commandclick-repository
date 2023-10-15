@@ -37,9 +37,9 @@ terminalSizeType="LONG"
 onUrlHistoryRegister="OFF"
 onAdBlock="OFF"
 terminalFontZoom="130"
-setReplaceVariables="file://${01}/${001}/settingVariables/setReplaceVariables.js"
-setVariableTypes="file://${01}/${001}/settingVariables/setVariableTypes.js"
-hideSettingVariables="file://${01}/${001}/settingVariables/hideSettingVariables.js"
+setReplaceVariables="file://"
+setVariableTypes="file://"
+hideSettingVariables="file://"
 scriptFileName="cmdGpt35.js"
 /// SETTING_SECTION_END
 

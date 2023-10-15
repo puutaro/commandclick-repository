@@ -18,10 +18,10 @@ terminalFontZoom="0"
 terminalColor=""
 terminalFontColor=""
 scriptFileName="ttsPlayer.js"
-ignoreHistoryPaths="file://${01}/${001}/settingVariables/ignoreHistoryPaths.js"
-setReplaceVariables="file://${01}/${001}/settingVariables/setReplaceVariables.js"
-setVariableTypes="file://${01}/${001}/settingVariables/setVariableTypes.js"
-hideSettingVariables="file://${01}/${001}/settingVariables/hideSettingVariables.js"
+ignoreHistoryPaths="file://"
+setReplaceVariables="file://"
+setVariableTypes="file://"
+hideSettingVariables="file://"
 /// SETTING_SECTION_END
 
 

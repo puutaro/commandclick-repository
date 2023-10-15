@@ -9,7 +9,7 @@ readonly NOTI_PRV_SHELL_PATH="${NOTI_SHELL_DIR_PATH}/prev.sh"
 readonly NOTI_PAUSE_SHELL_PATH="${NOTI_SHELL_DIR_PATH}/pause.sh"
 readonly NOTI_TO_SHELL_PATH="${NOTI_SHELL_DIR_PATH}/to.sh"
 readonly NOTIFICATION_CAHNEL_NUM="$(\
-	get_rvar "${REPLACE_VARS_CON}" CHANNEL_NUM
+	get_rvar "${REPLACE_VARS_CON}" CHANNEL_NUM \
 )"
 readonly MPV_TMP_SOCKET_PATH="$(\
 	get_rvar "${REPLACE_VARS_CON}" MPV_SOCKET \
