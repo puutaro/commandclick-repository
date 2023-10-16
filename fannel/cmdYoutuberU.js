@@ -19,7 +19,7 @@ terminalFontColor=""
 setReplaceVariables="file://"
 setVariableTypes="file://"
 hideSettingVariables="file://"
-scriptFileName="cmdYoutuber.js"
+scriptFileName="cmdYoutuberU.js"
 /// SETTING_SECTION_END
 
 

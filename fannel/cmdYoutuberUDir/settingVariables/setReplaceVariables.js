@@ -9,7 +9,7 @@ FCB_PREFIX=prefix,
 FCB_SUFFIX=suffix,
 FCB_TYPE=type,
 
-// settting
+// setting
 CHANNEL_NUM=20,
 MPV_SOCKET="/tmp/mpv_socket",
 
