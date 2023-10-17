@@ -27,6 +27,5 @@ cmdTubePlayerEvidenceDirPath=
 cmdTubePlayerInstallCompFilePath=
 	"${cmdTubePlayerEvidenceDirPath}/installComp",
 cmdTubePlayerShellDirPath="${cmdTubePlayerDirPath}/shell",
-cmdTubePlayerShellLibsDirPath="${cmdTubePlayerShellDirPath}/libs",
 cmdTubePlayerShellNotiDirPath="${cmdTubePlayerShellDirPath}/notification",
 cmdTubePlayerShellNotiShellDirPath="${cmdTubePlayerShellNotiDirPath}/shell",

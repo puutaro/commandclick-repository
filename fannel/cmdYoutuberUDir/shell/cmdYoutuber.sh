@@ -8,12 +8,10 @@ readonly ROOT_SHELL_DIR_PATH="$(get_rvar "${REPLACE_VARS_CON}" cmdTubePlayerShel
 readonly YTFZF_SHELL_PATH="${ROOT_SHELL_DIR_PATH}/ytfzfForFannel.sh"
 readonly PLAY_PROCESS_DIR_PATH="${ROOT_SHELL_DIR_PATH}/process"
 readonly FANNEL_DIR_PATH="$(get_rvar "${REPLACE_VARS_CON}" cmdTubePlayerDirPath)"
-readonly EVIDENCE_DIR_PATH="$(get_rvar "${REPLACE_VARS_CON}" cmdTubePlayerEvidenceDirPath)"
 readonly INSTALL_EVIDENCE_FILE_PATH="$(get_rvar "${REPLACE_VARS_CON}" cmdTubePlayerInstallCompFilePath)"
-readonly SHELL_DIR_PATH="$(get_rvar "${REPLACE_VARS_CON}" cmdTubePlayerShellDirPath)"
-readonly LIBS_DIR_PATH="$(get_rvar "${REPLACE_VARS_CON}" cmdTubePlayerShellLibsDirPath)"
-readonly NOTIFICATION_DIR_PATH="$(get_rvar "${REPLACE_VARS_CON}" cmdTubePlayerShellNotiDirPath)"
-readonly NOTI_SHELL_DIR_PATH="$(get_rvar "${REPLACE_VARS_CON}" cmdTubePlayerShellNotiShellDirPath)"
+readonly NOTI_SHELL_DIR_PATH="$(\
+	get_rvar "${REPLACE_VARS_CON}" cmdTubePlayerShellNotiShellDirPath\
+)"
 readonly NOTI_LAUNCH_SHELL_PATH="${NOTI_SHELL_DIR_PATH}/noti_launch.sh"
 readonly NOTI_UPDATE_SHELL_PATH="${NOTI_SHELL_DIR_PATH}/update_noti_title.sh"
 readonly NOTI_EXIT_SHELL_PATH="${NOTI_SHELL_DIR_PATH}/noti_exit.sh"
@@ -103,8 +101,7 @@ judge_stop_by_play_mode(){
 
 launch_notification(){
 	kill_ptree \
-		"${NOTI_UPDATE_SHELL_PATH}" \
-		|| e=$?
+		"${NOTI_UPDATE_SHELL_PATH}"  2>&1
 	bash "${NOTI_UPDATE_SHELL_PATH}" &
 	bash "${NOTI_LAUNCH_SHELL_PATH}"
 }
