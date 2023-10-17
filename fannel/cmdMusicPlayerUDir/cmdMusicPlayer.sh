@@ -34,7 +34,6 @@ readonly MPV_TMP_SOCKET_PATH="$(\
 )"
 
 package_installer(){
-	rm -rf "${INSTALL_EVIDENCE_FILE_PATH}"
 	sudo apt-get install -y \
 		mpv \
 		socat \
@@ -42,6 +41,39 @@ package_installer(){
 	&& touch "${INSTALL_EVIDENCE_FILE_PATH}" \
 	&& echo "complete installation" \
 	|| echo "Retry install"
+}
+
+cut_music_history_limit_over(){
+	local history_limit_num=1000
+	if [ ! -f "${MUSIC_HISTORY_PATH}" ];then
+		touch "${MUSIC_HISTORY_PATH}"
+		return
+	fi
+	if [ ! -f "${MUSIC_HISTORY_TSV_PATH}" ];then
+		touch "${MUSIC_HISTORY_TSV_PATH}"
+	fi
+	local grep_prefix="Playing: "
+	local music_history_con="$(\
+		cat "${MUSIC_HISTORY_PATH}" \
+		| grep "${grep_prefix}" \
+		| sed '/^$/d' \
+		| tail -"${history_limit_num}" \
+	)"
+	sleep 0.1
+	echo \
+		"${music_history_con}" \
+		| sed '/^$/d' \
+		> "${MUSIC_HISTORY_PATH}"
+	cat \
+		<(\
+			echo "track"\
+		) \
+		<(\
+			echo \
+				"${music_history_con}" \
+		) \
+		| sed '/^$/d' \
+		> "${MUSIC_HISTORY_TSV_PATH}"
 }
 
 stop_mpv_process(){
@@ -75,6 +107,7 @@ launch_notification(){
 
 play_temp_list(){
 	local play_mode="${1:-}"
+	cut_music_history_limit_over
 	stop_mpv_process
 	sleep 0.5
 	launch_notification
@@ -86,7 +119,8 @@ play_temp_list(){
 		--loop-playlist=inf \
 		--playlist="${TMP_PLAY_LIST_PATH}" \
 		--no-osc \
-	 2>/dev/null
+		2>/dev/null \
+	| tee  -a "${MUSIC_HISTORY_PATH}"
 }
 
 
