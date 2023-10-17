@@ -2,6 +2,7 @@
 
 set -eu
 
+e=""
 readonly REPLACE_VARS_CON="$(get_rvar "${0}")"
 readonly ROOT_SHELL_DIR_PATH="$(get_rvar "${REPLACE_VARS_CON}" cmdTubePlayerShellDirPath)"
 readonly YTFZF_SHELL_PATH="${ROOT_SHELL_DIR_PATH}/ytfzfForFannel.sh"
@@ -16,7 +17,6 @@ readonly NOTI_SHELL_DIR_PATH="$(get_rvar "${REPLACE_VARS_CON}" cmdTubePlayerShel
 readonly NOTI_LAUNCH_SHELL_PATH="${NOTI_SHELL_DIR_PATH}/noti_launch.sh"
 readonly NOTI_UPDATE_SHELL_PATH="${NOTI_SHELL_DIR_PATH}/update_noti_title.sh"
 readonly NOTI_EXIT_SHELL_PATH="${NOTI_SHELL_DIR_PATH}/noti_exit.sh"
-readonly KILL_PROCESS_SHELL_PATH="${LIBS_DIR_PATH}/kill_process.sh"
 readonly TMP_PLAY_LIST_NAME="tmp_play_list"
 readonly TMP_PLAY_LIST_PATH="${PLAY_PROCESS_DIR_PATH}/${TMP_PLAY_LIST_NAME}"
 readonly SHUFFLE_MODE="shuffle"
@@ -39,7 +39,6 @@ readonly NOTIFICATION_CAHNEL_NUM="$(\
 readonly MPV_TMP_SOCKET_PATH="$(\
 	get_rvar "${REPLACE_VARS_CON}" MPV_SOCKET \
 )"
-. "${KILL_PROCESS_SHELL_PATH}"
 
 install_package_wrapper(){
 	rm -rf "${INSTALL_EVIDENCE_FILE_PATH}"
@@ -103,8 +102,9 @@ judge_stop_by_play_mode(){
 
 
 launch_notification(){
-	kill_process \
-		"${NOTI_UPDATE_SHELL_PATH}"
+	kill_ptree \
+		"${NOTI_UPDATE_SHELL_PATH}" \
+		|| e=$?
 	bash "${NOTI_UPDATE_SHELL_PATH}" &
 	bash "${NOTI_LAUNCH_SHELL_PATH}"
 }

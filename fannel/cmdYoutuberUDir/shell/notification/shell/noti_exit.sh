@@ -1,23 +1,23 @@
 #!/bin/bash
 
+e=""
 readonly MONITOR_FILE_PATH="${MONITOR_DIR_PATH}/term_1"
 readonly REPLACE_VARS_CON="$(get_rvar "${0}")"
 readonly NOTI_SHELL_DIR_PATH="$(get_rvar "${REPLACE_VARS_CON}" cmdTubePlayerShellNotiShellDirPath)"
 readonly NOTI_UPDATE_SHELL_PATH="${NOTI_SHELL_DIR_PATH}/update_noti_title.sh"
 readonly LIBS_DIR_PATH="$(get_rvar "${REPLACE_VARS_CON}" cmdTubePlayerShellLibsDirPath)"
-readonly KILL_PROCESS_SHELL_PATH="${LIBS_DIR_PATH}/kill_process.sh"
-. "${KILL_PROCESS_SHELL_PATH}"
 readonly FANNEL_NAME_PATH=$(\
 	get_rvar "${REPLACE_VARS_CON}" cmdTubePlayerDirPath \
 	| sed 's/Dir$//'\
 )
 
-. "${KILL_PROCESS_SHELL_PATH}"
 
 pkill mpv
-kill_process \
+
+kill_ptree \
 	"${NOTI_UPDATE_SHELL_PATH}" \
->> "${MONITOR_FILE_PATH}"
+>> "${MONITOR_FILE_PATH}" \
+|| e=$?
 
 noti \
 	-t exit \
