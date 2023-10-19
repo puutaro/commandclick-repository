@@ -95,14 +95,17 @@ function switchByArgs(){
 	);
 	switch(FIRST_ARGS){
 		case "":
+			let extraMapStr = [
+				`srcPath=${APP_URL_HISTORY_PATH}`,
+				`onClickSort=false`,
+				'onSortableJs=true',
+				`onClickUrl=true`,
+				`onDialog=false`
+			].join("|");
 			jsIntent.launchEditSite(
 				EDIT_FILE_PATH,
-				APP_URL_HISTORY_PATH,
-				"false",
-				"true",
-				"true",
+				extraMapStr,
 				"urlString.startsWith('http');",
-				"false",
 			);
 			break;
 		case SHUFFLE_MODE:

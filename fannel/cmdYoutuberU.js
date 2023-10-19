@@ -172,26 +172,31 @@ function editSiteHandler(){
 	if(
 		noWebSearchModeList.includes(onWebSearchMode)
 	){
+		let extraMapStr = [
+			`srcPath=${APP_URL_HISTORY_PATH}`,
+			`onClickSort=false`,
+			'onSortableJs=true',
+			`onClickUrl=true`,
+			`onDialog=false`
+		].join("|");
 		jsIntent.launchEditSite(
 			EDIT_FILE_PATH,
-			APP_URL_HISTORY_PATH,
-			"false",
-			"true",
-			"true",
+			extraMapStr,
 			"urlString.startsWith('http') && urlString.includes(\"youtube\");",
-			"false",
 		);
 		return;
 	};
 	if(!ENABLE_UPDATE_WEB_SEARCH_LIST){
+		let extraMapStr = [
+			`onClickSort=false`,
+			'onSortableJs=true',
+			`onClickUrl=true`,
+			`onDialog=false`
+		].join("|");
 		jsIntent.launchEditSite(
 			EDIT_FILE_PATH,
-			"",
-			"false",
+			extraMapStr,
 			"true",
-			"true",
-			"true",
-			"false"
 		);
 		return;
 	};

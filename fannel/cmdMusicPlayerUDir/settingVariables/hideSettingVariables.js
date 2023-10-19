@@ -1,4 +1,5 @@
 editExecute,
+onAutoExec,
 terminalSizeType,
 terminalOutputMode,
 onUpdateLastModify,

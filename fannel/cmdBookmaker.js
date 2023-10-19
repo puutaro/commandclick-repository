@@ -102,14 +102,17 @@ function switchByArgs(){
 	);
 	switch(FIRST_ARGS){
 		case "":
+			let extraMapStr = [
+				`srcPath=${APP_URL_HISTORY_PATH}`,
+				`onClickSort=true`,
+				'onSortableJs=true',
+				`onClickUrl=true`,
+				`onDialog=${ON_DIALOG}`
+			].join("|");
 			jsIntent.launchEditSite(
 				EDIT_FILE_PATH,
-				APP_URL_HISTORY_PATH,
-				"true",
-				"true",
-				"true",
+				extraMapStr,
 				"urlString.startsWith('http');",
-				ON_DIALOG
 			);
 			break;
 		case EDIT_BOOKMARK_NAME_MODE:

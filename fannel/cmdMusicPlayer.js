@@ -91,14 +91,16 @@ function switchByArgs(){
 	switch(FIRST_ARGS){
 		case "":
 			initFileList();
+			let extraMapStr = [
+				`onClickSort=false`,
+				'onSortableJs=false',
+				`onClickUrl=false`,
+				`onDialog=false`
+			].join("|");
 			jsIntent.launchEditSite(
 				EDIT_FILE_PATH,
-				"",
-				"false",
-				"false",
-				"false",
+				extraMapStr,
 				"true",
-				"false",
 			);
 			break;
 		case INSTALL_MODE:

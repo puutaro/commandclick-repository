@@ -7,6 +7,7 @@
 
 /// SETTING_SECTION_START
 editExecute="ALWAYS"
+onAutoExec="ON"
 terminalSizeType="LONG"
 terminalOutputMode="NORMAL"
 onUpdateLastModify="ON"
@@ -95,18 +96,21 @@ function switchByArgs(){
 	switch(FIRST_ARGS){
 		case "":
 			initFileList();
+			let extraMapStr = [
+				`onClickSort=false`,
+				'onSortableJs=false',
+				`onClickUrl=false`,
+				`onDialog=false`
+			].join("|");
 			jsIntent.launchEditSite(
 				EDIT_FILE_PATH,
-				"",
-				"false",
-				"false",
-				"false",
+				extraMapStr,
 				"true",
-				"false",
 			);
 			break;
 		case "onAutoExec":
 	    	jsUbuntu.boot();
+	    	break;
 		case INSTALL_MODE:
 			jsToast.short("Installing..");
 			jsUbuntu.execScriptByBackground(
