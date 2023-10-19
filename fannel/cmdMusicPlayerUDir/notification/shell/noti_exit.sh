@@ -17,7 +17,7 @@ pkill mpv
 
 kill_ptree \
 	"${NOTI_UPDATE_SHELL_PATH}" \
->> "${MONITOR_FILE_PATH}" 2>&1
+>/dev/null  2>&1
 
 noti \
 	-t exit \

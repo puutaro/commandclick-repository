@@ -101,7 +101,8 @@ judge_stop_by_play_mode(){
 
 launch_notification(){
 	kill_ptree \
-		"${NOTI_UPDATE_SHELL_PATH}"  2>&1
+		"${NOTI_UPDATE_SHELL_PATH}" \
+		>/dev/null  2>&1
 	bash "${NOTI_UPDATE_SHELL_PATH}" &
 	bash "${NOTI_LAUNCH_SHELL_PATH}"
 }
