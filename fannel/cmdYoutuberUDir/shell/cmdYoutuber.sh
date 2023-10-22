@@ -265,8 +265,7 @@ play_mode_handler(){
 			play_temp_list "--shuffle"
 			exit 0
 			;;
-		"${ORDINALY_MODE}")
-			toast "${tubePlayListPath}.."
+		"${ORDINALY_MODE}")			
 			updateWebSearchPlayList \
 				"${webSearchArgs}"
 			echo_temp_play_list \
