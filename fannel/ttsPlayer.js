@@ -51,10 +51,6 @@ const tsvExtend = ".tsv";
 if(FIRST_ARGS == PLAY){
 	FIRST_ARGS = playMode;
 };
-Speed = Number(Speed) / 50;
-if(Speed > 1000) Speed = 1000;
-Pitch = Number(Pitch) / 50;
-if(Pitch > 1000) Pitch = 1000;
 if(
    onTrack == "OFF"
 ) onTrack="";
@@ -194,15 +190,18 @@ function execTtsPlay(
 		cmdTtsPlayerTempFilePath,
 		tempPlayListCon
 	);
+	let extraSettingMapStr = [
+		`playMode=${playModeArg}`,
+		`onRoop=${onRoop}`,
+		`playNumber=${numberArg}`,
+		`transMode=${toLang}`,
+		`onTrack=${onTrack}`,
+		`speed=${Speed}`,
+		`pitch=${Pitch}`,
+		].join("|");
 	jsTextToSpeech.speech(
 	    cmdTtsPlayerTempFilePath,
-	    playModeArg,
-	    onRoop,
-	    numberArg,
-	    toLang,
-	    onTrack,
-	    Speed,
-	    Pitch,
+	    extraSettingMapStr,
 	);
 };
 

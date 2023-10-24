@@ -66,10 +66,6 @@ jsFileSystem.createDir(
 	"${ocrViewerOldPlayDirPath}"
 );
 const ocrViewerTtsTextFilePath = `${ocrViewerOldPlayDirPath}/${rawOcrTargetFileName}${txtSuffix}`;
-Speed = Number(Speed) / 50;
-if(Speed > 1000) Speed = 1000;
-Pitch = Number(Pitch) / 50;
-if(Pitch > 1000) Pitch = 1000;
 if(
     onEnglish != "ON"
 ) onEnglish="";
@@ -125,15 +121,15 @@ function execTtsPlay(){
 	    playListFilePath,
 	   `${ocrViewerTtsTextFilePath}`
 	);
+	let extraSettingMapStr = [
+		`transMode=${onEnglish}`,
+		`onTrack=${onTrack}`,
+		`speed=${Speed}`,
+		`pitch=${Pitch}`,
+	].join("|");
 	jsTextToSpeech.speech(
 	    playListFilePath,
-	    "",
-	    "",
-	    "",
-	    onEnglish,
-	    onTrack,
-	    Speed,
-    	Pitch,
+	    extraSettingMapStr,
 	);
 };
 

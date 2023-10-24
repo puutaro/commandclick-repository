@@ -47,10 +47,6 @@ Pitch="50"
 toLang="-"
 /// CMD_VARIABLE_SECTION_END
 
-Speed = Number(Speed) / 50;
-if(Speed > 1000) Speed = 1000;
-Pitch = Number(Pitch) / 50;
-if(Pitch > 1000) Pitch = 1000;
 const LEAST_STRING_NUM = 300;
 
 
@@ -200,16 +196,14 @@ jsFileSystem.writeLocalFile(
    `${playFilePath}`
 );
 
-
+let extraSettingMapStr = [
+    `transMode=${toLang}`,
+    `speed=${Speed}`,
+    `pitch=${Pitch}`,
+].join("|");
 jsTextToSpeech.speech(
     playListPath,
-    "",
-    "",
-    "",
-    toLang,
-    "",
-    Speed,
-    Pitch,
+    extraSettingMapStr,
 );
 
 

@@ -65,10 +65,6 @@ jsFileSystem.createDir(
 	"${txtPdfViewerStockPlayDirPath}"
 );
 const txtPdfViewerTtsTextFilePath = makeTxtPdfViewerTtsTextFilePath();
-Speed = Number(Speed) / 50;
-if(Speed > 1000) Speed = 1000;
-Pitch = Number(Pitch) / 50;
-if(Pitch > 1000) Pitch = 1000;
 if(
    onTrack == "OFF"
 ) onTrack="";
@@ -102,15 +98,15 @@ function execTtsPlay(){
 	    playListFilePath,
 	   `${txtPdfViewerTtsTextFilePath}`
 	);
+	let extraSettingMapStr = [
+		`transMode=${toLang}`,
+		`onTrack=${onTrack}`,
+		`speed=${Speed}`,
+		`pitch=${Pitch}`,
+		].join("|");
 	jsTextToSpeech.speech(
 	    playListFilePath,
-	    "",
-	    "",
-	    "",
-	    toLang,
-	    onTrack,
-	    Speed,
-    	Pitch,
+	    extraSettingMapStr,
 	);
 };
 
