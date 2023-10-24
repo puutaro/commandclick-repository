@@ -103,7 +103,7 @@ function execTtsPlay(){
 		`onTrack=${onTrack}`,
 		`speed=${Speed}`,
 		`pitch=${Pitch}`,
-		].join("|");
+	].join("|");
 	jsTextToSpeech.speech(
 	    playListFilePath,
 	    extraSettingMapStr,
