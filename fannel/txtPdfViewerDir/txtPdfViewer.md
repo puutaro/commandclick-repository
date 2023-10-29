@@ -6,6 +6,9 @@ Table of Contents
 
 <!-- vim-markdown-toc GFM --> 
 * [Support long press menu table](#support-long-press-menu-table)
+* [Toolbar buttons](#toolbar-buttons)
+	* [Play Button](#play-button)
+	* [Edit Button](#edit-button)
 * [Cmd Variables](#cmd-variables)
 	* [txtPdfPath](#txtpdfpath)
 	* [TTS_PLAY](#tts_play)
@@ -31,6 +34,19 @@ Table of Contents
 | src image anchor | o |
 | image | x |
 
+
+## Toolbar buttons
+
+### Play Button
+
+1. Set `txtPdfPath`
+2. Click
+
+- long press -> page search
+
+### Edit Button
+
+- long press -> web search
 
 ## Cmd Variables
 --------

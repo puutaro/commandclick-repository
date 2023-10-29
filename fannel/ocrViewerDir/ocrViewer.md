@@ -4,7 +4,7 @@ OCR Viewer with tts (###termux) @puutaro
 Table of Contents
 -------
 <!-- vim-markdown-toc GFM --> 
-* [Buttons](#buttons)
+* [Toolbar buttons](#toolbar-buttons)
 	* [Play Button](#play-button)
 * [Cmd Variables](#cmd-variables)
 	* [ocrTargetPath](#ocrtargetpath)
@@ -21,11 +21,12 @@ Table of Contents
 	* [execPlayBtnLongPress](#execplaybtnlongpress)
 	* [homeFannelsPath](#homefannelspath)
 
-## Buttons
+## Toolbar buttons
 
 ### Play Button
 
-Launch youtube play list edit site
+1. Set `ocrTargetPath`
+2. Click
 
 - long press -> web search
 

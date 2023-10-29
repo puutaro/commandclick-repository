@@ -4,7 +4,7 @@ Table of Contents
 -------
 <!-- vim-markdown-toc GFM --> 
 * [Support long press menu table](#support-long-press-menu-table)
-* [Buttons](#buttons)
+* [Toolbar buttons](#toolbar-buttons)
 	* [Play Button](#play-button)
 		* [Edit Site Usage](#edit-site-usage)
 * [Cmd Variables](#cmd-variables)
@@ -36,7 +36,7 @@ Table of Contents
 | src image anchor | o |
 | image | x |
 
-## Buttons
+## Toolbar buttons
 
 ### Play Button
 

@@ -3,7 +3,7 @@ TextToSpeech player @puutaro
 Table of Contents
 -------
 <!-- vim-markdown-toc GFM --> 
-* [Buttons](#buttons)
+* [Toolbar buttons](#toolbar-buttons)
 * [Cmd Variables](#cmd-variables)
 	* [play](#play)
 	* [playListName](#playlistname)
@@ -21,11 +21,9 @@ Table of Contents
 	* [terminalFontColor](#terminalfontcolor)
 	* [terminalColor](#terminalcolor)
 
-## Buttons
+## Toolbar buttons
 
 ### Play Button
-
-Launch new url list edit site
 
 - long press -> web search
 

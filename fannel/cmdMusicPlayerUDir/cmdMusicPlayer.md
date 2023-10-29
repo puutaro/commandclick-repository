@@ -3,9 +3,10 @@ Music player  (**Ubuntu**) @puutaro
 Table of Contents
 -------
 <!-- vim-markdown-toc GFM --> 
+* [Toolbar buttons](#toolbar-buttons)
+	* [Play Button](#play-button)
 * [Cmd Variables](#cmd-variables)
 	* [Install](#install)
-	* [Play](#play)
 	* [musicDir](#musicdir)
 	* [musicPlayListName](#musicplaylistname)
 	* [musicPlay](#musicplay)
@@ -21,14 +22,16 @@ Table of Contents
 	* [terminalColor](#playmode)
 	* [numberPlay](#terminalcolor)
 
+## Toolbar buttons
+
+### Play Button
+
+Launch music play list site
 
 ## Cmd Variables
 --------
 ### Install
 Install & upgrade require package
-
-### Play 
-Launch music play list site
 
 ### musicDir 
 Target music file saved directory path

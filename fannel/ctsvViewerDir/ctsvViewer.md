@@ -3,6 +3,8 @@ Advanced csv & tsv viewer @puutaro
 Table of Contents
 -------
 <!-- vim-markdown-toc GFM --> 
+* [Toolbar buttons](#toolbar-buttons)
+	* [Play Button](#play-button)
 * [Cmd Variables](#cmd-variables)
 	* [inputCTsvPath](#inputctsvpath)
 	* [scrollBoost](#scrollboost)
@@ -21,6 +23,11 @@ Table of Contents
 	* [terminalFontColor](#terminalfontcolor)
 	* [terminalColor](#playmode)
 
+## Toolbar buttons
+
+### Play Button
+
+View csv by cmd variables setting
 
 ## Cmd Variables
 --------
