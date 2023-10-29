@@ -4,10 +4,11 @@ Table of Contents
 -------
 <!-- vim-markdown-toc GFM --> 
 * [Support long press menu table](#support-long-press-menu-table)
+* [Buttons](#buttons)
+	* [Play Button](#play-button)
+		* [Edit Site Usage](#edit-site-usage)
 * [Cmd Variables](#cmd-variables)
 	* [Install](#install)
-	* [Play](#play)
-		* [Edit Site Usage](#edit-site-usage)
 	* [searchWord](#searchword)
 	* [playMode](#playmode)
 	* [tubePlayListName](#tubeplaylistname)
@@ -35,18 +36,24 @@ Table of Contents
 | src image anchor | o |
 | image | x |
 
-## Cmd Variables
---------
-### Install
-Install & upgrade require package
+## Buttons
 
-### Play 
+### Play Button
+
 Launch youtube play list edit site
+
+- long press -> web search
 
 #### Edit Site Usage
 - Recent visit youtube url show in "Save title"
 - Change item  order by drag and drop 
 - Delete item  by doragging to another area(no item area).
+
+
+## Cmd Variables
+--------
+### Install
+Install & upgrade require package
 
 ### searchWord
 Web Youtube Search Word

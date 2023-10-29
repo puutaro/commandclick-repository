@@ -4,6 +4,8 @@ OCR Viewer with tts (###termux) @puutaro
 Table of Contents
 -------
 <!-- vim-markdown-toc GFM --> 
+* [Buttons](#buttons)
+	* [Play Button](#play-button)
 * [Cmd Variables](#cmd-variables)
 	* [ocrTargetPath](#ocrtargetpath)
 	* [EXEC_EXTRACT](#exec_extract)
@@ -19,6 +21,13 @@ Table of Contents
 	* [execPlayBtnLongPress](#execplaybtnlongpress)
 	* [homeFannelsPath](#homefannelspath)
 
+## Buttons
+
+### Play Button
+
+Launch youtube play list edit site
+
+- long press -> web search
 
 ## Cmd Variables
 --------
