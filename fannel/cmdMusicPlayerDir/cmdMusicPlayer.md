@@ -14,6 +14,7 @@ Table of Contents
 	* [STOP](#stop)
 	* [startNum](#startnum)
 	* [endNum](#endnum)
+	* [EDIT_MUSIC_PLAY_LIST](#edit_music_play_list)
 * [Setting variables](#setting-variables)
 	* [terminalFontZoom](#terminalfontzoom)
 	* [terminalFontColor](#terminalfontcolor)
@@ -61,6 +62,18 @@ Start number
 ### endNum
 End number
 - 0: lastNumber
+
+### EDIT_MUSIC_PLAY_LIST
+
+Edit music play list name by `renameMusicPlayListName`
+
+
+`renameMusicPlayListName` 
+
+| value | description |
+| ----------- | ----------- |
+| blank | Delete music file path list name |
+| other | Rename music file path list name (auto comp prefix `music`) |
 
 
 ## Setting variables

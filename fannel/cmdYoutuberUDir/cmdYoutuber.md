@@ -13,13 +13,13 @@ Table of Contents
 	* [tubePlayListName](#tubeplaylistname)
 	* [STOP](#stop)
 	* [numberPlay](#numberplay)
+	* [EDIT_TUBE_PLAY_LIST](#edit_tube_play_list)
 * [Acknowledge](#acknowledge)
 * [Setting variables](#setting-variables)
 	* [onUrlHistoryRegister](#onurlhistoryregister)
 	* [terminalFontZoom](#terminalfontzoom)
 	* [terminalFontColor](#terminalfontcolor)
-	* [terminalColor](#playmode)
-	* [numberPlay](#terminalcolor)
+	* [terminalColor](#terminalcolor)
 
 
 ## Support long press menu table
@@ -73,6 +73,17 @@ Web search switch
 | `OFF` | off |
 | `ON` | on |
 
+### EDIT_TUBE_PLAY_LIST
+
+Edit tube play list name by `renameTubePlayListName`
+
+
+`renameTubePlayListName` 
+
+| value | description |
+| ----------- | ----------- |
+| blank | Delete tube url list name |
+| other | Rename tube url list name (auto comp prefix `tube`) |
 
 ## Acknowledge
 ----------
