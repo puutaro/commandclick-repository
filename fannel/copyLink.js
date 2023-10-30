@@ -1,5 +1,19 @@
 
 
+/// LABELING_SECTION_START
+// Copy link @puutaro
+
+## Support long press menu table
+// -------
+
+// | type | enable |
+// | ----- | ----- |
+// | src anchor | o |
+// | src image anchor | o |
+// | image | x |
+
+/// LABELING_SECTION_END
+
 const LONG_PRESS_NEWS_URL = "CMDCLICK_LONG_PRESS_LINK_URL";
 
 end_judge();
