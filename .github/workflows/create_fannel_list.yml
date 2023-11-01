@@ -9,7 +9,7 @@ jobs:
     steps:
       - run: echo "exec fannel list update"
 
-  exec-create:
+  exec-update:
     needs: echo-fannel-list-update
     runs-on: ubuntu-latest
     permissions:
