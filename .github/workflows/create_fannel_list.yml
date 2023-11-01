@@ -3,6 +3,7 @@ on:
   workflow_dispatch:
   schedule:
     - cron: '5 15 * * *'
+
 jobs:
   echo-fannel-list-update:
     runs-on: ubuntu-latest
@@ -11,7 +12,6 @@ jobs:
 
   exec-create:
     needs: echo-fannel-list-update
-    if: ${{ needs.changes.outputs.fannels == 'true' }}
     runs-on: ubuntu-latest
     permissions:
       contents: write # 書き込むために必要
