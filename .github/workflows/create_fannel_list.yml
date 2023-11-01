@@ -9,6 +9,12 @@ jobs:
       - run: bash -c "pwd;ls"
       #- uses: stefanzweifel/git-auto-commit-action@v4
 
+  exec-find:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - run: find  -type f -not -path '*/.git/*' -and -not -path '*/exp_fannel/*' -and -not -path '*/old/*' -and -not -path '*/.difbk/*' -and -not -path '*/manage/*' -and -not -name '*gitignore' -and -not -name '*LICENSE' -and -not -name '*README.md' -and -not -name '*difbk_ignore' -printf '%P\n'
+
   exec-create:
     runs-on: ubuntu-latest
     permissions:
