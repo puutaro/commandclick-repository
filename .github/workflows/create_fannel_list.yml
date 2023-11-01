@@ -1,31 +1,16 @@
 name: create fannel list
 on: 
   workflow_dispatch:
+  schedule:
+    - cron: '5 15 * * *'
 jobs:
-  exec-fannel-list-update:
+  echo-fannel-list-update:
     runs-on: ubuntu-latest
     steps:
-      # - uses: actions/checkout@v3
       - run: echo "exec fannel list update"
-      #- uses: stefanzweifel/git-auto-commit-action@v4
-
-
-  changes:
-    needs: exec-fannel-list-update
-    runs-on: ubuntu-latest
-    outputs:
-      fannels: ${{ steps.filter.outputs.fannels }}
-    steps:
-    - uses: actions/checkout@v2
-    - uses: dorny/paths-filter@v2
-      id: filter
-      with:
-        filters: |
-          fannels:
-            - 'fannel/**'
 
   exec-create:
-    needs: changes
+    needs: echo-fannel-list-update
     if: ${{ needs.changes.outputs.fannels == 'true' }}
     runs-on: ubuntu-latest
     permissions:
