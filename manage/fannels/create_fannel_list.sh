@@ -1,10 +1,12 @@
 #!/bin/bash
 
+pwd
 cd fannel
 
 find  \
 	-type f \
 	-not -path '*/.git/*' \
+	-not -path '*/.github/*' \
 	-and -not -path '*/exp_fannel/*' \
 	-and -not -path '*/old/*' \
 	-and -not -path '*/.difbk/*' \
@@ -16,3 +18,4 @@ find  \
 	-printf '%P\n' \
  >  "../manage/fannels/list/fannels.txt"
 
+echo "$(date)" >> "../manage/fannels/list/fannels.txt"
