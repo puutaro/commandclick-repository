@@ -17,5 +17,3 @@ find  \
 	-and -not -name '*difbk_ignore' \
 	-printf '%P\n' \
  >  "../manage/fannels/list/fannels.txt"
-
-echo "$(date)" >> "../manage/fannels/list/fannels.txt"

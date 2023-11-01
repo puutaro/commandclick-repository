@@ -2,15 +2,16 @@ name: create fannel list
 on: 
   workflow_dispatch:
 jobs:
-  exec-pwd:
+  exec-fannel-list-update:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v3
-      - run: bash -c "pwd;ls"
+      # - uses: actions/checkout@v3
+      - run: echo "exec fannel list update"
       #- uses: stefanzweifel/git-auto-commit-action@v4
 
 
   changes:
+    needs: exec-fannel-list-update
     runs-on: ubuntu-latest
     outputs:
       fannels: ${{ steps.filter.outputs.fannels }}
