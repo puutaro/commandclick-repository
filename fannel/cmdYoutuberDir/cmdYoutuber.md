@@ -47,7 +47,7 @@ Launch youtube play list edit site
 #### Edit Site Usage
 - Recent visit youtube url show in "Save title"
 - Change item  order by drag and drop 
-- Delete item  by doragging to another area(no item area).
+- Delete item  by dragging to another area(no item area).
 
 
 ## Cmd Variables

@@ -18,7 +18,7 @@ readonly PREV_TITLE=$(\
 		gsub(/(data|[\:\{\}\x22])/, "", $0)
 		sub(/\,.*/, "", $0)
 		print $0
-	}' \
+	}'  2>/dev/null  \
 )
 
 bash "${NOTI_LAUNCH_SHELL_PATH}"

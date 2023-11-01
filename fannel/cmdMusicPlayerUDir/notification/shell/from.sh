@@ -23,7 +23,7 @@ get_time(){
 			next
 		}
 		print $0
-	}'
+	}' 2>/dev/null
 }
 
 readonly time_pos=$(get_time "time-pos")

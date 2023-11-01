@@ -97,10 +97,10 @@ function switchByArgs(){
 		case "":
 			initFileList();
 			let extraMapStr = [
-				`onClickSort=false`,
-				'onSortableJs=false',
-				`onClickUrl=false`,
-				`onDialog=false`
+				`on_click_sort=false`,
+				'on_sortable_js=false',
+				`on_click_url=false`,
+				`on_dialog=false`
 			].join("|");
 			jsIntent.launchEditSite(
 				EDIT_FILE_PATH,

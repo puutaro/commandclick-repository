@@ -3,13 +3,15 @@
 /// LABELING_SECTION_START
 // Pulse audio reciever @puutaro
 
+// ## Toolbar buttons
+// --------
+// ### Play Button
+// Start pluse reciever server by cmd settings
+
 // ## Cmd Variables
 // --------
 // ### pcIpAddress
 // PC's ip address
-
-// ### PLAY
-//  Start pluse reciever server
 
 // ### STOP
 //  Stop pluse reciever server

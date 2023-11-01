@@ -24,7 +24,7 @@ get_time(){
 			next
 		}
 		print $0
-	}'
+	}' 2>/dev/null
 }
 
 readonly remaining_time=$(get_time "time-remaining")

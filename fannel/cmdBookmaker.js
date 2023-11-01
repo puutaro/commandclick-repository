@@ -21,7 +21,8 @@
 // #### Usage
 // - Recent visit site url show in "Save title"
 // - Change item order by drag and drop 
-// - Delete item by doragging to another area(no item area).
+// - Delete item by dragging to another area(no item area).
+// - Clipboad to history by cliik extra button
 
 // ### bookmarkListName 
 // Input or select bookmark list file name
@@ -103,11 +104,13 @@ function switchByArgs(){
 	switch(FIRST_ARGS){
 		case "":
 			let extraMapStr = [
-				`srcPath=${APP_URL_HISTORY_PATH}`,
-				`onClickSort=true`,
-				'onSortableJs=true',
-				`onClickUrl=true`,
-				`onDialog=${ON_DIALOG}`
+				`src_path=${APP_URL_HISTORY_PATH}`,
+				`on_click_sort=true`,
+				'on_sortable_js=true',
+				`on_click_url=true`,
+				`on_dialog=${ON_DIALOG}`,
+				`extra_js_path_list=${01}/system/js/clipToHistory.js`,
+				`extra_label=CtoH`,
 			].join("|");
 			jsIntent.launchEditSite(
 				EDIT_FILE_PATH,

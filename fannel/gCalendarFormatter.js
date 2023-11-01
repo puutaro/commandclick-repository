@@ -2,6 +2,9 @@
 
 /// LABELING_SECTION_START
 // Set format Google Calendar @puutaro
+// ## Toolbar buttons
+// ### Play Button
+// Launch google calendar by cmd variables
 // ## Cmd Variables
 // --------
 // ### sourceUrl
@@ -102,7 +105,7 @@ function gmailLaunchMode(){
 switch(firstArgs){
 	case gCalendarMode:
 		execRegistCurrendar();
-		exit();
+		exitZero();
 		break;
 	case urlLaunchMode:
 		jsListSelect.updateListFileCon(
@@ -110,6 +113,6 @@ switch(firstArgs){
 			LAUNCH_URL
 		);
 		gmailLaunchMode();
-		exit();
+		exitZero();
 		break;
 };

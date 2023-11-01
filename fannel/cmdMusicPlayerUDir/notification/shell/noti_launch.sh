@@ -32,7 +32,7 @@ get_time(){
 			next
 		}
 		print $0
-	}'
+	}' 2>/dev/null
 }
 
 get_noti_title(){
@@ -49,7 +49,8 @@ get_noti_title(){
 				next
 			}
 			print $0
-		}')
+		}' 2>/dev/null\
+	)
 	case "${title_local}" in
 		"") echo "Loading.."
 			return

@@ -4,8 +4,8 @@ Table of Contents
 -------
 <!-- vim-markdown-toc GFM --> 
 * [Toolbar buttons](#toolbar-buttons)
+	* [Play button](#play-button)
 * [Cmd Variables](#cmd-variables)
-	* [play](#play)
 	* [playListName](#playlistname)
 	* [ttsPlay](#ttsplay)
 	* [numberPlay](#numberplay)
@@ -22,16 +22,14 @@ Table of Contents
 	* [terminalColor](#terminalcolor)
 
 ## Toolbar buttons
+--------
 
 ### Play Button
 
-- long press -> web search
+Launch tts play list site
 
 ## Cmd Variables
 --------
-
-### play 
-Launch tts play list site
 
 ### playListName 
 

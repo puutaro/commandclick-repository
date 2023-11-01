@@ -18,7 +18,7 @@ readonly CURRENT_POSI=$(\
 		gsub(/(data|[\:\{\}\x22])/, "", $0)
 		sub(/\..*/, "", $0)
 		print $0
-	}' \
+	}' 2>/dev/null \
 )
 
 if [ ${CURRENT_POSI} -gt ${SEEK_0_POSI_THRESHOLD} ]; then

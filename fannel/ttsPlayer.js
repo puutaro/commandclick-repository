@@ -92,11 +92,11 @@ function switchByArgs(){
 	switch(FIRST_ARGS){
 		case "":
 			let extraMapStr = [
-				`srcPath=${APP_URL_HISTORY_PATH}`,
-				`onClickSort=false`,
-				'onSortableJs=true',
-				`onClickUrl=true`,
-				`onDialog=false`
+				`src_path=${APP_URL_HISTORY_PATH}`,
+				`on_click_sort=false`,
+				'on_sortable_js=true',
+				`on_click_url=true`,
+				`on_dialog=false`
 			].join("|");
 			jsIntent.launchEditSite(
 				EDIT_FILE_PATH,

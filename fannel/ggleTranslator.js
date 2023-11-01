@@ -2,6 +2,9 @@
 
 /// LABELING_SECTION_START
 // Launch google translate site by highlight text or no it @puutaro
+// 
+// 1. (highlight text) 
+// 2. click
 /// LABELING_SECTION_END
 
 

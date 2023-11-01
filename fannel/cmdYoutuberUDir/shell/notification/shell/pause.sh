@@ -15,7 +15,7 @@ echo '{ "command": ["get_property", "pause"] }' \
 	sub(/,.*/, "", $0)
 	if($0 == "false") print "true"
 	else print "false"
-}' \
+}'  2>/dev/null  \
 | echo '{ "command": ["set_property", "pause", '$(cat)'] }' \
 | socat - "${MPV_TMP_SOCKET_PATH}"
 

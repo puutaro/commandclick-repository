@@ -6,12 +6,18 @@
 // Table of Contents
 // -------
 // <!-- vim-markdown-toc GFM -->
+// * [Toolbar buttons](#toolbar-buttons)
+//  * [Play Button](#play-button)
 // * [Cmd Variables](#cmd-variables)
 // 	* [TXT_TO_CLIP](#txt_to_clip)
 // 	* [REMOVE_TEXT](#remove_text)
 // * [Setting variables](#setting-variables)
 // 	* [terminalFontZoom](#terminalfontzoom)
 
+// ## Toolbar buttons
+
+// ### Play Button
+// Launch gpt3.5
 // ## Cmd Variables
 // --------
 // ### TXT_TO_CLIP 

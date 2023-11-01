@@ -6,6 +6,10 @@
 // -------
 // ### creatorJSName
 // You can decide created jsFileName
+
+// 1. Input `creatorJSName` or select from grid box 
+// 2. Press play button
+
 /// LABELING_SECTION_END
 
 
