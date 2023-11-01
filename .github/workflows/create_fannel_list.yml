@@ -1,7 +1,8 @@
 name: create fannel list
 on: 
+  workflow_dispatch:
   schedule:
-    - cron: '17 15 * * *'
+    - cron: '25 15 * * *'
 jobs:
   echo-fannel-list-update:
     runs-on: ubuntu-latest
