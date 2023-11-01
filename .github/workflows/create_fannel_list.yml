@@ -1,0 +1,12 @@
+name: create fannel list
+on: 
+  workflow_dispatch:
+jobs:
+  exec-create:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write # 書き込むために必要
+    steps:
+      - uses: actions/checkout@v3
+      - run: bash "manage/fannels/create_fannel_list.sh"
+      #- uses: stefanzweifel/git-auto-commit-action@v4
