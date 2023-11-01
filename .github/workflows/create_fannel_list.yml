@@ -9,13 +9,22 @@ jobs:
       - run: bash -c "pwd;ls"
       #- uses: stefanzweifel/git-auto-commit-action@v4
 
-  exec-find:
+  changes:
     runs-on: ubuntu-latest
+    outputs:
+      fannels: ${{ steps.filter.outputs.fannels }}
     steps:
-      - uses: actions/checkout@v3
-      - run: find  -type f -not -path '*/.git/*' -and -not -path '*/exp_fannel/*' -and -not -path '*/old/*' -and -not -path '*/.difbk/*' -and -not -path '*/manage/*' -and -not -name '*gitignore' -and -not -name '*LICENSE' -and -not -name '*README.md' -and -not -name '*difbk_ignore' -printf '%P\n'
+    - uses: actions/checkout@v2
+    - uses: dorny/paths-filter@v2
+      id: filter
+      with:
+        filters: |
+          fannels:
+            - 'fannel/**'
 
   exec-create:
+    needs: changes
+    if: ${{ needs.changes.outputs.fannels == 'true' }}
     runs-on: ubuntu-latest
     permissions:
       contents: write # 書き込むために必要
