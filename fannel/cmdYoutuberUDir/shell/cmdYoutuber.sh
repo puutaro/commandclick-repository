@@ -188,7 +188,6 @@ echoWebSearchPlayList(){
 	local searchWord="$(echo "${webSearchArgs}" | cut -f2)"
 	local searchRawListPath="${NOTI_SHELL_TMP_DIR_PATH}/searchRawList.txt"
 	mkdir -p "${NOTI_SHELL_TMP_DIR_PATH}"
-	toast "editing.."
 	bash "${YTFZF_SHELL_PATH}" \
 		"${searchWord}" \
 	| awk -F '\t'\
