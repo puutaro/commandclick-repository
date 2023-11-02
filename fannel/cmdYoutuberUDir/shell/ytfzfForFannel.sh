@@ -940,14 +940,8 @@ _video_info_text () {
 #This function generates a series of lines that will be displayed in fzf, or some other interface
 #takes in a series of jsonl lines, each jsonl should follow the VIDEO JSON FORMAT
 video_info_text () {
-    local search_desc="web search.."
     local search_times=0
      jq -r '[.title, .channel, .duration, .views, .date, .viewed, .url, .scraper]|join("\t|")' | while IFS="$tab_space" read -r title channel duration views date viewed url scraper; do
-        case "$((search_times % 7))" in
-            "0")
-                toast "${search_desc}"
-                ;;
-        esac
         scraper="${scraper#"|"}"
         fn_name=video_info_text_"${scraper}"
         if command_exists "$fn_name"; then
@@ -955,7 +949,6 @@ video_info_text () {
         else
             _video_info_text "$title" "$channel" "$duration" "$views" "$date" "$viewed" "$url" "$scraper"
         fi
-        search_desc="${search_desc}."
         search_times=$((search_times + 1))
     done
     unset title channel duration views date viewed url scraper
@@ -2491,7 +2484,7 @@ interface_text () {
         | awk -F '\t' \
         '{
             ago = $5
-            sub("\|", "", ago)
+            sub("\\|", "", ago)
             sub("hour", "1", ago)
             sub("hours", "1", ago)
             sub("ago", "", ago)

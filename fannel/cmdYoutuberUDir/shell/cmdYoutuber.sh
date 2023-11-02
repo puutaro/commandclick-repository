@@ -12,6 +12,7 @@ readonly INSTALL_EVIDENCE_FILE_PATH="$(get_rvar "${REPLACE_VARS_CON}" cmdTubePla
 readonly NOTI_SHELL_DIR_PATH="$(\
 	get_rvar "${REPLACE_VARS_CON}" cmdTubePlayerShellNotiShellDirPath\
 )"
+readonly NOTI_SHELL_TMP_DIR_PATH="${NOTI_SHELL_DIR_PATH}/temp"
 readonly NOTI_LAUNCH_SHELL_PATH="${NOTI_SHELL_DIR_PATH}/noti_launch.sh"
 readonly NOTI_UPDATE_SHELL_PATH="${NOTI_SHELL_DIR_PATH}/update_noti_title.sh"
 readonly NOTI_EXIT_SHELL_PATH="${NOTI_SHELL_DIR_PATH}/noti_exit.sh"
@@ -185,18 +186,21 @@ echoWebSearchPlayList(){
 	local webSearchArgs="${1}"
 	local onWebSearchMode="$(echo "${webSearchArgs}" | cut -f1)"
 	local searchWord="$(echo "${webSearchArgs}" | cut -f2)"
-	
+	local searchRawListPath="${NOTI_SHELL_TMP_DIR_PATH}/searchRawList.txt"
+	mkdir -p "${NOTI_SHELL_TMP_DIR_PATH}"
 	toast "editing.."
-	local searchRawList=$(\
-		bash "${YTFZF_SHELL_PATH}" \
-			"${searchWord}" \
-		| awk -F '\t'\
-			-v CONST_MAX_MINITS="${CONST_MAX_MINITS}" \
-		'{
-			print $2"\t"$3"\t"$4
-		}' \
-	)
-	echo "${searchRawList}" \
+	bash "${YTFZF_SHELL_PATH}" \
+		"${searchWord}" \
+	| awk -F '\t'\
+		-v CONST_MAX_MINITS="${CONST_MAX_MINITS}" \
+	'{
+		print $2"\t"$3"\t"$4
+	}' > "${searchRawListPath}" &
+	local yt_download_pid=$!
+	wmsg \
+		"${yt_download_pid}" \
+		"web search"
+	cat "${searchRawListPath}" \
 		| sort -n  \
 		| cut -f2-
 }
