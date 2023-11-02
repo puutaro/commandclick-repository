@@ -1,0 +1,3 @@
+${0}/textToSpeech.js
+${0}/askGpt35.js
+${0}/cmdBookmaker.js
