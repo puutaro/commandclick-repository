@@ -1,3 +1,4 @@
+selectMenuDir/menuList/menu.txt
 sendClipToGmailDir/settingVariables/setVariableTypes.js
 sendClipToGmailDir/settingVariables/hideSettingVariables.js
 sendClipToGmailDir/settingVariables/setReplaceVariables.js
