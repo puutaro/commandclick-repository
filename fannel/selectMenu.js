@@ -38,10 +38,12 @@ setReplaceVariables="BTN_CMD=cmd"
 setReplaceVariables="BTN_LABEL=label"
 setReplaceVariables="LIST_PATH=listPath"
 setReplaceVariables="LIMIT_NUM=limitNum"
+setReplaceVariables="URL_HISTORY_CLICK=urlHistoryClick"
 setReplaceVariables="currentAppDirPath=${01}"
 setReplaceVariables="selectMenuDirPath=${currentAppDirPath}/${001}"
 setReplaceVariables="selectMenuListDirPath=${selectMenuDirPath}/menuList"
 setReplaceVariables="selectMenuListFilePath=${selectMenuListDirPath}/menu.txt"
+setVariableTypes="SET_ARGS:CB=-!urlHistoryClick"
 setVariableTypes="EDIT_MENU:LBL:DSL:BTN=${TEXT_LABEL}=THIS|${LIST_PATH}=${selectMenuListFilePath}|${BTN_CMD}=setf type=ListAdd suffix=.js dirPath=${01}!${BTN_LABEL}=ADD"
 setVariableTypes="HIGHLIGHT_SCRIPT:TXT:FGB=${TEXT_LABEL}=THIS|${FGB_DIR_PATH}=${01}!${FGB_SUFFIX}=.js"
 hideSettingVariables="editExecute"
@@ -52,6 +54,7 @@ scriptFileName="selectMenu.js"
 
 
 /// CMD_VARIABLE_SECTION_START
+SET_ARGS=""
 HIGHLIGHT_SCRIPT="webSearcher.js"
 EDIT_MENU="${01}/${001}/menuList/menu.txt"
 /// CMD_VARIABLE_SECTION_END
@@ -77,6 +80,7 @@ switcher();
 function switcher(){
 	switch(firstArgs){
 		case "":
+		case "${URL_HISTORY_CLICK}":
 			execLaunchMenuHandler();
 			break;
 	};
@@ -126,6 +130,9 @@ function launchMenu(){
 	if(!selectedMenu) exitZero();
 	const selectedJsPath = 
 		[currentAppDirPath, selectedMenu].join("/");
+	jsArgs.set(
+		decideSetArgs()
+	);
 	launchJsFile(
 		selectedJsPath,
 	);
@@ -149,5 +156,13 @@ function getSelectionText() {
         text = document.selection.createRange().text;
     };
     return text;
+};
+
+function decideSetArgs(){
+	switch(SET_ARGS){
+		case "${URL_HISTORY_CLICK}":
+			return "SET_ARGS";
+	};
+	return ""
 };
 
