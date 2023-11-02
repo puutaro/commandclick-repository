@@ -13,6 +13,7 @@ LIMIT_NUM=limitNum,
 // setting
 CHANNEL_NUM=21,
 MPV_SOCKET="/tmp/mpv_socket",
+URL_HISTORY_CLICK_MODE="urlHistoryClick",
 
 // path
 cmdMusicPlayerDirPath=

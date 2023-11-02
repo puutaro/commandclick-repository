@@ -12,6 +12,7 @@ FCB_TYPE=type,
 // setting
 CHANNEL_NUM=20,
 MPV_SOCKET="/tmp/mpv_socket",
+URL_HISTORY_CLICK_MODE="urlHistoryClick",
 
 // path
 cmdTubePlayerDirPath=

@@ -67,7 +67,10 @@ const defaultTubePlayListTsvName = "tubePlayList.tsv";
 let noWebSearchModeList = ["OFF"];
 
 var FIRST_ARGS = args.at(0);
-if(FIRST_ARGS == PLAY){
+if(
+	FIRST_ARGS == PLAY
+	|| FIRST_ARGS == "${URL_HISTORY_CLICK_MODE}"
+){
 	FIRST_ARGS = playMode;
 };
 execStop();
@@ -125,6 +128,7 @@ function argSwitcher() {
 			);
 			break;
 		case SHUFFLE_MODE:
+			jsUbuntu.boot();
 			jsUbuntu.execScriptByBackground(
 				EXEC_SHELL_PATH,
 				`${SHUFFLE_MODE}\t${EDIT_FILE_PATH}\t${WEB_SEARCH_ARGS}`,
@@ -132,6 +136,7 @@ function argSwitcher() {
 			);
 			break;
 		case ORDINALY_MODE:
+			jsUbuntu.boot();
 			jsUbuntu.execScriptByBackground(
 				EXEC_SHELL_PATH,
 				`${ORDINALY_MODE}\t${EDIT_FILE_PATH}\t${WEB_SEARCH_ARGS}\t`,
@@ -139,6 +144,7 @@ function argSwitcher() {
 			);
 			break;
 		case REVERSE_MODE:
+			jsUbuntu.boot();
 			jsUbuntu.execScriptByBackground(
 				EXEC_SHELL_PATH,
 				`${REVERSE_MODE}\t${EDIT_FILE_PATH}\t${WEB_SEARCH_ARGS}`,
@@ -146,6 +152,7 @@ function argSwitcher() {
 			);
 			break;
 		case NUMBER_MODE:
+			jsUbuntu.boot();
 			jsUbuntu.execScriptByBackground(
 				EXEC_SHELL_PATH,
 				`${NUMBER_MODE}\t${EDIT_FILE_PATH}\t${WEB_SEARCH_ARGS}\t${numberPlay}`,

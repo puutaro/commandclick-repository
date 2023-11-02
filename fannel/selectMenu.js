@@ -72,13 +72,13 @@ jsFileSystem.createDir(
 );
 
 let args = jsArgs.get().split("\t");
-const firstArgs = args.at(0);
+const FIRST_ARGS = args.at(0);
 
 switcher();
 
 
 function switcher(){
-	switch(firstArgs){
+	switch(FIRST_ARGS){
 		case "":
 		case "${URL_HISTORY_CLICK}":
 			execLaunchMenuHandler();

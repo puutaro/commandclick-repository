@@ -44,7 +44,10 @@ Install="install"
 let args = jsArgs.get().split("\t");
 var FIRST_ARGS = args.at(0);
 const tsvExtend = ".tsv";
-if(FIRST_ARGS == PLAY){
+if(
+	FIRST_ARGS == PLAY
+	|| FIRST_ARGS == "${URL_HISTORY_CLICK_MODE}"
+){
 	FIRST_ARGS = musicPlay;
 };
 const FANNEL_SCRIPT_PATH = "${01}/${02}";
@@ -112,6 +115,7 @@ function switchByArgs(){
 	    	jsUbuntu.boot();
 	    	break;
 		case INSTALL_MODE:
+			jsUbuntu.boot();
 			jsToast.short("Installing..");
 			jsUbuntu.execScriptByBackground(
 				EXEC_SHELL_PATH,
@@ -123,6 +127,7 @@ function switchByArgs(){
 			execStop();
 			break;
 		case SHUFFLE_MODE:
+			jsUbuntu.boot();
 			initFileList();
 			jsUbuntu.execScriptByBackground(
 				EXEC_SHELL_PATH,
@@ -132,6 +137,7 @@ function switchByArgs(){
 			break;
 		case ORDINALY_MODE:
 		case REVERSE_MODE:
+			jsUbuntu.boot();
 			initFileList();
 			jsUbuntu.execScriptByBackground(
 				EXEC_SHELL_PATH,
@@ -140,6 +146,7 @@ function switchByArgs(){
 			);
 			break;
 		case NUMBER_MODE:
+			jsUbuntu.boot();
 			initFileList();
 			jsUbuntu.execScriptByBackground(
 				EXEC_SHELL_PATH,
