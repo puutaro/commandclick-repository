@@ -91,6 +91,7 @@ function argSwitcher() {
 		case "${RE_SUMMARY_MODE}":
 			reSumamryHandler();
 			break;
+		case "${URL_HISTORY_CLICK_MODE}":
 		case "${SUMMARY_MODE}":
 			summaryHandler();
 			break;
