@@ -1,0 +1,3 @@
+
+powerPokerDir/.idea/
+powerPokerDir/untitled/

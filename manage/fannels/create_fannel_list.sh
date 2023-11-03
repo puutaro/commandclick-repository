@@ -1,9 +1,18 @@
 #!/bin/bash
 
-pwd
+
+readonly ignore_list_path="manage/fannels/ignore_list.txt"
+readonly grep_cmd=$(\
+	cat "${ignore_list_path}" \
+	| awk '{
+		if(!$0) next
+		printf " | grep -Ev \x22^"$0"\x22"
+	}'\
+)
+
 cd fannel
 
-find  \
+readonly find_cmd="find  \
 	-type f \
 	-not -path '*/.git/*' \
 	-not -path '*/.github/*' \
@@ -15,6 +24,10 @@ find  \
 	-and -not -name '*LICENSE' \
 	-and -not -name '*README.md' \
 	-and -not -name '*difbk_ignore' \
-	-printf '%P\n' \
-| sort \
-> "../manage/fannels/list/fannels.txt"
+	-printf '%P\n' ${grep_cmd}"
+
+bash -c "${find_cmd}" \
+	| sort \
+	| sed "/^$/d" \
+	> "${ignore_list_path}"
+
