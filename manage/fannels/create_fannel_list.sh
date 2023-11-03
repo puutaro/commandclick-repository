@@ -16,4 +16,5 @@ find  \
 	-and -not -name '*README.md' \
 	-and -not -name '*difbk_ignore' \
 	-printf '%P\n' \
- >  "../manage/fannels/list/fannels.txt"
+| sort \
+> "../manage/fannels/list/fannels.txt"
