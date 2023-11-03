@@ -20,6 +20,8 @@ Table of Contents
 	* [SETTING](#setting)
 	* [newsUrlListName](#newsurllistname)
 	* [EDIT_NEWS_URL_LIST_NAME](#edit_news_url_list_name)
+* [Execute target on click in url history](#execute-target-on-click-in-url-history)
+
 * [Acknowledge](#acknowledge)
 * [Setting variables](#setting-variables)
 	* [scriptFileName](#scriptfilename)
@@ -131,6 +133,10 @@ Edit news url list name by `renameEditNewsUrlListName`
 | blank | Delete news url list name |
 | other | Rename news url list name (auto comp prefix `news`) |
 
+
+## Execute target on click in url history
+
+[SUMMARY](#summary)
 
 ## Acknowledge
 ----------
