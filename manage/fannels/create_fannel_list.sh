@@ -2,6 +2,7 @@
 
 
 readonly ignore_list_path="manage/fannels/ignore_list.txt"
+readonly output_fannels_list="manage/fannels/list/fannels.txt"
 readonly grep_cmd=$(\
 	cat "${ignore_list_path}" \
 	| awk '{
@@ -29,5 +30,5 @@ readonly find_cmd="find  \
 bash -c "${find_cmd}" \
 	| sort \
 	| sed "/^$/d" \
-	> "../${ignore_list_path}"
+	> "../${output_fannels_list}"
 
