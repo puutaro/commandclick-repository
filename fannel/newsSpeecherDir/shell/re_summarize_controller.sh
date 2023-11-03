@@ -20,4 +20,5 @@ esac
 
 exec bash \
 	"${NEWS_SPEECHER_CAT_AND_SPEECH_SHELL_PATH}"\
-	"$@"
+	"$@" \
+	2>/dev/null

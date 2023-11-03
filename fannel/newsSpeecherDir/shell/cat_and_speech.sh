@@ -1,8 +1,6 @@
 #!/bin/bash
 
 set -eu 
-
-echo "### display news"
 e=""
 readonly IMPORTANCE="${1:-low}"
 readonly REPLACE_VARS_CON="$(get_rvar "${0}")"
@@ -15,6 +13,12 @@ readonly NEWS_SPEECHER_ARGS_TSV_PATH="$(\
 readonly ARGS_CON="$(\
 	cat "${NEWS_SPEECHER_ARGS_TSV_PATH}"
 )"
+readonly ON_OUTPUT=$(tsvar "${ARGS_CON}" ON_OUTPUT)
+case "${ON_OUTPUT}" in
+	"ON")
+		echo "### display news"
+		;;
+esac
 readonly EACH_NUM=$(tsvar "${ARGS_CON}" EACH_NUM)
 readonly TO_LANG=$(tsvar "${ARGS_CON}" TO_LANG)
 readonly SPEECH_MODE=$(tsvar "${ARGS_CON}" SPEECH_MODE)
@@ -40,6 +44,32 @@ function monitor_to_default(){
 		-e "${IS_MONITOR_UPDATE_SCHEMA}=true"
 }
 
+cat_contents(){
+	case "${ON_OUTPUT}" in
+	"OFF")
+			return
+			;;
+	esac
+	cat "${PLAY_CONTENTS_TXT_PATH}" \
+	| awk \
+	'BEGIN {
+		times = 1
+	}
+	{
+		fast_return_con = $0
+		gsub(/[\t ]/, "", fast_return_con)
+		if(!fast_return_con) next
+		gsub(" ", "\t", $0)
+		array_length = split( $0 , line_array, "\t" )
+		summary = ""
+		for(i=3; i<=array_length; i++){
+			summary = summary" "line_array[i]
+		}
+		print times"\t"$2"\t"summary
+		times++
+	}' > "${MONITOR_FILE_PATH}"
+}
+
 
 if [ ! -f "${PLAY_CONTENTS_TXT_PATH}" ]; then \
 	echo "not found ${PLAY_CONTENTS_TXT_PATH}"
@@ -55,24 +85,7 @@ send-broadcast \
 	-e "${IS_MONITOR_SCROLL_SCHEMA}=false" \
 	-e "${IS_MONITOR_UPDATE_SCHEMA}=true"
 
-cat "${PLAY_CONTENTS_TXT_PATH}" \
-| awk \
-'BEGIN {
-	times = 1
-}
-{
-	fast_return_con = $0
-	gsub(/[\t ]/, "", fast_return_con)
-	if(!fast_return_con) next
-	gsub(" ", "\t", $0)
-	array_length = split( $0 , line_array, "\t" )
-	summary = ""
-	for(i=3; i<=array_length; i++){
-		summary = summary" "line_array[i]
-	}
-	print times"\t"$2"\t"summary
-	times++
-}' > "${MONITOR_FILE_PATH}"
+cat_contents
 
 case "${ON_SPEECH}" in
 	"OFF") 

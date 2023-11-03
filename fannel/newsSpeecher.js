@@ -40,6 +40,7 @@ Install=""
 TO_LANG="-"
 ON_SPEECH="ON"
 ON_BEFORE_SUMMARY="ON"
+ON_OUTPUT_IN_HISTRORY_CLICK="OFF"
 MAX_CONCUR=5
 PICH=50
 SUMMARY_LENGTH="300"
@@ -245,6 +246,7 @@ function settingHandler(){
 		`TO_LANG:CB=-!ja!en!zh!es!ko`,
 		`ON_SPEECH:LBL:CB=${TXT_LABEL}=THIS|ON!OFF`,
 		`ON_BEFORE_SUMMARY:LBL:CB=${TXT_LABEL}=THIS|ON!OFF`,
+		`ON_OUTPUT_IN_HISTRORY_CLICK:LBL:CB=${TXT_LABEL}=THIS|ON!OFF`,
 		`PICH:TXT:LBL:NUM=${TXT_LABEL}=Pich (normal: 50)|!1..100!1`,
 		`SUMMARY_LENGTH:TXT:LBL:NUM=${TXT_LABEL}=THIS|!100..1000!100`,
 		`MAX_CONCUR:TXT:LBL:NUM=${TXT_LABEL}=Max concur (default: 5)|!2..20!1`,
@@ -253,6 +255,7 @@ function settingHandler(){
 		`TO_LANG=${TO_LANG}`,
 		`ON_SPEECH=${ON_SPEECH}`,
 		`ON_BEFORE_SUMMARY=${ON_BEFORE_SUMMARY}`,
+		`ON_OUTPUT_IN_HISTRORY_CLICK=${ON_OUTPUT_IN_HISTRORY_CLICK}`,
 		`PICH=${PICH}`,
 		`SUMMARY_LENGTH=${SUMMARY_LENGTH}`,
 		`MAX_CONCUR=${MAX_CONCUR}`,
@@ -300,6 +303,7 @@ function saveArgsTsv(){
 		`SPEECH_MODE\t${SPEECH_MODE}`,
 		`ON_SPEECH\t${ON_SPEECH}`,
 		`ON_BEFORE_SUMMARY\t${ON_BEFORE_SUMMARY}`,
+		`ON_OUTPUT\t${decide_on_output()}`,
 		`SUMMARY_LENGTH\t${SUMMARY_LENGTH}`,
 		`MAX_CONCUR\t${MAX_CONCUR}`,
 		`PICH\t${PICH}`,
@@ -330,4 +334,12 @@ function decide_arg(first_arg){
 		LONG_PRESS_NEWS_URL.includes("https://")
 	) return "${LONG_PRESS_SUMMARY_MODE}";
 	return first_arg;
+};
+
+function decide_on_output(){
+	if(
+		FIRST_ARG == "${URL_HISTORY_CLICK_MODE}"
+		&& ON_OUTPUT_IN_HISTRORY_CLICK == "OFF"
+	) return "OFF";
+	return "ON";
 };
