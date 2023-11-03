@@ -43,13 +43,13 @@ Input or select play list file name
 
 ### musicPlay 
 Select shuffle or ordinaly and press
-1. Press "Exec"
+1. Press "PLAY"
 2. (Execute play list)
 
 ### numberPlay 
 Input or inc/dec number
 
-1. Press "Exec" 
+1. Press "PLAY" 
 2. (Play number)
 
 ### About Volume Controll

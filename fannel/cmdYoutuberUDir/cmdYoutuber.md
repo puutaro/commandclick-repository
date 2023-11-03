@@ -11,10 +11,12 @@ Table of Contents
 	* [Install](#install)
 	* [searchWord](#searchword)
 	* [playMode](#playmode)
+	* [PLAY](#play)
 	* [tubePlayListName](#tubeplaylistname)
 	* [STOP](#stop)
 	* [numberPlay](#numberplay)
 	* [EDIT_TUBE_PLAY_LIST](#edit_tube_play_list)
+* [Execute target on click in url history](#execute-target-on-click-in-url-history)
 * [Acknowledge](#acknowledge)
 * [Setting variables](#setting-variables)
 	* [onUrlHistoryRegister](#onurlhistoryregister)
@@ -59,6 +61,10 @@ Select shuffle or ordinaly and press
 1. Press "Exec"
 2. (Execute play list)
 
+## PLAY
+
+Play youtube music
+
 ### tubePlayListName
 Input or select play list file name
 - Prefix must be "tube" 
@@ -90,6 +96,11 @@ Edit tube play list name by `renameTubePlayListName`
 | ----------- | ----------- |
 | blank | Delete tube url list name |
 | other | Rename tube url list name (auto comp prefix `tube`) |
+
+
+## Execute target on click in url history
+
+[PLAY](#play)
 
 ## Acknowledge
 ----------

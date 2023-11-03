@@ -16,6 +16,7 @@ Table of Contents
 	* [startNum](#startnum)
 	* [endNum](#endnum)
 	* [EDIT_MUSIC_PLAY_LIST](#edit_music_play_list)
+* [Execute target on click in url history](#execute-target-on-click-in-url-history)
 * [Setting variables](#setting-variables)
 	* [terminalFontZoom](#terminalfontzoom)
 	* [terminalFontColor](#terminalfontcolor)
@@ -78,6 +79,9 @@ Edit music play list name by `renameMusicPlayListName`
 | blank | Delete music file path list name |
 | other | Rename music file path list name (auto comp prefix `music`) |
 
+## Execute target on click in url history
+
+[musicPlay](#musicplay)
 
 ## Setting variables
 ---------
