@@ -29,5 +29,5 @@ readonly find_cmd="find  \
 bash -c "${find_cmd}" \
 	| sort \
 	| sed "/^$/d" \
-	> "${ignore_list_path}"
+	> "../${ignore_list_path}"
 
