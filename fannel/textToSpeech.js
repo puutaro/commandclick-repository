@@ -53,7 +53,7 @@ const LEAST_STRING_NUM = 300;
 let speechModeType = {
     All: "All",
     Summary: "Summary",
-    Highlight: "Highlight"
+    Highlight: "Highlight",
 };
 
 function makeTocArr(list){

@@ -103,6 +103,7 @@ function switchByArgs(){
 	);
 	switch(FIRST_ARGS){
 		case "":
+		case "urlHistoryClick":
 			let extraMapStr = [
 				`src_path=${APP_URL_HISTORY_PATH}`,
 				`on_click_sort=true`,
