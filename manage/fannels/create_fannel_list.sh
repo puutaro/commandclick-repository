@@ -29,6 +29,6 @@ readonly find_cmd="find  \
 
 bash -c "${find_cmd}" \
 	| sort \
-	| sed "/^$/d" \
+	| awk '1' \
 	> "../${output_fannels_list}"
 

@@ -104,11 +104,6 @@ ocrViewerDir/sh/install.sh
 ocrViewerDir/sh/notification/exit_notification.sh
 ocrViewerDir/sh/notification/finish_open_notification.sh
 ocrViewerDir/sh/ocr.sh
-powerPokerDir/.idea/jsLibraryMappings.xml
-powerPokerDir/.idea/modules.xml
-powerPokerDir/.idea/powerPokerDir.iml
-powerPokerDir/.idea/vcs.xml
-powerPokerDir/.idea/workspace.xml
 powerPokerDir/html/css/effect.css
 powerPokerDir/html/css/powerPoker.css
 powerPokerDir/html/css/switchView.css
@@ -183,11 +178,6 @@ powerPokerDir/images/cards/trumpSpade6-150x150.png
 powerPokerDir/images/cards/trumpSpade7-150x150.png
 powerPokerDir/images/cards/trumpSpade8-150x150.png
 powerPokerDir/images/cards/trumpSpade9-150x150.png
-powerPokerDir/untitled/.idea/misc.xml
-powerPokerDir/untitled/.idea/modules.xml
-powerPokerDir/untitled/.idea/vcs.xml
-powerPokerDir/untitled/.idea/workspace.xml
-powerPokerDir/untitled/untitled.iml
 pulseReceiver.js
 selectMenu.js
 selectMenuDir/menuList/menu.txt
