@@ -21,10 +21,10 @@ cmdMusicPlayerUDir/notification/shell/next.sh
 cmdMusicPlayerUDir/notification/shell/noti_exit.sh
 cmdMusicPlayerUDir/notification/shell/noti_launch.sh
 cmdMusicPlayerUDir/notification/shell/noti_update_title_msg.sh
+cmdMusicPlayerUDir/notification/shell/ordinaly_update_title_msg.sh
 cmdMusicPlayerUDir/notification/shell/pause.sh
 cmdMusicPlayerUDir/notification/shell/prev.sh
 cmdMusicPlayerUDir/notification/shell/to.sh
-cmdMusicPlayerUDir/notification/shell/update_noti_title.sh
 cmdMusicPlayerUDir/settingVariables/hideSettingVariables.js
 cmdMusicPlayerUDir/settingVariables/setReplaceVariables.js
 cmdMusicPlayerUDir/settingVariables/setVariableTypes.js
@@ -46,10 +46,10 @@ cmdYoutuberUDir/shell/notification/shell/next.sh
 cmdYoutuberUDir/shell/notification/shell/noti_exit.sh
 cmdYoutuberUDir/shell/notification/shell/noti_launch.sh
 cmdYoutuberUDir/shell/notification/shell/noti_update_title_msg.sh
+cmdYoutuberUDir/shell/notification/shell/ordinaly_update_title_msg.sh
 cmdYoutuberUDir/shell/notification/shell/pause.sh
 cmdYoutuberUDir/shell/notification/shell/prev.sh
 cmdYoutuberUDir/shell/notification/shell/to.sh
-cmdYoutuberUDir/shell/notification/shell/update_noti_title.sh
 cmdYoutuberUDir/shell/ytfzfForFannel.sh
 cmdclickStartupDir/longPressMenuDir/imageLongPressMenu.txt
 cmdclickStartupDir/longPressMenuDir/srcAnchorLongPressMenu.txt
