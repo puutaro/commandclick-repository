@@ -10,7 +10,7 @@ readonly NOTI_SHELL_DIR_PATH="$(\
 	get_rvar "${REPLACE_VARS_CON}" cmdMusicPlayerNotiShellDirPath\
 )"
 readonly NOTI_LAUNCH_SHELL_PATH="${NOTI_SHELL_DIR_PATH}/noti_launch.sh"
-readonly NOTI_UPDATE_SHELL_PATH="${NOTI_SHELL_DIR_PATH}/update_noti_title.sh"
+readonly NOTI_ORDINALY_UPDATE_SHELL_PATH="${NOTI_SHELL_DIR_PATH}/ordinaly_update_title_msg.sh"
 readonly NOTI_EXIT_SHELL_PATH="${NOTI_SHELL_DIR_PATH}/noti_exit.sh"
 readonly INSTALL_EVIDENCE_FILE_PATH="$(\
 	get_rvar "${REPLACE_VARS_CON}" cmdMusicPlayerInstallCompFilePath\
@@ -99,18 +99,16 @@ judge_stop_by_play_mode(){
 }
 
 launch_notification(){
-	kill_ptree \
-		>/dev/null  2>&1
-	bash "${NOTI_UPDATE_SHELL_PATH}" &
+	local mpv_pid="${1}"
 	bash "${NOTI_LAUNCH_SHELL_PATH}"
+	bash "${NOTI_ORDINALY_UPDATE_SHELL_PATH}" \
+		"${mpv_pid}"
 }
 
 play_temp_list(){
 	local play_mode="${1:-}"
 	cut_music_history_limit_over
 	stop_mpv_process
-	sleep 0.5
-	launch_notification
 	rm -rf "${MPV_TMP_SOCKET_PATH}"
 	mpv \
 		--input-ipc-server="${MPV_TMP_SOCKET_PATH}" \
@@ -120,7 +118,11 @@ play_temp_list(){
 		--playlist="${TMP_PLAY_LIST_PATH}" \
 		--no-osc \
 		2>/dev/null \
-	| tee  -a "${MUSIC_HISTORY_PATH}"
+	| tee  -a "${MUSIC_HISTORY_PATH}" \
+	&
+	local mpv_pid=$!
+	launch_notification \
+		"${mpv_pid}"
 }
 
 
