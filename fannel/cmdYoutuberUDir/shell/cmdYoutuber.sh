@@ -14,7 +14,7 @@ readonly NOTI_SHELL_DIR_PATH="$(\
 	get_rvar "${REPLACE_VARS_CON}" cmdTubePlayerShellNotiShellDirPath\
 )"
 readonly NOTI_LAUNCH_SHELL_PATH="${NOTI_SHELL_DIR_PATH}/noti_launch.sh"
-readonly NOTI_UPDATE_SHELL_PATH="${NOTI_SHELL_DIR_PATH}/update_noti_title.sh"
+readonly NOTI_ORDINALY_UPDATE_SHELL_PATH="${NOTI_SHELL_DIR_PATH}/ordinaly_update_title_msg.sh"
 readonly NOTI_EXIT_SHELL_PATH="${NOTI_SHELL_DIR_PATH}/noti_exit.sh"
 readonly TMP_PLAY_LIST_NAME="tmp_play_list"
 readonly TMP_PLAY_LIST_PATH="${PLAY_PROCESS_DIR_PATH}/${TMP_PLAY_LIST_NAME}"
@@ -101,19 +101,16 @@ judge_stop_by_play_mode(){
 
 
 launch_notification(){
-	kill_ptree \
-		"${NOTI_UPDATE_SHELL_PATH}" \
-		>/dev/null  2>&1
-	bash "${NOTI_UPDATE_SHELL_PATH}" &
+	local mpv_pid="${1}"
 	bash "${NOTI_LAUNCH_SHELL_PATH}"
+	bash "${NOTI_ORDINALY_UPDATE_SHELL_PATH}" \
+		"${mpv_pid}"
 }
 
 
 play_temp_list(){
 	local play_mode="${1:-}"
 	stop_mpv_process
-	sleep 0.5
-	launch_notification
 	rm -rf "${MPV_TMP_SOCKET_PATH}"
 	mpv \
 		--input-ipc-server="${MPV_TMP_SOCKET_PATH}" \
@@ -122,7 +119,11 @@ play_temp_list(){
 		--loop-playlist=inf \
 		--playlist="${TMP_PLAY_LIST_PATH}" \
 		--no-osc \
-	 2>/dev/null
+	 2>/dev/null \
+	 &
+	 local mpv_pid=$!
+	 launch_notification \
+	 	"${mpv_pid}"
 }
 
 echo_temp_play_list(){
