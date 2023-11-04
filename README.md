@@ -1,7 +1,7 @@
 ![cmdclick_repository_sha_nuki](https://user-images.githubusercontent.com/55217593/226264143-2da03394-0c9d-4d11-966d-09588a2c90d8.png)
 
 # commandclick-repository
-`CommandClick`'s `fannel` repository
+`CommandClick`'s [`fannel`](https://github.com/puutaro/CommandClick/blob/master/md/developer/glossary.md#fannel) repository
 
 [`fannel`](https://github.com/puutaro/CommandClick/blob/master/md/developer/glossary.md#fannel) is `ComamndClick` using script (javascript, and shellscript)  
 For instance, your click script in `CommandClick`. One thing I can say that `CommandClick` is developed for the purpose of changing javaxcript and shellscript to gui appication. That applies to click script. It's so called Gui application. We can say so. I call the gui application `fannel`.
@@ -21,7 +21,7 @@ Table of Contents
 Desire
 -----  
 
-`fannel` is idea application. Add idea to your javascript and shellscript skill.　That's all there is to great it.
+[`fannel`](https://github.com/puutaro/CommandClick/blob/master/md/developer/glossary.md#fannel) is idea application. Add idea to your javascript and shellscript skill.　That's all there is to great it.
 Therefore commit your idea app to this repository. Don't forget author(`@`yourname).
 
 
@@ -31,7 +31,7 @@ Usage
 
 ### Configuration
 
-`fannel` is configured script and script raw name(no suffix name) + "Dir"  
+[`fannel`](https://github.com/puutaro/CommandClick/blob/master/md/developer/glossary.md#fannel) is configured script and script raw name(no suffix name) + "Dir"  
 
 ex) cmdYoutube fannel  
 cmdYoutube.js, cmdYoutubeDir  
