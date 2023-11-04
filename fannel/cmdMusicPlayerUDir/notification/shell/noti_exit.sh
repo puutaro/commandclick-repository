@@ -15,10 +15,6 @@ readonly FANNEL_NAME_PATH=$(\
 
 pkill mpv
 
-kill_ptree \
-	"${NOTI_ORDINALY_UPDATE_SHELL_PATH}" \
->/dev/null  2>&1
-
 noti \
 	-t exit \
 	-cn "${1}"
