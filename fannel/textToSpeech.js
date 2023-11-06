@@ -12,6 +12,7 @@
 // | `All` | speech site contents |
 // | `Summary` | speech site sumamry |
 // | `Highlight` | speech highlight text |
+// | `Clipboard` | speech clipboard text |
 
 // ### toLang
 // textToSpeech language
@@ -30,7 +31,7 @@
 
 /// SETTING_SECTION_START
 setReplaceVariables="TXT_LABEL=label"
-setVariableTypes="speechMode:LBL:CB=${TXT_LABEL}=this|All!Summary!Highlight"
+setVariableTypes="speechMode:LBL:CB=${TXT_LABEL}=this|All!Summary!Highlight!Clipboard"
 setVariableTypes="Speed:TXT:NUM=!1..100!1"
 setVariableTypes="Pitch:TXT:NUM=!1..100!1"
 setVariableTypes="toLang:CB=-!ja!en!zh!es!ko"
@@ -54,6 +55,7 @@ let speechModeType = {
     All: "All",
     Summary: "Summary",
     Highlight: "Highlight",
+    Clipboard: "Clipboard",
 };
 
 function makeTocArr(list){
@@ -181,6 +183,9 @@ switch(speechMode){
         break;
     case speechModeType.Highlight:
         var speechText = getSelectionText();
+        break;
+    case speechModeType.Clipboard:
+        var speechText = jsUtil.echoFromClipboard();
         break;
 };
 
