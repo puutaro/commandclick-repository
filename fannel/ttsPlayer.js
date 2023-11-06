@@ -252,10 +252,6 @@ function execRemove(){
 	};
 	const targetTextPath = 
 		`${cmdTtsPlayerSaveDirPath}/${manageText}`;
-	const onRemove = confirm(
-		`remove ok?\n ${manageText}`
-	);
-	if(!onRemove) return;
 	jsEdit.updateByVariable(
 		FANNEL_SCRIPT_PATH,
         "manageText",

@@ -77,7 +77,9 @@ const FIRST_ARGS = args.at(0);
 const LAUNCH_DRAFT_MODE = "LAUNCH_DRAFT";
 const DISPLAY_DRAFT_LIST_MODE = "DRAFT_LIST";
 const CLIP_TEXT_MODE = "CLIP_TEXT";
-
+jsFileSystem.createDir(
+	"${sendClipToGmailListDirPath}"
+);
 
 
 switch(FIRST_ARGS){
@@ -85,7 +87,7 @@ switch(FIRST_ARGS){
 		launchOrPaste();
 		break;
 	case DISPLAY_DRAFT_LIST_MODE:
-		jsUrl.loadUrl(gmailDraftListURL);
+		execDisplayDraftUrl();
 		break;
 	case CLIP_TEXT_MODE:
 		jsUtil.copyToClipboard(CLIP_TEXT, 10);
@@ -95,6 +97,11 @@ switch(FIRST_ARGS){
 
 
 function launchOrPaste(){
+	execUpdateByVariable(
+		"gmailDraftUrl",
+		gmailDraftUrl,
+		"${sendClipToGmailUrlListFilePath}",
+	);
 	if(
 		window.location.href 
 			!= gmailDraftUrl
@@ -135,16 +142,20 @@ function pasteOrSave(){
 		draftBody.innerHTML += insertClipString;
 		return
 	};
-	let glList = document.getElementsByClassName("Jl");
-	let closeButton = glList[0];
+	let cmcsubj = document.getElementById("cmcsubj");
+	cmcsubj.focus();
+	cmcsubj.blur();
+	let closeButton = document.querySelector('[tabindex = "0"]');
 	closeButton.click();
 
 	setTimeout(
 		function(){
-			let closeButtonList = document.getElementsByClassName("fr");
-			let saveButtonParent = closeButtonList[1];
-			let saveButton = saveButtonParent.children[0];
-			saveButton.click();
+			jsSendKey.send("tab");
+			jsSendKey.send("tab");
+			jsSendKey.send("tab");
+			jsSendKey.send("tab");
+			jsSendKey.send("tab");
+			jsSendKey.send("enter");
 		},
 		600
 	);
@@ -181,4 +192,31 @@ function makeRandomValName() {
 		).map(
 		(n) => S[n%S.length]
 	).join('')
-}
+};
+
+function execDisplayDraftUrl(){
+	execUpdateByVariable(
+		"gmailDraftListURL",
+		gmailDraftListURL,
+		"${sendClipToGmailDraftUrlListFilePath}",
+	);
+	jsUrl.loadUrl(gmailDraftListURL);
+};
+
+
+function execUpdateByVariable(
+	variableName,
+	variableValue,
+	updateListFile,
+){
+	jsEdit.updateByVariable(
+		"${sendClipToGmailDirPath}",
+		variableName,
+		variableValue,
+	);
+	jsListSelect.updateListFileCon(
+		updateListFile,
+		variableValue,
+	);
+};
+
