@@ -71,10 +71,11 @@ before_summary(){
 
 output_handler(){
 	if [ -s "${NEWS_SPEECHER_SUMMARY_OUTPUT_FOR_TRANS_TXT_PATH}" ]; then
-		trans :${TO_LANG} \
+		transw \
+			":${TO_LANG}" \
 			"file://${NEWS_SPEECHER_SUMMARY_OUTPUT_FOR_TRANS_TXT_PATH}" \
 		| sed 'a \  \n\n' \
-			> "${NEWS_SPEECHER_TRANS_OUTPUT_TXT_PATH}"
+		> "${NEWS_SPEECHER_TRANS_OUTPUT_TXT_PATH}"
 	fi
 	cat \
 		"${NEWS_SPEECHER_SUMMARY_OUTPUT_FOR_NORMAL_TXT_PATH}" \
