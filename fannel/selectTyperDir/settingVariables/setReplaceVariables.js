@@ -31,6 +31,8 @@ selectTyperListDirPath=
 	"${selectTyperDirPath}/list",
 selectTyperSelectScriptDirPath=
 	"${selectTyperDirPath}/select",
+selectTyperTempDirPath=
+	"${selectTyperDirPath}/temp",
 
 // file path
 appHistoryTsvPath=
@@ -39,3 +41,5 @@ selectTyperSelectValueListTxtPath=
 	"${selectTyperListDirPath}/selectValueList.txt",
 selectTyperSelectValueScriptPath=
 	"${selectTyperSelectScriptDirPath}/selectValue.js",
+selectTyperTempFirstTabTxtPath=
+	"${selectTyperTempDirPath}/firstTab.txt"

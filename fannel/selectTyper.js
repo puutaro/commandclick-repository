@@ -40,20 +40,29 @@ function switchByArg(){
 	jsFileSystem.createDir(
 		"${selectTyperListDirPath}"
 	);
-	insertDeleteListFileCon();
+	jsFileSystem.createDir(
+		"${selectTyperTempDirPath}"
+	);
 	switch(FIRST_ARGS){
 		case "${onAutoExecMode}":
 			execOnAutoExecHandler();
 			break;
 		case "${BACK}":
 			deactiveteInputText(true);
-			jsSendKey.send("shift___tab");
-			putSelectMark();
+			sendTabKeyAction(
+				"shift___tab",
+				"tab",
+			);
 			break;
 		case "${NEXT}":
 			deactiveteInputText(true);
-			jsSendKey.send("tab");
-			putSelectMark();
+			sendTabKeyAction(
+				"tab",
+				"shift___tab",
+			);
+			break;
+		case "${BACKSPACE}":
+			deleteKeyAction();
 			break;
 		case "${ENTER}":
 			jsSendKey.send("${ENTER}");
@@ -71,21 +80,27 @@ function switchByArg(){
 	};
 };
 
+function deleteKeyAction(){
+	let activeEl = document.activeElement;
+	if(activeEl.tagName != "INPUT") return;
+	const value = activeEl.value;
+	if(!value) return;
+	deactiveteInputText(false);
+	jsSendKey.send("ctrl___a");
+	jsSendKey.send("${BACKSPACE}");
+};
+
 
 function putSelectMark(){
 	setTimeout(
 		function(){
-			const value = document.activeElement.value;
+			let activeEl = document.activeElement;
+			if(activeEl.tagName != "INPUT") return;
+			const value = activeEl.value;
 			if(value) return;
 			deactiveteInputText(false);
 			jsSendKey.send("-");
 			jsSendKey.send("ctrl___a");
-			setTimeout(
-				function(){
-					deactiveteInputText(true);
-				},
-				200
-			);
 		},
 		200
 	);
@@ -96,6 +111,10 @@ function execOnAutoExecHandler(){
 };
 
 function execOnAutoLoadUrl(){
+	jsFileSystem.writeLocalFile(
+		"${selectTyperTempFirstTabTxtPath}",
+		"",
+	);
 	const loadUrl = getRecentUrlFromHistory();
 	if(!loadUrl) exitZero();
 	jsUrl.loadUrl(loadUrl);
@@ -141,24 +160,6 @@ function updateSeachWordList(
 	);
 };
 
-function insertDeleteListFileCon(){
-	jsFileSystem.createDir(
-		"${selectTyperSelectScriptDirPath}",
-	);
-	const deleteSelect = "DELETE";
-	const isIncludeDelete = jsFileSystem.readLocalFile(
-		"${selectTyperSelectValueListTxtPath}",
-	).split("\n").filter(
-		function(line){
-			return line == deleteSelect;
-		}).at(0);
-	if(isIncludeDelete) return;
-	jsListSelect.updateListFileCon(
-	    "${selectTyperSelectValueListTxtPath}",
-	    deleteSelect
-	);
-};
-
 function deactiveteInputText(
 	isDeactivate
 ){
@@ -179,10 +180,37 @@ function termInput(){
 		suggestMapStr,
 	);
 	if(!inputStr) exitZero();
+	deactiveteInputText(false);
+	jsSendKey.send("ctrl___a");
 	jsSendKey.send(inputStr);
 	updateSeachWordList(
 		inputStr,
 		"${selectTyperSelectScriptDirPath}",
 		"${selectTyperSelectValueListTxtPath}",
 	);
+};
+
+function sendTabKeyAction(
+	mainTabKey,
+	reverseTabKey,
+){
+	const isTempFirstTab = jsFileSystem.isFile(
+		"${selectTyperTempFirstTabTxtPath}"
+	);
+	if(isTempFirstTab){
+		jsFileSystem.removeFile(
+			"${selectTyperTempFirstTabTxtPath}"
+		);
+		jsSendKey.send(
+			mainTabKey
+		);
+		jsSendKey.send(
+			reverseTabKey
+		);
+	} else {
+		jsSendKey.send(
+			mainTabKey
+		);
+	};
+	putSelectMark();
 };

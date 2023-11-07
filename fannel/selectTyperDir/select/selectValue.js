@@ -1,27 +1,18 @@
 
 
-const selectCmd = "CMDCLICL_SELECT_ITEM";
-if(!selectCmd) exitZero();
-deactiveteInputText(false);
-const deleteSelect = "DELETE";
-switch(true){
-	case selectCmd == deleteSelect:
-		jsSendKey.send("ctrl___a");
-		jsSendKey.send("backspace");
-		break;
-	case selectCmd != deleteSelect:
-		jsSendKey.send("ctrl___a");
-		jsSendKey.send(selectCmd);
-		jsSendKey.send("ctrl___a");
-		break;
-};
-setTimeout(
-	function(){
-		deactiveteInputText(true);
-	},
-	200
-);
+const selectKey = "CMDCLICL_SELECT_ITEM";
+if(!selectKey) exitZero();
+selectKeyHandler();
 
+
+function selectKeyHandler(){
+	let activeEl = document.activeElement;
+	if(activeEl.tagName != "INPUT") return;
+	deactiveteInputText(false);
+	jsSendKey.send("ctrl___a");
+	jsSendKey.send(selectKey);
+	jsSendKey.send("ctrl___a");
+};
 
 function deactiveteInputText(
 	isDeactivate
