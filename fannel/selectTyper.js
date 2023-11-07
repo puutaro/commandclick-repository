@@ -81,11 +81,11 @@ function switchByArg(){
 function putDeleteKey(){
 	setTimeout(
 		function(){
+			deactiveteInputText(false);
 			let activeEl = document.activeElement;
 			if(activeEl.tagName != "INPUT") return;
 			const value = activeEl.value;
 			if(!value) return;
-			deactiveteInputText(false);
 			jsSendKey.send("ctrl___a");
 			jsSendKey.send("${BACKSPACE}");
 		},
@@ -97,11 +97,11 @@ function putDeleteKey(){
 function putSelectMark(){
 	setTimeout(
 		function(){
+			deactiveteInputText(false);
 			let activeEl = document.activeElement;
 			if(activeEl.tagName != "INPUT") return;
 			const value = activeEl.value;
 			if(value) return;
-			deactiveteInputText(false);
 			jsSendKey.send("-");
 			jsSendKey.send("ctrl___a");
 		},
