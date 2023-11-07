@@ -10,7 +10,9 @@ switch(true){
 		jsSendKey.send("backspace");
 		break;
 	case selectCmd != deleteSelect:
+		jsSendKey.send("ctrl___a");
 		jsSendKey.send(selectCmd);
+		jsSendKey.send("ctrl___a");
 		break;
 };
 setTimeout(

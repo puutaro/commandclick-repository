@@ -75,10 +75,11 @@ function switchByArg(){
 function putSelectMark(){
 	setTimeout(
 		function(){
-			deactiveteInputText(false);
 			const value = document.activeElement.value;
 			if(value) return;
+			deactiveteInputText(false);
 			jsSendKey.send("-");
+			jsSendKey.send("ctrl___a");
 			setTimeout(
 				function(){
 					deactiveteInputText(true);
