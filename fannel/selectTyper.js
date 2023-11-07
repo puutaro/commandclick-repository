@@ -48,21 +48,19 @@ function switchByArg(){
 			execOnAutoExecHandler();
 			break;
 		case "${BACK}":
-			deactiveteInputText(true);
 			sendTabKeyAction(
 				"shift___tab",
 				"tab",
 			);
 			break;
 		case "${NEXT}":
-			deactiveteInputText(true);
 			sendTabKeyAction(
 				"tab",
 				"shift___tab",
 			);
 			break;
 		case "${BACKSPACE}":
-			deleteKeyAction();
+			sendDeleteKeyAction();
 			break;
 		case "${ENTER}":
 			jsSendKey.send("${ENTER}");
@@ -80,14 +78,19 @@ function switchByArg(){
 	};
 };
 
-function deleteKeyAction(){
-	let activeEl = document.activeElement;
-	if(activeEl.tagName != "INPUT") return;
-	const value = activeEl.value;
-	if(!value) return;
-	deactiveteInputText(false);
-	jsSendKey.send("ctrl___a");
-	jsSendKey.send("${BACKSPACE}");
+function putDeleteKey(){
+	setTimeout(
+		function(){
+			let activeEl = document.activeElement;
+			if(activeEl.tagName != "INPUT") return;
+			const value = activeEl.value;
+			if(!value) return;
+			deactiveteInputText(false);
+			jsSendKey.send("ctrl___a");
+			jsSendKey.send("${BACKSPACE}");
+		},
+		200
+	);
 };
 
 
@@ -194,6 +197,7 @@ function sendTabKeyAction(
 	mainTabKey,
 	reverseTabKey,
 ){
+	deactiveteInputText(true);
 	const isTempFirstTab = jsFileSystem.isFile(
 		"${selectTyperTempFirstTabTxtPath}"
 	);
@@ -213,4 +217,15 @@ function sendTabKeyAction(
 		);
 	};
 	putSelectMark();
+};
+
+function sendDeleteKeyAction(){
+	deactiveteInputText(true);
+	jsSendKey.send(
+		"tab"
+	);
+	jsSendKey.send(
+		"shift___tab"
+	);
+	putDeleteKey();
 };
