@@ -181,6 +181,12 @@ powerPokerDir/images/cards/trumpSpade9-150x150.png
 pulseReceiver.js
 selectMenu.js
 selectMenuDir/menuList/menu.txt
+selectTyper.js
+selectTyperDir/select/selectValue.js
+selectTyperDir/selectTyper.md
+selectTyperDir/settingVariables/hideSettingVariables.js
+selectTyperDir/settingVariables/setReplaceVariables.js
+selectTyperDir/settingVariables/setVariableTypes.js
 sendClipToGmail.js
 sendClipToGmailDir/settingVariables/hideSettingVariables.js
 sendClipToGmailDir/settingVariables/setReplaceVariables.js
