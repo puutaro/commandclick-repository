@@ -8,11 +8,18 @@ switch(true){
 	case selectCmd == deleteSelect:
 		jsSendKey.send("ctrl___a");
 		jsSendKey.send("backspace");
-		exitZero();
+		break;
 	case selectCmd != deleteSelect:
 		jsSendKey.send(selectCmd);
-		exitZero();
+		break;
 };
+setTimeout(
+	function(){
+		deactiveteInputText(true);
+	},
+	200
+);
+
 
 function deactiveteInputText(
 	isDeactivate

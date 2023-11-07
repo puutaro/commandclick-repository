@@ -48,10 +48,12 @@ function switchByArg(){
 		case "${BACK}":
 			deactiveteInputText(true);
 			jsSendKey.send("shift___tab");
+			putSelectMark();
 			break;
 		case "${NEXT}":
 			deactiveteInputText(true);
 			jsSendKey.send("tab");
+			putSelectMark();
 			break;
 		case "${ENTER}":
 			jsSendKey.send("${ENTER}");
@@ -67,6 +69,25 @@ function switchByArg(){
 			);
 			break;
 	};
+};
+
+
+function putSelectMark(){
+	setTimeout(
+		function(){
+			deactiveteInputText(false);
+			const value = document.activeElement.value;
+			if(value) return;
+			jsSendKey.send("-");
+			setTimeout(
+				function(){
+					deactiveteInputText(true);
+				},
+				200
+			);
+		},
+		200
+	);
 };
 
 function execOnAutoExecHandler(){
