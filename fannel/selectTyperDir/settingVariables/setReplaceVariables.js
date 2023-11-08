@@ -23,10 +23,13 @@ NEXT=next,
 ENTER=enter,
 INPUT=input,
 registerValueListMode=registerValueListMode,
+urlHistoryClickMode="urlHistoryClick",
 
 // dir path
+currentAppDirPath=
+	"${01}",
 selectTyperDirPath=
-	"${01}/${001}",
+	"${currentAppDirPath}/${001}",
 selectTyperListDirPath=
 	"${selectTyperDirPath}/list",
 selectTyperSelectScriptDirPath=
@@ -35,8 +38,10 @@ selectTyperTempDirPath=
 	"${selectTyperDirPath}/temp",
 
 // file path
+fannelName=
+	"${02}",
 appHistoryTsvPath=
-	"${01}/system/url/cmdclickUrlHistory.tsv",
+	"${currentAppDirPath}/system/url/cmdclickUrlHistory.tsv",
 selectTyperSelectValueListTxtPath=
 	"${selectTyperListDirPath}/selectValueList.txt",
 selectTyperSelectValueScriptPath=

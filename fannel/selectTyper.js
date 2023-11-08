@@ -13,6 +13,7 @@ onTermVisibleWhenKeyboard="ON"
 onTermShortWhenLoad="ON"
 onUpdateLastModify="ON"
 onUrlHistoryRegister="ON"
+execPlayBtnLongPress="WEB_SEARCH"
 terminalFontZoom="0"
 setReplaceVariables="file://"
 setVariableTypes="file://"
@@ -44,6 +45,12 @@ function switchByArg(){
 		"${selectTyperTempDirPath}"
 	);
 	switch(FIRST_ARGS){
+		case "${urlHistoryClickMode}":
+			jsIntent.launchShortcut(
+				"${currentAppDirPath}",
+				"${fannelName}"
+			);
+			break;
 		case "${onAutoExecMode}":
 			execOnAutoExecHandler();
 			break;
