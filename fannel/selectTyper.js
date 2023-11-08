@@ -32,6 +32,8 @@ valueList=""
 /// Please write bellow with javascript
 
 
+jsimport "${selectTyperDeactivateInputTextPath}"
+
 let args = jsArgs.get().split("\t");
 const FIRST_ARGS = args.at(0);
 
@@ -66,6 +68,9 @@ function switchByArg(){
 				"shift___tab",
 			);
 			break;
+		case "${PASTE}":
+			sendPasteKeyAction();
+			break;
 		case "${BACKSPACE}":
 			sendDeleteKeyAction();
 			break;
@@ -88,7 +93,7 @@ function switchByArg(){
 function putDeleteKey(){
 	setTimeout(
 		function(){
-			deactiveteInputText(false);
+			deactivateInputText(false);
 			let activeEl = document.activeElement;
 			if(activeEl.tagName != "INPUT") return;
 			const value = activeEl.value;
@@ -100,11 +105,24 @@ function putDeleteKey(){
 	);
 };
 
+function putPasteKey(){
+	setTimeout(
+		function(){
+			deactivateInputText(false);
+			let activeEl = document.activeElement;
+			if(activeEl.tagName != "INPUT") return;
+			jsSendKey.send("ctrl___a");
+			jsSendKey.send("${PASTE}");
+		},
+		200
+	);
+};
+
 
 function putSelectMark(){
 	setTimeout(
 		function(){
-			deactiveteInputText(false);
+			deactivateInputText(false);
 			let activeEl = document.activeElement;
 			if(activeEl.tagName != "INPUT") return;
 			const value = activeEl.value;
@@ -170,14 +188,6 @@ function updateSeachWordList(
 	);
 };
 
-function deactiveteInputText(
-	isDeactivate
-){
-	var allInputs = document.getElementsByTagName('input'); 
-	for (var i = 0, len = allInputs.length; i < len; ++i) {
-		allInputs[i].readOnly = isDeactivate;
-	};
-};
 
 function termInput(){
 	const suggestMapStr = [
@@ -190,7 +200,7 @@ function termInput(){
 		suggestMapStr,
 	);
 	if(!inputStr) exitZero();
-	deactiveteInputText(false);
+	deactivateInputText(false);
 	jsSendKey.send("ctrl___a");
 	jsSendKey.send(inputStr);
 	updateSeachWordList(
@@ -204,7 +214,7 @@ function sendTabKeyAction(
 	mainTabKey,
 	reverseTabKey,
 ){
-	deactiveteInputText(true);
+	deactivateInputText(true);
 	const isTempFirstTab = jsFileSystem.isFile(
 		"${selectTyperTempFirstTabTxtPath}"
 	);
@@ -227,7 +237,7 @@ function sendTabKeyAction(
 };
 
 function sendDeleteKeyAction(){
-	deactiveteInputText(true);
+	deactivateInputText(true);
 	jsSendKey.send(
 		"tab"
 	);
@@ -235,4 +245,15 @@ function sendDeleteKeyAction(){
 		"shift___tab"
 	);
 	putDeleteKey();
+};
+
+function sendPasteKeyAction(){
+	deactivateInputText(true);
+	jsSendKey.send(
+		"tab"
+	);
+	jsSendKey.send(
+		"shift___tab"
+	);
+	putPasteKey();
 };

@@ -18,8 +18,9 @@ TYPE_STR=typeStr,
 onAutoExecMode=
 	"onAutoExec",
 BACK=back,
-BACKSPACE=backspace,
 NEXT=next,
+PASTE=ctrl_shift___v,
+BACKSPACE=backspace,
 ENTER=enter,
 INPUT=input,
 registerValueListMode=registerValueListMode,
@@ -36,6 +37,8 @@ selectTyperSelectScriptDirPath=
 	"${selectTyperDirPath}/select",
 selectTyperTempDirPath=
 	"${selectTyperDirPath}/temp",
+selectTyperLibsDirPath=
+	"${selectTyperDirPath}/libs",
 
 // file path
 fannelName=
@@ -47,4 +50,8 @@ selectTyperSelectValueListTxtPath=
 selectTyperSelectValueScriptPath=
 	"${selectTyperSelectScriptDirPath}/selectValue.js",
 selectTyperTempFirstTabTxtPath=
-	"${selectTyperTempDirPath}/firstTab.txt"
+	"${selectTyperTempDirPath}/firstTab.txt",
+
+// lib file
+selectTyperDeactivateInputTextPath=
+	"${selectTyperLibsDirPath}/deactivateInputText.js",

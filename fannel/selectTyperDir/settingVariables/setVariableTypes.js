@@ -1,17 +1,20 @@
 
 firstButtons:
-	BTN:BTN:BTN:HL=
+	BTN:BTN:BTN:BTN:HL=
 		${BTN_CMD}=jsf '${0}' ${BACK} 
 			!${BTN_LABEL}=BACK
-			!${DISABLE_KEYBOARD_HIDDEN}=true
+			!${IS_CONSEC}=true
 		|
 			${BTN_CMD}=jsf '${0}' ${NEXT} 
 				!${BTN_LABEL}=NEXT
+				!${IS_CONSEC}=true
+		|
+			${BTN_CMD}=jsf '${0}' ${PASTE} 
+				!${BTN_LABEL}=PST
 				!${DISABLE_KEYBOARD_HIDDEN}=true
 		|
 			${BTN_CMD}=jsf '${0}' ${BACKSPACE} 
 				!${BTN_LABEL}=DEL
-				// !${IS_CONSEC}=true
 				!${DISABLE_KEYBOARD_HIDDEN}=true,
 
 secondButtons:
