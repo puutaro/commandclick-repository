@@ -48,7 +48,10 @@ let args = jsArgs.get().split("\t");
 var FIRST_ARGS = args.at(0);
 const APP_URL_HISTORY_PATH="${01}/system/url/cmdclickUrlHistory.tsv";
 const tsvExtend = ".tsv";
-if(FIRST_ARGS == PLAY){
+if(
+	FIRST_ARGS == PLAY
+	|| FIRST_ARGS == "${urlHistoryClickMode}"
+){
 	FIRST_ARGS = playMode;
 };
 if(

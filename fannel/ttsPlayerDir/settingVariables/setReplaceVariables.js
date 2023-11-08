@@ -11,6 +11,9 @@ LIST_PATH=listPath,
 LIMIT_NUM=limitNum,
 TTS_PREFIX=tts,
 
+// args
+urlHistoryClickMode="urlHistoryClick",
+
 // path variable
 ttsPlayerDirPath=
 	"${01}/${001}",
