@@ -130,21 +130,44 @@ function launchMenu(){
 	if(!selectedMenu) exitZero();
 	const selectedJsPath = 
 		[currentAppDirPath, selectedMenu].join("/");
+	launchJsHandler(
+		selectedJsPath
+	)
+};
+
+function launchJsHandler(
+	selectedJsPath
+){
 	jsArgs.set(
 		decideSetArgs()
 	);
-	launchJsFile(
-		selectedJsPath,
+	if(SET_ARGS != "${URL_HISTORY_CLICK}"){
+		loadJsPathAsUrl(
+			selectedJsPath
+		);
+	};
+	const urlHistoryClickJsPath = [
+		jsPath.getFannelDirPath(selectedJsPath),
+		"urlHistoryClick.js",
+	].join("/");
+	if(!jsFileSystem.isFile(urlHistoryClickJsPath)){
+		loadJsPathAsUrl(
+			selectedJsPath
+		);
+	};
+	loadJsPathAsUrl(
+		urlHistoryClickJsPath
 	);
 };
 
-function launchJsFile(
+function loadJsPathAsUrl(
 	selectedJsPath
 ){
 	const jsUrlString = jsUrl.makeJsUrl(
-		selectedJsPath
-	);
-	jsUrl.loadUrl(jsUrlString);	
+			selectedJsPath
+		);
+	jsUrl.loadUrl(jsUrlString);
+	exitZero();
 };
 
 
@@ -161,8 +184,8 @@ function getSelectionText() {
 function decideSetArgs(){
 	switch(SET_ARGS){
 		case "${URL_HISTORY_CLICK}":
-			return "SET_ARGS";
+			return `${SET_ARGS}`;
 	};
-	return ""
+	return "";
 };
 
