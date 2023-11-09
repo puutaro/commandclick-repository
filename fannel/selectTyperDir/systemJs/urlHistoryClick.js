@@ -1,0 +1,6 @@
+
+
+jsIntent.launchShortcut(
+	"${currentAppDirPath}",
+	"${fannelName}"
+);

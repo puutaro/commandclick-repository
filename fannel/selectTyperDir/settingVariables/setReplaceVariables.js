@@ -7,24 +7,7 @@ DISABLE_KEYBOARD_HIDDEN=disableKeyboardHidden,
 LIST_PATH=listPath,
 LIMIT_NUM=limitNum,
 SELECT_JS_PATH=selectJsPath,
-FCB_DIR_PATH=dirPath,
-FCB_PREFIX=prefix,
-FCB_SUFFIX=suffix,
-FCB_TYPE=type,
-TYPE_STR=typeStr,
 
-
-// arg & key
-onAutoExecMode=
-	"onAutoExec",
-BACK=back,
-NEXT=next,
-PASTE=ctrl_shift___v,
-BACKSPACE=backspace,
-ENTER=enter,
-INPUT=input,
-registerValueListMode=registerValueListMode,
-urlHistoryClickMode="urlHistoryClick",
 
 // dir path
 currentAppDirPath=
@@ -37,21 +20,51 @@ selectTyperSelectScriptDirPath=
 	"${selectTyperDirPath}/select",
 selectTyperTempDirPath=
 	"${selectTyperDirPath}/temp",
+selectTyperSystemJsDirPath=
+	"${selectTyperDirPath}/systemJs",
+selectTyperJsDirPath=
+	"${selectTyperDirPath}/js",
 selectTyperLibsDirPath=
 	"${selectTyperDirPath}/libs",
 
 // file path
+fannelPath=
+	"${0}",
 fannelName=
 	"${02}",
 appHistoryTsvPath=
 	"${currentAppDirPath}/system/url/cmdclickUrlHistory.tsv",
 selectTyperSelectValueListTxtPath=
 	"${selectTyperListDirPath}/selectValueList.txt",
-selectTyperSelectValueScriptPath=
-	"${selectTyperSelectScriptDirPath}/selectValue.js",
 selectTyperTempFirstTabTxtPath=
 	"${selectTyperTempDirPath}/firstTab.txt",
+
+// js file path
+selectTyperBackJsPath=
+	"${selectTyperJsDirPath}/back.js",
+selectTyperNextJsPath=
+	"${selectTyperJsDirPath}/next.js",
+selectTyperPasteJsPath=
+	"${selectTyperJsDirPath}/paste.js",
+selectTyperDeleteJsPath=
+	"${selectTyperJsDirPath}/delete.js",
+selectTyperEnterJsPath=
+	"${selectTyperJsDirPath}/enter.js",
+selectTyperTermInputJsPath=
+	"${selectTyperJsDirPath}/termInput.js",
+selectTyperRegisterValueJsPath=
+	"${selectTyperJsDirPath}/registerValue.js",
+selectTyperOnAutoExecJsPath=
+	"${selectTyperSystemJsDirPath}/onAutoExec.js",
+selectTyperUrlHistoryClickJsPath=
+	"${selectTyperSystemJsDirPath}/urlHistoryClick.js",
+selectTyperSelectValueScriptPath=
+	"${selectTyperSelectScriptDirPath}/selectValue.js",
 
 // lib file
 selectTyperDeactivateInputTextPath=
 	"${selectTyperLibsDirPath}/deactivateInputText.js",
+selectTyperUpdateSeachWordListJsPath=
+	"${selectTyperLibsDirPath}/updateSeachWordList.js",
+selectTyperSendTabKeyActionJsPath=
+	"${selectTyperLibsDirPath}/sendTabKeyAction.js",
