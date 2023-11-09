@@ -182,6 +182,7 @@ pulseReceiver.js
 selectMenu.js
 selectMenuDir/menuList/menu.txt
 selectTyper.js
+selectTyperDir/libs/deactivateInputText.js
 selectTyperDir/select/selectValue.js
 selectTyperDir/selectTyper.md
 selectTyperDir/settingVariables/hideSettingVariables.js
