@@ -97,7 +97,7 @@ function execLaunchMenuHandler() {
 		highlightText 
 		&& isHighlightScript
 	){
-		launchJsFile(
+		loadJsPathAsUrl(
 			highLightScriptPath
 		);
 		exitZero();
