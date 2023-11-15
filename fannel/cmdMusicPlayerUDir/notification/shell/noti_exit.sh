@@ -20,5 +20,5 @@ noti \
 	-cn "${1}"
 
 kill_ptree \
-	"${FANNEL_NAME_PATH}" \
+	"${NOTI_ORDINALY_UPDATE_SHELL_PATH}" \
 	>/dev/null  2>&1

@@ -110,7 +110,7 @@ launch_notification(){
 
 play_temp_list(){
 	local play_mode="${1:-}"
-	stop_mpv_process
+	stop_mpv_process "full"
 	rm -rf "${MPV_TMP_SOCKET_PATH}"
 	mpv \
 		--input-ipc-server="${MPV_TMP_SOCKET_PATH}" \
