@@ -190,6 +190,7 @@ selectTyperDir/js/paste.js
 selectTyperDir/js/registerValue.js
 selectTyperDir/js/termInput.js
 selectTyperDir/libs/deactivateInputText.js
+selectTyperDir/libs/getRecentUrlFromHisCon.js
 selectTyperDir/libs/sendTabKeyAction.js
 selectTyperDir/libs/updateSeachWordList.js
 selectTyperDir/select/selectValue.js
