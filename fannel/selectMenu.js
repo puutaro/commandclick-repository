@@ -147,7 +147,7 @@ function launchJsHandler(
 		);
 	};
 	const urlHistoryClickJsPath = [
-		jsPath.getFannelDirPath(selectedJsPath),
+		`${jsPath.getFannelDirPath(selectedJsPath)}/systemJs`,
 		"urlHistoryClick.js",
 	].join("/");
 	if(!jsFileSystem.isFile(urlHistoryClickJsPath)){
