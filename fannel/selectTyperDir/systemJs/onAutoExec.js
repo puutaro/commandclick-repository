@@ -1,5 +1,5 @@
 
-
+jsimport "${selectTyperGetRecentUrlFromHisConJsPath}";
 execOnAutoExecHandler();
 
 
@@ -18,22 +18,10 @@ function execOnAutoLoadUrl(){
 		"${selectTyperTempFirstTabTxtPath}",
 		"",
 	);
-	const loadUrl = getRecentUrlFromHistory();
+	const historyCon = jsFileSystem.readLocalFile(
+		"${appHistoryTsvPath}"
+	);
+	const loadUrl = getRecentUrlFromHisCon(historyCon);
 	if(!loadUrl) exitZero();
 	jsUrl.loadUrl(loadUrl);
-};
-
-function getRecentUrlFromHistory(){
-	return jsFileSystem.readLocalFile(
-		"${appHistoryTsvPath}"
-	).split("\n").reverse().slice(-100).map(
-		function(line){
-			return line.split("\t").at(-1);
-		}
-	).filter(
-		function(url){
-			return url.startsWith("http://") 
-			|| url.startsWith("https://");
-		}
-	).at(-1);
 };

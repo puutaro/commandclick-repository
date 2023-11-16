@@ -68,3 +68,5 @@ selectTyperUpdateSeachWordListJsPath=
 	"${selectTyperLibsDirPath}/updateSeachWordList.js",
 selectTyperSendTabKeyActionJsPath=
 	"${selectTyperLibsDirPath}/sendTabKeyAction.js",
+selectTyperGetRecentUrlFromHisConJsPath=
+	"${selectTyperLibsDirPath}/getRecentUrlFromHisCon.js",
