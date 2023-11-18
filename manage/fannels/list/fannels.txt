@@ -64,8 +64,8 @@ ctsvViewerDir/settingVariables/hideSettingVariables.js
 ctsvViewerDir/settingVariables/setReplaceVariables.js
 ctsvViewerDir/settingVariables/setVariableTypes.js
 displayHtmlSource.js
+exp/tinycity.js
 fileManager.js
-fileManagerDir/dummy
 fileManagerDir/fileManager.md
 fileManagerDir/js/copy.js
 fileManagerDir/js/registerDirPath.js
@@ -235,7 +235,6 @@ sendClipToGmailDir/settingVariables/setVariableTypes.js
 shareImage.js
 siteSummary.js
 textToSpeech.js
-tinycity.js
 ttsPlayer.js
 ttsPlayerDir/settingVariables/hideSettingVariables.js
 ttsPlayerDir/settingVariables/ignoreHistoryPaths.js
