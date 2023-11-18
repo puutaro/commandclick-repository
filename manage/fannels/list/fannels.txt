@@ -64,7 +64,6 @@ ctsvViewerDir/settingVariables/hideSettingVariables.js
 ctsvViewerDir/settingVariables/setReplaceVariables.js
 ctsvViewerDir/settingVariables/setVariableTypes.js
 displayHtmlSource.js
-exp/tinycity.js
 fileManager.js
 fileManagerDir/fileManager.md
 fileManagerDir/js/copy.js
