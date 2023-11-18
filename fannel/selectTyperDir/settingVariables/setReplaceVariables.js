@@ -70,3 +70,5 @@ selectTyperSendTabKeyActionJsPath=
 	"${selectTyperLibsDirPath}/sendTabKeyAction.js",
 selectTyperGetRecentUrlFromHisConJsPath=
 	"${selectTyperLibsDirPath}/getRecentUrlFromHisCon.js",
+selectTyperSaveRecentUrlToHistoryPath=
+	"${selectTyperLibsDirPath}/saveRecentUrlToHistory.js",

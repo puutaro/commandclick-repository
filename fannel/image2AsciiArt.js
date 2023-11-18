@@ -320,6 +320,7 @@ function getImageAndPath(
 function execDisplayGallery(){
 	const selectedImagePath = 
 		displayGralleryAndSelectImagePath();
+	if(!selectedImagePath) exitZero();
 	jsDialog.asciiArtDialog(
 		DialogMessage.convertAsciiArt,
 		selectedImagePath

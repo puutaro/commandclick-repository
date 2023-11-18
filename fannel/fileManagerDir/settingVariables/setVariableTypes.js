@@ -1,0 +1,32 @@
+
+// browse:
+// 	BTN:HL=
+// 		${BTN_CMD}=jsf '${FILE_MANAGER_BROWSE_JS_PATH}'
+// 			!${BTN_LABEL}=this,
+
+DIR_PATH_LIST:
+	LBL:TXT:ELSB:BTN=
+		${TXT_LABEL}=Dir path list
+		|
+			${LIST_PATH}=${FILE_MANAGER_DIR_LIST_TXT_PATH}
+				!${LIMIT_NUM}=10
+				!${SELECT_JS_PATH}="${FILE_MANAGER_SELECT_DIR_PATH_JS_PATH}"
+		|
+			${BTN_CMD}=jsf '${FILE_MANAGER_REGISTER_DIR_PATH_JS_PATH}'
+				!${BTN_LABEL}=RG,
+
+stop:
+	BTN:HL=
+		${BTN_CMD}=bashb '${NOTI_EXIT_SHELL_PATH}'
+			!${BTN_LABEL}=this,
+
+SETTING:
+	BTN:HL=
+		${BTN_CMD}=jsf '${FILE_MANAGER_SETTING_JS_PATH}'
+			!${BTN_LABEL}=this,
+
+install:
+	BTN:HL=
+		${BTN_CMD}=bashb '${FILE_MANAGER_INSTALL_SHELL_PATH}'
+			!${BTN_LABEL}=this,
+
