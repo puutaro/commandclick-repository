@@ -10,7 +10,7 @@ jsimport "${UPDATE_LIST_BOX_JS__PATH}";
 const dirListCon = jsFileSystem.readLocalFile(
 	"${FILE_MANAGER_DIR_LIST_TXT_PATH}"
 ).split("\n").filter(function(dirPath){
-	return dirPath != "${DELETE_DIR_PATH_LIST}";
+	return dirPath != "${SET_BLANK_MARK}";
 }).reverse().join("\t");
 const selectedDirPath = jsDialog.listDialog(
 	"",

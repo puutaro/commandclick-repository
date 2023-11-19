@@ -14,7 +14,7 @@ NOTIFICATION_CHANNEL_NUM=23,
 PORT_NUM=10201,
 URL_LAUNCH_ACTION_NAME=
 	"com.puutaro.commandclick.url.launch",
-DELETE_DIR_PATH_LIST=
+SET_BLANK_MARK=
 	"BLANK",
 
 // fannel file path

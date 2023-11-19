@@ -18,7 +18,7 @@ jsFileSystem.createDir(
 let preRegistDirList = [
 	`/storage/emulated/0/Documents/cmdclick/AppDir/default`,
 	`/home/cmdclick`,
-	"${DELETE_DIR_PATH_LIST}",
+	"${SET_BLANK_MARK}",
 ];
 preRegisterListCon(
 	preRegistDirList,
@@ -28,6 +28,7 @@ preRegisterListCon(
 
 let preRegistRootDirList = [
 	`/`,
+	"${SET_BLANK_MARK}",
 ];
 preRegisterListCon(
 	preRegistRootDirList,
@@ -36,7 +37,7 @@ preRegisterListCon(
 );
 
 let preBaseUrlList = [
-	"${DELETE_DIR_PATH_LIST}",
+	"${SET_BLANK_MARK}",
 ];
 preRegisterListCon(
 	preBaseUrlList,

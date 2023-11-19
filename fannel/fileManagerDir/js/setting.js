@@ -37,6 +37,16 @@ function makeRootDirPath(){
 function checkAndModifyRootDirPathSaved(){
 	const ROOT_DIR_PATH_SAVED = makeRootDirPath();
 	if(
+		ROOT_DIR_PATH_SAVED == "${SET_BLANK_MARK}"
+	){
+		jsEdit.updateByVariable(
+			"${FANNEL_PATH}",
+		   "ROOT_DIR_PATH",
+		    "/",
+		);
+		return;
+	};
+	if(
 		ROOT_DIR_PATH_SAVED.startsWith("/")
 		&& jsFileSystem.isDir(ROOT_DIR_PATH_SAVED)
 	) {
@@ -53,6 +63,7 @@ function checkAndModifyRootDirPathSaved(){
 	   "ROOT_DIR_PATH",
 	    "/",
 	);
+	if(!ROOT_DIR_PATH_SAVED) return;
 	alert(
 		`No exist dir path: ${ROOT_DIR_PATH_SAVED}`
 	);
@@ -62,7 +73,7 @@ function checkAndModifyBaseUrlSaved(){
 	var BASE_URL_SAVED = readCmdVal("BASE_URL");
 	if(!BASE_URL_SAVED) return;
 	if(
-		BASE_URL_SAVED == "${DELETE_DIR_PATH_LIST}"
+		BASE_URL_SAVED == "${SET_BLANK_MARK}"
 	){
 		jsEdit.updateByVariable(
 			"${FANNEL_PATH}",

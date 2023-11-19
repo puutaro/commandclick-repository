@@ -13,7 +13,7 @@ selectSwitcher(selectDirPath);
 function selectSwitcher(
 	selectDirPath
 ){
-	const isDelete = selectDirPath == "${DELETE_DIR_PATH_LIST}";
+	const isDelete = selectDirPath == "${SET_BLANK_MARK}";
 	switch(isDelete){
 		case true:
 			jsEdit.updateByVariable(
