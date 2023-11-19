@@ -49,6 +49,7 @@ if(FIRST_ARGS == PLAY){
 const FANNEL_SCRIPT_PATH = "${01}/${02}";
 const cmdMusicPlayerDirPath = "${cmdMusicPlayerDirPath}";
 const cmdMusicPlayerEditDirPath = "${cmdMusicPlayerEditDirPath}";
+jsFileSystem.createDir(cmdMusicPlayerEditDirPath);
 const cmdMusicPlayerListDirPath = "${cmdMusicPlayerListDirPath}";
 initNumVariable();
 jsFileSystem.createDir(cmdMusicPlayerListDirPath);

@@ -62,6 +62,7 @@ const FANNEL_SCRIPT_PATH = "${01}/${02}";
 const cmdTubePlayerDirPath = "${cmdTubePlayerDirPath}";
 const PLAY_LOG_DIR_PATH = "${PLAY_LOG_DIR_PATH}";
 const cmdTubePlayerEditDirPath = "${cmdTubePlayerEditDirPath}";
+jsFileSystem.createDir(cmdTubePlayerEditDirPath);
 const cmdTubePlayerShellDirPath = `${cmdTubePlayerDirPath}/shell`;
 const EXEC_SHELL_PATH = `${cmdTubePlayerShellDirPath}/cmdYoutuber.sh`;
 const EXEC_YTFZF_PATH = `${cmdTubePlayerShellDirPath}/ytfzfForFannel.sh`;
