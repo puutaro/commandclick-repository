@@ -1,5 +1,6 @@
 editExecute,
 onAutoExec,
+terminalSizeType,
 execPlayBtnLongPress,
 terminalSizeType,
 terminalOutputMode,

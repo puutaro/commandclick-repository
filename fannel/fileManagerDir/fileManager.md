@@ -64,9 +64,13 @@ Detail setting
 
 | Name | Description |
 | --------- | --------- |
-| `Root dir path` | decide root dir path |
+| `Root dir path` | Decide root dir path |
+| `Base url` | Base url -> {ipv4 Address}:{port num(4 digits or more)} |
+| `Is launch on click url history` | Decide root dir path |
+
 
 - `Root dir path` is used in secure env 
+- `Base url` is used in connecting to other phone or pc
 
 ### INSTALL
 

@@ -1,6 +1,6 @@
 
 
-jsimport "${UPDATE_DIR_PATH_LIST_PATH}";
+jsimport "${UPDATE_LIST_BOX_JS__PATH}";
 jsimport "${READ_CMD_VAL_JS_PATH}";
 jsimport "${FILE_MANAGER_BROWSE_JS_PATH}";
 jsimport "${FILE_MANAGER_DIR_PATH_JS_PATH}";
@@ -35,6 +35,14 @@ preRegisterListCon(
 	"${FILE_MANAGER_ROOT_DIR_LIST_TXT_PATH}",
 );
 
+let preBaseUrlList = [
+	"${DELETE_DIR_PATH_LIST}",
+];
+preRegisterListCon(
+	preBaseUrlList,
+	"${FILE_MANAGER_LIST_DIR_PATH}",
+	"${FILE_MANAGER_BASE_URL_LIST_TXT_PATH}",
+);
 const selectDirPath = readCmdVal("DIR_PATH_LIST");
 browseHandler(selectDirPath);
 
@@ -48,7 +56,7 @@ function preRegisterListCon(
 	).split("\n");
 	preListCon.forEach(function(path){
 		if(dirPathList.includes(path)) return;
-		updateDirPathList(
+		updateListBox(
 			path,
 			dirPath,
 			listFilePath,

@@ -49,7 +49,7 @@ launch_file_url(){
 		"") ;;
 		*) return ;;
 	esac
-	sleep 1
+	sleep 3
 	send-broadcast \
 		-a "${URL_LAUNCH_ACTION_NAME}" \
 		-e "url=${LAUNCH_FILE_URL}"
