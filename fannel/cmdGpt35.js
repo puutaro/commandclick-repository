@@ -42,6 +42,7 @@ editExecute="ALWAYS"
 terminalSizeType="LONG"
 onUrlHistoryRegister="OFF"
 onAdBlock="OFF"
+onAutoExec="ON"
 terminalFontZoom="130"
 setReplaceVariables="file://"
 setVariableTypes="file://"
@@ -72,6 +73,9 @@ const escapeCharHyphen = "-";
 
 
 switch(firstArgs){
+	case "onAutoExec":
+		jsUrl.loadUrl(LAUNCH_GPT35);
+		break; 
 	case launchGpt35Arg:
 		clipText(TXT_TO_CLIP);
 		execLaunchGpt35();

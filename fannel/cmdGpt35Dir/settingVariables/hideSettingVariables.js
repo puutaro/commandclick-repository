@@ -3,4 +3,5 @@ terminalSizeType,
 onUrlHistoryRegister,
 onAdBlock,
 setVariableTypes,
-setReplaceVariables
+setReplaceVariables,
+onAutoExec,

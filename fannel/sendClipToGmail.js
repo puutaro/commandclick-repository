@@ -50,6 +50,7 @@ terminalOutputMode="NORMAL"
 onUpdateLastModify="ON"
 onUrlHistoryRegister="OFF"
 onAdBlock="OFF"
+onAutoExec="ON"
 terminalFontZoom="0"
 terminalColor=""
 terminalFontColor=""
@@ -93,6 +94,9 @@ switch(FIRST_ARGS){
 		jsUtil.copyToClipboard(CLIP_TEXT, 10);
 		jsToast.short("clip ok");
 		break;
+	case "onAutoExec":
+		jsUrl.loadUrl(gmailDraftUrl);
+		break; 
 };
 
 
