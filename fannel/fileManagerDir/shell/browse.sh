@@ -3,7 +3,7 @@
 set -ue
 
 e=""
-toast "Launch filebrowser"
+toast -l "Launch filebrowser"
 readonly MONITOR_FILE_PATH="${MONITOR_DIR_PATH}/term_1"
 readonly ERROR_LOG_FILE_PATH="${MONITOR_DIR_PATH}/term_2"
 readonly REPLACE_VARS_CON="$(get_rvar "${0}")"
@@ -49,6 +49,7 @@ launch_file_url(){
 		"") ;;
 		*) return ;;
 	esac
+	sleep 1
 	send-broadcast \
 		-a "${URL_LAUNCH_ACTION_NAME}" \
 		-e "url=${LAUNCH_FILE_URL}"
@@ -68,9 +69,10 @@ filebrowser \
 	&
 
 readonly FILEBROWSER_PID=$!
-launch_file_url
 
 bash "${NOTI_LAUNCH_SHELL_PATH}"
+
+launch_file_url
 
 wait_fm \
 	"${FILEBROWSER_PID}"
