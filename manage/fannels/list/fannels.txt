@@ -75,6 +75,7 @@ fileManagerDir/libs/browseHandler.js
 fileManagerDir/libs/dirPath.js
 fileManagerDir/libs/readCmdVal.js
 fileManagerDir/libs/updateDirPathList.js
+fileManagerDir/libs/updateListBox.js
 fileManagerDir/longPressMenuDir/srcAnchorLongPressMenu.txt
 fileManagerDir/longPressMenuDir/srcImageAnchorLongPressMenu.txt
 fileManagerDir/select/selectDirPath.js
