@@ -1,7 +1,7 @@
 
 
 /// LABELING_SECTION_START
-// file://${01}/${001}/image2AsciiArt.md
+// file://
 /// LABELING_SECTION_END
 
 
