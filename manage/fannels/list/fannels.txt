@@ -1,3 +1,7 @@
+.idea/fannel.iml
+.idea/modules.xml
+.idea/vcs.xml
+.idea/workspace.xml
 askGpt35.js
 clipFormatMaker.js
 clipFormatMakerDir/clipFormatMaker.html
@@ -205,6 +209,14 @@ powerPokerDir/images/cards/trumpSpade7-150x150.png
 powerPokerDir/images/cards/trumpSpade8-150x150.png
 powerPokerDir/images/cards/trumpSpade9-150x150.png
 pulseReceiver.js
+qrCreator.js
+qrCreatorDir/image2AsciiArt.md
+qrCreatorDir/libs/readCmdVal.js
+qrCreatorDir/settingVariables/hideSettingVariables.js
+qrCreatorDir/settingVariables/setReplaceVariables.js
+qrCreatorDir/settingVariables/setVariableTypes.js
+qrCreatorDir/systemJs/noArg.js
+qrLReader.js
 selectMenu.js
 selectMenuDir/menuList/menu.txt
 selectTyper.js
