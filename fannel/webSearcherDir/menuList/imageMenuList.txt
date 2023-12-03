@@ -1,1 +1,1 @@
-shareImage.js
+shareImage	${01}/shareImage.js
