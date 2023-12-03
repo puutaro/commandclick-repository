@@ -1,3 +1,6 @@
+# ocrViewer.js
+----------------
+
 OCR Viewer with tts (###termux) @puutaro
 
 

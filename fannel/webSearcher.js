@@ -1,6 +1,9 @@
 
 
 /// LABELING_SECTION_START
+// # webSearcher.js
+// ----------------
+
 // Highlight search and web search by dialog @puutaro
 // ## Support long press menu table
 // ---------------

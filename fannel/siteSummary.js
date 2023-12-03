@@ -1,6 +1,9 @@
 
 
 /// LABELING_SECTION_START
+// # siteSummary.js
+// ----------------
+
 // Display summary for current site @puutaro
 // ## Support long press menu
 // ---------

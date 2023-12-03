@@ -1,3 +1,6 @@
+# selectTyper.js
+----------------
+
 Type by select box for login form, etc.. by puutaro
 
 Table of Contents

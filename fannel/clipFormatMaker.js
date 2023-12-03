@@ -1,6 +1,9 @@
 
 
 /// LABELING_SECTION_START
+// # clipFormatMaker.js
+// ----------------
+
 // Create clipboard format by drag & drop @puutaro
 // ## Cmd Variable
 // -------

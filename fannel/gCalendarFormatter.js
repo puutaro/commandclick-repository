@@ -1,6 +1,9 @@
 
 
 /// LABELING_SECTION_START
+// # gCalendarFormatter.js
+// ----------------
+
 // Set format Google Calendar @puutaro
 // ## Toolbar buttons
 // ### Play Button

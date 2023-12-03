@@ -1,6 +1,9 @@
 
 
 /// LABELING_SECTION_START
+// # qrLReader.js
+// ----------------
+
 // Scan qr code on long press @puutaro
 // ## Support long press menu
 // ---------

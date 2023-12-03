@@ -1,3 +1,6 @@
+# image2AsciiArt.js
+----------------
+
 Image to ascii art by web image long press  @puutaro
 
 Table of Contents

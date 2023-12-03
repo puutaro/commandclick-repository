@@ -1,6 +1,9 @@
 
 
 /// LABELING_SECTION_START
+// # ggleTranslator.js
+// ----------------
+
 // Launch google translate site by highlight text or no it @puutaro
 // 
 // 1. (highlight text) 
