@@ -1,0 +1,44 @@
+name: push other fannel repo con
+on:
+  workflow_dispatch:
+  # schedule:
+  #   - cron: '20 20 * * *'
+jobs:
+  # multi-repos:
+  #   runs-on: ubuntu-latest
+  #   steps:
+  #     - name: Checkout
+  #       uses: actions/checkout@v3
+
+  exec-update:
+    needs: push other repo fannel
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write # 書き込むために必要
+    steps:
+      - uses: actions/checkout@v3
+      - run: bash "manage/fannels/push_other_fannel_repo_con.sh"
+      # - uses: stefanzweifel/git-auto-commit-action@v4
+
+      #   with:
+      #     path: main
+      # - name: Checkout another repo
+      #   uses: actions/checkout@v3
+      #   with:
+      #     repository: rust-lang/rust
+      #     path: another
+
+      # # 以降確認用
+      # - run: |
+      #     pwd
+      #     ls -la
+      # - name: Check the main repo
+      #   working-directory: main
+      #   run: |
+      #     pwd
+      #     ls -la
+      # - name: Check the another repo
+      #   working-directory: another
+      #   run: |
+      #     pwd
+      #     ls -la
