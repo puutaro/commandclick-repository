@@ -91,8 +91,10 @@ function exec_git_clone(){
 		esac
 		times=$((times + 1))
 	done
-	fi
 }
+
+exec_git_clone
+
 echo pwd
 pwd
 cd "${WORKING_DIR_PATH}"
