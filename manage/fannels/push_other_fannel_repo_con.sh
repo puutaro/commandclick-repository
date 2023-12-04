@@ -22,6 +22,15 @@ function echo_fannel_path(){
 	fi
 }
 
+function exec_cd(){
+	local cd_deti_dir_path="${1}"
+	echo pwd
+	pwd
+	cd "${cd_deti_dir_path}"
+	echo pwd
+	pwd
+}
+
 function clone_and_cp(){
 	local git_hub_repo_url="${1}"
 	local gh_dir_name="$(basename "${git_hub_repo_url}")"
@@ -30,21 +39,10 @@ function clone_and_cp(){
 	local fannel_dir_path="${gh_dir_path}/${fannel_dir_name}"
 	local fannel_dir_desti_path="${FANNEL_STOCK_DIR_PATH}/${fannel_dir_name}"
 	local readme_path="${gh_dir_path}/README.md"
-	echo pwd
-	pwd
-	cd "${WORKING_DIR_PATH}"
-	echo pwd
-	pwd
+	exec_cd "${WORKING_DIR_PATH}"
 	mkdir -p "${TMP_GH_ACTION_DIR_PATH}"
-	echo pwd
-	pwd
-	cd "${TMP_GH_ACTION_DIR_NAME}"
-	echo pwd
-	pwd
+	exec_cd "${TMP_GH_ACTION_DIR_NAME}"
 	git clone "${git_hub_repo_url}"
-	ls
-	echo ${gh_dir_name}
-	ls "${gh_dir_name}"
 	echo "cp"
 	echo "from: ${fannel_dir_path}"
 	echo "to: ${FANNEL_STOCK_DIR_PATH}"
@@ -100,7 +98,6 @@ function exec_git_clone(){
 
 exec_git_clone
 
-
 readonly ignore_list_path="manage/fannels/input_txt_list/ignore_list.txt"
 readonly output_fannels_list="manage/fannels/list/fannels.txt"
 readonly grep_cmd=$(\
@@ -111,11 +108,7 @@ readonly grep_cmd=$(\
 	}'\
 )
 
-echo pwd
-pwd
-cd "${FANNEL_STOCK_DIR_NAME}"
-echo pwd
-pwd
+exec_cd "${FANNEL_STOCK_DIR_PATH}"
 
 readonly find_cmd="find  \
 	-type f \
