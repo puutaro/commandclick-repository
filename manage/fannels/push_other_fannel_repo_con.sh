@@ -57,9 +57,11 @@ function clone_and_cp(){
 	local is_five_over_size=$(\
 		find "${fannel_dir_path}"  -size +10M\
 	)
-	case "${is_file_over_file}" in
-		"") ;;
+	case "${is_five_over_size}" in
+		"") 
+			echo "## Push, thanks to less 10M";;
 		*) 
+			echo "## Skip, due to over 10M"
 			rm -rf "${TMP_GH_ACTION_DIR_PATH}"
 			return
 			;;
