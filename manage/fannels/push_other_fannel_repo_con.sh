@@ -38,7 +38,7 @@ function clone_and_cp(){
 	ls
 	echo ${gh_dir_name}
 	ls "${gh_dir_name}"
-	cp \
+	cp -arvf \
 		"${fannel_dir_path}" \
 		"${FANNEL_STOCK_DIR_PATH}"/
 
@@ -53,8 +53,8 @@ function clone_and_cp(){
 			return
 			;;
 	esac
-
-	cp \
+	echo "fannel_path: ${fannel_path}"
+	cp -avf \
 		"${fannel_path}" \
 		"${FANNEL_STOCK_DIR_PATH}"/
 	rm "${fannel_dir_path}"
