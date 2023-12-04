@@ -59,9 +59,9 @@ function clone_and_cp(){
 	)
 	case "${is_five_over_size}" in
 		"") 
-			echo "## Push, thanks to less 10M";;
+			echo "## $(date '+%Y/%m-%dT%H:%M:%s') Push, thanks to less 10M";;
 		*) 
-			echo "## Skip, due to over 10M"
+			echo "## $(date '+%Y/%m-%dT%H:%M:%s') Skip, due to over 10M"
 			rm -rf "${TMP_GH_ACTION_DIR_PATH}"
 			return
 			;;
