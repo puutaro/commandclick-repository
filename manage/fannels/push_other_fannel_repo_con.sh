@@ -28,20 +28,31 @@ function clone_and_cp(){
 	local gh_dir_path="${TMP_GH_ACTION_DIR_PATH}/${gh_dir_name}"
 	local fannel_dir_name="${gh_dir_name}Dir"
 	local fannel_dir_path="${gh_dir_path}/${fannel_dir_name}"
+	local fannel_dir_desti_path="${FANNEL_STOCK_DIR_PATH}/${fannel_dir_name}"
+	local readme_path="${gh_dir_path}/README.md"
 	mkdir "${TMP_GH_ACTION_DIR_NAME}"
 	echo pwd
 	pwd
 	cd "${TMP_GH_ACTION_DIR_NAME}"
 	echo pwd
 	pwd
-	git clone "https://github.com/puutaro/selectTyper"
+	git clone "${git_hub_repo_url}"
 	ls
 	echo ${gh_dir_name}
 	ls "${gh_dir_name}"
-	local cp_desti_dir_path=
+	echo "cp"
+	echo "from: ${fannel_dir_path}"
+	echo "to: ${FANNEL_STOCK_DIR_PATH}"
 	cp -arvf \
 		"${fannel_dir_path}" \
 		"${FANNEL_STOCK_DIR_PATH}"/
+
+	echo "cp" 
+	echo "from: ${readme_path}"
+	echo "to: ${fannel_dir_desti_path}"
+	cp -avf \
+		"${readme_path}" \
+		"${fannel_dir_desti_path}/"
 
 	local fannel_path="$(\
 		echo_fannel_path \
@@ -54,7 +65,9 @@ function clone_and_cp(){
 			return
 			;;
 	esac
-	echo "fannel_path: ${fannel_path}"
+	echo "cp"
+	echo "from: ${fannel_path}"
+	ehco "to: ${FANNEL_STOCK_DIR_PATH}"
 	cp -avf \
 		"${fannel_path}" \
 		"${FANNEL_STOCK_DIR_PATH}"/
