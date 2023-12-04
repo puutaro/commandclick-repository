@@ -1,4 +1,13 @@
-Youtube background play fannel (**ubuntu version**) @puutaro
+
+<div><img src="https://github.com/puutaro/cmdYoutuberU/assets/55217593/410beeff-7221-456b-aa1e-919daa5f5fdc" width="300">  </div>
+  
+<div><img src="https://github.com/puutaro/selectTyper/assets/55217593/555e8f5f-656a-4faf-bb76-f663c01cfe47" width="300"></div> 
+
+
+# cmdYoutuberU
+
+
+Youtube background player (**ubuntu version**) @puutaro
 
 Table of Contents
 -------

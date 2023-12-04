@@ -1,3 +1,9 @@
+
+<div><img src="https://github.com/puutaro/newsSpeecher/assets/55217593/436c64b4-0927-4774-b151-34c41f100521" width="300">  </div>
+  
+<div><img src="https://github.com/puutaro/selectTyper/assets/55217593/555e8f5f-656a-4faf-bb76-f663c01cfe47" width="300"></div> 
+
+
 # newsSpeecher.js
 ----------------
 

@@ -1,3 +1,9 @@
+
+<div><img src="https://github.com/puutaro/ocrViewer/assets/55217593/f3dee7b9-7dd6-4208-8989-2334238fed42" width="300">  </div>
+  
+<div><img src="https://github.com/puutaro/selectTyper/assets/55217593/555e8f5f-656a-4faf-bb76-f663c01cfe47" width="300"></div> 
+
+
 # ocrViewer.js
 ----------------
 
