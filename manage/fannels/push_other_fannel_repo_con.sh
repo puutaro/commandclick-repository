@@ -54,10 +54,19 @@ function clone_and_cp(){
 	mkdir -p "${TMP_GH_ACTION_DIR_PATH}"
 	exec_cd "${TMP_GH_ACTION_DIR_NAME}"
 	git clone "${git_hub_repo_url}"
+	local is_five_over_size=$(\
+		find "${fannel_dir_path}"  -size +10M\
+	)
+	case "${is_file_over_file}" in
+		"") ;;
+		*) 
+			rm -rf "${TMP_GH_ACTION_DIR_PATH}"
+			return
+			;;
+	esac
 	exec_cp \
 		"${fannel_dir_path}" \
 		"${FANNEL_STOCK_DIR_PATH}"
-
 	exec_cp \
 		"${readme_path}" \
 		"${fannel_dir_desti_path}"
