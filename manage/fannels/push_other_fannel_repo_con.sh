@@ -7,7 +7,7 @@ readonly TMP_GH_ACTION_DIR_NAME="temp_gh_action"
 readonly TMP_GH_ACTION_DIR_PATH="${WORKING_DIR_PATH}/${TMP_GH_ACTION_DIR_NAME}"
 readonly FANNEL_STOCK_DIR_NAME="fannel"
 readonly FANNEL_STOCK_DIR_PATH="${WORKING_DIR_PATH}/${FANNEL_STOCK_DIR_NAME}"
-
+readonly REPO_URL_LIST_PATH="manage/fannels/input_txt_list/repo_url_list.txt"
 
 function echo_fannel_path(){
 	local gh_dir_path="${1}"
@@ -74,16 +74,32 @@ function clone_and_cp(){
 	rm -rf "${fannel_dir_path}"
 }
 
-clone_and_cp \
-	"https://github.com/puutaro/selectTyper"
-
+function exec_git_clone(){
+	# local old_ifs="${IFS}"
+	# local IFS=$'\n'
+	# local repo_url_list=$(cat "${REPO_URL_LIST_PATH}")
+	# local IFS="${old_ifs}"
+	# local IFS=$'\n'
+	local times=1
+	for repo_url in $(cat "${REPO_URL_LIST_PATH}")
+	do
+		echo "[${times}] ${repo_url}"
+		case "${repo_url}" in
+			"") ;;
+			*) clone_and_cp "${repo_url}" 
+				;;
+		esac
+		times=$((times + 1))
+	done
+	fi
+}
 echo pwd
 pwd
 cd "${WORKING_DIR_PATH}"
 echo pwd
 pwd
 
-readonly ignore_list_path="manage/fannels/ignore_list.txt"
+readonly ignore_list_path="manage/fannels/input_txt_list/ignore_list.txt"
 readonly output_fannels_list="manage/fannels/list/fannels.txt"
 readonly grep_cmd=$(\
 	cat "${ignore_list_path}" \
@@ -93,7 +109,11 @@ readonly grep_cmd=$(\
 	}'\
 )
 
+echo pwd
+pwd
 cd "${FANNEL_STOCK_DIR_NAME}"
+echo pwd
+pwd
 
 readonly find_cmd="find  \
 	-type f \
