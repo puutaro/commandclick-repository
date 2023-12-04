@@ -1,7 +1,7 @@
 #!/bin/bash
 
 
-readonly ignore_list_path="manage/fannels/ignore_list.txt"
+readonly ignore_list_path="manage/fannels/input_txt_list/ignore_list.txt"
 readonly output_fannels_list="manage/fannels/list/fannels.txt"
 readonly grep_cmd=$(\
 	cat "${ignore_list_path}" \
@@ -23,7 +23,6 @@ readonly find_cmd="find  \
 	-and -not -path '*/manage/*' \
  	-and -not -name '*gitignore' \
 	-and -not -name '*LICENSE' \
-	-and -not -name '*README.md' \
 	-and -not -name '*difbk_ignore' \
 	-printf '%P\n' ${grep_cmd}"
 
