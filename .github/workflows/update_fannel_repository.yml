@@ -5,7 +5,6 @@ on:
     - cron: '20 20 * * *'
 jobs:
   push_fannels:
-    needs: push-other-repo-fannel
     runs-on: ubuntu-latest
     permissions:
       contents: write # 書き込むために必要
