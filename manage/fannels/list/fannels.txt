@@ -1,8 +1,10 @@
 askGpt35.js
 clipFormatMaker.js
+clipFormatMakerDir/README.md
 clipFormatMakerDir/settingVariables/hideSettingVariables.js
 cmdBookmaker.js
 cmdGpt35.js
+cmdGpt35Dir/README.md
 cmdGpt35Dir/settingVariables/hideSettingVariables.js
 cmdGpt35Dir/settingVariables/setReplaceVariables.js
 cmdGpt35Dir/settingVariables/setVariableTypes.js
@@ -90,6 +92,7 @@ fileManagerDir/systemJs/noArg.js
 fileManagerDir/systemJs/onAutoExec.js
 fileManagerDir/systemJs/urlHistoryClick.js
 gCalendarFormatter.js
+gCalendarFormatterDir/README.md
 gCalendarFormatterDir/settingVariables/hideSettingVariables.js
 gCalendarFormatterDir/settingVariables/setReplaceVariables.js
 gCalendarFormatterDir/settingVariables/setVariableTypes.js
@@ -207,6 +210,7 @@ pulseReceiver.js
 qrCreatorDir/README.md
 qrLReader.js
 selectMenu.js
+selectMenuDir/README.md
 selectMenuDir/menuList/menu.txt
 selectTyper.js
 selectTyperDir/README.md
@@ -230,6 +234,7 @@ selectTyperDir/systemJs/appHistoryClick.js
 selectTyperDir/systemJs/onAutoExec.js
 selectTyperDir/systemJs/urlHistoryClick.js
 sendClipToGmail.js
+sendClipToGmailDir/README.md
 sendClipToGmailDir/settingVariables/hideSettingVariables.js
 sendClipToGmailDir/settingVariables/setReplaceVariables.js
 sendClipToGmailDir/settingVariables/setVariableTypes.js
@@ -250,6 +255,7 @@ txtPdfViewerDir/settingVariables/setVariableTypes.js
 urlIntender.js
 urlTrans.js
 webSearcher.js
+webSearcherDir/README.md
 webSearcherDir/menuList/centerLongPressMenuList.txt
 webSearcherDir/menuList/centerMenuList.txt
 webSearcherDir/menuList/imageMenuList.txt
