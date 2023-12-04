@@ -6,7 +6,7 @@ readonly WORKING_DIR_PATH=$(pwd)
 readonly TMP_GH_ACTION_DIR_NAME="temp_gh_action"
 readonly TMP_GH_ACTION_DIR_PATH="${WORKING_DIR_PATH}/${TMP_GH_ACTION_DIR_NAME}"
 readonly FANNEL_STOCK_DIR_NAME="fannel"
-readonly FANNEL_STOCK_DIR_PATH="${TMP_GH_ACTION_DIR_PATH}/${FANNEL_STOCK_DIR_NAME}"
+readonly FANNEL_STOCK_DIR_PATH="${WORKING_DIR_PATH}/${FANNEL_STOCK_DIR_NAME}"
 
 
 function echo_fannel_path(){
@@ -38,6 +38,7 @@ function clone_and_cp(){
 	ls
 	echo ${gh_dir_name}
 	ls "${gh_dir_name}"
+	local cp_desti_dir_path=
 	cp -arvf \
 		"${fannel_dir_path}" \
 		"${FANNEL_STOCK_DIR_PATH}"/
@@ -57,7 +58,7 @@ function clone_and_cp(){
 	cp -avf \
 		"${fannel_path}" \
 		"${FANNEL_STOCK_DIR_PATH}"/
-	rm "${fannel_dir_path}"
+	rm -rf "${fannel_dir_path}"
 }
 
 clone_and_cp \
@@ -79,7 +80,7 @@ readonly grep_cmd=$(\
 	}'\
 )
 
-cd fannel
+cd "${FANNEL_STOCK_DIR_NAME}"
 
 readonly find_cmd="find  \
 	-type f \
