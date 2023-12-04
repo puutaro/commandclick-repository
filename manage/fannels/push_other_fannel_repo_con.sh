@@ -1,5 +1,6 @@
 #!/bin/bash
 
+set -ue
 
 readonly WORKING_DIR_PATH="$(dirname "${0}")"
 readonly TMP_GH_ACTION_DIR_NAME="temp_gh_action"
@@ -23,18 +24,22 @@ function echo_fannel_path(){
 
 function clone_and_cp(){
 	local git_hub_repo_url="${1}"
-	readonly gh_dir_name="$(basename "${git_hub_repo_url}")"
-	readonly gh_dir_path="${TMP_GH_ACTION_DIR_PATH}/${gh_dir_name}"
-	readonly fannel_dir_name="${git_hub_dir_name}Dir"
-	readonly fannel_dir_path="${gh_dir_path}/${fannel_dir_name}"
+	local gh_dir_name="$(basename "${git_hub_repo_url}")"
+	local gh_dir_path="${TMP_GH_ACTION_DIR_PATH}/${gh_dir_name}"
+	local fannel_dir_name="${gh_dir_name}Dir"
+	local fannel_dir_path="${gh_dir_path}/${fannel_dir_name}"
 	mkdir "${TMP_GH_ACTION_DIR_NAME}"
+	echo pwd
+	pwd
 	cd "${TMP_GH_ACTION_DIR_NAME}"
+	echo pwd
+	pwd
 	git clone "https://github.com/puutaro/selectTyper"
 	cp \
 		"${fannel_dir_path}" \
 		"${FANNEL_STOCK_DIR_PATH}"/
 
-	readonly fannel_path="$(\
+	local fannel_path="$(\
 		echo_fannel_path \
 			"${gh_dir_path}" \
 			"${gh_dir_name}" \
@@ -55,7 +60,11 @@ function clone_and_cp(){
 clone_and_cp \
 	"https://github.com/puutaro/selectTyper"
 
+echo pwd
+pwd
 cd "${WORKING_DIR_PATH}"
+echo pwd
+pwd
 
 readonly ignore_list_path="manage/fannels/ignore_list.txt"
 readonly output_fannels_list="manage/fannels/list/fannels.txt"
