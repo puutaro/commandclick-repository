@@ -5,13 +5,14 @@
 
 
 # cmdYoutuberU
-
+---------------------
 
 Youtube background player (**ubuntu version**) @puutaro
 
 Table of Contents
 -------
 <!-- vim-markdown-toc GFM --> 
+* [Installation](#installation)
 * [Support long press menu table](#support-long-press-menu-table)
 * [Toolbar buttons](#toolbar-buttons)
 	* [Play Button](#play-button)
@@ -34,6 +35,15 @@ Table of Contents
 	* [terminalColor](#terminalcolor)
 
 
+## Installation
+---------------------
+
+1. Install [ComamndClick](https://github.com/puutaro/CommandClick) to your android by [this link](https://github.com/puutaro/CommandClick#app-installation)
+2. Set up Ubuntu by [this link](https://github.com/puutaro/CommandClick/blob/master/USAGE.md#setup-ubuntu)
+3. Install this fannel by [install repo](https://github.com/puutaro/CommandClick/blob/master/USAGE.md#install-fannel) or QR code
+4. Press [Install button](#install)
+
+
 ## Support long press menu table
 -------
 
@@ -44,6 +54,7 @@ Table of Contents
 | image | x |
 
 ## Toolbar buttons
+---------------------
 
 ### Play Button
 
@@ -70,7 +81,7 @@ Select shuffle or ordinaly and press
 1. Press "Exec"
 2. (Execute play list)
 
-## PLAY
+### PLAY
 
 Play youtube music
 
@@ -108,6 +119,7 @@ Edit tube play list name by `renameTubePlayListName`
 
 
 ## Execute target on click in url history
+---------------------
 
 [PLAY](#play)
 
@@ -119,6 +131,7 @@ This Fannel is used to bellow repo as core library.
 
 ## Setting variables
 ---------
+
 ### onUrlHistoryRegister
 Url history update signal
 
@@ -135,3 +148,4 @@ Adjust terminal font color
 
 ### terminalColor
 Adjust terminal background color
+

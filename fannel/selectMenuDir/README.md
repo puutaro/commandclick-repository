@@ -9,6 +9,13 @@
 
 Display select menu from jsFile @puutaro
 
+## Installation
+--------------
+
+1. Install [ComamndClick](https://github.com/puutaro/CommandClick#app-installation) to your android
+2. Install this fannel by [install repo](https://github.com/puutaro/CommandClick/blob/master/USAGE.md#install-fannel) or QR code
+
+
 ## Cmd Variables
 --------
 ### HIGHLIGHT_SCRIPT

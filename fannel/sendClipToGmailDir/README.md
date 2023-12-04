@@ -6,13 +6,14 @@
 
 
 # sendClipToGmail
-
+---------------------
 
 Send clipboard contents to Gmail draft @puutaro
 
 Table of Contents
 -------
 <!-- vim-markdown-toc GFM --> 
+* [Installation](#installation)
 * [Cmd Variables](#cmd-variables)
 	* [gmailDraftUrl](#gmaildrafturl)
 	* [gmailDraftListURL](#gmaildraftlisturl)
@@ -21,6 +22,13 @@ Table of Contents
 	* [terminalFontZoom](#terminalfontzoom)
 	* [terminalFontColor](#terminalfontcolor)
 	* [terminalColor](#terminalColor)
+
+## Installation
+--------------
+
+1. Install [ComamndClick](https://github.com/puutaro/CommandClick#app-installation) to your android
+2. Install this fannel by [install repo](https://github.com/puutaro/CommandClick/blob/master/USAGE.md#install-fannel) or QR code
+
 
 ## Cmd Variables
 --------
