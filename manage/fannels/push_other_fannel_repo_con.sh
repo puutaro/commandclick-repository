@@ -35,6 +35,7 @@ function clone_and_cp(){
 	echo pwd
 	pwd
 	git clone "https://github.com/puutaro/selectTyper"
+	ls
 	cp \
 		"${fannel_dir_path}" \
 		"${FANNEL_STOCK_DIR_PATH}"/
