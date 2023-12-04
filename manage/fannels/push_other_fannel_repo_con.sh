@@ -54,11 +54,11 @@ function clone_and_cp(){
 	mkdir -p "${TMP_GH_ACTION_DIR_PATH}"
 	exec_cd "${TMP_GH_ACTION_DIR_NAME}"
 	git clone "${git_hub_repo_url}"
-	exec_cp 
+	exec_cp \
 		"${fannel_dir_path}" \
 		"${FANNEL_STOCK_DIR_PATH}"
 
-	exec_cp 
+	exec_cp \
 		"${readme_path}" \
 		"${fannel_dir_desti_path}"
 
@@ -73,7 +73,7 @@ function clone_and_cp(){
 			return
 			;;
 	esac
-	exec_cp 
+	exec_cp \
 		"${fannel_path}" \
 		"${FANNEL_STOCK_DIR_PATH}"
 	rm -rf "${TMP_GH_ACTION_DIR_PATH}"
