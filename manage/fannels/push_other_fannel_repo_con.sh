@@ -95,15 +95,16 @@ function exec_git_clone(){
 
 exec_git_clone
 
-readonly ignore_list_path="manage/fannels/input_txt_list/ignore_list.txt"
-readonly output_fannels_list="manage/fannels/list/fannels.txt"
-readonly grep_cmd=$(\
-	cat "${ignore_list_path}" \
-	| awk '{
-		if(!$0) next
-		printf " | grep -Ev \x22^"$0"\x22"
-	}'\
-)
+# exec_cd "${WORKING_DIR_PATH}"
+# readonly ignore_list_path="manage/fannels/input_txt_list/ignore_list.txt"
+# readonly output_fannels_list="manage/fannels/list/fannels.txt"
+# readonly grep_cmd=$(\
+# 	cat "${ignore_list_path}" \
+# 	| awk '{
+# 		if(!$0) next
+# 		printf " | grep -Ev \x22^"$0"\x22"
+# 	}'\
+# )
 
 # exec_cd "${FANNEL_STOCK_DIR_PATH}"
 
