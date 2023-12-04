@@ -2,7 +2,7 @@
 
 set -ue
 
-readonly WORKING_DIR_PATH="$(dirname "${0}")"
+readonly WORKING_DIR_PATH=$(pwd)
 readonly TMP_GH_ACTION_DIR_NAME="temp_gh_action"
 readonly TMP_GH_ACTION_DIR_PATH="${WORKING_DIR_PATH}/${TMP_GH_ACTION_DIR_NAME}"
 readonly FANNEL_STOCK_DIR_NAME="fannel"
