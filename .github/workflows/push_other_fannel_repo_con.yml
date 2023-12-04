@@ -4,13 +4,13 @@ on:
   # schedule:
   #   - cron: '20 20 * * *'
 jobs:
-  echo-fannel-list-update:
+  push-other-repo-fannel:
     runs-on: ubuntu-latest
     steps:
       - run: echo "push other repo fannel"
 
   exec-update:
-    needs: push other repo fannel
+    needs: push-other-repo-fannel
     runs-on: ubuntu-latest
     permissions:
       contents: write # 書き込むために必要
