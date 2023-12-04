@@ -31,6 +31,17 @@ function exec_cd(){
 	pwd
 }
 
+function exec_cp(){
+	local cp_src_path="${1}"
+	local cp_desti_path="${2}"
+	echo "cp"
+	echo "from: ${cp_src_path}"
+	echo "to: ${cp_desti_path}"
+	cp -avf \
+		"${cp_src_path}" \
+		"${cp_desti_path}"/
+}
+
 function clone_and_cp(){
 	local git_hub_repo_url="${1}"
 	local gh_dir_name="$(basename "${git_hub_repo_url}")"
@@ -43,19 +54,13 @@ function clone_and_cp(){
 	mkdir -p "${TMP_GH_ACTION_DIR_PATH}"
 	exec_cd "${TMP_GH_ACTION_DIR_NAME}"
 	git clone "${git_hub_repo_url}"
-	echo "cp"
-	echo "from: ${fannel_dir_path}"
-	echo "to: ${FANNEL_STOCK_DIR_PATH}"
-	cp -arvf \
+	exec_cp 
 		"${fannel_dir_path}" \
-		"${FANNEL_STOCK_DIR_PATH}"/
+		"${FANNEL_STOCK_DIR_PATH}"
 
-	echo "cp" 
-	echo "from: ${readme_path}"
-	echo "to: ${fannel_dir_desti_path}"
-	cp -avf \
+	exec_cp 
 		"${readme_path}" \
-		"${fannel_dir_desti_path}/"
+		"${fannel_dir_desti_path}"
 
 	local fannel_path="$(\
 		echo_fannel_path \
@@ -64,16 +69,13 @@ function clone_and_cp(){
 	)"
 	case "${fannel_path}" in
 		"")  
-			rm "${fannel_dir_path}"
+			rm -rf "${TMP_GH_ACTION_DIR_PATH}"
 			return
 			;;
 	esac
-	echo "cp"
-	echo "from: ${fannel_path}"
-	echo "to: ${FANNEL_STOCK_DIR_PATH}"
-	cp -avf \
+	exec_cp 
 		"${fannel_path}" \
-		"${FANNEL_STOCK_DIR_PATH}"/
+		"${FANNEL_STOCK_DIR_PATH}"
 	rm -rf "${TMP_GH_ACTION_DIR_PATH}"
 }
 
