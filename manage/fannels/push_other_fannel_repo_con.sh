@@ -30,7 +30,12 @@ function clone_and_cp(){
 	local fannel_dir_path="${gh_dir_path}/${fannel_dir_name}"
 	local fannel_dir_desti_path="${FANNEL_STOCK_DIR_PATH}/${fannel_dir_name}"
 	local readme_path="${gh_dir_path}/README.md"
-	mkdir "${TMP_GH_ACTION_DIR_NAME}"
+	echo pwd
+	pwd
+	cd "${WORKING_DIR_PATH}"
+	echo pwd
+	pwd
+	mkdir -p "${TMP_GH_ACTION_DIR_PATH}"
 	echo pwd
 	pwd
 	cd "${TMP_GH_ACTION_DIR_NAME}"
@@ -95,11 +100,6 @@ function exec_git_clone(){
 
 exec_git_clone
 
-echo pwd
-pwd
-cd "${WORKING_DIR_PATH}"
-echo pwd
-pwd
 
 readonly ignore_list_path="manage/fannels/input_txt_list/ignore_list.txt"
 readonly output_fannels_list="manage/fannels/list/fannels.txt"
