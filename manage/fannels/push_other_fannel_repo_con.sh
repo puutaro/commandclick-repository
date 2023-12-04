@@ -78,15 +78,10 @@ function clone_and_cp(){
 }
 
 function exec_git_clone(){
-	# local old_ifs="${IFS}"
-	# local IFS=$'\n'
-	# local repo_url_list=$(cat "${REPO_URL_LIST_PATH}")
-	# local IFS="${old_ifs}"
-	# local IFS=$'\n'
 	local times=1
 	for repo_url in $(cat "${REPO_URL_LIST_PATH}")
 	do
-		echo "[${times}] ${repo_url}"
+		echo "### $(date '+%Y/%m-%dT%H:%M:%s') [${times}] ${repo_url}"
 		case "${repo_url}" in
 			"") ;;
 			*) clone_and_cp "${repo_url}" 
@@ -108,21 +103,21 @@ readonly grep_cmd=$(\
 	}'\
 )
 
-exec_cd "${FANNEL_STOCK_DIR_PATH}"
+# exec_cd "${FANNEL_STOCK_DIR_PATH}"
 
-readonly find_cmd="find  \
-	-type f \
-	-not -path '*/.git/*' \
-	-not -path '*/.github/*' \
-	-and -not -path '*/exp_fannel/*' \
-	-and -not -path '*/old/*' \
-	-and -not -path '*/.difbk/*' \
-	-and -not -path '*/manage/*' \
- 	-and -not -name '*gitignore' \
-	-and -not -name '*LICENSE' \
-	-and -not -name '*difbk_ignore' \
-	-printf '%P\n' ${grep_cmd}"
+# readonly find_cmd="find  \
+# 	-type f \
+# 	-not -path '*/.git/*' \
+# 	-not -path '*/.github/*' \
+# 	-and -not -path '*/exp_fannel/*' \
+# 	-and -not -path '*/old/*' \
+# 	-and -not -path '*/.difbk/*' \
+# 	-and -not -path '*/manage/*' \
+#  	-and -not -name '*gitignore' \
+# 	-and -not -name '*LICENSE' \
+# 	-and -not -name '*difbk_ignore' \
+# 	-printf '%P\n' ${grep_cmd}"
 
-bash -c "${find_cmd}" \
-	| sort \
-	| awk '1'
+# bash -c "${find_cmd}" \
+# 	| sort \
+# 	| awk '1'
