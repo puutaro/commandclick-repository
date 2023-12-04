@@ -105,7 +105,6 @@ readonly find_cmd="find  \
 	-and -not -path '*/manage/*' \
  	-and -not -name '*gitignore' \
 	-and -not -name '*LICENSE' \
-	-and -not -name '*README.md' \
 	-and -not -name '*difbk_ignore' \
 	-printf '%P\n' ${grep_cmd}"
 
