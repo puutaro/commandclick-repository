@@ -67,7 +67,7 @@ function clone_and_cp(){
 	esac
 	echo "cp"
 	echo "from: ${fannel_path}"
-	ehco "to: ${FANNEL_STOCK_DIR_PATH}"
+	echo "to: ${FANNEL_STOCK_DIR_PATH}"
 	cp -avf \
 		"${fannel_path}" \
 		"${FANNEL_STOCK_DIR_PATH}"/
