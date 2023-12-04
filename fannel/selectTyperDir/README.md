@@ -1,5 +1,8 @@
+  
+<div><img src="https://github.com/puutaro/selectTyper/assets/55217593/dc7e36fd-cf37-4580-b55e-cf55f09fde91" width="300">  </div>
+  
+<div><img src="https://github.com/puutaro/selectTyper/assets/55217593/555e8f5f-656a-4faf-bb76-f663c01cfe47" width="300"></div> 
 
-<img src="https://github.com/puutaro/selectTyper/assets/55217593/a7d2c2b7-62be-45cc-bdcb-3cd9be8a16fa" width="300">  
 
 # selectTyper.js
 ----------------
