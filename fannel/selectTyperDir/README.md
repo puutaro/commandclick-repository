@@ -1,3 +1,6 @@
+
+<img src="https://github.com/puutaro/selectTyper/assets/55217593/a7d2c2b7-62be-45cc-bdcb-3cd9be8a16fa" width="300">  
+
 # selectTyper.js
 ----------------
 
