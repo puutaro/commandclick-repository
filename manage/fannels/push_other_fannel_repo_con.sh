@@ -76,7 +76,7 @@ function clone_and_cp(){
 	cp -avf \
 		"${fannel_path}" \
 		"${FANNEL_STOCK_DIR_PATH}"/
-	rm -rf "${fannel_dir_path}"
+	rm -rf "${TMP_GH_ACTION_DIR_PATH}"
 }
 
 function exec_git_clone(){
