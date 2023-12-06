@@ -3,8 +3,10 @@
 # commandclick-repository
 `CommandClick`'s [`fannel`](https://github.com/puutaro/CommandClick/blob/master/md/developer/glossary.md#fannel) repository
 
-[`fannel`](https://github.com/puutaro/CommandClick/blob/master/md/developer/glossary.md#fannel) is `ComamndClick` using script (javascript, and shellscript)  
-For instance, your click script in `CommandClick`. One thing I can say that `CommandClick` is developed for the purpose of changing javaxcript and shellscript to gui appication. That applies to click script. It's so called Gui application. We can say so. I call the gui application `fannel`.
+[`Fannel`](https://github.com/puutaro/CommandClick/blob/master/md/developer/glossary.md#fannel) is `ComamndClick` using script (javascript, and shellscript)  
+For instance, your click script in `CommandClick`.   
+One thing I can say that `CommandClick` is developed for the purpose of changing javaxcript and shellscript to gui appication.   
+That applies to click script. It's so called Gui application. We can say so. I call the gui application `fannel`.
 
 
 
@@ -13,29 +15,53 @@ Table of Contents
 -----------------
 
 * [Desire](#desire)
+* [Your Fannel Register condition](#your-fannel-register-condition)
+  * [Procedure](#procedure)  
+    * [Example](#example)
 * [Usage](#usage)
-  * [Configuration](#configuration)
   * [Description](#description)
 
 
 Desire
 -----  
 
-[`fannel`](https://github.com/puutaro/CommandClick/blob/master/md/developer/glossary.md#fannel) is idea application. Add idea to your javascript and shellscript skill.　That's all there is to great it.
-Therefore commit your idea app to this repository. Don't forget author(`@`yourname).
+[`Fannel`](https://github.com/puutaro/CommandClick/blob/master/md/developer/glossary.md#fannel) is idea application.   
+Add idea to your javascript and shellscript skill.　   
+That's all there is to great it.    
+Therefore commit your idea app to this repository. Don't forget author(`@`yourname).  
+
+
+Your Fannel Register condition
+-------------
+
+## Procedure
+
+1. Each file is less 5M
+2. [`Fannel`](https://github.com/puutaro/CommandClick/blob/master/md/developer/glossary.md#fannel) main file is `{fannle name}`.js(sh), main directory  `{fannel name}`Dir like bellow location
+
+```kt.js
+.
+├── ${fannel name}.js(sh)
+└── ${fannel name}Dir
+```
+- Put require file for fannel to bellow `${fannel name}Dir`
+
+3. Write your github url to [fannles.txt](https://github.com/puutaro/commandclick-repository/blob/master/manage/fannels/input_txt_list/repo_url_list.txt)
+4. Please PR
+
+
+### Example
+
+[cmdYoutube](https://github.com/puutaro/commandclick-repository/blob/master/fannel/cmdYoutuberDir/README.md)  
+
+Main file: cmdYoutube.js   
+Main Dir: cmdYoutubeDir  
+
+- `cmdYoutubeDir` incliude some files. [detail](https://github.com/puutaro/commandclick-repository/tree/master/fannel)
 
 
 Usage
 -----  
-
-
-### Configuration
-
-[`fannel`](https://github.com/puutaro/CommandClick/blob/master/md/developer/glossary.md#fannel) is configured script and script raw name(no suffix name) + "Dir"  
-
-ex) cmdYoutube fannel  
-cmdYoutube.js, cmdYoutubeDir  
-  - `cmdYoutubeDir` incliude some files. [detail](https://github.com/puutaro/commandclick-repository/tree/master/fannel)
   
 
 ### Description
