@@ -12,6 +12,7 @@ Type by select box for login form, etc.. by puutaro
 Table of Contents
 -------
 <!-- vim-markdown-toc GFM --> 
+* [Installation](#installation)
 * [Usage](#usage)
 * [Cmd Variables](#cmd-variables)
 	* [Keyboard](#keyboard)
@@ -23,6 +24,12 @@ Table of Contents
 	* [terminalFontZoom](#terminalfontzoom)
 	* [scriptFileName](#scriptfilename)
 
+
+## Installation
+------------------------
+
+1. Install [ComamndClick](https://github.com/puutaro/CommandClick#app-installation) to your android
+2. Install this fannel by [install repo](https://github.com/puutaro/CommandClick/blob/master/USAGE.md#install-fannel) or QR code
 
 ## Usage
 --------

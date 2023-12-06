@@ -12,6 +12,7 @@ TextToSpeech player @puutaro
 Table of Contents
 -------
 <!-- vim-markdown-toc GFM --> 
+* [Installation](#installation)
 * [Toolbar buttons](#toolbar-buttons)
 	* [Play button](#play-button)
 * [Cmd Variables](#cmd-variables)
@@ -29,6 +30,13 @@ Table of Contents
 	* [terminalFontZoom](#terminalfontzoom)
 	* [terminalFontColor](#terminalfontcolor)
 	* [terminalColor](#terminalcolor)
+
+## Installation
+--------------
+
+1. Install [ComamndClick](https://github.com/puutaro/CommandClick#app-installation) to your android
+2. Install this fannel by [install repo](https://github.com/puutaro/CommandClick/blob/master/USAGE.md#install-fannel) or QR code
+
 
 ## Toolbar buttons
 --------

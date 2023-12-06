@@ -12,6 +12,7 @@ File manager by puutaro
 Table of Contents
 -------
 <!-- vim-markdown-toc GFM --> 
+* [Installation](#installation)
 * [Usage](#usage)
 * [Toolbar buttons](#toolbar-buttons)
 	* [Play Button](#play-button)
@@ -21,11 +22,24 @@ Table of Contents
 	* [STOP](#stop)
 	* [SETTING](#setting)
 	* [INSTALL](#install)
-* [Long press link](#long-press-link)
+* [Long press menu](#long-press-menu)
+	* [Src anckor](#src-anckor)
+ 	* [Src image anchor](#src-image-anchor)
+  	* [Image anchor](#image-anchor) 
 * [Setting variables](#setting-variables)
 	* [homeScriptUrlsPath](#homescripturlspath)
 	* [scriptFileName](#scriptfilename)
 * [Acknowledge](#acknowledge)
+
+
+## Installation
+---------
+
+1. Install [ComamndClick](https://github.com/puutaro/CommandClick) to your android by [this link](https://github.com/puutaro/CommandClick#app-installation)
+2. Set up Ubuntu by [this link](https://github.com/puutaro/CommandClick/blob/master/USAGE.md#setup-ubuntu)
+3. Install this fannel by [install repo](https://github.com/puutaro/CommandClick/blob/master/USAGE.md#install-fannel) or QR code
+4. Press [Install button](#install)
+
 
 ## Usage
 --------
@@ -86,14 +100,29 @@ Detail setting
 Install requirement package
 
 
-## Long press link
+## Long press menu
 ---------
 
-| Link type | Action | 
+### Src anckor
+
+| Menu name | Action | 
 | -------------- | -------------- |
-| src anckor | Copy link |
-| src image anchor | Copy link |
-| image anchor | x |
+| copyLink.js | Copy link |
+| passQr.js | QR code to transfer other android (only -5M) |
+| passQrbyScp.js | QR code to transfer other android by Scp (fast and limitless) |
+
+### Src image anchor
+
+| Menu name | Action | 
+| -------------- | -------------- |
+| copyLink.js | Copy link |
+| passQr.js | QR code to transfer other android (only -5M) |
+| passQrbyScp.js | QR code to transfer other android by Scp (fast and limitless) |
+
+
+### Image anchor
+
+None
 
 
 ## Setting variables

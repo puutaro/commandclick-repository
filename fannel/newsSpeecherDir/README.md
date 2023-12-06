@@ -13,6 +13,7 @@ Table of Contents
 -------
 <!-- vim-markdown-toc GFM --> 
 * [Note](#note)
+* [Installation](#installation)
 * [Support long press menu table](#support-long-press-menu-table)
 * [Toolbar buttons](#toolbar-buttons)
 	* [Play Button](#play-button)
@@ -43,6 +44,14 @@ Table of Contents
 ## Note
 
 Set text to speech engine to Google in your phone
+
+## Installation
+-----------
+
+1. Install [ComamndClick](https://github.com/puutaro/CommandClick) to your android by [this link](https://github.com/puutaro/CommandClick#app-installation)
+2. Set up Ubuntu by [this link](https://github.com/puutaro/CommandClick/blob/master/USAGE.md#setup-ubuntu)
+3. Install this fannel by [install repo](https://github.com/puutaro/CommandClick/blob/master/USAGE.md#install-fannel) or QR code
+4. Press [Install button](#install)
 
 
 ## Support long press menu table
@@ -144,6 +153,7 @@ Edit news url list name by `renameEditNewsUrlListName`
 
 
 ## Execute target on click in url history
+---------------------
 
 [SUMMARY](#summary)
 

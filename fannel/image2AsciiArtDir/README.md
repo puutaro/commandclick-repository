@@ -13,6 +13,7 @@ Table of Contents
 -------
 <!-- vim-markdown-toc GFM --> 
 * [Support long press menu table](#support-long-press-menu-table)
+* [Installation](#installation)
 * [Cmd Variables](#cmd-variables)
 	* [PLAY_QUIZ](#play_quiz)
 	* [DISPLAY_GALLERY](#display_gallery)
@@ -35,6 +36,12 @@ Table of Contents
 | src anchor | x |
 | src image anchor | o |
 | image | o |
+
+## Installation
+--------------
+
+1. Install [ComamndClick](https://github.com/puutaro/CommandClick#app-installation) to your android
+2. Install this fannel by [install repo](https://github.com/puutaro/CommandClick/blob/master/USAGE.md#install-fannel) or QR code
 
 
 ## Cmd Variables
