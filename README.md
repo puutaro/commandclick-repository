@@ -47,7 +47,7 @@ Your Fannel Register condition
 - Put require file for fannel to above `${fannel name}Dir`
 
 3. Write your github url to [fannles.txt](https://github.com/puutaro/commandclick-repository/blob/master/manage/fannels/input_txt_list/repo_url_list.txt)
-4. Please PR
+4. Please `PR`
 
 
 #### Example
