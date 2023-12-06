@@ -54,8 +54,8 @@ Your Fannel Register condition
 
 [cmdYoutube](https://github.com/puutaro/commandclick-repository/blob/master/fannel/cmdYoutuberDir/README.md)  
 
-Main file: cmdYoutube.js   
-Main Dir: cmdYoutubeDir  
+Main file: `cmdYoutube.js`   
+Main Dir: `cmdYoutubeDir`  
 
 - `cmdYoutubeDir` incliude some files. [detail](https://github.com/puutaro/commandclick-repository/tree/master/fannel)
 
