@@ -74,3 +74,8 @@ REGISTER_EXTRA_KEY
 	:TXT:BTN=
 		${BTN_CMD}=jsf '${sshTerminalRegisterExtraKeyJsPath}'
 			!${BTN_LABEL}=RG_EX_KEY,
+
+SETTING
+	:BTN:HL=
+		${BTN_CMD}=jsf '${sshTerminalSettingJsPath}'
+			!${BTN_LABEL}=this,

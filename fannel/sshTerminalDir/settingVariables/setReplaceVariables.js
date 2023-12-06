@@ -94,6 +94,8 @@ sshTerminalRegisterCmdJsPath=
 	`${sshTerminalJsDirPath}/registerCmd.js`,
 sshTerminalRegisterExtraKeyJsPath=
 	`${sshTerminalJsDirPath}/registerExtraKey.js`,
+sshTerminalSettingJsPath=
+	`${sshTerminalJsDirPath}/setting.js`,
 
 // system js path
 sshTerminalNoArgsJs=

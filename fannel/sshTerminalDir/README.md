@@ -77,7 +77,7 @@ Retrieve pre-registerd command.
 - "-" is escape that you execute command in drop down.
 - If you wont to edit keys file, this is bellow.
 
-[cmdTerminalDir](https://github.com/puutaro/CommandClick/blob/master/md/developer/directory_structure.md#fannel_dir)/list/cmdList.txt
+[sshTerminalDir](https://github.com/puutaro/CommandClick/blob/master/md/developer/directory_structure.md#fannel_dir)/list/cmdList.txt
 
 
 
@@ -91,7 +91,7 @@ Register user difinition key.
 - If you wont to edit keys file, this is bellow.
 
 
-[cmdTerminalDir](https://github.com/puutaro/CommandClick/blob/master/md/developer/directory_structure.md#fannel_dir)/list/extraKeyList.txt
+[sshTerminalDir](https://github.com/puutaro/CommandClick/blob/master/md/developer/directory_structure.md#fannel_dir)/list/extraKeyList.txt
 
 
 #### Modifier kind table

@@ -3,9 +3,6 @@ y
 exit
 rm -rf ~/.ssh
 ls ~/.ssh
-ssh-keygen -t rsa -b 4096
-ssh-copy-id -o "StrictHostKeyChecking no" lbabu@192.168.0.8
-ssh-copy-id -n -o "StrictHostKeyChecking no" lbabu@192.168.0.8
 ls -l
 ls
 echo
