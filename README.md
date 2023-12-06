@@ -18,7 +18,7 @@ Table of Contents
 * [Your Fannel Register condition](#your-fannel-register-condition)
   * [Procedure](#procedure)  
     * [Example](#example)
-* [Usage](#usage)
+* [Others](#others)
   * [Description](#description)
 
 
@@ -34,7 +34,7 @@ Therefore commit your idea app to this repository. Don't forget author(`@`yourna
 Your Fannel Register condition
 -------------
 
-## Procedure
+### Procedure
 
 1. Each file is less 5M
 2. [`Fannel`](https://github.com/puutaro/CommandClick/blob/master/md/developer/glossary.md#fannel) main file is `{fannle name}`.js(sh), main directory  `{fannel name}`Dir like bellow location
@@ -50,7 +50,7 @@ Your Fannel Register condition
 4. Please PR
 
 
-### Example
+#### Example
 
 [cmdYoutube](https://github.com/puutaro/commandclick-repository/blob/master/fannel/cmdYoutuberDir/README.md)  
 
@@ -59,10 +59,8 @@ Main Dir: cmdYoutubeDir
 
 - `cmdYoutubeDir` incliude some files. [detail](https://github.com/puutaro/commandclick-repository/tree/master/fannel)
 
-
-Usage
------  
-  
+Others
+-------------
 
 ### Description
 
