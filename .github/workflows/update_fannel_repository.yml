@@ -4,22 +4,29 @@ on:
   schedule:
     - cron: '20 20 * * *'
 jobs:
-  push-other-repo-fannel:
+  update-fannel-repo:
     runs-on: ubuntu-latest
     permissions:
       contents: write # 書き込むために必要
     steps:
-      - uses: actions/checkout@v3
-      - run: bash "manage/fannels/push_other_fannel_repo_con.sh"
-      - uses: stefanzweifel/git-auto-commit-action@v4
+      - name: Checkout
+        uses: actions/checkout@v3
+      - name: Push from register fannel repos
+        run: |
+          bash "manage/fannels/push_other_fannel_repo_con.sh"
+      - name: Update fannel list
+        run: |
+          bash "manage/fannels/update_fannel_list.sh"
+      - name: Auto Commit
+        uses: stefanzweifel/git-auto-commit-action@v4
 
 
-  update-fannels-list:
-    needs: push-other-repo-fannel
-    runs-on: ubuntu-latest
-    permissions:
-      contents: write # 書き込むために必要
-    steps:
-      - uses: actions/checkout@v3
-      - run: bash "manage/fannels/update_fannel_list.sh"
-      - uses: stefanzweifel/git-auto-commit-action@v4
+  # update-fannels-list:
+  #   needs: push-other-repo-fannel
+  #   runs-on: ubuntu-latest
+  #   permissions:
+  #     contents: write # 書き込むために必要
+  #   steps:
+  #     - uses: actions/checkout@v3
+  #     - run: bash "manage/fannels/update_fannel_list.sh"
+  #     - uses: stefanzweifel/git-auto-commit-action@v4
