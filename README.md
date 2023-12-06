@@ -71,5 +71,6 @@ By `setting` -> `install_fannel`, Script's `CommandClick description` 50 char in
  - description [detail](https://github.com/puutaro/CommandClick#description)  
 
 
-![image](https://user-images.githubusercontent.com/55217593/226502301-2481112f-438a-4a29-a3bd-1e46babc138a.png)
+<img src="https://github.com/puutaro/commandclick-repository/assets/55217593/6f62911e-772c-4c04-8375-0998d1353612" width="600">  
+
 
