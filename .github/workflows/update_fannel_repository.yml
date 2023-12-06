@@ -20,13 +20,3 @@ jobs:
       - name: Auto Commit
         uses: stefanzweifel/git-auto-commit-action@v4
 
-
-  # update-fannels-list:
-  #   needs: push-other-repo-fannel
-  #   runs-on: ubuntu-latest
-  #   permissions:
-  #     contents: write # 書き込むために必要
-  #   steps:
-  #     - uses: actions/checkout@v3
-  #     - run: bash "manage/fannels/update_fannel_list.sh"
-  #     - uses: stefanzweifel/git-auto-commit-action@v4
