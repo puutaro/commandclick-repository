@@ -1,0 +1,2 @@
+
+jsSendKey.send("${RIGHT}");
