@@ -1,9 +1,9 @@
 
 jsimport `${sshTerminalUpdateSearchWordListJsPath}`;
 
-cmdInput = jsScript.readCmdVal(
+jsScript.readCmdValsCon("${0}");
+cmdInput = jsScript.getCmdVal(
     "cmdInput",
-    `${sshTerminalPath}`,
 );
 
 updateSearchWordList(

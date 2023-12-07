@@ -1,10 +1,9 @@
 
 
-jsimport "${READ_CMD_VAL_JS_PATH}";
-jsimport "${FILE_MANAGER_DIR_PATH_JS_PATH}";
-jsimport "${FILE_MANAGER_BROWSE_JS_PATH}";
-jsimport "${FILE_MANAGER_BROWSE_HANDLER_JS_PATH}"
-jsimport "${UPDATE_LIST_BOX_JS__PATH}";
+jsimport `${FILE_MANAGER_DIR_PATH_JS_PATH}`;
+jsimport `${FILE_MANAGER_BROWSE_JS_PATH}`;
+jsimport `${FILE_MANAGER_BROWSE_HANDLER_JS_PATH}`;
+jsimport `${UPDATE_LIST_BOX_JS__PATH}`;
 
 
 const dirListCon = jsFileSystem.readLocalFile(

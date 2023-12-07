@@ -1,8 +1,8 @@
 
 
-ON_AUTO_LAUNCH_SSH_DIALOG =jsScript.readCmdVal(
+jsScript.readCmdValsCon("${0}");
+ON_AUTO_LAUNCH_SSH_DIALOG = jsScript.getCmdVal(
     "ON_AUTO_LAUNCH_SSH_DIALOG",
-    `${sshTerminalPath}`,
 );
 const setVariableContents = [
     `ON_AUTO_LAUNCH_SSH_DIALOG:LBL:CB=${TXT_LABEL}=is auto launch ssh dialog|ON!OFF`,

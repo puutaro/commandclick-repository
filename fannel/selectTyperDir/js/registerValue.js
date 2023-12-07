@@ -9,15 +9,9 @@ updateSeachWordList(
 
 
 function readValueList(){
-	const mainFannelCon = jsFileSystem.readLocalFile(
-		"${fannelPath}"
-	);
-	const cmdCon = jsScript.subCmdVars(
-		mainFannelCon
-	);
-	return jsScript.subValOnlyValue(
+	jsScript.readCmdValsCon(`${0}`);
+	return jsScript.getCmdVal(
 		"valueList",
-		cmdCon,
 	);
-};
+}
 

@@ -1,16 +1,16 @@
 
 
-jsimport "${READ_CMD_VAL_JS_PATH}";
-jsimport "${FILE_MANAGER_BROWSE_JS_PATH}";
-jsimport "${FILE_MANAGER_DIR_PATH_JS_PATH}";
-jsimport "${FILE_MANAGER_BROWSE_HANDLER_JS_PATH}";
+jsimport `${FILE_MANAGER_BROWSE_JS_PATH}`;
+jsimport `${FILE_MANAGER_DIR_PATH_JS_PATH}`;
+jsimport `${FILE_MANAGER_BROWSE_HANDLER_JS_PATH}`;
 
 
 urlHistoryClickHandler();
 
 function urlHistoryClickHandler(){
-	const selectDirPath = readCmdVal("DIR_PATH_LIST");
-	const IS_LAUNCH_ON_CLICK_URL_HISTORY = readCmdVal("IS_LAUNCH_ON_CLICK_URL_HISTORY");
+	jsScript.readCmdValsCon(`${0}`);
+	const selectDirPath = jsScript.getCmdVal("DIR_PATH_LIST");
+	const IS_LAUNCH_ON_CLICK_URL_HISTORY = jsScript.getCmdVal("IS_LAUNCH_ON_CLICK_URL_HISTORY");
 	switch(IS_LAUNCH_ON_CLICK_URL_HISTORY){
 		case "OFF":
 			launchFileBrowser(

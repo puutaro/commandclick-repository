@@ -31,6 +31,13 @@ Table of Contents
 1. Install [ComamndClick](https://github.com/puutaro/CommandClick#app-installation) to your android
 2. Install this fannel by [install repo](https://github.com/puutaro/CommandClick/blob/master/USAGE.md#install-fannel) or QR code
 
+
+## Screenshots
+--------
+
+<a href="https://github.com/puutaro/selectTyper/assets/55217593/af57e47d-6220-4adf-a767-55d3a45eb992"><img src="https://github.com/puutaro/selectTyper/assets/55217593/af57e47d-6220-4adf-a767-55d3a45eb992" width="45%" /></a>
+<a href="https://github.com/puutaro/selectTyper/assets/55217593/b2e5264c-3353-42c6-8c3f-015155508a7e"><img src="https://github.com/puutaro/selectTyper/assets/55217593/b2e5264c-3353-42c6-8c3f-015155508a7e" width="45%" /></a>
+
 ## Usage
 --------
 

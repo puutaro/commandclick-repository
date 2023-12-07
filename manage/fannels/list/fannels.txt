@@ -70,6 +70,8 @@ fannelStoreDir/README.md
 fannelStoreDir/js/bookmarks.js
 fannelStoreDir/js/editBookmarkName.js
 fannelStoreDir/js/setting.js
+fannelStoreDir/libs/makeCreatorJSPathForBookmarkList.js
+fannelStoreDir/libs/updateBookMarkName.js
 fannelStoreDir/longPressMenuDir/imageAnchorLongPressMenu.txt
 fannelStoreDir/longPressMenuDir/srcImageAnchorLongPressMenu.txt
 fannelStoreDir/settingVariables/hideSettingVariables.js

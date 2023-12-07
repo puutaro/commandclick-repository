@@ -4,11 +4,12 @@ function browseHandler(
 	selectDirPath,
 	DISABLE_LAUNCH_URL = "",
 ){
+	jsScript.readCmdValsCon(`${0}`);
 	const ROOT_DIR_PATH = makeRootDirPath();
 	const PREVIOUST_ROOT_DIR_PATH = jsFileSystem.readLocalFile(
 		"${PRVIOUS_ROOT_DIR_MEMO_TXT_PATH}"
 	).replace(/\n$/, "");
-	const BASE_URL = readCmdVal("BASE_URL");
+	const BASE_URL = jsScript.getCmdVal("BASE_URL");
 	const isBaseUrl = 
 		BASE_URL != null && BASE_URL != "";
 	const isEqualRootDirPath = 

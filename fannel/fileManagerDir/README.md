@@ -13,6 +13,7 @@ Table of Contents
 -------
 <!-- vim-markdown-toc GFM --> 
 * [Installation](#installation)
+* [Screenshots](#screenshots)
 * [Usage](#usage)
 * [Toolbar buttons](#toolbar-buttons)
 	* [Play Button](#play-button)
@@ -40,6 +41,16 @@ Table of Contents
 3. Install this fannel by [install repo](https://github.com/puutaro/CommandClick/blob/master/USAGE.md#install-fannel) or QR code
 4. Press [Install button](#install)
 
+
+## Screenshots
+--------
+
+<a href="https://github.com/puutaro/fileManager/assets/55217593/d93cf9be-9b16-438c-acfd-071e5b17b2f6"><img src="https://github.com/puutaro/fileManager/assets/55217593/d93cf9be-9b16-438c-acfd-071e5b17b2f6" width="30%" /></a>
+<a href="https://github.com/puutaro/fileManager/assets/55217593/14e90ada-1573-4b5b-914f-7587c3d926c9"><img src="https://github.com/puutaro/fileManager/assets/55217593/14e90ada-1573-4b5b-914f-7587c3d926c9" width="30%" /></a>
+<a href="https://github.com/puutaro/fileManager/assets/55217593/2a552269-e842-4ad7-ad55-9b3042423129"><img src="https://github.com/puutaro/fileManager/assets/55217593/2a552269-e842-4ad7-ad55-9b3042423129" width="30%" /></a>
+<a href="https://github.com/puutaro/fileManager/assets/55217593/e6e820ea-1b64-4b76-a986-a8813069450c"><img src="https://github.com/puutaro/fileManager/assets/55217593/e6e820ea-1b64-4b76-a986-a8813069450c" width="30%" />
+<a href="https://github.com/puutaro/fileManager/assets/55217593/4c86ffdb-ff4b-49f6-acef-10d002634b79"><img src="https://github.com/puutaro/fileManager/assets/55217593/4c86ffdb-ff4b-49f6-acef-10d002634b79" width="30%" /></a>
+<a href="https://github.com/puutaro/fileManager/assets/55217593/d994e2c8-1662-4951-a086-b2cc55cab9aa"><img src="https://github.com/puutaro/fileManager/assets/55217593/d994e2c8-1662-4951-a086-b2cc55cab9aa" width="30%" /></a>
 
 ## Usage
 --------

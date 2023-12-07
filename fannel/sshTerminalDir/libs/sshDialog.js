@@ -9,25 +9,21 @@ function launchSshDialog() {
         `sshPass:LBL:TXT:ELSB=${TXT_LABEL}=this|${LIST_PATH}=${sshTerminalSshPassListTxtPath}!${LIMIT_NUM}=10!${INIT_MARK}=DELETE`,
         `keyPhase:LBL:CB=${TXT_LABEL}=this|NO!SET_UP!USE`
     ].join("\t");
-    const curUserName = jsScript.readCmdVal(
+    jsScript.readCmdValsCon("${0}");
+    const curUserName = jsScript.getCmdVal(
         "userName",
-        `${sshTerminalPath}`
     );
-    const curAddress = jsScript.readCmdVal(
+    const curAddress = jsScript.getCmdVal(
         "address",
-        `${sshTerminalPath}`
     );
-    const curPort = jsScript.readCmdVal(
+    const curPort = jsScript.getCmdVal(
         "port",
-        `${sshTerminalPath}`
     );
-    const curSshPass = jsScript.readCmdVal(
+    const curSshPass = jsScript.getCmdVal(
         "sshPass",
-        `${sshTerminalPath}`
     );
-    const curKeyPhase = jsScript.readCmdVal(
+    const curKeyPhase = jsScript.getCmdVal(
         "keyPhase",
-        `${sshTerminalPath}`
     );
     let cmdVariables = [
         `userName=${curUserName}`,
@@ -46,25 +42,21 @@ function launchSshDialog() {
     if(
         returnCodeStr === canncelReturnCode
     ) return;
-    const updateUserName = jsScript.readCmdVal(
+    jsScript.readCmdValsCon("${0}");
+    const updateUserName = jsScript.getCmdVal(
         "userName",
-        `${sshTerminalPath}`
     );
-    const updateAddress = jsScript.readCmdVal(
+    const updateAddress = jsScript.getCmdVal(
         "address",
-        `${sshTerminalPath}`
     );
-    const updatePort = jsScript.readCmdVal(
+    const updatePort = jsScript.getCmdVal(
         "port",
-        `${sshTerminalPath}`
     );
-    const updateSshPass = jsScript.readCmdVal(
+    const updateSshPass = jsScript.getCmdVal(
         "sshPass",
-        `${sshTerminalPath}`
     );
-    const updateKeyPhase = jsScript.readCmdVal(
+    const updateKeyPhase = jsScript.getCmdVal(
         "keyPhase",
-        `${sshTerminalPath}`
     );
     jsListSelect.updateListFileCon(
         `${sshTerminalUserNameListTxtPath}`,

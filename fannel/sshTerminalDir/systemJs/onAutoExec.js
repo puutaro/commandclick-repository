@@ -4,14 +4,14 @@ jsListSelect.initListFile(
     `${sshTerminalCmdListFilePath}`,
     jsFileSystem.readLocalFile(
         `${sshTerminalCmdListSrcFilePath}`
-    ).replaceAll("\n", "\t")
+    )
 );
 
 jsListSelect.initListFile(
     `${sshTerminalExtraKeyListFilePath}`,
     jsFileSystem.readLocalFile(
         `${sshTerminalExtraKeySrcListFilePath}`
-    ).replaceAll("\n", "\t")
+    )
 );
 
 
@@ -25,9 +25,9 @@ function launchTerminalAndSshDialog(){
     const pageFinishedLoadCon =
         jsUrl.makeJsUrl(`${sshTerminalNoArgsJs}`);
     jsUbuntu.boot();
-    const ON_AUTO_LAUNCH_SSH_DIALOG = jsScript.readCmdVal(
+    jsScript.readCmdValsCon("${0}");
+    const ON_AUTO_LAUNCH_SSH_DIALOG = jsScript.getCmdVal(
         "ON_AUTO_LAUNCH_SSH_DIALOG",
-        `${sshTerminalPath}`,
     ) === "ON";
     if(!ON_AUTO_LAUNCH_SSH_DIALOG) {
         jsUrl.loadUrl(loadJsCon);
@@ -42,9 +42,4 @@ function launchTerminalAndSshDialog(){
         pageFinishedLoadCon,
         1000,
     );
-    // jsUbuntu.bootOnExec(
-    //     loadJsCon,
-    //     1000
-    // );
-
 };
