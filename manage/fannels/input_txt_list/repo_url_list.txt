@@ -18,3 +18,4 @@ https://github.com/puutaro/txtPdfViewer
 https://github.com/puutaro/webSearcher
 https://github.com/puutaro/sshTerminal
 https://github.com/puutaro/fannelStore
+https://github.com/puutaro/japanRouteSearcher
