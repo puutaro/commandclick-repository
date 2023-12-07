@@ -39,7 +39,7 @@ Your Fannel Register condition
 ### Procedure 1
 
 This is simple, and excelent by scalability, visuality, popularity, becuase of only use github topic.  
-Finally, fannle install process integrate this.  
+<!-- Finally, fannle install process integrate this. --> 
 
 
 1. [`Fannel`](https://github.com/puutaro/CommandClick/blob/master/md/developer/glossary.md#fannel) main file is `{fannle name}`.js(sh), main directory  `{fannel name}`Dir like bellow location
