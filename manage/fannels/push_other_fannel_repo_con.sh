@@ -42,6 +42,12 @@ function exec_cp(){
 		"${cp_desti_path}"/
 }
 
+function skip_process(){
+	local message="${1:-}"
+	echo "## $(date '+%Y/%m-%dT%H:%M:%s') Skip, ${message}"
+	rm -rf "${TMP_GH_ACTION_DIR_PATH}"
+}
+
 function clone_and_cp(){
 	local git_hub_repo_url="${1}"
 	local gh_dir_name="$(basename "${git_hub_repo_url}")"
@@ -54,25 +60,28 @@ function clone_and_cp(){
 	mkdir -p "${TMP_GH_ACTION_DIR_PATH}"
 	exec_cd "${TMP_GH_ACTION_DIR_NAME}"
 	git clone "${git_hub_repo_url}"
+	if [ ! -d "${fannel_dir_path}" ];then
+		skip_process \
+			"no exist fannel dir: ${fannel_dir_path}"
+		return
+	fi
+	if [ ! -f "${readme_path}" ];then
+		skip_process \
+				"README.md no exist: ${readme_path}"
+		return
+	fi
 	local is_five_over_size=$(\
 		find "${fannel_dir_path}"  -size +10M\
 	)
 	case "${is_five_over_size}" in
 		"") 
-			echo "## $(date '+%Y/%m-%dT%H:%M:%s') Push, thanks to less 10M";;
+			;;
 		*) 
-			echo "## $(date '+%Y/%m-%dT%H:%M:%s') Skip, due to over 10M"
-			rm -rf "${TMP_GH_ACTION_DIR_PATH}"
+			skip_process \
+				"due to over 10M"
 			return
 			;;
 	esac
-	exec_cp \
-		"${fannel_dir_path}" \
-		"${FANNEL_STOCK_DIR_PATH}"
-	exec_cp \
-		"${readme_path}" \
-		"${fannel_dir_desti_path}"
-
 	local fannel_path="$(\
 		echo_fannel_path \
 			"${gh_dir_path}" \
@@ -80,13 +89,20 @@ function clone_and_cp(){
 	)"
 	case "${fannel_path}" in
 		"")  
-			rm -rf "${TMP_GH_ACTION_DIR_PATH}"
+			skip_process \
+				"fannel path no exist: ${fannel_path}"
 			return
 			;;
 	esac
 	exec_cp \
 		"${fannel_path}" \
 		"${FANNEL_STOCK_DIR_PATH}"
+	exec_cp \
+		"${fannel_dir_path}" \
+		"${FANNEL_STOCK_DIR_PATH}"
+	exec_cp \
+		"${readme_path}" \
+		"${fannel_dir_desti_path}"
 	rm -rf "${TMP_GH_ACTION_DIR_PATH}"
 }
 
@@ -105,33 +121,3 @@ function exec_git_clone(){
 }
 
 exec_git_clone
-
-# exec_cd "${WORKING_DIR_PATH}"
-# readonly ignore_list_path="manage/fannels/input_txt_list/ignore_list.txt"
-# readonly output_fannels_list="manage/fannels/list/fannels.txt"
-# readonly grep_cmd=$(\
-# 	cat "${ignore_list_path}" \
-# 	| awk '{
-# 		if(!$0) next
-# 		printf " | grep -Ev \x22^"$0"\x22"
-# 	}'\
-# )
-
-# exec_cd "${FANNEL_STOCK_DIR_PATH}"
-
-# readonly find_cmd="find  \
-# 	-type f \
-# 	-not -path '*/.git/*' \
-# 	-not -path '*/.github/*' \
-# 	-and -not -path '*/exp_fannel/*' \
-# 	-and -not -path '*/old/*' \
-# 	-and -not -path '*/.difbk/*' \
-# 	-and -not -path '*/manage/*' \
-#  	-and -not -name '*gitignore' \
-# 	-and -not -name '*LICENSE' \
-# 	-and -not -name '*difbk_ignore' \
-# 	-printf '%P\n' ${grep_cmd}"
-
-# bash -c "${find_cmd}" \
-# 	| sort \
-# 	| awk '1'
