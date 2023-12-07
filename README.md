@@ -16,7 +16,9 @@ Table of Contents
 
 * [Desire](#desire)
 * [Your Fannel Register condition](#your-fannel-register-condition)
-  * [Procedure](#procedure)  
+  * [Procedure 1](#procedure-1)  
+    * [Example](#example)
+  * [Procedure 2](#procedure-2)  
     * [Example](#example)
 * [Others](#others)
   * [Description](#description)
@@ -34,19 +36,54 @@ Therefore commit your idea app to this repository. Don't forget author(`@`yourna
 Your Fannel Register condition
 -------------
 
-### Procedure
+### Procedure 1
 
-1. Each file is less 5M
-2. [`Fannel`](https://github.com/puutaro/CommandClick/blob/master/md/developer/glossary.md#fannel) main file is `{fannle name}`.js(sh), main directory  `{fannel name}`Dir like bellow location
+This is simple, and excelent by scalability, visuality, popularity, becuase of only use github topic.  
+Finally, fannle install process integrate this.  
+
+
+1. [`Fannel`](https://github.com/puutaro/CommandClick/blob/master/md/developer/glossary.md#fannel) main file is `{fannle name}`.js(sh), main directory  `{fannel name}`Dir like bellow location
 
 ```kt.js
 .
+├── README.md
+├── ${fannel name}.js(sh)
+└── ${fannel name}Dir
+    ├── README.md
+    .
+    .
+    .
+```
+
+- Put require file for fannel to above `${fannel name}Dir`
+
+2. Make palin text pr by bellow format
+
+```js.js
+onGit:prefix=${your git repo url};name=${fannel name}
+```
+
+3. Paste above qr image your README.md and your repo [sorcial preview](https://docs.github.com/en/repositories/managing-your-repositorys-settings-and-features/customizing-your-repository/customizing-your-repositorys-social-media-preview)
+4. Put `fannel` tag  to your fannel repo
+
+### Procedure 2
+
+This is for register this fannel repository.  
+This merit is download fast.
+
+1. [`Fannel`](https://github.com/puutaro/CommandClick/blob/master/md/developer/glossary.md#fannel) main file is `{fannle name}`.js(sh), main directory  `{fannel name}`Dir like bellow location
+
+```kt.js
+.
+├── README.md
 ├── ${fannel name}.js(sh)
 └── ${fannel name}Dir
 ```
 - Put require file for fannel to above `${fannel name}Dir`
+- Each file is less 5M  
 
-3. Write your github url to [fannles.txt](https://github.com/puutaro/commandclick-repository/blob/master/manage/fannels/input_txt_list/repo_url_list.txt)
+2. Write your github url to [fannles.txt](https://github.com/puutaro/commandclick-repository/blob/master/manage/fannels/input_txt_list/repo_url_list.txt)
+3. Put `fannel` tag  to your fannel repo
 4. Please `PR`
 
 
