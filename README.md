@@ -38,7 +38,7 @@ Your Fannel Register condition
 
 ### Procedure 1
 
-This is simple, and excelent by scalability, visuality, popularity. becuase of only use github topic.  
+This is simple, and excelent by scalability, visuality, popularity, becuase of only use github topic.  
 Finally, fannle install process integrate this.  
 
 
