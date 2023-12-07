@@ -39,6 +39,7 @@ Your Fannel Register condition
 ### Procedure 1
 
 This is simple, and excelent by scalability, visuality, popularity, becuase of only use github topic.  
+Also you can search by [fannelStore](https://github.com/puutaro/fannelStore) more easiy.  
 <!-- Finally, fannle install process integrate this. --> 
 
 
