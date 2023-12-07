@@ -1,0 +1,2 @@
+
+jsUrl.loadUrl(`${fannelTopicUrl}`);
