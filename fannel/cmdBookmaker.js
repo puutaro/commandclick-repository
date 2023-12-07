@@ -14,6 +14,7 @@
 // 	* [Play](#play)
 // 		* [Usage](#usage)
 // 	* [bookmarkListName](#bookmarklistname)
+// 	* [EDIT BOOKMARK NAME](#edit-bookmark-name)
 // * [Setting variables](#setting-variables)
 // 	* [EditExecute](#editexecute)
 
@@ -31,6 +32,17 @@
 // Input or select bookmark list file name
 // - prefix must be "book" 
 // 	ex) "bookSites"
+
+// ### EDIT BOOKMARK NAME
+
+// Edit bookmark list by `renamebookmarkListName`
+
+// `renamebookmarkListName` 
+
+// | value | description |
+// | ----------- | ----------- |
+// | blank | Delete tube url list name |
+// | other | Rename tube url list name (auto comp prefix `bookmark`) |
 
 // ## Setting variables
 // ---------
