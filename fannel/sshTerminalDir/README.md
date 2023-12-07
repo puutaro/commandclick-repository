@@ -7,7 +7,7 @@
 # sshTerminal.js
 ----------------
 
-SSh access terminal emulator @puutaro
+SSH access terminal emulator @puutaro
 
 Table of Contents
 -------
