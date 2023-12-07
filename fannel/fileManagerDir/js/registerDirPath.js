@@ -1,7 +1,6 @@
 
-jsimport "${READ_CMD_VAL_JS_PATH}";
-jsimport "${FILE_MANAGER_DIR_PATH_JS_PATH}";
-jsimport "${UPDATE_LIST_BOX_JS__PATH}";
+jsimport `${FILE_MANAGER_DIR_PATH_JS_PATH}`;
+jsimport `${UPDATE_LIST_BOX_JS__PATH}`;
 
 const registerDirPath = makeRegisterDirPath();
 
@@ -35,7 +34,8 @@ function makeRegisterDirPath(){
 };
 
 function getCurrentDirPath(){
-	const currentDirPathSrc = readCmdVal("DIR_PATH_LIST");
+	jsScript.readCmdValsCon(`${0}`);
+	const currentDirPathSrc = jsScript.getCmdVal("DIR_PATH_LIST");
 	if(
 		!currentDirPathSrc
 	) return jsUtil.echoFromClipboard().replace(/\/\/*$/, "");

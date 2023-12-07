@@ -15,16 +15,17 @@ function execBrowse(
 function saveArgsTsv(
 	DISABLE_LAUNCH_URL
 ){
+	jsScript.readCmdValsCon(`${0}`);
 	const ROOT_DIR_PATH = makeRootDirPath();
 	const URL_DIR_PATH = makeDirPath(
 		ROOT_DIR_PATH,
-		readCmdVal("DIR_PATH_LIST"),
+		jsScript.getCmdVal("DIR_PATH_LIST"),
 	);
 	const argsCon = [
 		`IPV4_ADDRESS\t${jsNetTool.getIpv4()}`,
 		`ROOT_DIR_PATH\t${ROOT_DIR_PATH}`,
 		`DISABLE_LAUNCH_URL\t${DISABLE_LAUNCH_URL}`,
-		`DIR_PATH_LIST\t${readCmdVal("DIR_PATH_LIST")}`,
+		`DIR_PATH_LIST\t${jsScript.getCmdVal("DIR_PATH_LIST")}`,
 		`URL_DIR_PATH\t${URL_DIR_PATH}`,
 	].join("\n");
 	jsFileSystem.writeLocalFile(

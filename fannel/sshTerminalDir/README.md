@@ -12,6 +12,8 @@ SSH access terminal emulator @puutaro
 Table of Contents
 -------
 <!-- vim-markdown-toc GFM --> 
+* [Installation](#installation)
+* [Screenshots](#screenshots)
 * [Usage](#usage)
   * [`keyPhase` table in dialog](#keyphase-table-in-dialog)
 * [Toolbar buttons](#toolbar-buttons)
@@ -24,6 +26,24 @@ Table of Contents
 	* [REGISTER_EXTRA_KEY](#register_extra_key)
 		* [Modifier kind table](#modifier-kind-table)
 * [Acknowledge](#acknowledge)
+
+## Installation
+---------------------
+
+1. Install [ComamndClick](https://github.com/puutaro/CommandClick) to your android by [this link](https://github.com/puutaro/CommandClick#app-installation)
+2. Set up Ubuntu by [this link](https://github.com/puutaro/CommandClick/blob/master/USAGE.md#setup-ubuntu)
+3. Install this fannel by [install repo](https://github.com/puutaro/CommandClick/blob/master/USAGE.md#install-fannel) or QR code
+
+
+## Screenshots
+--------
+
+<a href="https://github.com/puutaro/fannelStore/assets/55217593/01fc1e77-1f77-4e39-8ade-03b778dcc314"><img src="https://github.com/puutaro/fannelStore/assets/55217593/01fc1e77-1f77-4e39-8ade-03b778dcc314" width="30%" /></a>
+<a href="https://github.com/puutaro/fannelStore/assets/55217593/d1ddb1f8-2491-4305-868c-b080b164c33d"><img src="https://github.com/puutaro/fannelStore/assets/55217593/d1ddb1f8-2491-4305-868c-b080b164c33d" width="30%" /></a>
+<a href="https://github.com/puutaro/fannelStore/assets/55217593/9fab42d6-be2e-4d5a-8c0c-842393a31bce"><img src="https://github.com/puutaro/fannelStore/assets/55217593/9fab42d6-be2e-4d5a-8c0c-842393a31bce" width="30%" /></a>
+<a href="https://github.com/puutaro/sshTerminal/assets/55217593/3ae0957b-6de4-4654-b8d4-ce99c146fb9f"><img src="https://github.com/puutaro/sshTerminal/assets/55217593/3ae0957b-6de4-4654-b8d4-ce99c146fb9f" width="30%" />
+<a href="https://github.com/puutaro/sshTerminal/assets/55217593/6552d02d-ef78-440c-bab0-d0411ea44594"><img src="https://github.com/puutaro/sshTerminal/assets/55217593/6552d02d-ef78-440c-bab0-d0411ea44594" width="30%" /></a>
+<a href="https://github.com/puutaro/sshTerminal/assets/55217593/9c0d5972-59a5-4b84-90b5-7ce90068b72a"><img src="https://github.com/puutaro/sshTerminal/assets/55217593/9c0d5972-59a5-4b84-90b5-7ce90068b72a" width="30%" /></a>
 
 ## Usage
 --------
