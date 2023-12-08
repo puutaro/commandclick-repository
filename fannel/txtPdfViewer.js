@@ -1,7 +1,7 @@
 
 
 /// LABELING_SECTION_START
-// file://
+// https://github.com/puutaro/txtPdfViewer
 /// LABELING_SECTION_END
 
 

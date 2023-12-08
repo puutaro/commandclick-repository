@@ -1,7 +1,7 @@
 
 
 /// LABELING_SECTION_START
-// file://
+// https://github.com/puutaro/cmdMusicPlayer
 /// LABELING_SECTION_END
 
 

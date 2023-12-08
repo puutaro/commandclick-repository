@@ -1,7 +1,7 @@
 
 
 /// LABELING_SECTION_START
-// file://
+// https://github.com/puutaro/clipFormatMaker
 // 2. Press play button
 
 /// LABELING_SECTION_END
