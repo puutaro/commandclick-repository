@@ -1,7 +1,7 @@
 
 
 /// LABELING_SECTION_START
-// https://github.com/puutaro/webSearcher#readme
+// https://github.com/puutaro/webSearcher
 /// LABELING_SECTION_END
 
 
