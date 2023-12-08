@@ -41,6 +41,9 @@ jsListSelect.initListFile(
 	`${FILE_MANAGER_BASE_URL_LIST_TXT_PATH}`,
 	preBaseUrlList
 );
-jsScript.readCmdValsCon(`${0}`);
-const selectDirPath = jsScript.getCmdVal("DIR_PATH_LIST");
+const cmdValsCon = jsScript.readCmdValsCon("${0}");
+const selectDirPath = jsScript.subValOnlyValue(
+	"DIR_PATH_LIST",
+	cmdValsCon
+);
 browseHandler(selectDirPath);

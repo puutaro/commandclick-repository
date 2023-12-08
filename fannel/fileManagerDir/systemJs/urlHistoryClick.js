@@ -8,9 +8,15 @@ jsimport `${FILE_MANAGER_BROWSE_HANDLER_JS_PATH}`;
 urlHistoryClickHandler();
 
 function urlHistoryClickHandler(){
-	jsScript.readCmdValsCon(`${0}`);
-	const selectDirPath = jsScript.getCmdVal("DIR_PATH_LIST");
-	const IS_LAUNCH_ON_CLICK_URL_HISTORY = jsScript.getCmdVal("IS_LAUNCH_ON_CLICK_URL_HISTORY");
+	const cmdValsCon = jsScript.readCmdValsCon("${0}");
+	const selectDirPath = jsScript.subValOnlyValue(
+		"DIR_PATH_LIST",
+		cmdValsCon,
+	);
+	const IS_LAUNCH_ON_CLICK_URL_HISTORY = jsScript.subValOnlyValue(
+		"IS_LAUNCH_ON_CLICK_URL_HISTORY",
+		cmdValsCon,
+	);
 	switch(IS_LAUNCH_ON_CLICK_URL_HISTORY){
 		case "OFF":
 			launchFileBrowser(

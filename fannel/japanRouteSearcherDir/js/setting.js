@@ -1,11 +1,13 @@
 
 
-jsScript.readCmdValsCon("${0}");
-onLaunchBookmarkByDialog = jsScript.getCmdVal(
+const cmdValsCon = jsScript.readCmdValsCon("${0}");
+onLaunchBookmarkByDialog = jsScript.subValOnlyValue(
     "onLaunchBookmarkByDialog",
+    cmdValsCon
 );
-lang = jsScript.getCmdVal(
+lang = jsScript.subValOnlyValue(
     "lang",
+    cmdValsCon
 );
 const setVariableContents = [
     `onLaunchBookmarkByDialog:LBL:CB=${TXT_LABEL}=On launch bookmark by dialog|ON!OFF`,

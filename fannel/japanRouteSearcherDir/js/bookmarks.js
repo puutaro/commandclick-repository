@@ -4,15 +4,25 @@ jsimport `${japanRouteSearcherMakeCreatorTsvPathForBookmarkListJsPath}`;
 launchBookmarkDialog();
 
 function launchBookmarkDialog() {
-    jsScript.readCmdValsCon("${0}");
-    const onLaunchBookmarkByDialog = jsScript.getCmdVal(
+    const cmdValsCon = jsScript.readCmdValsCon("${0}");
+    const onLaunchBookmarkByDialog = jsScript.subValOnlyValue(
         "onLaunchBookmarkByDialog",
+        cmdValsCon,
     ) === "ON";
     const EDIT_FILE_PATH = makeCreatorJSPathForBookmarkList(
         `${japanRouteSearcherEditDirPath}`,
     );
 
+    const latestUrlTitleFilterJs = `(function(){
+        return latestUrlTitleSrc.replace(
+            "This is the transit route of the search result", 
+            ""
+        ).replace(/Japan Transit Planner.*$/, "")
+        .trim();
+    })();`.replaceAll("\n", "");
+
     let extraMapStr = [
+        `latest_url_title_filter_code=` + latestUrlTitleFilterJs,
         `src_path=${APP_URL_HISTORY_PATH}`,
         `on_click_sort=true`,
         'on_sortable_js=true',

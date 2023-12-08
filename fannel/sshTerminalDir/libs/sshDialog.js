@@ -9,21 +9,26 @@ function launchSshDialog() {
         `sshPass:LBL:TXT:ELSB=${TXT_LABEL}=this|${LIST_PATH}=${sshTerminalSshPassListTxtPath}!${LIMIT_NUM}=10!${INIT_MARK}=DELETE`,
         `keyPhase:LBL:CB=${TXT_LABEL}=this|NO!SET_UP!USE`
     ].join("\t");
-    jsScript.readCmdValsCon("${0}");
-    const curUserName = jsScript.getCmdVal(
+    const cmdValsCon = jsScript.readCmdValsCon("${0}");
+    const curUserName = jsScript.subValOnlyValue(
         "userName",
+        cmdValsCon,
     );
-    const curAddress = jsScript.getCmdVal(
+    const curAddress = jsScript.subValOnlyValue(
         "address",
+        cmdValsCon,
     );
-    const curPort = jsScript.getCmdVal(
+    const curPort = jsScript.subValOnlyValue(
         "port",
+        cmdValsCon,
     );
-    const curSshPass = jsScript.getCmdVal(
+    const curSshPass = jsScript.subValOnlyValue(
         "sshPass",
+        cmdValsCon,
     );
-    const curKeyPhase = jsScript.getCmdVal(
+    const curKeyPhase = jsScript.subValOnlyValue(
         "keyPhase",
+        cmdValsCon,
     );
     let cmdVariables = [
         `userName=${curUserName}`,
@@ -34,7 +39,7 @@ function launchSshDialog() {
     ].join("\t");
     const canncelReturnCode = "1";
     const returnCodeStr = jsValEdit.editAndSaveCmdVar(
-        "Exec SSH",
+        "SSH login",
         `${sshTerminalPath}`,
         setVariableContents,
         cmdVariables,
@@ -42,21 +47,30 @@ function launchSshDialog() {
     if(
         returnCodeStr === canncelReturnCode
     ) return;
-    jsScript.readCmdValsCon("${0}");
-    const updateUserName = jsScript.getCmdVal(
+    preProcessAndSshLogin();
+}
+
+function preProcessAndSshLogin(){
+    const cmdValsConSaved = jsScript.readCmdValsCon("${0}");
+    const updateUserName = jsScript.subValOnlyValue(
         "userName",
+        cmdValsConSaved,
     );
-    const updateAddress = jsScript.getCmdVal(
+    const updateAddress = jsScript.subValOnlyValue(
         "address",
+        cmdValsConSaved,
     );
-    const updatePort = jsScript.getCmdVal(
+    const updatePort = jsScript.subValOnlyValue(
         "port",
+        cmdValsConSaved,
     );
-    const updateSshPass = jsScript.getCmdVal(
+    const updateSshPass = jsScript.subValOnlyValue(
         "sshPass",
+        cmdValsConSaved,
     );
-    const updateKeyPhase = jsScript.getCmdVal(
+    const updateKeyPhase = jsScript.subValOnlyValue(
         "keyPhase",
+        cmdValsConSaved,
     );
     jsListSelect.updateListFileCon(
         `${sshTerminalUserNameListTxtPath}`,

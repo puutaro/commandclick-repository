@@ -2,40 +2,50 @@
 
 jsimport `${UPDATE_LIST_BOX_JS__PATH}`;
 
-jsScript.readCmdValsCon(`${0}`);
-const ROOT_DIR_PATH = jsScript.getCmdVal("ROOT_DIR_PATH");
-const BASE_URL = jsScript.getCmdVal("BASE_URL");
-const IS_LAUNCH_ON_CLICK_URL_HISTORY = jsScript.getCmdVal("IS_LAUNCH_ON_CLICK_URL_HISTORY");
-const setVariableContents = [
-	`ROOT_DIR_PATH:LBL:TXT:ELSB=${TXT_LABEL}=Root dir path|${LIST_PATH}=${FILE_MANAGER_ROOT_DIR_LIST_TXT_PATH}!${LIMIT_NUM}=10!${INIT_MARK}=${SET_BLANK_MARK}`,
-	`BASE_URL:LBL:TXT:ELSB=${TXT_LABEL}=Base url ( ipv4Add:portNum )|${LIST_PATH}=${FILE_MANAGER_BASE_URL_LIST_TXT_PATH}!${LIMIT_NUM}=10!${INIT_MARK}=${SET_BLANK_MARK}`,
-	`IS_LAUNCH_ON_CLICK_URL_HISTORY:LBL:CB=${TXT_LABEL}=Is launch on click url history|OFF!ON`,
-].join("\t");
-const varNameValCon = [
-	`ROOT_DIR_PATH=${ROOT_DIR_PATH}`,
-	`BASE_URL=${BASE_URL}`,
-	`IS_LAUNCH_ON_CLICK_URL_HISTORY=${IS_LAUNCH_ON_CLICK_URL_HISTORY}`,
-].join("\t");
-jsValEdit.editAndSaveCmdVar(
-    "Setting",
-    "${FANNEL_PATH}",
-    setVariableContents,
-    varNameValCon,
-);
-jsScript.readCmdValsCon(`${0}`);
-checkAndModifyRootDirPathSaved();
-checkAndModifyBaseUrlSaved();
+launchSettingDialog();
+afterCheckProcess();
 
+function launchSettingDialog() {
+	const cmdValsCon = jsScript.readCmdValsCon("${0}");
+	const ROOT_DIR_PATH = jsScript.subValOnlyValue(
+		"ROOT_DIR_PATH",
+		cmdValsCon
+	);
+	const BASE_URL = jsScript.subValOnlyValue(
+		"BASE_URL",
+		cmdValsCon,
+	);
+	const IS_LAUNCH_ON_CLICK_URL_HISTORY = jsScript.subValOnlyValue(
+		"IS_LAUNCH_ON_CLICK_URL_HISTORY",
+		cmdValsCon,
+	);
+	const setVariableContents = [
+		`ROOT_DIR_PATH:LBL:TXT:ELSB=${TXT_LABEL}=Root dir path|${LIST_PATH}=${FILE_MANAGER_ROOT_DIR_LIST_TXT_PATH}!${LIMIT_NUM}=10!${INIT_MARK}=${SET_BLANK_MARK}`,
+		`BASE_URL:LBL:TXT:ELSB=${TXT_LABEL}=Base url ( ipv4Add:portNum )|${LIST_PATH}=${FILE_MANAGER_BASE_URL_LIST_TXT_PATH}!${LIMIT_NUM}=10!${INIT_MARK}=${SET_BLANK_MARK}`,
+		`IS_LAUNCH_ON_CLICK_URL_HISTORY:LBL:CB=${TXT_LABEL}=Is launch on click url history|OFF!ON`,
+	].join("\t");
+	const varNameValCon = [
+		`ROOT_DIR_PATH=${ROOT_DIR_PATH}`,
+		`BASE_URL=${BASE_URL}`,
+		`IS_LAUNCH_ON_CLICK_URL_HISTORY=${IS_LAUNCH_ON_CLICK_URL_HISTORY}`,
+	].join("\t");
+	jsValEdit.editAndSaveCmdVar(
+		"Setting",
+		"${FANNEL_PATH}",
+		setVariableContents,
+		varNameValCon,
+	);
+}
 
-function makeRootDirPath(){
-	const readRootDirPath = jsScript.getCmdVal("ROOT_DIR_PATH");
-	if(readRootDirPath === "/") return readRootDirPath;
-	return readRootDirPath.replace(/\/\/*$/, "");
+function afterCheckProcess() {
+	const cmdValsCon = jsScript.readCmdValsCon(`${0}`);
+	checkAndModifyRootDirPathSaved(cmdValsCon);
+	checkAndModifyBaseUrlSaved(cmdValsCon);
 }
 
 
-function checkAndModifyRootDirPathSaved(){
-	const ROOT_DIR_PATH_SAVED = makeRootDirPath();
+function checkAndModifyRootDirPathSaved(cmdValsCon){
+	const ROOT_DIR_PATH_SAVED = makeRootDirPathForSetting(cmdValsCon);
 	const ubuntuPath = jsPath.convertUbuntuPath(ROOT_DIR_PATH_SAVED);
 	if(
 		ROOT_DIR_PATH_SAVED.startsWith("/")
@@ -60,8 +70,20 @@ function checkAndModifyRootDirPathSaved(){
 	);
 }
 
-function checkAndModifyBaseUrlSaved(){
-	var BASE_URL_SAVED = jsScript.getCmdVal("BASE_URL");
+function makeRootDirPathForSetting(cmdValsCon){
+	const readRootDirPath = jsScript.subValOnlyValue(
+		"ROOT_DIR_PATH",
+		cmdValsCon,
+	);
+	if(readRootDirPath === "/") return readRootDirPath;
+	return readRootDirPath.replace(/\/\/*$/, "");
+}
+
+function checkAndModifyBaseUrlSaved(cmdValsCon){
+	var BASE_URL_SAVED = jsScript.subValOnlyValue(
+		"BASE_URL",
+		cmdValsCon,
+	);
 	if(!BASE_URL_SAVED) return;
 	if(
 		!BASE_URL_SAVED.startsWith("http://")

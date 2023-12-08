@@ -2,9 +2,10 @@
 function makeCreatorJSPathForBookmarkList(
     dirPath,
 ){
-    jsScript.readCmdValsCon("${0}");
-    var japanRouteSearcherBookMarkNameSrc = jsScript.getCmdVal(
+    const cmdValsCon = jsScript.readCmdValsCon("${0}");
+    var japanRouteSearcherBookMarkNameSrc = jsScript.subValOnlyValue(
         "japanRouteSearcherBookmarkName",
+        cmdValsCon,
     );
     if(!japanRouteSearcherBookMarkNameSrc){
         japanRouteSearcherBookMarkNameSrc = `${japanRouteSearcherBookmarkDefaultName}`;

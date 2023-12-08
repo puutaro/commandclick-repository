@@ -2,9 +2,10 @@
 function makeCreatorJSPathForBookmarkList(
     dirPath,
 ){
-    jsScript.readCmdValsCon("${0}");
-    var fannelStoreBookMarkNameSrc = jsScript.getCmdVal(
+    const cmdValsCon = jsScript.readCmdValsCon("${0}");
+    var fannelStoreBookMarkNameSrc = jsScript.subValOnlyValue(
         "fannelStoreBookmarkName",
+        cmdValsCon,
     );
     if(!fannelStoreBookMarkNameSrc){
         fannelStoreBookMarkNameSrc = `${fannelStoreBookmarkDefaultName}`;

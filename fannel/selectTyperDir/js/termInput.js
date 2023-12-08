@@ -1,7 +1,7 @@
 
 
-jsimport "${selectTyperDeactivateInputTextPath}";
-jsimport "${selectTyperUpdateSeachWordListJsPath}";
+jsimport `${selectTyperDeactivateInputTextPath}`;
+jsimport `${selectTyperUpdateSeachWordListJsPath}`;
 
 termInput();
 
@@ -23,7 +23,7 @@ function termInput(){
 		"${selectTyperSelectValueListTxtPath}",
 	);
 	let activeEl = document.activeElement;
-	if(activeEl.tagName != "INPUT") return;
+	if(activeEl.tagName !== "INPUT") return;
 	jsSendKey.send("ctrl___a");
 	jsSendKey.send(inputStr);
 };

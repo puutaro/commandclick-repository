@@ -1,5 +1,5 @@
 
-jsimport "${selectTyperUpdateSeachWordListJsPath}"
+jsimport `${selectTyperUpdateSeachWordListJsPath}`;
 
 updateSeachWordList(
 	readValueList(),
@@ -9,9 +9,10 @@ updateSeachWordList(
 
 
 function readValueList(){
-	jsScript.readCmdValsCon(`${0}`);
-	return jsScript.getCmdVal(
+	const cmdValsCon = jsScript.readCmdValsCon("${0}");
+	return jsScript.subValOnlyValue(
 		"valueList",
+		cmdValsCon
 	);
 }
 

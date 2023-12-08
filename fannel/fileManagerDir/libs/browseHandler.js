@@ -4,16 +4,19 @@ function browseHandler(
 	selectDirPath,
 	DISABLE_LAUNCH_URL = "",
 ){
-	jsScript.readCmdValsCon(`${0}`);
-	const ROOT_DIR_PATH = makeRootDirPath();
+	const cmdValsCon = jsScript.readCmdValsCon("${0}");
+	const ROOT_DIR_PATH = makeRootDirPath(cmdValsCon);
 	const PREVIOUST_ROOT_DIR_PATH = jsFileSystem.readLocalFile(
 		"${PRVIOUS_ROOT_DIR_MEMO_TXT_PATH}"
 	).replace(/\n$/, "");
-	const BASE_URL = jsScript.getCmdVal("BASE_URL");
+	const BASE_URL = jsScript.subValOnlyValue(
+		"BASE_URL",
+		cmdValsCon,
+	);
 	const isBaseUrl = 
-		BASE_URL != null && BASE_URL != "";
+		BASE_URL != null && BASE_URL !== "";
 	const isEqualRootDirPath = 
-		ROOT_DIR_PATH == PREVIOUST_ROOT_DIR_PATH
+		ROOT_DIR_PATH === PREVIOUST_ROOT_DIR_PATH
 		&& jsUbuntu.isProc("filebrowser --address");
 	const isFastBrowse = 
 		isEqualRootDirPath || isBaseUrl;

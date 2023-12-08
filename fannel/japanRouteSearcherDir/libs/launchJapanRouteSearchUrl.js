@@ -1,8 +1,9 @@
 
 function launchJapanRouteSearchUrl(){
-    jsScript.readCmdValsCon("${0}");
-    const lang = jsScript.getCmdVal(
+    const cmdValsCon = jsScript.readCmdValsCon("${0}");
+    const lang = jsScript.subValOnlyValue(
         "lang",
+        cmdValsCon
     );
     jsUrl.loadUrl(
         `${japanRouteSearcherLaunchUrl}${lang}`,

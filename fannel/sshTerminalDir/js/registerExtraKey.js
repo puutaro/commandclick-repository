@@ -1,9 +1,10 @@
 
 jsimport `${sshTerminalUpdateSearchWordListJsPath}`;
 
-jsScript.readCmdValsCon("${0}");
-REGISTER_EXTRA_KEY = jsScript.getCmdVal(
+const cmdValsCon = jsScript.readCmdValsCon("${0}");
+REGISTER_EXTRA_KEY = jsScript.subValOnlyValue(
     "REGISTER_EXTRA_KEY",
+    cmdValsCon,
 );
 
 updateSearchWordList(

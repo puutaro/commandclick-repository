@@ -34,8 +34,11 @@ function makeRegisterDirPath(){
 };
 
 function getCurrentDirPath(){
-	jsScript.readCmdValsCon(`${0}`);
-	const currentDirPathSrc = jsScript.getCmdVal("DIR_PATH_LIST");
+	const cmdValsCon = jsScript.readCmdValsCon("${0}");
+	const currentDirPathSrc = jsScript.subValOnlyValue(
+		"DIR_PATH_LIST",
+		cmdValsCon,
+	);
 	if(
 		!currentDirPathSrc
 	) return jsUtil.echoFromClipboard().replace(/\/\/*$/, "");

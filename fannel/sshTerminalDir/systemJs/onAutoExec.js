@@ -25,9 +25,10 @@ function launchTerminalAndSshDialog(){
     const pageFinishedLoadCon =
         jsUrl.makeJsUrl(`${sshTerminalNoArgsJs}`);
     jsUbuntu.boot();
-    jsScript.readCmdValsCon("${0}");
-    const ON_AUTO_LAUNCH_SSH_DIALOG = jsScript.getCmdVal(
+    const cmdValsConSaved = jsScript.readCmdValsCon("${0}");
+    const ON_AUTO_LAUNCH_SSH_DIALOG = jsScript.subValOnlyValue(
         "ON_AUTO_LAUNCH_SSH_DIALOG",
+        cmdValsConSaved
     ) === "ON";
     if(!ON_AUTO_LAUNCH_SSH_DIALOG) {
         jsUrl.loadUrl(loadJsCon);

@@ -1,7 +1,7 @@
 
 
 /// LABELING_SECTION_START
-// file://
+// https://github.com/puutaro/webSearcher
 /// LABELING_SECTION_END
 
 
@@ -67,8 +67,16 @@ function makeUrl(){
         ""
     );
     if(
-        targetUrl != cmdclickLongPressLinkUrlStr
+        targetUrl !== cmdclickLongPressLinkUrlStr
     ) return targetUrl;
+    const externalEexcLink = "CMDDLICK_EXTERNAL_EXEC_REPLACE_TXT";
+    const cmdclickExternalExecReplaceTextStr = "CMDDLICK_ENCRPT_EXTERNAL_EXEC_REPLACE_TXT".replace(
+        "_ENCRPT",
+        ""
+    );
+    if(
+        externalEexcLink !== cmdclickExternalExecReplaceTextStr
+    ) return externalEexcLink;
     return "https://www.google.co.id/search?q=";
 };
 
