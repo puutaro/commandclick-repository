@@ -26,7 +26,6 @@ scriptFileName="fileManager.js"
 
 
 /// CMD_VARIABLE_SECTION_START
-// browse=""
 DIR_PATH_LIST=""
 stop=""
 SETTING=""

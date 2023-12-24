@@ -1,10 +1,7 @@
 
 
-function makeRootDirPath(cmdValsCon){
-	const rootDirPath = jsScript.subValOnlyValue(
-		"ROOT_DIR_PATH",
-		cmdValsCon
-	);
+function makeRootDirPath(){
+	const rootDirPath = `${ROOT_DIR_PATH}`;
 	if(rootDirPath) return rootDirPath;
 	return "/";
 };

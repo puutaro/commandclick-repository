@@ -2,17 +2,9 @@
 jsimport `${selectTyperUpdateSeachWordListJsPath}`;
 
 updateSeachWordList(
-	readValueList(),
+	`${valueList}`,
 	"${selectTyperSelectScriptDirPath}",
 	"${selectTyperSelectValueListTxtPath}",
 );
 
-
-function readValueList(){
-	const cmdValsCon = jsScript.readCmdValsCon("${0}");
-	return jsScript.subValOnlyValue(
-		"valueList",
-		cmdValsCon
-	);
-}
 

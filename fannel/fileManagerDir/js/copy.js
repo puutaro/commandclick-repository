@@ -11,7 +11,6 @@ jsToast.short(`copy ok: ${COPY_URL}`);
 
 
 function makeFMUrl(){
-	const cmdValsCon = jsScript.readCmdValsCon("${0}");
 	const currentUrl = location.href;
 	const copyUrlPrefix = makeFMUrlPrefix();
 	if(
@@ -20,10 +19,7 @@ function makeFMUrl(){
 	const ROOT_DIR_PATH = makeRootDirPath();
 	const URL_DIR_PATH = makeDirPath(
 		ROOT_DIR_PATH,
-		jsScript.subValOnlyValue(
-			"DIR_PATH_LIST",
-			cmdValsCon
-		),
+		`${DIR_PATH_LIST}`,
 	);
 	return `${copyUrlPrefix}/files${URL_DIR_PATH}`;
 };

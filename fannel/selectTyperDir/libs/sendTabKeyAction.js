@@ -31,7 +31,7 @@ function putSelectMark(){
 		function(){
 			deactivateInputText(false);
 			let activeEl = document.activeElement;
-			if(activeEl.tagName != "INPUT") return;
+			if(activeEl.tagName !== "INPUT") return;
 			const value = activeEl.value;
 			if(value) return;
 			jsSendKey.send("-");

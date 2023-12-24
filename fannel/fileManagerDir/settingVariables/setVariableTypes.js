@@ -1,9 +1,4 @@
 
-// browse:
-// 	BTN:HL=
-// 		${BTN_CMD}=jsf '${FILE_MANAGER_BROWSE_JS_PATH}'
-// 			!${BTN_LABEL}=this,
-
 DIR_PATH_LIST:
 	LBL:TXT:ELSB:BTN=
 		${TXT_LABEL}=Dir path list

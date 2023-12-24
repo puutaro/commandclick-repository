@@ -6,19 +6,6 @@ launchSettingDialog();
 afterCheckProcess();
 
 function launchSettingDialog() {
-	const cmdValsCon = jsScript.readCmdValsCon("${0}");
-	const ROOT_DIR_PATH = jsScript.subValOnlyValue(
-		"ROOT_DIR_PATH",
-		cmdValsCon
-	);
-	const BASE_URL = jsScript.subValOnlyValue(
-		"BASE_URL",
-		cmdValsCon,
-	);
-	const IS_LAUNCH_ON_CLICK_URL_HISTORY = jsScript.subValOnlyValue(
-		"IS_LAUNCH_ON_CLICK_URL_HISTORY",
-		cmdValsCon,
-	);
 	const setVariableContents = [
 		`ROOT_DIR_PATH:LBL:TXT:ELSB=${TXT_LABEL}=Root dir path|${LIST_PATH}=${FILE_MANAGER_ROOT_DIR_LIST_TXT_PATH}!${LIMIT_NUM}=10!${INIT_MARK}=${SET_BLANK_MARK}`,
 		`BASE_URL:LBL:TXT:ELSB=${TXT_LABEL}=Base url ( ipv4Add:portNum )|${LIST_PATH}=${FILE_MANAGER_BASE_URL_LIST_TXT_PATH}!${LIMIT_NUM}=10!${INIT_MARK}=${SET_BLANK_MARK}`,

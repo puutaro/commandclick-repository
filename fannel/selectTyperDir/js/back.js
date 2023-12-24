@@ -1,7 +1,7 @@
 
 
-jsimport "${selectTyperDeactivateInputTextPath}";
-jsimport "${selectTyperSendTabKeyActionJsPath}";
+jsimport `${selectTyperDeactivateInputTextPath}`;
+jsimport `${selectTyperSendTabKeyActionJsPath}`;
 
 
 sendTabKeyAction(

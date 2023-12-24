@@ -1,5 +1,9 @@
 #!/bin/bash
 
+
+exec repbash "${0}" \
+  -t "\${FILE_MANAGE_ARGS_TSV_PATH}"
+
 readonly MONITOR_FILE_PATH="${MONITOR_DIR_PATH}/term_1"
 
 readonly is_filebrowser=$(\
@@ -13,22 +17,6 @@ readonly is_filebrowser=$(\
 case "${is_filebrowser}" in
 	"") exit 0;;
 esac
-readonly REPLACE_VARS_CON="$(get_rvar "${0}")"
-readonly NOTIFICATION_CHANNEL_NUM="$(\
-	get_rvar "${REPLACE_VARS_CON}" NOTIFICATION_CHANNEL_NUM \
-)"
-readonly NOTI_EXIT_SHELL_PATH="$(\
-	get_rvar "${REPLACE_VARS_CON}" NOTI_EXIT_SHELL_PATH \
-)"
-readonly PORT_NUM="$(\
-	get_rvar "${REPLACE_VARS_CON}" PORT_NUM \
-)"
-readonly FILE_MANAGE_ARGS_TSV_PATH=$(\
-	get_rvar "${REPLACE_VARS_CON}" FILE_MANAGE_ARGS_TSV_PATH \
-)
-readonly ARGS_TSV_CON="$(cat "${FILE_MANAGE_ARGS_TSV_PATH}")"
-readonly IPV4_ADDRESS="$(tsvar "${ARGS_TSV_CON}" IPV4_ADDRESS)"
-readonly ROOT_DIR_PATH="$(tsvar "${ARGS_TSV_CON}" ROOT_DIR_PATH)"
 readonly LAUNCH_FILE_URL="http://${IPV4_ADDRESS}:${PORT_NUM}/"
 
 noti \

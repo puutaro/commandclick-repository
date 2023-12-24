@@ -1,5 +1,5 @@
 
-jsimport "${selectTyperDeactivateInputTextPath}"
+jsimport `${selectTyperDeactivateInputTextPath}`;
 
 const selectKey = "CMDCLICL_SELECT_ITEM";
 if(!selectKey) exitZero();
@@ -9,7 +9,7 @@ selectKeyHandler();
 
 function selectKeyHandler(){
 	let activeEl = document.activeElement;
-	if(activeEl.tagName != "INPUT") return;
+	if(activeEl.tagName !== "INPUT") return;
 	deactivateInputText(false);
 	jsSendKey.send("ctrl___a");
 	jsSendKey.send(selectKey);

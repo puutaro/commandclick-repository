@@ -4,17 +4,12 @@ function browseHandler(
 	selectDirPath,
 	DISABLE_LAUNCH_URL = "",
 ){
-	const cmdValsCon = jsScript.readCmdValsCon("${0}");
-	const ROOT_DIR_PATH = makeRootDirPath(cmdValsCon);
+	const ROOT_DIR_PATH = makeRootDirPath();
 	const PREVIOUST_ROOT_DIR_PATH = jsFileSystem.readLocalFile(
 		"${PRVIOUS_ROOT_DIR_MEMO_TXT_PATH}"
 	).replace(/\n$/, "");
-	const BASE_URL = jsScript.subValOnlyValue(
-		"BASE_URL",
-		cmdValsCon,
-	);
 	const isBaseUrl = 
-		BASE_URL != null && BASE_URL !== "";
+		`${BASE_URL}` != null && `${BASE_URL}` !== "";
 	const isEqualRootDirPath = 
 		ROOT_DIR_PATH === PREVIOUST_ROOT_DIR_PATH
 		&& jsUbuntu.isProc("filebrowser --address");
@@ -25,7 +20,7 @@ function browseHandler(
 			fastBrowse(
 				ROOT_DIR_PATH,
 				selectDirPath,
-				BASE_URL,
+				`${BASE_URL}`,
 			);
 			break;
 		case false:
@@ -40,12 +35,11 @@ function browseHandler(
 function fastBrowse(
 	ROOT_DIR_PATH,
 	selectDirPath,
-	BASE_URL,
 ){
 	const launchFileUrl = makeFileUrl(
 		ROOT_DIR_PATH,
 		selectDirPath,
-		BASE_URL,
+		`${BASE_URL}`,
 	);
 	jsUrl.loadUrl(launchFileUrl);
 };
@@ -65,7 +59,6 @@ function formalBrowse(
 function makeFileUrl(
 	ROOT_DIR_PATH,
 	selectDirPath,
-	BASE_URL,
 ){
 	const IPV4_ADDRESS = jsNetTool.getIpv4();
 	const urlDirPath = makeDirPath(
@@ -73,7 +66,7 @@ function makeFileUrl(
 		selectDirPath,
 	);
 	if(
-		!BASE_URL
+		!`${BASE_URL}`
 	) return `http://${IPV4_ADDRESS}:${PORT_NUM}/files${urlDirPath}`;
 	jsToast.short("Remote connect..");
 	return `${BASE_URL}/files${urlDirPath}`;

@@ -1,6 +1,6 @@
 
 
-jsimport "${selectTyperDeactivateInputTextPath}";
+jsimport `${selectTyperDeactivateInputTextPath}`;
 
 
 sendDeleteKeyAction();
@@ -22,7 +22,7 @@ function putDeleteKey(){
 		function(){
 			deactivateInputText(false);
 			let activeEl = document.activeElement;
-			if(activeEl.tagName != "INPUT") return;
+			if(activeEl.tagName !== "INPUT") return;
 			const value = activeEl.value;
 			if(!value) return;
 			jsSendKey.send("ctrl___a");

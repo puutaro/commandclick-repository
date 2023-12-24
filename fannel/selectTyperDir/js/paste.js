@@ -1,5 +1,5 @@
 
-jsimport "${selectTyperDeactivateInputTextPath}";
+jsimport `${selectTyperDeactivateInputTextPath}`;
 
 sendPasteKeyAction();
 
@@ -20,7 +20,7 @@ function putPasteKey(){
 		function(){
 			deactivateInputText(false);
 			let activeEl = document.activeElement;
-			if(activeEl.tagName != "INPUT") return;
+			if(activeEl.tagName !== "INPUT") return;
 			jsSendKey.send("ctrl___a");
 			jsSendKey.send("ctrl_shift___v");
 		},
