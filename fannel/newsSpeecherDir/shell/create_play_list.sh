@@ -4,27 +4,9 @@
 set -eu
 
 
+exec repbash "${0}" \
+  -t '${NEWS_SPEECHER_ARGS_TSV_PATH}'
 e=""
-readonly REPLACE_VARS_CON="$(get_rvar "${0}")"
-readonly news_speecher_dir_path="$(\
-	get_rvar "${REPLACE_VARS_CON}" NEWS_SPEECHER_DIR_PATH\
-)"
-readonly NEWS_SPEECHER_ARGS_TSV_PATH="$(\
-	get_rvar "${REPLACE_VARS_CON}" NEWS_SPEECHER_ARGS_TSV_PATH\
-)"
-readonly NEWS_SPEECHER_CREATE_SRC_TEXT_SHELL_PATH=$(
-	get_rvar "${REPLACE_VARS_CON}" NEWS_SPEECHER_CREATE_SRC_TEXT_SHELL_PATH \
-)
-readonly ARGS_CON="$(\
-	cat "${NEWS_SPEECHER_ARGS_TSV_PATH}"
-)"
-readonly PLAY_CONTENTS_TXT_PATH=$(tsvar "${ARGS_CON}" PLAY_CONTENTS_TXT_PATH)
-readonly PLAY_LIST_TEMP_SRC_DIR_PATH=$(\
-	tsvar "${ARGS_CON}" PLAY_LIST_TEMP_SRC_DIR_PATH \
-)
-readonly NEWS_PLAY_LIST_TSV_PATH=$(
-	tsvar "${ARGS_CON}" NEWS_PLAY_LIST_TSV_PATH \
-)
 
 rm -rf "${PLAY_LIST_TEMP_SRC_DIR_PATH}"
 mkdir -p "${PLAY_LIST_TEMP_SRC_DIR_PATH}"

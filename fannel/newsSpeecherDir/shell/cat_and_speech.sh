@@ -1,33 +1,19 @@
 #!/bin/bash
 
-set -eu 
+set -eu
+
+exec repbash "${0}" \
+  -t '${NEWS_SPEECHER_ARGS_TSV_PATH}' \
+  -a "${1-IMPORTANCE=low}"
+
 e=""
-readonly IMPORTANCE="${1:-low}"
-readonly REPLACE_VARS_CON="$(get_rvar "${0}")"
-readonly news_speecher_dir_path="$(\
-	get_rvar "${REPLACE_VARS_CON}" NEWS_SPEECHER_DIR_PATH\
-)"
-readonly NEWS_SPEECHER_ARGS_TSV_PATH="$(\
-	get_rvar "${REPLACE_VARS_CON}" NEWS_SPEECHER_ARGS_TSV_PATH\
-)"
-readonly ARGS_CON="$(\
-	cat "${NEWS_SPEECHER_ARGS_TSV_PATH}"
-)"
-readonly ON_OUTPUT=$(tsvar "${ARGS_CON}" ON_OUTPUT)
 case "${ON_OUTPUT}" in
 	"ON")
 		echo "### display news"
 		;;
 esac
-readonly EACH_NUM=$(tsvar "${ARGS_CON}" EACH_NUM)
-readonly TO_LANG=$(tsvar "${ARGS_CON}" TO_LANG)
-readonly SPEECH_MODE=$(tsvar "${ARGS_CON}" SPEECH_MODE)
-readonly ON_SPEECH=$(tsvar "${ARGS_CON}" ON_SPEECH)
-readonly PICH=$(tsvar "${ARGS_CON}" PICH)
-readonly PLAY_CONTENTS_TXT_PATH=$(tsvar "${ARGS_CON}" PLAY_CONTENTS_TXT_PATH)
-readonly NEWS_PLAY_LIST_TSV_PATH=$(tsvar "${ARGS_CON}" NEWS_PLAY_LIST_TSV_PATH)
 
-readonly NEWS_SPEECHER_DIR_NAME="$(basename "${news_speecher_dir_path}")"
+readonly NEWS_SPEECHER_DIR_NAME="$(basename "${NEWS_SPEECHER_DIR_PATH}")"
 readonly NEWS_SPEECHER_RAW_NAME="${NEWS_SPEECHER_DIR_NAME%Dir}"
 
 readonly MONITOR_FILE_PATH="${MONITOR_DIR_PATH}/term_1"

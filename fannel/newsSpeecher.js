@@ -136,7 +136,7 @@ function longPressSummaryHandler(){
 		`${LONG_PRESS_NEWS_URL}\t${LONG_PRESS_NEWS_URL}`
 	);
 	jsUbuntu.execScriptByBackground(
-		"${NEWS_SPEECHER_SUMMARIE_CONTROLLER_SHELL_PATH}",
+		`${NEWS_SPEECHER_SUMMARIZE_SHELL_PATH}`,
 		"",
 		1,
 	);
@@ -145,7 +145,7 @@ function longPressSummaryHandler(){
 function summaryHandler(){
 	jsToast.short(`summary..`);
 	jsUbuntu.execScriptByBackground(
-		"${NEWS_SPEECHER_SUMMARIE_CONTROLLER_SHELL_PATH}",
+		`${NEWS_SPEECHER_SUMMARIZE_SHELL_PATH}`,
 		"",
 		1,
 	);
@@ -154,8 +154,8 @@ function summaryHandler(){
 function reSumamryHandler() {
 	jsToast.short(`re-summary..`);
 	jsUbuntu.execScriptByBackground(
-		"${NEWS_SPEECHER_RE_SUMMARIZE_CONTROLLER_SHELL_PATH}",
-		"high",
+		`${NEWS_SPEECHER_CAT_AND_SPEECH_SHELL_PATH}`,
+		"IMPORTANCE=high",
 		1,
 	);
 };
@@ -283,7 +283,7 @@ function installModeHandler(){
 
 function execOnAutoExec(){
 	if(
-		FIRST_ARG != "onAutoExec"
+		FIRST_ARG !== "onAutoExec"
 	) return;
 	jsUbuntu.boot();
 	exitZero();
