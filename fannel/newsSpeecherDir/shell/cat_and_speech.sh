@@ -6,13 +6,6 @@ exec repbash "${0}" \
   -t '${NEWS_SPEECHER_ARGS_TSV_PATH}' \
   -a "${1-IMPORTANCE=low}"
 
-e=""
-case "${ON_OUTPUT}" in
-	"ON")
-		echo "### display news"
-		;;
-esac
-
 readonly NEWS_SPEECHER_DIR_NAME="$(basename "${NEWS_SPEECHER_DIR_PATH}")"
 readonly NEWS_SPEECHER_RAW_NAME="${NEWS_SPEECHER_DIR_NAME%Dir}"
 
@@ -21,6 +14,12 @@ readonly SCROLL_MANAGE_ACTION="com.puutaro.commandclick.url.monitor_manager"
 readonly IS_MONITOR_SCROLL_SCHEMA="is_monitor_scroll"
 readonly IS_MONITOR_UPDATE_SCHEMA="is_monitor_update"
 
+e=""
+case "${ON_OUTPUT}" in
+	"ON")
+		echo "### display news" >> "${MONITOR_FILE_PATH}"
+		;;
+esac
 
 function monitor_to_default(){
 	sleep 3

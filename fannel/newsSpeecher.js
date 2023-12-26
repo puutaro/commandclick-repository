@@ -206,7 +206,7 @@ function endByEachNum(){
 function makeEditUrlListPath(){
 	jsFileSystem.createDir("${NEWS_SPEECHER_EDIT_DIR_PATH}");
 	if(
-		FIRST_ARG == "${LONG_PRESS_SUMMARY_MODE}"
+		FIRST_ARG === "${LONG_PRESS_SUMMARY_MODE}"
 	) return `${NEWS_SPEECHER_EDIT_DIR_PATH}/${LONG_PRESS_EDIT_TSV_NAME}`;
 	if(
 		!newsUrlListName
@@ -297,6 +297,11 @@ function saveArgsTsv(){
 		case "${SETTIN_MODE}":
 			return;
 	};
+	if (
+		FIRST_ARG === "${LONG_PRESS_SUMMARY_MODE}"
+	){
+		EACH_NUM = Number(`${LONG_PRESS_EACH_NUM}`);
+	}
 	const summaryArgsCon = [
 		`EACH_NUM\t${EACH_NUM}`,
 		`TO_LANG\t${getLang()}`,
