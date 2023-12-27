@@ -2,11 +2,7 @@
 function makeCreatorJSPathForBookmarkList(
     dirPath,
 ){
-    const cmdValsCon = jsScript.readCmdValsCon("${0}");
-    var fannelStoreBookMarkNameSrc = jsScript.subValOnlyValue(
-        "fannelStoreBookmarkName",
-        cmdValsCon,
-    );
+    var fannelStoreBookMarkNameSrc = `${fannelStoreBookmarkName}`;
     if(!fannelStoreBookMarkNameSrc){
         fannelStoreBookMarkNameSrc = `${fannelStoreBookmarkDefaultName}`;
     }
@@ -14,9 +10,9 @@ function makeCreatorJSPathForBookmarkList(
         fannelStoreBookMarkNameSrc,
         `${FANNEL_STORE_PREFIX}`
     );
-    const fannelStoreSearcherBookMarkName = jsPath.compExtend(
+    const compFannelStoreBookMarkName = jsPath.compExtend(
         fannelStoreBookMarkNameSrc,
         `${TSV_SUFFIX}`,
     );
-    return [dirPath, fannelStoreSearcherBookMarkName].join('/');
+    return [dirPath, compFannelStoreBookMarkName].join('/');
 }

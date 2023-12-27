@@ -54,7 +54,7 @@ sshTerminalSshInfoListDirPath=
 
 
 // file path
-sshTerminalPath=
+FANNEL_PATH=
 	`${0}`,
 sshTerminalMenuListFilePath=
 	`${sshTerminalMenuListDirPath}/clickMenu.txt`,

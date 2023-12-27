@@ -4,11 +4,8 @@ jsimport `${japanRouteSearcherMakeCreatorTsvPathForBookmarkListJsPath}`;
 launchBookmarkDialog();
 
 function launchBookmarkDialog() {
-    const cmdValsCon = jsScript.readCmdValsCon("${0}");
-    const onLaunchBookmarkByDialog = jsScript.subValOnlyValue(
-        "onLaunchBookmarkByDialog",
-        cmdValsCon,
-    ) === "ON";
+    const isLaunchBookmarkByDialog =
+        `${onLaunchBookmarkByDialog}` === "ON";
     const EDIT_FILE_PATH = makeCreatorJSPathForBookmarkList(
         `${japanRouteSearcherEditDirPath}`,
     );
@@ -27,7 +24,7 @@ function launchBookmarkDialog() {
         `on_click_sort=true`,
         'on_sortable_js=true',
         `on_click_url=true`,
-        `on_dialog=${onLaunchBookmarkByDialog}`
+        `on_dialog=${isLaunchBookmarkByDialog}`
     ].join("|");
     jsIntent.launchEditSite(
         EDIT_FILE_PATH,

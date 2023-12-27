@@ -9,38 +9,17 @@ function launchSshDialog() {
         `sshPass:LBL:TXT:ELSB=${TXT_LABEL}=this|${LIST_PATH}=${sshTerminalSshPassListTxtPath}!${LIMIT_NUM}=10!${INIT_MARK}=DELETE`,
         `keyPhase:LBL:CB=${TXT_LABEL}=this|NO!SET_UP!USE`
     ].join("\t");
-    const cmdValsCon = jsScript.readCmdValsCon("${0}");
-    const curUserName = jsScript.subValOnlyValue(
-        "userName",
-        cmdValsCon,
-    );
-    const curAddress = jsScript.subValOnlyValue(
-        "address",
-        cmdValsCon,
-    );
-    const curPort = jsScript.subValOnlyValue(
-        "port",
-        cmdValsCon,
-    );
-    const curSshPass = jsScript.subValOnlyValue(
-        "sshPass",
-        cmdValsCon,
-    );
-    const curKeyPhase = jsScript.subValOnlyValue(
-        "keyPhase",
-        cmdValsCon,
-    );
     let cmdVariables = [
-        `userName=${curUserName}`,
-        `address=${curAddress}`,
-        `port=${curPort}`,
-        `sshPass=${curSshPass}`,
-        `keyPhase=${curKeyPhase}`
+        `userName=${userName}`,
+        `address=${address}`,
+        `port=${port}`,
+        `sshPass=${sshPass}`,
+        `keyPhase=${keyPhase}`
     ].join("\t");
     const canncelReturnCode = "1";
     const returnCodeStr = jsValEdit.editAndSaveCmdVar(
         "SSH login",
-        `${sshTerminalPath}`,
+        `${FANNEL_PATH}`,
         setVariableContents,
         cmdVariables,
     );

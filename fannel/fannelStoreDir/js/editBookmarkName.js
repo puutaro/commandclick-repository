@@ -2,11 +2,6 @@
 launchEditBookmarkDialgog();
 
 function launchEditBookmarkDialgog() {
-    const cmdValsCon = jsScript.readCmdValsCon("${0}");
-    const fannelStoreBookmarkName = jsScript.subValOnlyValue(
-        "fannelStoreBookmarkName",
-        cmdValsCon,
-    );
     jsFileSelect.execEditTargetFileName(
         "fannelStoreBookmarkName",
         "renameFannelStoreBookmarkName",

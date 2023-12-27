@@ -2,11 +2,6 @@
 launchEditBookmarkDialgog();
 
 function launchEditBookmarkDialgog() {
-    const cmdValsCon = jsScript.readCmdValsCon("${0}");
-    const japanRouteSearcherBookmarkName = jsScript.subValOnlyValue(
-        "japanRouteSearcherBookmarkName",
-        cmdValsCon,
-    );
     jsFileSelect.execEditTargetFileName(
         "japanRouteSearcherBookmarkName",
         "renameJapanRouteSearcherBookmarkName",

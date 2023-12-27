@@ -2,22 +2,17 @@
 launchBookmarkDialog();
 
 function launchBookmarkDialog() {
-    const cmdValsCon = jsScript.readCmdValsCon("${0}");
-    const onLaunchBookmarkByDialog = jsScript.subValOnlyValue(
-        "onLaunchBookmarkByDialog",
-        cmdValsCon,
-    ) === "ON";
+    const isLaunchBookmarkByDialog =
+        `${onLaunchBookmarkByDialog}` === "ON";
     const EDIT_FILE_PATH = makeCreatorJSPathForFannelStoreBookmarkList(
         `${fannelStoreEditDirPath}`,
-        cmdValsCon,
     );
-
     let extraMapStr = [
         `src_path=${APP_URL_HISTORY_PATH}`,
         `on_click_sort=true`,
         'on_sortable_js=true',
         `on_click_url=true`,
-        `on_dialog=${onLaunchBookmarkByDialog}`
+        `on_dialog=${isLaunchBookmarkByDialog}`
     ].join("|");
     jsIntent.launchEditSite(
         EDIT_FILE_PATH,
@@ -28,12 +23,8 @@ function launchBookmarkDialog() {
 
 function makeCreatorJSPathForFannelStoreBookmarkList(
     dirPath,
-    cmdValsCon,
 ){
-    var fannelStoreBookMarkNameSrc = jsScript.subValOnlyValue(
-        "fannelStoreBookmarkName",
-        cmdValsCon,
-    );
+    var fannelStoreBookMarkNameSrc = `${fannelStoreBookmarkName}`;
     if(!fannelStoreBookMarkNameSrc){
         fannelStoreBookMarkNameSrc = `${fannelStoreBookmarkDefaultName}`;
     }
@@ -41,9 +32,9 @@ function makeCreatorJSPathForFannelStoreBookmarkList(
         fannelStoreBookMarkNameSrc,
         `${FANNEL_STORE_PREFIX}`
     );
-    const fannelStoreBookMarkName = jsPath.compExtend(
+    const compFannelStoreBookMarkName = jsPath.compExtend(
         fannelStoreBookMarkNameSrc,
         `${TSV_SUFFIX}`,
     );
-    return [dirPath, fannelStoreBookMarkName].join('/');
+    return [dirPath, compFannelStoreBookMarkName].join('/');
 }
