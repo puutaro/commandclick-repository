@@ -234,6 +234,9 @@ function updateByVariableWhenDiff(
 	tergetVariableName,
 	currentVariableValue,
 ){
+	if (
+		FIRST_ARG === "${LONG_PRESS_SUMMARY_MODE}"
+	) return;
 	jsEdit.updateByVariable(
 		"${NEWS_SPEECHER_PATH}",
 	    tergetVariableName,
@@ -270,7 +273,7 @@ function settingHandler(){
 
 function installModeHandler(){
 	if(
-		FIRST_ARG != "${INSTALL_MODE}"
+		FIRST_ARG !== "${INSTALL_MODE}"
 	) return;
 	jsToast.short("Installing..");
 	jsUbuntu.execScriptByBackground(
@@ -278,14 +281,6 @@ function installModeHandler(){
 		"",
 		1,
 	);
-	exitZero();
-};
-
-function execOnAutoExec(){
-	if(
-		FIRST_ARG !== "onAutoExec"
-	) return;
-	jsUbuntu.boot();
 	exitZero();
 };
 
