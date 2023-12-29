@@ -83,7 +83,9 @@ fannelStoreDir/systemJs/onAutoExec.js
 fileManager.js
 fileManagerDir/README.md
 fileManagerDir/js/copy.js
+fileManagerDir/js/normal_upload_qr.js
 fileManagerDir/js/registerDirPath.js
+fileManagerDir/js/rsync_upload_qr.js
 fileManagerDir/js/selectDirDialog.js
 fileManagerDir/js/setting.js
 fileManagerDir/libs/browse.js
