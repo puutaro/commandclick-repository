@@ -146,7 +146,7 @@ function saveExtractTextByOcr(){
 	jsFileSystem.createDir(
 		"${ocrViewerListDirPath}"
 	);
-	cmdIntent.run(
+	jsCmdIntent.run_S(
 		"bash " + ` \"${ocrShellPath}\"`
 		+ ` \"${ocrTargetPath}\"`
 		+ ` \"${ocrLang}\"`
@@ -223,7 +223,7 @@ function rowTargetOcrFileName(){
 
 
 function execInstall(){
-	cmdIntent.run(
+	jsCmdIntent.run_S(
 		"bash " + ` \"${installShellPath}\"`
 	);
 };

@@ -119,16 +119,16 @@ Install requirement package
 | Menu name | Action | 
 | -------------- | -------------- |
 | copyLink.js | Copy link |
-| passQr.js | QR code to transfer other android (only -5M) |
-| passQrbyScp.js | QR code to transfer other android by Scp (fast and limitless) |
+| normal_upload_qr.js | QR code to uploader other android (only -5M) |
+| rsync_upload_qr.js | QR code to uploader other android by Scp (fast and limitless) |
 
 ### Src image anchor
 
 | Menu name | Action | 
 | -------------- | -------------- |
 | copyLink.js | Copy link |
-| passQr.js | QR code to transfer other android (only -5M) |
-| passQrbyScp.js | QR code to transfer other android by Scp (fast and limitless) |
+| normal_upload_qr.js | QR code to uploader other android (only -5M) |
+| rsync_upload_qr.js | QR code to uploader other android by Scp (fast and limitless) |
 
 
 ### Image anchor

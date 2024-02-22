@@ -141,13 +141,13 @@ function argSwitcher() {
 			editSiteHandler();
 			break;
 		case INSTALL_MODE:
-			cmdIntent.run(
+			jsCmdIntent.run_S(
 				"bash " + ` \"${EXEC_SHELL_PATH}\"` + 
 				` \"${INSTALL_MODE}\"`
 			);
 			break;
 		case SHUFFLE_MODE:
-			cmdIntent.run(
+			jsCmdIntent.run_S(
 				"bash " + ` \"${EXEC_SHELL_PATH}\"` + 
 				` \"${SHUFFLE_MODE}\"` +
 				` \"${EDIT_FILE_PATH}\"` + 
@@ -155,7 +155,7 @@ function argSwitcher() {
 			);
 			break;
 		case ORDINALY_MODE:
-			cmdIntent.run(
+			jsCmdIntent.run_S(
 				"bash " + ` \"${EXEC_SHELL_PATH}\"` + 
 				` \"${ORDINALY_MODE}\"` + 
 				` \"${EDIT_FILE_PATH}\"` + 
@@ -165,7 +165,7 @@ function argSwitcher() {
 			);
 			break;
 		case REVERSE_MODE:
-			cmdIntent.run(
+			jsCmdIntent.run_S(
 				"bash " + ` \"${EXEC_SHELL_PATH}\"` + 
 				` \"${REVERSE_MODE}\"` + 
 				` \"${EDIT_FILE_PATH}\"` +
@@ -173,7 +173,7 @@ function argSwitcher() {
 			);
 			break;
 		case NUMBER_MODE:
-			cmdIntent.run(
+			jsCmdIntent.run_S(
 				"bash " + ` \"${EXEC_SHELL_PATH}\"` + 
 				` \"${NUMBER_MODE}\"` + 
 				` \"${EDIT_FILE_PATH}\"` + 
@@ -246,7 +246,7 @@ function editSiteHandler(){
 		return;
 	};
 	jsToast.short("start..");
-	cmdIntent.run(
+	jsCmdIntent.run_S(
 		"bash " + ` \"${EXEC_SHELL_PATH}\"` + 
 		` \"${EDIT_SITE_WEB_MODE}\"` + 
 		` \"${EDIT_FILE_PATH}\"` + 
@@ -571,7 +571,7 @@ function execStop(){
 	if(
 		FIRST_ARGS != STOP_MODE
 	) return;
-	cmdIntent.run(
+	jsCmdIntent.run_S(
 		"bash " + ` \"${EXEC_SHELL_PATH}\"` + 
 		` \"${STOP_MODE}\"`
 	);
