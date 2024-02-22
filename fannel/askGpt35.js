@@ -14,7 +14,7 @@ scriptFileName="askGpt35.js"
 
 
 const gpt35Url = `https://huggingface.co/spaces/kunishou/Rapid-GPT`;
-jsDialog.webView(
+jsDialog.webView_S(
     gpt35Url,
     "",
     "dismissType=both!iconName=cancel",

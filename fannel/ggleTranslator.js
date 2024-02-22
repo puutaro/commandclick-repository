@@ -52,7 +52,7 @@ function launchGgleTransSite(
 		jsUrl.loadUrl(ggleTransUrl);
 		exitZero();
 	};
-	jsDialog.webView(
+	jsDialog.webView_S(
 		ggleTransUrl,
 		"",
 	    "dismissType=both!iconName=cancel",
