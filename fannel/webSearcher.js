@@ -69,13 +69,15 @@ function makeUrl(){
     if(
         targetUrl !== cmdclickLongPressLinkUrlStr
     ) return targetUrl;
-    const externalEexcLink = "CMDDLICK_EXTERNAL_EXEC_REPLACE_TXT";
-    const cmdclickExternalExecReplaceTextStr = "CMDDLICK_ENCRPT_EXTERNAL_EXEC_REPLACE_TXT".replace(
+    const externalEexcLink = "${CMDDLICK_EXTERNAL_EXEC_REPLACE_TXT1}";
+    const cmdclickExternalExecReplaceTextStr =
+        "${CMDDLICK_ENCRPT_EXTERNAL_EXEC_REPLACE_TXT1}".replace(
         "_ENCRPT",
         ""
     );
     if(
-        externalEexcLink !== cmdclickExternalExecReplaceTextStr
+        externalEexcLink !== ""
+        && externalEexcLink !== cmdclickExternalExecReplaceTextStr
     ) return externalEexcLink;
     return "https://www.google.co.id/search?q=";
 };
@@ -126,7 +128,7 @@ function launchWebview(launchUrlString){
         `srcAnchorMenuFilePath=${srcAnchorMenuListPath}`,
         `imageMenuFilePath=${imageMenuListPath}`,
     ].join("!");
-    jsDialog.webView(
+    jsDialog.webView_S(
         launchUrlString,
         "${0}",
         menuMapStrListStr,

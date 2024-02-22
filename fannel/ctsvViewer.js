@@ -256,7 +256,7 @@ function firstRead(
 		isRead
 		&& !onChangeInputPath
 	) return;
-	jsCsv.read(
+	jsCsv.read_S(
 		srcTagName,
 		inputCTsvPath, 
 		"", 
@@ -469,7 +469,7 @@ function execSelectColumns(
 		currentSelectColumn == selectColmuns
 		&& isReadForSelect
 	) return;
-	jsCsv.selectColumn(
+	jsCsv.selectColumn_S(
 		srcTagName,
 		selectColmunTagName,
 		selectColmuns
@@ -501,7 +501,7 @@ function execFilterColumns(){
 		currentFilters == filters
 		&& isReadForFilter
 	) return;
-	jsCsv.filter(
+	jsCsv.filter_S(
 		selectColmunTagName,
 	    filteredTagName,
 	    filters
