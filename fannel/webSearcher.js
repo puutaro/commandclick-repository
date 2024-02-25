@@ -61,18 +61,18 @@ launchWebview(urlString);
 
 
 function makeUrl(){
-    const targetUrl = "CMDCLICK_LONG_PRESS_LINK_URL";
-    const cmdclickLongPressLinkUrlStr = "CMDCLICK_ENCRPT_LONG_PRESS_LINK_URL".replace(
-        "_ENCRPT",
+    const targetUrl = "${LONG_PRESS_LINK_URL}";
+    const cmdclickLongPressLinkUrlStr = "${ENCRPT_LONG_PRESS_LINK_URL}".replace(
+        "ENCRPT_",
         ""
     );
     if(
         targetUrl !== cmdclickLongPressLinkUrlStr
     ) return targetUrl;
-    const externalEexcLink = "${CMDDLICK_EXTERNAL_EXEC_REPLACE_TXT1}";
+    const externalEexcLink = "${EXTERNAL_EXEC_REPLACE_TXT1}";
     const cmdclickExternalExecReplaceTextStr =
-        "${CMDDLICK_ENCRPT_EXTERNAL_EXEC_REPLACE_TXT1}".replace(
-        "_ENCRPT",
+        "${ENCRPT_EXTERNAL_EXEC_REPLACE_TXT1}".replace(
+        "ENCRPT_",
         ""
     );
     if(

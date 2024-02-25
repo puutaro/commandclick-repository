@@ -1,6 +1,6 @@
 
 
-const LONG_PRESS_LINK_URL = "CMDCLICK_LONG_PRESS_LINK_URL";
+const LONG_PRESS_LINK_URL = "${LONG_PRESS_LINK_URL}";
 end_judge();
 
 const cpFilePath = makeCpFilePath();

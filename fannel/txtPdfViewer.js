@@ -224,12 +224,12 @@ function rowTxtPdfFileName(){
 
 
 function textPdfViewerForMenu(){
-	const cmdclickLongPressLinkUrlStr = "CMDCLICK_ENCRPT_LONG_PRESS_LINK_URL".replace(
-		"_ENCRPT",
+	const cmdclickLongPressLinkUrlStr = "${ENCRPT_LONG_PRESS_LINK_URL}".replace(
+		"ENCRPT_",
 		""
 	);
 	const cmdclickLongPressLinkUrl = 
-		"CMDCLICK_LONG_PRESS_LINK_URL";
+		"${LONG_PRESS_LINK_URL}";
 	if(
 		cmdclickLongPressLinkUrl == cmdclickLongPressLinkUrlStr
 	) return;

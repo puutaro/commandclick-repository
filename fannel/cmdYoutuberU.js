@@ -364,9 +364,9 @@ function capitalize(str) {
 
 
 function decideStremingMode(){
-	const targetUrl = "CMDCLICK_LONG_PRESS_LINK_URL";
-    const cmdclickLongPressLinkUrlStr = "CMDCLICK_ENCRPT_LONG_PRESS_LINK_URL".replace(
-        "_ENCRPT",
+	const targetUrl = "${LONG_PRESS_LINK_URL}";
+    const cmdclickLongPressLinkUrlStr = "${ENCRPT_LONG_PRESS_LINK_URL}".replace(
+        "ENCRPT_",
         ""
     );
     if(

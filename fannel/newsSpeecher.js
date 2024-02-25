@@ -50,7 +50,7 @@ SUMMARY_LENGTH="300"
 /// Please write bellow with javascript
 
 
-const LONG_PRESS_NEWS_URL = "CMDCLICK_LONG_PRESS_LINK_URL";
+const LONG_PRESS_NEWS_URL = "${LONG_PRESS_LINK_URL}";
 let args = jsArgs.get().split("\t");
 const FIRST_ARG = decide_arg(args[0]);
 
