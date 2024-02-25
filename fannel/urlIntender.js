@@ -24,10 +24,10 @@ jsIntent.launchUrl(
 
 
 function decideCurrentUrl(){
-	const cmdclickCurrentUrl = "CMDCLICK_CURRENT_PAGE_URL";
+	const cmdclickCurrentUrl = "${CMDCLICK_CURRENT_PAGE_URL}";
 	const cmdclickLongPressLinkUrlStr = 
-		"CMDCLICK_ENCRPT_CURRENT_PAGE_URL".replace(
-	        "_ENCRPT",
+		"${ENCRPT_CURRENT_PAGE_URL}".replace(
+	        "ENCRPT_",
 	        ""
 	    );
 	if(
