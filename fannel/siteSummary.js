@@ -17,7 +17,7 @@
 /// LABELING_SECTION_END
 
 
-const targetUrl = "CMDCLICK_LONG_PRESS_LINK_URL";
+const targetUrl = "${LONG_PRESS_LINK_URL}";
 const getUrlMode = "getUrlMode";
 const LEAST_STRING_NUM = 300;
 const summaryMode = decideMode();
@@ -161,8 +161,8 @@ function makeDoc(){
 
 
 function decideMode(){
-    const cmdclickLongPressLinkUrlStr = "CMDCLICK_ENCRPT_LONG_PRESS_LINK_URL".replace(
-        "_ENCRPT",
+    const cmdclickLongPressLinkUrlStr = "${ENCRPT_LONG_PRESS_LINK_URL}".replace(
+        "ENCRPT_",
         ""
     );
     if(

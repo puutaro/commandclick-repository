@@ -27,7 +27,7 @@ scriptFileName="qrLReader.js"
 /// Please write bellow with javascript
 
 
-const targetUrl = "CMDCLICK_LONG_PRESS_LINK_URL";
+const targetUrl = "${LONG_PRESS_LINK_URL}";
 
 
 
