@@ -1,7 +1,7 @@
 
 jsimport `${selectTyperDeactivateInputTextPath}`;
 
-const selectKey = "CMDCLICL_SELECT_ITEM";
+const selectKey = "${SELECT_ITEM}";
 if(!selectKey) exitZero();
 
 selectKeyHandler();
