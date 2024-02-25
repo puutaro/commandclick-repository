@@ -29,7 +29,7 @@ const cmdClickRootDir = "${00}";
 const tempDownloadDirPath = 
 	`${cmdClickRootDir}/temp/download`;
 const cmdclickLongPressLinkUrl = 
-	"CMDCLICK_LONG_PRESS_IMAGE_URL";
+	"${LONG_PRESS_IMAGE_URL}";
 
 judgeExit();
 execShare();
@@ -46,8 +46,8 @@ function execShare(){
 
 
 function judgeExit(){
-	const cmdclickLongPressImageUrlStr = "CMDCLICK_ENCRPT_LONG_PRESS_IMAGE_URL".replace(
-		"_ENCRPT",
+	const cmdclickLongPressImageUrlStr = "${ENCRPT_LONG_PRESS_IMAGE_URL}".replace(
+		"ENCRPT_",
 		""
 	);
 	if(

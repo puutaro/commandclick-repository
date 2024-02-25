@@ -39,12 +39,12 @@ viewForMenu();
 
 function viewForMenu(){
 
-	const cmdclickLongPressImageUrlStr = "CMDCLICK_ENCRPT_LONG_PRESS_IMAGE_URL".replace(
-		"_ENCRPT",
+	const cmdclickLongPressImageUrlStr = "${ENCRPT_LONG_PRESS_IMAGE_URL}".replace(
+		"ENCRPT_",
 		""
 	);
 	const cmdclickLongPressLinkUrl = 
-		"CMDCLICK_LONG_PRESS_IMAGE_URL";
+		"${LONG_PRESS_IMAGE_URL}";
 	if(
 		cmdclickLongPressLinkUrl == cmdclickLongPressImageUrlStr
 	) {
