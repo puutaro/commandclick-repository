@@ -13,7 +13,7 @@ function termInput(){
 	const inputStr = jsDialog.prompt(
 		"",
 		"",
-		suggestMapStr,
+		`suggest=${suggestMapStr}`,
 	);
 	if(!inputStr) exitZero();
 	deactivateInputText(false);
