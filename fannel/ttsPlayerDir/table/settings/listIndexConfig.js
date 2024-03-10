@@ -12,7 +12,8 @@ name=
 
 
 click=
-    actionImport=`${cmdTtsPlayerChangeStateAction}`
+    enableUpdate=ON
+    |actionImport=`${cmdTtsPlayerChangeStateAction}`
     |replace=
         STATE=`${MANAGER}`
         !ON_LIST_DIR_UPDATER=true
