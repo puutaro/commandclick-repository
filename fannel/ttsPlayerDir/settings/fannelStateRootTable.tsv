@@ -1,0 +1,5 @@
+${TABLE}	${cmdTtsPlayerTableFannelPath}
+${MANAGER}	${cmdTtsPlayerManagerFannelDirPath}
+${PLAYER}	${cmdTtsPlayerPlayerFannelPath}
+${CONFIG}	${cmdTtsPlayerConfigFannelPath}
+default	${cmdTtsPlayerTableFannelPath}

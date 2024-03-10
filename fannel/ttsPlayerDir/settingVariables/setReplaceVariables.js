@@ -3,31 +3,102 @@
 TXT_LABEL=label,
 BTN_CMD=cmd,
 BTN_LABEL=label,
+BTN_TEXT_SIZE=textSize,
+BTN_BORDER=onBorder,
 FGB_DIR_PATH=dirPath,
-FGB_PREFIX=prefix,
-FGB_SUFFIX=suffix,
-FGB_TYPE=type,
-LIST_PATH=listPath,
-LIMIT_NUM=limitNum,
-TTS_PREFIX=tts,
+TTS_PREFIX="tts",
+TXT_SUFFIX=".txt",
+TSV_SUFFIX=".tsv",
 
 // args
 urlHistoryClickMode="urlHistoryClick",
 
-// path variable
+// state
+TABLE=table,
+MANAGER=manager,
+PLAYER=player,
+CONFIG=config,
+
+// list index setting
+listDirKey=listDir,
+
+// css
+lineHeight=60,
+textSize=30,
+
+
+// dir path variable
+monitorPath=
+	`${00}/conf/monitor/term_1`,
 ttsPlayerDirPath=
 	"${01}/${001}",
-cmdTtsPlayerSaveDirPath=
-	"${ttsPlayerDirPath}/save",
+cmdTtsPlayerActionsDirPath=
+	`${ttsPlayerDirPath}/actions`,
+cmdTtsPlayerSettingVariablesDirPath=
+	`${ttsPlayerDirPath}/settingVariables`,
+cmdTtsPlayerSettingsDirPath=
+	`${ttsPlayerDirPath}/settings`,
 cmdTtsPlayerEditDirPath=
 	"${ttsPlayerDirPath}/edit",
 cmdTtsPlayerTempDirPath=
 	"${ttsPlayerDirPath}/temp",
-cmdTtsPlayerTempFilePath=
-	"${cmdTtsPlayerTempDirPath}/tempPlay",
 cmdTtsPlayerListDirPath=
 	"${ttsPlayerDirPath}/list",
+cmdTtsPlayerPlayListTableDirPath=
+	`${ttsPlayerDirPath}/playListTable`,
+cmdTtsPlayerSaveDirPath=
+	"${ttsPlayerDirPath}/save",
+cmdTtsPlayerSaveUrlConDirPath=
+	`${cmdTtsPlayerSaveDirPath}/urlCon`,
+cmdTtsPlayerShellDirPath=
+	`${ttsPlayerDirPath}/shell`,
+
+// play list
+cmdTtsPlayerPlayListName=
+	`ttsPlayList.tsv`,
+cmdTtsPlayerPlayListPath=
+	`${cmdTtsPlayerPlayListTableDirPath}/${cmdTtsPlayerPlayListName}`,
+cmdTtsPlayerPreviousTtsPlayListName=
+	"ttsPreviousPlayList.tsv",
+cmdTtsPlayerPreviousTtsPlayListPath=
+	`${cmdTtsPlayerPlayListTableDirPath}/${cmdTtsPlayerPreviousTtsPlayListName}`,
+
+// js path
+FANNEL_PATH=${0},
+
+// js action
+cmdTtsPlayerChangeStateAction=
+	`${cmdTtsPlayerActionsDirPath}/changeStateAction.js`,
+cmdTtsPlayerShibanText=
+	`${cmdTtsPlayerActionsDirPath}/shibanTest.js`,
+cmdTtsPlayerTtsAction=
+	`${cmdTtsPlayerActionsDirPath}/ttsAction.js`,
+
+// list path
+cmdTtsPlayerPlayInfoPath=
+	"${cmdTtsPlayerTempDirPath}/playInto.tsv",
+cmdTtsPlayerTempFilePath=
+	"${cmdTtsPlayerTempDirPath}/tempPlay.tsv",
 cmdTtsPlayerDirListFilePath=
 	"${cmdTtsPlayerListDirPath}/music_dir_list",
 cmdTtsPlayerGmailListFilePath=
 	"${cmdTtsPlayerListDirPath}/gmail_list",
+
+// shell
+makeHeaderTitleShell=
+	`${cmdTtsPlayerShellDirPath}/make_header_title.sh`,
+
+configHidValPath=
+	`${cmdTtsPlayerSettingVariablesDirPath}/hideConfigVal.js`,
+
+/// table state
+settingimport=
+	`${cmdTtsPlayerSettingVariablesDirPath}/tableRepVars.js`,
+
+// manager state path
+settingimport=
+	`${cmdTtsPlayerSettingVariablesDirPath}/managerRepVars.js`,
+
+/// config state
+settingimport=
+	`${cmdTtsPlayerSettingVariablesDirPath}/configRepVars.js`,
