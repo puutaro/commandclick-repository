@@ -7,11 +7,6 @@ appHeader:
         !args=
             STATE=`$(cat ${cmdTtsPlayerPlayInfoPath})`
         ,
-//             cat "${cmdTtsPlayerManagerListIndexTsvPath}"
-// | ${b} grep -E "^listDir"
-// | ${b} cut -f 2
-// | basename $(cat)
-// | ${b} cut -f1 -d'.'
 
 manager:
     LI=,
@@ -43,12 +38,3 @@ extraButton:
                 !${BTN_LABEL}="+📧"
                 !${BTN_TEXT_SIZE}=`${textSize}`
                 !${BTN_BORDER}=OFF,
-         // |${BTN_CMD}=jsac `
-         //            jsPath=D_MENU
-         //                |args=
-         //                    menuPath=${cmdTtsPlayerManagerSettingMenuPath}
-         //                    !title="Setting menu"
-         //            ,`
-         //        !${BTN_LABEL}="⚙️"
-         //        !${BTN_TEXT_SIZE}=`${textSize}`
-         //        !${BTN_BORDER}=OFF,

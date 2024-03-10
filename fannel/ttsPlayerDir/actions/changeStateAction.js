@@ -5,8 +5,10 @@ js=
     !if="{{ ON_LIST_DIR_UPDATER:false }}"
     !func=jsListTsvUpdater.update
     !args=
-        tsvPath=`${cmdTtsPlayerManagerListIndexTsvPath}`
-        &settingMap=`${listDirKey}=${cmdTtsPlayerPlayListTableDirPath}/${ITEM_NAME}`
+        tsvPath=
+            `${cmdTtsPlayerManagerListIndexTsvPath}`
+        &settingMap=
+            `${listDirKey}=${cmdTtsPlayerPlayListTableDirPath}/${ITEM_NAME}`
         &separator="|"
 |js=
     if="{{ ON_PLAY_INFO_SAVE:false }}"
@@ -31,4 +33,5 @@ js=
     !func=jsCmdValFrag.stateChange_S
     !args=
         state="{{ STATE }}"
-        &disableAddToBackStack=NO_QUOTE:{{ DISABLE_ADD_TO_BACKSTACK:true }},
+        &disableAddToBackStack=
+            NO_QUOTE:{{ DISABLE_ADD_TO_BACKSTACK:true }},

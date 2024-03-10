@@ -5,13 +5,9 @@ BTN_CMD=cmd,
 BTN_LABEL=label,
 BTN_TEXT_SIZE=textSize,
 BTN_BORDER=onBorder,
-FGB_DIR_PATH=dirPath,
 TTS_PREFIX="tts",
 TXT_SUFFIX=".txt",
 TSV_SUFFIX=".tsv",
-
-// args
-urlHistoryClickMode="urlHistoryClick",
 
 // state
 TABLE=table,
@@ -38,12 +34,8 @@ cmdTtsPlayerSettingVariablesDirPath=
 	`${ttsPlayerDirPath}/settingVariables`,
 cmdTtsPlayerSettingsDirPath=
 	`${ttsPlayerDirPath}/settings`,
-cmdTtsPlayerEditDirPath=
-	"${ttsPlayerDirPath}/edit",
 cmdTtsPlayerTempDirPath=
 	"${ttsPlayerDirPath}/temp",
-cmdTtsPlayerListDirPath=
-	"${ttsPlayerDirPath}/list",
 cmdTtsPlayerPlayListTableDirPath=
 	`${ttsPlayerDirPath}/playListTable`,
 cmdTtsPlayerSaveDirPath=
@@ -69,8 +61,6 @@ FANNEL_PATH=${0},
 // js action
 cmdTtsPlayerChangeStateAction=
 	`${cmdTtsPlayerActionsDirPath}/changeStateAction.js`,
-cmdTtsPlayerShibanText=
-	`${cmdTtsPlayerActionsDirPath}/shibanTest.js`,
 cmdTtsPlayerTtsAction=
 	`${cmdTtsPlayerActionsDirPath}/ttsAction.js`,
 
@@ -79,10 +69,6 @@ cmdTtsPlayerPlayInfoPath=
 	"${cmdTtsPlayerTempDirPath}/playInto.tsv",
 cmdTtsPlayerTempFilePath=
 	"${cmdTtsPlayerTempDirPath}/tempPlay.tsv",
-cmdTtsPlayerDirListFilePath=
-	"${cmdTtsPlayerListDirPath}/music_dir_list",
-cmdTtsPlayerGmailListFilePath=
-	"${cmdTtsPlayerListDirPath}/gmail_list",
 
 // shell
 makeHeaderTitleShell=

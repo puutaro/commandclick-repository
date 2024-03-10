@@ -8,8 +8,5 @@ listIndexConfig=`file://${cmdTtsPlayerTableListIndexConfigPath}`
 settingButtonConfig=`file://${cmdTtsPlayerTableSettingBtnConfigPath}`
 hideSettingVariables="manager,playBtns"
 hideSettingVariables=`file://${configHidValPath}`
-// ignoreHistoryPaths="file://"
-// setVariableTypes="file://"
-// hideSettingVariables="file://"
 /// SETTING_SECTION_END
 

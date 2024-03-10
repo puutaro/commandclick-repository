@@ -4,8 +4,6 @@ cmdTtsPlayerTableDirPath=
     `${ttsPlayerDirPath}/table`,
 cmdTtsPlayerTableSettingsDirPath=
     `${cmdTtsPlayerTableDirPath}/settings`,
-cmdTtsPlayerTableActionsDirPath=
-    `${cmdTtsPlayerTableDirPath}/actions`,
 
 // setting file path
 cmdTtsPlayerTableFannelPath=
@@ -20,7 +18,3 @@ cmdTtsPlayerTableInitTsvConPath=
     `${cmdTtsPlayerTableSettingsDirPath}/initList.tsv`,
 cmdTtsPlayerTableLongPressListIndexMenuPath=
     `${cmdTtsPlayerTableSettingsDirPath}/longClickListIndexMenu.js`,
-
-// js path
-cmdTtsPlayerTablePlusActionPath=
-    `${cmdTtsPlayerTableActionsDirPath}/plus.js`,
