@@ -1,10 +1,8 @@
 // js/action
 
 tsvImport=`${cmdTtsPlayerManagerListIndexTsvPath}`
-|js=
-    if=`!listDir`
-    !func=
-        con:`var listDir = "${cmdTtsPlayerPlayListPath}"`
+|jsCon=
+    `var listDir = "${cmdTtsPlayerPlayListPath}"`
 |actionImport=`${cmdTtsPlayerTtsAction}`
 |replace=
     TEMP_PLAY_CON="${jsTsv.getSr(`${listDir}`)}"
