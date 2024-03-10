@@ -322,9 +322,6 @@ ttsPlayerDir/manager/settings/playButtonConfig.js
 ttsPlayerDir/manager/settings/setVariableTypes.js
 ttsPlayerDir/manager/settings/settingButtonConfig.js
 ttsPlayerDir/manager/settings/settingMenuConfig.js
-ttsPlayerDir/playListTable/ttsPlayList.tsv
-ttsPlayerDir/playListTable/ttsPlayListDir/qr/qr.png
-ttsPlayerDir/playListTable/ttsPlayListDir/qr/qrDesign.txt
 ttsPlayerDir/settingVariables/configRepVars.js
 ttsPlayerDir/settingVariables/hideConfigVal.js
 ttsPlayerDir/settingVariables/hideSettingVariables.js
