@@ -1,4 +1,0 @@
-logo_index=32
-logo_color=-9740010
-square_color=-12450944
-con=onGit:prefix=https://raw.githubusercontent.com/puutaro/commandclick-repository/master;listPath=manage/fannels/list/fannels.txt;dirPath=fannel;name=ttsPlayList
