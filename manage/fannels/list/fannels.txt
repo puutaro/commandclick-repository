@@ -91,8 +91,6 @@ fileManagerDir/js/setting.js
 fileManagerDir/libs/browse.js
 fileManagerDir/libs/browseHandler.js
 fileManagerDir/libs/dirPath.js
-fileManagerDir/libs/readCmdVal.js
-fileManagerDir/libs/updateDirPathList.js
 fileManagerDir/libs/updateListBox.js
 fileManagerDir/longPressMenuDir/srcAnchorLongPressMenu.txt
 fileManagerDir/longPressMenuDir/srcImageAnchorLongPressMenu.txt
@@ -152,10 +150,8 @@ newsSpeecherDir/shell/py/libs/const.py
 newsSpeecherDir/shell/py/libs/summarize.py
 newsSpeecherDir/shell/py/nltk_downloader.py
 newsSpeecherDir/shell/py/output.py
-newsSpeecherDir/shell/re_summarize_controller.sh
 newsSpeecherDir/shell/stop_all_process.sh
 newsSpeecherDir/shell/summarize.sh
-newsSpeecherDir/shell/summarize_controller.sh
 ocrViewer.js
 ocrViewerDir/README.md
 ocrViewerDir/settingVariables/hideSettingVariables.js
@@ -306,7 +302,6 @@ textToSpeech.js
 ttsPlayer.js
 ttsPlayerDir/README.md
 ttsPlayerDir/actions/changeStateAction.js
-ttsPlayerDir/actions/shibanTest.js
 ttsPlayerDir/actions/ttsAction.js
 ttsPlayerDir/config/config.js
 ttsPlayerDir/config/settings/playButtonConfig.js
@@ -328,15 +323,12 @@ ttsPlayerDir/settingVariables/hideSettingVariables.js
 ttsPlayerDir/settingVariables/ignoreHistoryPaths.js
 ttsPlayerDir/settingVariables/managerRepVars.js
 ttsPlayerDir/settingVariables/setReplaceVariables.js
-ttsPlayerDir/settingVariables/setVariableTypes.js
 ttsPlayerDir/settingVariables/tableRepVars.js
 ttsPlayerDir/settings/fannelStateConfig.js
 ttsPlayerDir/settings/fannelStateRootTable.tsv
 ttsPlayerDir/settings/fannelStateStock.tsv
 ttsPlayerDir/shell/make_header_title.sh
 ttsPlayerDir/systemJs/urlHistoryClick.js
-ttsPlayerDir/table/actions/plus.js
-ttsPlayerDir/table/fileNameComTest.sh
 ttsPlayerDir/table/settings/initList.tsv
 ttsPlayerDir/table/settings/listIndexConfig.js
 ttsPlayerDir/table/settings/longClickListIndexMenu.js
