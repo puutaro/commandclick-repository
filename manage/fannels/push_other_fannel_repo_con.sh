@@ -94,6 +94,7 @@ function clone_and_cp(){
 			return
 			;;
 	esac
+	rm -rf "${fannel_dir_desti_path}"
 	exec_cp \
 		"${fannel_path}" \
 		"${FANNEL_STOCK_DIR_PATH}"
