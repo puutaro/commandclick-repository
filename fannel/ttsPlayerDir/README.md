@@ -9,27 +9,20 @@
 
 TextToSpeech player @puutaro
 
+- Url contents into list and play
+- Gmail contents into list and play
+- Recent play contens play  
+
 Table of Contents
 -------
 <!-- vim-markdown-toc GFM --> 
 * [Installation](#installation)
-* [Toolbar buttons](#toolbar-buttons)
-	* [Play button](#play-button)
-* [Cmd Variables](#cmd-variables)
-	* [playListName](#playlistname)
-	* [ttsPlay](#ttsplay)
-	* [numberPlay](#numberplay)
-	* [gmailToFile](#gmailtofile)
-	* [toLang](#tolang)
-	* [manageText](#managetext)
-	* [onTrack](#ontrack)
-	* [About Volume control](#about-volume-control)
-* [Setting variables](#setting-variables)
-	* [execPlayBtnLongPress](#execplaybtnlongpress)
-	* [execEditBtnLongPress](#execeditbtnlongpress)
-	* [terminalFontZoom](#terminalfontzoom)
-	* [terminalFontColor](#terminalfontcolor)
-	* [terminalColor](#terminalcolor)
+* [Play list table](#play-list-table)
+* [Play list](#play-list)
+* [Play](#play)
+* [Setting](#setting)
+* [About Volume control](#about-volume-control)
+
 
 ## Installation
 --------------
@@ -38,44 +31,26 @@ Table of Contents
 2. Install this fannel by [install repo](https://github.com/puutaro/CommandClick/blob/master/USAGE.md#install-fannel) or QR code
 
 
-## Toolbar buttons
+
+## Play list table
+
+<a href="https://github.com/puutaro/sshTerminal/assets/55217593/b8143893-eb57-4152-92ad-402bbaae81c4"><img src="https://github.com/puutaro/sshTerminal/assets/55217593/b8143893-eb57-4152-92ad-402bbaae81c4" width="300" /></a>
+
+## Play list
+<a href="https://github.com/puutaro/sshTerminal/assets/55217593/7bb5aaae-356d-478b-9b8e-a678285876f8"><img src="https://github.com/puutaro/sshTerminal/assets/55217593/7bb5aaae-356d-478b-9b8e-a678285876f8" width="300" /></a>
+
+## Play
+
+<a href="https://github.com/puutaro/sshTerminal/assets/55217593/2b63002f-8586-4691-bcb1-76cb495862d0"><img src="https://github.com/puutaro/sshTerminal/assets/55217593/2b63002f-8586-4691-bcb1-76cb495862d0" width="300" /></a>
+
+
+## Setting
 --------
 
-### Play Button
+<a href="https://github.com/puutaro/ttsPlayer/assets/55217593/990b33f9-436d-4f43-b2aa-62fa8db74d95"><img src="https://github.com/puutaro/ttsPlayer/assets/55217593/990b33f9-436d-4f43-b2aa-62fa8db74d95" width="300" /></a>
 
-Launch tts play list site
 
-## Cmd Variables
---------
-
-### playListName 
-
-1. Input or select play list file name
-
-- Prefix must be "music" 
-	ex) "ttsPlayList"
-
-### ttsPlay 
-
-1. Select shuffle or ordinaly and press
-2. Press "Exec" 
-3. (Execute play list)
-
-### numberPlay 
-
-1. Input or inc/dec number
-2. Press "Exec"
-3. (play number)
-
-### gmailToFile 
-Launch gmail or write gmail contetns to file by state
-
-| State | Execute contents |
-| ------- | ------- |
-| No gmail launch | Gmail launch |
-| Look gmail body | Write this contents to file |
-
-### toLang
+- toLang
 Text to speech language
 
 | code | lang |
@@ -87,49 +62,8 @@ Text to speech language
 | `ko` | korean |
 | `ja` | japanese |
 
-### manageText 
-Remove text file or add one to editHtmlSite
-
-1. Select text file
-2. Click "MNG" button
-
-### onTrack
-
-| switch | description |
-| ------ | --------- |
-| `ON` | memory past number and step |
-| `OFF` | no memory past number and step |
 
 ### About Volume control
 Enable when CommandClick hide
 
 
-## Setting variables
----------
-
-### execPlayBtnLongPress
-Execute when play button long press
-
-| type or name | description |
-| ------- | ------- |
-| `WEB_SEARCH` | apear web search bar |
-| `PAGE_SEARCH` | apear page search bar |
-| js file path | execute js file |
-
-### execEditBtnLongPress
-Execute when edit button long press
-
-| type or name | description |
-| ------- | ------- |
-| `WEB_SEARCH` | apear web search bar |
-| `PAGE_SEARCH` | apear page search bar |
-| js file path | execute js file |
-
-### terminalFontZoom 
-Adjust terminal font size (percentage)
-
-### terminalFontColor 
-Adjust terminal font color
-
-### terminalColor 
-Adjust terminal background color
