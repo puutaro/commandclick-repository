@@ -12,7 +12,6 @@ TSV_SUFFIX=".tsv",
 // state
 TABLE=table,
 MANAGER=manager,
-PLAYER=player,
 CONFIG=config,
 
 // list index setting
@@ -24,8 +23,6 @@ textSize=30,
 
 
 // dir path variable
-monitorPath=
-	`${00}/conf/monitor/term_1`,
 ttsPlayerDirPath=
 	"${01}/${001}",
 cmdTtsPlayerActionsDirPath=
