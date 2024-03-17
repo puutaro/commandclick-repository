@@ -4,6 +4,7 @@ TXT_LABEL=label,
 BTN_CMD=cmd,
 BTN_LABEL=label,
 BTN_TEXT_SIZE=textSize,
+ALTER=alter,
 BTN_BORDER=onBorder,
 TTS_PREFIX="tts",
 TXT_SUFFIX=".txt",
@@ -23,6 +24,8 @@ textSize=30,
 
 
 // dir path variable
+currentAppDirPath=
+	`${01}`,
 ttsPlayerDirPath=
 	"${01}/${001}",
 cmdTtsPlayerActionsDirPath=

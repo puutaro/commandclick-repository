@@ -14,19 +14,28 @@ manager:
 extraButton:
      TXTP:BTN:BTN:BTN:HL=
          onUnderLine=OFF
-                !height=`${lineHeight}`
+            !height=`${lineHeight}`
          |${BTN_CMD}= jsac `
-                    tsvImport=${cmdTtsPlayerManagerListIndexTsvPath}
-                    |jsPath=jsAddUrlCon.add_S
-                    |args=
-                        urlStringOrMacro=RECENT
-                        !onSearchBtn=ON
-                        !urlConSaveParentDirPath=${cmdTtsPlayerSaveUrlConDirPath}
-                        !compSuffix=${TXT_SUFFIX}
-                    ,`
-                !${BTN_LABEL}="+🌐"
-                !${BTN_TEXT_SIZE}=`${textSize}`
-                !${BTN_BORDER}=OFF
+                tsvImport=${cmdTtsPlayerManagerListIndexTsvPath}
+                |jsPath=jsAddUrlCon.add_S
+                |args=
+                    urlStringOrMacro=RECENT
+                    !onSearchBtn=ON
+                    !urlConSaveParentDirPath=${cmdTtsPlayerSaveUrlConDirPath}
+                    !compSuffix=${TXT_SUFFIX}
+                ,`
+            !${BTN_LABEL}="+🌐"
+            !${BTN_TEXT_SIZE}=`${textSize}`
+            !${BTN_BORDER}=OFF
+            !alter=`
+                shellIfPath=JUDGE_LIST_DIR
+                !ifArgs=
+                    tsvPath=${cmdTtsPlayerManagerListIndexTsvPath}
+                    // &tsvKey=listDir
+                    &tsvValue=${cmdTtsPlayerPreviousTtsPlayListPath}
+                    // &alterCon="!${BTN_TEXT_SIZE}=10"
+                !onPut=OFF
+            `
          |${BTN_CMD}= jsac `
                 |tsvImport=${cmdTtsPlayerManagerGmailAdTsvPath}
                 |jsPath=jsAddGmailCon.add
@@ -38,6 +47,13 @@ extraButton:
             !${BTN_LABEL}="+📧"
             !${BTN_TEXT_SIZE}=`${textSize}`
             !${BTN_BORDER}=OFF
+            !alter=`
+                shellIfPath=JUDGE_LIST_DIR
+                !ifArgs=
+                    tsvPath=${cmdTtsPlayerManagerListIndexTsvPath}
+                    &tsvValue=${cmdTtsPlayerPreviousTtsPlayListPath}
+                !onPut=OFF
+            `
         |${BTN_CMD}= jsac "jsPath=jsTextToSpeech.stopService"
             !${BTN_LABEL}="■"
             !${BTN_TEXT_SIZE}=`${textSize}`

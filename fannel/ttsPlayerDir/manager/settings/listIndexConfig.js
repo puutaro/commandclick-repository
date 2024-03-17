@@ -1,4 +1,5 @@
 
+
 type=
     tsvEdit,
 
@@ -21,3 +22,15 @@ longClick=
 
 searchBox=
     visible=OFF,
+
+delete=
+    disableDeleteConfirm=OFF
+    |onDeleteConFile=ON
+    |alter=`
+        shellIfPath=JUDGE_LIST_DIR
+        |ifArgs=
+            tsvPath=${cmdTtsPlayerManagerListIndexTsvPath}
+            !tsvValue=${cmdTtsPlayerPreviousTtsPlayListPath}
+        |shellIfPath=JUDGE_LIST_DIR
+        |disableDeleteConfirm=ON
+        |onDeleteConFile=OFF`,

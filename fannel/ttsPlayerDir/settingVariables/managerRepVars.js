@@ -9,6 +9,8 @@ cmdTtsPlayerManagerSettingsDirPath=
     `${cmdTtsPlayerManagerDirPath}/settings`,
 cmdTtsPlayerManagerActionsDirPath=
     `${cmdTtsPlayerManagerDirPath}/actions`,
+cmdTtsPlayerManagerShellDirPath=
+    `${cmdTtsPlayerManagerDirPath}/shell`,
 
 // setting file path
 cmdTtsPlayerManagerFannelDirPath=
@@ -40,3 +42,5 @@ cmdTtsPlayerManagerGmailAdTsvPath=
 // action Path
 cmdTtsPlayerManagerSetGmailAdActionPath=
     `${cmdTtsPlayerManagerActionsDirPath}/setGmailAdAction.js`,
+
+// shell
