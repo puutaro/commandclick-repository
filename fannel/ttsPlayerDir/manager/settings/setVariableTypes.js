@@ -31,9 +31,7 @@ extraButton:
                 shellIfPath=JUDGE_LIST_DIR
                 !ifArgs=
                     tsvPath=${cmdTtsPlayerManagerListIndexTsvPath}
-                    // &tsvKey=listDir
                     &tsvValue=${cmdTtsPlayerPreviousTtsPlayListPath}
-                    // &alterCon="!${BTN_TEXT_SIZE}=10"
                 !onPut=OFF
             `
          |${BTN_CMD}= jsac `

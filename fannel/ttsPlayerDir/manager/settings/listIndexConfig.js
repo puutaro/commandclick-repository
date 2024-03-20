@@ -31,6 +31,5 @@ delete=
         |ifArgs=
             tsvPath=${cmdTtsPlayerManagerListIndexTsvPath}
             !tsvValue=${cmdTtsPlayerPreviousTtsPlayListPath}
-        |shellIfPath=JUDGE_LIST_DIR
         |disableDeleteConfirm=ON
         |onDeleteConFile=OFF`,
