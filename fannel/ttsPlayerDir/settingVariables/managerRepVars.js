@@ -42,5 +42,7 @@ cmdTtsPlayerManagerGmailAdTsvPath=
 // action Path
 cmdTtsPlayerManagerSetGmailAdActionPath=
     `${cmdTtsPlayerManagerActionsDirPath}/setGmailAdAction.js`,
-
+cmdTtsPlayerManagerFromPlayActionPath=
+    `${cmdTtsPlayerManagerActionsDirPath}/fromPlay.js`,
+    
 // shell

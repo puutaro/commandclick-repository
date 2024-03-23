@@ -22,7 +22,6 @@ listDirKey=listDir,
 lineHeight=60,
 textSize=30,
 
-
 // dir path variable
 currentAppDirPath=
 	`${01}`,
@@ -42,8 +41,6 @@ cmdTtsPlayerSaveDirPath=
 	"${ttsPlayerDirPath}/save",
 cmdTtsPlayerSaveUrlConDirPath=
 	`${cmdTtsPlayerSaveDirPath}/urlCon`,
-cmdTtsPlayerShellDirPath=
-	`${ttsPlayerDirPath}/shell`,
 
 // play list
 cmdTtsPlayerPlayListName=
@@ -69,10 +66,6 @@ cmdTtsPlayerPlayInfoPath=
 	"${cmdTtsPlayerTempDirPath}/playInto.tsv",
 cmdTtsPlayerTempFilePath=
 	"${cmdTtsPlayerTempDirPath}/tempPlay.tsv",
-
-// shell
-makeHeaderTitleShell=
-	`${cmdTtsPlayerShellDirPath}/make_header_title.sh`,
 
 configHidValPath=
 	`${cmdTtsPlayerSettingVariablesDirPath}/hideConfigVal.js`,

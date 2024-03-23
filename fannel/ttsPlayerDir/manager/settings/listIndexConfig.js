@@ -1,5 +1,4 @@
 
-
 type=
     tsvEdit,
 
@@ -11,9 +10,9 @@ name=
     removeExtend=
     |length=50,
 
-
 click=
-    jsPath=CAT,
+    actionImport=
+        `${cmdTtsPlayerManagerFromPlayActionPath}`,
 
 longClick=
     jsPath=MENU

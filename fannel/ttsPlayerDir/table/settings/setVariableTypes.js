@@ -3,7 +3,10 @@
 appHeader:
     TXTP:RO=
         onUnderLine=OFF
-        !shellPath=`${makeHeaderTitleShell}`
+        !shellPath=MAKE_HEADER_TITLE
+        !args=
+            FANNEL_PATH=`${FANNEL_PATH}`
+            &EXTRA_TITLE=
         ,
 
 table:

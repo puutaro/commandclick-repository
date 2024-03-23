@@ -3,9 +3,10 @@
 appHeader:
     TXTP:RO=
         onUnderLine=OFF
-        !shellPath=`${makeHeaderTitleShell}`
+        !shellPath=MAKE_HEADER_TITLE
         !args=
-            STATE=`$(cat ${cmdTtsPlayerPlayInfoPath})`
+            FANNEL_PATH=`${FANNEL_PATH}`
+            &EXTRA_TITLE=`$(cat ${cmdTtsPlayerPlayInfoPath})`
         ,
 
 manager:
