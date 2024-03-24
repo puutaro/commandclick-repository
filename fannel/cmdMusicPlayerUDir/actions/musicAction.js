@@ -14,7 +14,6 @@ js=
         |onLoop=on
         |onTrack=on
         |playNumber=
-        |transMode=${toLang}
         |currentAppDirName=${jsPath.basename("${currentAppDirPath}")},
         |scriptRawName=${jsPath.trimAllExtend("${02}")},
         |extraContent=
