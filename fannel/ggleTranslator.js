@@ -23,7 +23,7 @@ onDialog="true"
 /// CMD_VARIABLE_SECTION_END
 
 
-const highlightText = getSelectionText().replaceAll("%", "%25");
+const highlightText = getSelectionText();
 const transUrl = makeTransUrl(highlightText);
 launchGgleTransSite(
 	transUrl
@@ -38,7 +38,9 @@ function makeTransUrl(
 			return `https://translate.google.co.jp/?sl=auto&tl=${toLang}&op=translate`;
 			break;
 		case highlightText !== "":
-			const highlightTextNoWrap = highlightText.replaceAll("\n", " ");
+			const highlightTextNoWrap = encodeURIComponent(
+				highlightText
+			);
 			return `https://translate.google.co.jp/?sl=auto&tl=${toLang}&text=${highlightTextNoWrap}&op=translate`;
 			break;
 	};
@@ -69,5 +71,5 @@ function getSelectionText() {
     } else if (document.selection && document.selection.type != "Control") {
         text = document.selection.createRange().text;
     };
-    return text;
+    return encodeURIComponent(text);
 };
