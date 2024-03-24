@@ -10,9 +10,9 @@ name=
     removeExtend=
     |length=50,
 
-
 click=
-    jsPath=CAT,
+    actionImport=
+        `${cmdTtsPlayerManagerFromPlayActionPath}`,
 
 longClick=
     jsPath=MENU
@@ -21,3 +21,14 @@ longClick=
 
 searchBox=
     visible=OFF,
+
+delete=
+    disableDeleteConfirm=OFF
+    |onDeleteConFile=ON
+    |alter=`
+        shellIfPath=JUDGE_LIST_DIR
+        |ifArgs=
+            tsvPath=${cmdTtsPlayerManagerListIndexTsvPath}
+            !tsvValue=${cmdTtsPlayerPreviousTtsPlayListPath}
+        |disableDeleteConfirm=ON
+        |onDeleteConFile=OFF`,

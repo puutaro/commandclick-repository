@@ -9,10 +9,11 @@ js=
 |args=
     tempPlayListPath=`${cmdTtsPlayerTempFilePath}`
     !extraSettingMapStr=`
-        playMode=${playMode}
+        playMode={{ PLAY_MODE:${playMode} }}
         |onRoop=on
         |playNumber=
         |transMode=${toLang}
+        |onTrack=on
         |pitch=${pitch}
         |extraContent=
             {{ EXTRA_CONTENT }}

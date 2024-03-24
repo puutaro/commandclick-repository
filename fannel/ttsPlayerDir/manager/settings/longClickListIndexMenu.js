@@ -4,6 +4,16 @@ name=Delete
 |jsPath=SIMPLE_DELETE
 ,
 
+name=Rename
+|icon=edit_frame
+|jsPath=RENAME
+,
+
+name=Show
+|icon=play
+|jsPath=CAT,
+
+
 name=Play
 |icon=play
 |actionImport=

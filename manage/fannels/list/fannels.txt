@@ -306,6 +306,7 @@ ttsPlayerDir/actions/ttsAction.js
 ttsPlayerDir/config/config.js
 ttsPlayerDir/config/settings/playButtonConfig.js
 ttsPlayerDir/config/settings/setVariableTypes.js
+ttsPlayerDir/manager/actions/fromPlay.js
 ttsPlayerDir/manager/actions/setGmailAdAction.js
 ttsPlayerDir/manager/manager.js
 ttsPlayerDir/manager/settings/addMenuConfig.js
@@ -327,7 +328,6 @@ ttsPlayerDir/settingVariables/tableRepVars.js
 ttsPlayerDir/settings/fannelStateConfig.js
 ttsPlayerDir/settings/fannelStateRootTable.tsv
 ttsPlayerDir/settings/fannelStateStock.tsv
-ttsPlayerDir/shell/make_header_title.sh
 ttsPlayerDir/systemJs/urlHistoryClick.js
 ttsPlayerDir/table/settings/initList.tsv
 ttsPlayerDir/table/settings/listIndexConfig.js

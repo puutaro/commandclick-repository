@@ -4,6 +4,7 @@ TXT_LABEL=label,
 BTN_CMD=cmd,
 BTN_LABEL=label,
 BTN_TEXT_SIZE=textSize,
+ALTER=alter,
 BTN_BORDER=onBorder,
 TTS_PREFIX="tts",
 TXT_SUFFIX=".txt",
@@ -12,7 +13,6 @@ TSV_SUFFIX=".tsv",
 // state
 TABLE=table,
 MANAGER=manager,
-PLAYER=player,
 CONFIG=config,
 
 // list index setting
@@ -22,10 +22,9 @@ listDirKey=listDir,
 lineHeight=60,
 textSize=30,
 
-
 // dir path variable
-monitorPath=
-	`${00}/conf/monitor/term_1`,
+currentAppDirPath=
+	`${01}`,
 ttsPlayerDirPath=
 	"${01}/${001}",
 cmdTtsPlayerActionsDirPath=
@@ -42,8 +41,6 @@ cmdTtsPlayerSaveDirPath=
 	"${ttsPlayerDirPath}/save",
 cmdTtsPlayerSaveUrlConDirPath=
 	`${cmdTtsPlayerSaveDirPath}/urlCon`,
-cmdTtsPlayerShellDirPath=
-	`${ttsPlayerDirPath}/shell`,
 
 // play list
 cmdTtsPlayerPlayListName=
@@ -69,10 +66,6 @@ cmdTtsPlayerPlayInfoPath=
 	"${cmdTtsPlayerTempDirPath}/playInto.tsv",
 cmdTtsPlayerTempFilePath=
 	"${cmdTtsPlayerTempDirPath}/tempPlay.tsv",
-
-// shell
-makeHeaderTitleShell=
-	`${cmdTtsPlayerShellDirPath}/make_header_title.sh`,
 
 configHidValPath=
 	`${cmdTtsPlayerSettingVariablesDirPath}/hideConfigVal.js`,
