@@ -4,8 +4,14 @@ color=darkGreen,
 icon=setting,
 
 click=
-    jsPath=D_MENU
-    |args=
-        menuPath=
-            ${cmdMusicPlayerManagerSettingMenuPath}
-        !title="Setting menu",
+    actionImport=
+        `${cmdMusicPlayerChangeStateAction}`
+        |replace=
+            STATE=`${CONFIG}`
+    !DISABLE_ADD_TO_BACKSTACK=false,
+
+// jsPath=D_MENU
+    // |args=
+    //     menuPath=
+    //         ${cmdMusicPlayerManagerSettingMenuPath}
+    //     !title="Setting menu",

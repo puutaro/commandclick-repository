@@ -23,7 +23,6 @@ cmdMusicPlayerUDir/config/config.js
 cmdMusicPlayerUDir/config/settings/playButtonConfig.js
 cmdMusicPlayerUDir/config/settings/setVariableTypes.js
 cmdMusicPlayerUDir/manager/actions/fromPlay.js
-cmdMusicPlayerUDir/manager/actions/setGmailAdAction.js
 cmdMusicPlayerUDir/manager/manager.js
 cmdMusicPlayerUDir/manager/settings/addMenuConfig.js
 cmdMusicPlayerUDir/manager/settings/editButtonConfig.js

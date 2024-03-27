@@ -1,10 +1,5 @@
 
-// name="Set gmail address"
-// |icon=mail
-// |actionImport=
-//     `${cmdMusicPlayerManagerSetGmailAdActionPath}`,
-
-name="Setting tts"
+name="Player setting"
 |icon=setting
 |actionImport=
     `${cmdMusicPlayerChangeStateAction}`
