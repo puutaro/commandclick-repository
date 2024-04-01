@@ -7,109 +7,46 @@
 # cmdMusicPlayerU.js
 ----------------
 
-Music player  (**Ubuntu**) @puutaro
+Music player @puutaro
 
 Table of Contents
 -------
-<!-- vim-markdown-toc GFM -->
+<!-- vim-markdown-toc GFM --> 
 * [Installation](#installation)
-* [Toolbar buttons](#toolbar-buttons)
-	* [Play Button](#play-button)
-* [Cmd Variables](#cmd-variables)
-	* [Install](#install)
-	* [musicDir](#musicdir)
-	* [musicPlayListName](#musicplaylistname)
-	* [musicPlay](#musicplay)
-	* [numberPlay](#numberplay)
-	* [About Volume Controll](#about-volume-controll)
-	* [STOP](#stop)
-	* [startNum](#startnum)
-	* [endNum](#endnum)
-	* [EDIT_MUSIC_PLAY_LIST](#edit_music_play_list)
-* [Execute target on click in url history](#execute-target-on-click-in-url-history)
-* [Setting variables](#setting-variables)
-	* [terminalFontZoom](#terminalfontzoom)
-	* [terminalFontColor](#terminalfontcolor)
-	* [terminalColor](#playmode)
-	* [numberPlay](#terminalcolor)
+* [Play list table](#play-list-table)
+* [Play list](#play-list)
+* [Play](#play)
+* [Setting](#setting)
+* [About Volume control](#about-volume-control)
 
 
 ## Installation
------------
+--------------
 
-1. Install [ComamndClick](https://github.com/puutaro/CommandClick) to your android by [this link](https://github.com/puutaro/CommandClick#app-installation)
-2. Set up Ubuntu by [this link](https://github.com/puutaro/CommandClick/blob/master/USAGE.md#setup-ubuntu)
-3. Install this fannel by [install repo](https://github.com/puutaro/CommandClick/blob/master/USAGE.md#install-fannel) or QR code
-4. Press [Install button](#install)
+1. Install [ComamndClick](https://github.com/puutaro/CommandClick#app-installation) to your android
+2. Install this fannel by [install repo](https://github.com/puutaro/CommandClick/blob/master/USAGE.md#install-fannel) or QR code
 
-## Toolbar buttons
 
-### Play Button
 
-Launch music play list site
+## Play list table
 
-## Cmd Variables
+<a href="https://github.com/puutaro/cmdMusicPlayerU/assets/55217593/17471952-f449-466c-8639-b91b714e7065"><img src="https://github.com/puutaro/cmdMusicPlayerU/assets/55217593/17471952-f449-466c-8639-b91b714e7065" width="300" /></a>
+
+## Play list
+<a href="https://github.com/puutaro/cmdMusicPlayerU/assets/55217593/8633303e-32a8-4563-98b0-8075c0891545"><img src="https://github.com/puutaro/cmdMusicPlayerU/assets/55217593/8633303e-32a8-4563-98b0-8075c0891545" width="300" /></a>
+
+## Play
+
+<a href="https://github.com/puutaro/cmdMusicPlayerU/assets/55217593/93d90886-3c09-4709-a0f1-4b4ce1e66211"><img src="https://github.com/puutaro/cmdMusicPlayerU/assets/55217593/93d90886-3c09-4709-a0f1-4b4ce1e66211" width="300" /></a>
+
+
+## Setting
 --------
-### Install
-Install & upgrade require package
 
-### musicDir 
-Target music file saved directory path
-
-### musicPlayListName 
-Input or select play list file name
-- Prefix must be "music" 
-	ex) "musicPlayList"
-
-### musicPlay 
-Select shuffle or ordinaly and press
-1. Press "Exec"
-2. (Execute play list)
-
-### numberPlay 
-Input or inc/dec number
-
-1. Press "Exec" 
-2. (Play number)
-
-### About Volume Controll
-- Volume Controll enable when CommandClick hide
-
-### STOP
-Play stop
-
-### startNum 
-Start number
-- 0: firstNumber
-
-### endNum
-End number
-- 0: lastNumber
-
-### EDIT_MUSIC_PLAY_LIST
-
-Edit music play list name by `renameMusicPlayListName`
+<a href="https://github.com/puutaro/cmdMusicPlayerU/assets/55217593/ef23153c-5568-4efb-a4d2-23f82c88566e"><img src="https://github.com/puutaro/cmdMusicPlayerU/assets/55217593/ef23153c-5568-4efb-a4d2-23f82c88566e" width="300" /></a>
 
 
-`renameMusicPlayListName` 
+### About Volume control
+Enable when CommandClick hide
 
-| value | description |
-| ----------- | ----------- |
-| blank | Delete music file path list name |
-| other | Rename music file path list name (auto comp prefix `music`) |
 
-## Execute target on click in url history
-
-[musicPlay](#musicplay)
-
-## Setting variables
----------
-
-### terminalFontZoom
-Adjust terminal font size (percentage)
-
-### terminalFontColor
-Adjust terminal font color
-
-### terminalColor
-Adjust terminal background color

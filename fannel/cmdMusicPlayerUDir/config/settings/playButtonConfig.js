@@ -1,6 +1,6 @@
 
 visible=ON,
-// icon=menu,
+
 disable=OFF,
 
 color=darkGreen,

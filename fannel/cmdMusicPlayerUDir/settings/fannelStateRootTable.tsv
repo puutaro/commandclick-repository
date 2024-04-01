@@ -1,0 +1,4 @@
+${TABLE}	${cmdMusicPlayerTableFannelPath}
+${MANAGER}	${cmdMusicPlayerManagerFannelDirPath}
+${CONFIG}	${cmdMusicPlayerConfigFannelPath}
+default	${cmdMusicPlayerTableFannelPath}

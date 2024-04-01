@@ -17,11 +17,7 @@ js=
         |pitch=${pitch}
         |extraContent=
             {{ EXTRA_CONTENT }}
-            // ${jsF.r("${cmdTtsPlayerPlayInfoPath}")}
         |shellPath=SAVE_PLAY_LIST
-        // ${ttsOutputShallPath}
         |shellArgs=
-            ttsPlayInfo=
-                ${jsF.r("${cmdTtsPlayerPlayInfoPath}")}
             !savePath=${cmdTtsPlayerPreviousTtsPlayListPath}`
             ,
