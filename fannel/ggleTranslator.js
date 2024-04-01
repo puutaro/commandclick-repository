@@ -38,10 +38,7 @@ function makeTransUrl(
 			return `https://translate.google.co.jp/?sl=auto&tl=${toLang}&op=translate`;
 			break;
 		case highlightText !== "":
-			const highlightTextNoWrap = encodeURIComponent(
-				highlightText
-			);
-			return `https://translate.google.co.jp/?sl=auto&tl=${toLang}&text=${highlightTextNoWrap}&op=translate`;
+			return `https://translate.google.co.jp/?sl=auto&tl=${toLang}&text=${highlightText}&op=translate`;
 			break;
 	};
 };
