@@ -34,10 +34,10 @@
 
 /// SETTING_SECTION_START
 setReplaceVariables="TXT_LABEL=label"
-setVariableTypes="speechMode:LBL:CB=${TXT_LABEL}=this|All!Summary!Highlight!Clipboard"
-setVariableTypes="Speed:TXT:NUM=!1..100!1"
-setVariableTypes="Pitch:TXT:NUM=!1..100!1"
-setVariableTypes="toLang:CB=-!ja!en!zh!es!ko"
+setVariableTypes="speechMode:LBL:CB=${TXT_LABEL}=this|All?Summary?Highlight?Clipboard"
+setVariableTypes="Speed:TXT:NUM=?1..100?1"
+setVariableTypes="Pitch:TXT:NUM=?1..100?1"
+setVariableTypes="toLang:CB=-?ja?en?zh?es?ko"
 hideSettingVariables="setReplaceVariables"
 hideSettingVariables="setVariableTypes"
 scriptFileName="textToSpeech.js"
