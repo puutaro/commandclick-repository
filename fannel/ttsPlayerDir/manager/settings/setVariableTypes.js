@@ -3,8 +3,8 @@
 appHeader:
     TXTP:RO=
         onUnderLine=OFF
-        !shellPath=MAKE_HEADER_TITLE
-        !args=
+        ?shellPath=MAKE_HEADER_TITLE
+        ?args=
             FANNEL_PATH=`${FANNEL_PATH}`
             &EXTRA_TITLE=`$(cat ${cmdTtsPlayerPlayInfoPath})`
         ,
@@ -15,45 +15,45 @@ manager:
 extraButton:
      TXTP:BTN:BTN:BTN:HL=
          onUnderLine=OFF
-            !height=`${lineHeight}`
+            ?height=`${lineHeight}`
          |${BTN_CMD}= jsac `
                 tsvImport=${cmdTtsPlayerManagerListIndexTsvPath}
                 |jsPath=jsAddUrlCon.add_S
                 |args=
                     urlStringOrMacro=RECENT
-                    !onSearchBtn=ON
-                    !urlConSaveParentDirPath=${cmdTtsPlayerSaveUrlConDirPath}
-                    !compSuffix=${TXT_SUFFIX}
+                    ?onSearchBtn=ON
+                    ?urlConSaveParentDirPath=${cmdTtsPlayerSaveUrlConDirPath}
+                    ?compSuffix=${TXT_SUFFIX}
                 ,`
-            !${BTN_LABEL}="+🌐"
-            !${BTN_TEXT_SIZE}=`${textSize}`
-            !${BTN_BORDER}=OFF
-            !alter=`
+            ?${BTN_LABEL}="+🌐"
+            ?${BTN_TEXT_SIZE}=`${textSize}`
+            ?${BTN_BORDER}=OFF
+            ?alter=`
                 shellIfPath=JUDGE_LIST_DIR
-                !ifArgs=
+                ?ifArgs=
                     tsvPath=${cmdTtsPlayerManagerListIndexTsvPath}
                     &tsvValue=${cmdTtsPlayerPreviousTtsPlayListPath}
-                !onPut=OFF
+                ?onPut=OFF
             `
          |${BTN_CMD}= jsac `
                 |tsvImport=${cmdTtsPlayerManagerGmailAdTsvPath}
                 |jsPath=jsAddGmailCon.add
                 |args=
                     gmailAd=${gmailAd}
-                    !urlConSaveParentDirPath=${cmdTtsPlayerSaveUrlConDirPath}
-                    !compSuffix=${TXT_SUFFIX}
+                    ?urlConSaveParentDirPath=${cmdTtsPlayerSaveUrlConDirPath}
+                    ?compSuffix=${TXT_SUFFIX}
                 ,`
-            !${BTN_LABEL}="+📧"
-            !${BTN_TEXT_SIZE}=`${textSize}`
-            !${BTN_BORDER}=OFF
-            !alter=`
+            ?${BTN_LABEL}="+📧"
+            ?${BTN_TEXT_SIZE}=`${textSize}`
+            ?${BTN_BORDER}=OFF
+            ?alter=`
                 shellIfPath=JUDGE_LIST_DIR
-                !ifArgs=
+                ?ifArgs=
                     tsvPath=${cmdTtsPlayerManagerListIndexTsvPath}
                     &tsvValue=${cmdTtsPlayerPreviousTtsPlayListPath}
-                !onPut=OFF
+                ?onPut=OFF
             `
         |${BTN_CMD}= jsac "jsPath=jsTextToSpeech.stopService"
-            !${BTN_LABEL}="■"
-            !${BTN_TEXT_SIZE}=`${textSize}`
-            !${BTN_BORDER}=OFF,
+            ?${BTN_LABEL}="■"
+            ?${BTN_TEXT_SIZE}=`${textSize}`
+            ?${BTN_BORDER}=OFF,

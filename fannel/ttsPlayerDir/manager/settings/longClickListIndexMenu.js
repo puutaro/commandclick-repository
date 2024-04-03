@@ -21,6 +21,6 @@ name=Play
 |replace=
     TEMP_PLAY_CON=
         `${ITEM_NAME}`
-    !EXTRA_CONTENT=
+    ?EXTRA_CONTENT=
         `${jsF.r("${cmdTtsPlayerPlayInfoPath}")} ${jsPath.basename("${ITEM_NAME}")}`
 ,

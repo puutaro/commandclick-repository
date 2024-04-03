@@ -8,10 +8,10 @@ click=
         `${cmdMusicPlayerChangeStateAction}`
         |replace=
             STATE=`${CONFIG}`
-    !DISABLE_ADD_TO_BACKSTACK=false,
+    ?DISABLE_ADD_TO_BACKSTACK=false,
 
 // jsPath=D_MENU
     // |args=
     //     menuPath=
     //         ${cmdMusicPlayerManagerSettingMenuPath}
-    //     !title="Setting menu",
+    //     ?title="Setting menu",

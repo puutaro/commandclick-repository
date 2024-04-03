@@ -2,8 +2,8 @@
 appHeader:
     TXTP:RO=
         onUnderLine=OFF
-        !shellPath=MAKE_HEADER_TITLE
-        !args=
+        ?shellPath=MAKE_HEADER_TITLE
+        ?args=
             FANNEL_PATH=`${FANNEL_PATH}`
             &EXTRA_TITLE=
         ,
@@ -14,17 +14,17 @@ table:
 extraButton:
     TXTP:BTN:BTN:HL=
         onUnderLine=OFF
-            !height=`${lineHeight}`
+            ?height=`${lineHeight}`
         |${BTN_CMD}= jsac `
                 jsPath=ADD
                 |args=
                     compPrefix=${MUSIC_PREFIX}
-                    !compSuffix=${TSV_SUFFIX},
+                    ?compSuffix=${TSV_SUFFIX},
                 `
-            !${BTN_LABEL}="＋"
-            !${BTN_TEXT_SIZE}=`${textSize}`
-            !${BTN_BORDER}=OFF
+            ?${BTN_LABEL}="＋"
+            ?${BTN_TEXT_SIZE}=`${textSize}`
+            ?${BTN_BORDER}=OFF
         |${BTN_CMD}= jsac "jsPath=jsMusic.stop"
-            !${BTN_LABEL}="■"
-            !${BTN_TEXT_SIZE}=`${textSize}`
-            !${BTN_BORDER}=OFF,
+            ?${BTN_LABEL}="■"
+            ?${BTN_TEXT_SIZE}=`${textSize}`
+            ?${BTN_BORDER}=OFF,

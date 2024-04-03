@@ -1,14 +1,14 @@
 
 js=
     id=tempPlayListWrite
-    !func=jsFileSystem.write
-    !args=
+    ?func=jsFileSystem.write
+    ?args=
         path=`${cmdTtsPlayerTempFilePath}`
         &con=`{{ TEMP_PLAY_CON }}`
 |jsPath=`jsTextToSpeech.speech`
 |args=
     tempPlayListPath=`${cmdTtsPlayerTempFilePath}`
-    !extraSettingMapStr=`
+    ?extraSettingMapStr=`
         playMode={{ PLAY_MODE:${playMode} }}
         |onRoop=on
         |playNumber=
@@ -19,5 +19,5 @@ js=
             {{ EXTRA_CONTENT }}
         |shellPath=SAVE_PLAY_LIST
         |shellArgs=
-            !savePath=${cmdTtsPlayerPreviousTtsPlayListPath}`
+            ?savePath=${cmdTtsPlayerPreviousTtsPlayListPath}`
             ,

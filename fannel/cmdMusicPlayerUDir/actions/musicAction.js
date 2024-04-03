@@ -1,14 +1,14 @@
 // js/action
 
 js=
-    !func=jsFileSystem.write
-    !args=
+    ?func=jsFileSystem.write
+    ?args=
         path=`${cmdMusicPlayerTempFilePath}`
         &con=`{{ TEMP_PLAY_CON }}`
 |jsPath=`jsMusic.play`
 |args=
     tempPlayListPath=`${cmdMusicPlayerTempFilePath}`
-    !extraSettingMapStr=`
+    ?extraSettingMapStr=`
         importance=high
         |playMode={{ PLAY_MODE:${playMode} }}
         |onLoop=on

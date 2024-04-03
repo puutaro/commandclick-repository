@@ -165,7 +165,7 @@ function editUrlListHandler(){
 		`newsUrlListName:TXT:FSB=${FCB_DIR_PATH}=${NEWS_SPEECHER_EDIT_DIR_PATH}`,
 		`${FCB_PREFIX}=${NEWS_SPEECHER_PREFIX}`,
 		`${FCB_SUFFIX}=${TSV_EXTEND}`,
-	].join("!");
+	].join("?");
 	jsFileSelect.execEditTargetFileName(
 	    "newsUrlListName",
 		"renameNewsUrlListName",
@@ -246,13 +246,13 @@ function updateByVariableWhenDiff(
 
 function settingHandler(){
 	const setVariableContents = [
-		`TO_LANG:CB=-!ja!en!zh!es!ko`,
-		`ON_SPEECH:LBL:CB=${TXT_LABEL}=THIS|ON!OFF`,
-		`ON_BEFORE_SUMMARY:LBL:CB=${TXT_LABEL}=THIS|ON!OFF`,
-		`ON_OUTPUT_IN_HISTRORY_CLICK:LBL:CB=${TXT_LABEL}=THIS|ON!OFF`,
-		`PICH:TXT:LBL:NUM=${TXT_LABEL}=Pich (normal: 50)|!1..100!1`,
-		`SUMMARY_LENGTH:TXT:LBL:NUM=${TXT_LABEL}=THIS|!100..1000!100`,
-		`MAX_CONCUR:TXT:LBL:NUM=${TXT_LABEL}=Max concur (default: 5)|!2..20!1`,
+		`TO_LANG:CB=-?ja?en?zh?es?ko`,
+		`ON_SPEECH:LBL:CB=${TXT_LABEL}=THIS|ON?OFF`,
+		`ON_BEFORE_SUMMARY:LBL:CB=${TXT_LABEL}=THIS|ON?OFF`,
+		`ON_OUTPUT_IN_HISTRORY_CLICK:LBL:CB=${TXT_LABEL}=THIS|ON?OFF`,
+		`PICH:TXT:LBL:NUM=${TXT_LABEL}=Pich (normal: 50)|?1..100?1`,
+		`SUMMARY_LENGTH:TXT:LBL:NUM=${TXT_LABEL}=THIS|?100..1000?100`,
+		`MAX_CONCUR:TXT:LBL:NUM=${TXT_LABEL}=Max concur (default: 5)|?2..20?1`,
 	].join("\t");
 	const varNameValCon = [
 		`TO_LANG=${TO_LANG}`,
