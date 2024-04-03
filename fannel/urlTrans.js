@@ -9,8 +9,8 @@
 
 
 /// SETTING_SECTION_START
-setVariableTypes="toLang:CB=en!ja!ko!zh-CN!zh-TW!uk!ru!es!fr"
-setVariableTypes="onDialog:CB=false!true"
+setVariableTypes="toLang:CB=en?ja?ko?zh-CN?zh-TW?uk?ru?es?fr"
+setVariableTypes="onDialog:CB=false?true"
 scriptFileName="UrlTrans.js"
 /// SETTING_SECTION_END
 
@@ -49,9 +49,8 @@ function execTrans(){
 	jsDialog.webView_S(
 		ggTransQuery,
 	    "",
-	    "dismissType=both!iconName=cancel",
+	    "dismissType=both?iconName=cancel",
 	    "",
 	);
 };
 
-// "dismissType=click!iconName=cancel",
