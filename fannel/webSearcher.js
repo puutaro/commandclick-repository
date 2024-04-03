@@ -20,14 +20,14 @@ setReplaceVariables="rightMenuListFilePath=${webSearcherListDirPath}/rightMenuLi
 setReplaceVariables="srcImageAnchorMenuListFilePath=${webSearcherListDirPath}/srcImageAnchorMenuList.txt"
 setReplaceVariables="srcAnchorMenuListFilePath=${webSearcherListDirPath}/srcAnchorMenuList.txt"
 setReplaceVariables="imageMenuListFilePath=${webSearcherListDirPath}/imageMenuList.txt"
-setVariableTypes="leftMenuListPath:DSL:BTN=${LIST_PATH}=${leftMenuListFilePath}|${BTN_CMD}=setf type=ListAdd suffix=.js dirPath=${01}!${BTN_LABEL}=ADD"
-setVariableTypes="leftLongPressMenuListPath:DSL:BTN=${LIST_PATH}=${leftLongPressMenuListFilePath}|${BTN_CMD}=setf type=ListAdd suffix=.js dirPath=${01}!${BTN_LABEL}=ADD"
-setVariableTypes="centerMenuListPath:DSL:BTN=${LIST_PATH}=${centerMenuListFilePath}|${BTN_CMD}=setf type=ListAdd suffix=.js dirPath=${01}!${BTN_LABEL}=ADD"
-setVariableTypes="centerLongPressMenuListPath:DSL:BTN=${LIST_PATH}=${centerLongPressMenuListFilePath}|${BTN_CMD}=setf type=ListAdd suffix=.js dirPath=${01}!${BTN_LABEL}=ADD"
-setVariableTypes="rightMenuListPath:DSL:BTN=${LIST_PATH}=${rightMenuListFilePath}|${BTN_CMD}=setf type=ListAdd suffix=.js dirPath=${01}!${BTN_LABEL}=ADD"
-setVariableTypes="srcImageAnchorMenuListPath:DSL:BTN=${LIST_PATH}=${srcImageAnchorMenuListFilePath}|${BTN_CMD}=setf type=ListAdd suffix=.js dirPath=${01}!${BTN_LABEL}=ADD"
-setVariableTypes="imageMenuListPath:DSL:BTN=${LIST_PATH}=${imageMenuListFilePath}|${BTN_CMD}=setf type=ListAdd suffix=.js dirPath=${01}!${BTN_LABEL}=ADD"
-setVariableTypes="srcAnchorMenuListPath:DSL:BTN=${LIST_PATH}=${srcAnchorMenuListFilePath}|${BTN_CMD}=setf type=ListAdd suffix=.js dirPath=${01}!${BTN_LABEL}=ADD"
+setVariableTypes="leftMenuListPath:DSL:BTN=${LIST_PATH}=${leftMenuListFilePath}|${BTN_CMD}=setf type=ListAdd suffix=.js dirPath=${01}?${BTN_LABEL}=ADD"
+setVariableTypes="leftLongPressMenuListPath:DSL:BTN=${LIST_PATH}=${leftLongPressMenuListFilePath}|${BTN_CMD}=setf type=ListAdd suffix=.js dirPath=${01}?${BTN_LABEL}=ADD"
+setVariableTypes="centerMenuListPath:DSL:BTN=${LIST_PATH}=${centerMenuListFilePath}|${BTN_CMD}=setf type=ListAdd suffix=.js dirPath=${01}?${BTN_LABEL}=ADD"
+setVariableTypes="centerLongPressMenuListPath:DSL:BTN=${LIST_PATH}=${centerLongPressMenuListFilePath}|${BTN_CMD}=setf type=ListAdd suffix=.js dirPath=${01}?${BTN_LABEL}=ADD"
+setVariableTypes="rightMenuListPath:DSL:BTN=${LIST_PATH}=${rightMenuListFilePath}|${BTN_CMD}=setf type=ListAdd suffix=.js dirPath=${01}?${BTN_LABEL}=ADD"
+setVariableTypes="srcImageAnchorMenuListPath:DSL:BTN=${LIST_PATH}=${srcImageAnchorMenuListFilePath}|${BTN_CMD}=setf type=ListAdd suffix=.js dirPath=${01}?${BTN_LABEL}=ADD"
+setVariableTypes="imageMenuListPath:DSL:BTN=${LIST_PATH}=${imageMenuListFilePath}|${BTN_CMD}=setf type=ListAdd suffix=.js dirPath=${01}?${BTN_LABEL}=ADD"
+setVariableTypes="srcAnchorMenuListPath:DSL:BTN=${LIST_PATH}=${srcAnchorMenuListFilePath}|${BTN_CMD}=setf type=ListAdd suffix=.js dirPath=${01}?${BTN_LABEL}=ADD"
 hideSettingVariables="setReplaceVariables"
 hideSettingVariables="setVariableTypes"
 scriptFileName="webSearcher.js"
@@ -120,15 +120,15 @@ function getSelectionText() {
 
 function launchWebview(launchUrlString){
     const menuMapStrListStr= [
-        `clickMenuFilePath=${leftMenuListPath}!longPressMenuFilePath=${leftLongPressMenuListPath}!dismissType=longpress!iconName=back`,
-        `clickMenuFilePath=${centerMenuListPath}!longPressMenuFilePath=${centerLongPressMenuListPath}!iconName=search`,
-        `clickMenuFilePath=${rightMenuListPath}!iconName=wheel`,
+        `clickMenuFilePath=${leftMenuListPath}?longPressMenuFilePath=${leftLongPressMenuListPath}?dismissType=longpress?iconName=back`,
+        `clickMenuFilePath=${centerMenuListPath}?longPressMenuFilePath=${centerLongPressMenuListPath}?iconName=search`,
+        `clickMenuFilePath=${rightMenuListPath}?iconName=wheel`,
     ].join("|");
     const longPressMenuListStr = [
         `srcImageAnchorMenuFilePath=${srcImageAnchorMenuListPath}`,
         `srcAnchorMenuFilePath=${srcAnchorMenuListPath}`,
         `imageMenuFilePath=${imageMenuListPath}`,
-    ].join("!");
+    ].join("?");
     jsDialog.webView_S(
         launchUrlString,
         "${0}",
