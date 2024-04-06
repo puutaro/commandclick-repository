@@ -5,7 +5,7 @@ TXT_TO_CLIP:
 		${TXT_LABEL}=THIS
 		|
 			${LIST_PATH}=${REQ_LIST_FILE_PATH}
-				!${LIMIT_NUM}=30
+				?${LIMIT_NUM}=30
 		|
 			${BTN_CMD}=::TermLong::jsf '${0}' clip,
 REMOVE_TEXT:
@@ -15,4 +15,4 @@ REMOVE_TEXT:
 			${LIST_PATH}=${REQ_LIST_FILE_PATH}
 		|
 			${BTN_CMD}=jsf '${0}' remove
-				!${BTN_LABEL}=DEL,
+				?${BTN_LABEL}=DEL,

@@ -14,7 +14,7 @@ onUrlHistoryRegister="OFF"
 onAdBlock="OFF"
 setReplaceVariables="FCB_PREFIX=prefix"
 setReplaceVariables="FCB_SUFFIX=suffix"
-setVariableTypes="creatorJSName:TXT:FGB=${FCB_PREFIX}=clip!${FCB_SUFFIX}=.js"
+setVariableTypes="creatorJSName:TXT:FGB=${FCB_PREFIX}=clip?${FCB_SUFFIX}=.js"
 hideSettingVariables="file://"
 scriptFileName="clipFormatMaker.js"
 /// SETTING_SECTION_END

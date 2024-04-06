@@ -11,7 +11,7 @@ tsvImport=
     `${cmdTtsPlayerTtsAction}`
 |replace=
     PLAY_MODE=ordinaly
-    !TEMP_PLAY_CON=
+    ?TEMP_PLAY_CON=
         `${jsTsv.getSrFromThis("${listDir}", "${ITEM_NAME}")}`
-    !EXTRA_CONTENT=
+    ?EXTRA_CONTENT=
         `${playInfo} from ${trackName}`

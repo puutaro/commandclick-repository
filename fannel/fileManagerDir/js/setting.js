@@ -7,9 +7,9 @@ afterCheckProcess();
 
 function launchSettingDialog() {
 	const setVariableContents = [
-		`ROOT_DIR_PATH:LBL:TXT:ELSB=${TXT_LABEL}=Root dir path|${LIST_PATH}=${FILE_MANAGER_ROOT_DIR_LIST_TXT_PATH}!${LIMIT_NUM}=10!${INIT_MARK}=${SET_BLANK_MARK}`,
-		`BASE_URL:LBL:TXT:ELSB=${TXT_LABEL}=Base url ( ipv4Add:portNum )|${LIST_PATH}=${FILE_MANAGER_BASE_URL_LIST_TXT_PATH}!${LIMIT_NUM}=10!${INIT_MARK}=${SET_BLANK_MARK}`,
-		`IS_LAUNCH_ON_CLICK_URL_HISTORY:LBL:CB=${TXT_LABEL}=Is launch on click url history|OFF!ON`,
+		`ROOT_DIR_PATH:LBL:TXT:ELSB=${TXT_LABEL}=Root dir path|${LIST_PATH}=${FILE_MANAGER_ROOT_DIR_LIST_TXT_PATH}?${LIMIT_NUM}=10?${INIT_MARK}=${SET_BLANK_MARK}`,
+		`BASE_URL:LBL:TXT:ELSB=${TXT_LABEL}=Base url ( ipv4Add:portNum )|${LIST_PATH}=${FILE_MANAGER_BASE_URL_LIST_TXT_PATH}?${LIMIT_NUM}=10?${INIT_MARK}=${SET_BLANK_MARK}`,
+		`IS_LAUNCH_ON_CLICK_URL_HISTORY:LBL:CB=${TXT_LABEL}=Is launch on click url history|OFF?ON`,
 	].join("\t");
 	const varNameValCon = [
 		`ROOT_DIR_PATH=${ROOT_DIR_PATH}`,

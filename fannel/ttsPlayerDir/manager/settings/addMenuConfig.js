@@ -5,9 +5,9 @@ name=Add url con
 |jsPath=jsAddUrlCon.add_S
 |args=
     urlStringOrMacro=RECENT
-    !onSearchBtn=ON
-    !urlConSaveParentDirPath=`${cmdTtsPlayerSaveUrlConDirPath}`
-    !compSuffix=`${TXT_SUFFIX}`
+    ?onSearchBtn=ON
+    ?urlConSaveParentDirPath=`${cmdTtsPlayerSaveUrlConDirPath}`
+    ?compSuffix=`${TXT_SUFFIX}`
 ,
 
 
@@ -17,5 +17,5 @@ name=Add gmail con
 |jsPath=jsAddGmailCon.add
 |args=
     gmailAd=`${gmailAd}`
-    !urlConSaveParentDirPath=`${cmdTtsPlayerSaveUrlConDirPath}`
-    !compSuffix=`${TXT_SUFFIX}`,
+    ?urlConSaveParentDirPath=`${cmdTtsPlayerSaveUrlConDirPath}`
+    ?compSuffix=`${TXT_SUFFIX}`,

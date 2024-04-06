@@ -16,8 +16,8 @@ click=
         `${cmdTtsPlayerChangeStateAction}`
     |replace=
         STATE=`${MANAGER}`
-        !ON_LIST_DIR_UPDATER=true
-        !ON_PLAY_INFO_SAVE=true,
+        ?ON_LIST_DIR_UPDATER=true
+        ?ON_PLAY_INFO_SAVE=true,
 
 longClick=
     |jsPath=MENU

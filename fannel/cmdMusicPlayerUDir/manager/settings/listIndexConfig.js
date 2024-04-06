@@ -31,5 +31,5 @@ delete=
         shellIfPath=JUDGE_LIST_DIR
         |ifArgs=
             tsvPath=${cmdMusicPlayerManagerListIndexTsvPath}
-            !tsvValue=${cmdMusicPlayerPreviousMusicPlayListPath}
+            ?tsvValue=${cmdMusicPlayerPreviousMusicPlayListPath}
         |disableDeleteConfirm=ON`,

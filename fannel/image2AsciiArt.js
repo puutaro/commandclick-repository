@@ -462,7 +462,7 @@ function returnMoveDestiDirName(){
 	const moveDestiDir = "moveDestiDir";
 	const returnValue = jsDialog.formDialog(
 		`Select move dir: srcDir ${TARGET_DIR}`,
-		`moveDestiDir:TXT:FSB=${FCB_DIR_PATH}=${image2AsciiArtGalleryDirPath}!${FCB_TYPE}=dir`,
+		`moveDestiDir:TXT:FSB=${FCB_DIR_PATH}=${image2AsciiArtGalleryDirPath}?${FCB_TYPE}=dir`,
 		`moveDestiDir=`,
 	);
 	if(!returnValue) exitZero();
@@ -493,7 +493,7 @@ function execEditTargetDirName(){
 		"TARGET_DIR",
 		"RENAME_TARGET_DIR",
 		"${image2AsciiArtGalleryDirPath}",
-		`TARGET_DIR:TXT:FSB=${FCB_DIR_PATH}=${image2AsciiArtGalleryDirPath}!${FCB_TYPE}=dir`,
+		`TARGET_DIR:TXT:FSB=${FCB_DIR_PATH}=${image2AsciiArtGalleryDirPath}?${FCB_TYPE}=dir`,
 		`TARGET_DIR=${TARGET_DIR}\tRENAME_TARGET_DIR=`,
 		"${01}/${02}",
 		"Edit TARGET_DIR"

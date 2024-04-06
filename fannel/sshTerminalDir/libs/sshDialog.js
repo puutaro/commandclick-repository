@@ -3,11 +3,11 @@
 
 function launchSshDialog() {
     let setVariableContents = [
-        `userName:LBL:TXT:ELSB=${TXT_LABEL}=this|${LIST_PATH}=${sshTerminalUserNameListTxtPath}!${LIMIT_NUM}=10!${INIT_MARK}=DELETE`,
-        `address:LBL:TXT:ELSB=${TXT_LABEL}=this|${LIST_PATH}=${sshTerminalAddressListTxtPath}!${LIMIT_NUM}=10!${INIT_MARK}=DELETE`,
-        `port:TXT:LBL:NUM:ELSB=${TXT_LABEL}=this|!1..100!1|${LIST_PATH}=${sshTerminalPortListTxtPath}!${LIMIT_NUM}=10!${INIT_MARK}=22!${INIT_VALUE}=22`,
-        `sshPass:LBL:TXT:ELSB=${TXT_LABEL}=this|${LIST_PATH}=${sshTerminalSshPassListTxtPath}!${LIMIT_NUM}=10!${INIT_MARK}=DELETE`,
-        `keyPhase:LBL:CB=${TXT_LABEL}=this|NO!SET_UP!USE`
+        `userName:LBL:TXT:ELSB=${TXT_LABEL}=this|${LIST_PATH}=${sshTerminalUserNameListTxtPath}?${LIMIT_NUM}=10?${INIT_MARK}=DELETE`,
+        `address:LBL:TXT:ELSB=${TXT_LABEL}=this|${LIST_PATH}=${sshTerminalAddressListTxtPath}?${LIMIT_NUM}=10?${INIT_MARK}=DELETE`,
+        `port:TXT:LBL:NUM:ELSB=${TXT_LABEL}=this|?1..100?1|${LIST_PATH}=${sshTerminalPortListTxtPath}?${LIMIT_NUM}=10?${INIT_MARK}=22?${INIT_VALUE}=22`,
+        `sshPass:LBL:TXT:ELSB=${TXT_LABEL}=this|${LIST_PATH}=${sshTerminalSshPassListTxtPath}?${LIMIT_NUM}=10?${INIT_MARK}=DELETE`,
+        `keyPhase:LBL:CB=${TXT_LABEL}=this|NO?SET_UP?USE`
     ].join("\t");
     let cmdVariables = [
         `userName=${userName}`,

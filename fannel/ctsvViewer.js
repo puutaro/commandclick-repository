@@ -393,7 +393,7 @@ function makeUpdateFilters(
     		);
     		return jsDialog.formDialog(
 				`Edit "${colName}" filter`,
-				`colName:RO=\toperator:CB=${updateOperatorList.join("!")}\tfilterGain:ELCB=${LIST_PATH}=${CURRENT_FILTER_GAIN_LIST_FILE_PATH}!${LIMIT_NUM}=30`,
+				`colName:RO=\toperator:CB=${updateOperatorList.join("?")}\tfilterGain:ELCB=${LIST_PATH}=${CURRENT_FILTER_GAIN_LIST_FILE_PATH}?${LIMIT_NUM}=30`,
 				`colName=${colName}\toperator=${colName}\tfilterGain=${filterGain}`,
 			).split("\n").map(
 		    	function(query){

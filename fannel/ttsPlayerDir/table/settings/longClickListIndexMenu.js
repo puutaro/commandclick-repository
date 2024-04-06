@@ -8,8 +8,8 @@ name=Play
 |icon=play
 |js=
     var=itemName
-    !func=jsPath.trimAllExtend
-    !args=
+    ?func=jsPath.trimAllExtend
+    ?args=
         path=`${jsPath.basename("${ITEM_NAME}")}`
 |actionImport=`${cmdTtsPlayerTtsAction}`
 |replace=
@@ -17,4 +17,4 @@ name=Play
         `${jsTsv.getSr(
             "${INDEX_LIST_DIR_PATH}/${ITEM_NAME}"
         )}`
-    !EXTRA_CONTENT=`${itemName}`,
+    ?EXTRA_CONTENT=`${itemName}`,

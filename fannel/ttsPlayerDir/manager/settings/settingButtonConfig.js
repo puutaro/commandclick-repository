@@ -8,4 +8,4 @@ click=
     |args=
         menuPath=
             ${cmdTtsPlayerManagerSettingMenuPath}
-        !title="Setting menu",
+        ?title="Setting menu",

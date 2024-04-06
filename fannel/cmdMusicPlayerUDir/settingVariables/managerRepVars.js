@@ -1,6 +1,4 @@
 
-// setting
-gmailAdTsvKey="gmailAd",
 
 // dir path
 cmdMusicPlayerManagerDirPath=

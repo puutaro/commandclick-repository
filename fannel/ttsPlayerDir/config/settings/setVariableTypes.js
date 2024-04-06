@@ -3,15 +3,15 @@ playMode:
 	LBL:CB=
 		${TXT_LABEL}=this
 		|
-			ordinaly!shuffle!reverse,
+			ordinaly?shuffle?reverse,
 pitch:
 	TXT:NUM=
-		!1..100!1,
+		?1..100?1,
 
 toLang:
 	CB=
-		-!ja!en!zh!es!ko,
+		-?ja?en?zh?es?ko,
 
 // onTrack:
 // 	CB=
-// 		ON!OFF,
+// 		ON?OFF,
