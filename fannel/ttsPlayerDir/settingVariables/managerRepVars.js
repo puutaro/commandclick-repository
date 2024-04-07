@@ -31,6 +31,8 @@ cmdTtsPlayerManagerSettingMenuPath=
     `${cmdTtsPlayerManagerSettingsDirPath}/settingMenuConfig.js`,
 cmdTtsPlayerManagerLongPressListIndexMenuPath=
     `${cmdTtsPlayerManagerSettingsDirPath}/longClickListIndexMenu.js`,
+cmdTtsPlayerManagerQrDialogConfigPath=
+    `${cmdTtsPlayerManagerSettingsDirPath}/qrDialogConfig.js`,
 
 // tsv
 cmdTtsPlayerManagerListIndexTsvPath=

@@ -8,14 +8,14 @@ function launchSshDialog() {
         `port:TXT:LBL:NUM:ELSB=${TXT_LABEL}=this|?1..100?1|${LIST_PATH}=${sshTerminalPortListTxtPath}?${LIMIT_NUM}=10?${INIT_MARK}=22?${INIT_VALUE}=22`,
         `sshPass:LBL:TXT:ELSB=${TXT_LABEL}=this|${LIST_PATH}=${sshTerminalSshPassListTxtPath}?${LIMIT_NUM}=10?${INIT_MARK}=DELETE`,
         `keyPhase:LBL:CB=${TXT_LABEL}=this|NO?SET_UP?USE`
-    ].join("\t");
+    ].join("\n");
     let cmdVariables = [
         `userName=${userName}`,
         `address=${address}`,
         `port=${port}`,
         `sshPass=${sshPass}`,
         `keyPhase=${keyPhase}`
-    ].join("\t");
+    ].join("\n");
     const canncelReturnCode = "1";
     const returnCodeStr = jsValEdit.editAndSaveCmdVar(
         "SSH login",

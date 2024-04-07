@@ -8,7 +8,7 @@ js=
         tsvPath=
             `${cmdTtsPlayerManagerListIndexTsvPath}`
         &settingMap=
-            `${listDirKey}=${cmdTtsPlayerPlayListTableDirPath}/${ITEM_NAME}`
+            `${listDirKey}=${ITEM_NAME}`
         &separator="|"
 |js=
     if="{{ ON_PLAY_INFO_SAVE:false }}"

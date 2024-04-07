@@ -2,10 +2,10 @@
 
 const setVariableContents = [
     `onLaunchBookmarkByDialog:LBL:CB=${TXT_LABEL}=On launch bookmark by dialog|ON?OFF`,
-].join("\t");
+].join("\n");
 const varNameValCon = [
     `onLaunchBookmarkByDialog=${onLaunchBookmarkByDialog}`,
-].join("\t");
+].join("\n");
 jsValEdit.editAndSaveCmdVar(
     "Setting",
     `${fannelStoreFannelPath}`,

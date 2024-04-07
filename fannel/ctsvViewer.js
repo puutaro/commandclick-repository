@@ -314,10 +314,10 @@ function makeFilters(
 	);
 	const filteringColumns = jsDialog.multiListDialog(
         "Select filter column",
-        jsCsv.toHeaderRow(selectColmunTagName, 0, 0),
+        jsCsv.toHeaderRow(selectColmunTagName, 0, 0).replaceAll("\t", "\n"),
         Array.from(
         	filtersMap.keys()
-        ).join("\t"),
+        ).join("\n"),
     );
     if(!filteringColumns) {
     	exitZero();
@@ -393,8 +393,8 @@ function makeUpdateFilters(
     		);
     		return jsDialog.formDialog(
 				`Edit "${colName}" filter`,
-				`colName:RO=\toperator:CB=${updateOperatorList.join("?")}\tfilterGain:ELCB=${LIST_PATH}=${CURRENT_FILTER_GAIN_LIST_FILE_PATH}?${LIMIT_NUM}=30`,
-				`colName=${colName}\toperator=${colName}\tfilterGain=${filterGain}`,
+				`colName:RO=\noperator:CB=${updateOperatorList.join("?")}\nfilterGain:ELCB=${LIST_PATH}=${CURRENT_FILTER_GAIN_LIST_FILE_PATH}?${LIMIT_NUM}=30`,
+				`colName=${colName}\noperator=${colName}\nfilterGain=${filterGain}`,
 			).split("\n").map(
 		    	function(query){
 		    		let queryList = query.split("=");
@@ -1194,14 +1194,18 @@ function makeMotionList(
 	const startLimitNum = 0;
 	if(
 		preBackStartNum >= startLimitNum
-	) var backSelect = `${MotionType.back}\t`;	
+	) var backSelect = `${MotionType.back}`;
 	else var backSelect = "";
 	var repeatSelect = MotionType.repeat;
 	if(
 		preForwardStartNum <= endNum
-	) var forwardSelect = `\t${MotionType.forward}`;	
-	else var forwardSelect = `\t${MotionType.ZERO}`;
-	return `${backSelect}${repeatSelect}${forwardSelect}`;
+	) var forwardSelect = `${MotionType.forward}`;
+	else var forwardSelect = `${MotionType.ZERO}`;
+	return [
+		backSelect,
+		repeatSelect,
+		forwardSelect
+	].join("\n");
 };
 
 function execMotion(
@@ -1226,7 +1230,7 @@ function execMotion(
 			jsUrl.loadUrl(
 		    	jsUrl.makeJsUrl(FANNEL_SCRIPT_PATH)
 		    );
-			existZero();
+			exitZero();
 			break;
 		case MotionType.repeat:
 			jsEdit.updateByVariable(
@@ -1237,7 +1241,7 @@ function execMotion(
 			jsUrl.loadUrl(
 		    	jsUrl.makeJsUrl(FANNEL_SCRIPT_PATH)
 		    );
-			existZero();
+			exitZero();
 			break;
 		case MotionType.forward:
 			jsEdit.updateByVariable(
@@ -1253,7 +1257,7 @@ function execMotion(
 			jsUrl.loadUrl(
 		    	jsUrl.makeJsUrl(FANNEL_SCRIPT_PATH)
 		    );
-			existZero();
+			exitZero();
 			break;
 		case MotionType.ZERO:
 			jsEdit.updateByVariable(
@@ -1269,7 +1273,7 @@ function execMotion(
 		    jsUrl.loadUrl(
 		    	jsUrl.makeJsUrl(FANNEL_SCRIPT_PATH)
 		    );
-			existZero();
+			exitZero();
 			break;
 	};
 };
@@ -1295,7 +1299,7 @@ function extendCheckInputPath(
 	let permittionExtends = ["csv", "tsv"];
 	const checkOk = jsPath.checkExtend(
 		inputPath,
-		permittionExtends.join("\t")
+		permittionExtends.join("&")
 	);
 	if(checkOk) return;
 	alert(

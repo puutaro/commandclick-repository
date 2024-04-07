@@ -20,7 +20,13 @@ extraButton:
                 jsPath=ADD
                 |args=
                     compPrefix=${TTS_PREFIX}
-                    ?compSuffix=${TSV_SUFFIX},
+                    ?compSuffix=PlayList${TSV_SUFFIX}
+                    ?dirPath=${cmdTtsPlayerPlayListTableDirPath}
+                    ?titleArgs=
+                        "macro=CAMEL_TO_BLANK_SNAKE
+                        ?removeSuffix=PlayList${TSV_SUFFIX}&${TSV_SUFFIX}&List&Play
+                        ?compSuffix=List
+                        ",
                 `
             ?${BTN_LABEL}="＋"
             ?${BTN_TEXT_SIZE}=`${textSize}`

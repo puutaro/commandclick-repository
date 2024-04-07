@@ -51,6 +51,10 @@ cmdTtsPlayerPreviousTtsPlayListName=
 	"ttsPreviousPlayList.tsv",
 cmdTtsPlayerPreviousTtsPlayListPath=
 	`${cmdTtsPlayerPlayListTableDirPath}/${cmdTtsPlayerPreviousTtsPlayListName}`,
+cmdTtsPlayerLikePlayListName=
+	`ttsLikePlayList.tsv`,
+cmdTtsPlayerLikePlayListPath=
+	"${cmdTtsPlayerPlayListTableDirPath}/ttsLikePlayList.tsv",
 
 // js path
 FANNEL_PATH=${0},
@@ -60,6 +64,8 @@ cmdTtsPlayerChangeStateAction=
 	`${cmdTtsPlayerActionsDirPath}/changeStateAction.js`,
 cmdTtsPlayerTtsAction=
 	`${cmdTtsPlayerActionsDirPath}/ttsAction.js`,
+cmdTtsPlayerCopyToOtherAction=
+	`${cmdTtsPlayerActionsDirPath}/copyToOther.js`,
 
 // list path
 cmdTtsPlayerPlayInfoPath=

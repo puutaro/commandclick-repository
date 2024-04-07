@@ -6,7 +6,7 @@ terminalDo="OFF"
 setVariableTypes=`file://${setVariableTypesForManager}`
 hideSettingVariables="table,playBtns"
 hideSettingVariables=`file://${configHidValPath}`
-qrDialogConfig="mode=tsvEdit,logo=oneSideLength=40"
+qrDialogConfig=`file://${cmdTtsPlayerManagerQrDialogConfigPath}`
 playButtonConfig=`file://${cmdTtsPlayerManagerPlayButtonConfigPath}`
 editButtonConfig=`file://${cmdTtsPlayerManagerEditButtonConfigPath}`
 settingButtonConfig=`file://${cmdTtsPlayerManagerSettingButtonConfigPath}`

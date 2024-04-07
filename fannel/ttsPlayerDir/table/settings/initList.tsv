@@ -1,2 +1,3 @@
-${cmdTtsPlayerPlayListName}
-${cmdTtsPlayerPreviousTtsPlayListName}
+play list	${cmdTtsPlayerPlayListPath}
+previous list	${cmdTtsPlayerPreviousTtsPlayListPath}
+like list	${cmdTtsPlayerLikePlayListPath}

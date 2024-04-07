@@ -1,7 +1,10 @@
 
+type=
+    tsvEdit,
 
 list=
-    listDir=`${cmdTtsPlayerPlayListTableDirPath}`
+    listDir=`${cmdTtsPlayerTableTsvPath}`
+    // listDir=`${cmdTtsPlayerPlayListTableDirPath}`
     |compPath=`${cmdTtsPlayerTableInitTsvConPath}`
     |prefix=`${TTS_PREFIX}`
     |suffix=`${TSV_SUFFIX}`

@@ -124,7 +124,7 @@ function saveExtractTextFromPdf(){
 	let noConvertExtends = ["txt", "csv", "tsv"];
 	const isNoConvertFile = jsPath.checkExtend(
 		txtPdfPath,
-		noConvertExtends.join("\t"),
+		noConvertExtends.join("&"),
 	);
 	const isNoExtend = !txtPdfPath.match(
 		/\.[a-zA-Z0-9]*$/
