@@ -335,7 +335,7 @@ function displayGralleryAndSelectImagePath(
 	).split("\t").map(
 		function(fileName){
 			return `${targetDirPath}/${fileName}`;
-		}).join("\t");
+		}).join("\n");
 	if(
 		!asciiArtFileListCon
 	) exitZero();
@@ -368,7 +368,7 @@ function execMoveOrDeleteImage(){
 		moveDestiDirName
 	);
 	if(!selectedItems) exitZero();
-	let selectedItemsList = selectedItems.split("\t");
+	let selectedItemsList = selectedItems.split("\n");
 	moveOrDeleteHandler(
 		moveDestiDirName,
 		selectedItemsList
@@ -420,10 +420,11 @@ function returnMoveOrDeleteEntryFiles(
 ){
 	const asciiArtFileListCon = jsFileSystem.showFileList(
 		targetDirPath
-	).split("\t").map(
+	).split("\n").map(
 		function(fileName){
+			if(!fileName) return "";
 			return `${targetDirPath}/${fileName}`;
-		}).join("\t");
+		}).join("\n");
 	var selectecItems = [];
 	const deleteOrMoveDialogMassage = makeDeleteOrMoveDialogMessage(
 		moveDestiDirName
@@ -468,7 +469,7 @@ function returnMoveDestiDirName(){
 	if(!returnValue) exitZero();
 	return jsDialog.getFormValue(
 		moveDestiDir,
-		returnValue.replaceAll("\n", "\t"),
+		returnValue,
 	);
 };
 
@@ -494,7 +495,7 @@ function execEditTargetDirName(){
 		"RENAME_TARGET_DIR",
 		"${image2AsciiArtGalleryDirPath}",
 		`TARGET_DIR:TXT:FSB=${FCB_DIR_PATH}=${image2AsciiArtGalleryDirPath}?${FCB_TYPE}=dir`,
-		`TARGET_DIR=${TARGET_DIR}\tRENAME_TARGET_DIR=`,
+		`TARGET_DIR=${TARGET_DIR}\nRENAME_TARGET_DIR=`,
 		"${01}/${02}",
 		"Edit TARGET_DIR"
 	);

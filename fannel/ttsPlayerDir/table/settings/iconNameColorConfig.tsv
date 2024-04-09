@@ -1,0 +1,3 @@
+${cmdTtsPlayerLikePlayListPath}	name=star,color=${iconColor},bkColor=${iconBkColor}
+${cmdTtsPlayerPreviousTtsPlayListPath}	name=history,color=${iconColor},bkColor=${iconBkColor}
+default	name=music,color=${iconColor},bkColor=${iconBkColor}

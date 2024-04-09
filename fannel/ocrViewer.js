@@ -162,7 +162,7 @@ function extendCheckInputPath(
 	let noConvertExtends = ["txt", "csv", "tsv"];
 	const disableConvert = jsPath.checkExtend(
 		inputPath,
-		noConvertExtends.join("\t")
+		noConvertExtends.join("&")
 	);
 	if(
 		!disableConvert
@@ -242,7 +242,7 @@ function moveToOldForExcludePdfOrImage(){
 	let enableExtendList = ["txt", "csv", "tsv"];
 	const enableMove = jsPath.checkExtend(
 		ocrTargetPath,
-		enableExtendList.join("\t")
+		enableExtendList.join("&")
 	);
 	if(
 		enableMove

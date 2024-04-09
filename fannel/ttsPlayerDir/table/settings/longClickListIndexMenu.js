@@ -4,6 +4,28 @@ name=Delete
 |jsPath=SIMPLE_DELETE
 ,
 
+name=Copy
+|icon=copy
+|js=
+    var=fileList
+    ?func=jsFileSystem.showFullFileList
+    ?args=
+        dirPath=`${cmdYoutuberPlayListTableDirPath}`
+        &extraMapCon=`
+            prefix=${TUBE_PREFIX}
+            |excludeFiles=
+                ${cmdYoutuberPreviousMusicPlayListName}
+                ?${cmdYoutuberLikeMusicPlayListName}
+                ?${cmdYoutuberWebSearchPlayListName}
+            `
+    ?method=`replace("\t", "\n")`
+    |actionImport=
+        `${cmdTtsPlayerCopyToOtherAction}`
+        |replace=
+            COPY_TSV_PATH_TO_TYPE_CON=`${fileList}`
+            ?ON_FITH_FILE=`ON`
+            ?DIR_NAME=`${jsPath.basename("${ITEM_NAME}")}`,
+
 name=Play
 |icon=play
 |js=

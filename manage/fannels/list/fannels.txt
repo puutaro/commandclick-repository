@@ -322,6 +322,7 @@ textToSpeech.js
 ttsPlayer.js
 ttsPlayerDir/README.md
 ttsPlayerDir/actions/changeStateAction.js
+ttsPlayerDir/actions/copyToOther.js
 ttsPlayerDir/actions/ttsAction.js
 ttsPlayerDir/config/config.js
 ttsPlayerDir/config/settings/playButtonConfig.js
@@ -335,6 +336,7 @@ ttsPlayerDir/manager/settings/listIndex.tsv
 ttsPlayerDir/manager/settings/listIndexConfig.js
 ttsPlayerDir/manager/settings/longClickListIndexMenu.js
 ttsPlayerDir/manager/settings/playButtonConfig.js
+ttsPlayerDir/manager/settings/qrDialogConfig.js
 ttsPlayerDir/manager/settings/setVariableTypes.js
 ttsPlayerDir/manager/settings/settingButtonConfig.js
 ttsPlayerDir/manager/settings/settingMenuConfig.js
@@ -349,9 +351,11 @@ ttsPlayerDir/settings/fannelStateConfig.js
 ttsPlayerDir/settings/fannelStateRootTable.tsv
 ttsPlayerDir/settings/fannelStateStock.tsv
 ttsPlayerDir/systemJs/urlHistoryClick.js
+ttsPlayerDir/table/settings/iconNameColorConfig.tsv
 ttsPlayerDir/table/settings/initList.tsv
 ttsPlayerDir/table/settings/listIndexConfig.js
 ttsPlayerDir/table/settings/longClickListIndexMenu.js
+ttsPlayerDir/table/settings/qrDialogConfig.js
 ttsPlayerDir/table/settings/setVariableTypes.js
 ttsPlayerDir/table/settings/settingButtonConfig.js
 ttsPlayerDir/table/table.js

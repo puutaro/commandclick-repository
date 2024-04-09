@@ -13,6 +13,29 @@ name=Show
 |icon=play
 |jsPath=CAT,
 
+name=Copy
+|icon=copy
+|tsvImport=`${cmdTtsPlayerManagerListIndexTsvPath}`
+|js=
+    if=`
+        "${listDir}" == "${cmdTtsPlayerLikePlayListPath}"
+        || "${listDir}" == "${cmdTtsPlayerPreviousTtsPlayListPath}"`
+    ?func=exitZero
+|js=
+    var=fileList
+    ?func=jsFileSystem.showFullFileList
+    ?args=
+        dirPath=`${cmdTtsPlayerPlayListTableDirPath}`
+        &extraMapCon=`
+            prefix=${TTS_PREFIX}
+            |excludeFiles=
+                ${cmdTtsPlayerPreviousTtsPlayListName}
+                ?${cmdTtsPlayerLikePlayListName}`
+|actionImport=
+    `${cmdTtsPlayerCopyToOtherAction}`
+|replace=
+    COPY_TSV_PATH_TO_TYPE_CON=`${fileList}`,
+
 
 name=Play
 |icon=play

@@ -171,7 +171,7 @@ function editUrlListHandler(){
 		"renameNewsUrlListName",
 		"${NEWS_SPEECHER_EDIT_DIR_PATH}",
 		setVariableTypeCon,
-		`newsUrlListName=${newsUrlListName}\trenameNewsUrlListName=`,
+		`newsUrlListName=${newsUrlListName}\nrenameNewsUrlListName=`,
 		"${NEWS_SPEECHER_PREFIX}",
 		"${TSV_EXTEND}",
         "${NEWS_SPEECHER_PATH}",
@@ -253,7 +253,7 @@ function settingHandler(){
 		`PICH:TXT:LBL:NUM=${TXT_LABEL}=Pich (normal: 50)|?1..100?1`,
 		`SUMMARY_LENGTH:TXT:LBL:NUM=${TXT_LABEL}=THIS|?100..1000?100`,
 		`MAX_CONCUR:TXT:LBL:NUM=${TXT_LABEL}=Max concur (default: 5)|?2..20?1`,
-	].join("\t");
+	].join("\n");
 	const varNameValCon = [
 		`TO_LANG=${TO_LANG}`,
 		`ON_SPEECH=${ON_SPEECH}`,
@@ -262,7 +262,7 @@ function settingHandler(){
 		`PICH=${PICH}`,
 		`SUMMARY_LENGTH=${SUMMARY_LENGTH}`,
 		`MAX_CONCUR=${MAX_CONCUR}`,
-	].join("\t");
+	].join("\n");
 	jsValEdit.editAndSaveCmdVar(
         "Setting",
         "${NEWS_SPEECHER_PATH}",

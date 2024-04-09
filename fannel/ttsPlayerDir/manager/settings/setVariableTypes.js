@@ -33,6 +33,10 @@ extraButton:
                 ?ifArgs=
                     tsvPath=${cmdTtsPlayerManagerListIndexTsvPath}
                     &tsvValue=${cmdTtsPlayerPreviousTtsPlayListPath}
+                ?shellIfPath=JUDGE_LIST_DIR
+                ?ifArgs=
+                    tsvPath=${cmdTtsPlayerManagerListIndexTsvPath}
+                    &tsvValue=${cmdTtsPlayerLikePlayListPath}
                 ?onPut=OFF
             `
          |${BTN_CMD}= jsac `
@@ -51,6 +55,10 @@ extraButton:
                 ?ifArgs=
                     tsvPath=${cmdTtsPlayerManagerListIndexTsvPath}
                     &tsvValue=${cmdTtsPlayerPreviousTtsPlayListPath}
+                ?shellIfPath=JUDGE_LIST_DIR
+                ?ifArgs=
+                    tsvPath=${cmdTtsPlayerManagerListIndexTsvPath}
+                    &tsvValue=${cmdTtsPlayerLikePlayListPath}
                 ?onPut=OFF
             `
         |${BTN_CMD}= jsac "jsPath=jsTextToSpeech.stopService"

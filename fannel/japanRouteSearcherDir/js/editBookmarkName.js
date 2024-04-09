@@ -7,7 +7,7 @@ function launchEditBookmarkDialgog() {
         "renameJapanRouteSearcherBookmarkName",
         `${japanRouteSearcherEditDirPath}`,
         `japanRouteSearcherBookmarkName:TXT:FSB=${FCB_DIR_PATH}=${japanRouteSearcherEditDirPath}?${FCB_PREFIX}=${ROUTE_PREFIX}?${FCB_SUFFIX}=${TSV_SUFFIX}`,
-        `japanRouteSearcherBookmarkName=${japanRouteSearcherBookmarkName}\trenameJapanRouteSearcherBookmarkName=`,
+        `japanRouteSearcherBookmarkName=${japanRouteSearcherBookmarkName}\nrenameJapanRouteSearcherBookmarkName=`,
         `${ROUTE_PREFIX}`,
         `${TSV_SUFFIX}`,
         `${japanRouteSearcherFannelPath}`,

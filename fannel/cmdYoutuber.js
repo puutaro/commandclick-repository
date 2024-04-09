@@ -187,7 +187,7 @@ function argSwitcher() {
 				"renameTubePlayListName",
 				cmdTubePlayerEditDirPath,
 				`tubePlayListName:TXT:FSB=${FCB_DIR_PATH}=${cmdTubePlayerEditDirPath}?${FCB_PREFIX}=tube?${FCB_SUFFIX}=${TSV_SUFFIX}`,
-				`tubePlayListName=${tubePlayListName}\trenameTubePlayListName=`,
+				`tubePlayListName=${tubePlayListName}\nrenameTubePlayListName=`,
 				TUBE_PREFIX,
 				TSV_SUFFIX,
 		        "${01}/${02}",
@@ -203,7 +203,7 @@ function argSwitcher() {
 		        "renamePlayLogName",
 				"${PLAY_LOG_DIR_PATH}",
 				`playLogName:TXT:FSB=${FCB_DIR_PATH}=${PLAY_LOG_DIR_PATH}?${FCB_PREFIX}=playLog?${FCB_SUFFIX}=${NoExtend}`,
-				`playLogName=${playLogName}\trenamePlayLogName=`,
+				`playLogName=${playLogName}\nrenamePlayLogName=`,
 				LOG_PREFIX,
 				NoExtend,
 		        "${01}/${02}",
@@ -363,7 +363,7 @@ function selectTubeListWhenWebSearchOff(){
 			return 
 				fileName.endsWith(TSV_SUFFIX) 
 				&& fileName != webSearchTubeTsvName
-		}).join("\t");
+		}).join("\n");
 	return jsDialog.listDialog(
 			"Select bellow tube play list",
 			"",

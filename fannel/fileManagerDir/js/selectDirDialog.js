@@ -10,7 +10,7 @@ const dirListCon = jsFileSystem.readLocalFile(
 	"${FILE_MANAGER_DIR_LIST_TXT_PATH}"
 ).split("\n").filter(function(dirPath){
 	return dirPath !== "${SET_BLANK_MARK}";
-}).reverse().join("\t");
+}).reverse().join("\n");
 const selectedDirPath = jsDialog.listDialog(
 	"",
 	"",

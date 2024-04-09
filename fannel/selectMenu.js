@@ -95,12 +95,12 @@ function launchMenu(){
 	if(menuTabsepaStringListLength == 1){
 		selectedMenu = menuTabsepaStringList.at(0);
 	} else {
-		const menuTabsepaString = 
-			menuTabsepaStringList.join("\t");
+		const menuNewLineSepaString =
+			menuTabsepaStringList.join("\n");
 		selectedMenu = jsDialog.listDialog(
 			"Select bellow list",
 			"",
-			menuTabsepaString
+			menuNewLineSepaString
 		);
 	};
 	if(!selectedMenu) exitZero();
