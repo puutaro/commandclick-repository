@@ -72,9 +72,9 @@ setReplaceVariables="FCB_SUFFIX=suffix"
 setReplaceVariables="FCB_TYPE=type"
 setReplaceVariables="CMD_BOOKMAKER_DIR_PATH=${01}/${001}"
 setReplaceVariables="CMD_BOOKMAKER_EDIT_DIR_PATH=${CMD_BOOKMAKER_DIR_PATH}/edit"
-setVariableTypes="bookmarkListName:LBL:TXT:FGB=${TXT_LABEL}=this|${FCB_DIR_PATH}=${CMD_BOOKMAKER_EDIT_DIR_PATH}!${FCB_PREFIX}=book!${FCB_SUFFIX}=.tsv"
-setVariableTypes="EDIT_BOOKMARK_NAME:BTN:HL=${BTN_CMD}=jsf '${0}' EDIT_BOOKMARK_NAME!${BTN_LABEL}=this"
-setVariableTypes="ON_DIALOG:CB=true!false"
+setVariableTypes="bookmarkListName:LBL:TXT:FGB=${TXT_LABEL}=this|${FCB_DIR_PATH}=${CMD_BOOKMAKER_EDIT_DIR_PATH}?${FCB_PREFIX}=book?${FCB_SUFFIX}=.tsv"
+setVariableTypes="EDIT_BOOKMARK_NAME:BTN:HL=${BTN_CMD}=jsf '${0}' EDIT_BOOKMARK_NAME?${BTN_LABEL}=this"
+setVariableTypes="ON_DIALOG:CB=true?false"
 hideSettingVariables="editExecute"
 hideSettingVariables="terminalSizeType"
 hideSettingVariables="onUpdateLastModify"
@@ -139,7 +139,7 @@ function switchByArgs(){
 		        "bookmarkListName",
 				"renamebookmarkListName",
 				CMD_BOOKMAKER_EDIT_DIR_PATH,
-				`bookmarkListName:TXT:EFSB=${FCB_DIR_PATH}=${CMD_BOOKMAKER_EDIT_DIR_PATH}!${FCB_PREFIX}=${BOOK_PREFIX}!${FCB_SUFFIX}=${TsvExtend}`,
+				`bookmarkListName:TXT:EFSB=${FCB_DIR_PATH}=${CMD_BOOKMAKER_EDIT_DIR_PATH}?${FCB_PREFIX}=${BOOK_PREFIX}?${FCB_SUFFIX}=${TsvExtend}`,
 				`bookmarkListName=${bookmarkListName}\trenamebookmarkListName=`,
 				BOOK_PREFIX,
 				TsvExtend,
