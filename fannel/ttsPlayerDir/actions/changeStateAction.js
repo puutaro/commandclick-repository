@@ -1,7 +1,7 @@
 
 
 js=
-    id=listDirUpdater
+    desc="trigger only table"
     ?if="{{ ON_LIST_DIR_UPDATER:false }}"
     ?func=jsListTsvUpdater.update
     ?args=

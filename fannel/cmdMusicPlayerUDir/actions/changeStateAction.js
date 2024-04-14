@@ -1,14 +1,14 @@
 
 
 js=
-    id=listDirUpdater
+    desc="trigger only table"
     ?if="{{ ON_LIST_DIR_UPDATER:false }}"
     ?func=jsListTsvUpdater.update
     ?args=
         tsvPath=
             `${cmdMusicPlayerManagerListIndexTsvPath}`
         &settingMap=
-            `${listDirKey}=${cmdMusicPlayerPlayListTableDirPath}/${ITEM_NAME}`
+            `${listDirKey}=${ITEM_NAME}`
         &separator="|"
 |js=
     if="{{ ON_PLAY_INFO_SAVE:false }}"

@@ -1,4 +1,8 @@
 
+// css
+iconColor=orange,
+iconBkColor=white,
+
 // dir path
 cmdMusicPlayerTableDirPath=
     `${cmdMusicPlayerDirPath}/table`,
@@ -10,8 +14,14 @@ cmdMusicPlayerTableFannelPath=
     `${cmdMusicPlayerTableDirPath}/table.js`,
 setVariableTypesForTable=
     `${cmdMusicPlayerTableSettingsDirPath}/setVariableTypes.js`,
+cmdMusicPlayerTableQrDialogConfigPath=
+    `${cmdMusicPlayerTableSettingsDirPath}/qrDialogConfig.js`,
+cmdMusicPlayerTableIconNameColorConfigPath=
+    `${cmdMusicPlayerTableSettingsDirPath}/iconNameColorConfig.tsv`,
 cmdMusicPlayerTableListIndexConfigPath=
     `${cmdMusicPlayerTableSettingsDirPath}/listIndexConfig.js`,
+cmdMusicPlayerTableTsvPath=
+    `${cmdMusicPlayerTableSettingsDirPath}/table.tsv`,
 cmdMusicPlayerTableSettingBtnConfigPath=
     `${cmdMusicPlayerTableSettingsDirPath}/settingButtonConfig.js`,
 cmdMusicPlayerTableInitTsvConPath=

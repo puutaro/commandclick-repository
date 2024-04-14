@@ -16,8 +16,8 @@ click=
 
 longClick=
     jsPath=MENU
-    |args=
-        menuPath=`${cmdTtsPlayerManagerLongPressListIndexMenuPath}`,
+        ?args=
+            menuPath=`${cmdTtsPlayerManagerLongPressListIndexMenuPath}`,
 
 searchBox=
     visible=OFF,

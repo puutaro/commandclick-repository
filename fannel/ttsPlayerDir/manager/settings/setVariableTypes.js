@@ -5,8 +5,8 @@ appHeader:
         onUnderLine=OFF
         ?shellPath=MAKE_HEADER_TITLE
         ?args=
-            FANNEL_PATH=`${FANNEL_PATH}`
-            &EXTRA_TITLE=`$(cat ${cmdTtsPlayerPlayInfoPath})`
+            fannelPath=`${FANNEL_PATH}`
+            &extraTitle=`file://${cmdTtsPlayerPlayInfoPath}`
         ,
 
 manager:
@@ -19,11 +19,11 @@ extraButton:
          |${BTN_CMD}= jsac `
                 tsvImport=${cmdTtsPlayerManagerListIndexTsvPath}
                 |jsPath=jsAddUrlCon.add_S
-                |args=
-                    urlStringOrMacro=RECENT
-                    ?onSearchBtn=ON
-                    ?urlConSaveParentDirPath=${cmdTtsPlayerSaveUrlConDirPath}
-                    ?compSuffix=${TXT_SUFFIX}
+                    ?args=
+                        urlStringOrMacro=RECENT
+                        &onSearchBtn=ON
+                        &urlConSaveParentDirPath=${cmdTtsPlayerSaveUrlConDirPath}
+                        &compSuffix=${TXT_SUFFIX}
                 ,`
             ?${BTN_LABEL}="+🌐"
             ?${BTN_TEXT_SIZE}=`${textSize}`
@@ -32,20 +32,18 @@ extraButton:
                 shellIfPath=JUDGE_LIST_DIR
                 ?ifArgs=
                     tsvPath=${cmdTtsPlayerManagerListIndexTsvPath}
-                    &tsvValue=${cmdTtsPlayerPreviousTtsPlayListPath}
-                ?shellIfPath=JUDGE_LIST_DIR
-                ?ifArgs=
-                    tsvPath=${cmdTtsPlayerManagerListIndexTsvPath}
-                    &tsvValue=${cmdTtsPlayerLikePlayListPath}
+                    &tsvValue="
+                        ${cmdTtsPlayerPreviousTtsPlayListPath}
+                        &${cmdTtsPlayerLikePlayListPath}"
                 ?onPut=OFF
             `
          |${BTN_CMD}= jsac `
                 |tsvImport=${cmdTtsPlayerManagerGmailAdTsvPath}
                 |jsPath=jsAddGmailCon.add
-                |args=
-                    gmailAd=${gmailAd}
-                    ?urlConSaveParentDirPath=${cmdTtsPlayerSaveUrlConDirPath}
-                    ?compSuffix=${TXT_SUFFIX}
+                    ?args=
+                        gmailAd=${gmailAd}
+                        &urlConSaveParentDirPath=${cmdTtsPlayerSaveUrlConDirPath}
+                        &compSuffix=${TXT_SUFFIX}
                 ,`
             ?${BTN_LABEL}="+📧"
             ?${BTN_TEXT_SIZE}=`${textSize}`
@@ -54,11 +52,9 @@ extraButton:
                 shellIfPath=JUDGE_LIST_DIR
                 ?ifArgs=
                     tsvPath=${cmdTtsPlayerManagerListIndexTsvPath}
-                    &tsvValue=${cmdTtsPlayerPreviousTtsPlayListPath}
-                ?shellIfPath=JUDGE_LIST_DIR
-                ?ifArgs=
-                    tsvPath=${cmdTtsPlayerManagerListIndexTsvPath}
-                    &tsvValue=${cmdTtsPlayerLikePlayListPath}
+                    &tsvValue="
+                        ${cmdTtsPlayerPreviousTtsPlayListPath}
+                        &${cmdTtsPlayerLikePlayListPath}"
                 ?onPut=OFF
             `
         |${BTN_CMD}= jsac "jsPath=jsTextToSpeech.stopService"

@@ -59,6 +59,12 @@ cmdTtsPlayerLikePlayListPath=
 // js path
 FANNEL_PATH=${0},
 
+// common setting
+cmdTtsPlayerSettingButtonConfigPath=
+	`${cmdTtsPlayerSettingsDirPath}/settingButtonConfig.js`,
+cmdTtsPlayerSettingLongClickMenuConfigPath=
+	`${cmdTtsPlayerSettingsDirPath}/settingLongClickMenuConfig.js`,
+
 // js action
 cmdTtsPlayerChangeStateAction=
 	`${cmdTtsPlayerActionsDirPath}/changeStateAction.js`,
