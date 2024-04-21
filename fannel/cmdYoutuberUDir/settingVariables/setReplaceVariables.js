@@ -83,7 +83,8 @@ cmdYoutuberNormalPlayAction=
 	`${cmdYoutuberActionsDirPath}/normalPlay.js`,
 cmdYoutuberCopyToOtherAction=
 	`${cmdYoutuberActionsDirPath}/copyToOther.js`,
-
+cmdYoutuberLongPressAction=
+	`${cmdYoutuberActionsDirPath}/longPress.js`,
 
 // list path
 cmdYoutuberPlayInfoPath=

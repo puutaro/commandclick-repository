@@ -16,7 +16,7 @@ Table of Contents
 * [Web search mode](#web-search-mode)
 * [Play list table](#play-list-table)
 * [Setting](#setting)
-* [About Volume control](#about-volume-control)
+* [Support long press menu table](#support-long-press-menu-table)
 
 
 ## Installation
@@ -44,7 +44,11 @@ Table of Contents
 <a href="https://github.com/puutaro/cmdYoutuberU/assets/55217593/cd88506d-f9f3-44b1-987c-0acbb74744fb"><img src="https://github.com/puutaro/cmdYoutuberU/assets/55217593/cd88506d-f9f3-44b1-987c-0acbb74744fb" width="300" /></a>
 
 
+## Support long press menu table
+-------
 
-### About Volume control
-Enable when CommandClick hide
-
+| type | enable |
+| ----- | ----- |
+| src anchor | o |
+| src image anchor | o |
+| image | x |

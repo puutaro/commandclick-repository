@@ -66,6 +66,7 @@ cmdYoutuberU.js
 cmdYoutuberUDir/README.md
 cmdYoutuberUDir/actions/changeStateAction.js
 cmdYoutuberUDir/actions/copyToOther.js
+cmdYoutuberUDir/actions/longPress.js
 cmdYoutuberUDir/actions/musicAction.js
 cmdYoutuberUDir/actions/normalPlay.js
 cmdYoutuberUDir/config/config.js

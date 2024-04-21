@@ -15,6 +15,8 @@ settingButtonConfig=`file://${cmdYoutuberSettingButtonConfigPath}`
 fannelStateConfig=`file://`
 setReplaceVariables="file://"
 hideSettingVariables="file://"
+srcImageAnchorLongPressJsPath=`${cmdYoutuberLongPressAction}`
+srcAnchorLongPressJsPath=`${cmdYoutuberLongPressAction}`
 /// SETTING_SECTION_END
 
 

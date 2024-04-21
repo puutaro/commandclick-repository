@@ -1,6 +1,8 @@
 // js/action
 
-js=
+jsPath=jsToast.long
+    ?args=msg="play.."
+|js=
     ?func=jsFileSystem.write
     ?args=
         path=`${cmdYoutuberTempFilePath}`
