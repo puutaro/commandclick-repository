@@ -18,5 +18,5 @@ jobs:
         run: |
           bash "manage/fannels/update_fannel_list.sh"
       - name: Auto Commit
-        uses: stefanzweifel/git-auto-commit-action@v4
+        uses: stefanzweifel/git-auto-commit-action@v5
 
