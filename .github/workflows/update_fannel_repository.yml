@@ -10,7 +10,7 @@ jobs:
       contents: write # 書き込むために必要
     steps:
       - name: Checkout
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
       - name: Push from register fannel repos
         run: |
           bash "manage/fannels/push_other_fannel_repo_con.sh"
