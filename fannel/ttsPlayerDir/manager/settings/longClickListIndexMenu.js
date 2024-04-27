@@ -6,21 +6,33 @@ name=Delete
 
 name=Rename
 |icon=edit_frame
+|alter=
+    `shellIfPath=JUDGE_LIST_DIR
+    |ifArgs=
+        tsvPath="${cmdTtsPlayerManagerListIndexTsvPath}"
+        ?tsvValue="
+            ${cmdTtsPlayerPreviousTtsPlayListPath}
+            &${cmdTtsPlayerLikePlayListPath}
+        "
+    |disable=ON`
 |jsPath=RENAME
 ,
 
 name=Show
-|icon=play
+|icon=file
 |jsPath=CAT,
 
 name=Copy
 |icon=copy
+|alter=
+    `shellIfPath=JUDGE_LIST_DIR
+    |ifArgs=
+        tsvPath=${cmdTtsPlayerManagerListIndexTsvPath}
+        ?tsvValue="
+            ${cmdTtsPlayerPreviousTtsPlayListPath}
+            &${cmdTtsPlayerLikePlayListPath}"
+    |disable=ON`
 |tsvImport=`${cmdTtsPlayerManagerListIndexTsvPath}`
-|js=
-    if=`
-        "${listDir}" == "${cmdTtsPlayerLikePlayListPath}"
-        || "${listDir}" == "${cmdTtsPlayerPreviousTtsPlayListPath}"`
-    ?func=exitZero
 |js=
     var=fileList
     ?func=jsFileSystem.showFullFileList
@@ -30,7 +42,9 @@ name=Copy
             prefix=${TTS_PREFIX}
             |excludeFiles=
                 ${cmdTtsPlayerPreviousTtsPlayListName}
-                ?${cmdTtsPlayerLikePlayListName}`
+                ?${cmdTtsPlayerLikePlayListName}
+                ?${jsPath.basename("${listDir}")}
+                `
 |actionImport=
     `${cmdTtsPlayerCopyToOtherAction}`
 |replace=

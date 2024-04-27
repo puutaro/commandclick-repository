@@ -59,6 +59,10 @@ cmdMusicPlayerPreviousMusicPlayListName=
 	"musicPreviousPlayList.tsv",
 cmdMusicPlayerPreviousMusicPlayListPath=
 	`${cmdMusicPlayerPlayListTableDirPath}/${cmdMusicPlayerPreviousMusicPlayListName}`,
+cmdMusicPlayerLikePlayListName=
+	`musicLikePlayList.tsv`,
+cmdMusicPlayerLikePlayListPath=
+	`${cmdMusicPlayerPlayListTableDirPath}/musicLikePlayList.tsv`,
 cmdMusicPlayerTempPlayListPath=
 	`${cmdMusicPlayerTempDirPath}/tempPlay.tsv`,
 
@@ -72,12 +76,20 @@ cmdMusicPlayerMusicAction=
 	`${cmdMusicPlayerActionsDirPath}/musicAction.js`,
 cmdMusicPlayerNormalPlayAction=
 	`${cmdMusicPlayerActionsDirPath}/normalPlay.js`,
-	
+cmdMusicPlayerCopyToOtherAction=
+	`${cmdMusicPlayerActionsDirPath}/copyToOther.js`,
+
 // list path
 cmdMusicPlayerPlayInfoPath=
 	`${cmdMusicPlayerTempDirPath}/playInfo.tsv`,
 cmdMusicPlayerTempFilePath=
 	`${cmdMusicPlayerTempDirPath}/tempPlay.tsv`,
+
+// common setting
+cmdMusicPlayerSettingButtonConfigPath=
+	`${cmdMusicPlayerSettingsDirPath}/settingButtonConfig.js`,
+cmdMusicPlayerSettingLongClickMenuConfigPath=
+	`${cmdMusicPlayerSettingsDirPath}/settingLongClickMenuConfig.js`,
 
 configHidValPath=
 	`${cmdMusicPlayerSettingVariablesDirPath}/hideConfigVal.js`,

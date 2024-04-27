@@ -7,7 +7,7 @@ logo=
     |icon=
         name=star
         ?bkColor=navy
-        ?color=ligthBlue,
+        ?color=lightAo,
 
 click=
     actionImport=

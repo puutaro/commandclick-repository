@@ -1,6 +1,9 @@
 
+type=
+    tsvEdit,
+
 list=
-    listDir=`${cmdMusicPlayerPlayListTableDirPath}`
+    listDir=`${cmdMusicPlayerTableTsvPath}`
     |compPath=`${cmdMusicPlayerTableInitTsvConPath}`
     |prefix=`${MUSIC_PREFIX}`
     |suffix=`${TSV_SUFFIX}`
@@ -20,7 +23,7 @@ click=
 
 longClick=
     |jsPath=MENU
-    |args=
+    ?args=
         menuPath=
             `${cmdMusicPlayerTableLongPressListIndexMenuPath}`,
 

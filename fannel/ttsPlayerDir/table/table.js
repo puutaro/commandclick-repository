@@ -2,6 +2,7 @@
 
 /// SETTING_SECTION_START
 settingImport=`${FANNEL_PATH}`
+importDisableValList=`file://${cmdTtsPlayerTableImportDisableValListPath}`
 terminalDo="OFF"
 setVariableTypes=`file://${setVariableTypesForTable}`
 qrDialogConfig=`file://${cmdTtsPlayerTableQrDialogConfigPath}`

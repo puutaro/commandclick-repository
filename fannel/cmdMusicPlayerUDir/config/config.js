@@ -2,6 +2,7 @@
 
 /// SETTING_SECTION_START
 settingImport=`${FANNEL_PATH}`
+importDisableValList="hideSettingVariables"
 terminalDo="OFF"
 hideSettingVariables="appHeader,table,manager,playBtns"
 hideSettingVariables="extraButton,description"

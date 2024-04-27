@@ -4,7 +4,6 @@ type=
 
 list=
     listDir=`${cmdTtsPlayerTableTsvPath}`
-    // listDir=`${cmdTtsPlayerPlayListTableDirPath}`
     |compPath=`${cmdTtsPlayerTableInitTsvConPath}`
     |prefix=`${TTS_PREFIX}`
     |suffix=`${TSV_SUFFIX}`
@@ -24,9 +23,9 @@ click=
 
 longClick=
     |jsPath=MENU
-    |args=
-        menuPath=
-            `${cmdTtsPlayerTableLongPressListIndexMenuPath}`,
+        ?args=
+            menuPath=
+                `${cmdTtsPlayerTableLongPressListIndexMenuPath}`,
 
 searchBox=
     visible=OFF,

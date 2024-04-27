@@ -13,7 +13,8 @@ onUrlHistoryRegister="ON"
 onAdBlock="OFF"
 playButtonConfig="visible=OFF,disable=ON,color=gray,icon=play"
 editButtonConfig="visible=OFF,disable=ON,color=gray,icon=list"
-settingButtonConfig="disable=ON,color=gray,icon=setting,longClick=jsPath="
+hideSettingVariables="file://"
+settingButtonConfig=`file://${cmdTtsPlayerSettingButtonConfigPath}`
 fannelStateConfig=`file://`
 setReplaceVariables="file://"
 /// SETTING_SECTION_END

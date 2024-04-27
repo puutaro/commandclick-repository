@@ -4,8 +4,8 @@ appHeader:
         onUnderLine=OFF
         ?shellPath=MAKE_HEADER_TITLE
         ?args=
-            FANNEL_PATH=`${FANNEL_PATH}`
-            &EXTRA_TITLE=
+            fannelPath=`${FANNEL_PATH}`
+            &extraTitle=
         ,
 
 table:
@@ -17,9 +17,15 @@ extraButton:
             ?height=`${lineHeight}`
         |${BTN_CMD}= jsac `
                 jsPath=ADD
-                |args=
+                ?args=
                     compPrefix=${MUSIC_PREFIX}
-                    ?compSuffix=${TSV_SUFFIX},
+                    &compSuffix=${TSV_SUFFIX}
+                    &dirPath=${cmdMusicPlayerPlayListTableDirPath}
+                    &titleArgs=
+                        "macro=CAMEL_TO_BLANK_SNAKE
+                        ?removeSuffix=PlayList${TSV_SUFFIX}&${TSV_SUFFIX}&List&Play
+                        ?compSuffix=List
+                        ", 
                 `
             ?${BTN_LABEL}="＋"
             ?${BTN_TEXT_SIZE}=`${textSize}`

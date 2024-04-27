@@ -1,6 +1,15 @@
 
 name="Set gmail address"
 |icon=mail
+|alter=
+    `shellIfPath=JUDGE_LIST_DIR
+    |ifArgs=
+        tsvPath="${cmdTtsPlayerManagerListIndexTsvPath}"
+        ?tsvValue="
+            ${cmdTtsPlayerPreviousTtsPlayListPath}
+            &${cmdTtsPlayerLikePlayListPath}
+        "
+    |disable=ON`
 |actionImport=
     `${cmdTtsPlayerManagerSetGmailAdActionPath}`,
 

@@ -2,11 +2,12 @@
 
 /// SETTING_SECTION_START
 settingImport=`${FANNEL_PATH}`
+importDisableValList="hideSettingVariables"
 terminalDo="OFF"
 setVariableTypes=`file://${setVariableTypesForManager}`
 hideSettingVariables="table,playBtns"
 hideSettingVariables=`file://${configHidValPath}`
-qrDialogConfig="mode=tsvEdit,logo=oneSideLength=40"
+qrDialogConfig=`file://${cmdMusicPlayerManagerQrDialogConfigPath}`
 playButtonConfig=`file://${cmdMusicPlayerManagerPlayButtonConfigPath}`
 editButtonConfig=`file://${cmdMusicPlayerManagerEditButtonConfigPath}`
 settingButtonConfig=`file://${cmdMusicPlayerManagerSettingButtonConfigPath}`

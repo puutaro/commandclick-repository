@@ -18,7 +18,7 @@ click=
 
 longClick=
     jsPath=MENU
-    |args=
+    ?args=
         menuPath=`${cmdMusicPlayerManagerLongPressListIndexMenuPath}`,
 
 searchBox=

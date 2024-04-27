@@ -79,7 +79,7 @@ function makeUrl(){
         externalEexcLink !== ""
         && externalEexcLink !== cmdclickExternalExecReplaceTextStr
     ) return externalEexcLink;
-    return "https://www.google.co.id/search?q=";
+    return "GGLE_SEARCH";
 };
 
 function highLightSearch(){

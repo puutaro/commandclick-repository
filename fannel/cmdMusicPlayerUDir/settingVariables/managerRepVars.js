@@ -13,6 +13,8 @@ cmdMusicPlayerManagerFannelDirPath=
     `${cmdMusicPlayerManagerDirPath}/manager.js`,
 setVariableTypesForManager=
     `${cmdMusicPlayerManagerSettingsDirPath}/setVariableTypes.js`,
+cmdMusicPlayerManagerQrDialogConfigPath=
+    `${cmdMusicPlayerManagerSettingsDirPath}/qrDialogConfig.js`,
 cmdMusicPlayerManagerListIndexConfigPath=
     `${cmdMusicPlayerManagerSettingsDirPath}/listIndexConfig.js`,
 cmdMusicPlayerManagerPlayButtonConfigPath=

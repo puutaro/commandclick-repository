@@ -29,3 +29,5 @@ cmdTtsPlayerTableLongPressListIndexMenuPath=
     `${cmdTtsPlayerTableSettingsDirPath}/longClickListIndexMenu.js`,
 cmdTtsPlayerTableIconNameColorConfigPath=
     `${cmdTtsPlayerTableSettingsDirPath}/iconNameColorConfig.tsv`,
+cmdTtsPlayerTableImportDisableValListPath=
+    `${cmdTtsPlayerTableSettingsDirPath}/importDisableValList.js`,
