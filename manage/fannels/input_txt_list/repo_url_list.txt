@@ -1,9 +1,7 @@
 https://github.com/puutaro/selectTyper
 https://github.com/puutaro/clipFormatMaker
 https://github.com/puutaro/cmdGpt35
-https://github.com/puutaro/cmdMusicPlayer
 https://github.com/puutaro/cmdMusicPlayerU
-https://github.com/puutaro/cmdYoutuber
 https://github.com/puutaro/cmdYoutuberU
 https://github.com/puutaro/ctsvViewer
 https://github.com/puutaro/fileManager
