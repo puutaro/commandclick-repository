@@ -9,7 +9,6 @@ cmdGpt35Dir/README.md
 cmdGpt35Dir/settingVariables/hideSettingVariables.js
 cmdGpt35Dir/settingVariables/setReplaceVariables.js
 cmdGpt35Dir/settingVariables/setVariableTypes.js
-cmdMusicPlayer.js
 cmdMusicPlayerU.js
 cmdMusicPlayerUDir/README.md
 cmdMusicPlayerUDir/actions/changeStateAction.js
@@ -50,7 +49,6 @@ cmdMusicPlayerUDir/table/settings/qrDialogConfig.js
 cmdMusicPlayerUDir/table/settings/setVariableTypes.js
 cmdMusicPlayerUDir/table/settings/settingButtonConfig.js
 cmdMusicPlayerUDir/table/table.js
-cmdYoutuber.js
 cmdYoutuberU.js
 cmdYoutuberUDir/README.md
 cmdYoutuberUDir/actions/changeStateAction.js
