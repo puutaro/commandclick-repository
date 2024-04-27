@@ -10,11 +10,6 @@ cmdGpt35Dir/settingVariables/hideSettingVariables.js
 cmdGpt35Dir/settingVariables/setReplaceVariables.js
 cmdGpt35Dir/settingVariables/setVariableTypes.js
 cmdMusicPlayer.js
-cmdMusicPlayerDir/README.md
-cmdMusicPlayerDir/cmdMusicPlayer.sh
-cmdMusicPlayerDir/settingVariables/hideSettingVariables.js
-cmdMusicPlayerDir/settingVariables/setReplaceVariables.js
-cmdMusicPlayerDir/settingVariables/setVariableTypes.js
 cmdMusicPlayerU.js
 cmdMusicPlayerUDir/README.md
 cmdMusicPlayerUDir/actions/changeStateAction.js
@@ -56,12 +51,6 @@ cmdMusicPlayerUDir/table/settings/setVariableTypes.js
 cmdMusicPlayerUDir/table/settings/settingButtonConfig.js
 cmdMusicPlayerUDir/table/table.js
 cmdYoutuber.js
-cmdYoutuberDir/README.md
-cmdYoutuberDir/settingVariables/hideSettingVariables.js
-cmdYoutuberDir/settingVariables/setReplaceVariables.js
-cmdYoutuberDir/settingVariables/setVariableTypes.js
-cmdYoutuberDir/shell/cmdYoutuber.sh
-cmdYoutuberDir/shell/ytfzfForFannel.sh
 cmdYoutuberU.js
 cmdYoutuberUDir/README.md
 cmdYoutuberUDir/actions/changeStateAction.js
