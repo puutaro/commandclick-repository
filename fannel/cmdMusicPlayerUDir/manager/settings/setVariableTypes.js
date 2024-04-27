@@ -21,6 +21,9 @@ extraButton:
                 |jsPath=GET_FILES
                 ?args=
                     suffix="${M4A_SUFFIX}&${MP3_SUFFIX}"
+                    &initialPath="${STORAGE}/Music"
+                    &macro=FROM_RECENT_DIR
+                    &tag=addByBulk
                 ,`
             ?${BTN_LABEL}="+📁"
             ?${BTN_TEXT_SIZE}=`${textSize}`
@@ -39,6 +42,9 @@ extraButton:
                 |jsPath=GET_FILE
                 ?args=
                     suffix="${M4A_SUFFIX}&${MP3_SUFFIX}"
+                    &initialPath="${STORAGE}/Music"
+                    &macro=FROM_RECENT_DIR
+                    &tag=addByOne
                 ,`
             ?${BTN_LABEL}="+🎵"
             ?${BTN_TEXT_SIZE}=`${textSize}`

@@ -5,6 +5,8 @@ BTN_CMD=cmd,
 BTN_LABEL=label,
 LIST_PATH=listPath,
 LIMIT_NUM=limitNum,
+CSV_SUFFIX=".csv",
+TSV_SUFFIX=".tsv",
 
 // path
 PARRENT_APP_DIR_PATH=

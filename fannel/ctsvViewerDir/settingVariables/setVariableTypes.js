@@ -75,7 +75,12 @@ inputCTsvPath:
 		${TXT_LABEL}=this
 		|
 			${LIST_PATH}=${CURRENT_INUPT_CSV_LIST_FILE_PATH}
-				?${LIMIT_NUM}=10,
+			?${LIMIT_NUM}=10
+		|
+			initialPath=`${STORAGE}/Download`
+			?suffix=`${CSV_SUFFIX}&${TSV_SUFFIX}`
+			?macro=FROM_RECENT_DIR
+		,
 viewType:
 	LBL:CB=
 		${TXT_LABEL}=this

@@ -4,7 +4,12 @@ txtPdfPath:
 		label=this
 		|
 			${LIST_PATH}="${txtPdfViewerTxtPdfListFilePath}"
-			?${LIMIT_NUM}=10,
+			?${LIMIT_NUM}=10
+		|
+			initialPath=`${STORAGE}/Download`
+			?suffix=`${TXT_SUFFIX}&${PDF_SUFFIX}`
+			?macro=FROM_RECENT_DIR
+		,
 TTS_PLAY:
 	BTN:HL=
 		${BTN_CMD}="jsf '${0}' ${ttsPlayMode}"

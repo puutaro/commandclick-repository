@@ -4,7 +4,12 @@ ocrTargetPath:
 		${TXT_LABEL}=this
 		|
 			${LIST_PATH}="${ocrViewerTxtListFilePath}"
-			?${LIMIT_NUM}=10,
+			?${LIMIT_NUM}=10
+		|
+			initialPath=`${STORAGE}/Download`
+			?suffix=`${TXT_SUFFIX}&${PDF_SUFFIX}`
+			?macro=FROM_RECENT_DIR
+		,
 EXEC_EXTRACT:
 	BTN:HL=
 		${BTN_CMD}="jsf '${0}' ${extractMode}"
