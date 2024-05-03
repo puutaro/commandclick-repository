@@ -18,7 +18,6 @@ name=Copy
                 ?${cmdYoutuberLikeMusicPlayListName}
                 ?${cmdYoutuberWebSearchPlayListName}
             `
-    ?method=`replace("\t", "\n")`
     |actionImport=
         `${cmdTtsPlayerCopyToOtherAction}`
         |replace=
