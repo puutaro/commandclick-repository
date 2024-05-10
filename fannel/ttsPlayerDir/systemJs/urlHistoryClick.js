@@ -1,13 +1,14 @@
 // js/action
 
-tsvImport=
-    `${cmdTtsPlayerManagerListIndexTsvPath}`
-|jsCon=
-    `var listDir = "${cmdTtsPlayerPlayListPath}"`
-|actionImport=
-    `${cmdTtsPlayerTtsAction}`
+var=tempPlayCon
+    ?func=jsTsv.getSr
+    ?args=tsvPath=`${cmdTtsPlayerPlayListPath}`
+    ?exitJudge="!tempPlayCon"
+    ?exitToast="contents not exist"
+|var=extaraContent
+    ?func=jsFileSystem.read
+    ?args=path=`${cmdTtsPlayerPlayInfoPath}`
+|actionImport= `${cmdTtsPlayerTtsAction}`
 |replace=
-    TEMP_PLAY_CON=
-        "${jsTsv.getSr(`${listDir}`)}"
-    ?EXTRA_CONTENT=`
-        ${jsF.r("${cmdTtsPlayerPlayInfoPath}")}`,
+    TEMP_PLAY_CON= `${tempPlayCon}`
+    ?EXTRA_CONTENT=`${extaraContent}`,

@@ -1,7 +1,7 @@
 // js/action
 
-jsPath=jsUbuntu.boot
-|jsPath=jsUbuntu.execScriptByBackground
+func=jsUbuntu.boot
+|func=jsUbuntu.execScriptByBackground
     ?args=
         shellPath=`${cmdYoutuberUbuntuInstallShellPath}`
         &argsTabSepaStr=`searchWord=`

@@ -1,0 +1,5 @@
+${TABLE}	${image2AsciiArtTableFannelPath}
+${ASCII}	${image2AsciiArtAsciiFannelPath}
+${IMAGE}	${image2AsciiArtImageFannelPath}
+${CONFIG}	${image2AsciiArtConfigFannelPath}
+default	${image2AsciiArtTableFannelPath}

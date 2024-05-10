@@ -2,16 +2,16 @@
 
 click=
     onScriptSave=ON
-    |js=
-        var=onUbuntuPlay
+    |var=onUbuntuPlay
         ?func=jsBeforeInfo.misMatch
         ?args=
             beforeInfoPath=`${cmdYoutuberSearcherPastSearchInfoPath}`
             &curInfo=`${extraButton}${playMode}`
-    |js=
-        if=`onUbuntuPlay`
-        ?prefix="jsUbuntu.boot();"
-        ?func=jsUbuntu.execScriptByBackground
+    |func="jsUbuntu.boot"
+        ?id=execByUbuntu
+        ?if=`onUbuntuPlay`
+    |func=jsUbuntu.execScriptByBackground
+        ?after=execByUbuntu
         ?args=
             shellPath=`${cmdYoutuberUbuntuScrapingShellPath}`
             &argsTabSepaStr=

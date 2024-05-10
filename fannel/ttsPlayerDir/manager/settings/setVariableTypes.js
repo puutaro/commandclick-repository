@@ -17,13 +17,15 @@ extraButton:
          onUnderLine=OFF
             ?height=`${lineHeight}`
          |${BTN_CMD}= jsac `
-                tsvImport=${cmdTtsPlayerManagerListIndexTsvPath}
-                |jsPath=jsAddUrlCon.add_S
+                func=jsAddUrlCon.add_S
                     ?args=
-                        urlStringOrMacro=RECENT
-                        &onSearchBtn=ON
-                        &urlConSaveParentDirPath=${cmdTtsPlayerSaveUrlConDirPath}
-                        &compSuffix=${TXT_SUFFIX}
+                        extraMapCon="
+                            url=RECENT
+                            |onSearchBtn=ON
+                            |urlConSaveParentDirPath=${cmdTtsPlayerSaveUrlConDirPath}
+                            |compSuffix=${TXT_SUFFIX}
+                            |onSaveUrlHistory=ON
+                        "
                 ,`
             ?${BTN_LABEL}="+🌐"
             ?${BTN_TEXT_SIZE}=`${textSize}`
@@ -39,11 +41,14 @@ extraButton:
             `
          |${BTN_CMD}= jsac `
                 |tsvImport=${cmdTtsPlayerManagerGmailAdTsvPath}
-                |jsPath=jsAddGmailCon.add
+                    ?use="gmailAd"
+                |func=jsAddGmailCon.add
                     ?args=
                         gmailAd=${gmailAd}
-                        &urlConSaveParentDirPath=${cmdTtsPlayerSaveUrlConDirPath}
-                        &compSuffix=${TXT_SUFFIX}
+                        &extraMap="
+                            urlConSaveParentDirPath=${cmdTtsPlayerSaveUrlConDirPath}
+                            |compSuffix=${TXT_SUFFIX}
+                        "
                 ,`
             ?${BTN_LABEL}="+📧"
             ?${BTN_TEXT_SIZE}=`${textSize}`
@@ -57,7 +62,7 @@ extraButton:
                         &${cmdTtsPlayerLikePlayListPath}"
                 ?onPut=OFF
             `
-        |${BTN_CMD}= jsac "jsPath=jsTextToSpeech.stopService"
+        |${BTN_CMD}= jsac "func=jsTextToSpeech.stopService"
             ?${BTN_LABEL}="■"
             ?${BTN_TEXT_SIZE}=`${textSize}`
             ?${BTN_BORDER}=OFF,

@@ -8,4 +8,4 @@ color=darkGreen,
 icon=ok,
 
 click=
-    jsPath=jsCmdValSaveAndBack.run_S,
+    func=jsCmdValSaveAndBack.run_S,

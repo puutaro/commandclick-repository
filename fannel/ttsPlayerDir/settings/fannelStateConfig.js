@@ -2,4 +2,4 @@
 
 // firstState="manager",
 
-noRegisterStates="config,aaa",
+noRegisterStates="config",

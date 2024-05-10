@@ -8,11 +8,20 @@ color=darkGreen,
 click=
     tsvImport=
         `${cmdTtsPlayerManagerListIndexTsvPath}`
+        ?use="listDir"
+    |var=tempPlayCon
+        ?func=jsTsv.getSr
+        ?args=
+            tsvPath="${listDir}"
+    |var=extraContent
+        ?func=jsFileSystem.read
+        ?args=
+            path="${cmdTtsPlayerPlayInfoPath}"
     |actionImport=
             `${cmdTtsPlayerTtsAction}`
     |replace=
         TEMP_PLAY_CON=
-            `${jsTsv.getSr("${listDir}")}`
+            `${tempPlayCon}`
         ?EXTRA_CONTENT=`
-            ${jsF.r("${cmdTtsPlayerPlayInfoPath}")}`
+            ${extraContent}`
      ,

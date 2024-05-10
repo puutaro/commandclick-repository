@@ -15,7 +15,7 @@ click=
         `${cmdTtsPlayerManagerFromPlayActionPath}`,
 
 longClick=
-    jsPath=MENU
+    func=MENU
         ?args=
             menuPath=`${cmdTtsPlayerManagerLongPressListIndexMenuPath}`,
 

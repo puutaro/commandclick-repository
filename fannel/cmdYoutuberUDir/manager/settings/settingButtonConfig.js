@@ -4,8 +4,8 @@ color=darkGreen,
 icon=setting,
 
 click=
-    jsPath=D_MENU
+    func=D_MENU
         ?args=
             menuPath=
-                ${cmdYoutuberManagerSettingMenuPath}
+                `${cmdYoutuberManagerSettingMenuPath}`
             &title="Setting menu",

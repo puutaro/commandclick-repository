@@ -1,8 +1,5 @@
 editExecute,
-terminalSizeType,
-terminalOutputMode,
 onUpdateLastModify,
-onUrlHistoryRegister,
 onAdBlock,
 setReplaceVariables,
 setVariableTypes,

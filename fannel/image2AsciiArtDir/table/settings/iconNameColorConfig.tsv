@@ -1,0 +1,2 @@
+${image2AsciiArtGalleryLikeDirPath}	name=star,color=${iconColor},bkColor=${iconBkColor}
+default	name=gallery,color=${iconColor},bkColor=${iconBkColor}

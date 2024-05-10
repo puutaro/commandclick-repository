@@ -17,8 +17,7 @@ extraButton:
          onUnderLine=OFF
             ?height=`${lineHeight}`
          |${BTN_CMD}= jsac `
-                tsvImport=${cmdMusicPlayerManagerListIndexTsvPath}
-                |jsPath=GET_FILES
+                func=GET_FILES
                 ?args=
                     suffix="${M4A_SUFFIX}&${MP3_SUFFIX}"
                     &initialPath="${STORAGE}/Music"
@@ -38,8 +37,7 @@ extraButton:
                 ?onPut=OFF
                 `
         |${BTN_CMD}= jsac `
-                tsvImport=${cmdMusicPlayerManagerListIndexTsvPath}
-                |jsPath=GET_FILE
+                func=GET_FILE
                 ?args=
                     suffix="${M4A_SUFFIX}&${MP3_SUFFIX}"
                     &initialPath="${STORAGE}/Music"
@@ -58,7 +56,7 @@ extraButton:
                         &${cmdMusicPlayerLikePlayListPath}"
                 ?onPut=OFF
                 `
-        |${BTN_CMD}= jsac "jsPath=jsMusic.stop"
+        |${BTN_CMD}= jsac "func=jsMusic.stop"
             ?${BTN_LABEL}="■"
             ?${BTN_TEXT_SIZE}=`${textSize}`
             ?${BTN_BORDER}=OFF,

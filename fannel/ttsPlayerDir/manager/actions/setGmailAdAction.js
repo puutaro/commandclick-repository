@@ -1,13 +1,11 @@
 // js/action
 
-js=
-    var="defaultGmailAd"
+var=defaultGmailAd
     ?func=jsTsv.getFirstValue
     ?args=
         path=`${cmdTtsPlayerManagerGmailAdTsvPath}`
 
-|js=
-    var="updateGmailAdd"
+|var=updateGmailAdd
     ?func=jsDialog.prompt
     ?args=
         title=`Gmail ad set`
@@ -22,9 +20,8 @@ js=
         `
     ?exitToast=`invalid gmail url ${updateGmailAdd}`
 
-|js=
+|func=jsFileSystem.write
     if=`updateGmailAdd`
-    ?func=jsF.w
     ?args=
         path=`${cmdTtsPlayerManagerGmailAdTsvPath}`
         &con=`${gmailAdTsvKey}\t${updateGmailAdd}`

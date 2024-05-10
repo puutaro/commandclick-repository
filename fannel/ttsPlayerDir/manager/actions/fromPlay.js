@@ -1,15 +1,25 @@
 
 tsvImport=
     `${cmdTtsPlayerManagerListIndexTsvPath}`
+    ?use="listDir => tsvListPath"
 |var=playInfo
-    ?value=`NO_QUOTE:jsF.r("${cmdTtsPlayerPlayInfoPath}")`
+    ?func=jsFileSystem.read
+    ?args=
+        path=`${cmdTtsPlayerPlayInfoPath}`
 |var=trackName
-    ?value=`NO_QUOTE:jsPath.basename("${ITEM_NAME}")`
+    ?func=jsPath.basename
+    ?args=
+        path="${ITEM_NAME}"
+|var=tempPlayCon
+    ?func=jsTsv.getSrFromThis
+    ?args=
+        path="${tsvListPath}"
+        &firstLine=`${ITEM_NAME}`
 |actionImport=
     `${cmdTtsPlayerTtsAction}`
 |replace=
     PLAY_MODE=ordinaly
     ?TEMP_PLAY_CON=
-        `NO_QUOTE:jsTsv.getSrFromThis("${listDir}", "${ITEM_NAME}")`
+        `${tempPlayCon}`
     ?EXTRA_CONTENT=
         `${playInfo} from ${trackName}`

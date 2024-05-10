@@ -1,7 +1,7 @@
 
 name=Delete
 |icon=cancel
-|jsPath=SIMPLE_DELETE
+|func=SIMPLE_DELETE
 ,
 
 name=Copy
@@ -15,8 +15,11 @@ name=Copy
             &${cmdMusicPlayerLikePlayListPath}"
     |disable=ON`
 |tsvImport=`${cmdMusicPlayerManagerListIndexTsvPath}`
-|js=
-    var=fileList
+    ?use="listDir => playTsvPath"
+|var=playTsvName
+    ?func=jsPath.basename
+    ?args=path="${playTsvPath}"
+|var=fileList
     ?func=jsFileSystem.showFullFileList
     ?args=
         dirPath=`${cmdMusicPlayerPlayListTableDirPath}`
@@ -25,7 +28,7 @@ name=Copy
             |excludeFiles=
                 ${cmdMusicPlayerPreviousMusicPlayListName}
                 ?${cmdMusicPlayerLikePlayListName}
-                ?${jsPath.basename("${listDir}")}
+                ?${playTsvName}
                 `
 |actionImport=
     `${cmdMusicPlayerCopyToOtherAction}`
@@ -34,11 +37,16 @@ name=Copy
 
 name=Play
 |icon=play
+|var=mainPlayInfo
+    ?func=jsFileSystem.read
+    ?args=path=`${cmdMusicPlayerPlayInfoPath}`
+|var=extraPlayInfo
+    ?func=jsPath.basename
+    ?args=tsvPath="${ITEM_NAME}"
 |actionImport=
     `${cmdMusicPlayerMusicAction}`
 |replace=
-    TEMP_PLAY_CON=
-        `${ITEM_NAME}`
+    TEMP_PLAY_CON=`${ITEM_NAME}`
     ?EXTRA_CONTENT=
-        `${jsF.r("${cmdMusicPlayerPlayInfoPath}")} ${jsPath.basename("${ITEM_NAME}")}`
+        `${mainPlayInfo} ${extraPlayInfo}`
 ,

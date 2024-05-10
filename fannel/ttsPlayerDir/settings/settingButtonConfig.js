@@ -6,7 +6,7 @@ color=gray,
 icon=setting,
 
 longClick=
-    jsPath=D_MENU
+    func=D_MENU
         ?args=
             menuPath=
                 `${cmdTtsPlayerSettingLongClickMenuConfigPath}`

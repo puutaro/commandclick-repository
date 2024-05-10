@@ -17,7 +17,7 @@ extraButton:
          onUnderLine=OFF
             ?height=`${lineHeight}`
          |${BTN_CMD}= jsac `
-                jsPath=ADD_URL
+                func=ADD_URL
                     ?args=
                         url="https://www.youtube.com/"
                         &onSearchBtn=OFF
@@ -33,7 +33,7 @@ extraButton:
                         ${cmdYoutuberPreviousMusicPlayListPath}
                         &${cmdYoutuberLikeMusicPlayListPath}"
                 ?onPut=OFF`
-        |${BTN_CMD}= jsac "jsPath=jsMusic.stop"
+        |${BTN_CMD}= jsac "func=jsMusic.stop"
             ?${BTN_LABEL}="■"
             ?${BTN_TEXT_SIZE}=`${textSize}`
             ?${BTN_BORDER}=OFF,

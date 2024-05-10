@@ -5,5 +5,5 @@ name="Player setting"
     `${cmdMusicPlayerChangeStateAction}`
 |replace=
     STATE=`${CONFIG}`
-    ?DISABLE_ADD_TO_BACKSTACK=false,
+    ?ENABLE_ADD_TO_BACKSTACK=ON,
 

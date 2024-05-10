@@ -17,7 +17,7 @@ click=
         `${cmdMusicPlayerManagerFromPlayActionPath}`,
 
 longClick=
-    jsPath=MENU
+    func=MENU
     ?args=
         menuPath=`${cmdMusicPlayerManagerLongPressListIndexMenuPath}`,
 

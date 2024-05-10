@@ -120,9 +120,9 @@ function getSelectionText() {
 
 function launchWebview(launchUrlString){
     const menuMapStrListStr= [
-        `clickMenuFilePath=${leftMenuListPath}?longPressMenuFilePath=${leftLongPressMenuListPath}?dismissType=longpress?iconName=back`,
-        `clickMenuFilePath=${centerMenuListPath}?longPressMenuFilePath=${centerLongPressMenuListPath}?iconName=search`,
-        `clickMenuFilePath=${rightMenuListPath}?iconName=wheel`,
+        `clickMenuFilePath=${leftMenuListPath}?longPressMenuFilePath=${leftLongPressMenuListPath}?dismissType=longpress?label=⬅`,
+        `clickMenuFilePath=${centerMenuListPath}?longPressMenuFilePath=${centerLongPressMenuListPath}?label=🔎️`,
+        `clickMenuFilePath=${rightMenuListPath}?label=⬇︎️`,
     ].join("|");
     const longPressMenuListStr = [
         `srcImageAnchorMenuFilePath=${srcImageAnchorMenuListPath}`,
@@ -134,5 +134,6 @@ function launchWebview(launchUrlString){
         "${0}",
         menuMapStrListStr,
         longPressMenuListStr,
+        "",
     );
 };

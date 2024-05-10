@@ -1,37 +1,23 @@
 
 
-js=
-    desc="trigger only table"
-    ?if="{{ ON_LIST_DIR_UPDATER:false }}"
-    ?func=jsListTsvUpdater.update
-    ?args=
-        tsvPath=
-            `${cmdTtsPlayerManagerListIndexTsvPath}`
-        &settingMap=
-            `${listDirKey}=${ITEM_NAME}`
-        &separator="|"
-|js=
-    if="{{ ON_PLAY_INFO_SAVE:false }}"
-    ?var=playListTsv
-    ?func=jsTsv.getKeyValue
-    ?args=
-        path=`${cmdTtsPlayerManagerListIndexTsvPath}`
-        &key=`${listDirKey}`
-    ?afterJsCon=
-        playListTsv=`jsPath.basename(playListTsv)`
-        &playListTsv=`jsPath.removeExtend(
-                    playListTsv,
-                    "${TSV_SUFFIX}",
-                )`
-        &"save play list info"=`
-            jsF.w(
-                "${cmdTtsPlayerPlayInfoPath}",
-                playListTsv
-           )`
-|js=
-    id=changeState
-    ?func=jsCmdValFrag.stateChange_S
-    ?args=
-        state="{{ STATE }}"
-        &disableAddToBackStack=
-            NO_QUOTE:{{ DISABLE_ADD_TO_BACKSTACK:true }},
+var=onListDirUpdater
+    ?value=`"{{ ON_LIST_DIR_UPDATER:OFF }}"`
+|var=updatePlayListTsvPath
+    ?value=
+    ?if=`onListDirUpdater == "ON"`
+    ?value=`${ITEM_NAME}`
+|var=extraMapCon
+    ?value=`
+        onListDirUpdater=${onListDirUpdater}
+        |listDirTsvPath=${cmdTtsPlayerManagerListIndexTsvPath}
+        |listDirValue=${updatePlayListTsvPath}
+        |onInfoSave={{ ON_PLAY_INFO_SAVE:OFF }}
+        |saveInfoPath=${cmdTtsPlayerPlayInfoPath}
+        |extraSaveInfo=
+        |enableAddToBackStack={{ ENABLE_ADD_TO_BACKSTACK:OFF }}
+        `
+|func=jsStateChange.change_S
+?args=
+    stateName="{{ STATE }}"
+    &extraMapCon=`${extraMapCon}`
+    ,

@@ -1,7 +1,7 @@
 
 name=Delete
 |icon=cancel
-|jsPath=SIMPLE_DELETE
+|func=SIMPLE_DELETE
 ,
 
 name=Rename
@@ -15,12 +15,12 @@ name=Rename
             &${cmdTtsPlayerLikePlayListPath}
         "
     |disable=ON`
-|jsPath=RENAME
+|func=RENAME
 ,
 
 name=Show
 |icon=file
-|jsPath=CAT,
+|func=CAT,
 
 name=Copy
 |icon=copy
@@ -33,18 +33,25 @@ name=Copy
             &${cmdTtsPlayerLikePlayListPath}"
     |disable=ON`
 |tsvImport=`${cmdTtsPlayerManagerListIndexTsvPath}`
-|js=
-    var=fileList
+    ?use="listDir"
+|var=curPlayListName
+    ?func=jsPath.basename
+    ?args=
+        path="${listDir}"
+|var=fileList
     ?func=jsFileSystem.showFullFileList
     ?args=
         dirPath=`${cmdTtsPlayerPlayListTableDirPath}`
         &extraMapCon=`
             prefix=${TTS_PREFIX}
+            |suffix=PlayList${TSV_SUFFIX}
             |excludeFiles=
                 ${cmdTtsPlayerPreviousTtsPlayListName}
                 ?${cmdTtsPlayerLikePlayListName}
-                ?${jsPath.basename("${listDir}")}
+                ?${curPlayListName}
                 `
+    ?exitJudge=`!fileList`
+    ?exitToast=`No exist copy list`
 |actionImport=
     `${cmdTtsPlayerCopyToOtherAction}`
 |replace=
@@ -53,11 +60,19 @@ name=Copy
 
 name=Play
 |icon=play
+|var=ttsFileName
+    ?func=jsPath.basename
+    ?args=
+        path="${ITEM_NAME}"
+|var=palyInfo
+    ?func=jsFileSystem.read
+    ?args=
+        path="${cmdTtsPlayerPlayInfoPath}"
 |actionImport=
     `${cmdTtsPlayerTtsAction}`
 |replace=
     TEMP_PLAY_CON=
         `${ITEM_NAME}`
     ?EXTRA_CONTENT=
-        `${jsF.r("${cmdTtsPlayerPlayInfoPath}")} ${jsPath.basename("${ITEM_NAME}")}`
+        `${palyInfo} ${ttsFileName}`
 ,

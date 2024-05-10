@@ -2,12 +2,19 @@
 
 tsvImport=
     `${cmdYoutuberManagerListIndexTsvPath}`
+    ?use="listDir => playListPath"
 |var=listDir
-    ?value="${cmdYoutuberPlayListPath}"
+    ?value=`${cmdYoutuberPlayListPath}`
+|var=tempPlayCon
+    ?func=jsTsv.getSr
+    ?args=
+        playListPath=`${playListPath}`
+|var=playInfo
+    ?func=jsFileSystem.read
+    ?args=
+        playInfoPath="${cmdYoutuberPlayInfoPath}"
 |actionImport=
     `${cmdYoutuberMusicAction}`
 |replace=
-    TEMP_PLAY_CON=
-        "${jsTsv.getSr(`${listDir}`)}"
-    ?EXTRA_CONTENT=`
-        ${jsF.r("${cmdYoutuberPlayInfoPath}")}`,
+    TEMP_PLAY_CON="${tempPlayCon}"
+    ?EXTRA_CONTENT=`${playInfo}`,

@@ -1,10 +1,12 @@
 // js/action
 
-actionImport=
+var=playInfo
+    ?func=jsFileSystem.read
+    ?args=path=`${cmdYoutuberPlayInfoPath}`
+|actionImport=
     `${cmdYoutuberMusicAction}`
 |replace=
     TEMP_PLAY_CON=
         `${LONG_PRESS_LINK_URL}`
-    ?EXTRA_CONTENT=
-        `${jsF.r("${cmdYoutuberPlayInfoPath}")}`
+    ?EXTRA_CONTENT= `${playInfo}`
     ,

@@ -1,7 +1,6 @@
 // js/action
 
-js=
-    var=isInstall
+var=isInstall
     ?func=jsUbuntu.isInstall
     ?args=
         installStampFilePath=`${cmdYoutuberInstallStampFilePath}`
@@ -11,8 +10,7 @@ js=
         &cautionTitleAndMsg="Caution!|Install by ⚙️ button"
     ?exitJudge=isInstall
 
-|js=
-    func=jsUbuntu.untilSetupLoop
+|func=jsUbuntu.untilSetupLoop
     ?args=
         launchJsPath=`${cmdYoutuberSearcherInitActionsPath}`
 

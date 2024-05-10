@@ -1,20 +1,20 @@
 
 name=Delete
 |icon=cancel
-|jsPath=SIMPLE_DELETE
+|func=SIMPLE_DELETE
 ,
 
 name=Play
 |icon=play
-|js=
-    var=itemName
+|var=itemName
+    ?func=jsPath.basename
+    ?args=path="${ITEM_NAME}"
     ?func=jsPath.trimAllExtend
-    ?args=
-        path=`${jsPath.basename("${ITEM_NAME}")}`
+    ?args=path=`${itemName}`
+|var=tempPlayCon
+    ?func=jsTsv.getSr
+    ?args=tsvPath=`${cmdYoutuberPlayListTableDirPath}/${ITEM_NAME}`
 |actionImport=`${cmdYoutuberMusicAction}`
 |replace=
-    TEMP_PLAY_CON=
-        `${jsTsv.getSr(
-            "${INDEX_LIST_DIR_PATH}/${ITEM_NAME}"
-        )}`
+    TEMP_PLAY_CON=`${tempPlayCon}`
     ?EXTRA_CONTENT=`${itemName}`,

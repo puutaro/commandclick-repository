@@ -16,7 +16,7 @@ extraButton:
         onUnderLine=OFF
             ?height=`${lineHeight}`
         |${BTN_CMD}= jsac `
-                jsPath=ADD
+                func=ADD
                 ?args=
                     compPrefix=${MUSIC_PREFIX}
                     &compSuffix=${TSV_SUFFIX}
@@ -30,7 +30,7 @@ extraButton:
             ?${BTN_LABEL}="＋"
             ?${BTN_TEXT_SIZE}=`${textSize}`
             ?${BTN_BORDER}=OFF
-        |${BTN_CMD}= jsac "jsPath=jsMusic.stop"
+        |${BTN_CMD}= jsac "func=jsMusic.stop"
             ?${BTN_LABEL}="■"
             ?${BTN_TEXT_SIZE}=`${textSize}`
             ?${BTN_BORDER}=OFF,

@@ -8,11 +8,20 @@ color=darkGreen,
 click=
     tsvImport=
         `${cmdMusicPlayerManagerListIndexTsvPath}`
+        ?use="listDir => playTsvPath"
+    |var=tempPlayCon
+        ?func=jsTsv.getSr
+        ?args=
+            path=`${playTsvPath}`
+        ?exitJudge="!tempPlayCon"
+        ?exitToast="No exist play con"
+    |var=extraContent
+        ?func=jsFileSystem.read
+        ?args=
+            path=`${cmdMusicPlayerPlayInfoPath}`
     |actionImport=
             `${cmdMusicPlayerMusicAction}`
     |replace=
-        TEMP_PLAY_CON=
-            `${jsTsv.getSr("${listDir}")}`
-        ?EXTRA_CONTENT=`
-            ${jsF.r("${cmdMusicPlayerPlayInfoPath}")}`
+        TEMP_PLAY_CON=`${tempPlayCon}`
+        ?EXTRA_CONTENT=`${extraContent}`
      ,

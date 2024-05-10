@@ -2,4 +2,4 @@
 
 name="Kill"
 |icon=cancel
-|jsPath=KILL,
+|func=KILL,

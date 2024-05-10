@@ -17,7 +17,7 @@ extraButton:
         onUnderLine=OFF
             ?height=`${lineHeight}`
         |${BTN_CMD}= jsac `
-                jsPath=ADD
+                func=ADD
                 ?args=
                     compPrefix=${TTS_PREFIX}
                     &compSuffix=PlayList${TSV_SUFFIX}
@@ -31,7 +31,7 @@ extraButton:
             ?${BTN_LABEL}="＋"
             ?${BTN_TEXT_SIZE}=`${textSize}`
             ?${BTN_BORDER}=OFF
-        |${BTN_CMD}= jsac "jsPath=jsTextToSpeech.stopService"
+        |${BTN_CMD}= jsac "func=jsTextToSpeech.stopService"
             ?${BTN_LABEL}="■"
             ?${BTN_TEXT_SIZE}=`${textSize}`
             ?${BTN_BORDER}=OFF,

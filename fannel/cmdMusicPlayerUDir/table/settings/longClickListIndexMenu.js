@@ -1,20 +1,26 @@
 
 name=Delete
 |icon=cancel
-|jsPath=SIMPLE_DELETE
+|func=SIMPLE_DELETE
 ,
 
 name=Play
 |icon=play
-|js=
-    var=itemName
+|var=playTsvRawName
+    ?func=jsPath.basename
+    ?args=
+        playTsvPath="${ITEM_NAME}"
     ?func=jsPath.trimAllExtend
     ?args=
-        path=`${jsPath.basename("${ITEM_NAME}")}`
+        path=`${playTsvRawName}`
+|var=playTsvPath
+    ?value=`${ITEM_NAME}`
+|var=tempPlayCon
+    ?func=jsTsv.getSr
+    ?args=tsvPath=`${playTsvPath}`
+    ?exitJudge="!tempPlayCon"
+    ?exitToast="No exist play con"
 |actionImport=`${cmdMusicPlayerMusicAction}`
 |replace=
-    TEMP_PLAY_CON=
-        `${jsTsv.getSr(
-            "${INDEX_LIST_DIR_PATH}/${ITEM_NAME}"
-        )}`
-    ?EXTRA_CONTENT=`${itemName}`,
+    TEMP_PLAY_CON=`${tempPlayCon}`
+    ?EXTRA_CONTENT=`${playTsvRawName}`,

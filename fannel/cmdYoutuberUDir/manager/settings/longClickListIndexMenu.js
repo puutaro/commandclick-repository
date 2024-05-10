@@ -1,7 +1,7 @@
 
 name=Delete
 |icon=cancel
-|jsPath=SIMPLE_DELETE
+|func=SIMPLE_DELETE
 ,
 
 name=Copy
@@ -15,8 +15,11 @@ name=Copy
             &${cmdYoutuberLikeMusicPlayListPath}"
     |disable=ON`
 |tsvImport=`${cmdYoutuberManagerListIndexTsvPath}`
-|js=
-    var=fileList
+    ?use="listDir => curPlayListPath"
+|var=curPlayListName
+    ?func=jsPath.basename
+    ?args=path="${curPlayListPath}"
+|var=fileList
     ?func=jsFileSystem.showFullFileList
     ?args=
         dirPath=`${cmdYoutuberPlayListTableDirPath}`
@@ -26,8 +29,10 @@ name=Copy
                 ${cmdYoutuberPreviousMusicPlayListName}
                 ?${cmdYoutuberLikeMusicPlayListName}
                 ?${cmdYoutuberWebSearchPlayListName}
-                ?${jsPath.basename("${listDir}")}
+                ?${curPlayListName}
         `
+    ?exitJudge=`!fileList`
+    ?exitToast="No exist copy list"
 |actionImport=
     `${cmdYoutuberCopyToOtherAction}`
 |replace=
@@ -35,11 +40,18 @@ name=Copy
 
 name=Play
 |icon=play
+|var=playInfo
+    ?func=jsFileSystem.read
+    ?args=
+        playInfoPath=`"${cmdYoutuberPlayInfoPath}"  `
+|var=curPlayListName
+    ?func=jsPath.basename
+    ?args=playListPath="${ITEM_NAME}"
 |actionImport=
     `${cmdYoutuberMusicAction}`
 |replace=
     TEMP_PLAY_CON=
         `${ITEM_NAME}`
     ?EXTRA_CONTENT=
-        `${jsF.r("${cmdYoutuberPlayInfoPath}")} ${jsPath.basename("${ITEM_NAME}")}`
+        `${playInfo} ${curPlayListName}`
 ,

@@ -4,7 +4,6 @@ type=
 
 list=
     listDir=`${cmdYoutuberTableTsvPath}`
-    // listDir=`${cmdYoutuberPlayListTableDirPath}`
     |sortType=lastUpdate
     |compPath=`${cmdYoutuberTableInitTsvConPath}`
     |prefix=`${TUBE_PREFIX}`
@@ -17,19 +16,18 @@ name=
 click=
     enableUpdate=ON
     |var=state
-        ?value="${MANAGER}"
-    |js=
-        if=`"${ITEM_NAME}" == "${cmdYoutuberWebSearchPlayListName}"`
-        ?func=con:`state = "${SEARCHER}"`
+        ?value=`${MANAGER}`
+        ?if=`"${ITEM_NAME}" == '${cmdYoutuberWebSearchPlayListName}'`
+        ?value=`${SEARCHER}`
     |actionImport=
         `${cmdYoutuberChangeStateAction}`
     |replace=
         STATE=`${state}`
-        ?ON_LIST_DIR_UPDATER=true
-        ?ON_PLAY_INFO_SAVE=true,
+        ?ON_LIST_DIR_UPDATER=ON
+        ?ON_PLAY_INFO_SAVE=ON,
 
 longClick=
-    jsPath=MENU
+    func=MENU
         ?args=
             menuPath=
                 `${cmdYoutuberTableLongPressListIndexMenuPath}`,

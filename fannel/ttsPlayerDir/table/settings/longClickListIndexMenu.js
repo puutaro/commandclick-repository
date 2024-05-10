@@ -1,41 +1,23 @@
 
 name=Delete
 |icon=cancel
-|jsPath=SIMPLE_DELETE
+|func=SIMPLE_DELETE
 ,
-
-name=Copy
-|icon=copy
-|js=
-    var=fileList
-    ?func=jsFileSystem.showFullFileList
-    ?args=
-        dirPath=`${cmdYoutuberPlayListTableDirPath}`
-        &extraMapCon=`
-            prefix=${TUBE_PREFIX}
-            |excludeFiles=
-                ${cmdYoutuberPreviousMusicPlayListName}
-                ?${cmdYoutuberLikeMusicPlayListName}
-                ?${cmdYoutuberWebSearchPlayListName}
-            `
-    |actionImport=
-        `${cmdTtsPlayerCopyToOtherAction}`
-        |replace=
-            COPY_TSV_PATH_TO_TYPE_CON=`${fileList}`
-            ?ON_FITH_FILE=`ON`
-            ?DIR_NAME=`${jsPath.basename("${ITEM_NAME}")}`,
 
 name=Play
 |icon=play
-|js=
-    var=itemName
+|var=itemName
+    ?func=jsPath.basename
+    ?args=
+        path="${ITEM_NAME}"
     ?func=jsPath.trimAllExtend
     ?args=
-        path=`${jsPath.basename("${ITEM_NAME}")}`
+        path=`${itemName}`
+|var=tempPlayCon
+    ?func=jsTsv.getSr
+    ?args=
+        path="${INDEX_LIST_DIR_PATH}/${ITEM_NAME}"
 |actionImport=`${cmdTtsPlayerTtsAction}`
 |replace=
-    TEMP_PLAY_CON=
-        `${jsTsv.getSr(
-            "${INDEX_LIST_DIR_PATH}/${ITEM_NAME}"
-        )}`
+    TEMP_PLAY_CON=`${tempPlayCon}`
     ?EXTRA_CONTENT=`${itemName}`,

@@ -1,11 +1,16 @@
 // js/action
 
-js=
-    ?func=jsFileSystem.write
+func=jsFileSystem.write
     ?args=
         path=`${cmdMusicPlayerTempFilePath}`
         &con=`{{ TEMP_PLAY_CON }}`
-|jsPath=jsMusic.play
+|var=currentAppDirName
+    ?func=jsPath.basename
+    ?args=path="${currentAppDirPath}"
+|var=scriptRawName
+    ?func=jsPath.trimAllExtend
+    ?args=scriptName="${02}"
+|func=jsMusic.play
 ?args=
     tempPlayListPath=`${cmdMusicPlayerTempFilePath}`
     &extraSettingMapStr=`
@@ -14,8 +19,8 @@ js=
         |onLoop=on
         |onTrack=on
         |playNumber=
-        |currentAppDirName=${jsPath.basename("${currentAppDirPath}")},
-        |scriptRawName=${jsPath.trimAllExtend("${02}")},
+        |currentAppDirName=${currentAppDirName},
+        |scriptRawName=${scriptRawName},
         |extraContent=
             {{ EXTRA_CONTENT }}
         |shellPath=SAVE_PLAY_LIST

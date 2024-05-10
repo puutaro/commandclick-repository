@@ -15,7 +15,7 @@ click=
         `${cmdYoutuberManagerFromPlayActionPath}`,
 
 longClick=
-    jsPath=MENU
+    func=MENU
         ?args=
             menuPath=`${cmdYoutuberManagerLongPressListIndexMenuPath}`,
 

@@ -1,42 +1,23 @@
 
 
-js=
-    id=listDirUpdater
-    ?if="{{ ON_LIST_DIR_UPDATER:false }}"
-    ?func=jsListTsvUpdater.update
+var=onListDirUpdater
+    ?value=`"{{ ON_LIST_DIR_UPDATER:OFF }}"`
+|var=updatePlayListTsvPath
+    ?value=
+       ?if=`onListDirUpdater == "ON"`
+    ?value=`${cmdYoutuberPlayListTableDirPath}/${ITEM_NAME}`
+|var=extraMapCon
+    ?value=`
+        onListDirUpdater=${onListDirUpdater}
+        |listDirTsvPath=${cmdYoutuberManagerListIndexTsvPath}
+        |listDirValue=${updatePlayListTsvPath}
+        |onInfoSave={{ ON_PLAY_INFO_SAVE:OFF }}
+        |saveInfoPath=${cmdYoutuberPlayInfoPath}
+        |extraSaveInfo=
+        |enableAddToBackStack={{ ENABLE_ADD_TO_BACKSTACK:OFF }}
+        `
+|func=jsStateChange.change_S
     ?args=
-        tsvPath=
-            `${cmdYoutuberManagerListIndexTsvPath}`
-        &settingMap=
-            `${listDirKey}=${cmdYoutuberPlayListTableDirPath}/${ITEM_NAME}`
-        &separator="|"
-|js=
-    if="{{ ON_PLAY_INFO_SAVE:false }}"
-    ?var=playListTsv
-    ?func=jsTsv.getKeyValue
-    ?args=
-        path=`${cmdYoutuberManagerListIndexTsvPath}`
-        &key=`${listDirKey}`
-    ?afterJsCon=
-        playListTsv=`jsPath.basename(playListTsv)`
-        &playListTsv=`jsPath.removePrefix(
-                playListTsv,
-                "${TUBE_PREFIX}",
-        )`
-        &playListTsv=`
-            jsPath.removeExtend(
-                playListTsv,
-                "${TSV_SUFFIX}&List&Play",
-            ) + " list"`
-        &"save play list info"=`
-            jsF.w(
-                "${cmdYoutuberPlayInfoPath}",
-                playListTsv
-           )`
-|js=
-    id=changeState
-    ?func=jsCmdValFrag.stateChange_S
-    ?args=
-        state="{{ STATE }}"
-        &disableAddToBackStack=
-            NO_QUOTE:{{ DISABLE_ADD_TO_BACKSTACK:true }},
+        stateName="{{ STATE }}"
+        &extraMapCon=`${extraMapCon}`
+,

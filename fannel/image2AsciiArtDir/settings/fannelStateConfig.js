@@ -1,0 +1,5 @@
+
+
+// firstState="ascii",
+
+noRegisterStates="config",

@@ -1,13 +1,18 @@
 // js/action
 
-jsPath=jsToast.long
+func=jsToast.long
     ?args=msg="play.."
-|js=
-    ?func=jsFileSystem.write
+|func=jsFileSystem.write
     ?args=
         path=`${cmdYoutuberTempFilePath}`
         &con=`{{ TEMP_PLAY_CON }}`
-|jsPath=jsMusic.play
+|var=currentAppDirName
+    ?func=jsPath.basename
+    ?args=path="${currentAppDirPath}"
+|var=scriptRawName
+    ?func=jsPath.trimAllExtend
+    ?args=scriptName="${02}"
+|func=jsMusic.play
     ?args=
         tempPlayListPath=`${cmdYoutuberTempFilePath}`
         &extraSettingMapStr=`
@@ -16,8 +21,8 @@ jsPath=jsToast.long
             |onLoop=on
             |onTrack=on
             |playNumber=
-            |currentAppDirName=${jsPath.basename("${currentAppDirPath}")},
-            |scriptRawName=${jsPath.trimAllExtend("${02}")},
+            |currentAppDirName=${currentAppDirName},
+            |scriptRawName=${scriptRawName},
             |extraContent=
                 {{ EXTRA_CONTENT }}
             |shellPath=SAVE_PLAY_LIST

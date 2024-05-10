@@ -25,8 +25,6 @@ cmdTtsPlayerManagerEditButtonConfigPath=
     `${cmdTtsPlayerManagerSettingsDirPath}/editButtonConfig.js`,
 cmdTtsPlayerManagerSettingButtonConfigPath=
     `${cmdTtsPlayerManagerSettingsDirPath}/settingButtonConfig.js`,
-cmdTtsPlayerManagerAddMenuPath=
-    `${cmdTtsPlayerManagerSettingsDirPath}/addMenuConfig.js`,
 cmdTtsPlayerManagerSettingMenuPath=
     `${cmdTtsPlayerManagerSettingsDirPath}/settingMenuConfig.js`,
 cmdTtsPlayerManagerLongPressListIndexMenuPath=
