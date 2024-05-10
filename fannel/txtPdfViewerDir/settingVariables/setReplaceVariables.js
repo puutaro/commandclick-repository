@@ -11,6 +11,8 @@ FCB_SUFFIX=suffix,
 FCB_TYPE=type,
 ttsPlayMode=ttsPlay,
 clearCache=clearCache,
+TXT_SUFFIX=".txt",
+PDF_SUFFIX=".pdf",
 
 // path
 txtPdfViewerDirPath=

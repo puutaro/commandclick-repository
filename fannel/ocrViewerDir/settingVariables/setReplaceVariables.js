@@ -14,6 +14,11 @@ ttsPlayMode=ttsPlay,
 clearCache=clearCache,
 installMode=install,
 
+// setting
+TXT_SUFFIX=".txt",
+PDF_SUFFIX=".pdf",
+
+
 // path
 ocrViewerDirPath=
 	"${01}/${001}",
