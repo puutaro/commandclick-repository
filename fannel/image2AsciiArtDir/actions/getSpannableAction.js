@@ -28,8 +28,6 @@ tsvImport=`${image2AsciiArtAsciiListIndexTsvPath}`
             savePath=${varAsciiStateListDirPath}/${downloadImageName}
             |hideButtons=cancel
             `
-|func=alert
-    ?args=msg=`${varAsciiStateListDirPath}/${downloadImageName}\n\n`
 |func=jsBroadcast.send
     ?args=
         action="com.puutaro.commandclick.edit_frag.update_index_list"
