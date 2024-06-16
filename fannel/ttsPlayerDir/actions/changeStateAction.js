@@ -16,8 +16,9 @@ var=onListDirUpdater
         |extraSaveInfo=
         |enableAddToBackStack={{ ENABLE_ADD_TO_BACKSTACK:OFF }}
         `
-|func=jsStateChange.change_S
-?args=
-    stateName="{{ STATE }}"
-    &extraMapCon=`${extraMapCon}`
+|var=runChangeSate
+    ?func=jsStateChange.change_S
+    ?args=
+        stateName="{{ STATE }}"
+        &extraMapCon=`${extraMapCon}`
     ,

@@ -5,6 +5,7 @@ disable=OFF,
     color=darkGreen,
 
 click=
-    actionImport=`${cmdTtsPlayerChangeStateAction}`
-    |replace=
-        STATE=`${TABLE}`,
+    acVar=runToTableState
+        ?importPath=`${cmdTtsPlayerChangeStateAction}`
+        ?replace=
+            STATE=`${TABLE}`,

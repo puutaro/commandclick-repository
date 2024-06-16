@@ -9,15 +9,18 @@ name="Set gmail address"
             ${cmdTtsPlayerPreviousTtsPlayListPath}
             &${cmdTtsPlayerLikePlayListPath}
         "
-    |disable=ON`
-|actionImport=
-    `${cmdTtsPlayerManagerSetGmailAdActionPath}`,
+        ?alterCon="|disable=ON"
+    `
+|acVar=runSetGmailAd
+    ?importPath=
+        `${cmdTtsPlayerManagerSetGmailAdActionPath}`,
 
 name="Setting tts"
 |icon=setting
-|actionImport=
-    `${cmdTtsPlayerChangeStateAction}`
-|replace=
-    STATE=`${CONFIG}`
-    ?ENABLE_ADD_TO_BACKSTACK=ON,
+|acVar=runToConfigState
+    ?importPath=
+        `${cmdTtsPlayerChangeStateAction}`
+    ?replace=
+        STATE=`${CONFIG}`
+        &ENABLE_ADD_TO_BACKSTACK=ON,
 

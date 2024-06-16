@@ -14,12 +14,13 @@ name=
 
 click=
     enableUpdate=ON
-    |actionImport=
-        `${cmdTtsPlayerChangeStateAction}`
-    |replace=
-        STATE=`${MANAGER}`
-        ?ON_LIST_DIR_UPDATER=ON
-        ?ON_PLAY_INFO_SAVE=ON,
+    |acVar=runToConfigState
+        ?importPath=
+            `${cmdTtsPlayerChangeStateAction}`
+        ?replace=
+            STATE=`${MANAGER}`
+            &ON_LIST_DIR_UPDATER=ON
+            &ON_PLAY_INFO_SAVE=ON,
 
 longClick=
     |func=MENU

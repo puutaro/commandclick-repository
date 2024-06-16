@@ -1,7 +1,7 @@
 
-tsvImport=
-    `${cmdMusicPlayerManagerListIndexTsvPath}`
-    ?use="listDir => playTsvPathForFromPlay"
+tsvVars="listDir => playTsvPathForFromPlay"
+    ?importPath=
+        `${cmdMusicPlayerManagerListIndexTsvPath}`
 |var=playInfo
     ?func=jsFileSystem.read
     ?args=
@@ -15,13 +15,17 @@ tsvImport=
     ?args=
         tsvPath="${playTsvPathForFromPlay}"
         &thisLine="${ITEM_NAME}"
-    ?exitJudge="!tempPlayCon"
-    ?exitToast="No exist play con"
-|actionImport=
-    `${cmdMusicPlayerMusicAction}`
-|replace=
-    PLAY_MODE=ordinaly
-    ?TEMP_PLAY_CON=
-        `NO_QUOTE:tempPlayCon`
-    ?EXTRA_CONTENT=
-        `${playInfo} from ${trackName}`,
+    |var=runExitJudge
+        ?when="!tempPlayCon"
+        ?func=jsToast.short
+        ?args=
+            msg="No exist play con"
+        ?func=exitZero
+|acVar=runOrdinalyPlay
+    ?importPath=
+        `${cmdMusicPlayerMusicAction}`
+    ?replace=
+        PLAY_MODE=ordinaly
+        &TEMP_PLAY_CON=`${tempPlayCon}`
+        &EXTRA_CONTENT=
+            `${playInfo} from ${trackName}`,

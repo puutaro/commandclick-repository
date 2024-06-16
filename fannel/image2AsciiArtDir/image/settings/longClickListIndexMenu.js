@@ -14,7 +14,8 @@ name=Rename
             ${image2AsciiArtPreviousListPath}
             &${image2AaciiArtLikePlayListPath}
         "
-    |disable=ON`
+        ?alterCon="|disable=ON"
+    `
 |func=RENAME
 ,
 
@@ -31,9 +32,10 @@ name=Copy
         ?tsvValue="
             ${image2AsciiArtPreviousListPath}
             &${image2AaciiArtLikePlayListPath}"
-    |disable=ON`
-|tsvImport=`${image2AsciiArtAsciiListIndexTsvPath}`
-    ?use=`listDir => asciiListDirForImageLongPress`
+        ?alterCon="|disable=ON"
+    `
+|tsvVars=`listDir => asciiListDirForImageLongPress`
+    ?importPath=`${image2AsciiArtAsciiListIndexTsvPath}`
 |var=curAsciiArtList
     ?func=jsPath.basename
     ?args=path=`${asciiListDirForImageLongPress}`
@@ -48,9 +50,10 @@ name=Copy
                 ?${image2AaciiArtLikePlayListName}
                 ?${curAsciiArtList}
                 `
-|actionImport=
-    `${image2AsciiArtCopyToOtherAction}`
-|replace=
-    COPY_TSV_PATH_TO_TYPE_CON=`${fileList}`,
+|acVar=runCopyToOther
+    ?importPath=
+        `${image2AsciiArtCopyToOtherAction}`
+    ?replace=
+        COPY_TSV_PATH_TO_TYPE_CON=`${fileList}`,
 
 ,

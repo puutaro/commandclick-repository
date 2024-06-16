@@ -6,8 +6,8 @@ disable=OFF,
 color=darkGreen,
 
 click=
-    |tsvImport=`${image2AsciiArtAsciiListIndexTsvPath}`
-        ?use=`listDir => asciiDirPathForAsciiPlay`
+    tsvVars=`listDir => asciiDirPathForAsciiPlay`
+        ?importPath=`${image2AsciiArtAsciiListIndexTsvPath}`
     |var=imageNameList
         ?func=jsFileSystem.showFullFileList
         ?args=
@@ -16,11 +16,13 @@ click=
                 suffix=".jpeg?.png"
                 |onOutputAsName=ON
                 `
-        ?method=`split`
-        ?methodArgs=
-            sepa="\n"
-        ?exitJudge=`!imageNameList || imageNameList.length == 0`
-        ?exitToast=`imageNameList zero: ${imageNameList}`
+        ?func=it.split
+        ?args=sepa="\n"
+        |var=runExitJudge
+            ?when=`!imageNameList || imageNameList.length == 0`
+            ?func=jsToast.short
+            ?args=msg=`imageNameList zero: ${imageNameList}`
+            ?func=exitZero
     |var=rndIndex
         ?func=Math.floor
         ?args=
@@ -29,8 +31,9 @@ click=
         ?func=imageNameList.at
         ?args=
             index=NO_QUOTE:rndIndex
-    |actionImport=
-        `${image2AsciiArtQuizAction}`
-    |replace=
-        IMAGE_NAME=`${imageName}`
+    |acVar=runQuiz
+        ?importPath=
+            `${image2AsciiArtQuizAction}`
+        ?replace=
+            IMAGE_NAME=`${imageName}`
      ,

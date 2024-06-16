@@ -13,15 +13,19 @@ var=defaultGmailAd
         &promptMapCon=
             `editText=
                 default=${defaultGmailAd}`
-    ?exitJudge=`
-        updateGmailAdd
-        && !updateGmailAdd.startsWith("https://")
-        && !updateGmailAdd.includes("mail")
+    |var=runExitJudge
+        ?when=`
+            updateGmailAdd
+            && !updateGmailAdd.startsWith("https://")
+            && !updateGmailAdd.includes("mail")
         `
-    ?exitToast=`invalid gmail url ${updateGmailAdd}`
-
-|func=jsFileSystem.write
-    if=`updateGmailAdd`
+        ?func=jsToast.short
+        ?args=
+            msg=`invalid gmail url ${updateGmailAdd}`
+        ?func=exitZero
+|var=runAddGmailAdress
+    ?func=jsFileSystem.write
+    ?when=`updateGmailAdd`
     ?args=
         path=`${cmdTtsPlayerManagerGmailAdTsvPath}`
         &con=`${gmailAdTsvKey}\t${updateGmailAdd}`

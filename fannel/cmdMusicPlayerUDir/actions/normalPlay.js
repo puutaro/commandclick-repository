@@ -1,18 +1,19 @@
 // js/action
 
-tsvImport=
-    `${cmdMusicPlayerManagerListIndexTsvPath}`
-    ?use="listDir => playTsvPath"
+tsvVars="listDir => playTsvPath"
+    ?importPath=
+        `${cmdMusicPlayerManagerListIndexTsvPath}`
 |var=tempPlayCon
     ?func=jsTsv.getSr
-    ?args=tsvPath=`${playTsvPath}`
+    ?args=
+        tsvPath=`${playTsvPath}`
 |var=extraContent
     ?func=jsFileSystem.read
-    ?args=path=`${cmdMusicPlayerPlayInfoPath}`
-|actionImport=
-    `${cmdMusicPlayerMusicAction}`
-|replace=
-    TEMP_PLAY_CON=
-        `${tempPlayCon}`
-    ?EXTRA_CONTENT=`${extraContent}`
-        ,
+    ?args=
+        path=`${cmdMusicPlayerPlayInfoPath}`
+|acVar=runNormalPlay
+    ?importPath=`${cmdMusicPlayerMusicAction}`
+    ?replace=
+        TEMP_PLAY_CON=`${tempPlayCon}`
+        &EXTRA_CONTENT=`${extraContent}`
+,

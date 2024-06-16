@@ -1,7 +1,6 @@
 
-tsvImport=
-    `${cmdTtsPlayerManagerListIndexTsvPath}`
-    ?use="listDir => tsvListPath"
+tsvVars="listDir => tsvListPath"
+    ?importPath=`${cmdTtsPlayerManagerListIndexTsvPath}`
 |var=playInfo
     ?func=jsFileSystem.read
     ?args=
@@ -15,11 +14,11 @@ tsvImport=
     ?args=
         path="${tsvListPath}"
         &firstLine=`${ITEM_NAME}`
-|actionImport=
-    `${cmdTtsPlayerTtsAction}`
-|replace=
-    PLAY_MODE=ordinaly
-    ?TEMP_PLAY_CON=
-        `${tempPlayCon}`
-    ?EXTRA_CONTENT=
-        `${playInfo} from ${trackName}`
+|acVar=runOrdinalyPlay
+    ?importPath=`${cmdTtsPlayerTtsAction}`
+    ?replace=
+        PLAY_MODE=ordinaly
+        &TEMP_PLAY_CON=
+            `${tempPlayCon}`
+        &EXTRA_CONTENT=
+            `${playInfo} from ${trackName}`

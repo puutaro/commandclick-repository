@@ -17,7 +17,8 @@ var=menuMapStrListStr
         `
 |var=encodeSpace
     ?value=NO_QUOTE:encodeURIComponent(" ")
-|func=jsDialog.webView_S
+|var=runLaunchGetSpannableWebView
+    ?func=jsDialog.webView_S
     ?args=
         url=`${getUrl}${encodeSpace}`
         &currentFannelPath=`${FANNEL_PATH}`

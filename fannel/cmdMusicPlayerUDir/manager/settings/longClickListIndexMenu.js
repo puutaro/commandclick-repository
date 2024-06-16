@@ -13,12 +13,14 @@ name=Copy
         ?tsvValue="
             ${cmdMusicPlayerPreviousMusicPlayListPath}
             &${cmdMusicPlayerLikePlayListPath}"
-    |disable=ON`
-|tsvImport=`${cmdMusicPlayerManagerListIndexTsvPath}`
-    ?use="listDir => playTsvPath"
+        ?alterCon="|disable=ON" 
+    `
+|tsvVars="listDir => playTsvPath"
+    ?importPath=`${cmdMusicPlayerManagerListIndexTsvPath}`
 |var=playTsvName
     ?func=jsPath.basename
-    ?args=path="${playTsvPath}"
+    ?args=
+        path="${playTsvPath}"
 |var=fileList
     ?func=jsFileSystem.showFullFileList
     ?args=
@@ -30,23 +32,27 @@ name=Copy
                 ?${cmdMusicPlayerLikePlayListName}
                 ?${playTsvName}
                 `
-|actionImport=
-    `${cmdMusicPlayerCopyToOtherAction}`
-|replace=
-    COPY_TSV_PATH_TO_TYPE_CON=`${fileList}`,
+|acVar=runCopyToOther
+    ?importPath=
+        `${cmdMusicPlayerCopyToOtherAction}`
+    ?replace=
+        COPY_TSV_PATH_TO_TYPE_CON=`${fileList}`,
 
 name=Play
 |icon=play
 |var=mainPlayInfo
     ?func=jsFileSystem.read
-    ?args=path=`${cmdMusicPlayerPlayInfoPath}`
+    ?args=
+        path=`${cmdMusicPlayerPlayInfoPath}`
 |var=extraPlayInfo
     ?func=jsPath.basename
-    ?args=tsvPath="${ITEM_NAME}"
-|actionImport=
-    `${cmdMusicPlayerMusicAction}`
-|replace=
-    TEMP_PLAY_CON=`${ITEM_NAME}`
-    ?EXTRA_CONTENT=
-        `${mainPlayInfo} ${extraPlayInfo}`
+    ?args=
+        tsvPath="${ITEM_NAME}"
+|acVar=runCurRecPlay
+    ?importPath=
+        `${cmdMusicPlayerMusicAction}`
+    ?replace=
+        TEMP_PLAY_CON=`${ITEM_NAME}`
+        &EXTRA_CONTENT=
+            `${mainPlayInfo} ${extraPlayInfo}`
 ,

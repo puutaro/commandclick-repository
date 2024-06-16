@@ -9,13 +9,16 @@ logo=
         ?color=ligthOrange,
 
 click=
-    actionImport=
-        `${cmdMusicPlayerCopyToOtherAction}`
-    |replace=
-        COPY_TSV_PATH_TO_TYPE_CON=`${cmdMusicPlayerLikePlayListPath}`
+    acVar=runCopyToLike
+        ?importPath=
+            `${cmdMusicPlayerCopyToOtherAction}`
+        ?replace=
+            COPY_TSV_PATH_TO_TYPE_CON=
+                `${cmdMusicPlayerLikePlayListPath}`
     |alter=`
         shellIfPath=JUDGE_LIST_DIR
         |ifArgs=
             tsvPath=${cmdMusicPlayerManagerListIndexTsvPath}
             ?tsvValue=${cmdMusicPlayerLikePlayListPath}
-        |actionImport=`,
+            ?alterCon="?when=false"
+        `,

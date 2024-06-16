@@ -12,6 +12,3 @@ toLang:
 	CB=
 		-?ja?en?zh?es?ko,
 
-// onTrack:
-// 	CB=
-// 		ON?OFF,

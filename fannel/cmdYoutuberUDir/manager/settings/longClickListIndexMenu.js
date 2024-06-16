@@ -13,12 +13,14 @@ name=Copy
         ?tsvValue="
             ${cmdYoutuberPreviousMusicPlayListPath}
             &${cmdYoutuberLikeMusicPlayListPath}"
-    |disable=ON`
-|tsvImport=`${cmdYoutuberManagerListIndexTsvPath}`
-    ?use="listDir => curPlayListPath"
+        ?alterCon="|disable=ON"
+    `
+|tsvVars="listDir => curPlayListPath"
+    ?importPath=`${cmdYoutuberManagerListIndexTsvPath}`
 |var=curPlayListName
     ?func=jsPath.basename
-    ?args=path="${curPlayListPath}"
+    ?args=
+        path="${curPlayListPath}"
 |var=fileList
     ?func=jsFileSystem.showFullFileList
     ?args=
@@ -31,12 +33,17 @@ name=Copy
                 ?${cmdYoutuberWebSearchPlayListName}
                 ?${curPlayListName}
         `
-    ?exitJudge=`!fileList`
-    ?exitToast="No exist copy list"
-|actionImport=
-    `${cmdYoutuberCopyToOtherAction}`
-|replace=
-    COPY_TSV_PATH_TO_TYPE_CON=`${fileList}`,
+    |var=runExitJudge
+        ?when=`!fileList`
+        ?func=jsToast.short
+        ?args=
+            msg="No exist copy list"
+        ?func=exitZero
+|acVar=runCopyToOtherList
+    ?importPath=
+        `${cmdYoutuberCopyToOtherAction}`
+    ?replace=
+        COPY_TSV_PATH_TO_TYPE_CON=`${fileList}`,
 
 name=Play
 |icon=play
@@ -46,12 +53,14 @@ name=Play
         playInfoPath=`"${cmdYoutuberPlayInfoPath}"  `
 |var=curPlayListName
     ?func=jsPath.basename
-    ?args=playListPath="${ITEM_NAME}"
-|actionImport=
-    `${cmdYoutuberMusicAction}`
-|replace=
-    TEMP_PLAY_CON=
-        `${ITEM_NAME}`
-    ?EXTRA_CONTENT=
-        `${playInfo} ${curPlayListName}`
+    ?args=
+        playListPath="${ITEM_NAME}"
+|acVar=runCurPlay
+    ?importPath=
+        `${cmdYoutuberMusicAction}`
+    ?replace=
+        TEMP_PLAY_CON=
+            `${ITEM_NAME}`
+        &EXTRA_CONTENT=
+            `${playInfo} ${curPlayListName}`
 ,

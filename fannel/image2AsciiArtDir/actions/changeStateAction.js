@@ -14,7 +14,8 @@ var=onListDirUpdater
         |saveInfoPath=${image2AsciiArtPlayInfoPath}
         |extraSaveInfo={{ EXTRA_SAVE_INFO:: }}
         `
-|func=jsStateChange.change_S
+|var=runChangeState
+    ?func=jsStateChange.change_S
     ?args=
         stateName="{{ STATE }}"
         &extraMapCon=`${extraMapCon}`

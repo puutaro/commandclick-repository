@@ -5,6 +5,7 @@ disable=OFF,
     color=darkGreen,
 
 click=
-    actionImport=`${cmdYoutuberChangeStateAction}`
-    |replace=
-        STATE=`${TABLE}`,
+    acVar=runToTableState
+        ?importPath=`${cmdYoutuberChangeStateAction}`
+        ?replace=
+            STATE=`${TABLE}`,

@@ -9,10 +9,10 @@ logo=
         ?color=yellow,
 
 click=
-    tsvImport=`${image2AsciiArtImageListIndexTsvPath}`
-        ?use=
-            "listDir => imageDirPathForLook"
-    |func=jsDialog.imageDialog
+    tsvVars="listDir => imageDirPathForLook"
+        ?importPath=`${image2AsciiArtImageListIndexTsvPath}`
+    |var=runImageViewer
+        ?func=jsDialog.imageDialog
         ?args=
             msg="Image viewer"
             &path=`${imageDirPathForLook}/${ITEM_NAME}`
@@ -20,11 +20,12 @@ click=
 ,
 
 longClick=
-    tsvImport=`${image2AsciiArtImageListIndexTsvPath}`
-        ?use="listDir => curImageStateListDirPath"
+    tsvVars="listDir => curImageStateListDirPath"
+        ?importPath=`${image2AsciiArtImageListIndexTsvPath}`
     |var=curAsciiStateListDirPath
         ?value=NO_QUOTE:jsPath.dirname("${curImageStateListDirPath}")
-    |actionImport=
-        `${image2AsciiArtCopyToOtherAction}`
-    |replace=
-        CURRENT_ASCII_DIR_PATH=`${curAsciiStateListDirPath}`,
+    |acVar=runCopyToOtherList
+        ?importPath=
+            `${image2AsciiArtCopyToOtherAction}`
+        ?replace=
+            CURRENT_ASCII_DIR_PATH=`${curAsciiStateListDirPath}`,

@@ -5,5 +5,6 @@ disable=OFF,
 color=darkGreen,
 
 click=
-    |actionImport=
-        `${cmdYoutuberNormalPlayAction}`,
+    acVar=runNormalPlay
+        ?importPath=
+            `${cmdYoutuberNormalPlayAction}`,

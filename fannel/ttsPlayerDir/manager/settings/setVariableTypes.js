@@ -37,12 +37,13 @@ extraButton:
                     &tsvValue="
                         ${cmdTtsPlayerPreviousTtsPlayListPath}
                         &${cmdTtsPlayerLikePlayListPath}"
-                ?onPut=OFF
+                    &alterCon="?onPut=OFF"
             `
          |${BTN_CMD}= jsac `
-                |tsvImport=${cmdTtsPlayerManagerGmailAdTsvPath}
-                    ?use="gmailAd"
-                |func=jsAddGmailCon.add
+                |tsvVars="gmailAd"
+                    ?importPath=${cmdTtsPlayerManagerGmailAdTsvPath}
+                |var=runGmailAd
+                    ?func=jsAddGmailCon.add
                     ?args=
                         gmailAd=${gmailAd}
                         &extraMap="
@@ -60,7 +61,7 @@ extraButton:
                     &tsvValue="
                         ${cmdTtsPlayerPreviousTtsPlayListPath}
                         &${cmdTtsPlayerLikePlayListPath}"
-                ?onPut=OFF
+                    &alterCon="?onPut=OFF"
             `
         |${BTN_CMD}= jsac "func=jsTextToSpeech.stopService"
             ?${BTN_LABEL}="■"

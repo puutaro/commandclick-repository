@@ -21,10 +21,6 @@ image2AsciiArtAsciiEditButtonConfigPath=
     `${image2AsciiArtAsciiSettingsDirPath}/editButtonConfig.js`,
 image2AsciiArtAsciiSettingButtonConfigPath=
     `${image2AsciiArtAsciiSettingsDirPath}/settingButtonConfig.js`,
-image2AsciiArtAsciiSettingMenuPath=
-    `${image2AsciiArtAsciiSettingsDirPath}/settingMenuConfig.js`,
-image2AsciiArtAsciiLongPressListIndexMenuPath=
-    `${image2AsciiArtAsciiSettingsDirPath}/longClickListIndexMenu.js`,
 image2AsciiArtAsciiQrDialogConfigPath=
     `${image2AsciiArtAsciiSettingsDirPath}/qrDialogConfig.js`,
 

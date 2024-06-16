@@ -1,4 +1,2 @@
-${cmdYoutuberWebSearchPlayListName}	name=internet,color=${iconColor},bkColor=${iconBkColor}
-${cmdYoutuberLikeMusicPlayListName}	name=star,color=${iconColor},bkColor=${iconBkColor}
 ${cmdYoutuberPreviousMusicPlayListPath}	name=history,color=${iconColor},bkColor=${iconBkColor}
 default	name=music,color=${iconColor},bkColor=${iconBkColor}

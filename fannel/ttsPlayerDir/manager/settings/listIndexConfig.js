@@ -11,8 +11,9 @@ name=
     |length=50,
 
 click=
-    actionImport=
-        `${cmdTtsPlayerManagerFromPlayActionPath}`,
+    acVar=runFromPlay
+        ?importPath=
+            `${cmdTtsPlayerManagerFromPlayActionPath}`,
 
 longClick=
     func=MENU
@@ -30,5 +31,9 @@ delete=
         |ifArgs=
             tsvPath=${cmdTtsPlayerManagerListIndexTsvPath}
             ?tsvValue=${cmdTtsPlayerPreviousTtsPlayListPath}
-        |disableDeleteConfirm=ON
-        |onDeleteConFile=OFF`,
+            ?alterCon="
+                    |disableDeleteConfirm=ON
+                    |onDeleteConFile=OFF
+                "
+        `
+        ,

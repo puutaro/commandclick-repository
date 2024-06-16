@@ -11,8 +11,9 @@ name=
     |length=50,
 
 click=
-    actionImport=
-        `${cmdYoutuberManagerFromPlayActionPath}`,
+    acVar=runFromPlay
+        ?importPath=
+            `${cmdYoutuberManagerFromPlayActionPath}`,
 
 longClick=
     func=MENU
@@ -29,10 +30,9 @@ delete=
         shellIfPath=JUDGE_LIST_DIR
         |ifArgs=
             tsvPath=${cmdYoutuberManagerListIndexTsvPath}
-            ?tsvValue=${cmdYoutuberPreviousMusicPlayListPath}
-        |disableDeleteConfirm=ON
-        |shellIfPath=JUDGE_LIST_DIR
-        |ifArgs=
-            tsvPath=${cmdYoutuberManagerListIndexTsvPath}
-            ?tsvValue=${cmdYoutuberLikeMusicPlayListPath}
-        |disableDeleteConfirm=ON`,
+            ?tsvValue="
+                ${cmdYoutuberPreviousMusicPlayListPath}
+                &${cmdYoutuberLikeMusicPlayListPath}
+            "
+            ?alterCon="|disableDeleteConfirm=ON"
+        `,

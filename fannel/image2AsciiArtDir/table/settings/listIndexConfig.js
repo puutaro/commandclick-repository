@@ -11,12 +11,13 @@ list=
 
 click=
     enableUpdate=ON
-    |actionImport=
-        `${image2AsciiArtChangeStateAction}`
-    |replace=
-        STATE=`${ASCII}`
-        ?ON_LIST_DIR_UPDATER=ON
-        ?ON_INFO_SAVE=ON,
+    |acVar=runToAsciiState
+        ?importPath=
+            `${image2AsciiArtChangeStateAction}`
+        ?replace=
+            STATE=`${ASCII}`
+            &ON_LIST_DIR_UPDATER=ON
+            &ON_INFO_SAVE=ON,
 
 longClick=
     |func=MENU

@@ -13,8 +13,9 @@ name=
     |length=50,
 
 click=
-    actionImport=
-        `${cmdMusicPlayerManagerFromPlayActionPath}`,
+    acVar=runFromPlay
+        ?importPath=
+            `${cmdMusicPlayerManagerFromPlayActionPath}`,
 
 longClick=
     func=MENU
@@ -32,4 +33,5 @@ delete=
         |ifArgs=
             tsvPath=${cmdMusicPlayerManagerListIndexTsvPath}
             ?tsvValue=${cmdMusicPlayerPreviousMusicPlayListPath}
-        |disableDeleteConfirm=ON`,
+            ?alterCon="|disableDeleteConfirm=ON"
+        `,

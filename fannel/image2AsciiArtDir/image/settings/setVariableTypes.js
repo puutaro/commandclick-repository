@@ -17,8 +17,9 @@ extraButton:
          onUnderLine=OFF
             ?height=`${lineHeight}`
         |${BTN_CMD}= jsac `
-                actionImport=
-                    "${image2AsciiArtSpannableWebViewAction}"
+                acVar=runGetAscii
+                    ?importPath=
+                        "${image2AsciiArtSpannableWebViewAction}"
                 ,
             `
             ?${BTN_LABEL}="＋"
@@ -27,23 +28,25 @@ extraButton:
             ?alter=`shellIfPath=JUDGE_LIST_DIR
                     ?ifArgs=
                         tsvPath=${image2AsciiArtAsciiListIndexTsvPath}
-                        &tsvValue="like"
-                    ?disable=ON`
+                        &tsvValue=${image2AsciiArtGalleryLikeDirPath}
+                        &alterCon="?onPut=OFF"
+                    `
         |${BTN_CMD}= jsac `
-                tsvImport="${image2AsciiArtImageListIndexTsvPath}"
-                    ?use="listDir => imageDirPath"
+                tsvVars="listDir => imageDirPath"
+                    ?importPath="${image2AsciiArtImageListIndexTsvPath}"
                 |var=asciiDirPath
                     ?func=jsPath.dirname
                     ?args=
                         path=${imageDirPath}
-                |actionImport=
-                    "${image2AsciiArtChangeStateAction}"
-                |replace=
-                    ON_LIST_DIR_UPDATER=ON
-                    ?TSV_PATH="${image2AsciiArtAsciiListIndexTsvPath}"
-                    ?LIST_DIR_OR_TSV_PATH="${asciiDirPath}"
-                    ?ON_INFO_SAVE=ON
-                    ?STATE="${ASCII}"
+                |acVar=runToAsciiState
+                    ?importPath=
+                        "${image2AsciiArtChangeStateAction}"
+                    ?replace=
+                        ON_LIST_DIR_UPDATER=ON
+                        &TSV_PATH="${image2AsciiArtAsciiListIndexTsvPath}"
+                        &LIST_DIR_OR_TSV_PATH="${asciiDirPath}"
+                        &ON_INFO_SAVE=ON
+                        &STATE="${ASCII}"
                 ,
                 `
             ?${BTN_LABEL}="⬅🎞️"

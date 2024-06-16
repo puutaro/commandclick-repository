@@ -3,8 +3,9 @@ color=darkGreen,
 disable=OFF,
 
 click=
-    actionImport=
-        `${cmdTtsPlayerChangeStateAction}`
-    |replace=
-        STATE=`${CONFIG}`
-        ?ENABLE_ADD_TO_BACKSTACK=ON,
+    acVar=runToConfigState
+        ?importPath=
+            `${cmdTtsPlayerChangeStateAction}`
+        ?replace=
+            STATE=`${CONFIG}`
+            &ENABLE_ADD_TO_BACKSTACK=ON,

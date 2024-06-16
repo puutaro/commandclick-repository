@@ -19,12 +19,13 @@ click=
         ?value=`${MANAGER}`
         ?if=`"${ITEM_NAME}" == '${cmdYoutuberWebSearchPlayListName}'`
         ?value=`${SEARCHER}`
-    |actionImport=
-        `${cmdYoutuberChangeStateAction}`
-    |replace=
-        STATE=`${state}`
-        ?ON_LIST_DIR_UPDATER=ON
-        ?ON_PLAY_INFO_SAVE=ON,
+    |acVar=runToManagerOrSearcher
+        ?importPath=
+            `${cmdYoutuberChangeStateAction}`
+        ?replace=
+            STATE=`${state}`
+            &ON_LIST_DIR_UPDATER=ON
+            &ON_PLAY_INFO_SAVE=ON,
 
 longClick=
     func=MENU

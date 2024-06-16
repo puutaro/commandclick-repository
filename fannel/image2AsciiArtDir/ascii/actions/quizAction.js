@@ -1,7 +1,6 @@
 
-tsvImport=`${image2AsciiArtAsciiListIndexTsvPath}`
-    ?use=
-        "listDir => asciiDirPathForQuiz"
+|tsvVars="listDir => asciiDirPathForQuiz"
+    ?importPath=`${image2AsciiArtAsciiListIndexTsvPath}`
 |var=asciiDirPath
     ?value=`${asciiDirPathForQuiz}`
 |var=isOk
@@ -10,10 +9,13 @@ tsvImport=`${image2AsciiArtAsciiListIndexTsvPath}`
         msg="What's image ?"
         &path=`${asciiDirPath}/{{ IMAGE_NAME }}`
         &imageDialogMapCon=
-    ?exitJudge=`!isOk`
+    |var=runExitJudge
+        ?when=`!isOk`
+        ?func=exitZero
 |var=imageDirPath
     ?value=`${asciiDirPath}/${imageDirName}`
-|func=jsDialog.imageDialog
+|var=runImageAnswerDialog
+    ?func=jsDialog.imageDialog
     ?args=
         msg="Answer"
         &path=`${imageDirPath}/{{ IMAGE_NAME }}`

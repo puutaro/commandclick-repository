@@ -7,13 +7,16 @@ logo=
         ?color=yellow,
 
 click=
-    actionImport=
-        `${cmdYoutuberCopyToOtherAction}`
-    |replace=
-        COPY_TSV_PATH_TO_TYPE_CON=`${cmdYoutuberLikeMusicPlayListPath}`
+    acVar=runCopyToLike
+        ?importPath=
+            `${cmdYoutuberCopyToOtherAction}`
+        ?replace=
+            COPY_TSV_PATH_TO_TYPE_CON=
+                `${cmdYoutuberLikeMusicPlayListPath}`
     |alter=`
         shellIfPath=JUDGE_LIST_DIR
         |ifArgs=
             tsvPath=${cmdYoutuberManagerListIndexTsvPath}
             ?tsvValue=${cmdYoutuberLikeMusicPlayListPath}
-        |actionImport=`,
+            ?alterCon="when=false"
+        `,

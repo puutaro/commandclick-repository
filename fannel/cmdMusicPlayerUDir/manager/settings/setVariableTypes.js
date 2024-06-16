@@ -34,7 +34,7 @@ extraButton:
                     &tsvValue="
                         ${cmdMusicPlayerPreviousMusicPlayListPath}
                         &${cmdMusicPlayerLikePlayListPath}"
-                ?onPut=OFF
+                    &alterCon="?onPut=OFF"
                 `
         |${BTN_CMD}= jsac `
                 func=GET_FILE
@@ -54,7 +54,7 @@ extraButton:
                     &tsvValue="
                         ${cmdMusicPlayerPreviousMusicPlayListPath}
                         &${cmdMusicPlayerLikePlayListPath}"
-                ?onPut=OFF
+                    &alterCon="?onPut=OFF"
                 `
         |${BTN_CMD}= jsac "func=jsMusic.stop"
             ?${BTN_LABEL}="■"

@@ -32,7 +32,8 @@ extraButton:
                     &tsvValue="
                         ${cmdYoutuberPreviousMusicPlayListPath}
                         &${cmdYoutuberLikeMusicPlayListPath}"
-                ?onPut=OFF`
+                    &alterCon="?onPut=OFF"
+                `
         |${BTN_CMD}= jsac "func=jsMusic.stop"
             ?${BTN_LABEL}="■"
             ?${BTN_TEXT_SIZE}=`${textSize}`

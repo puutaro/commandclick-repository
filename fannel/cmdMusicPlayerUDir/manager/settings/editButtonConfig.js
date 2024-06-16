@@ -5,6 +5,7 @@ disable=OFF,
     color=darkGreen,
 
 click=
-    actionImport=`${cmdMusicPlayerChangeStateAction}`
-    |replace=
-        STATE=`${TABLE}`,
+    acVar=runToTableState
+        ?importPath=`${cmdMusicPlayerChangeStateAction}`
+        ?replace=
+            STATE=`${TABLE}`,

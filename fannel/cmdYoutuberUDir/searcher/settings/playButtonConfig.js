@@ -7,18 +7,20 @@ click=
         ?args=
             beforeInfoPath=`${cmdYoutuberSearcherPastSearchInfoPath}`
             &curInfo=`${extraButton}${playMode}`
-    |func="jsUbuntu.boot"
-        ?id=execByUbuntu
-        ?if=`onUbuntuPlay`
-    |func=jsUbuntu.execScriptByBackground
-        ?after=execByUbuntu
+    |var=runSearchAndPlay
+        ?when=`onUbuntuPlay`
+        ?func="jsUbuntu.boot"
+        ?if=`"${extraButton}" == ''`
+        ?func=exitZero
+        ?func=jsUbuntu.execScriptByBackground
         ?args=
             shellPath=`${cmdYoutuberUbuntuScrapingShellPath}`
             &argsTabSepaStr=
                 `searchWord=${extraButton},
                 outputTsvPath=${cmdYoutuberWebSearchPlayListPath}`
             &monitorNum=`NO_QUOTE:2`
-        ?exitJudge=true
-    |actionImport=
-        `${cmdYoutuberNormalPlayAction}`
+        ?func=exitZero
+    |acVar=runNormalPlay
+        ?importPath=
+            `${cmdYoutuberNormalPlayAction}`
         ,

@@ -6,9 +6,9 @@ disable=OFF,
 color=darkGreen,
 
 click=
-    tsvImport=
-        `${cmdTtsPlayerManagerListIndexTsvPath}`
-        ?use="listDir"
+    tsvVars="listDir"
+        ?importPath=
+            `${cmdTtsPlayerManagerListIndexTsvPath}`
     |var=tempPlayCon
         ?func=jsTsv.getSr
         ?args=
@@ -17,11 +17,12 @@ click=
         ?func=jsFileSystem.read
         ?args=
             path="${cmdTtsPlayerPlayInfoPath}"
-    |actionImport=
+    |acVar=runPlay
+        ?importPath=
             `${cmdTtsPlayerTtsAction}`
-    |replace=
-        TEMP_PLAY_CON=
-            `${tempPlayCon}`
-        ?EXTRA_CONTENT=`
-            ${extraContent}`
+        ?replace=
+            TEMP_PLAY_CON=
+                `${tempPlayCon}`
+            &EXTRA_CONTENT=`
+                ${extraContent}`
      ,

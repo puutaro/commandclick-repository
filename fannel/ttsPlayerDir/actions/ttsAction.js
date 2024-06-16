@@ -1,9 +1,11 @@
 
-func=jsFileSystem.write
+var=runSaveTempTtsFile
+    ?func=jsFileSystem.write
     ?args=
         path=`${cmdTtsPlayerTempFilePath}`
         &con=`{{ TEMP_PLAY_CON }}`
-|func=jsTextToSpeech.speech
+|var=runTextToSpeech
+    ?func=jsTextToSpeech.speech
     ?args=
         tempPlayListPath=`${cmdTtsPlayerTempFilePath}`
         &extraSettingMapStr=`

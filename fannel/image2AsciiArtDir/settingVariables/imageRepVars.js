@@ -23,19 +23,9 @@ image2AsciiArtImageEditButtonConfigPath=
     `${image2AsciiArtImageSettingsDirPath}/editButtonConfig.js`,
 image2AsciiArtImageSettingButtonConfigPath=
     `${image2AsciiArtImageSettingsDirPath}/settingButtonConfig.js`,
-image2AsciiArtImageAddMenuPath=
-    `${image2AsciiArtImageSettingsDirPath}/addMenuConfig.js`,
-image2AsciiArtImageSettingMenuPath=
-    `${image2AsciiArtImageSettingsDirPath}/settingMenuConfig.js`,
-image2AsciiArtImageLongPressListIndexMenuPath=
-    `${image2AsciiArtImageSettingsDirPath}/longClickListIndexMenu.js`,
 image2AsciiArtImageQrDialogConfigPath=
     `${image2AsciiArtImageSettingsDirPath}/qrDialogConfig.js`,
 
 // tsv
 image2AsciiArtImageListIndexTsvPath=
     `${image2AsciiArtImageSettingsDirPath}/listIndex.tsv`,
-
-// action Path
-image2AsciiArtImageFromPlayActionPath=
-    `${image2AsciiArtImageActionsDirPath}/fromPlay.js`,

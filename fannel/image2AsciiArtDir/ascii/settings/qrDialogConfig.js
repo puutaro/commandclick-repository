@@ -10,15 +10,17 @@ logo=
     ,
 
 click=
-    actionImport=
-        `${image2AsciiArtQuizAction}`
-    |replace=
-        IMAGE_NAME=`${ITEM_NAME}`,
+    acVar=runQuiz
+        ?importPath=
+            `${image2AsciiArtQuizAction}`
+        ?replace=
+            IMAGE_NAME=`${ITEM_NAME}`,
 
 longClick=
-    tsvImport=`${image2AsciiArtAsciiListIndexTsvPath}`
-        ?use='listDir => curAsciiStateListDirPath'
-    |actionImport=
-        `${image2AsciiArtCopyToOtherAction}`
-        |replace=
+    tsvVars='listDir => curAsciiStateListDirPath'
+        ?importPath=`${image2AsciiArtAsciiListIndexTsvPath}`
+    |acVar=runCopyToOtherList
+        ?importPath=
+            `${image2AsciiArtCopyToOtherAction}`
+        ?replace=
             CURRENT_ASCII_DIR_PATH=`${curAsciiStateListDirPath}`,

@@ -15,26 +15,23 @@ name=
     |removeExtend=
     |length=50,
 
-click=
-    ,
+click=,
 
-longClick=
-    func=MENU
-        ?args=
-            menuPath=`${image2AsciiArtAsciiLongPressListIndexMenuPath}`,
+longClick=,
 
 searchBox=
     visible=OFF,
 
 delete=
     withJsAction=`
-        tsvImport="${image2AsciiArtAsciiListIndexTsvPath}"
-            ?use="listDir => asciiDirPath"
+        tsvVars="listDir => asciiDirPath"
+            ?importPath="${image2AsciiArtAsciiListIndexTsvPath}"
         |var=imageDirPath
             ?value="${asciiDirPath}/${imageDirName}"
-        |actionImport=
-            "${image2AsciiArtDeleteWithAction}"
-        |replace=
-            DELETE_DIR_PATH="${imageDirPath}"
-            ?IMAGE_NAME="${ITEM_NAME}"
+        |acVar=runDeleteImage
+            ?importPath=
+                "${image2AsciiArtDeleteWithAction}"
+            ?replace=
+                DELETE_DIR_PATH="${imageDirPath}"
+                &IMAGE_NAME="${ITEM_NAME}"
     `,

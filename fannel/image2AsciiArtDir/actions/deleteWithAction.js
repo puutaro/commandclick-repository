@@ -2,7 +2,8 @@
 
 var=deleteDirPath
     ?value="{{ DELETE_DIR_PATH }}"
-|func=jsFileSystem.removeFile
+|var=runRemoveImageFile
+    ?func=jsFileSystem.removeFile
     ?args=
         path=`${deleteDirPath}/{{ IMAGE_NAME }}`
 ,

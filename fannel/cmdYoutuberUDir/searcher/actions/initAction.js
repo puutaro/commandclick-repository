@@ -8,11 +8,15 @@ var=isInstall
         &confirmTitleAndMsg="Press install button|"
         &installOneList="install\tpuzzle"
         &cautionTitleAndMsg="Caution!|Install by ⚙️ button"
-    ?exitJudge=isInstall
+    |var=runExitJudge
+        ?when=isInstall
+        ?func=exitZero
 
-|func=jsUbuntu.untilSetupLoop
+|var=runUbuntuSetUpLoopAction
+    ?func=jsUbuntu.untilSetupLoop
     ?args=
         launchJsPath=`${cmdYoutuberSearcherInitActionsPath}`
 
-|actionImport=
-    `${cmdYoutuberSearcherInstallActionsPath}`,
+|acVar=runInstall
+    ?importPath=
+        `${cmdYoutuberSearcherInstallActionsPath}`,

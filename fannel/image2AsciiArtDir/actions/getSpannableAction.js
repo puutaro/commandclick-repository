@@ -1,38 +1,25 @@
 // js/action
 
-tsvImport=`${image2AsciiArtAsciiListIndexTsvPath}`
-    ?use="listDir => curAsciiStateListDirPath"
-|var=varAsciiStateListDirPath
-    ?value=`{{ ASCII_STATE_LIST_DIR_PATH:${curAsciiStateListDirPath} }}`
-|var=imageStateListDir
-    ?value=`${varAsciiStateListDirPath}/${imageDirName}`
-|var=downloadImagePath
-    ?func=jsCurl.getImage
-    ?args=
-        url=`${LONG_PRESS_IMAGE_URL}`
-|var=downloadImageName
-    ?func=jsPath.basename
-    ?args=
-        path=NO_QUOTE:downloadImagePath
-|var=destiImagePath
-    ?value=`${imageStateListDir}/${downloadImageName}`
-|func=jsFileSystem.copyFile
-    ?args=
-        srcPath=`NO_QUOTE:downloadImagePath`
-        &destiPath=`${destiImagePath}`
-|func=jsDialog.asciiArtDialog
-    ?args=
-        title="Ascii image"
-        &imagePath=`${destiImagePath}`
-        &asciiArtMapCon=`
-            savePath=${varAsciiStateListDirPath}/${downloadImageName}
-            |hideButtons=cancel
-            `
-|func=jsBroadcast.send
+|acVar=varAsciiStateListDirPathArg
+    ?importPath=
+        `${image2AsciiArtGetSpannableActionLibs}/
+            makeVarAsciiStateListDirPath.js`
+    ?replace=
+        ASCII_STATE_LIST_DIR_PATH=
+            `{{ ASCII_STATE_LIST_DIR_PATH:${curAsciiStateListDirPath} }}`
+|acVar=runGetAscii
+    ?importPath=
+        `${image2AsciiArtGetSpannableActionLibs}/
+            makeAndCopyAscii.js`
+    ?replace=
+        VAR_ASCII_STATE_LIST_DIR_PATH=`${varAsciiStateListDirPathArg}`
+        &LONG_PRESS_IMAGE_URL=`${LONG_PRESS_IMAGE_URL}`
+
+|var=runFinishSync
+    ?func=jsBroadcast.send
     ?args=
         action="com.puutaro.commandclick.edit_frag.update_index_list"
         &broadCastMapStr=
-// |func=jsDialog.webViewDismiss_S
-|func=jsToast.short
+    ?func=jsToast.short
     ?args=
         msg="download ok",

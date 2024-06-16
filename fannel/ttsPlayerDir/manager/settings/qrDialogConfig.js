@@ -10,13 +10,15 @@ logo=
         ?color=lightAo,
 
 click=
-    actionImport=
-        `${cmdTtsPlayerCopyToOtherAction}`
-    |replace=
-        COPY_TSV_PATH_TO_TYPE_CON=`${cmdTtsPlayerLikePlayListPath}`
+    acVar=runCopyToLike
+        ?importPath=
+            `${cmdTtsPlayerCopyToOtherAction}`
+        ?replace=
+            COPY_TSV_PATH_TO_TYPE_CON=`${cmdTtsPlayerLikePlayListPath}`
     |alter=`
         shellIfPath=JUDGE_LIST_DIR
         |ifArgs=
             tsvPath=${cmdTtsPlayerManagerListIndexTsvPath}
             ?tsvValue=${cmdTtsPlayerLikePlayListPath}
-        |actionImport=`,
+            ?alterCon="?when=false"
+            `,

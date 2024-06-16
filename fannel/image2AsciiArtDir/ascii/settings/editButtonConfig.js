@@ -5,6 +5,7 @@ disable=OFF,
     color=darkGreen,
 
 click=
-    actionImport=`${image2AsciiArtChangeStateAction}`
-    |replace=
-        STATE=`${TABLE}`,
+    acVar=runToTableState
+        ?importPath=`${image2AsciiArtChangeStateAction}`
+        ?replace=
+            STATE=`${TABLE}`,

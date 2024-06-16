@@ -169,9 +169,14 @@ image2AsciiArt.js
 image2AsciiArtDir/README.md
 image2AsciiArtDir/actions/changeStateAction.js
 image2AsciiArtDir/actions/copyToOther.js
+image2AsciiArtDir/actions/copyToOtherLibs/copyImage.js
+image2AsciiArtDir/actions/copyToOtherLibs/makeCopyDestiAsciiDirNameListCon.js
 image2AsciiArtDir/actions/deleteWithAction.js
 image2AsciiArtDir/actions/getSpannableAction.js
+image2AsciiArtDir/actions/getSpannableActionLibs/makeAndCopyAscii.js
+image2AsciiArtDir/actions/getSpannableActionLibs/makeVarAsciiStateListDirPath.js
 image2AsciiArtDir/actions/longPressAction.js
+image2AsciiArtDir/actions/settings/actionRepVars.js
 image2AsciiArtDir/actions/spannableWebViewAction.js
 image2AsciiArtDir/ascii/actions/quizAction.js
 image2AsciiArtDir/ascii/ascii.js
@@ -183,7 +188,6 @@ image2AsciiArtDir/ascii/settings/playButtonConfig.js
 image2AsciiArtDir/ascii/settings/qrDialogConfig.js
 image2AsciiArtDir/ascii/settings/setVariableTypes.js
 image2AsciiArtDir/ascii/settings/settingButtonConfig.js
-image2AsciiArtDir/ascii/settings/settingMenuConfig.js
 image2AsciiArtDir/config/config.js
 image2AsciiArtDir/config/settings/playButtonConfig.js
 image2AsciiArtDir/config/settings/setVariableTypes.js
@@ -209,6 +213,7 @@ image2AsciiArtDir/settings/fannelStateRootTable.tsv
 image2AsciiArtDir/settings/fannelStateStock.tsv
 image2AsciiArtDir/settings/settingButtonConfig.js
 image2AsciiArtDir/settings/settingLongClickMenuConfig.js
+image2AsciiArtDir/settings/settingMenuConfig.js
 image2AsciiArtDir/table/settings/iconNameColorConfig.tsv
 image2AsciiArtDir/table/settings/importDisableValList.js
 image2AsciiArtDir/table/settings/initList.tsv

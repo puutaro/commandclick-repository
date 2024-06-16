@@ -14,7 +14,8 @@ name=Rename
             ${cmdTtsPlayerPreviousTtsPlayListPath}
             &${cmdTtsPlayerLikePlayListPath}
         "
-    |disable=ON`
+        ?alterCon="|disable=ON"
+    `
 |func=RENAME
 ,
 
@@ -31,9 +32,10 @@ name=Copy
         ?tsvValue="
             ${cmdTtsPlayerPreviousTtsPlayListPath}
             &${cmdTtsPlayerLikePlayListPath}"
-    |disable=ON`
-|tsvImport=`${cmdTtsPlayerManagerListIndexTsvPath}`
-    ?use="listDir"
+        ?alterCon="|disable=ON"
+    `
+|tsvVars="listDir"
+    ?importPath=`${cmdTtsPlayerManagerListIndexTsvPath}`
 |var=curPlayListName
     ?func=jsPath.basename
     ?args=
@@ -49,13 +51,18 @@ name=Copy
                 ${cmdTtsPlayerPreviousTtsPlayListName}
                 ?${cmdTtsPlayerLikePlayListName}
                 ?${curPlayListName}
-                `
-    ?exitJudge=`!fileList`
-    ?exitToast=`No exist copy list`
-|actionImport=
-    `${cmdTtsPlayerCopyToOtherAction}`
-|replace=
-    COPY_TSV_PATH_TO_TYPE_CON=`${fileList}`,
+            `
+    |var=runExitJudge
+        ?when="!fileList"
+        ?func=jsToast.short
+        ?args=
+            msg=`No exist copy list`
+        ?func=exitZero
+|acVar=runCopyToOtherList
+    ?importPath=
+        `${cmdTtsPlayerCopyToOtherAction}`
+    ?replace=
+        COPY_TSV_PATH_TO_TYPE_CON=`${fileList}`,
 
 
 name=Play
@@ -68,11 +75,12 @@ name=Play
     ?func=jsFileSystem.read
     ?args=
         path="${cmdTtsPlayerPlayInfoPath}"
-|actionImport=
-    `${cmdTtsPlayerTtsAction}`
-|replace=
-    TEMP_PLAY_CON=
-        `${ITEM_NAME}`
-    ?EXTRA_CONTENT=
-        `${palyInfo} ${ttsFileName}`
+|acVar=runCurRecordPlay
+    ?importPath=
+        `${cmdTtsPlayerTtsAction}`
+    ?replace=
+        TEMP_PLAY_CON=
+            `${ITEM_NAME}`
+        &EXTRA_CONTENT=
+            `${palyInfo} ${ttsFileName}`
 ,

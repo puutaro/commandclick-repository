@@ -17,8 +17,9 @@ extraButton:
          onUnderLine=OFF
             ?height=`${lineHeight}`
         |${BTN_CMD}= jsac `
-                actionImport=
-                    "${image2AsciiArtSpannableWebViewAction}"
+                acVar=runGetAscii
+                    ?importPath=
+                        "${image2AsciiArtSpannableWebViewAction}"
                 ,
             `
             ?${BTN_LABEL}="＋"
@@ -28,23 +29,25 @@ extraButton:
                     ?ifArgs=
                         tsvPath=${image2AsciiArtAsciiListIndexTsvPath}
                         &tsvValue=${image2AsciiArtGalleryLikeDirPath}
-                    ?onPut=OFF`
+                        &alterCon="?onPut=OFF"
+                    `
         |${BTN_CMD}= jsac `
-                tsvImport="${image2AsciiArtAsciiListIndexTsvPath}"
-                    ?use="listDir => asciiDirPath"
+                tsvVars="listDir => asciiDirPath"
+                    ?importPath="${image2AsciiArtAsciiListIndexTsvPath}"
                 |var=asciiDirName
                     ?func=jsPath.basename
                     ?args=
                         path=${asciiDirPath}
-                |actionImport=
-                    "${image2AsciiArtChangeStateAction}"
-                |replace=
-                    ON_LIST_DIR_UPDATER=ON
-                    ?TSV_PATH="${image2AsciiArtImageListIndexTsvPath}"
-                    ?LIST_DIR_OR_TSV_PATH="${asciiDirPath}/image"
-                    ?ON_INFO_SAVE=ON
-                    ?EXTRA_SAVE_INFO=(${asciiDirName})
-                    ?STATE="${IMAGE}"
+                |acVar=runToImageState
+                    ?importPath=
+                        "${image2AsciiArtChangeStateAction}"
+                    ?replace=
+                        ON_LIST_DIR_UPDATER=ON
+                        &TSV_PATH="${image2AsciiArtImageListIndexTsvPath}"
+                        &LIST_DIR_OR_TSV_PATH="${asciiDirPath}/image"
+                        &ON_INFO_SAVE=ON
+                        &EXTRA_SAVE_INFO=(${asciiDirName})
+                        &STATE="${IMAGE}"
                 ,`
             ?${BTN_LABEL}="➡🎞️"
             ?${BTN_TEXT_SIZE}=`${textSize}`

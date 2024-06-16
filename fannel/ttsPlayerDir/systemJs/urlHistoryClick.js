@@ -3,12 +3,17 @@
 var=tempPlayCon
     ?func=jsTsv.getSr
     ?args=tsvPath=`${cmdTtsPlayerPlayListPath}`
-    ?exitJudge="!tempPlayCon"
-    ?exitToast="contents not exist"
+    |var=runExitJudge
+        ?when="!tempPlayCon"
+        ?func=jsToast.short
+        ?args=
+            msg="Not exist contents"
+        ?func=exitZero
 |var=extaraContent
     ?func=jsFileSystem.read
     ?args=path=`${cmdTtsPlayerPlayInfoPath}`
-|actionImport= `${cmdTtsPlayerTtsAction}`
-|replace=
-    TEMP_PLAY_CON= `${tempPlayCon}`
-    ?EXTRA_CONTENT=`${extaraContent}`,
+|acVar=runPlay
+    ?importPath=`${cmdTtsPlayerTtsAction}`
+    ?replace=
+        TEMP_PLAY_CON= `${tempPlayCon}`
+        &EXTRA_CONTENT=`${extaraContent}`,

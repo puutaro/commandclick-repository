@@ -14,7 +14,8 @@ name=Play
 |var=tempPlayCon
     ?func=jsTsv.getSr
     ?args=tsvPath=`${cmdYoutuberPlayListTableDirPath}/${ITEM_NAME}`
-|actionImport=`${cmdYoutuberMusicAction}`
-|replace=
-    TEMP_PLAY_CON=`${tempPlayCon}`
-    ?EXTRA_CONTENT=`${itemName}`,
+|acVar=runCurRecPlay
+    ?importPath=`${cmdYoutuberMusicAction}`
+    ?replace=
+        TEMP_PLAY_CON=`${tempPlayCon}`
+        &EXTRA_CONTENT=`${itemName}`,
