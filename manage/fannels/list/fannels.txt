@@ -53,6 +53,8 @@ cmdYoutuberU.js
 cmdYoutuberUDir/README.md
 cmdYoutuberUDir/actions/changeStateAction.js
 cmdYoutuberUDir/actions/copyToOther.js
+cmdYoutuberUDir/actions/initAction.js
+cmdYoutuberUDir/actions/installAction.js
 cmdYoutuberUDir/actions/longPress.js
 cmdYoutuberUDir/actions/musicAction.js
 cmdYoutuberUDir/actions/normalPlay.js
@@ -71,8 +73,6 @@ cmdYoutuberUDir/manager/settings/qrDialogConfig.js
 cmdYoutuberUDir/manager/settings/setVariableTypes.js
 cmdYoutuberUDir/manager/settings/settingButtonConfig.js
 cmdYoutuberUDir/manager/settings/settingMenuConfig.js
-cmdYoutuberUDir/searcher/actions/initAction.js
-cmdYoutuberUDir/searcher/actions/installAction.js
 cmdYoutuberUDir/searcher/searcher.js
 cmdYoutuberUDir/searcher/settings/playButtonConfig.js
 cmdYoutuberUDir/searcher/settings/setVariableTypes.js

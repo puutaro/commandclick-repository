@@ -10,5 +10,5 @@ playButtonConfig=`file://${cmdYoutuberSearcherPlayButtonConfigPath}`
 settingButtonConfig=`file://${cmdYoutuberSearcherSettingButtonConfigPath}`
 listIndexConfig=`file://${cmdYoutuberSearcherListIndexConfigPath}`
 onAutoExec="ON"
-autoExecPath=`file://${cmdYoutuberSearcherInitActionsPath}`
+autoExecPath=`file://${cmdYoutuberInitActionsPath}`
 /// SETTING_SECTION_END

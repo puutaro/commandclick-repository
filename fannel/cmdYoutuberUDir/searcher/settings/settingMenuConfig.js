@@ -3,7 +3,7 @@ name="Install"
 |icon=puzzle
 |acVar=runInstall
     ?importPath=
-        `${cmdYoutuberSearcherInstallActionsPath}`,
+        `${cmdYoutuberInstallActionsPath}`,
 
 name="Setting mode"
 |icon=setting

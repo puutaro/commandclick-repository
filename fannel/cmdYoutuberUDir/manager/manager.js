@@ -13,4 +13,6 @@ playButtonConfig=`file://${cmdYoutuberManagerPlayButtonConfigPath}`
 editButtonConfig=`file://${cmdYoutuberManagerEditButtonConfigPath}`
 settingButtonConfig=`file://${cmdYoutuberManagerSettingButtonConfigPath}`
 listIndexConfig=`file://${cmdYoutuberManagerListIndexConfigPath}`
+onAutoExec="ON"
+autoExecPath=`file://${cmdYoutuberInitActionsPath}`
 /// SETTING_SECTION_END

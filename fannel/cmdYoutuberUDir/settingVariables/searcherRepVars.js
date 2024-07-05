@@ -23,12 +23,6 @@ cmdYoutuberSearcherSettingButtonConfigPath=
 cmdYoutuberSearcherSettingMenuPath=
     `${cmdYoutuberSearcherSettingsDirPath}/settingMenuConfig.js`,
 
-// actions
-cmdYoutuberSearcherInitActionsPath=
-    `${cmdYoutuberSearcherActionsDirPath}/initAction.js`,
-cmdYoutuberSearcherInstallActionsPath=
-    `${cmdYoutuberSearcherActionsDirPath}/installAction.js`,
-
 // search word
 cmdYoutuberSearcherPastSearchInfoPath=
     `${cmdYoutuberTempDirPath}/pastSearchInfo.txt`,

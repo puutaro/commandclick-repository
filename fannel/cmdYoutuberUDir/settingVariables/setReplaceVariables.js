@@ -85,6 +85,10 @@ cmdYoutuberCopyToOtherAction=
 	`${cmdYoutuberActionsDirPath}/copyToOther.js`,
 cmdYoutuberLongPressAction=
 	`${cmdYoutuberActionsDirPath}/longPress.js`,
+cmdYoutuberInitActionsPath=
+	`${cmdYoutuberActionsDirPath}/initAction.js`,
+cmdYoutuberInstallActionsPath=
+	`${cmdYoutuberActionsDirPath}/installAction.js`,
 
 // list path
 cmdYoutuberPlayInfoPath=
