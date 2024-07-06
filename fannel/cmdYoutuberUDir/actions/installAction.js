@@ -1,1 +1,11 @@
-git add   cmdYoutuberUDir/searcher/actions/installAction.js -
+// js/action
+
+var=runUbuntuBoot
+    ?func=jsUbuntu.boot
+|var=runInstallRequirePackage
+    ?func=jsUbuntu.execScriptByBackground
+    ?args=
+        shellPath=`${cmdYoutuberUbuntuInstallShellPath}`
+        &argsTabSepaStr=`searchWord=`
+        &monitorNum=2
+    ,
