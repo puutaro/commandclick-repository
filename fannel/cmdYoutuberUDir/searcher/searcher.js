@@ -7,7 +7,6 @@ hideSettingVariables="table,playBtns"
 hideSettingVariables=`file://${configHidValPath}`
 setVariableTypes=`file://${setVariableTypesForSearcher}`
 playButtonConfig=`file://${cmdYoutuberSearcherPlayButtonConfigPath}`
-settingButtonConfig=`file://${cmdYoutuberSearcherSettingButtonConfigPath}`
 listIndexConfig=`file://${cmdYoutuberSearcherListIndexConfigPath}`
 onAutoExec="ON"
 autoExecPath=`file://${cmdYoutuberInitActionsPath}`

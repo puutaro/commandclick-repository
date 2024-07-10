@@ -86,6 +86,8 @@ cmdMusicPlayerTempFilePath=
 	`${cmdMusicPlayerTempDirPath}/tempPlay.tsv`,
 
 // common setting
+cmdMusicPlayerSettingMenuConfigPath=
+	`${cmdMusicPlayerSettingsDirPath}/settingMenuConfig.js`,
 cmdMusicPlayerSettingButtonConfigPath=
 	`${cmdMusicPlayerSettingsDirPath}/settingButtonConfig.js`,
 cmdMusicPlayerSettingLongClickMenuConfigPath=

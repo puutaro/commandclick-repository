@@ -71,6 +71,8 @@ FANNEL_PATH=${0},
 // common setting
 cmdYoutuberSettingButtonConfigPath=
 	`${cmdYoutuberSettingsDirPath}/settingButtonConfig.js`,
+cmdYoutuberSettingMenuConfigPath=
+	`${cmdYoutuberSettingsDirPath}/settingMenuConfig.js`,
 cmdYoutuberSettingLongClickMenuConfigPath=
 	`${cmdYoutuberSettingsDirPath}/settingLongClickMenuConfig.js`,
 

@@ -23,6 +23,8 @@ cmdTtsPlayerTableListIndexConfigPath=
     `${cmdTtsPlayerTableSettingsDirPath}/listIndexConfig.js`,
 cmdTtsPlayerTableSettingBtnConfigPath=
     `${cmdTtsPlayerTableSettingsDirPath}/settingButtonConfig.js`,
+cmdTtsPlayerTableSettingMenuConfigPath=
+	`${cmdTtsPlayerTableSettingsDirPath}/settingMenuConfig.js`,
 cmdTtsPlayerTableInitTsvConPath=
     `${cmdTtsPlayerTableSettingsDirPath}/initList.tsv`,
 cmdTtsPlayerTableLongPressListIndexMenuPath=

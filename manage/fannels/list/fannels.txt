@@ -28,7 +28,6 @@ cmdMusicPlayerUDir/manager/settings/playButtonConfig.js
 cmdMusicPlayerUDir/manager/settings/qrDialogConfig.js
 cmdMusicPlayerUDir/manager/settings/setVariableTypes.js
 cmdMusicPlayerUDir/manager/settings/settingButtonConfig.js
-cmdMusicPlayerUDir/manager/settings/settingMenuConfig.js
 cmdMusicPlayerUDir/settingVariables/configRepVars.js
 cmdMusicPlayerUDir/settingVariables/hideConfigVal.js
 cmdMusicPlayerUDir/settingVariables/hideSettingVariables.js
@@ -40,6 +39,7 @@ cmdMusicPlayerUDir/settings/fannelStateRootTable.tsv
 cmdMusicPlayerUDir/settings/fannelStateStock.tsv
 cmdMusicPlayerUDir/settings/settingButtonConfig.js
 cmdMusicPlayerUDir/settings/settingLongClickMenuConfig.js
+cmdMusicPlayerUDir/settings/settingMenuConfig.js
 cmdMusicPlayerUDir/systemJs/urlHistoryClick.js
 cmdMusicPlayerUDir/table/settings/iconNameColorConfig.tsv
 cmdMusicPlayerUDir/table/settings/initList.tsv
@@ -72,12 +72,9 @@ cmdYoutuberUDir/manager/settings/playButtonConfig.js
 cmdYoutuberUDir/manager/settings/qrDialogConfig.js
 cmdYoutuberUDir/manager/settings/setVariableTypes.js
 cmdYoutuberUDir/manager/settings/settingButtonConfig.js
-cmdYoutuberUDir/manager/settings/settingMenuConfig.js
 cmdYoutuberUDir/searcher/searcher.js
 cmdYoutuberUDir/searcher/settings/playButtonConfig.js
 cmdYoutuberUDir/searcher/settings/setVariableTypes.js
-cmdYoutuberUDir/searcher/settings/settingButtonConfig.js
-cmdYoutuberUDir/searcher/settings/settingMenuConfig.js
 cmdYoutuberUDir/settingVariables/configRepVars.js
 cmdYoutuberUDir/settingVariables/hideConfigVal.js
 cmdYoutuberUDir/settingVariables/hideSettingVariables.js
@@ -91,6 +88,7 @@ cmdYoutuberUDir/settings/fannelStateRootTable.tsv
 cmdYoutuberUDir/settings/fannelStateStock.tsv
 cmdYoutuberUDir/settings/settingButtonConfig.js
 cmdYoutuberUDir/settings/settingLongClickMenuConfig.js
+cmdYoutuberUDir/settings/settingMenuConfig.js
 cmdYoutuberUDir/systemJs/urlHistoryClick.js
 cmdYoutuberUDir/table/settings/iconNameColorConfig.tsv
 cmdYoutuberUDir/table/settings/initList.tsv
@@ -200,7 +198,6 @@ image2AsciiArtDir/image/settings/playButtonConfig.js
 image2AsciiArtDir/image/settings/qrDialogConfig.js
 image2AsciiArtDir/image/settings/setVariableTypes.js
 image2AsciiArtDir/image/settings/settingButtonConfig.js
-image2AsciiArtDir/image/settings/settingMenuConfig.js
 image2AsciiArtDir/settingVariables/asciiRepVars.js
 image2AsciiArtDir/settingVariables/configRepVars.js
 image2AsciiArtDir/settingVariables/hideConfigVal.js
@@ -446,6 +443,7 @@ ttsPlayerDir/table/settings/longClickListIndexMenu.js
 ttsPlayerDir/table/settings/qrDialogConfig.js
 ttsPlayerDir/table/settings/setVariableTypes.js
 ttsPlayerDir/table/settings/settingButtonConfig.js
+ttsPlayerDir/table/settings/settingMenuConfig.js
 ttsPlayerDir/table/table.js
 txtPdfViewer.js
 txtPdfViewerDir/README.md

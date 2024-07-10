@@ -23,8 +23,6 @@ cmdYoutuberManagerEditButtonConfigPath=
     `${cmdYoutuberManagerSettingsDirPath}/editButtonConfig.js`,
 cmdYoutuberManagerSettingButtonConfigPath=
     `${cmdYoutuberManagerSettingsDirPath}/settingButtonConfig.js`,
-cmdYoutuberManagerSettingMenuPath=
-    `${cmdYoutuberManagerSettingsDirPath}/settingMenuConfig.js`,
 cmdYoutuberManagerLongPressListIndexMenuPath=
     `${cmdYoutuberManagerSettingsDirPath}/longClickListIndexMenu.js`,
 cmdYoutuberManagerIconNameConfigPath=

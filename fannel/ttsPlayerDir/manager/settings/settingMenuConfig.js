@@ -15,6 +15,11 @@ name="Set gmail address"
     ?importPath=
         `${cmdTtsPlayerManagerSetGmailAdActionPath}`,
 
+name="Shortuct"
+|icon=shortcut
+|func=SHORTCUT
+,
+
 name="Setting tts"
 |icon=setting
 |acVar=runToConfigState

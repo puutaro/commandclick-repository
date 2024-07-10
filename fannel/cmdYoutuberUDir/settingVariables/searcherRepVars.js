@@ -20,8 +20,6 @@ cmdYoutuberSearcherPlayButtonConfigPath=
     `${cmdYoutuberSearcherSettingsDirPath}/playButtonConfig.js`,
 cmdYoutuberSearcherSettingButtonConfigPath=
     `${cmdYoutuberSearcherSettingsDirPath}/settingButtonConfig.js`,
-cmdYoutuberSearcherSettingMenuPath=
-    `${cmdYoutuberSearcherSettingsDirPath}/settingMenuConfig.js`,
 
 // search word
 cmdYoutuberSearcherPastSearchInfoPath=

@@ -15,15 +15,17 @@ install_pkg(){
   sudo pip3 install -U \
     yt-dlp
 }
+readonly MONITOR_PATH="${MONITOR_DIR_PATH}/term_1"
 install_pkg &
-install_pid=$!
+readonly install_pid=$!
 
 wqnoti \
 	-p "${install_pid}" \
 	-cn "${CHANNEL_NUM}" \
 	-i "high" \
 	--title "Install.." \
+  --monitor-path "${MONITOR_PATH}" \
 	--cancel-shell-path "${cmdYoutuberUbuntuStopAllProcessShellPath}" \
 || e=$?
 
-echo "ok" > "${cmdYoutuberInstallStampFilePath}"
+echo "Install ok"

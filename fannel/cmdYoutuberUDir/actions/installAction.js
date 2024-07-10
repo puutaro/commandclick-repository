@@ -6,6 +6,6 @@ var=runUbuntuBoot
     ?func=jsUbuntu.execScriptByBackground
     ?args=
         shellPath=`${cmdYoutuberUbuntuInstallShellPath}`
-        &argsTabSepaStr=`searchWord=`
-        &monitorNum=2
+        &argsTabSepaStr=``
+        &monitorNum=1
     ,
