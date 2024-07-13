@@ -25,6 +25,7 @@ textSize=30,
 // setting
 CHANNEL_NUM=21,
 URL_HISTORY_CLICK_MODE="urlHistoryClick",
+INSTALL_STAMP_CON="ok",
 
 // dir path
 currentAppDirPath=

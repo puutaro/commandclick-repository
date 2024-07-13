@@ -28,4 +28,5 @@ wqnoti \
 	--cancel-shell-path "${cmdYoutuberUbuntuStopAllProcessShellPath}" \
 || e=$?
 
+echo "${INSTALL_STAMP_CON}" > "${cmdYoutuberInstallStampFilePath}"
 echo "Install ok"
