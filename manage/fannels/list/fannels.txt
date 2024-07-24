@@ -341,6 +341,15 @@ powerPokerDir/images/cards/trumpSpade9-150x150.png
 pulseReceiver.js
 qrCreatorDir/README.md
 qrLReader.js
+quickStartShell.js
+quickStartShellDir/README.md
+quickStartShellDir/settingVariables/editButtonConfig.js
+quickStartShellDir/settingVariables/hideSettingVariables.js
+quickStartShellDir/settingVariables/playButtonConfig.js
+quickStartShellDir/settingVariables/setReplaceVariables.js
+quickStartShellDir/settingVariables/settingButtonConfig.js
+quickStartShellDir/shell/execute.sh
+quickStartShellDir/systemJs/onAutoExec.js
 selectMenu.js
 selectMenuDir/README.md
 selectMenuDir/menuList/menu.txt

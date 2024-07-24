@@ -1,0 +1,13 @@
+editExecute,
+onAutoExec,
+onAdBlock,
+onTermBackendWhenStart,
+onTermVisibleWhenKeyboard,
+onTermShortWhenLoad,
+onUrlHistoryRegister,
+defaultMonitorFile,
+terminalFontZoom,
+setReplaceVariables,
+setVariableTypes,
+description,
+
