@@ -13,12 +13,27 @@ Quick start shell @puutaro
 Table of Contents
 -------
 <!-- vim-markdown-toc GFM --> 
+* [Introduce](#introduce)
 * [Installation](#installation)
 * [Screenshots](#screenshots)
 * [Usage](#usage)
 	* [Play Button](#play-button)
 	* [Cancel Button](#cancel-button)
 	* [Edit Button](#edit-button)
+
+
+## Introduce
+---------------------
+
+In `CommandClick`, `Ubuntu` is core feature. So, I want users to get used to the shell first.    
+You can create not only hello world app but also original app by customizing shell script.    
+In other words, you can create original app by simply edit ubuntu shell script.   
+CC's ubuntu has many feature: variables bulk definition framework, notification, send-broadcast, music player, tts player, sd card edit.. etc.
+Otherwise, Ubuntu has great potential.    
+By this fannel (add-on), these wonderful feature trigger by one click. So one click.  
+Please feel free to experience the joy of creating apps using Ubuntu.  
+
+
 
 ## Installation
 ---------------------
@@ -54,7 +69,7 @@ And **create your original app**
 
 - Also, If you edit bellow path, the same thing happens.  
 
-`storage/emulated/0/Documents/cmdclick/AppDir/default/quickStartShellDir/shell/execute.sh`
+`/storage/emulated/0/Documents/cmdclick/AppDir/default/quickStartShellDir/shell/execute.sh`
 
 If you want to know more about ubuntu, visit bellow page
 
