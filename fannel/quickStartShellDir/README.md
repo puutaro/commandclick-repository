@@ -28,9 +28,9 @@ Table of Contents
 In `CommandClick`, `Ubuntu` is core feature. So, I want users to get used to the shell first.    
 You can create not only hello world app but also original app by customizing shell script.    
 In other words, you can create original app by simply edit ubuntu shell script.   
-CC's ubuntu has many feature: variables bulk definition framework, notification, send-broadcast, music player, tts player, sd card edit.. etc.
+CC's ubuntu has many feature: [variables bulk definition framework](https://github.com/puutaro/CommandClick/blob/master/md/developer/custom_shell_commands/repbash.md), [notification](https://github.com/puutaro/CommandClick/blob/master/md/developer/custom_shell_commands/noti.md), [send-broadcast](https://github.com/puutaro/CommandClick/blob/master/md/developer/custom_shell_commands/send-broadcast.md), [music player](https://github.com/puutaro/CommandClick/blob/master/md/developer/custom_shell_commands/mplay.md), [tts player](https://github.com/puutaro/CommandClick/blob/master/md/developer/custom_shell_commands/tspeech.md), [sd card edit](https://github.com/puutaro/CommandClick/blob/master/md/developer/custom_shell_commands/cp2sd.md).. etc.
 Otherwise, Ubuntu has great potential.    
-By this fannel (add-on), these wonderful feature trigger by one click. So one click.  
+By this fannel (add-on), these wonderful feature is triggered by one click. So one click.  
 Please feel free to experience the joy of creating apps using Ubuntu.  
 
 
