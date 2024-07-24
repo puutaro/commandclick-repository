@@ -1,7 +1,7 @@
 
 
 /// LABELING_SECTION_START
-// https://github.com/puutaro/sshTerminal
+// https://github.com/puutaro/quickStartShell
 /// LABELING_SECTION_END
 
 
@@ -14,7 +14,7 @@ onTermVisibleWhenKeyboard="OFF"
 onTermShortWhenLoad="OFF"
 onUrlHistoryRegister="OFF"
 defaultMonitorFile="term_1"
-terminalFontZoom="100"
+terminalFontZoom="125"
 playButtonConfig=`file://${quickStartShellPlayButtonConfigPath}`
 editButtonConfig=`file://${quickStartShellEditButtonConfigPath}`
 settingButtonConfig=`file://${quickStartShellSettingButtonConfigPath}`
