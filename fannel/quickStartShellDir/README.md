@@ -1,6 +1,6 @@
 
 
-<div><img src="https://github.com/user-attachments/assets/1863421b-df25-4044-bdae-8c41a28f2fe3" width="300">  </div>
+<div><img src="https://github.com/user-attachments/assets/14d1d57a-ffb8-4365-a672-fe321f209fee" width="300">  </div>
   
 <div><img src="https://github.com/puutaro/selectTyper/assets/55217593/555e8f5f-656a-4faf-bb76-f663c01cfe47" width="300"></div> 
 
