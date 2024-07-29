@@ -40,8 +40,18 @@ extraButton:
                     &alterCon="?onPut=OFF"
             `
          |${BTN_CMD}= jsac `
-                |tsvVars="gmailAd"
-                    ?importPath=${cmdTtsPlayerManagerGmailAdTsvPath}
+                |var=gmailAd
+                    ?func=jsTsv.getKeyValue
+                    ?args=
+                        &path="${cmdTtsPlayerManagerGmailAdTsvPath}"
+                        &key=gmailAd
+                |var=runBlankAlert
+                    ?when="!gmailAd"
+                    ?func=jsDialog.dAlert
+                    ?args=
+                        &title="⚠️ Set gmailAd"
+                        &msg="⚙️ -> Set gmail address"
+                    ?func=exitZero
                 |var=runGmailAd
                     ?func=jsAddGmailCon.add
                     ?args=
