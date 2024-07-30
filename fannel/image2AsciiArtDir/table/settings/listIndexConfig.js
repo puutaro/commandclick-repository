@@ -7,8 +7,6 @@ list=
     |compPath=`${image2AsciiArtTableInitTsvConPath}`
     ,
 
-// name=,
-
 click=
     enableUpdate=ON
     |acVar=runToAsciiState

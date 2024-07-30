@@ -25,7 +25,7 @@ extraButton:
             ?${BTN_LABEL}="＋"
             ?${BTN_TEXT_SIZE}=`${textSize}`
             ?${BTN_BORDER}=OFF
-            ?alter= `shellIfPath=JUDGE_LIST_DIR
+            ?alter=`shellIfPath=JUDGE_LIST_DIR
                     ?ifArgs=
                         tsvPath=${image2AsciiArtAsciiListIndexTsvPath}
                         &tsvValue=${image2AsciiArtGalleryLikeDirPath}

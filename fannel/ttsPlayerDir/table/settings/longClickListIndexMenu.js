@@ -4,6 +4,11 @@ name=Delete
 |func=SIMPLE_DELETE
 ,
 
+name=Rename
+|icon=edit
+|func=RENAME
+,
+
 name=Play
 |icon=play
 |var=itemName
