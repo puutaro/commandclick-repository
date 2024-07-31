@@ -5,6 +5,7 @@ jsimport "${selectTyperSaveRecentUrlToHistoryPath}";
 saveRecentUrlToHistory();
 jsIntent.launchShortcut(
 	"${currentAppDirPath}",
-	"${fannelName}"
+	"${fannelName}",
+	"",
 );
 
