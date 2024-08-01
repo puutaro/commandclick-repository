@@ -7,8 +7,8 @@ exec repbash "${0}" \
 
 e=""
 toast -l "Launch filebrowser"
-readonly MONITOR_FILE_PATH="${MONITOR_DIR_PATH}/term_1"
-readonly ERROR_LOG_FILE_PATH="${MONITOR_DIR_PATH}/term_2"
+readonly MONITOR_FILE_PATH="${MONITOR_DIR_PATH}/monitor_1"
+readonly ERROR_LOG_FILE_PATH="${MONITOR_DIR_PATH}/monitor_2"
 
 case "${URL_DIR_PATH}" in
 	""|"-") LAUNCH_FILE_URL="http://${IPV4_ADDRESS}:${PORT_NUM}/";;

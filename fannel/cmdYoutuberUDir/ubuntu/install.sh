@@ -15,7 +15,7 @@ install_pkg(){
   sudo pip3 install -U \
     yt-dlp
 }
-readonly MONITOR_PATH="${MONITOR_DIR_PATH}/term_1"
+readonly MONITOR_PATH="${MONITOR_DIR_PATH}/monitor_1"
 install_pkg &
 readonly install_pid=$!
 

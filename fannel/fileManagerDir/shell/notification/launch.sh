@@ -4,7 +4,7 @@
 exec repbash "${0}" \
   -t "\${FILE_MANAGE_ARGS_TSV_PATH}"
 
-readonly MONITOR_FILE_PATH="${MONITOR_DIR_PATH}/term_1"
+readonly MONITOR_FILE_PATH="${MONITOR_DIR_PATH}/monitor_1"
 
 readonly is_filebrowser=$(\
 	ps aux \

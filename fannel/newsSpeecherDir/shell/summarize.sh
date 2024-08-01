@@ -6,8 +6,8 @@ set -eu
 exec repbash "${0}" \
   -t '${NEWS_SPEECHER_ARGS_TSV_PATH}'
 e=""
-readonly MONITOR_FILE_PATH="${MONITOR_DIR_PATH}/term_1"
-readonly ERROR_LOG_FILE_PATH="${MONITOR_DIR_PATH}/term_2"
+readonly MONITOR_FILE_PATH="${MONITOR_DIR_PATH}/monitor_1"
+readonly ERROR_LOG_FILE_PATH="${MONITOR_DIR_PATH}/monitor_2"
 
 before_summary(){
 	case "${ON_BEFORE_SUMMARY}" in

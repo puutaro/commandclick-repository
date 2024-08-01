@@ -9,7 +9,7 @@ exec repbash "${0}" \
 readonly NEWS_SPEECHER_DIR_NAME="$(basename "${NEWS_SPEECHER_DIR_PATH}")"
 readonly NEWS_SPEECHER_RAW_NAME="${NEWS_SPEECHER_DIR_NAME%Dir}"
 
-readonly MONITOR_FILE_PATH="${MONITOR_DIR_PATH}/term_1"
+readonly MONITOR_FILE_PATH="${MONITOR_DIR_PATH}/monitor_1"
 readonly SCROLL_MANAGE_ACTION="com.puutaro.commandclick.url.monitor_manager"
 readonly IS_MONITOR_SCROLL_SCHEMA="is_monitor_scroll"
 readonly IS_MONITOR_UPDATE_SCHEMA="is_monitor_update"
