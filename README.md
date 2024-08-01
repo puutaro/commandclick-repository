@@ -63,6 +63,7 @@ Also you can search by [fannelStore](https://github.com/puutaro/fannelStore) mor
 ```js.js
 onGit:prefix=${your git repo url};name=${fannel name}
 ```
+-> [detail GIT CLONE2](https://github.com/puutaro/CommandClick/blob/master/md/developer/qrcode/qrcode.md)
 
 3. Paste above qr image your README.md and your repo [sorcial preview](https://docs.github.com/en/repositories/managing-your-repositorys-settings-and-features/customizing-your-repository/customizing-your-repositorys-social-media-preview)
 4. Put `fannel` tag  to your fannel repo
