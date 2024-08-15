@@ -75,9 +75,9 @@ cmdYoutuberUDir/manager/settings/settingButtonConfig.js
 cmdYoutuberUDir/searcher/searcher.js
 cmdYoutuberUDir/searcher/settings/playButtonConfig.js
 cmdYoutuberUDir/searcher/settings/setVariableTypes.js
-cmdYoutuberUDir/settingImages/capture/partPng/1_322275805-101da895-a578-4667-b8e2-7728bbd9e568.png
-cmdYoutuberUDir/settingImages/capture/partPng/2_322276879-05c7ca2c-836c-45c7-9da9-86732c842190.png
-cmdYoutuberUDir/settingImages/capture/partPng/3_322277081-cd88506d-f9f3-44b1-987c-0acbb74744fb.png
+cmdYoutuberUDir/settingImages/capture/partPng/1_Screenshot_20240815-211120.png
+cmdYoutuberUDir/settingImages/capture/partPng/2_322275805-101da895-a578-4667-b8e2-7728bbd9e568.png
+cmdYoutuberUDir/settingImages/capture/partPng/3_322276879-05c7ca2c-836c-45c7-9da9-86732c842190.png
 cmdYoutuberUDir/settingVariables/configRepVars.js
 cmdYoutuberUDir/settingVariables/hideConfigVal.js
 cmdYoutuberUDir/settingVariables/hideSettingVariables.js
