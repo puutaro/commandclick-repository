@@ -2,6 +2,9 @@ askGpt35.js
 clipFormatMaker.js
 clipFormatMakerDir/README.md
 clipFormatMakerDir/clipFormatMaker.html
+clipFormatMakerDir/settingImages/capture/partPng/1_Screenshot_20240815_221416_CommandClick.jpg
+clipFormatMakerDir/settingImages/capture/partPng/2_Screenshot_20240815_221609_CommandClick.jpg
+clipFormatMakerDir/settingImages/capture/partPng/3_Screenshot_20240815_221650_CommandClick.jpg
 clipFormatMakerDir/settingVariables/hideSettingVariables.js
 cmdBookmaker.js
 cmdGpt35.js
