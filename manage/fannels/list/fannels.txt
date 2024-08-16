@@ -2,9 +2,9 @@ askGpt35.js
 clipFormatMaker.js
 clipFormatMakerDir/README.md
 clipFormatMakerDir/clipFormatMaker.html
-clipFormatMakerDir/settingImages/capture/partPng/1_Screenshot_20240815_221416_CommandClick.jpg
-clipFormatMakerDir/settingImages/capture/partPng/2_Screenshot_20240815_221609_CommandClick.jpg
-clipFormatMakerDir/settingImages/capture/partPng/3_Screenshot_20240815_221650_CommandClick.jpg
+clipFormatMakerDir/settingImages/capture/partPng/1_Screenshot_20240815_221416_CommandClick_2483.jpg
+clipFormatMakerDir/settingImages/capture/partPng/2_Screenshot_20240815_221609_CommandClick_2483.jpg
+clipFormatMakerDir/settingImages/capture/partPng/3_Screenshot_20240815_221650_CommandClick_2483.jpg
 clipFormatMakerDir/settingVariables/hideSettingVariables.js
 cmdBookmaker.js
 cmdGpt35.js
@@ -31,6 +31,9 @@ cmdMusicPlayerUDir/manager/settings/playButtonConfig.js
 cmdMusicPlayerUDir/manager/settings/qrDialogConfig.js
 cmdMusicPlayerUDir/manager/settings/setVariableTypes.js
 cmdMusicPlayerUDir/manager/settings/settingButtonConfig.js
+cmdMusicPlayerUDir/settingImages/capture/partPng/1_Screenshot_20240816_131841_CommandClick.jpg
+cmdMusicPlayerUDir/settingImages/capture/partPng/2_Screenshot_20240816_131913_CommandClick.jpg
+cmdMusicPlayerUDir/settingImages/capture/partPng/3_Screenshot_20240816_132007_CommandClick.jpg
 cmdMusicPlayerUDir/settingVariables/configRepVars.js
 cmdMusicPlayerUDir/settingVariables/hideConfigVal.js
 cmdMusicPlayerUDir/settingVariables/hideSettingVariables.js
@@ -246,6 +249,9 @@ newsSpeecher.js
 newsSpeecherDir/README.md
 newsSpeecherDir/longPressMenuDir/srcAnchorLongPressMenu.txt
 newsSpeecherDir/longPressMenuDir/srcImageAnchorLongPressMenu.txt
+newsSpeecherDir/settingImages/capture/partPng/1_Screenshot_20240816_185021_CommandClick_1176.jpg
+newsSpeecherDir/settingImages/capture/partPng/2_Screenshot_20240816_184943_CommandClick_1176.jpg
+newsSpeecherDir/settingImages/capture/partPng/3_Screenshot_20240816_185047_CommandClick_1176.jpg
 newsSpeecherDir/settingVariables/hideSettingVariables.js
 newsSpeecherDir/settingVariables/setReplaceVariables.js
 newsSpeecherDir/settingVariables/setVariableTypes.js
@@ -344,6 +350,9 @@ powerPokerDir/images/cards/trumpSpade6-150x150.png
 powerPokerDir/images/cards/trumpSpade7-150x150.png
 powerPokerDir/images/cards/trumpSpade8-150x150.png
 powerPokerDir/images/cards/trumpSpade9-150x150.png
+preferenceDir/settingImages/capture/partPng/1_Screenshot_20240816_110823_CommandClick.jpg
+preferenceDir/settingImages/capture/partPng/2_Screenshot_20240816_110719_CommandClick.jpg
+preferenceDir/settingImages/capture/partPng/3_Screenshot_20240816_110901_CommandClick.jpg
 pulseReceiver.js
 qrCreatorDir/README.md
 qrLReader.js
@@ -416,6 +425,9 @@ sshTerminalDir/settingVariables/setReplaceVariables.js
 sshTerminalDir/settingVariables/setVariableTypes.js
 sshTerminalDir/systemJs/noArg.js
 sshTerminalDir/systemJs/onAutoExec.js
+systemDir/settingImages/capture/partPng/1_Screenshot_20240816_110045_CommandClick.jpg
+systemDir/settingImages/capture/partPng/2_Screenshot_20240816_110209_CommandClick.jpg
+systemDir/settingImages/capture/partPng/3_Screenshot_20240816_110245_CommandClick.jpg
 textToSpeech.js
 ttsPlayer.js
 ttsPlayerDir/README.md

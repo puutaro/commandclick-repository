@@ -10,7 +10,7 @@ click=
         ?args=
             menuPath=
                 `${cmdMusicPlayerSettingMenuConfigPath}`
-                &title="Emergency menu",
+                &title="Setting",
 
 longClick=
     func=D_MENU
