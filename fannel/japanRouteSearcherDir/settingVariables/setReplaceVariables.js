@@ -65,4 +65,4 @@ japanRouteSearcherUpdateBookMarkNameJsPath=
 
 // list path
 APP_URL_HISTORY_PATH=
-	`${currentAppDirPath}/system/url/cmdclickUrlHistory.tsv`,
+	`${currentAppDirPath}/systemDir/url/cmdclickUrlHistory.tsv`,
