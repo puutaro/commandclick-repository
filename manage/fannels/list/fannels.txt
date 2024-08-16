@@ -134,6 +134,9 @@ ctsvViewerDir/settingVariables/hideSettingVariables.js
 ctsvViewerDir/settingVariables/setReplaceVariables.js
 ctsvViewerDir/settingVariables/setVariableTypes.js
 displayHtmlSource.js
+fannelRepoDir/settingImages/capture/partPng/1_Screenshot_20240817_000925_CommandClick_5015.jpg
+fannelRepoDir/settingImages/capture/partPng/2_Screenshot_20240817_001013_CommandClick_5015.jpg
+fannelRepoDir/settingImages/capture/partPng/3_Screenshot_20240817_001102_CommandClick_5015.jpg
 fannelStore.js
 fannelStoreDir/README.md
 fannelStoreDir/js/bookmarks.js
