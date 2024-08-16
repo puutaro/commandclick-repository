@@ -98,7 +98,7 @@ ON_DIALOG="false"
 const CMD_BOOKMAKER_DIR_PATH = "${CMD_BOOKMAKER_DIR_PATH}";
 const CMD_BOOKMAKER_EDIT_DIR_PATH = "${CMD_BOOKMAKER_EDIT_DIR_PATH}";
 const EDIT_FILE_PATH = `${CMD_BOOKMAKER_EDIT_DIR_PATH}/${bookmarkListName}`;
-const APP_URL_HISTORY_PATH = "${01}/system/url/cmdclickUrlHistory.tsv";
+const APP_URL_HISTORY_PATH = "${01}/systemDir/url/cmdclickUrlHistory.tsv";
 const EDIT_BOOKMARK_NAME_MODE = "EDIT_BOOKMARK_NAME";
 const TsvExtend = ".tsv";
 const BOOK_PREFIX = "book";
@@ -125,7 +125,7 @@ function switchByArgs(){
 				'on_sortable_js=true',
 				`on_click_url=true`,
 				`on_dialog=${ON_DIALOG}`,
-				`extra_js_path_list=${01}/system/js/clipToHistory.js`,
+				`extra_js_path_list=${01}/systemDir/js/clipToHistory.js`,
 				`extra_label=CtoH`,
 			].join("|");
 			jsIntent.launchEditSite(
