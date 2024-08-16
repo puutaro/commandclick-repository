@@ -31,6 +31,9 @@ cmdMusicPlayerUDir/manager/settings/playButtonConfig.js
 cmdMusicPlayerUDir/manager/settings/qrDialogConfig.js
 cmdMusicPlayerUDir/manager/settings/setVariableTypes.js
 cmdMusicPlayerUDir/manager/settings/settingButtonConfig.js
+cmdMusicPlayerUDir/settingImages/capture/partPng/1_Screenshot_20240816_131841_CommandClick.jpg
+cmdMusicPlayerUDir/settingImages/capture/partPng/2_Screenshot_20240816_131913_CommandClick.jpg
+cmdMusicPlayerUDir/settingImages/capture/partPng/3_Screenshot_20240816_132007_CommandClick.jpg
 cmdMusicPlayerUDir/settingVariables/configRepVars.js
 cmdMusicPlayerUDir/settingVariables/hideConfigVal.js
 cmdMusicPlayerUDir/settingVariables/hideSettingVariables.js
