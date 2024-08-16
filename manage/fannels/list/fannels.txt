@@ -344,6 +344,9 @@ powerPokerDir/images/cards/trumpSpade6-150x150.png
 powerPokerDir/images/cards/trumpSpade7-150x150.png
 powerPokerDir/images/cards/trumpSpade8-150x150.png
 powerPokerDir/images/cards/trumpSpade9-150x150.png
+preferenceDir/settingImages/capture/partPng/1_Screenshot_20240816_110823_CommandClick.jpg
+preferenceDir/settingImages/capture/partPng/2_Screenshot_20240816_110719_CommandClick.jpg
+preferenceDir/settingImages/capture/partPng/3_Screenshot_20240816_110901_CommandClick.jpg
 pulseReceiver.js
 qrCreatorDir/README.md
 qrLReader.js
@@ -416,6 +419,9 @@ sshTerminalDir/settingVariables/setReplaceVariables.js
 sshTerminalDir/settingVariables/setVariableTypes.js
 sshTerminalDir/systemJs/noArg.js
 sshTerminalDir/systemJs/onAutoExec.js
+systemDir/settingImages/capture/partPng/1_Screenshot_20240816_110045_CommandClick.jpg
+systemDir/settingImages/capture/partPng/2_Screenshot_20240816_110209_CommandClick.jpg
+systemDir/settingImages/capture/partPng/3_Screenshot_20240816_110245_CommandClick.jpg
 textToSpeech.js
 ttsPlayer.js
 ttsPlayerDir/README.md
