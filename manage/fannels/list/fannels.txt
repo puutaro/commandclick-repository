@@ -2,6 +2,7 @@ askGpt35.js
 clipFormatMaker.js
 clipFormatMakerDir/README.md
 clipFormatMakerDir/clipFormatMaker.html
+clipFormatMakerDir/info/version/1.txt
 clipFormatMakerDir/settingImages/capture/partPng/1_Screenshot_20240815_221416_CommandClick_2483.jpg
 clipFormatMakerDir/settingImages/capture/partPng/2_Screenshot_20240815_221609_CommandClick_2483.jpg
 clipFormatMakerDir/settingImages/capture/partPng/3_Screenshot_20240815_221650_CommandClick_2483.jpg
@@ -9,6 +10,7 @@ clipFormatMakerDir/settingVariables/hideSettingVariables.js
 cmdBookmaker.js
 cmdGpt35.js
 cmdGpt35Dir/README.md
+cmdGpt35Dir/info/version/1.txt
 cmdGpt35Dir/settingImages/capture/partPng/1_Screenshot_20240816_212152_CommandClick_5898.jpg
 cmdGpt35Dir/settingImages/capture/partPng/2_Screenshot_20240816_212633_CommandClick_5898.jpg
 cmdGpt35Dir/settingImages/capture/partPng/3_Screenshot_20240816_212704_CommandClick_5898.jpg
@@ -24,6 +26,8 @@ cmdMusicPlayerUDir/actions/normalPlay.js
 cmdMusicPlayerUDir/config/config.js
 cmdMusicPlayerUDir/config/settings/playButtonConfig.js
 cmdMusicPlayerUDir/config/settings/setVariableTypes.js
+cmdMusicPlayerUDir/info/escape.tsv
+cmdMusicPlayerUDir/info/version/1.txt
 cmdMusicPlayerUDir/manager/actions/fromPlay.js
 cmdMusicPlayerUDir/manager/manager.js
 cmdMusicPlayerUDir/manager/settings/editButtonConfig.js
@@ -60,6 +64,8 @@ cmdMusicPlayerUDir/table/settings/settingButtonConfig.js
 cmdMusicPlayerUDir/table/table.js
 cmdTerminal.js
 cmdTerminalDir/README.md
+cmdTerminalDir/info/escape.tsv
+cmdTerminalDir/info/version/1.txt
 cmdTerminalDir/menuList/clickMenu.txt
 cmdTerminalDir/select/selectCmd.js
 cmdTerminalDir/select/selectExtraKey.js
@@ -137,6 +143,7 @@ ctsvViewer.js
 ctsvViewerDir/README.md
 ctsvViewerDir/html/aggre_table.html
 ctsvViewerDir/html/bar_chart_js.html
+ctsvViewerDir/info/version/1.txt
 ctsvViewerDir/settingImages/capture/partPng/1_Screenshot_20240816_214942_CommandClick_4097.jpg
 ctsvViewerDir/settingImages/capture/partPng/2_Screenshot_20240816_214655_CommandClick_4097.jpg
 ctsvViewerDir/settingImages/capture/partPng/3_Screenshot_20240816_215011_CommandClick_4097.jpg
@@ -149,6 +156,7 @@ fannelRepoDir/settingImages/capture/partPng/2_Screenshot_20240817_001013_Command
 fannelRepoDir/settingImages/capture/partPng/3_Screenshot_20240817_001102_CommandClick_5015.jpg
 fannelStore.js
 fannelStoreDir/README.md
+fannelStoreDir/info/version/1.txt
 fannelStoreDir/js/bookmarks.js
 fannelStoreDir/js/editBookmarkName.js
 fannelStoreDir/js/setting.js
@@ -167,6 +175,7 @@ fannelStoreDir/systemJs/noArg.js
 fannelStoreDir/systemJs/onAutoExec.js
 fileManager.js
 fileManagerDir/README.md
+fileManagerDir/info/version/1.txt
 fileManagerDir/js/copy.js
 fileManagerDir/js/normal_upload_qr.js
 fileManagerDir/js/registerDirPath.js
@@ -196,6 +205,7 @@ fileManagerDir/systemJs/onAutoExec.js
 fileManagerDir/systemJs/urlHistoryClick.js
 gCalendarFormatter.js
 gCalendarFormatterDir/README.md
+gCalendarFormatterDir/info/version/1.txt
 gCalendarFormatterDir/settingImages/capture/partPng/1_Screenshot_20240816_220637_CommandClick_647.jpg
 gCalendarFormatterDir/settingImages/capture/partPng/2_Screenshot_20240816_220622_CommandClick_647.jpg
 gCalendarFormatterDir/settingImages/capture/partPng/3_Screenshot_20240816_220712_Android System_647.jpg
@@ -238,6 +248,8 @@ image2AsciiArtDir/image/settings/playButtonConfig.js
 image2AsciiArtDir/image/settings/qrDialogConfig.js
 image2AsciiArtDir/image/settings/setVariableTypes.js
 image2AsciiArtDir/image/settings/settingButtonConfig.js
+image2AsciiArtDir/info/escape.tsv
+image2AsciiArtDir/info/version/1.txt
 image2AsciiArtDir/settingImages/capture/partPng/1_329652783-fa9e5089-9288-44a9-8c98-a99f756db42f_7407.png
 image2AsciiArtDir/settingImages/capture/partPng/2_329652078-77801e1e-555b-426c-9b85-bd4ccdb9fb31_7407.png
 image2AsciiArtDir/settingImages/capture/partPng/3_329652405-a6e109dd-b89d-46ea-bc51-9e165739c454_7407.png
@@ -265,6 +277,7 @@ image2AsciiArtDir/table/settings/settingButtonConfig.js
 image2AsciiArtDir/table/table.js
 japanRouteSearcher.js
 japanRouteSearcherDir/README.md
+japanRouteSearcherDir/info/version/1.txt
 japanRouteSearcherDir/js/bookmarks.js
 japanRouteSearcherDir/js/editBookmarkName.js
 japanRouteSearcherDir/js/setting.js
@@ -284,6 +297,8 @@ japanRouteSearcherDir/systemJs/noArg.js
 japanRouteSearcherDir/systemJs/onAutoExec.js
 newsSpeecher.js
 newsSpeecherDir/README.md
+newsSpeecherDir/info/escape.tsv
+newsSpeecherDir/info/version/1.txt
 newsSpeecherDir/longPressMenuDir/srcAnchorLongPressMenu.txt
 newsSpeecherDir/longPressMenuDir/srcImageAnchorLongPressMenu.txt
 newsSpeecherDir/settingImages/capture/partPng/1_Screenshot_20240816_185021_CommandClick_1176.jpg
@@ -405,7 +420,7 @@ preferenceDir/hideSettingVals/ubuntuSettingHideVals.js
 preferenceDir/hideSettingVals/webviewExtraSettingHideVals.js
 preferenceDir/hideSettingVals/webviewSettingHideVals.js
 preferenceDir/info/escape.tsv
-preferenceDir/info/version.txt
+preferenceDir/info/version/1.txt
 preferenceDir/longPressMenuDir/imageLongPressMenu.txt
 preferenceDir/longPressMenuDir/srcAnchorLongPressMenu.txt
 preferenceDir/longPressMenuDir/srcImageAnchorLongPressMenu.txt
@@ -434,6 +449,7 @@ qrCreatorDir/README.md
 qrLReader.js
 quickStartShell.js
 quickStartShellDir/README.md
+quickStartShellDir/info/version/1.txt
 quickStartShellDir/settingImages/capture/partPng/1_Screenshot_20240816_231939_CommandClick_1853.jpg
 quickStartShellDir/settingImages/capture/partPng/2_Screenshot_20240816_232008_CommandClick_1853.jpg
 quickStartShellDir/settingImages/capture/partPng/3_Screenshot_20240816_232108_CommandClick_1853.jpg
@@ -446,6 +462,7 @@ quickStartShellDir/shell/execute.sh
 quickStartShellDir/systemJs/onAutoExec.js
 saveGmailConDialog.js
 saveGmailConDialogDir/README.md
+saveGmailConDialogDir/info/version/1.txt
 saveGmailConDialogDir/js/saveGmailCon.js
 saveGmailConDialogDir/menuList/centerLongPressMenuList.txt
 saveGmailConDialogDir/menuList/centerMenuList.txt
@@ -458,6 +475,7 @@ saveGmailConDialogDir/settingVariables/setReplaceVariables.js
 saveGmailConDialogDir/tsv/argsTsv.tsv
 savePageUrlDialog.js
 savePageUrlDialogDir/README.md
+savePageUrlDialogDir/info/version/1.txt
 savePageUrlDialogDir/js/longPressUrlRegister.js
 savePageUrlDialogDir/js/savePageUrlCon.js
 savePageUrlDialogDir/menuList/centerLongPressMenuList.txt
@@ -471,6 +489,7 @@ savePageUrlDialogDir/settingVariables/setReplaceVariables.js
 savePageUrlDialogDir/tsv/argsTsv.tsv
 saveWebConDialog.js
 saveWebConDialogDir/README.md
+saveWebConDialogDir/info/version/1.txt
 saveWebConDialogDir/js/saveWebCon.js
 saveWebConDialogDir/menuList/centerLongPressMenuList.txt
 saveWebConDialogDir/menuList/centerMenuList.txt
@@ -483,9 +502,11 @@ saveWebConDialogDir/settingVariables/setReplaceVariables.js
 saveWebConDialogDir/tsv/argsTsv.tsv
 selectMenu.js
 selectMenuDir/README.md
+selectMenuDir/info/version/1.txt
 selectMenuDir/menuList/menu.txt
 selectTyper.js
 selectTyperDir/README.md
+selectTyperDir/info/version/1.txt
 selectTyperDir/js/back.js
 selectTyperDir/js/delete.js
 selectTyperDir/js/enter.js
@@ -510,6 +531,7 @@ selectTyperDir/systemJs/onAutoExec.js
 selectTyperDir/systemJs/urlHistoryClick.js
 sendClipToGmail.js
 sendClipToGmailDir/README.md
+sendClipToGmailDir/info/version/1.txt
 sendClipToGmailDir/settingImages/capture/partPng/1_Screenshot_20240816_233635_CommandClick_9863.jpg
 sendClipToGmailDir/settingImages/capture/partPng/2_Screenshot_20240816_233700_CommandClick_9863.jpg
 sendClipToGmailDir/settingImages/capture/partPng/3_Screenshot_20240816_233751_CommandClick_9863.jpg
@@ -520,6 +542,7 @@ shareImage.js
 siteSummary.js
 sshTerminal.js
 sshTerminalDir/README.md
+sshTerminalDir/info/version/1.txt
 sshTerminalDir/js/backspace.js
 sshTerminalDir/js/copy.js
 sshTerminalDir/js/ctrlC.js
@@ -562,6 +585,8 @@ ttsPlayerDir/actions/ttsAction.js
 ttsPlayerDir/config/config.js
 ttsPlayerDir/config/settings/playButtonConfig.js
 ttsPlayerDir/config/settings/setVariableTypes.js
+ttsPlayerDir/info/escape.tsv
+ttsPlayerDir/info/version/1.txt
 ttsPlayerDir/manager/actions/fromPlay.js
 ttsPlayerDir/manager/actions/setGmailAdAction.js
 ttsPlayerDir/manager/manager.js
@@ -602,6 +627,7 @@ ttsPlayerDir/table/settings/settingMenuConfig.js
 ttsPlayerDir/table/table.js
 txtPdfViewer.js
 txtPdfViewerDir/README.md
+txtPdfViewerDir/info/version/1.txt
 txtPdfViewerDir/settingImages/capture/partPng/1_Screenshot_20240816_235712_CommandClick_543.jpg
 txtPdfViewerDir/settingImages/capture/partPng/2_Screenshot_20240816_235614_CommandClick_543.jpg
 txtPdfViewerDir/settingImages/capture/partPng/3_Screenshot_20240816_235541_CommandClick_543.jpg
@@ -612,6 +638,7 @@ urlIntender.js
 urlTrans.js
 webSearcher.js
 webSearcherDir/README.md
+webSearcherDir/info/version/1.txt
 webSearcherDir/menuList/centerLongPressMenuList.txt
 webSearcherDir/menuList/centerMenuList.txt
 webSearcherDir/menuList/imageMenuList.txt
