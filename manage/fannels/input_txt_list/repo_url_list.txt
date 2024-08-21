@@ -18,3 +18,8 @@ https://github.com/puutaro/sshTerminal
 https://github.com/puutaro/fannelStore
 https://github.com/puutaro/japanRouteSearcher
 https://github.com/puutaro/quickStartShell
+https://github.com/puutaro/saveWebConDialog
+https://github.com/puutaro/savePageUrlDialog
+https://github.com/puutaro/saveGmailConDialog
+https://github.com/puutaro/preference
+https://github.com/puutaro/cmdTerminal
