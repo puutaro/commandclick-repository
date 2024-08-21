@@ -81,6 +81,8 @@ cmdYoutuberUDir/actions/normalPlay.js
 cmdYoutuberUDir/config/config.js
 cmdYoutuberUDir/config/settings/playButtonConfig.js
 cmdYoutuberUDir/config/settings/setVariableTypes.js
+cmdYoutuberUDir/info/escape.tsv
+cmdYoutuberUDir/info/version/1.txt
 cmdYoutuberUDir/manager/actions/fromPlay.js
 cmdYoutuberUDir/manager/manager.js
 cmdYoutuberUDir/manager/settings/editButtonConfig.js
