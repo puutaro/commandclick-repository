@@ -58,9 +58,6 @@ cmdMusicPlayerUDir/table/settings/qrDialogConfig.js
 cmdMusicPlayerUDir/table/settings/setVariableTypes.js
 cmdMusicPlayerUDir/table/settings/settingButtonConfig.js
 cmdMusicPlayerUDir/table/table.js
-cmdTerminalDir/settingImages/capture/partPng/1_Screenshot_20240817_000230_CommandClick_4287.jpg
-cmdTerminalDir/settingImages/capture/partPng/2_Screenshot_20240817_000123_CommandClick_4287.jpg
-cmdTerminalDir/settingImages/capture/partPng/3_Screenshot_20240817_000209_CommandClick_4287.jpg
 cmdYoutuberU.js
 cmdYoutuberUDir/README.md
 cmdYoutuberUDir/actions/changeStateAction.js
