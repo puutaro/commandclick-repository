@@ -33,7 +33,7 @@ fannelPath=
 fannelName=
 	"${02}",
 appHistoryTsvPath=
-	"${currentAppDirPath}/system/url/cmdclickUrlHistory.tsv",
+	"${currentAppDirPath}/systemDir/url/cmdclickUrlHistory.tsv",
 selectTyperSelectValueListTxtPath=
 	"${selectTyperListDirPath}/selectValueList.txt",
 selectTyperTempFirstTabTxtPath=
