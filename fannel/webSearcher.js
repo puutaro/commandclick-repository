@@ -122,7 +122,7 @@ function launchWebview(launchUrlString){
     const menuMapStrListStr= [
         `clickMenuFilePath=${leftMenuListPath}?longPressMenuFilePath=${leftLongPressMenuListPath}?dismissType=longpress?label=⬅`,
         `clickMenuFilePath=${centerMenuListPath}?longPressMenuFilePath=${centerLongPressMenuListPath}?label=🔎️`,
-        `clickMenuFilePath=${rightMenuListPath}?label=⬇︎️`,
+        `clickMenuFilePath=${rightMenuListPath}?label=➡`,
     ].join("|");
     const longPressMenuListStr = [
         `srcImageAnchorMenuFilePath=${srcImageAnchorMenuListPath}`,
