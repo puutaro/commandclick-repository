@@ -9,6 +9,8 @@ clipFormatMakerDir/settingImages/capture/partPng/3_Screenshot_20240815_221650_Co
 clipFormatMakerDir/settingImages/logo/logo.png
 clipFormatMakerDir/settingVariables/hideSettingVariables.js
 cmdBookmaker.js
+cmdBookmakerDir/info/version/1.txt
+cmdBookmakerDir/settingImages/logo/logo.png
 cmdGpt35.js
 cmdGpt35Dir/README.md
 cmdGpt35Dir/info/version/1.txt
