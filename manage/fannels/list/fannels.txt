@@ -6,6 +6,7 @@ clipFormatMakerDir/info/version/1.txt
 clipFormatMakerDir/settingImages/capture/partPng/1_Screenshot_20240815_221416_CommandClick_2483.jpg
 clipFormatMakerDir/settingImages/capture/partPng/2_Screenshot_20240815_221609_CommandClick_2483.jpg
 clipFormatMakerDir/settingImages/capture/partPng/3_Screenshot_20240815_221650_CommandClick_2483.jpg
+clipFormatMakerDir/settingImages/logo/logo.png
 clipFormatMakerDir/settingVariables/hideSettingVariables.js
 cmdBookmaker.js
 cmdGpt35.js
@@ -14,6 +15,7 @@ cmdGpt35Dir/info/version/1.txt
 cmdGpt35Dir/settingImages/capture/partPng/1_Screenshot_20240816_212152_CommandClick_5898.jpg
 cmdGpt35Dir/settingImages/capture/partPng/2_Screenshot_20240816_212633_CommandClick_5898.jpg
 cmdGpt35Dir/settingImages/capture/partPng/3_Screenshot_20240816_212704_CommandClick_5898.jpg
+cmdGpt35Dir/settingImages/logo/logo.png
 cmdGpt35Dir/settingVariables/hideSettingVariables.js
 cmdGpt35Dir/settingVariables/setReplaceVariables.js
 cmdGpt35Dir/settingVariables/setVariableTypes.js
@@ -41,6 +43,7 @@ cmdMusicPlayerUDir/manager/settings/settingButtonConfig.js
 cmdMusicPlayerUDir/settingImages/capture/partPng/1_Screenshot_20240816_131841_CommandClick_7001.jpg
 cmdMusicPlayerUDir/settingImages/capture/partPng/2_Screenshot_20240816_131913_CommandClick_7001.jpg
 cmdMusicPlayerUDir/settingImages/capture/partPng/3_Screenshot_20240816_132007_CommandClick_7001.jpg
+cmdMusicPlayerUDir/settingImages/logo/logo.png
 cmdMusicPlayerUDir/settingVariables/configRepVars.js
 cmdMusicPlayerUDir/settingVariables/hideConfigVal.js
 cmdMusicPlayerUDir/settingVariables/hideSettingVariables.js
@@ -72,6 +75,7 @@ cmdTerminalDir/select/selectExtraKey.js
 cmdTerminalDir/settingImages/capture/partPng/1_Screenshot_20240817_000230_CommandClick_4287.jpg
 cmdTerminalDir/settingImages/capture/partPng/2_Screenshot_20240817_000123_CommandClick_4287.jpg
 cmdTerminalDir/settingImages/capture/partPng/3_Screenshot_20240817_000209_CommandClick_4287.jpg
+cmdTerminalDir/settingImages/logo/logo.png
 cmdTerminalDir/settingVariables/hideSettingVariables.js
 cmdTerminalDir/settingVariables/setReplaceVariables.js
 cmdTerminalDir/settingVariables/setVariableTypes.js
@@ -106,6 +110,7 @@ cmdYoutuberUDir/searcher/settings/setVariableTypes.js
 cmdYoutuberUDir/settingImages/capture/partPng/1_Screenshot_20240815-211120.png
 cmdYoutuberUDir/settingImages/capture/partPng/2_322275805-101da895-a578-4667-b8e2-7728bbd9e568.png
 cmdYoutuberUDir/settingImages/capture/partPng/3_322276879-05c7ca2c-836c-45c7-9da9-86732c842190.png
+cmdYoutuberUDir/settingImages/logo/logo.png
 cmdYoutuberUDir/settingVariables/configRepVars.js
 cmdYoutuberUDir/settingVariables/hideConfigVal.js
 cmdYoutuberUDir/settingVariables/hideSettingVariables.js
@@ -147,10 +152,13 @@ ctsvViewerDir/info/version/1.txt
 ctsvViewerDir/settingImages/capture/partPng/1_Screenshot_20240816_214942_CommandClick_4097.jpg
 ctsvViewerDir/settingImages/capture/partPng/2_Screenshot_20240816_214655_CommandClick_4097.jpg
 ctsvViewerDir/settingImages/capture/partPng/3_Screenshot_20240816_215011_CommandClick_4097.jpg
+ctsvViewerDir/settingImages/logo/logo.png
 ctsvViewerDir/settingVariables/hideSettingVariables.js
 ctsvViewerDir/settingVariables/setReplaceVariables.js
 ctsvViewerDir/settingVariables/setVariableTypes.js
 displayHtmlSource.js
+displayHtmlSourceDir/info/version/1.txt
+displayHtmlSourceDir/settingImages/logo/logo.png
 fannelRepoDir/settingImages/capture/partPng/1_Screenshot_20240817_000925_CommandClick_5015.jpg
 fannelRepoDir/settingImages/capture/partPng/2_Screenshot_20240817_001013_CommandClick_5015.jpg
 fannelRepoDir/settingImages/capture/partPng/3_Screenshot_20240817_001102_CommandClick_5015.jpg
@@ -167,6 +175,7 @@ fannelStoreDir/longPressMenuDir/srcImageAnchorLongPressMenu.txt
 fannelStoreDir/settingImages/capture/partPng/1_Screenshot_20240816_215337_CommandClick_7952.jpg
 fannelStoreDir/settingImages/capture/partPng/2_Screenshot_20240816_215421_CommandClick_7952.jpg
 fannelStoreDir/settingImages/capture/partPng/3_Screenshot_20240816_215449_CommandClick_7952.jpg
+fannelStoreDir/settingImages/logo/logo.png
 fannelStoreDir/settingVariables/hideSettingVariables.js
 fannelStoreDir/settingVariables/setReplaceVariables.js
 fannelStoreDir/settingVariables/setVariableTypes.js
@@ -192,6 +201,7 @@ fileManagerDir/select/selectDirPath.js
 fileManagerDir/settingImages/capture/partPng/1_Screenshot_20240816_220024_CommandClick_1704.jpg
 fileManagerDir/settingImages/capture/partPng/2_Screenshot_20240816_220055_CommandClick_1704.jpg
 fileManagerDir/settingImages/capture/partPng/3_Screenshot_20240816_220149_CommandClick_1704.jpg
+fileManagerDir/settingImages/logo/logo.png
 fileManagerDir/settingVariables/hideSettingVariables.js
 fileManagerDir/settingVariables/setReplaceVariables.js
 fileManagerDir/settingVariables/setVariableTypes.js
@@ -213,6 +223,8 @@ gCalendarFormatterDir/settingVariables/hideSettingVariables.js
 gCalendarFormatterDir/settingVariables/setReplaceVariables.js
 gCalendarFormatterDir/settingVariables/setVariableTypes.js
 ggleTranslator.js
+ggleTranslatorDir/settingImages/logo/logo.png
+ggleTranslatorDir/version/1.txt
 image2AsciiArt.js
 image2AsciiArtDir/README.md
 image2AsciiArtDir/actions/changeStateAction.js
@@ -253,6 +265,7 @@ image2AsciiArtDir/info/version/1.txt
 image2AsciiArtDir/settingImages/capture/partPng/1_329652783-fa9e5089-9288-44a9-8c98-a99f756db42f_7407.png
 image2AsciiArtDir/settingImages/capture/partPng/2_329652078-77801e1e-555b-426c-9b85-bd4ccdb9fb31_7407.png
 image2AsciiArtDir/settingImages/capture/partPng/3_329652405-a6e109dd-b89d-46ea-bc51-9e165739c454_7407.png
+image2AsciiArtDir/settingImages/logo/logo.png
 image2AsciiArtDir/settingVariables/asciiRepVars.js
 image2AsciiArtDir/settingVariables/configRepVars.js
 image2AsciiArtDir/settingVariables/hideConfigVal.js
@@ -289,6 +302,7 @@ japanRouteSearcherDir/longPressMenuDir/srcImageAnchorLongPressMenu.txt
 japanRouteSearcherDir/settingImages/capture/partPng/1_Screenshot_20240816_221415_CommandClick_5104.jpg
 japanRouteSearcherDir/settingImages/capture/partPng/2_Screenshot_20240816_221332_CommandClick_5104.jpg
 japanRouteSearcherDir/settingImages/capture/partPng/3_Screenshot_20240816_230150_CommandClick_5104.jpg
+japanRouteSearcherDir/settingImages/logo/logo.png
 japanRouteSearcherDir/settingVariables/hideSettingVariables.js
 japanRouteSearcherDir/settingVariables/setReplaceVariables.js
 japanRouteSearcherDir/settingVariables/setVariableTypes.js
@@ -304,6 +318,7 @@ newsSpeecherDir/longPressMenuDir/srcImageAnchorLongPressMenu.txt
 newsSpeecherDir/settingImages/capture/partPng/1_Screenshot_20240816_185021_CommandClick_1176.jpg
 newsSpeecherDir/settingImages/capture/partPng/2_Screenshot_20240816_184943_CommandClick_1176.jpg
 newsSpeecherDir/settingImages/capture/partPng/3_Screenshot_20240816_185047_CommandClick_1176.jpg
+newsSpeecherDir/settingImages/logo/logo.png
 newsSpeecherDir/settingVariables/hideSettingVariables.js
 newsSpeecherDir/settingVariables/setReplaceVariables.js
 newsSpeecherDir/settingVariables/setVariableTypes.js
@@ -445,7 +460,15 @@ preferenceDir/table/settings/setVariableTypes.js
 preferenceDir/table/settings/tableRepVars.js
 preferenceDir/table/table.js
 pulseReceiver.js
+pulseReceiverDir/info/version/1.txt
+pulseReceiverDir/settingImages/logo/logo.png
+qrCreator.js
 qrCreatorDir/README.md
+qrCreatorDir/libs/readCmdVal.js
+qrCreatorDir/settingVariables/hideSettingVariables.js
+qrCreatorDir/settingVariables/setReplaceVariables.js
+qrCreatorDir/settingVariables/setVariableTypes.js
+qrCreatorDir/systemJs/noArg.js
 qrLReader.js
 quickStartShell.js
 quickStartShellDir/README.md
@@ -453,6 +476,7 @@ quickStartShellDir/info/version/1.txt
 quickStartShellDir/settingImages/capture/partPng/1_Screenshot_20240816_231939_CommandClick_1853.jpg
 quickStartShellDir/settingImages/capture/partPng/2_Screenshot_20240816_232008_CommandClick_1853.jpg
 quickStartShellDir/settingImages/capture/partPng/3_Screenshot_20240816_232108_CommandClick_1853.jpg
+quickStartShellDir/settingImages/logo/logo.png
 quickStartShellDir/settingVariables/editButtonConfig.js
 quickStartShellDir/settingVariables/hideSettingVariables.js
 quickStartShellDir/settingVariables/playButtonConfig.js
@@ -504,6 +528,7 @@ selectMenu.js
 selectMenuDir/README.md
 selectMenuDir/info/version/1.txt
 selectMenuDir/menuList/menu.txt
+selectMenuDir/settingImages/logo/logo.png
 selectTyper.js
 selectTyperDir/README.md
 selectTyperDir/info/version/1.txt
@@ -523,6 +548,7 @@ selectTyperDir/select/selectValue.js
 selectTyperDir/settingImages/capture/partPng/1_Screenshot_20240816_232716_CommandClick_1277.jpg
 selectTyperDir/settingImages/capture/partPng/2_Screenshot_20240816_232647_CommandClick_1277.jpg
 selectTyperDir/settingImages/capture/partPng/3_Screenshot_20240816_232804_CommandClick_1277.jpg
+selectTyperDir/settingImages/logo/logo.png
 selectTyperDir/settingVariables/hideSettingVariables.js
 selectTyperDir/settingVariables/setReplaceVariables.js
 selectTyperDir/settingVariables/setVariableTypes.js
@@ -535,10 +561,13 @@ sendClipToGmailDir/info/version/1.txt
 sendClipToGmailDir/settingImages/capture/partPng/1_Screenshot_20240816_233635_CommandClick_9863.jpg
 sendClipToGmailDir/settingImages/capture/partPng/2_Screenshot_20240816_233700_CommandClick_9863.jpg
 sendClipToGmailDir/settingImages/capture/partPng/3_Screenshot_20240816_233751_CommandClick_9863.jpg
+sendClipToGmailDir/settingImages/logo/logo.png
 sendClipToGmailDir/settingVariables/hideSettingVariables.js
 sendClipToGmailDir/settingVariables/setReplaceVariables.js
 sendClipToGmailDir/settingVariables/setVariableTypes.js
 shareImage.js
+shareImageDir/info/version/1.txt
+shareImageDir/settingImages/logo/logo.png
 siteSummary.js
 sshTerminal.js
 sshTerminalDir/README.md
@@ -568,6 +597,7 @@ sshTerminalDir/select/selectExtraKey.js
 sshTerminalDir/settingImages/capture/partPng/1_Screenshot_20240816_234203_CommandClick_8422.jpg
 sshTerminalDir/settingImages/capture/partPng/2_Screenshot_20240816_234230_CommandClick_8422.jpg
 sshTerminalDir/settingImages/capture/partPng/3_Screenshot_20240816_234251_CommandClick_8422.jpg
+sshTerminalDir/settingImages/logo/logo.png
 sshTerminalDir/settingVariables/hideSettingVariables.js
 sshTerminalDir/settingVariables/setReplaceVariables.js
 sshTerminalDir/settingVariables/setVariableTypes.js
@@ -576,6 +606,7 @@ sshTerminalDir/systemJs/onAutoExec.js
 systemDir/settingImages/capture/partPng/1_Screenshot_20240816_110045_CommandClick.jpg
 systemDir/settingImages/capture/partPng/2_Screenshot_20240816_110209_CommandClick.jpg
 systemDir/settingImages/capture/partPng/3_Screenshot_20240816_110245_CommandClick.jpg
+systemDir/settingImages/logo/logo.png
 textToSpeech.js
 ttsPlayer.js
 ttsPlayerDir/README.md
@@ -602,6 +633,7 @@ ttsPlayerDir/manager/settings/settingMenuConfig.js
 ttsPlayerDir/settingImages/capture/partPng/1_Screenshot_20240816_234816_CommandClick_6619.jpg
 ttsPlayerDir/settingImages/capture/partPng/2_Screenshot_20240816_234746_CommandClick_6619.jpg
 ttsPlayerDir/settingImages/capture/partPng/3_Screenshot_20240816_234846_CommandClick_6619.jpg
+ttsPlayerDir/settingImages/logo/logo.png
 ttsPlayerDir/settingVariables/configRepVars.js
 ttsPlayerDir/settingVariables/hideConfigVal.js
 ttsPlayerDir/settingVariables/hideSettingVariables.js
@@ -631,11 +663,14 @@ txtPdfViewerDir/info/version/1.txt
 txtPdfViewerDir/settingImages/capture/partPng/1_Screenshot_20240816_235712_CommandClick_543.jpg
 txtPdfViewerDir/settingImages/capture/partPng/2_Screenshot_20240816_235614_CommandClick_543.jpg
 txtPdfViewerDir/settingImages/capture/partPng/3_Screenshot_20240816_235541_CommandClick_543.jpg
+txtPdfViewerDir/settingImages/logo/logo.png
 txtPdfViewerDir/settingVariables/hideSettingVariables.js
 txtPdfViewerDir/settingVariables/setReplaceVariables.js
 txtPdfViewerDir/settingVariables/setVariableTypes.js
 urlIntender.js
 urlTrans.js
+urlTransDir/info/version/1.txt
+urlTransDir/settingImages/logo/logo.png
 webSearcher.js
 webSearcherDir/README.md
 webSearcherDir/info/version/1.txt
