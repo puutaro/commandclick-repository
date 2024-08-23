@@ -9,7 +9,7 @@
 
 
 /// SETTING_SECTION_START
-scriptFileName="askGpt35.js"
+disableSettingValsEdit="ON"
 /// SETTING_SECTION_END
 
 

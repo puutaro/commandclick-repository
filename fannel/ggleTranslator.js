@@ -14,7 +14,7 @@
 /// SETTING_SECTION_START
 setVariableTypes="toLang:CB=en?ja?ko?zh-CN?zh-TW?uk?ru?es?fr"
 setVariableTypes="onDialog:CB=true?false"
-scriptFileName="ggleTranslator.js"
+disableSettingValsEdit="ON"
 /// SETTING_SECTION_END
 
 /// CMD_VARIABLE_SECTION_START

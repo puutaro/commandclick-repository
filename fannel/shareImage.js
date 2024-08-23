@@ -18,6 +18,7 @@
 
 /// SETTING_SECTION_START
 onUpdateLastModify="OFF"
+disableSettingValsEdit="ON"
 /// SETTING_SECTION_END
 
 /// Please write bellow with javascript
