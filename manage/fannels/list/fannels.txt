@@ -141,10 +141,6 @@ cmdYoutuberUDir/ubuntu/install.sh
 cmdYoutuberUDir/ubuntu/scraping.sh
 cmdYoutuberUDir/ubuntu/stop_all_process.sh
 cmdYoutuberUDir/ubuntu/ytfzfForFannel.sh
-cmdclickStartupDir/longPressMenuDir/imageLongPressMenu.txt
-cmdclickStartupDir/longPressMenuDir/srcAnchorLongPressMenu.txt
-cmdclickStartupDir/longPressMenuDir/srcImageAnchorLongPressMenu.txt
-cmdclickStartupDir/settings/homeScriptUrlsPath.txt
 copyLink.js
 ctsvViewer.js
 ctsvViewerDir/README.md
