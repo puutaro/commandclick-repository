@@ -9,6 +9,7 @@
 editExecute="ALWAYS"
 onAutoExec="ON"
 onAdBlock="OFF"
+disableSettingValsEdit="ON"
 onTermBackendWhenStart="ON"
 onTermVisibleWhenKeyboard="OFF"
 onTermShortWhenLoad="OFF"

@@ -9,6 +9,7 @@ editExecute="ALWAYS"
 fannelStateConfig=`file://`
 setReplaceVariables="file://"
 onUpdateLastModify="OFF"
+disableSettingValsEdit="ON"
 // webview setting
 onAdBlock="ON"
 terminalFontZoom=""

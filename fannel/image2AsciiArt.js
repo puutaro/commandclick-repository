@@ -9,6 +9,7 @@
 editExecute="ALWAYS"
 onUpdateLastModify="ON"
 onAdBlock="OFF"
+disableSettingValsEdit="ON"
 fannelStateConfig=`file://`
 playButtonConfig="visible=OFF,disable=ON,color=gray,icon=play"
 editButtonConfig="visible=OFF,disable=ON,color=gray,icon=list"

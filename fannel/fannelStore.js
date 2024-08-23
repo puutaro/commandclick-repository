@@ -9,6 +9,7 @@
 editExecute="ALWAYS"
 onAutoExec="ON"
 onAdBlock="OFF"
+disableSettingValsEdit="ON"
 terminalSizeType="LONG"
 disableShowToolbarWhenHighlight="OFF"
 execPlayBtnLongPress="${webSearcherFannelPath}"
