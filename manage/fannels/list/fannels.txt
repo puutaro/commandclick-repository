@@ -607,6 +607,7 @@ systemDir/settingImages/capture/partPng/2_Screenshot_20240816_110209_CommandClic
 systemDir/settingImages/capture/partPng/3_Screenshot_20240816_110245_CommandClick.jpg
 systemDir/settingImages/logo/logo.png
 textToSpeech.js
+textToSpeechDir/settingImages/logo/logo.png
 ttsPlayer.js
 ttsPlayerDir/README.md
 ttsPlayerDir/actions/changeStateAction.js
