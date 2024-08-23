@@ -460,6 +460,9 @@ preferenceDir/table/settings/tableRepVars.js
 preferenceDir/table/table.js
 pulseReceiver.js
 pulseReceiverDir/info/version/1.txt
+pulseReceiverDir/settingImages/capture/partPng/1_Screenshot_20240823_203715_CommandClick_2232.jpg
+pulseReceiverDir/settingImages/capture/partPng/2_Screenshot_20240823_204143_CommandClick_2232.jpg
+pulseReceiverDir/settingImages/capture/partPng/3_Screenshot_20240823_204041_CommandClick_2232.jpg
 pulseReceiverDir/settingImages/logo/logo.png
 qrCreator.js
 qrCreatorDir/README.md
