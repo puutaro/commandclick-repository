@@ -9,6 +9,7 @@
 editExecute="ALWAYS"
 onAutoExec="ON"
 onUpdateLastModify="ON"
+disableSettingValsEdit="ON"
 onAdBlock="OFF"
 onUrlHistoryRegister="OFF"
 terminalSizeType="LONG"

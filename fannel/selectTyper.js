@@ -8,6 +8,7 @@
 /// SETTING_SECTION_START
 editExecute="ALWAYS"
 onAutoExec="ON"
+disableSettingValsEdit="ON"
 onTermBackendWhenStart="OFF"
 onTermVisibleWhenKeyboard="ON"
 onTermShortWhenLoad="ON"

@@ -11,6 +11,7 @@
 editExecute="ALWAYS"
 terminalOutputMode="NORMAL"
 onUrlHistoryRegister="OFF"
+disableSettingValsEdit="ON"
 onAdBlock="OFF"
 setReplaceVariables="FCB_PREFIX=prefix"
 setReplaceVariables="FCB_SUFFIX=suffix"
