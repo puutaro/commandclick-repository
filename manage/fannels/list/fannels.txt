@@ -222,8 +222,8 @@ gCalendarFormatterDir/settingVariables/hideSettingVariables.js
 gCalendarFormatterDir/settingVariables/setReplaceVariables.js
 gCalendarFormatterDir/settingVariables/setVariableTypes.js
 ggleTranslator.js
+ggleTranslatorDir/info/version/1.txt
 ggleTranslatorDir/settingImages/logo/logo.png
-ggleTranslatorDir/version/1.txt
 image2AsciiArt.js
 image2AsciiArtDir/README.md
 image2AsciiArtDir/actions/changeStateAction.js
@@ -571,6 +571,8 @@ shareImage.js
 shareImageDir/info/version/1.txt
 shareImageDir/settingImages/logo/logo.png
 siteSummary.js
+siteSummaryDir/info/version/1.txt
+siteSummaryDir/settingImages/logo/logo.png
 sshTerminal.js
 sshTerminalDir/README.md
 sshTerminalDir/info/version/1.txt
@@ -610,6 +612,7 @@ systemDir/settingImages/capture/partPng/2_Screenshot_20240816_110209_CommandClic
 systemDir/settingImages/capture/partPng/3_Screenshot_20240816_110245_CommandClick.jpg
 systemDir/settingImages/logo/logo.png
 textToSpeech.js
+textToSpeechDir/info/version/1.txt
 textToSpeechDir/settingImages/logo/logo.png
 ttsPlayer.js
 ttsPlayerDir/README.md
