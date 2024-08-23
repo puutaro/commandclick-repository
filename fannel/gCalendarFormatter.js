@@ -9,6 +9,7 @@
 editExecute="ALWAYS"
 terminalOutputMode="NORMAL"
 onAdBlock="OFF"
+disableSettingValsEdit="ON"
 setReplaceVariables="file://"
 setVariableTypes="file://"
 hideSettingVariables="file://"
