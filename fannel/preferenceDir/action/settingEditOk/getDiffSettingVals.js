@@ -3,8 +3,6 @@
 	?func=jsToListMap.map
 	?args=
 		lines=`
-			homeFannelsPath\t${preferenceHomeFannelsPath}\n
-			homeScriptUrlsPath\t${preferenceHomeScriptUrlsPath}\n
 			srcImageAnchorLongPressMenuFilePath\t${srcImageAnchorLongPressMenuPath}\n
 			srcAnchorLongPressMenuFilePath\t${srcAnchorLongPressMenuPath}\n
 			imageLongPressMenuFilePath\t${imageLongPressMenuPath}\n

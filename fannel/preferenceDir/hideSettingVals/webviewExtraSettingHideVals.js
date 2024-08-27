@@ -14,8 +14,6 @@ onUrlLaunchMacro,
 onAutoExec,
 execJsOrHtmlPath,
 // history setting
-homeFannelsPath,
-homeScriptUrlsPath,
 ignoreHistoryPaths,
 historySwitch,
 urlHistoryOrButtonExec,
