@@ -20,6 +20,6 @@ jobs:
       - name: Make fannel tar gz
         run: |
           bash "manage/fannels/make_fannel_tar_gz.sh"
-      # - name: Auto Commit
-      #   uses: stefanzweifel/git-auto-commit-action@v5
+      - name: Auto Commit
+        uses: stefanzweifel/git-auto-commit-action@v5
 
