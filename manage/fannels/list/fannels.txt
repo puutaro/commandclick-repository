@@ -71,6 +71,8 @@ cmdTerminal.js
 cmdTerminalDir/README.md
 cmdTerminalDir/info/escape.tsv
 cmdTerminalDir/info/version/1.txt
+cmdTerminalDir/list/cmdList.txt
+cmdTerminalDir/list/extraKeyList.txt
 cmdTerminalDir/menuList/clickMenu.txt
 cmdTerminalDir/select/selectCmd.js
 cmdTerminalDir/select/selectExtraKey.js
