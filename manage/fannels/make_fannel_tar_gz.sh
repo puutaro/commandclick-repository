@@ -61,3 +61,5 @@ do
 done
 wait
 rm -rf "${TEMP_WORK_DIR_PATH}"
+
+find "${FANNEL_TAR_GZ_DIR_PATH}" -type f
