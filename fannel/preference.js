@@ -32,8 +32,6 @@ onTermBackendWhenStart="OFF"
 onTermVisibleWhenKeyboard="OFF"
 onTermShortWhenLoad="OFF"
 // history setting
-homeFannelsPath=`${preferenceHomeFannelsPath}`
-homeScriptUrlsPath=`${preferenceHomeScriptUrlsPath}`
 ignoreHistoryPaths=""
 historySwitch="OFF"
 urlHistoryOrButtonExec="URL_HISTORY"
@@ -68,8 +66,6 @@ onTermBackendWhenStart="OFF"
 onTermVisibleWhenKeyboard="OFF"
 onTermShortWhenLoad="OFF"
 // history setting
-homeFannelsPath=`${preferenceHomeFannelsPath}`
-homeScriptUrlsPath=`${preferenceHomeScriptUrlsPath}`
 ignoreHistoryPaths=""
 historySwitch="OFF"
 urlHistoryOrButtonExec="URL_HISTORY"

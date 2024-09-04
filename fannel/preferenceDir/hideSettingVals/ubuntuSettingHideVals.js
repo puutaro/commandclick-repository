@@ -20,8 +20,6 @@ onTermBackendWhenStart,
 onTermVisibleWhenKeyboard,
 onTermShortWhenLoad,
 // history setting
-homeFannelsPath,
-homeScriptUrlsPath,
 ignoreHistoryPaths,
 historySwitch,
 urlHistoryOrButtonExec,

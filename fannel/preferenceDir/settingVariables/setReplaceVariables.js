@@ -7,7 +7,7 @@ SETTING_EDIT=
 // setting
 coreTitle="preference",
 // hideValsLimitNum +  recentLimitNum = all vals num
-hideValsLimitNum=20,
+hideValsLimitNum=18,
 recentLimitNum=6,
 iconColor="lightGreen",
 historyIconColor="blue",
@@ -62,10 +62,6 @@ preferenceBeforeEditSettingValsPath=
     `${preferenceTempDirPath}/beforeSettingValsPath.js`,
 preferenceEditInfoPath=
     `${preferenceTempDirPath}/editInfo.txt`,
-preferenceHomeFannelsPath=
-    `${preferenceSettingsDirPath}/homeFannelsFilePaths.txt`,
-preferenceHomeScriptUrlsPath=
-	`${preferenceSettingsDirPath}/homeScriptUrlsPath.txt`,
 srcImageAnchorLongPressMenuPath=
     `${preferenceLongPressMenuDirPath}/srcImageAnchorLongPressMenu.txt`,
 imageLongPressMenuPath=
