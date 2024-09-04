@@ -11,8 +11,6 @@ readonly TEMP_WORK_DIR_NAME="temp"
 readonly TEMP_WORK_DIR_PATH="${WORKING_DIR_PATH}/${TEMP_WORK_DIR_NAME}"
 rm -rf "${TEMP_WORK_DIR_PATH}"
 mkdir -p "${TEMP_WORK_DIR_PATH}"
-echo "${TEMP_WORK_DIR_PATH}"
-exit 0
 
 create_fannel_tar_gz(){
 	local fannel_name="${1}"
