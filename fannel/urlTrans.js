@@ -4,7 +4,7 @@
 // # UrlTrans.js
 // ----------------
 
-// Translate site by add to homeScriptUrl or click @puutaro
+// Translate site @puutaro
 /// LABELING_SECTION_END
 
 
