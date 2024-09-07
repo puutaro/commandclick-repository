@@ -1,4 +1,3 @@
-askGpt35.js
 clipFormatMaker.js
 clipFormatMakerDir/README.md
 clipFormatMakerDir/clipFormatMaker.html
@@ -11,16 +10,6 @@ clipFormatMakerDir/settingVariables/hideSettingVariables.js
 cmdBookmaker.js
 cmdBookmakerDir/info/version/1.txt
 cmdBookmakerDir/settingImages/logo/logo.png
-cmdGpt35.js
-cmdGpt35Dir/README.md
-cmdGpt35Dir/info/version/1.txt
-cmdGpt35Dir/settingImages/capture/partPng/1_Screenshot_20240816_212152_CommandClick_5898.jpg
-cmdGpt35Dir/settingImages/capture/partPng/2_Screenshot_20240816_212633_CommandClick_5898.jpg
-cmdGpt35Dir/settingImages/capture/partPng/3_Screenshot_20240816_212704_CommandClick_5898.jpg
-cmdGpt35Dir/settingImages/logo/logo.png
-cmdGpt35Dir/settingVariables/hideSettingVariables.js
-cmdGpt35Dir/settingVariables/setReplaceVariables.js
-cmdGpt35Dir/settingVariables/setVariableTypes.js
 cmdMusicPlayerU.js
 cmdMusicPlayerUDir/README.md
 cmdMusicPlayerUDir/actions/changeStateAction.js
@@ -144,6 +133,7 @@ cmdYoutuberUDir/ubuntu/scraping.sh
 cmdYoutuberUDir/ubuntu/stop_all_process.sh
 cmdYoutuberUDir/ubuntu/ytfzfForFannel.sh
 copyLink.js
+copyLinkDir/settingImages/logo/logo.png
 ctsvViewer.js
 ctsvViewerDir/README.md
 ctsvViewerDir/html/aggre_table.html
@@ -335,15 +325,6 @@ newsSpeecherDir/shell/py/nltk_downloader.py
 newsSpeecherDir/shell/py/output.py
 newsSpeecherDir/shell/stop_all_process.sh
 newsSpeecherDir/shell/summarize.sh
-ocrViewer.js
-ocrViewerDir/README.md
-ocrViewerDir/settingVariables/hideSettingVariables.js
-ocrViewerDir/settingVariables/setReplaceVariables.js
-ocrViewerDir/settingVariables/setVariableTypes.js
-ocrViewerDir/sh/install.sh
-ocrViewerDir/sh/notification/exit_notification.sh
-ocrViewerDir/sh/notification/finish_open_notification.sh
-ocrViewerDir/sh/ocr.sh
 powerPokerDir/html/css/effect.css
 powerPokerDir/html/css/powerPoker.css
 powerPokerDir/html/css/switchView.css
@@ -474,6 +455,7 @@ qrCreatorDir/settingVariables/setReplaceVariables.js
 qrCreatorDir/settingVariables/setVariableTypes.js
 qrCreatorDir/systemJs/noArg.js
 qrLReader.js
+qrLReaderDir/settingImages/logo/logo.png
 quickStartShell.js
 quickStartShellDir/README.md
 quickStartShellDir/info/version/1.txt
@@ -532,11 +514,6 @@ saveWebConDialogDir/menuList/srcAnchorMenuList.txt
 saveWebConDialogDir/menuList/srcImageAnchorMenuList.txt
 saveWebConDialogDir/settingVariables/setReplaceVariables.js
 saveWebConDialogDir/tsv/argsTsv.tsv
-selectMenu.js
-selectMenuDir/README.md
-selectMenuDir/info/version/1.txt
-selectMenuDir/menuList/menu.txt
-selectMenuDir/settingImages/logo/logo.png
 selectTyper.js
 selectTyperDir/README.md
 selectTyperDir/info/version/1.txt
@@ -670,6 +647,7 @@ txtPdfViewerDir/settingVariables/hideSettingVariables.js
 txtPdfViewerDir/settingVariables/setReplaceVariables.js
 txtPdfViewerDir/settingVariables/setVariableTypes.js
 urlIntender.js
+urlIntenderDir/settingImages/logo/logo.png
 urlTrans.js
 urlTransDir/info/version/1.txt
 urlTransDir/settingImages/logo/logo.png
