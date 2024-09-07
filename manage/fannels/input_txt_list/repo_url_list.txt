@@ -18,5 +18,5 @@ https://github.com/puutaro/saveWebConDialog
 https://github.com/puutaro/savePageUrlDialog
 https://github.com/puutaro/saveGmailConDialog
 https://github.com/puutaro/preference
-https://github.com/puutaro/cmdTerminal
+https://github.com/puutaro/tapTerminal
 https://github.com/puutaro/ytScraper

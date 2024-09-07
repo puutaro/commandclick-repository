@@ -1,9 +1,0 @@
-esc
-home
-end
- |
-pageDown
-/
-\
-""
-''
