@@ -1,2 +1,0 @@
-${cmdYoutuberPreviousMusicPlayListPath}	name=history,color=${iconColor},bkColor=${iconBkColor}
-default	name=music,color=${iconColor},bkColor=${iconBkColor}

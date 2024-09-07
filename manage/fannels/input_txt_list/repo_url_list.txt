@@ -1,7 +1,6 @@
 https://github.com/puutaro/selectTyper
 https://github.com/puutaro/clipFormatMaker
 https://github.com/puutaro/cmdMusicPlayerU
-https://github.com/puutaro/cmdYoutuberU
 https://github.com/puutaro/ctsvViewer
 https://github.com/puutaro/fileManager
 https://github.com/puutaro/gCalendarFormatter
@@ -20,3 +19,4 @@ https://github.com/puutaro/savePageUrlDialog
 https://github.com/puutaro/saveGmailConDialog
 https://github.com/puutaro/preference
 https://github.com/puutaro/cmdTerminal
+https://github.com/puutaro/ytScraper

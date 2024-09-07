@@ -1,4 +1,0 @@
-
-color=darkGreen,
-disable=OFF,
-
