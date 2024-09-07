@@ -10,7 +10,7 @@ https://github.com/puutaro/image2AsciiArt
 https://github.com/puutaro/newsSpeecher
 https://github.com/puutaro/ocrViewer
 https://github.com/puutaro/selectMenu
-https://github.com/puutaro/sendClipToGmail
+https://github.com/puutaro/saveToGmail
 https://github.com/puutaro/ttsPlayer
 https://github.com/puutaro/txtPdfViewer
 https://github.com/puutaro/webSearcher
