@@ -7,7 +7,7 @@
 # ytScraper
 ---------------------
 
-Youtube scraping background player (**ubuntu version**) @puutaro
+Youtube scraping background player @puutaro
 
 Table of Contents
 -------

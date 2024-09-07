@@ -7,7 +7,7 @@
 # japanRouteSearcher.js
 ----------------
 
-Japan train roote searcher by [CommandClick](https://github.com/puutaro/CommandClick) @puutaro
+Japan train roote searcher @puutaro
 
 Table of Contents
 -------
