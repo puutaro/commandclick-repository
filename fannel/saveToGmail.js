@@ -19,6 +19,8 @@ disableSettingValsEdit="ON"
 /// Please write bellow with javascript
 
 
+const LEAST_STRING_NUM = 300;
+
 launchOrPaste();
 
 
@@ -27,6 +29,9 @@ function launchOrPaste(){
 	var list = doc.querySelectorAll("h1,h2,h3"); 
 	let tocArr = makeTocArr(list);
 	var summary = makeSummary(tocArr);
+    if(summary.length < LEAST_STRING_NUM) {
+        summary = summaryComp(summary);
+    };
 	const url = location.href;
 	const body = [url, summary].join("\n\n");
 	jsIntent.sendGmail(
@@ -53,6 +58,40 @@ function makeTocArr(list){
     };
     return tocArr;
 }
+
+
+function summaryComp(summary){
+    if(
+        summary.length > LEAST_STRING_NUM
+    ) return summary.replace(/\n\n*/g, "\n");
+    let summaryPList = document.querySelectorAll("p");
+    var summaryEntry = summary;
+    var summaryEntryPtagTextTotal = "";
+    summaryEntryPtagTextTotal = makePtagSummaryTotal(
+        summaryPList, 
+        summaryEntry
+    );
+    summaryEntry = summaryEntry.concat(
+        summaryEntryPtagTextTotal
+    );
+    if(
+        summaryEntry.length > LEAST_STRING_NUM
+    ) return summaryEntry.replace(/\n\n*/g, "\n");
+    let summaryPreList = document.querySelectorAll("pre");
+    var summaryEntryPreTagTextTotal = "";
+
+    summaryEntryPreTagTextTotal = makePtagSummaryTotal(
+        summaryPreList, 
+        summaryEntry,
+        "--",
+    );
+    summaryEntry = summaryEntry.concat(
+        summaryEntryPreTagTextTotal
+    );
+    if(summaryEntry) return summaryEntry.replace(/\n\n*/g, "\n");
+    return "no summary";
+};
+
 
 
 function makeSummary(tocArr){
@@ -84,3 +123,4 @@ function makeSummary(tocArr){
     };
     return summary.replace(/\n\n*/g, "\n");
 };
+
