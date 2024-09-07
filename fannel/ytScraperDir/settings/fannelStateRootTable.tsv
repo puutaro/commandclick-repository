@@ -1,0 +1,5 @@
+${TABLE}	${cmdYoutuberTableFannelPath}
+${MANAGER}	${cmdYoutuberManagerFannelPath}
+${SEARCHER}	${cmdYoutuberSearcherFannelPath}
+${CONFIG}	${cmdYoutuberConfigFannelPath}
+default	${cmdYoutuberTableFannelPath}
