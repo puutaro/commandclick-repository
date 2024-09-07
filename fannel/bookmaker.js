@@ -82,7 +82,6 @@ hideSettingVariables="onUpdateLastModify"
 hideSettingVariables="onAdBlock"
 hideSettingVariables="setReplaceVariables"
 hideSettingVariables="setVariableTypes"
-scriptFileName="cmdBookmaker.js"
 /// SETTING_SECTION_END
 
 
