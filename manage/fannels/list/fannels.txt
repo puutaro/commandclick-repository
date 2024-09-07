@@ -1,3 +1,6 @@
+bookmaker.js
+bookmakerDir/info/version/1.txt
+bookmakerDir/settingImages/logo/logo.png
 clipFormatMaker.js
 clipFormatMakerDir/README.md
 clipFormatMakerDir/clipFormatMaker.html
@@ -7,9 +10,6 @@ clipFormatMakerDir/settingImages/capture/partPng/2_Screenshot_20240815_221609_Co
 clipFormatMakerDir/settingImages/capture/partPng/3_Screenshot_20240815_221650_CommandClick_2483.jpg
 clipFormatMakerDir/settingImages/logo/logo.png
 clipFormatMakerDir/settingVariables/hideSettingVariables.js
-cmdBookmaker.js
-cmdBookmakerDir/info/version/1.txt
-cmdBookmakerDir/settingImages/logo/logo.png
 cmdMusicPlayerU.js
 cmdMusicPlayerUDir/README.md
 cmdMusicPlayerUDir/actions/changeStateAction.js
