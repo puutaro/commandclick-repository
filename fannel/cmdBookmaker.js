@@ -89,7 +89,7 @@ scriptFileName="cmdBookmaker.js"
 /// CMD_VARIABLE_SECTION_START
 bookmarkListName="bookSites.tsv"
 EDIT_BOOKMARK_NAME=""
-ON_DIALOG="false"
+ON_DIALOG="true"
 /// CMD_VARIABLE_SECTION_END
 
 
