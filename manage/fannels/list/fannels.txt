@@ -658,6 +658,8 @@ webSearcherDir/menuList/centerLongPressMenuList.txt
 webSearcherDir/menuList/centerMenuList.txt
 webSearcherDir/menuList/imageMenuList.txt
 webSearcherDir/menuList/leftMenuList.txt
+webSearcherDir/menuList/leftSecondList.txt
 webSearcherDir/menuList/rightMenuList.txt
 webSearcherDir/menuList/srcAnchorMenuList.txt
 webSearcherDir/menuList/srcImageAnchorMenuList.txt
+webSearcherDir/settingImages/logo/logo.png
