@@ -164,6 +164,13 @@ function makeSummary(tocArr){
     return summary.replace(/\n\n*/g, "\n");
 };
 
+const isRun = jsTextToSpeech.isRun();
+if(isRun){
+    jsTextToSpeech.stopService();
+    jsToast.short("Stop tts..");
+    exitZero();
+}
+
 var list = document.querySelectorAll("h1,h2,h3"); 
 let tocArr = makeTocArr(list);
 var summary = makeSummary(tocArr);
@@ -213,6 +220,7 @@ jsTextToSpeech.speech(
     playListPath,
     extraSettingMapStr,
 );
+jsToast.short("Start tts..");
 
 
 function getSelectionText() {
