@@ -1,6 +1,5 @@
 https://github.com/puutaro/selectTyper
 https://github.com/puutaro/clipFormatMaker
-https://github.com/puutaro/cmdGpt35
 https://github.com/puutaro/cmdMusicPlayerU
 https://github.com/puutaro/cmdYoutuberU
 https://github.com/puutaro/ctsvViewer
@@ -8,8 +7,6 @@ https://github.com/puutaro/fileManager
 https://github.com/puutaro/gCalendarFormatter
 https://github.com/puutaro/image2AsciiArt
 https://github.com/puutaro/newsSpeecher
-https://github.com/puutaro/ocrViewer
-https://github.com/puutaro/selectMenu
 https://github.com/puutaro/saveToGmail
 https://github.com/puutaro/ttsPlayer
 https://github.com/puutaro/txtPdfViewer

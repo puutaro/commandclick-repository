@@ -59,10 +59,11 @@
 
 
 /// SETTING_SECTION_START
-editExecute="ALWAYS"
+editExecute="NO"
 terminalSizeType="LONG"
 onUpdateLastModify="ON"
 onAdBlock="OFF"
+disableSettingValsEdit="ON"
 setReplaceVariables="TXT_LABEL=label"
 setReplaceVariables="BTN_CMD=cmd"
 setReplaceVariables="BTN_LABEL=label"
