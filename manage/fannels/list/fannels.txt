@@ -515,6 +515,10 @@ savePageUrlDialogDir/menuList/srcAnchorMenuList.txt
 savePageUrlDialogDir/menuList/srcImageAnchorMenuList.txt
 savePageUrlDialogDir/settingVariables/setReplaceVariables.js
 savePageUrlDialogDir/tsv/argsTsv.tsv
+saveToGmail.js
+saveToGmailDir/README.md
+saveToGmailDir/info/version/1.txt
+saveToGmailDir/settingImages/logo/logo.png
 saveWebConDialog.js
 saveWebConDialogDir/README.md
 saveWebConDialogDir/info/version/1.txt
@@ -559,16 +563,6 @@ selectTyperDir/settingVariables/setVariableTypes.js
 selectTyperDir/systemJs/appHistoryClick.js
 selectTyperDir/systemJs/onAutoExec.js
 selectTyperDir/systemJs/urlHistoryClick.js
-sendClipToGmail.js
-sendClipToGmailDir/README.md
-sendClipToGmailDir/info/version/1.txt
-sendClipToGmailDir/settingImages/capture/partPng/1_Screenshot_20240816_233635_CommandClick_9863.jpg
-sendClipToGmailDir/settingImages/capture/partPng/2_Screenshot_20240816_233700_CommandClick_9863.jpg
-sendClipToGmailDir/settingImages/capture/partPng/3_Screenshot_20240816_233751_CommandClick_9863.jpg
-sendClipToGmailDir/settingImages/logo/logo.png
-sendClipToGmailDir/settingVariables/hideSettingVariables.js
-sendClipToGmailDir/settingVariables/setReplaceVariables.js
-sendClipToGmailDir/settingVariables/setVariableTypes.js
 shareImage.js
 shareImageDir/info/version/1.txt
 shareImageDir/settingImages/logo/logo.png
