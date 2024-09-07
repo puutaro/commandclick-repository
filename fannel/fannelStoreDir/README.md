@@ -8,7 +8,7 @@
 # fannelStore.js
 ----------------
 
-Fanenl Store by [CommandClick](https://github.com/puutaro/CommandClick) @puutaro
+Fanenl Store by @puutaro
 
 Table of Contents
 -------
