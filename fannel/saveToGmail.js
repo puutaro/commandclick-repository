@@ -60,6 +60,27 @@ function makeTocArr(list){
 }
 
 
+function makePtagSummaryTotal(summaryPList, summaryEntry, prefix="-"){
+    var summaryEntryPTagTextTotal = "";
+    var summaryEntryPreTagText = "";
+    if(summaryPList.length <= 0) return summaryEntryPTagTextTotal;
+    for(var summaryPreTag of summaryPList){
+        summaryEntryPreTagText = summaryPreTag.textContent.substring(
+            0, LEAST_STRING_NUM
+        );
+        if(!summaryEntryPreTagText.trim()) continue;
+        summaryEntryPTagTextTotal = summaryEntryPTagTextTotal.concat(
+            "\n\t\t\t\t", 
+            prefix + " ", 
+            summaryEntryPreTagText
+        );
+        if(
+            summaryEntry.length + summaryEntryPTagTextTotal.length > LEAST_STRING_NUM
+        ) break;
+    };
+    return summaryEntryPTagTextTotal;
+};
+
 function summaryComp(summary){
     if(
         summary.length > LEAST_STRING_NUM
