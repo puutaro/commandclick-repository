@@ -24,6 +24,10 @@ jsIntent.launchUrl(
 
 
 function decideCurrentUrl(){
+	const longPressLinkUrl = "${LONG_PRESS_LINK_URL}";
+	if(
+		longPressLinkUrl.startsWith("https://")
+	) return longPressLinkUrl;
 	const cmdclickCurrentUrl = "${CMDCLICK_CURRENT_PAGE_URL}";
 	const cmdclickLongPressLinkUrlStr = 
 		"${ENCRPT_CURRENT_PAGE_URL}".replace(
