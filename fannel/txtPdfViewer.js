@@ -21,6 +21,8 @@ homeFannelsPath=""
 setReplaceVariables="file://"
 setVariableTypes="file://"
 hideSettingVariables="file://"
+playButtonConfig="caption=extract,icon=shortcut"
+settingButtonConfig="icon=open_close,caption=opnClse,click=func=SIZING,longClick=func="
 scriptFileName="txtPdfViewer.js"
 /// SETTING_SECTION_END
 

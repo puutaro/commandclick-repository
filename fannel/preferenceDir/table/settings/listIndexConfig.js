@@ -22,3 +22,6 @@ click=
             STATE=`${SETTING_EDIT}`
             &ON_LIST_DIR_UPDATER=ON
             &ON_PLAY_INFO_SAVE=ON,
+
+searchBox=
+    visible=OFF,

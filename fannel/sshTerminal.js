@@ -19,7 +19,9 @@ terminalFontZoom="100"
 setReplaceVariables="file://"
 setVariableTypes="file://"
 hideSettingVariables="file://"
-scriptFileName="sshTerminal.js"
+playButtonConfig="visible=ON,icon=share,caption=conect,click=func=OK,longClick=func="
+editButtonConfig="visible=ON,icon=open_close,caption=opnClse,click=func=SIZING,longClick=func="
+settingButtonConfig="visible=OFF"
 /// SETTING_SECTION_END
 
 

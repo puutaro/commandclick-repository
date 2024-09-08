@@ -1,0 +1,2 @@
+title=Show by text
+triggerWords=pdf

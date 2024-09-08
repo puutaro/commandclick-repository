@@ -58,6 +58,7 @@ cmdMusicPlayerUDir/table/settings/settingButtonConfig.js
 cmdMusicPlayerUDir/table/table.js
 copyLink.js
 copyLinkDir/settingImages/logo/logo.png
+copyLinkDir/settings/longPressInfoMap.txt
 ctsvViewer.js
 ctsvViewerDir/README.md
 ctsvViewerDir/html/aggre_table.html
@@ -191,6 +192,7 @@ image2AsciiArtDir/settingVariables/tableRepVars.js
 image2AsciiArtDir/settings/fannelStateConfig.js
 image2AsciiArtDir/settings/fannelStateRootTable.tsv
 image2AsciiArtDir/settings/fannelStateStock.tsv
+image2AsciiArtDir/settings/longPressInfoMap.txt
 image2AsciiArtDir/settings/settingButtonConfig.js
 image2AsciiArtDir/settings/settingLongClickMenuConfig.js
 image2AsciiArtDir/settings/settingMenuConfig.js
@@ -348,6 +350,7 @@ pulseReceiverDir/settingImages/capture/partPng/3_Screenshot_20240823_204041_Comm
 pulseReceiverDir/settingImages/logo/logo.png
 qrLReader.js
 qrLReaderDir/settingImages/logo/logo.png
+qrLReaderDir/settings/longPressInfoMap.txt
 quickStartShell.js
 quickStartShellDir/README.md
 quickStartShellDir/info/version/1.txt
@@ -435,9 +438,11 @@ selectTyperDir/systemJs/urlHistoryClick.js
 shareImage.js
 shareImageDir/info/version/1.txt
 shareImageDir/settingImages/logo/logo.png
+shareImageDir/settings/longPressInfoMap.txt
 siteSummary.js
 siteSummaryDir/info/version/1.txt
 siteSummaryDir/settingImages/logo/logo.png
+siteSummaryDir/settings/longPressInfoMap.txt
 sshTerminal.js
 sshTerminalDir/README.md
 sshTerminalDir/info/version/1.txt
@@ -554,6 +559,7 @@ txtPdfViewerDir/settingImages/logo/logo.png
 txtPdfViewerDir/settingVariables/hideSettingVariables.js
 txtPdfViewerDir/settingVariables/setReplaceVariables.js
 txtPdfViewerDir/settingVariables/setVariableTypes.js
+txtPdfViewerDir/settings/longPressInfoMap.txt
 urlIntender.js
 urlIntenderDir/settingImages/logo/logo.png
 urlScraper.js
@@ -570,6 +576,7 @@ urlScraperDir/settingVariables/hideSettingVariables.js
 urlScraperDir/settingVariables/setReplaceVariables.js
 urlScraperDir/settingVariables/setVariableTypes.js
 urlScraperDir/settings/homeScriptUrlsPath.txt
+urlScraperDir/settings/longPressInfoMap.txt
 urlScraperDir/shell/cat_and_speech.sh
 urlScraperDir/shell/create_play_list.sh
 urlScraperDir/shell/install.sh

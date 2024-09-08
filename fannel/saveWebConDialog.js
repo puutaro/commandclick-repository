@@ -49,14 +49,14 @@ function makeMenuMapStr(){
     switch(true){
         case onSearchBtn === "OFF":
             return [
-                `clickMenuFilePath=${leftMenuListFilePath}?longPressMenuFilePath=${leftLongPressMenuListFilePath}?dismissType=longpress?label=⬅`,
-                `clickMenuFilePath=${rightMenuListFilePath}?label=⬇︎️`,
+                `clickMenuFilePath=${leftMenuListFilePath}?longPressMenuFilePath=${leftLongPressMenuListFilePath}?dismissType=longpress?caption=back?iconName=back`,
+                `clickMenuFilePath=${rightMenuListFilePath}?caption=sveContents?iconName=download_done`,
             ].join("|");
         default:
             return [
-                `clickMenuFilePath=${leftMenuListFilePath}?longPressMenuFilePath=${leftLongPressMenuListFilePath}?dismissType=longpress?label=⬅`,
-                `clickMenuFilePath=${centerMenuListFilePath}?longPressMenuFilePath=${centerLongPressMenuListFilePath}?label=🔎️`,
-                `clickMenuFilePath=${rightMenuListFilePath}?label=⬇︎️`,
+                `clickMenuFilePath=${leftMenuListFilePath}?longPressMenuFilePath=${leftLongPressMenuListFilePath}?dismissType=longpress?caption=back?iconName=back`,
+                `clickMenuFilePath=${centerMenuListFilePath}?longPressMenuFilePath=${centerLongPressMenuListFilePath}?caption=search?iconName=google`,
+                `clickMenuFilePath=${rightMenuListFilePath}?caption=sveContents?iconName=download_done`,
             ].join("|");
     }
 }

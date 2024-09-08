@@ -46,7 +46,7 @@ function makeUrl(){
 function makeMenuMapStr(){
     // const onSearchBtn = `${EXTERNAL_EXEC_REPLACE_TXT2}`;
     return  [
-        `clickMenuFilePath=${leftMenuListFilePath}?longPressMenuFilePath=${leftLongPressMenuListFilePath}?dismissType=longpress?label=⬅`,
-        `clickMenuFilePath=${rightMenuListFilePath}?label=⬇︎️`,
+        `clickMenuFilePath=${leftMenuListFilePath}?longPressMenuFilePath=${leftLongPressMenuListFilePath}?dismissType=longpress?caption=back?iconName=back`,
+        `clickMenuFilePath=${rightMenuListFilePath}?caption=sveGCon?iconName=download_done`,
     ].join("|");
 }

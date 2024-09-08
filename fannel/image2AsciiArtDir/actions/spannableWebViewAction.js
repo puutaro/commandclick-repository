@@ -4,10 +4,13 @@ var=menuMapStrListStr
     ?value=`
         clickMenuFilePath=GO_BACK.js
             ?dismissType=longpress
-            ?label=⬅
+            ?caption=back
+            ?iconName=back
         |clickMenuFilePath=HIGHLIGHT_SCH.js
-            ?label=🔎
-        |label=❌
+            ?caption=search
+            ?iconName=google
+        |caption=exit
+            ?iconName=cancel
             ?dismissType=both
         `
 |var=longPressMenuListStr

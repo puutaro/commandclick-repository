@@ -2,6 +2,7 @@
 
 visible=ON,
 icon=ok,
+caption="save",
 click=
 	|onScriptSave=ON
 	|acVar=runReflectSetingValAction

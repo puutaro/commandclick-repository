@@ -3,6 +3,7 @@ visible=ON,
 
 disable=OFF,
     color=darkGreen,
+caption="table",
 
 click=
     acVar=runToTableState
