@@ -562,6 +562,7 @@ txtPdfViewerDir/settingVariables/setVariableTypes.js
 txtPdfViewerDir/settings/longPressInfoMap.txt
 urlIntender.js
 urlIntenderDir/settingImages/logo/logo.png
+urlIntenderDir/settings/longPressInfoMap.txt
 urlScraper.js
 urlScraperDir/README.md
 urlScraperDir/info/escape.tsv
@@ -603,6 +604,7 @@ webSearcherDir/menuList/rightMenuList.txt
 webSearcherDir/menuList/srcAnchorMenuList.txt
 webSearcherDir/menuList/srcImageAnchorMenuList.txt
 webSearcherDir/settingImages/logo/logo.png
+webSearcherDir/settings/longPressInfoMap.txt
 ytScraper.js
 ytScraperDir/README.md
 ytScraperDir/actions/changeStateAction.js
