@@ -1,1 +1,1 @@
-title=Send url
+title=Copy link
