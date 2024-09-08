@@ -1,2 +1,2 @@
-title=yt scraping
+title=Yt streaming
 triggerWord=youtube
