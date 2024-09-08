@@ -604,6 +604,7 @@ webSearcherDir/menuList/rightMenuList.txt
 webSearcherDir/menuList/srcAnchorMenuList.txt
 webSearcherDir/menuList/srcImageAnchorMenuList.txt
 webSearcherDir/settingImages/logo/logo.png
+webSearcherDir/settings/longPressInfoMap.txt
 ytScraper.js
 ytScraperDir/README.md
 ytScraperDir/actions/changeStateAction.js
