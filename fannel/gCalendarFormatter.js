@@ -13,7 +13,8 @@ disableSettingValsEdit="ON"
 setReplaceVariables="file://"
 setVariableTypes="file://"
 hideSettingVariables="file://"
-scriptFileName="gCalendarFormatter.js"
+playButtonConfig="icon=shortcut,caption=rgistrCalendar"
+settingButtonConfig="icon=open_close,caption=opnClse,click=func=SIZING,longClick=func="
 /// SETTING_SECTION_END
 
 

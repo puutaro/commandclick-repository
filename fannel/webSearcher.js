@@ -13,6 +13,7 @@ setReplaceVariables="BTN_LABEL=label"
 setReplaceVariables="fannelDirPath=${01}/${001}"
 setReplaceVariables="webSearcherListDirPath=${fannelDirPath}/menuList"
 setReplaceVariables="leftMenuListFilePath=${webSearcherListDirPath}/leftMenuList.txt"
+setReplaceVariables="leftSecondListFilePath=${webSearcherListDirPath}/leftSecondList.txt"
 setReplaceVariables="leftLongPressMenuListFilePath=${webSearcherListDirPath}/leftLongPressMenuList.txt"
 setReplaceVariables="centerMenuListFilePath=${webSearcherListDirPath}/centerMenuList.txt"
 setReplaceVariables="centerLongPressMenuListFilePath=${webSearcherListDirPath}/centerLongPressMenuList.txt"
@@ -21,6 +22,7 @@ setReplaceVariables="srcImageAnchorMenuListFilePath=${webSearcherListDirPath}/sr
 setReplaceVariables="srcAnchorMenuListFilePath=${webSearcherListDirPath}/srcAnchorMenuList.txt"
 setReplaceVariables="imageMenuListFilePath=${webSearcherListDirPath}/imageMenuList.txt"
 setVariableTypes="leftMenuListPath:DSL:BTN=${LIST_PATH}=${leftMenuListFilePath}|${BTN_CMD}=setf type=ListAdd suffix=.js dirPath=${01}?${BTN_LABEL}=ADD"
+setVariableTypes="leftSecondListFilePath:DSL:BTN=${LIST_PATH}=${leftSecondListFilePath}|${BTN_CMD}=setf type=ListAdd suffix=.js dirPath=${01}?${BTN_LABEL}=ADD"
 setVariableTypes="leftLongPressMenuListPath:DSL:BTN=${LIST_PATH}=${leftLongPressMenuListFilePath}|${BTN_CMD}=setf type=ListAdd suffix=.js dirPath=${01}?${BTN_LABEL}=ADD"
 setVariableTypes="centerMenuListPath:DSL:BTN=${LIST_PATH}=${centerMenuListFilePath}|${BTN_CMD}=setf type=ListAdd suffix=.js dirPath=${01}?${BTN_LABEL}=ADD"
 setVariableTypes="centerLongPressMenuListPath:DSL:BTN=${LIST_PATH}=${centerLongPressMenuListFilePath}|${BTN_CMD}=setf type=ListAdd suffix=.js dirPath=${01}?${BTN_LABEL}=ADD"
@@ -36,6 +38,7 @@ scriptFileName="webSearcher.js"
 
 /// CMD_VARIABLE_SECTION_START
 leftMenuListPath="${01}/${001}/menuList/leftMenuList.txt"
+leftSecondListFilePath="${01}/${001}/menuList/leftSecondList.txt"
 leftLongPressMenuListPath="${01}/${001}/menuList/leftLongPressMenuList.txt"
 centerMenuListPath="${01}/${001}/menuList/centerMenuList.txt"
 centerLongPressMenuListPath="${01}/${001}/menuList/centerLongPressMenuList.txt"
@@ -120,9 +123,10 @@ function getSelectionText() {
 
 function launchWebview(launchUrlString){
     const menuMapStrListStr= [
-        `clickMenuFilePath=${leftMenuListPath}?longPressMenuFilePath=${leftLongPressMenuListPath}?dismissType=longpress?label=⬅`,
-        `clickMenuFilePath=${centerMenuListPath}?longPressMenuFilePath=${centerLongPressMenuListPath}?label=🔎️`,
-        `clickMenuFilePath=${rightMenuListPath}?label=➡`,
+        `clickMenuFilePath=${leftMenuListPath}?longPressMenuFilePath=${leftLongPressMenuListPath}?dismissType=longpress?caption=back?iconName=back`,
+        `clickMenuFilePath=${leftSecondListFilePath}?caption=forward?iconName=forward`,
+        `clickMenuFilePath=${centerMenuListPath}?longPressMenuFilePath=${centerLongPressMenuListPath}?caption=search?iconName=google`,
+        `clickMenuFilePath=${rightMenuListPath}?caption=lcalLnch?iconName=shortcut`,
     ].join("|");
     const longPressMenuListStr = [
         `srcImageAnchorMenuFilePath=${srcImageAnchorMenuListPath}`,

@@ -4,6 +4,7 @@
 visible=ON,
 disable=OFF,
 color=darkGreen,
+caption="playQuiz",
 
 click=
     tsvVars=`listDir => asciiDirPathForAsciiPlay`

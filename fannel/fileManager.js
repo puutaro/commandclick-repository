@@ -22,7 +22,8 @@ terminalFontZoom="110"
 setReplaceVariables="file://"
 setVariableTypes="file://"
 hideSettingVariables="file://"
-scriptFileName="fileManager.js"
+playButtonConfig="icon=shortcut,caption=lnchFile"
+settingButtonConfig="icon=open_close,caption=opnClse,click=func=SIZING,longClick=func="
 /// SETTING_SECTION_END
 
 
