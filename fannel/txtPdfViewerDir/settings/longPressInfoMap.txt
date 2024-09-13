@@ -1,2 +1,2 @@
-title=Show by text
-triggerWords=pdf
+title=Show by text,
+triggerWords=pdf,
