@@ -54,9 +54,7 @@ function launchGgleTransSite(
 	jsDialog.webView_S(
 		ggleTransUrl,
 		"",
-	    "dismissType=both?label=❌",
-	    "",
-	    "",
+	    "toolbar=dismissType=both?caption=x?iconName=cancel",
 	);
 };
 
