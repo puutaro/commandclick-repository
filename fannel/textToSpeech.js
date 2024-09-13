@@ -184,7 +184,7 @@ const playFilePath = `${appDir}/playText`;
 const playListPath = `${appDir}/playList`;
 
 
-const speechText = getSelectionText();
+const speechText = getSpeechText();
 if(
     !speechText
 ) exitZero();
@@ -227,7 +227,10 @@ function getSpeechText(){
     var speechTextInner = getSelectionText();
     if(
         speechTextInner
-    ) return speechTextInner;
+    ) {
+        window.getSelection().removeAllRanges();
+        return speechTextInner;
+    }
     switch(speechMode){
         case speechModeType.Summary:
             return summary;
