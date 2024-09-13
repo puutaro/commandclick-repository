@@ -132,12 +132,14 @@ function launchWebview(launchUrlString){
         `srcImageAnchorMenuFilePath=${srcImageAnchorMenuListPath}`,
         `srcAnchorMenuFilePath=${srcAnchorMenuListPath}`,
         `imageMenuFilePath=${imageMenuListPath}`,
-    ].join("?");
+    ].join("|");
+    const webViewConfigMapCon = [
+        `toolBar=${menuMapStrListStr}`,
+        `longPressMenu=${longPressMenuListStr}`,
+    ].join(",");
     jsDialog.webView_S(
         launchUrlString,
         "${0}",
-        menuMapStrListStr,
-        longPressMenuListStr,
-        "",
+        webViewConfigMapCon,
     );
 };

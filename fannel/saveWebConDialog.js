@@ -24,9 +24,7 @@ function launchWebview(launchUrlString){
     jsDialog.webView_S(
         launchUrlString,
         "${0}",
-        menuMapStrListStr,
-        "",
-        ""
+        `toolBar=${menuMapStrListStr}`,
     );
 };
 

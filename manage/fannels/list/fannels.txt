@@ -141,6 +141,7 @@ gCalendarFormatterDir/settingVariables/setVariableTypes.js
 ggleTranslator.js
 ggleTranslatorDir/info/version/1.txt
 ggleTranslatorDir/settingImages/logo/logo.png
+ggleTranslatorDir/settings/pinInfoMap.txt
 image2AsciiArt.js
 image2AsciiArtDir/README.md
 image2AsciiArtDir/actions/changeStateAction.js
