@@ -16,8 +16,13 @@ var=menuMapStrListStr
 |var=longPressMenuListStr
     ?value=`
         srcImageAnchorMenuFilePath=${image2AsciiArtGetSpannableAction}
-        ?imageMenuFilePath=${image2AsciiArtGetSpannableAction}
+        |imageMenuFilePath=${image2AsciiArtGetSpannableAction}
         `
+|var=webViewConfigMapCon
+    ?value=`
+        toolBar=${menuMapStrListStr},
+        longPressMenu=${longPressMenuListStr},
+    `
 |var=encodeSpace
     ?value=NO_QUOTE:encodeURIComponent(" ")
 |var=runLaunchGetSpannableWebView
@@ -25,6 +30,5 @@ var=menuMapStrListStr
     ?args=
         url=`${getUrl}${encodeSpace}`
         &currentFannelPath=`${FANNEL_PATH}`
-        &menuMapCon=`${menuMapStrListStr}`
-        &longPressAnchorMenu=`${longPressMenuListStr}`
-        &extraMapCon=,
+        &webViewConfigMapCon=`${webViewConfigMapCon}`
+,
