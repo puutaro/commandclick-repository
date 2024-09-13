@@ -205,6 +205,7 @@ let extraSettingMapStr = [
     `transMode=${toLang}`,
     `speed=${Speed}`,
     `pitch=${Pitch}`,
+    `importance=low`,
 ].join("|");
 jsTextToSpeech.speech(
     playListPath,
