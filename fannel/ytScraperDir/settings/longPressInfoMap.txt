@@ -1,2 +1,2 @@
-title=Yt streaming
-triggerWords=youtube
+title=Yt streaming,
+triggerWords=youtube,
