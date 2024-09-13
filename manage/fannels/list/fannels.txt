@@ -500,6 +500,7 @@ tapTerminalDir/settingVariables/setVariableTypes.js
 textToSpeech.js
 textToSpeechDir/info/version/1.txt
 textToSpeechDir/settingImages/logo/logo.png
+textToSpeechDir/settings/pinInfoMap.txt
 ttsPlayer.js
 ttsPlayerDir/README.md
 ttsPlayerDir/actions/changeStateAction.js
