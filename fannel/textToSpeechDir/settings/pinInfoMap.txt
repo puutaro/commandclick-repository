@@ -1,0 +1,1 @@
+enableSelectionText=ON

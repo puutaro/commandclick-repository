@@ -184,20 +184,10 @@ const playFilePath = `${appDir}/playText`;
 const playListPath = `${appDir}/playList`;
 
 
-switch(speechMode){
-    case speechModeType.Summary:
-        var speechText = summary;
-        break;
-    case speechModeType.All:
-        var speechText = document.body.innerText;
-        break;
-    case speechModeType.Highlight:
-        var speechText = getSelectionText();
-        break;
-    case speechModeType.Clipboard:
-        var speechText = jsUtil.echoFromClipboard();
-        break;
-};
+const speechText = getSelectionText();
+if(
+    !speechText
+) exitZero();
 
 
 jsFileSystem.createDir(appDir);
@@ -232,3 +222,25 @@ function getSelectionText() {
     };
     return text;
 };
+
+function getSpeechText(){
+    var speechTextInner = getSelectionText();
+    if(
+        speechTextInner
+    ) return speechTextInner;
+    switch(speechMode){
+        case speechModeType.Summary:
+            return summary;
+            break;
+        case speechModeType.All:
+            return document.body.innerText;
+            break;
+        case speechModeType.Highlight:
+            return getSelectionText();
+            break;
+        case speechModeType.Clipboard:
+            return jsUtil.echoFromClipboard();
+            break;
+    };
+    // return speechText;
+}
