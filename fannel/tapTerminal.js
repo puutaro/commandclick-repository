@@ -9,6 +9,7 @@
 editExecute="ALWAYS"
 onAutoExec="ON"
 onAdBlock="OFF"
+mustUbuntuSetup="ON"
 disableSettingValsEdit="ON"
 onTermBackendWhenStart="OFF"
 onTermVisibleWhenKeyboard="ON"

@@ -8,6 +8,7 @@
 /// SETTING_SECTION_START
 editExecute="ALWAYS"
 onAutoExec="OFF"
+mustUbuntuSetup="ON"
 disableSettingValsEdit="ON"
 terminalSizeType="LONG"
 terminalOutputMode="NORMAL"
