@@ -13,16 +13,15 @@
 
 /// SETTING_SECTION_START
 setVariableTypes="toLang:CB=en?ja?ko?zh-CN?zh-TW?uk?ru?es?fr"
-setVariableTypes="onDialog:CB=true?false"
-disableSettingValsEdit="ON"
+// setVariableTypes="onDialog:CB=true?false"
 /// SETTING_SECTION_END
 
 /// CMD_VARIABLE_SECTION_START
 toLang="en"
-onDialog="true"
 /// CMD_VARIABLE_SECTION_END
 
 
+const onDialog="true";
 const highlightText = getSelectionText();
 const transUrl = makeTransUrl(highlightText);
 launchGgleTransSite(
