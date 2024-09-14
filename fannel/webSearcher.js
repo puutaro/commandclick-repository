@@ -132,12 +132,18 @@ function launchWebview(launchUrlString){
         `srcImageAnchorMenuFilePath=${srcImageAnchorMenuListPath}`,
         `srcAnchorMenuFilePath=${srcAnchorMenuListPath}`,
         `imageMenuFilePath=${imageMenuListPath}`,
-    ].join("?");
+    ].join("|");
+    const textSelectionMenuListStr = [
+        `clickMenuFilePath=${centerMenuListPath}?longPressMenuFilePath=${centerLongPressMenuListPath}?caption=search?iconName=google`,
+    ].join("|");
+    const webViewConfigMapCon = [
+        `toolBar=${menuMapStrListStr}`,
+        `longPressMenu=${longPressMenuListStr}`,
+        `textSelectionBar=${textSelectionMenuListStr}`,
+    ].join(",");
     jsDialog.webView_S(
         launchUrlString,
         "${0}",
-        menuMapStrListStr,
-        longPressMenuListStr,
-        "",
+        webViewConfigMapCon,
     );
 };

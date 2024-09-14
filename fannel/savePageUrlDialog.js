@@ -15,13 +15,15 @@ function launchWebview(launchUrlString){
     const longPressMenuListStr = [
         `srcImageAnchorMenuFilePath=${srcImageAnchorMenuListFilePath}`,
         `srcAnchorMenuFilePath=${srcAnchorMenuListFilePath}`,
-    ].join("?");
+    ].join("|");
+    const webViewConfigMapCon = [
+        `toolBar=${menuMapStrListStr}`,
+        `longPressMenu=${longPressMenuListStr}`,
+    ].join(",");
     jsDialog.webView_S(
         launchUrlString,
         "${0}",
-        menuMapStrListStr,
-        longPressMenuListStr,
-        "",
+        webViewConfigMapCon,
     );
 };
 
