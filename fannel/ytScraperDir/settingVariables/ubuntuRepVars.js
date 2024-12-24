@@ -10,5 +10,5 @@ cmdYoutuberUbuntuStopAllProcessShellPath=
     `${cmdYoutuberUbuntuDirPath}/stop_all_process.sh`,
 cmdYoutuberUbuntuScrapingShellPath=
     `${cmdYoutuberUbuntuDirPath}/scraping.sh`,
-cmdYoutuberYtfzfShellPath=
-    `${cmdYoutuberUbuntuDirPath}/ytfzfForFannel.sh`,
+cmdYoutuberUbuntuExecScrapingByCurlShellPath=
+	`${cmdYoutuberUbuntuDirPath}/execScrapingByCurl.sh`,

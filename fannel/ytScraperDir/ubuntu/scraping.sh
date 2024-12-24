@@ -8,12 +8,9 @@ exec repbash "${0}" \
 echoWebSearchPlayList(){
   toast "search..${searchWord}"
 	local searchRawListPath="${cmdYoutuberTempDirPath}/searchRawList.txt"
-	bash "${cmdYoutuberYtfzfShellPath}" \
+	bash "${cmdYoutuberUbuntuExecScrapingByCurlShellPath}" \
 		"${searchWord}" \
-	| awk -F '\t'\
-	'{
-		print $2"\t"$3"\t"$4
-	}' | cut -f2- > "${outputTsvPath}" &
+  > "${outputTsvPath}" &
 	scraping_pid=$!
 
   local e=""

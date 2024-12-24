@@ -664,6 +664,7 @@ ytScraperDir/table/settings/setVariableTypes.js
 ytScraperDir/table/settings/settingButtonConfig.js
 ytScraperDir/table/table.js
 ytScraperDir/temp/installStamp.txt
+ytScraperDir/ubuntu/execScrapingByCurl.sh
 ytScraperDir/ubuntu/install.sh
 ytScraperDir/ubuntu/scraping.sh
 ytScraperDir/ubuntu/stop_all_process.sh
