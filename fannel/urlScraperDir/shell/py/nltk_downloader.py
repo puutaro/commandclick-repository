@@ -3,8 +3,8 @@ from libs.const import Const
 
 def is_empty(dir_path: str) -> bool:
 	if not os.path.isdir(dir_path):
-		return False
-	return len(os.listdir(dir_path)) >= 5
+		return TRUE
+	return len(os.listdir(dir_path)) < 5
 
 class NltkDownloader:
 
@@ -14,9 +14,9 @@ class NltkDownloader:
 	@classmethod
 	def exec(cls):
 		pukt_path = Const.PUKT_PATH
-		if not is_empty(pukt_path):
+		if is_empty(pukt_path):
 			import nltk
-			nltk.download('punkt')
+			nltk.download('punkt_tab')
 
 
 NltkDownloader.exec()
