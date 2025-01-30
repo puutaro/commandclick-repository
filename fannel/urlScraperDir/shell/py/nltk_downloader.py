@@ -3,7 +3,7 @@ from libs.const import Const
 
 def is_empty(dir_path: str) -> bool:
 	if not os.path.isdir(dir_path):
-		return TRUE
+		return True
 	return len(os.listdir(dir_path)) < 5
 
 class NltkDownloader:
