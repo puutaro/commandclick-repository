@@ -104,7 +104,7 @@ function appendUrlPrefix(highlightUrlString){
             break;
         case true:
             const highlightUrlStringWithEncode = encodeURIComponent(highlightUrlString);
-            return `https://www.google.co.id/search?q=${highlightUrlStringWithEncode}`;
+            return `https://www.google.com/search?q=${highlightUrlStringWithEncode}`;
             break;
     };
 };

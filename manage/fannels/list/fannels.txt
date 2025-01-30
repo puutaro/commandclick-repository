@@ -178,7 +178,7 @@ image2AsciiArtDir/image/settings/qrDialogConfig.js
 image2AsciiArtDir/image/settings/setVariableTypes.js
 image2AsciiArtDir/image/settings/settingButtonConfig.js
 image2AsciiArtDir/info/escape.tsv
-image2AsciiArtDir/info/version/1.txt
+image2AsciiArtDir/info/version/2.txt
 image2AsciiArtDir/settingImages/capture/partPng/1_329652783-fa9e5089-9288-44a9-8c98-a99f756db42f_7407.png
 image2AsciiArtDir/settingImages/capture/partPng/2_329652078-77801e1e-555b-426c-9b85-bd4ccdb9fb31_7407.png
 image2AsciiArtDir/settingImages/capture/partPng/3_329652405-a6e109dd-b89d-46ea-bc51-9e165739c454_7407.png
@@ -368,7 +368,7 @@ quickStartShellDir/shell/execute.sh
 quickStartShellDir/systemJs/onAutoExec.js
 saveGmailConDialog.js
 saveGmailConDialogDir/README.md
-saveGmailConDialogDir/info/version/1.txt
+saveGmailConDialogDir/info/version/2.txt
 saveGmailConDialogDir/js/saveGmailCon.js
 saveGmailConDialogDir/menuList/centerLongPressMenuList.txt
 saveGmailConDialogDir/menuList/centerMenuList.txt
@@ -381,7 +381,7 @@ saveGmailConDialogDir/settingVariables/setReplaceVariables.js
 saveGmailConDialogDir/tsv/argsTsv.tsv
 savePageUrlDialog.js
 savePageUrlDialogDir/README.md
-savePageUrlDialogDir/info/version/1.txt
+savePageUrlDialogDir/info/version/2.txt
 savePageUrlDialogDir/js/longPressUrlRegister.js
 savePageUrlDialogDir/js/savePageUrlCon.js
 savePageUrlDialogDir/menuList/centerLongPressMenuList.txt
@@ -399,7 +399,7 @@ saveToGmailDir/info/version/1.txt
 saveToGmailDir/settingImages/logo/logo.png
 saveWebConDialog.js
 saveWebConDialogDir/README.md
-saveWebConDialogDir/info/version/1.txt
+saveWebConDialogDir/info/version/2.txt
 saveWebConDialogDir/js/saveWebCon.js
 saveWebConDialogDir/menuList/centerLongPressMenuList.txt
 saveWebConDialogDir/menuList/centerMenuList.txt
@@ -596,7 +596,7 @@ urlTransDir/info/version/1.txt
 urlTransDir/settingImages/logo/logo.png
 webSearcher.js
 webSearcherDir/README.md
-webSearcherDir/info/version/1.txt
+webSearcherDir/info/version/2.txt
 webSearcherDir/menuList/centerLongPressMenuList.txt
 webSearcherDir/menuList/centerMenuList.txt
 webSearcherDir/menuList/imageMenuList.txt
