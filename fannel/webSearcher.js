@@ -82,7 +82,8 @@ function makeUrl(){
         externalEexcLink !== ""
         && externalEexcLink !== cmdclickExternalExecReplaceTextStr
     ) return externalEexcLink;
-    return "GGLE_SEARCH";
+    return encodeURIComponent("　")
+    // "GGLE_SEARCH";
 };
 
 function highLightSearch(){

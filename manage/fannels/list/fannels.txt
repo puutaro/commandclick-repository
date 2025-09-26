@@ -596,7 +596,7 @@ urlTransDir/info/version/1.txt
 urlTransDir/settingImages/logo/logo.png
 webSearcher.js
 webSearcherDir/README.md
-webSearcherDir/info/version/2.txt
+webSearcherDir/info/version/3.txt
 webSearcherDir/menuList/centerLongPressMenuList.txt
 webSearcherDir/menuList/centerMenuList.txt
 webSearcherDir/menuList/imageMenuList.txt
