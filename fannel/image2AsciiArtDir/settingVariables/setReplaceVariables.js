@@ -23,7 +23,7 @@ lineHeight=60,
 textSize=30,
 
 // get image and spannable
-getUrl=`https://www.google.co.id/search?q=`,
+getUrl=`https://www.google.com/search?q=`,
 
 // dir path variable
 currentAppDirPath=

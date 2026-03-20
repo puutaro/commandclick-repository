@@ -9,6 +9,7 @@
 editExecute="ALWAYS"
 onUpdateLastModify="ON"
 onAdBlock="OFF"
+mustUbuntuSetup="ON"
 disableSettingValsEdit="ON"
 playButtonConfig="visible=OFF,disable=ON,color=gray,icon=play"
 editButtonConfig="visible=OFF,disable=ON,color=gray,icon=list"

@@ -8,10 +8,11 @@ e=""
 
 install_pkg(){
   sudo apt-get install -y \
-      jq \
-      fzf \
-      socat \
-      bsdmainutils
+      nkf
+#      jq \
+#      socat \
+#      bsdmainutils
+#      fzf
   sudo pip3 install -U \
     yt-dlp
 }

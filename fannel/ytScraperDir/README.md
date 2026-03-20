@@ -52,3 +52,12 @@ Table of Contents
 | src anchor | o |
 | src image anchor | o |
 | image | x |
+
+
+## Trouble shouting
+-------
+
+- Streaming not working  
+  -> Please press `setting` -> `install`
+  - by this, pkg update (By updating the used pkg, `yt-dlp`, you can support changes in YouTube specifications.)
+  - Do above process, after `ubuntu` [restert](https://github.com/puutaro/CommandClick/blob/master/USAGE.md#restart-ubuntu) and wait for a few minutes

@@ -72,4 +72,4 @@ NEWS_SPEECHER_CREATE_SRC_TEXT_SHELL_PATH=
 
 // system file path
 APP_URL_HISTORY_PATH=
-	"${01}/system/url/cmdclickUrlHistory.tsv",
+	"${01}/systemDir/url/cmdclickUrlHistory.tsv",

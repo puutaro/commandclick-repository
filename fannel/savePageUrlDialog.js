@@ -38,7 +38,7 @@ function makeUrl(){
         externalExecLink !== cmdclickExternalExecReplaceTextStr
         && externalExecLink !== ""
     ) return externalExecLink;
-    return "https://www.google.co.id/search?q=";
+    return "https://www.google.com/search?q=";
 }
 
 function makeMenuMapStr(){
