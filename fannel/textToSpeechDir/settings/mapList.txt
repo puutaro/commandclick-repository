@@ -1,0 +1,4 @@
+srcTitle="SpeechMode",srcCon="textTitle1",viewLayoutTag=speechModeFrame
+srcTitle="Speed",srcCon="textTitle2",viewLayoutTag=speedFrame
+srcTitle="Pitch",srcCon="pitch",viewLayoutTag=pitchFrame
+srcTitle="toLang",srcCon="toLang",viewLayoutTag=toLangFrame
